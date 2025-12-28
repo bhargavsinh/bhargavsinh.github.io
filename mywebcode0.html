@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <title>જય શ્રી કૃષ્ણ | પુષ્ટિમાર્ગીય વૈષ્ણવ વેબસાઇટ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --maroon: #7b1c1c;
+            --gold: #daa520;
+            --ivory: #fffff0;
+            --text-dark: #4a1c0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Playfair Display',serif;
+            background: #fff8ec;
+            color: #4a1c0a;
+        }
+
+        /* POPUP */
+        #popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #ffd27f, #a11c1c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            text-align: center;
+            animation: fadeIn 2s;
+        }
+        #popup h1 {
+            font-family: 'Yatra One';
+            font-size: 3rem;
+            color: #fff7d6;
+            text-shadow: 0 0 15px gold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(to right, #7b1c1c, #b8860b);
+            padding: 12px;
+            z-index: 1000;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li a {
+            color: #fff3c4;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* SECTIONS */
+        section {
+            min-height: 100vh;
+            padding: 110px 10% 60px;
+            border-bottom: 2px dashed #c9a24d;
+        }
+        h1, h2 {
+            font-family: 'Yatra One';
+            text-align: center;
+            color: #7b1c1c;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin: 20px 0;
+        }
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            text-align: center;
+            font-size: 2rem;
+            color: gold;
+            margin: 20px 0;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        /* NEW SOCIAL MEDIA BUTTONS STYLE */
+        .social-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+            margin: auto;
+        }
+        .social-btn {
+            display: block;
+            text-decoration: none;
+            background: var(--ivory);
+            color: var(--maroon);
+            border: 2px solid var(--gold);
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .social-btn:hover {
+            background: var(--maroon);
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        /* CONTACT FORM */
+        form {
+            max-width: 450px;
+            margin: auto;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid goldenrod;
+            font-family: inherit;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #7b1c1c, #b8860b);
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #7b1c1c;
+            color: gold;
+            text-align: center;
+            padding: 15px;
+            font-family: 'Yatra One';
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="popup">
+        <div>
+            <h1>જય શ્રી કૃષ્ણ</h1>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#pushtimarg">પુષ્ટિમાર્ગ</a></li>
+            <li><a href="#social">સોશિયલ મીડિયા</a></li>
+            <li><a href="#contact">સંપર્ક</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <p>|| શ્રીકૃષ્ણાય નમઃ ||</p>
+        <p>|| શ્રીગોપીજનવલ્લભાય નમઃ ||</p>
+        <p>|| શ્રીમદાચાર્યચરણકમલેભ્યો નમઃ ||</p>
+        <p>|| શ્રીગુસાંઈજી પરમદયાલવે નમઃ ||</p>
+        <p>|| શ્રીગુરવે નમઃ ||</p>
+        <div style="text-align: center;">
+    <img src="bhargavsinh.webp" alt="Bhargavsinh_Img" width="199">
+    </div>
+        <h1>Sisodiya Bhargavsinh Mahendrasinh</h1>
+        
+        <p>🙏 श्रीकृष्णदासानुदासोऽहम् ।</p>
+        <p>🚩 પુષ્ટિમાર્ગીય વૈષ્ણવ</p>
+        <p>🎓 BCA | 🛡️ Rajput | 🙏 Theist</p>
+        <p>⚔️ 17th Generation Descendant of Shri Maharana Pratap</p>
+        <p><i>“સર્વમ્ શ્રીકૃષ્ણાર્પણમસ્તુ”</i></p>
+    </section>
+
+    <section id="about">
+        <h2>મારા વિષે</h2>
+        <div class="divider">🪷</div>
+        <p>
+            <b>I am a strong and ardent follower of "Brahmavada" Philosophy also known as "Vallabh Vedanta" by Mahaprabhuji Shree Vallabhacharya.</b>
+        </p>
+        <p>
+            <b>I believe 'Brahmavada' serves as a very critical philosophy in establishing world peace, inter-religion harmony and tolerance. I am the disciple of <i>Goswami Shri Sharadkumarji (Halol - Mandvi)</i> who is the direct descendent of Shree Vallabhacharya.</b>
+        </p>
+    </section>
+
+    <section id="pushtimarg">
+        <h2>પુષ્ટિમાર્ગ</h2>
+        <div class="divider">🏛️</div>
+        
+        <div class="royal-card" style="overflow-x: auto;">
+            <h3 style="text-align: center; color: var(--maroon); margin-bottom: 20px;">
+                ગૃહ સેવા vs. હવેલી સેવા (તુલનાત્મક દ્રષ્ટિકોણ)
+            </h3>
+
+            <table style="width: 100%; border-collapse: collapse; border: 2px solid var(--gold); min-width: 600px;">
+                <thead>
+                    <tr style="background-color: var(--maroon); color: var(--gold);">
+                        <th style="padding: 15px; border: 1px solid var(--gold); font-family: 'Yatra One', cursive; text-align: left;">વિષય</th>
+                        <th style="padding: 15px; border: 1px solid var(--gold); font-family: 'Yatra One', cursive; text-align: left;">ગૃહ સેવા <br><span style="font-size: 0.8rem; color: #ffebcd;">(પુષ્ટિમાર્ગીય સિદ્ધાંત)</span></th>
+                        <th style="padding: 15px; border: 1px solid var(--gold); font-family: 'Yatra One', cursive; text-align: left;">હવેલી સેવા <br><span style="font-size: 0.8rem; color: #ffebcd;">(વર્તમાન કુપરંપરા)</span></th>
+                    </tr>
+                </thead>
+                <tbody style="background-color: var(--ivory); color: var(--text-dark);">
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid var(--gold); font-weight: bold;">દ્રવ્ય સ્ત્રોત</td>
+                        <td style="padding: 12px; border: 1px solid var(--gold);">સ્વ-દ્રવ્ય <br>(સેવકનું પોતાનું કમાયેલું)</td>
+                        <td style="padding: 12px; border: 1px solid var(--gold);">દેવદ્રવ્ય <br>(સમાજની ભેટ/દાન)</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid var(--gold); font-weight: bold;">સેવક</td>
+                        <td style="padding: 12px; border: 1px solid var(--gold);">સ્વયં (તનુજા) <br>ઘરના સભ્યો દ્વારા</td>
+                        <td style="padding: 12px; border: 1px solid var(--gold);">પગારદાર મુખિયાજી <br>અથવા કર્મચારી</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid var(--gold); font-weight: bold;">ભાવ</td>
+                        <td style="padding: 12px; border: 1px solid var(--gold);">નંદાલય (વૈષ્ણવનું ઘર) <br><strong>વાત્સલ્ય ભાવ</strong></td>
+                        <td style="padding: 12px; border: 1px solid var(--gold);">મંદિર <br><strong>ઐશ્વર્ય / પૂજા ભાવ</strong></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid var(--gold); font-weight: bold;">ઉદ્દેશ્ય</td>
+                        <td style="padding: 12px; border: 1px solid var(--gold);">ભગવદ્ સંતોષ <br>(પ્રભુ સુખ)</td>
+                        <td style="padding: 12px; border: 1px solid var(--gold);">આત્મ સંતોષ <br>અથવા સામાજિક પ્રતિષ્ઠા</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="social">
+        <h2>સોશિયલ મીડિયા</h2>
+        <div class="divider">🌐</div>
+
+        <div class="social-container">
+        <a href="https://youtube.com/@voiceofbhargav?si=ChXA72Pi76BTTTIS" class="social-btn">YouTube 📹</a>
+        <a href="https://www.instagram.com/bs_pushtisoul" class="social-btn">Instagram 📸</a>
+        <a href="https://www.facebook.com/share/1DnjcRcZDT/" class="social-btn">Facebook 📘</a>
+        <a href="https://wa.me/message/2Q3XY4RZ22IJK1" class="social-btn">WhatsApp 💬</a>
+        <a href="mailto:bhargavsinh.bca@gmail.com" class="social-btn">📧 Email Me</a>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>સંપર્ક</h2>
+        <div class="divider">📩</div>
+        <form>
+            <input type="text" placeholder="નામ">
+            <input type="number" placeholder="Mobile Number">
+            <input type="email" placeholder="ઈમેલ">
+            <textarea rows="4" placeholder="સંદેશ"></textarea>
+            <button type="button">મોકલો</button>
+        </form>
+    </section>
+
+    <footer>
+        જય શ્રી કૃષ્ણ
+    </footer>
+
+    <script>
+        setTimeout(()=> {
+            document.getElementById("popup").style.display = "none";
+        }, 3000);
+    </script>
+
+</body>
+</html>
