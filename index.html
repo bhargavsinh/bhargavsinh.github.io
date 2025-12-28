@@ -2,7 +2,7 @@
 <html lang="gu">
 <head>
     <meta charset="UTF-8">
-    <title>જય શ્રી કૃષ્ણ | સિસોદિયા ભાર્ગવસિંહ ની વેબસાઇટ</title>
+    <title>Personal Portfolio | Sisodiya Bhargavsinh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
@@ -24,149 +24,88 @@
             font-family: 'Playfair Display',serif;
             background: #fff8ec;
             color: #4a1c0a;
+            scroll-behavior: smooth;
+            
+            /* --- સુરક્ષા: લખાણ સિલેક્ટ થતું અટકાવવા --- */
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         /* POPUP */
         #popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle, #ffd27f, #a11c1c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            text-align: center;
-            animation: fadeIn 2s;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; text-align: center; animation: fadeIn 2s;
         }
         #popup h1 {
-            font-family: 'Yatra One';
-            font-size: 3rem;
-            color: #fff7d6;
+            font-family: 'Yatra One'; font-size: 3rem; color: #fff7d6;
             text-shadow: 0 0 15px gold;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* NAV */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
+            position: fixed; top: 0; width: 100%;
             background: linear-gradient(to right, #7b1c1c, #b8860b);
-            padding: 12px;
-            z-index: 1000;
+            padding: 12px; z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
+            display: flex; justify-content: center; list-style: none; padding: 0; flex-wrap: wrap;
         }
         nav ul li a {
-            color: #fff3c4;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
-            font-size: 0.9rem;
+            color: #fff3c4; text-decoration: none; margin: 0 10px;
+            font-weight: bold; font-size: 0.9rem;
         }
 
         /* SECTIONS */
         section {
-            min-height: 100vh;
-            padding: 110px 10% 60px;
+            min-height: 100vh; padding: 110px 10% 60px;
             border-bottom: 2px dashed #c9a24d;
         }
         h1, h2 {
-            font-family: 'Yatra One';
-            text-align: center;
-            color: #7b1c1c;
+            font-family: 'Yatra One'; text-align: center; color: #7b1c1c;
         }
-        h1 {
-            font-size: 2.2rem;
-            margin: 20px 0;
-        }
-        h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
+        h1 { font-size: 2.2rem; margin: 20px 0; }
+        h2 { font-size: 2.2rem; margin-bottom: 20px; }
 
-        .divider {
-            text-align: center;
-            font-size: 2rem;
-            color: gold;
-            margin: 20px 0;
-        }
+        .divider { text-align: center; font-size: 2rem; color: gold; margin: 20px 0; }
 
-        p {
-            text-align: center;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 10px;
-        }
+        p { text-align: center; font-size: 1.1rem; line-height: 1.8; margin-bottom: 10px; }
 
-        /* NEW SOCIAL MEDIA BUTTONS STYLE */
+        /* SOCIAL MEDIA BUTTONS */
         .social-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 400px;
-            margin: auto;
+            display: flex; flex-direction: column; gap: 15px;
+            max-width: 400px; margin: auto;
         }
         .social-btn {
-            display: block;
-            text-decoration: none;
-            background: var(--ivory);
-            color: var(--maroon);
-            border: 2px solid var(--gold);
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border-radius: 10px;
-            transition: 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: block; text-decoration: none; background: var(--ivory);
+            color: var(--maroon); border: 2px solid var(--gold); padding: 15px;
+            text-align: center; font-weight: bold; font-size: 1.2rem;
+            border-radius: 10px; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .social-btn:hover {
-            background: var(--maroon);
-            color: var(--gold);
-            transform: translateY(-3px);
+            background: var(--maroon); color: var(--gold); transform: translateY(-3px);
         }
 
         /* CONTACT FORM */
-        form {
-            max-width: 450px;
-            margin: auto;
-        }
+        form { max-width: 450px; margin: auto; }
         input, textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 2px solid goldenrod;
-            font-family: inherit;
+            width: 100%; padding: 12px; margin: 10px 0;
+            border: 2px solid goldenrod; font-family: inherit;
         }
         button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(to right, #7b1c1c, #b8860b);
-            color: white;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
+            width: 100%; padding: 12px; background: linear-gradient(to right, #7b1c1c, #b8860b);
+            color: white; border: none; font-weight: bold; cursor: pointer;
         }
 
         /* FOOTER */
         footer {
-            background: #7b1c1c;
-            color: gold;
-            text-align: center;
-            padding: 15px;
-            font-family: 'Yatra One';
+            background: #7b1c1c; color: gold; text-align: center;
+            padding: 5px; font-family: 'Yatra One';
         }
     </style>
 </head>
@@ -178,24 +117,27 @@
             <h1>જય શ્રી કૃષ્ણ</h1>
         </div>
     </div>
+
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#pushtimarg">પુષ્ટિમાર્ગ</a></li>
-<li><a href="#projects">પ્રોજેક્ટ્સ</a></li>
+            <li><a href="#projects">પ્રોજેક્ટ્સ</a></li>
             <li><a href="#social">સોશિયલ મીડિયા</a></li>
             <li><a href="#contact">સંપર્ક</a></li>
         </ul>
     </nav>
 
     <section id="home">
-        <marquee behavior="scroll" direction="left" style="color: var(--maroon); font-size: 1.2rem; font-weight: bold; background: var(--ivory); padding: 5px; border-bottom: 2px solid var(--gold);">
-        || જય શ્રી કૃષ્ણ || આપનું હાર્દિક સ્વાગત છે ||
-    </marquee>
+        <marquee behavior="scroll" direction="left" style="color: var(--maroon); font-size: 1.2rem; font-weight: bold; background: var(--ivory); padding: 5px; border-bottom: 2px solid var(--gold); margin-bottom: 20px;">
+        || જય શ્રી કૃષ્ણ || શ્રી વલ્લભાધીશ કી જય || વેબ પોર્ટફોલિયોમાં આપનું સ્વાગત છે ||
+        </marquee>
+        
         <div style="text-align: center;">
-    <img src="bhargavsinh.webp" alt="Bhargavsinh_Img" width="199">
-    </div>
+            <img src="bhargavsinh.webp" alt="Bhargavsinh_Img" width="199" style="border-radius: 50%; border: 4px solid var(--gold);">
+        </div>
+        
         <h1>Sisodiya Bhargavsinh Mahendrasinh</h1>
         
         <p>🙏 श्रीकृष्णदासानुदासोऽहम् ।</p>
@@ -203,8 +145,7 @@
         <p>🎓 BCA | 🛡️ Rajput | 🙏 Theist</p>
         <p>⚔️ 15th Generation Descendant of Shri Maharana Pratap</p>
         <p><i>“સર્વમ્ શ્રીકૃષ્ણાર્પણમસ્તુ”</i></p>
-    </section>
-    <section id="about">
+    </section> <section id="about">
         <h2>મારા વિષે</h2>
         <div class="divider">📜</div>
         
@@ -224,7 +165,6 @@
             “સર્વમ્ શ્રીકૃષ્ણાર્પણમસ્તુ”
         </p>
     </section>
-
 
     <section id="pushtimarg">
         <h2>પુષ્ટિમાર્ગ</h2>
@@ -259,15 +199,11 @@
                         <td style="padding: 12px; border: 1px solid var(--gold);">નંદાલય (વૈષ્ણવનું ઘર) <br><strong>વાત્સલ્ય ભાવ</strong></td>
                         <td style="padding: 12px; border: 1px solid var(--gold);">મંદિર <br><strong>ઐશ્વર્ય / પૂજા ભાવ</strong></td>
                     </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid var(--gold); font-weight: bold;">ઉદ્દેશ્ય</td>
-                        <td style="padding: 12px; border: 1px solid var(--gold);">ભગવદ્ સંતોષ <br>(પ્રભુ સુખ)</td>
-                        <td style="padding: 12px; border: 1px solid var(--gold);">આત્મ સંતોષ <br>અથવા સામાજિક પ્રતિષ્ઠા</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
     </section>
+
     <section id="projects">
         <h2>મારા પ્રોજેક્ટ્સ</h2>
         <div class="divider">💻</div>
@@ -304,23 +240,22 @@
         <div class="divider">🌐</div>
 
         <div class="social-container">
-        <a href="https://youtube.com/@voiceofbhargav?si=ChXA72Pi76BTTTIS" class="social-btn">YouTube 📹</a>
-        <a href="https://www.instagram.com/bs_pushtisoul" class="social-btn">Instagram 📸</a>
-        <a href="https://www.facebook.com/share/1DnjcRcZDT/" class="social-btn">Facebook 📘</a>
-        <a href="https://wa.me/message/2Q3XY4RZ22IJK1" class="social-btn">WhatsApp 💬</a>
-        <a href="mailto:bhargavsinh.bca@gmail.com" class="social-btn">📧 Email Me</a>
-
+            <a href="https://youtube.com/@voiceofbhargav?si=ChXA72Pi76BTTTIS" class="social-btn">YouTube 📹</a>
+            <a href="https://www.instagram.com/bs_pushtisoul" class="social-btn">Instagram 📸</a>
+            <a href="https://www.facebook.com/share/1DnjcRcZDT/" class="social-btn">Facebook 📘</a>
+            <a href="https://wa.me/message/2Q3XY4RZ22IJK1" class="social-btn">WhatsApp 💬</a>
+            <a href="mailto:bhargavsinh.bca@gmail.com" class="social-btn">📧 Email Me</a>
         </div>
     </section>
 
     <section id="contact">
         <h2>સંપર્ક</h2>
         <div class="divider">📩</div>
-        <form>
-            <input type="text" placeholder="નામ">
-            <input type="number" placeholder="Mobile Number">
-            <input type="email" placeholder="ઈમેલ">
-            <textarea rows="4" placeholder="સંદેશ"></textarea>
+        <form onsubmit="return showMessage()">
+            <input type="text" placeholder="નામ" required>
+            <input type="number" placeholder="Mobile Number" required>
+            <input type="email" placeholder="ઈમેલ" required>
+            <textarea rows="4" placeholder="સંદેશ" required></textarea>
             <button type="submit">મોકલો</button>
         </form>
     </section>
@@ -328,12 +263,30 @@
     <footer>
         <marquee width="100%" direction="left" height="30px">
         Designed & Developed by Sisodiya Bhargavsinh | BCA Student | © 2025 All Rights Reserved.
-    </marquee>
+        </marquee>
     </footer>
+
     <script>
+        // 1. સ્વાગત પોપઅપ (3 સેકન્ડ પછી બંધ થશે)
         setTimeout(()=> {
             document.getElementById("popup").style.display = "none";
-        }, 6000);
+        }, 3000);
+
+        // 2. ફોર્મ સબમિટ એલર્ટ
+        function showMessage() {
+            alert("તમારો સંદેશ સફળતાપૂર્વક મોકલાઈ ગયો છે! \n(Your message has been sent successfully!)");
+            return false; // આ પેજ રિફ્રેશ થતું અટકાવશે
+        }
+
+        // 3. સુરક્ષા (રાઈટ ક્લિક અને શોર્ટકટ બંધ)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) { return false; } // F12
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } // View Source
+            if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } // Copy
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } // Inspect
+        }
     </script>
 </body>
 </html>
