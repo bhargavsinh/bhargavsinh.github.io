@@ -6,9 +6,32 @@
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="preloader">
+        <h1 class="signature">Bhargavsinh Sisodiya</h1>
+        <p class="greeting">|| જય શ્રી કૃષ્ણ ||</p>
+    </div>
+    ```
+
+#### ૩. જાવાસ્ક્રિપ્ટ (Script) - `</body>` ની ઉપર
+તમારું `</body>` ટેગ પૂરું થાય તેની **બરાબર ઉપર** (ફૂટરની નીચે) આ સ્ક્રિપ્ટ મૂકો. આ કોડ ૩ સેકન્ડ પછી લોડરને હટાવી દેશે.
+
+```html
+    <script>
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                var loader = document.getElementById("preloader");
+                loader.style.opacity = "0"; // ધીમેથી આછું થશે
+                setTimeout(function(){
+                    loader.style.display = "none"; // પછી ગાયબ થઈ જશે
+                }, 1000); 
+            }, 2500); // 2.5 સેકન્ડ સુધી દેખાશે
+        });
+    </script>
+
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
