@@ -2,295 +2,40 @@
 <html lang="gu">
 <head>
     <meta charset="UTF-8">
-    <title>Personal Portfolio | Sisodiya Bhargavsinh</title>
-    
+    <title>Home | Sisodiya Bhargavsinh</title>
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
-
-    <meta name="description" content="Official Portfolio of Sisodiya Bhargavsinh - BCA Student & Pushtimargiya Vaishnav.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --maroon: #7b1c1c;
-            --gold: #daa520;
-            --ivory: #fffff0;
-            --text-dark: #4a1c0a;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Playfair Display',serif;
-            background: #fff8ec;
-            color: #4a1c0a;
-            scroll-behavior: smooth;
-            -webkit-user-select: none; -ms-user-select: none; user-select: none; /* Security */
-        }
-
-        /* POPUP */
-        #popup {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, #ffd27f, #a11c1c);
-            display: flex; align-items: center; justify-content: center;
-            z-index: 9999; text-align: center; animation: fadeIn 2s;
-        }
-        #popup h1 {
-            font-family: 'Yatra One'; font-size: 3rem; color: #fff7d6; text-shadow: 0 0 15px gold;
-        }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* NAV */
-        nav {
-            position: fixed; top: 0; width: 100%;
-            background: linear-gradient(to right, #7b1c1c, #b8860b);
-            padding: 12px; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        nav ul { display: flex; justify-content: center; list-style: none; padding: 0; flex-wrap: wrap; }
-        nav ul li a {
-            color: #fff3c4; text-decoration: none; margin: 0 10px; font-weight: bold; font-size: 0.9rem;
-        }
-
-        /* SECTIONS */
-        section { min-height: 100vh; padding: 110px 10% 60px; border-bottom: 2px dashed #c9a24d; }
-        h1, h2 { font-family: 'Yatra One'; text-align: center; color: #7b1c1c; }
-        h1 { font-size: 2.2rem; margin: 20px 0; }
-        h2 { font-size: 2.2rem; margin-bottom: 20px; }
-        .divider { text-align: center; font-size: 2rem; color: gold; margin: 20px 0; }
-        p { text-align: center; font-size: 1.1rem; line-height: 1.8; margin-bottom: 10px; }
-
-        /* SOCIAL MEDIA BUTTONS */
-        .social-container { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: auto; }
-        .social-btn {
-            display: block; text-decoration: none; background: var(--ivory);
-            color: var(--maroon); border: 2px solid var(--gold); padding: 15px;
-            text-align: center; font-weight: bold; font-size: 1.2rem;
-            border-radius: 10px; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .social-btn:hover { background: var(--maroon); color: var(--gold); transform: translateY(-3px); }
-
-        /* BLOG CARD STYLE (NEW) */
-        .blog-card {
-            background: #fff; border: 1px solid var(--gold); border-left: 6px solid var(--maroon);
-            border-radius: 8px; padding: 20px; width: 100%; max-width: 600px;
-            margin: 0 auto 20px auto; /* Centered */
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease;
-        }
-        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
-        
-        .blog-meta {
-            font-size: 0.85rem; color: #777; font-weight: bold;
-            border-bottom: 1px solid #eee; padding-bottom: 5px; margin-bottom: 10px;
-            display: flex; justify-content: space-between; /* Date Left, Time Right */
-        }
-        
-        .blog-title {
-            font-family: 'Yatra One', cursive; color: var(--maroon);
-            font-size: 1.4rem; margin-bottom: 10px; text-align: left;
-        }
-        .blog-text {
-            font-family: 'Playfair Display', serif; text-align: justify;
-            color: #333; font-size: 1rem;
-        }
-
-        /* CONTACT FORM & ADDRESS CARD */
-        .address-card {
-            background: #fff; border: 2px solid var(--gold); border-radius: 10px;
-            padding: 20px; max-width: 500px; margin: 0 auto 30px auto;
-            text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        form { max-width: 450px; margin: auto; }
-        input, textarea {
-            width: 100%; padding: 12px; margin: 10px 0; border: 2px solid goldenrod; font-family: inherit;
-        }
-        button {
-            width: 100%; padding: 12px; background: linear-gradient(to right, #7b1c1c, #b8860b);
-            color: white; border: none; font-weight: bold; cursor: pointer;
-        }
-
-        /* FOOTER */
-        footer { background: #7b1c1c; color: gold; text-align: center; padding: 5px; font-family: 'Yatra One'; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <div id="popup"><div><h1>જય શ્રી કૃષ્ણ</h1></div></div>
-
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#pushtimarg">પુષ્ટિમાર્ગ</a></li>
-            <li><a href="#projects">પ્રોજેક્ટ્સ</a></li>
-            <li><a href="#blog">વિચારો</a></li> <li><a href="#social">સોશિયલ મીડિયા</a></li>
-            <li><a href="#contact">સંપર્ક</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="pushtimarg.html">પુષ્ટિમાર્ગ</a></li>
+            <li><a href="projects.html">પ્રોજેક્ટ્સ</a></li>
+            <li><a href="blog.html">વિચારો</a></li>
+            <li><a href="contact.html">સંપર્ક</a></li>
         </ul>
     </nav>
 
-    <section id="home">
-        <marquee behavior="scroll" direction="left" style="color: var(--maroon); font-size: 1.2rem; font-weight: bold; background: var(--ivory); padding: 5px; border-bottom: 2px solid var(--gold); margin-bottom: 20px;">
+    <section>
+        <marquee style="color: var(--maroon); background: var(--ivory); padding: 5px; border-bottom: 2px solid var(--gold);">
         || જય શ્રી કૃષ્ણ 🙏 આપનું સ્વાગત છે ||
         </marquee>
-        <div style="text-align: center;">
-            <img src="bhargavsinh.webp" alt="Bhargavsinh_Img" width="199" style="border-radius: 50%; border: 4px solid var(--gold);">
+        <div style="text-align: center; margin-top: 30px;">
+            <img src="bhargavsinh.webp" alt="Bhargavsinh" width="200" style="border-radius: 50%; border: 4px solid var(--gold);">
         </div>
         <h1>Sisodiya Bhargavsinh Mahendrasinh</h1>
         <p>🙏 श्रीकृष्णदासानुदासोऽहम् ।</p>
-        <p>🚩 પુષ્ટિમાર્ગીય વૈષ્ણવ</p>
-        <p>🎓 BCA | 🛡️ Rajput | 🙏 Theist</p>
-        <p>⚔️ 15th Generation Descendant of Shri Maharana Pratap</p>
-        <p><i>“સર્વમ્ શ્રીકૃષ્ણાર્પણમસ્તુ”</i></p>
-    </section>
-
-    <section id="about">
-        <h2>મારા વિષે</h2>
-        <div class="divider">📜</div>
-        <p style="text-align: justify; margin-bottom: 20px; font-weight: bold;">
-            હું, શ્રી મહાપ્રભુજી દ્વારા પ્રણીત <b>"પુષ્ટિભક્તિમાર્ગ"</b> નો નિષ્ઠાવાન અનુયાયી છું. મારા મતે, શુદ્ધાદ્વૈતવાદ માત્ર એક ધાર્મિક વાદ નથી, પરંતુ વિશ્વશાંતિ અને માનવીય સંવેદનાઓને ઉજાગર કરતી એક જીવનશૈલી છે.
-        </p>
-        <p style="text-align: justify; margin-bottom: 20px; font-weight: bold;">
-            <b>વારસો અને માર્ગદર્શન:</b> એક તરફ મને વીર શિરોમણી મહારાણા પ્રતાપના ૧૧મા પુત્ર શ્રી પૂરનમલજી ના (15th Generation) વંશજ હોવાનું ગૌરવ છે, તો બીજી તરફ પૂજ્ય પાદ ગોસ્વામી શ્રી શરદકુમારજી (હાલોલ-માંડવી) જેવા સમર્થ સદ્દગુરુનું આધ્યાત્મિક માર્ગદર્શન પ્રાપ્ત છે.
-        </p>
-        <p style="text-align: justify; font-weight: bold;">
-            <b>શિક્ષણ અને ધ્યેય:</b> વર્તમાનમાં હું <b>BCA</b> નો વિદ્યાર્થી છું. મારો ઉદ્દેશ્ય વેબ ડેવલપમેન્ટ જેવી આધુનિક સ્કીલ્સનો ઉપયોગ કરીને ડિજિટલ ભવિષ્ય બનાવવાનો છે.
-        </p>
-        <p style="text-align: center; font-weight: bold; margin-top: 30px; font-size: 1.2rem; color: var(--maroon);">
-            “સર્વમ્ શ્રીકૃષ્ણાર્પણમસ્તુ”
-        </p>
-    </section>
-
-<section id="pushtimarg">
-        <h2>પુષ્ટિમાર્ગ</h2>
-        <div class="divider">🏛️</div>
-        
-        <div class="royal-card" style="overflow-x: auto;">
-            <h3 style="text-align: center; color: var(--maroon); margin-bottom: 20px;">
-                ગૃહ સેવા vs. હવેલી સેવા (તુલનાત્મક દ્રષ્ટિકોણ)
-            </h3>
-
-            <table style="width: 100%; border-collapse: collapse; border: 2px solid var(--gold); min-width: 600px;">
-                <thead>
-                    <tr style="background-color: var(--maroon); color: var(--gold);">
-                        <th style="padding: 15px; border: 1px solid var(--gold); font-family: 'Yatra One', cursive; text-align: left;">વિષય</th>
-                        <th style="padding: 15px; border: 1px solid var(--gold); font-family: 'Yatra One', cursive; text-align: left;">ગૃહ સેવા <br><span style="font-size: 0.8rem; color: #ffebcd;">(પુષ્ટિમાર્ગીય સિદ્ધાંત)</span></th>
-                        <th style="padding: 15px; border: 1px solid var(--gold); font-family: 'Yatra One', cursive; text-align: left;">હવેલી સેવા <br><span style="font-size: 0.8rem; color: #ffebcd;">(વર્તમાન કુપરંપરા)</span></th>
-                    </tr>
-                </thead>
-                <tbody style="background-color: var(--ivory); color: var(--text-dark);">
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid var(--gold); font-weight: bold;">દ્રવ્ય સ્ત્રોત</td>
-                        <td style="padding: 12px; border: 1px solid var(--gold);">સ્વ-દ્રવ્ય <br>(સેવકનું પોતાનું કમાયેલું)</td>
-                        <td style="padding: 12px; border: 1px solid var(--gold);">દેવદ્રવ્ય <br>(સમાજની ભેટ/દાન)</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid var(--gold); font-weight: bold;">સેવક</td>
-                        <td style="padding: 12px; border: 1px solid var(--gold);">સ્વયં (તનુજા) <br>ઘરના સભ્યો દ્વારા</td>
-                        <td style="padding: 12px; border: 1px solid var(--gold);">પગારદાર મુખિયાજી <br>અથવા કર્મચારી</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid var(--gold); font-weight: bold;">ભાવ</td>
-                        <td style="padding: 12px; border: 1px solid var(--gold);">નંદાલય (વૈષ્ણવનું ઘર) <br><strong>વાત્સલ્ય ભાવ</strong></td>
-                        <td style="padding: 12px; border: 1px solid var(--gold);">મંદિર <br><strong>ઐશ્વર્ય / પૂજા ભાવ</strong></td>
-                    </tr>
-                </tbody>
-            </table>
+        <p>🎓 BCA Student | 🛡️ Rajput | 🚩 Vaishnav</p>
+        <br>
+        <div style="text-align: center;">
+            <a href="about.html" class="social-btn" style="display: inline-block; width: auto; padding: 10px 30px;">વધુ જાણો 👉</a>
         </div>
     </section>
 
-    <section id="projects">
-        <h2>મારા પ્રોજેક્ટ્સ</h2>
-        <div class="divider">💻</div>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-            <div style="background: #fff; border-left: 5px solid var(--maroon); padding: 20px; width: 300px; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <h3 style="text-align: left; font-size: 1.3rem;">પર્સનલ પોર્ટફોલિયો</h3>
-                <p style="text-align: left; font-size: 0.9rem; color: #555;">HTML5 અને CSS3 વેબસાઇટ.</p>
-                <div style="margin-top: 10px;"><span style="background: var(--ivory); border: 1px solid var(--gold); padding: 3px 8px; font-size: 0.8rem;">HTML5</span></div>
-            </div>
-            <div style="background: #fff; border-left: 5px solid var(--maroon); padding: 20px; width: 300px; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <h3 style="text-align: left; font-size: 1.3rem;">Graphic Design</h3>
-                <p style="text-align: left; font-size: 0.9rem; color: #555;">YouTube અને Social Media થંબનેલ્સ.</p>
-                <div style="margin-top: 10px;"><span style="background: var(--ivory); border: 1px solid var(--gold); padding: 3px 8px; font-size: 0.8rem;">Canva</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog">
-        <h2>મારા વિચારો</h2>
-        <div class="divider">✒️</div>
-        
-        <div style="display: flex; flex-direction: column; align-items: center;">
-            
-            <div class="blog-card">
-                <div class="blog-meta">
-                    <span>📅 28 Dec 2025</span>
-                    <span>🕒 10:00 AM</span>
-                </div>
-                <h3 class="blog-title">પુષ્ટિમાર્ગ અને આધુનિક યુગ</h3>
-                <p class="blog-text">
-                    આજના ડિજિટલ યુગમાં આપણે ટેકનોલોજીનો ઉપયોગ કરીને આપણા ઠાકોરજીની સેવા વધુ સુંદર રીતે કરી શકીએ છીએ. સ્માર્ટફોનનો ઉપયોગ માત્ર મનોરંજન માટે જ નહીં, પણ સત્સંગ અને પ્રચાર માટે પણ થઈ શકે છે.
-                </p>
-            </div>
-
-            <div class="blog-card">
-                <div class="blog-meta">
-                    <span>📅 15 Dec 2025</span>
-                    <span>🕒 08:30 PM</span>
-                </div>
-                <h3 class="blog-title">ડિજિટલ વિશ્વ અને સંસ્કૃતિ</h3>
-                <p class="blog-text">
-                    એક BCA વિદ્યાર્થી તરીકે હું માનું છું કે કોડિંગ અને સંસ્કૃતિ એકબીજાના વિરોધી નથી. આપણે આપણી વેબસાઇટ દ્વારા આપણા વિચારો અને શાસ્ત્રોને નવી પેઢી સુધી પહોંચાડી શકીએ છીએ.
-                </p>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="social">
-        <h2>સોશિયલ મીડિયા</h2>
-        <div class="divider">🌐</div>
-        <div class="social-container">
-            <a href="https://youtube.com/@voiceofbhargav?si=ChXA72Pi76BTTTIS" class="social-btn">YouTube 📹</a>
-            <a href="https://www.instagram.com/bs_pushtisoul" class="social-btn">Instagram 📸</a>
-            <a href="https://www.facebook.com/share/1DnjcRcZDT/" class="social-btn">Facebook 📘</a>
-            <a href="https://wa.me/message/2Q3XY4RZ22IJK1" class="social-btn">WhatsApp 💬</a>
-            <a href="mailto:bhargavsinh.bca@gmail.com" class="social-btn">📧 Email Me</a>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>સંપર્ક</h2>
-        <div class="divider">📩</div>
-        <div class="address-card">
-            <p style="font-size: 1.2rem; font-weight: bold; color: var(--maroon); margin-bottom: 5px;">📍 સરનામું</p>
-            <p style="font-size: 1rem; color: #555; margin-bottom: 15px;">
-                ચુંથાના મુવાડા, તાલુકો: ગોધર, જીલ્લો: મહીસાગર, ગુજરાત - 389230
-            </p>
-            <iframe src="https://maps.google.com/maps?q=23.140525,73.746500&hl=gu&z=14&output=embed" width="100%" height="250" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
-            <a href="https://www.google.com/maps?q=23.140525,73.746500" target="_blank" style="display: block; margin-top: 10px; color: var(--maroon); font-weight: bold; text-decoration: none;">Google Map માં ખોલો 🗺️</a>
-        </div>
-        <form onsubmit="return showMessage()">
-            <h3 style="text-align: center; color: var(--maroon); margin-bottom: 10px;">સંદેશ મોકલો</h3>
-            <input type="text" placeholder="નામ" required>
-            <input type="number" placeholder="Mobile Number" required>
-            <input type="email" placeholder="ઈમેલ" required>
-            <textarea rows="4" placeholder="સંદેશ" required></textarea>
-            <button type="submit">મોકલો</button>
-        </form>
-    </section>
-
-    <footer>
-        <marquee width="100%" direction="left" height="30px">
-        Designed & Developed by Sisodiya Bhargavsinh | BCA Student | © 2025 All Rights Reserved.
-        </marquee>
-    </footer>
-
-    <script>
-        setTimeout(()=> { document.getElementById("popup").style.display = "none"; }, 3000);
-        function showMessage() { alert("તમારો સંદેશ સફળતાપૂર્વક મોકલાઈ ગયો છે!"); return false; }
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) { if(e.keyCode == 123 || (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0) || (e.shiftKey && e.keyCode == 'I'.charCodeAt(0))))) { return false; } }
-    </script>
+    <footer><marquee>Designed by Sisodiya Bhargavsinh | © 2025</marquee></footer>
 </body>
 </html>
