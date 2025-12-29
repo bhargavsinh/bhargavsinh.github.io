@@ -1,0 +1,31 @@
+/* style.css - Main Design File */
+:root { --maroon: #7b1c1c; --gold: #daa520; --ivory: #fffff0; --text-dark: #4a1c0a; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Playfair Display',serif; background: #fff8ec; color: #4a1c0a; -webkit-user-select: none; user-select: none; }
+
+/* NAV */
+nav { position: sticky; top: 0; width: 100%; background: linear-gradient(to right, #7b1c1c, #b8860b); padding: 12px; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+nav ul { display: flex; justify-content: center; list-style: none; padding: 0; flex-wrap: wrap; }
+nav ul li a { color: #fff3c4; text-decoration: none; margin: 0 10px; font-weight: bold; font-size: 0.9rem; }
+nav ul li a:hover { color: gold; text-decoration: underline; }
+
+/* SECTIONS */
+section { min-height: 80vh; padding: 40px 10% 60px; }
+h1, h2, h3 { font-family: 'Yatra One'; text-align: center; color: #7b1c1c; }
+h1 { font-size: 2.2rem; margin: 20px 0; }
+h2 { font-size: 2.2rem; margin-bottom: 20px; border-bottom: 2px dashed var(--gold); display: inline-block; padding-bottom: 10px; }
+p { text-align: center; font-size: 1.1rem; line-height: 1.8; margin-bottom: 10px; }
+.divider { text-align: center; font-size: 2rem; color: gold; margin: 20px 0; }
+
+/* SPECIFIC ELEMENTS */
+.social-btn { display: block; text-decoration: none; background: var(--ivory); color: var(--maroon); border: 2px solid var(--gold); padding: 15px; text-align: center; font-weight: bold; border-radius: 10px; margin-bottom: 15px; }
+.blog-card { background: #fff; border: 1px solid var(--gold); border-left: 6px solid var(--maroon); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+.blog-meta { display: flex; justify-content: space-between; color: #777; font-size: 0.85rem; border-bottom: 1px solid #eee; margin-bottom: 10px; }
+table { width: 100%; border-collapse: collapse; border: 2px solid var(--gold); margin-top: 20px; }
+th, td { padding: 12px; border: 1px solid var(--gold); text-align: left; }
+th { background: var(--maroon); color: var(--gold); }
+input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid goldenrod; }
+button { width: 100%; padding: 12px; background: var(--maroon); color: white; border: none; font-weight: bold; cursor: pointer; }
+
+/* FOOTER */
+footer { background: #7b1c1c; color: gold; text-align: center; padding: 5px; margin-top: 50px; font-family: 'Yatra One'; }
