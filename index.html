@@ -6,25 +6,85 @@
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* HOME PAGE STYLES */
+        
+        /* 1. Shloka Box */
+        .shloka-box {
+            background: #7b1c1c; /* Maroon */
+            color: #daa520; /* Gold */
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-family: 'Yatra One', cursive;
+            border: 1px dashed #daa520;
+        }
+
+        /* 2. Highlights Cards Grid */
+        .highlights-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .h-card {
+            flex: 1 1 280px; /* Mobile responsive */
+            background: #fff;
+            border: 1px solid #7b1c1c;
+            border-bottom: 5px solid #daa520;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .h-card:hover {
+            transform: translateY(-5px);
+            background: #fff8ec;
+        }
+        .h-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+        .h-link { 
+            display: inline-block; 
+            margin-top: 10px; 
+            color: #7b1c1c; 
+            font-weight: bold; 
+            text-decoration: none; 
+            border-bottom: 1px dotted #7b1c1c;
+        }
+
+        /* 3. Tech Skills Badges */
+        .tech-stack {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(218, 165, 32, 0.1); /* Light Gold BG */
+            border-radius: 10px;
+        }
+        .tech-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            margin: 5px;
+            border: 1px solid #7b1c1c;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            background: #fff;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+    
     <div id="preloader">
         <h1 class="signature">Bhargavsinh Sisodiya</h1>
         <p class="greeting">|| જય શ્રી કૃષ્ણ ||</p>
     </div>
-    <script>
-        window.addEventListener("load", function() {
-            setTimeout(function() {
-                var loader = document.getElementById("preloader");
-                loader.style.opacity = "0"; // ધીમેથી આછું થશે
-                setTimeout(function(){
-                    loader.style.display = "none"; // પછી ગાયબ થઈ જશે
-                }, 1000); 
-            }, 2500); // 2.5 સેકન્ડ સુધી દેખાશે
-        });
-    </script>
 
     <nav>
         <ul>
@@ -41,27 +101,90 @@
         <marquee style="color: var(--maroon); background: var(--ivory); padding: 5px; border-bottom: 2px solid var(--gold);"> <b>
         || જય શ્રી કૃષ્ણ 🙏 આપનું સ્વાગત છે || </b>
         </marquee>
+
         <div style="text-align: center; margin-top: 30px;">
             <img src="bhargavsinh.webp" alt="Bhargavsinh" width="200" style="border-radius: 50%; border: 4px solid var(--gold);">
         </div>
+        
         <h1>Sisodiya Bhargavsinh Mahendrasinh</h1>
         <p>🙏 श्रीकृष्णदासानुदासोऽहम् ।</p>
         <p>🚩 પુષ્ટિમાર્ગીય વૈષ્ણવ</p>
         <p>🎓 BCA | 🛡️ Rajput | 🙏 Theist</p>
         <p>⚔️ 15th Generation Descendant of Shri Maharana Pratap</p>
         <p><i>“સર્વમ્ શ્રીકૃષ્ણાર્પણમસ્તુ”</i></p>
+        
         <br>
-        <div style="text-align: center;">
+        
+        <div class="shloka-box">
+            " વિદ્યા વિનયેન શોભતે "
+            <br>
+            <span style="font-size: 0.8rem; color: #fff;">(વિદ્યા વિનયથી શોભે છે)</span>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 40px;">
             <a href="about.html" class="social-btn" style="display: inline-block; width: auto; padding: 10px 30px;">વધુ જાણો 👉</a>
         </div>
+
+        <h2 style="font-size: 1.5rem; border-bottom: 2px dashed gold; display:inline-block;">વિશેષ વિભાગો</h2>
+        
+        <div class="highlights-grid">
+            <div class="h-card">
+                <span class="h-icon">📜</span>
+                <h3>વંશાવલી</h3>
+                <p>મહારાણા પ્રતાપથી લઈને અત્યાર સુધીની પેઢીઓનો ગૌરવવંતો ઈતિહાસ.</p>
+                <a href="about.html" class="h-link">જુઓ &rarr;</a>
+            </div>
+
+            <div class="h-card">
+                <span class="h-icon">🪔</span>
+                <h3>પુષ્ટિ સિદ્ધાંત</h3>
+                <p>ગૃહ સેવા, અમૃત વચનાવલી અને શુદ્ધાદ્વૈત વિચારધારા.</p>
+                <a href="pushtimarg.html" class="h-link">વાંચો &rarr;</a>
+            </div>
+
+            <div class="h-card">
+                <span class="h-icon">✒️</span>
+                <h3>સંશોધન લેખ</h3>
+                <p>ગૃહ સેવા vs. હવેલી સેવા પર શાસ્ત્રીય સંશોધન.</p>
+                <a href="blog.html" class="h-link">Article વાંચો &rarr;</a>
+            </div>
+        </div>
+
+        <div class="tech-stack">
+            <h3 style="color: #7b1c1c; margin-bottom: 10px;">Technical Skills 💻</h3>
+            <div>
+                <span class="tech-badge">HTML5</span>
+                <span class="tech-badge">CSS3</span>
+                <span class="tech-badge">C Language</span>
+                <span class="tech-badge">Web Design</span>
+                <span class="tech-badge">GitHub</span>
+            </div>
+        </div>
+
     </section>
 
     <footer>
-    <p style="font-size: 0.8rem; margin-bottom: 5px;">
-        <a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a>
-    </p>
-    <marquee>Designed by Sisodiya Bhargavsinh | © 2025</marquee>
-</footer>
+        <p style="font-size: 0.8rem; margin-bottom: 5px;">
+            <a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a>
+        </p>
+        <marquee>Designed by Sisodiya Bhargavsinh | © 2025</marquee>
+    </footer>
+
+    <script>
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                var loader = document.getElementById("preloader");
+                loader.style.opacity = "0"; 
+                setTimeout(function(){
+                    loader.style.display = "none"; 
+                }, 1000); 
+            }, 2500); 
+        });
+
+        // Right click disable (Security)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) { if(e.keyCode == 123) return false; }
+    </script>
 
 </body>
 </html>
