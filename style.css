@@ -71,5 +71,37 @@ button { width: 100%; padding: 12px; background: var(--maroon); color: white; bo
     to { opacity: 1; transform: translateY(-5px); }
 }
 
+/* આ કોડ વેબસાઇટના દરેક એલિમેન્ટ પર લાગુ પડશે */
+* {
+    -webkit-user-select: none !important; /* Chrome/Safari/Opera */
+    -moz-user-select: none !important;    /* Firefox */
+    -ms-user-select: none !important;     /* Internet Explorer/Edge */
+    user-select: none !important;         /* Standard */
+    -webkit-touch-callout: none !important; /* iOS Safari - Long press બંધ કરવા */
+}
+
+/* માત્ર Input અને Textarea માં જ લખવાની છૂટ આપવી (જો Contact form હોય તો) */
+input, textarea {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+}
+
+/* Google Drive Iframe પર પારદર્શક પડદો (Shield) */
+.iframe-shield {
+    position: relative;
+}
+.iframe-shield::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent; /* દેખાય નહીં તેવો પડદો */
+    z-index: 9999;
+}
+
 /* FOOTER */
 footer { background: #7b1c1c; color: gold; text-align: center; padding: 5px; margin-top: 50px; font-family: 'Yatra One'; }
