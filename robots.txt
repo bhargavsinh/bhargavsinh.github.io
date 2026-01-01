@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bhargavsinh.github.io/sitemap.xml
