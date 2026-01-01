@@ -1,3 +1,19 @@
+/* લખાણ સિલેક્ટ થતું અટકાવવા (Copy Protection) */
+body {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Standard */
+}
+
+/* જેને સિલેક્ટ કરવા દેવું હોય (જેમ કે કોડ) તેને છૂટ આપવા */
+.selectable {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
 /* style.css - Main Design File */
 :root { --maroon: #7b1c1c; --gold: #daa520; --ivory: #fffff0; --text-dark: #4a1c0a; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
