@@ -3,6 +3,14 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Playfair Display',serif; background: #fff8ec; color: #4a1c0a; -webkit-user-select: none; user-select: none; }
 
+body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+
+
 /* NAV */
 nav { position: sticky; top: 0; width: 100%; background: linear-gradient(to right, #7b1c1c, #b8860b); padding: 12px; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
 nav ul { display: flex; justify-content: center; list-style: none; padding: 0; flex-wrap: wrap; }
