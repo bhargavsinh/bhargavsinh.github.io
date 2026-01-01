@@ -2,50 +2,179 @@
 <html lang="gu">
 <head>
     <meta charset="UTF-8">
-    <title>Projects</title>
+    <title>Projects | Sisodiya Bhargavsinh</title>
+    
+    <meta name="description" content="Academic and Research Projects of Sisodiya Bhargavsinh - BCA Student. Web Design, C Programming, and Genealogy Research.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://www.hitwebcounter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https://hitwebcounter.com data:; script-src 'self' 'unsafe-inline';">
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/webp" href="bhargavsinh.webp">
+
+    <style>
+        /* PROJECT CARDS STYLE */
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            width: 350px; /* Card Width */
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--maroon);
+        }
+
+        .p-header {
+            background: var(--maroon);
+            color: var(--gold);
+            padding: 15px;
+            text-align: center;
+            font-family: 'Yatra One', cursive;
+            font-size: 1.2rem;
+        }
+
+        .p-body {
+            padding: 20px;
+            text-align: justify;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .tech-tags {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .tag {
+            background: #fff8ec;
+            border: 1px solid #ccc;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #7b1c1c;
+            margin: 2px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .p-footer {
+            padding: 15px;
+            text-align: center;
+            border-top: 1px dashed #ccc;
+            background: #fafafa;
+        }
+    </style>
 </head>
 <body>
+
     <nav>
-        <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="pushtimarg.html">પુષ્ટિમાર્ગ</a></li><li><a href="projects.html">પ્રોજેક્ટ્સ</a></li><li><a href="blog.html">Articles</a></li><li><a href="contact.html">સંપર્ક</a></li></ul>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="pushtimarg.html">પુષ્ટિમાર્ગ</a></li>
+            <li><a href="projects.html">પ્રોજેક્ટ્સ</a></li>
+            <li><a href="article.html">Articles</a></li>
+            <li><a href="contact.html">સંપર્ક</a></li>
+        </ul>
     </nav>
 
     <section>
+        <marquee style="color: var(--maroon); background: var(--ivory); padding: 5px; border-bottom: 2px solid var(--gold);">
+            || કર્મણ્યેવાધિકારસ્તે મા ફલેષુ કદાચન || મારા શૈક્ષણિક અને સંશોધનાત્મક કાર્યો ||
+        </marquee>
+
         <h2>મારા પ્રોજેક્ટ્સ</h2>
-        <div class="blog-card">
-            <h3>🌐 પર્સનલ પોર્ટફોલિયો</h3>
-            <p>આ વેબસાઇટ HTML5 અને CSS3 નો ઉપયોગ કરીને બનાવેલ છે.</p>
-        </div>
-        <div class="blog-card">
-            <h3>🎨 Graphic Design</h3>
-            <p>YouTube થંબનેલ્સ અને સોશિયલ મીડિયા પોસ્ટ ડિઝાઇન.</p>
-        </div>
+        <div class="divider">💻</div>
         
-        <h2 style="margin-top: 40px;">ગેલેરી</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center;">
-             <div style="border:2px solid gold; padding:5px;"><p>ફોટો 1 (Upload pic1.jpg)</p></div>
-            <div style="border:2px solid gold; padding:5px;"><p>ફોટો 2 (Upload pic2.jpg)</p></div>
+        <p style="text-align: center; margin-bottom: 30px;">
+            અહીં મારા BCA અભ્યાસ દરમિયાન બનાવેલા સોફ્ટવેર પ્રોજેક્ટ્સ અને મારા વ્યક્તિગત સંશોધન કાર્યો રજૂ કર્યા છે.
+        </p>
+
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <div class="p-header">૧. ડિજિટલ પોર્ટફોલિયો</div>
+                <div class="p-body">
+                    આ મારી વ્યક્તિગત વેબસાઇટ છે. આમાં મેં HTML5, CSS3 અને JavaScript નો ઉપયોગ કરીને Responsive Design બનાવી છે. આ સાઈટ સંપૂર્ણપણે સુરક્ષિત અને SEO ફ્રેન્ડલી છે.
+                    <div class="tech-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">SEO</span>
+                        <span class="tag">GitHub</span>
+                    </div>
+                </div>
+                <div class="p-footer">
+                    <a href="index.html" class="social-btn" style="padding: 5px 15px; font-size: 0.9rem;">Live Demo 👁️</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="p-header">૨. વંશાવલી સંશોધન</div>
+                <div class="p-body">
+                    મહારાણા પ્રતાપના વંશજો (પુરાવત સિસોદિયા) નો ૧૫ પેઢીનો ઈતિહાસ ડિજિટલ સ્વરૂપે સાચવવાનો આ એક પ્રયાસ છે. ઐતિહાસિક પુસ્તકોના સંદર્ભ સાથે ડેટાનું સંકલન કર્યું છે.
+                    <div class="tech-tags">
+                        <span class="tag">Research</span>
+                        <span class="tag">History</span>
+                        <span class="tag">Documentation</span>
+                    </div>
+                </div>
+                <div class="p-footer">
+                    <a href="about.html" class="social-btn" style="padding: 5px 15px; font-size: 0.9rem;">View Research 📜</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="p-header">૩. Student Management (C)</div>
+                <div class="p-body">
+                    BCA સેમેસ્ટર-1 ના પ્રોજેક્ટ તરીકે મેં 'C Language' માં સ્ટુડન્ટ ડેટાબેઝ મેનેજમેન્ટ સિસ્ટમ બનાવી છે. જે વિદ્યાર્થીઓના નામ, રોલ નંબર અને માર્ક્સ સ્ટોર કરી શકે છે.
+                    <div class="tech-tags">
+                        <span class="tag">C Language</span>
+                        <span class="tag">Logic</span>
+                        <span class="tag">Algorithms</span>
+                    </div>
+                </div>
+                <div class="p-footer">
+                    <a href="#" class="social-btn" style="padding: 5px 15px; font-size: 0.9rem; background: #555;">Code Coming Soon 💻</a>
+                </div>
+            </div>
+
         </div>
+
     </section>
-        <footer>
+
+    <footer>
         <p style="font-size: 0.8rem; margin-bottom: 5px;">
             <a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a>
         </p>
-        
         <marquee style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2025</marquee>
 
         <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed gold; text-align: center;">
             <p style="font-size: 0.8rem; color: #ffebcd; margin-bottom: 5px; font-family: sans-serif;">Visitor Count:</p>
-            
             <a href="https://www.hitwebcounter.com/" target="_blank">
                 <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" title="Visitor Counter" Alt="Bhargavsinh Website Visitors" border="0" />
             </a>
-            </div>
+        </div>
     </footer>
 
-
-
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) { if(e.keyCode == 123) return false; }
+    </script>
 </body>
 </html>
