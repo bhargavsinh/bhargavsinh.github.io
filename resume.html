@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume | Sisodiya Bhargavsinh</title>
+    
+    <meta name="description" content="Resume of Sisodiya Bhargavsinh Mahendrasinh - BCA Student. Skills in Computer Accounting, Logo Design, and Chat Support.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex"> <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/webp" href="bhargavsinh.webp">
+
+    <style>
+        /* RESUME SPECIFIC STYLES */
+        .resume-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--maroon);
+            font-family: 'Playfair Display', serif;
+            color: #333;
+        }
+
+        .resume-header {
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .resume-name {
+            font-family: 'Yatra One', cursive;
+            font-size: 2rem;
+            color: var(--maroon);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .resume-sub {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .section-title {
+            background: #f4f4f4;
+            color: var(--maroon);
+            padding: 5px 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-left: 4px solid var(--gold);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-family: sans-serif;
+        }
+
+        .edu-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        .edu-table td {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+        .edu-year { font-weight: bold; color: var(--maroon); width: 120px; }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-badge {
+            background: var(--maroon);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .personal-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .print-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background: var(--maroon);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid var(--gold);
+        }
+        .print-btn:hover { background: #5a1212; }
+
+        /* PRINT SETTINGS */
+        @media print {
+            body { background: #fff; }
+            nav, footer, .print-btn, section marquee { display: none !important; }
+            .resume-container { box-shadow: none; border: none; margin: 0; padding: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">પ્રોજેક્ટ્સ</a></li>
+            <li><a href="resume.html" style="color: gold;">Resume</a></li> <li><a href="article.html">Articles</a></li>
+            <li><a href="contact.html">સંપર્ક</a></li>
+        </ul>
+    </nav>
+
+    <button onclick="window.print()" class="print-btn">🖨️ Download / Print PDF</button>
+
+    <div class="resume-container">
+        <div class="resume-header">
+            <h1 class="resume-name">Sisodiya Bhargavsinh Mahendrasinh</h1>
+            <p class="resume-sub">BCA Student | Computer Applications</p>
+            <div class="contact-info">
+                📞 +91-9328923709 | 📧 bhargavsinh.bca@gmail.com <br>
+                📍 Lunawada, Gujarat, India
+            </div>
+        </div>
+
+        <div class="section-title">Resume Summary</div>
+        <p style="text-align: justify;">
+            I am a BCA student from Shri Govind Guru University with skills in Gujarati, logo design, and chat support. I am eager to leverage my computerized accounting knowledge to build a dynamic career in technology and customer engagement.
+        </p>
+
+        <div class="section-title">Education</div>
+        <table class="edu-table">
+            <tr>
+                <td class="edu-year">Pursuing</td>
+                <td>
+                    <b>BCA (Bachelor of Computer Applications)</b><br>
+                    Shri Govind Guru University, Godhra
+                </td>
+            </tr>
+            <tr>
+                <td class="edu-year">2025</td>
+                <td>
+                    <b>HSC (Class XII)</b> | Commerce<br>
+                    National Open School (English Medium)<br>
+                    Result: 69%
+                </td>
+            </tr>
+            <tr>
+                <td class="edu-year">2022</td>
+                <td>
+                    <b>SSC (Class X)</b><br>
+                    Gujarat Secondary Education Board (Gujarati Medium)<br>
+                    Result: 79.16%
+                </td>
+            </tr>
+        </table>
+
+        <div class="section-title">Skills</div>
+        <div class="skills-grid">
+            <span class="skill-badge">Gujarati Typing</span>
+            <span class="skill-badge">Logo Design</span>
+            <span class="skill-badge">Chat Support</span>
+            <span class="skill-badge">Chat Process</span>
+            <span class="skill-badge">Computerized Accounting</span>
+            <span class="skill-badge">Communication</span>
+        </div>
+
+        <div class="section-title">Languages Known</div>
+        <p>
+            🗣️ <b>Gujarati:</b> Read, Write & Speak (Native)<br>
+            🗣️ <b>Hindi:</b> Read, Write & Speak<br>
+            🗣️ <b>English:</b> Read, Write & Speak<br>
+            🗣️ <b>Sanskrit:</b> Read & Write
+        </p>
+
+        <div class="section-title">Certifications & Achievements</div>
+        <ul>
+            <li>Received <b>Scholarship</b> in School for academic excellence.</li>
+            <li>Certified in <b>Computerized Accounting</b>.</li>
+        </ul>
+
+        <div class="section-title">Personal Details</div>
+        <div class="personal-details-grid">
+            <div><b>Date of Birth:</b> 21st December, 2006</div>
+            <div><b>Gender:</b> Male</div>
+            <div><b>Nationality:</b> Indian</div>
+            <div><b>Current Location:</b> Lunawada</div>
+        </div>
+        
+    </div>
+
+    <footer>
+        <p style="font-size: 0.8rem; margin-bottom: 5px;">
+            <a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a>
+        </p>
+        <marquee style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2025</marquee>
+        
+        <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed gold; text-align: center;">
+            <p style="font-size: 0.8rem; color: #ffebcd; margin-bottom: 5px;">Visitor Count:</p>
+            <a href="https://www.hitwebcounter.com/" target="_blank">
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" title="Visitor Counter" border="0" />
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) { if(e.keyCode == 123) return false; }
+    </script>
+</body>
+</html>
