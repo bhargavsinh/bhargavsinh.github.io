@@ -122,6 +122,110 @@
             color: #333;
             font-weight: bold;
         }
+<style>
+    /* ULTRA MODERN MENU STYLES (Only for Home Page) */
+    
+    /* જૂનું નેવિગેશન છુપાવવા માટે (જો style.css માં હોય તો) */
+    body > nav { display: none !important; } 
+
+    /* 1. કાચ જેવું કેપ્સ્યુલ હેડર */
+    .glass-header {
+        position: fixed; /* સ્ક્રોલિંગ સાથે ઉપર ચોંટેલું રહેશે */
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%); /* બરાબર વચ્ચે લાવવા */
+        width: 90%;
+        max-width: 1000px;
+        background: rgba(255, 255, 255, 0.85); /* પારદર્શક સફેદ */
+        backdrop-filter: blur(12px); /* બ્લર ઈફેક્ટ (Glass) */
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 50px; /* ગોળ ખૂણા (Capsule Look) */
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* સોફ્ટ શેડો */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 30px;
+        z-index: 1000; /* બધાની ઉપર દેખાય */
+    }
+
+    /* 2. લોગો સ્ટાઈલ */
+    .logo {
+        font-family: 'Yatra One', cursive;
+        color: var(--maroon, #7b1c1c); /* મરૂન કલર */
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    /* 3. લિંક્સની ગોઠવણ */
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 5px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin: 0;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        font-family: 'Playfair Display', serif;
+    }
+
+    /* 4. હોવર ઈફેક્ટ (માઉસ લઈ જતા) */
+    .nav-links a:hover, .nav-links a.active {
+        background-color: var(--maroon, #7b1c1c);
+        color: var(--gold, #ffd700);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(123, 28, 28, 0.3);
+    }
+
+    /* 5. સંપર્ક બટન સ્પેશિયલ */
+    .contact-btn {
+        background-color: var(--gold, #ffd700);
+        color: var(--maroon, #7b1c1c) !important;
+        border: 2px solid var(--maroon, #7b1c1c);
+    }
+    
+    .contact-btn:hover {
+        background-color: var(--maroon, #7b1c1c) !important;
+        color: white !important;
+    }
+
+    /* 6. મોબાઈલ માટે (Responsive) */
+    @media (max-width: 768px) {
+        .glass-header {
+            flex-direction: column;
+            border-radius: 20px;
+            padding: 15px;
+            top: 10px;
+            width: 95%;
+        }
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+            gap: 5px;
+        }
+        .nav-links a {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+        }
+        .logo { margin-bottom: 5px; }
+    }
+    
+    /* મેનુ નીચે દબાઈ ન જાય તે માટે બોડીમાં જગ્યા */
+    body { padding-top: 100px; }
+</style>
     </style>
 </head>
 <body>
@@ -131,17 +235,21 @@
         <p class="greeting">|| જય શ્રી કૃષ્ણ ||</p>
     </div>
 
+    <header class="glass-header">
+    <div class="logo">Sisodiya Bhargavsinh</div>
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
             <li><a href="about.html">About</a></li>
-<li><a href="resume.html">Resume</a></li>
             <li><a href="pushtimarg.html">પુષ્ટિમાર્ગ</a></li>
             <li><a href="projects.html">પ્રોજેક્ટ્સ</a></li>
-            <li><a href="blog.html">Articles</a></li>
-            <li><a href="contact.html">સંપર્ક</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="article.html">Articles</a></li>
+            <li><a href="contact.html" class="contact-btn">સંપર્ક</a></li>
         </ul>
     </nav>
+</header>
+
 
     <section>
         <marquee style="color: var(--maroon); background: var(--ivory); padding: 5px; border-bottom: 2px solid var(--gold);"> <b>
