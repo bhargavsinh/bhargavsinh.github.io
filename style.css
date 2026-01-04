@@ -126,6 +126,46 @@ input, textarea {
     background: transparent; /* દેખાય નહીં તેવો પડદો */
     z-index: 9999;
 }
+/* GOOGLE TRANSLATE STYLING */
+
+/* ઉપરની વાદળી પટ્ટી છુપાવવા માટે */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+} 
+body {
+    top: 0px !important; 
+}
+
+/* ડ્રોપડાઉન બોક્સની ડિઝાઈન */
+.goog-te-gadget-simple {
+    background-color: #fff8ec !important;
+    border: 1px solid var(--gold) !important;
+    padding: 5px 10px !important;
+    border-radius: 20px !important;
+    font-family: 'Playfair Display', serif !important;
+    transition: all 0.3s;
+}
+
+.goog-te-gadget-simple:hover {
+    background-color: var(--maroon) !important;
+    color: #fff !important;
+    border-color: var(--maroon) !important;
+}
+
+/* ટેક્સ્ટ કલર */
+.goog-te-gadget-simple span {
+    color: #7b1c1c !important; /* Maroon Text */
+    font-weight: bold;
+}
+
+.goog-te-gadget-simple:hover span {
+    color: #fff !important; /* White Text on Hover */
+}
+
+/* ગૂગલનો લોગો છુપાવો (ઓપ્શનલ) */
+.goog-te-gadget-icon {
+    display: none !important;
+}
 
 /* FOOTER */
 footer { background: #7b1c1c; color: gold; text-align: center; padding: 5px; margin-top: 50px; font-family: 'Yatra One'; }
