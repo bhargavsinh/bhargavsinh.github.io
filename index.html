@@ -125,6 +125,8 @@
             <li><a href="resume.html" class="nav-link">Resume</a></li>
             <li><a href="blog.html" class="nav-link">Articles</a></li>
             <li><a href="contact.html" class="nav-link">સંપર્ક</a></li>
+<div id="google_translate_element" style="margin-left: 20px;"></div>
+
         </ul>
     </nav>
 
@@ -225,6 +227,16 @@
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) { if(e.keyCode == 123) return false; }
     </script>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'gu', // તમારી સાઇટની મુખ્ય ભાષા (ગુજરાતી)
+            includedLanguages: 'gu,en,hi,sa', // કઈ ભાષાઓ બતાવવી? (Gujarati, English, Hindi, Sanskrit)
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
