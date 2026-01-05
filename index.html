@@ -101,7 +101,45 @@
         .nav-link:hover {
             color: #7b1c1c; /* Maroon on hover */
         }
+
+    /* --- NEW ULTRA MODERN GLASS THEME --- */
+
+    /* 1. રોયલ બેકગ્રાઉન્ડ (પાછળનું દ્રશ્ય) */
+    body {
+        /* આછો ગોલ્ડ અને ક્રીમ કલરનો ગ્રેડિયન્ટ */
+        background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
+        background-attachment: fixed; /* સ્ક્રોલ કરતી વખતે બેકગ્રાઉન્ડ સ્થિર રહેશે */
+    }
+
+    /* 2. બધા બોક્સને કાચ જેવા બનાવવા */
+    .h-card, .shloka-box, .tech-stack, section marquee {
+        background: rgba(255, 255, 255, 0.4) !important; /* પારદર્શક સફેદ */
+        backdrop-filter: blur(10px) !important; /* બ્લર ઈફેક્ટ (કાચ) */
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.8) !important; /* સફેદ બોર્ડર */
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05) !important; /* સોફ્ટ શેડો */
+        border-radius: 15px !important;
+    }
+
+    /* 3. હોવર ઈફેક્ટ (માઉસ લઈ જતા ચમકશે) */
+    .h-card:hover {
+        background: rgba(255, 255, 255, 0.7) !important;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(218, 165, 32, 0.2) !important; /* ગોલ્ડ શેડો */
+        border: 1px solid var(--gold) !important;
+    }
+
+    /* 4. ફોટો પણ થોડો મોડર્ન */
+    img[src="bhargavsinh.webp"] {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        transition: transform 0.5s;
+    }
+    img[src="bhargavsinh.webp"]:hover {
+        transform: scale(1.05) rotate(2deg); /* ફોટા પર માઉસ જતા થોડો ઝૂમ થશે */
+    }
+
     </style>
+
 </head>
 <body>
     
