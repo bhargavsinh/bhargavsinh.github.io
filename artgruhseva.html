@@ -18,7 +18,67 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
+
     <style>
+    /* PRINT SETTINGS - આ કોડ પ્રિન્ટિંગ માટે છે */
+    @media print {
+        /* પ્રિન્ટમાં જે ન બતાવવું હોય તેને છુપાવો */
+        nav, footer, .share-container, .back-btn, .print-btn, .article-meta a {
+            display: none !important;
+        }
+
+        /* બોડીનું બેકગ્રાઉન્ડ સફેદ કરો જેથી શાહી બચે */
+        body {
+            background: white !important;
+            color: black !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* આર્ટિકલ કન્ટેનરને સાદું બનાવો */
+        .article-container {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 20px !important;
+            border: none !important;
+            box-shadow: none !important;
+            background: white !important;
+            backdrop-filter: none !important;
+        }
+
+        /* ફોન્ટ સાઈઝ પ્રિન્ટ માટે યોગ્ય કરવી */
+        p, h3, h4 {
+            color: black !important;
+        }
+        
+        /* સંસ્કૃત બોક્સ પ્રિન્ટમાં સરખું દેખાય */
+        .sanskrit-box {
+            border: 1px solid #000 !important;
+            background: #fff !important;
+        }
+    }
+
+    /* પ્રિન્ટ બટનનું ડિઝાઈન */
+    .print-btn {
+        background-color: var(--maroon, #7b1c1c);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-family: 'Yatra One', cursive;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        display: inline-block;
+        transition: 0.3s;
+    }
+    .print-btn:hover {
+        background-color: #5a1212;
+    }
+
+
+
         /* ROYAL GLASS THEME */
         body {
             background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
