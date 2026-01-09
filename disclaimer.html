@@ -7,38 +7,71 @@
     <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #fdfdfd;
+        }
         .legal-container {
-            border: 5px solid #7b1c1c; /* જાડી મરૂન બોર્ડર */
-            padding: 20px;
-            background-color: #fff0f0; /* આછો લાલ રંગ (Warning જેવો) */
+            border: 5px solid #8b0000; /* Pushtimarg Maroon Color */
+            padding: 30px;
+            background-color: #fffafa;
+            max-width: 900px;
+            margin: 30px auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         .legal-text {
             text-align: justify;
-            font-family: 'Playfair Display', serif;
             margin-bottom: 25px;
             padding: 15px;
-            border-left: 6px solid red;
+            border-left: 6px solid #8b0000;
             background: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .alert-box {
-            background: red;
+            background: #8b0000;
             color: white;
             padding: 15px;
             text-align: center;
             font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            margin-bottom: 30px;
             border-radius: 5px;
             font-family: 'Yatra One', cursive;
+            border: 3px solid #ffcc00; /* Gold Border */
+            text-shadow: 1px 1px 2px black;
         }
         h3 {
-            color: #b30000; /* ઘાટો લાલ રંગ */
+            color: #8b0000;
             text-decoration: underline;
+            margin-top: 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        p {
+            line-height: 1.6;
+            color: #333;
+            font-size: 1.05rem;
         }
         .highlight {
             font-weight: bold;
-            color: red;
+            color: #d32f2f; /* Dark Red */
+            background-color: #ffebee;
+            padding: 2px 5px;
+        }
+        
+        /* Mobile responsive fix */
+        @media (max-width: 600px) {
+            .legal-container {
+                padding: 15px;
+                margin: 10px;
+                border-width: 3px;
+            }
+            .alert-box {
+                font-size: 1.1rem;
+            }
+            h3 {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -47,8 +80,8 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-         <li><a href="resume.html">Resume</a></li>
-   <li><a href="pushtimarg.html">પુષ્ટિમાર્ગ</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="pushtimarg.html">પુષ્ટિમાર્ગ</a></li>
             <li><a href="projects.html">પ્રોજેક્ટ્સ</a></li>
             <li><a href="blog.html">Articles</a></li>
             <li><a href="contact.html">સંપર્ક</a></li>
@@ -58,51 +91,60 @@
     <section>
         <div class="legal-container">
             <div class="alert-box">
-                ⚠️ કાયદાકીય ચેતવણી (LEGAL WARNING) ⚠️
+                ⚠️ કાયદાકીય ચેતવણી (STRICT LEGAL WARNING) ⚠️
             </div>
 
             <div class="legal-text">
-                <h3>૧. કોપીરાઈટ ઉલ્લંઘન અને ફોજદારી ગુનો</h3>
+                <h3>૧. કોપીરાઈટ ઉલ્લંઘન અને સંપત્તિ ચોરી</h3>
                 <p>
-                    આ વેબસાઇટ (https://bhargavsinh.github.io) ની તમામ સામગ્રી (ફોટો, કોડ, ગ્રાફિક્સ, Articles, લખાણ) એ <b>"સિસોદિયા ભાર્ગવસિંહ"</b> ની અનન્ય સંપત્તિ છે. 
+                    આ વેબસાઇટ (https://bhargavsinh.github.io) ની તમામ સામગ્રી (ફોટો, કોડ, ગ્રાફિક્સ, Articles, લખાણ) એ લેખક <b>"સિસોદિયા ભાર્ગવસિંહ"</b> ની અનન્ય 'બૌદ્ધિક સંપદા' (Intellectual Property) છે. 
                     <br><br>
-                    અમારી લેખિત પરવાનગી વગર આ વેબસાઇટમાંથી એક પણ શબ્દ કે ફોટો કોપી કરવો, સ્ક્રીનશોટ લેવો કે અન્યત્ર વાપરવો એ <b>'ભારતીય કોપીરાઈટ એક્ટ, ૧૯૫૭'</b> અને <b>'ઇન્ફોર્મેશન ટેકનોલોજી એક્ટ, ૨૦૦૦'</b> ની કલમ ૪૩ અને ૬૬ હેઠળ <span class="highlight">ગંભીર ફોજદારી ગુનો (Criminal Offense)</span> ગણવામાં આવશે. આવા કિસ્સામાં, ઉલ્લંઘન કરનાર વ્યક્તિ વિરુદ્ધ <b>કોઈપણ પૂર્વ ચેતવણી આપ્યા વગર સીધી પોલીસ ફરિયાદ (FIR)</b> અને <b>સાયબર ક્રાઈમ</b> હેઠળ કાર્યવાહી કરવામાં આવશે.
+                    અમારી લેખિત પરવાનગી વગર આ વેબસાઇટમાંથી એક પણ શબ્દ કે ફોટો કોપી કરવો, સ્ક્રીનશોટ લેવો કે અન્યત્ર વાપરવો એ <b>'ભારતીય ન્યાય સંહિતા-૨૦૨૩' (BNS)</b> ની કલમ ૩૦૩ (ચોરી) અને <b>'ઇન્ફોર્મેશન ટેકનોલોજી એક્ટ, ૨૦૦૦'</b> હેઠળ <span class="highlight">ગંભીર કાયદાકીય ગુનો</span> ગણવામાં આવશે. બૌદ્ધિક સંપત્તિની ચોરીના કિસ્સામાં, ઉલ્લંઘન કરનાર વ્યક્તિ વિરુદ્ધ સીધી કાયદેસરની કાર્યવાહી કરવાનો અમને સંપૂર્ણ અધિકાર છે.
                 </p>
             </div>
 
             <div class="legal-text">
-                <h3>૨. સાયબર સુરક્ષા અને હેકિંગ</h3>
+                <h3>૨. પુષ્ટિમાર્ગીય સાહિત્ય અને સિદ્ધાંત</h3>
                 <p>
-                    આ વેબસાઇટના સોર્સ કોડ (Source Code) સાથે ચેડાં કરવા, ડેટા ચોરી કરવાનો પ્રયાસ કરવો અથવા વેબસાઇટને નુકસાન પહોંચાડવું એ દંડનીય અપરાધ છે. વેબસાઇટ પર આવનાર દરેક વિઝિટરનું <b>IP Address મોનિટર કરવામાં આવે છે</b>. જો કોઈ શંકાસ્પદ પ્રવૃત્તિ જણાશે, તો તે IP Address ને કાયમી બ્લોક કરી, ઈન્ટરનેટ સર્વિસ પ્રોવાઈડર (ISP) અને સાયબર સેલને રિપોર્ટ કરવામાં આવશે.
+                    આ વેબસાઇટ પર પ્રકાશિત થયેલ લેખો (જેમ કે 'ગૃહ સેવા' આર્ટિકલ) માત્ર <b>શૈક્ષણિક અને સિદ્ધાંતિક સંશોધન હેતુસર</b> લખાયેલ છે. પૂજ્ય ગોસ્વામી આચાર્યશ્રીઓ કે ભગવદીય વૈષ્ણવોની લાગણી દુભાવવાનો લેખકનો કોઈ જ આશય નથી.
+                    <br><br>
+                    તેમ છતાં, જો કોઈ વ્યક્તિ આ લેખના લખાણને સંદર્ભ (Context) વગર તોડી-મરોડીને રજૂ કરશે અથવા તેનું ખોટું અર્થઘટન કરી સમાજમાં ગેરસમજ ફેલાવશે, તો તે વ્યક્તિ વિરુદ્ધ <b>BNS કલમ ૨૯૯</b> (ધાર્મિક લાગણી દુભાવવી) અને <b>BNS કલમ ૩૫૬</b> (બદનક્ષી/Defamation) હેઠળ કડક પગલાં લેવામાં આવશે. સત્ય અને સિદ્ધાંતની મર્યાદામાં રહીને રજૂઆત કરવી એ અમારો બંધારણીય અધિકાર છે.
                 </p>
             </div>
 
             <div class="legal-text">
-                <h3>૩. સામાજિક પ્રતિષ્ઠા અને માનહાનિ (Defamation)</h3>
+                <h3>૩. સાયબર સુરક્ષા અને અનધિકૃત પ્રવેશ</h3>
                 <p>
-                    આ વેબસાઇટ પર દર્શાવેલ મારા વંશજ, ઇતિહાસ અથવા પુષ્ટિમાર્ગીય વિચારો નો દુરુપયોગ કરી મારી અથવા મારા પરિવારની સામાજિક પ્રતિષ્ઠાને હાનિ પહોંચાડવાનો પ્રયાસ કરનાર વિરુદ્ધ <b>ભારતીય દંડ સંહિતા (IPC) ની કલમ ૪૯૯ અને ૫૦૦</b> હેઠળ <b>"માનહાનિનો દાવો" (Defamation Suit)</b> માંડવામાં આવશે અને ભારે રકમનું વળતર (Damages) વસૂલવામાં આવશે.
+                    આ વેબસાઇટના સોર્સ કોડ (Source Code) સાથે કોઈપણ પ્રકારના ચેડાં કરવા (Tampering), ડેટા ચોરી કરવાનો પ્રયાસ કરવો અથવા વેબસાઇટને નુકસાન પહોંચાડવું એ <b>'ઇન્ફોર્મેશન ટેકનોલોજી એક્ટ, ૨૦૦૦' ની કલમ ૬૬</b> હેઠળ દંડનીય અપરાધ છે. આવી કોઈપણ અનધિકૃત (Unauthorized) પ્રવૃત્તિ સાયબર ક્રાઈમ હેઠળ ગણવામાં આવશે અને તે મુજબ કાયદાકીય કાર્યવાહી કરવામાં આવશે.
                 </p>
             </div>
 
             <div class="legal-text">
-                <h3>૪. ન્યાયક્ષેત્ર અને શૂન્ય સહિષ્ણુતા (Zero Tolerance)</h3>
+                <h3>૪. સામાજિક પ્રતિષ્ઠા અને માનહાનિ (Defamation)</h3>
                 <p>
-                    અમે બૌદ્ધિક સંપત્તિની ચોરી પ્રત્યે <b>"શૂન્ય સહિષ્ણુતા" (Zero Tolerance Policy)</b> ધરાવીએ છીએ. કોઈપણ કાનૂની વિવાદ માટેનું ન્યાયક્ષેત્ર માત્ર ને માત્ર <b>લુણાવાડા, જી. મહીસાગર (ગુજરાત)</b> ની અદાલતોને આધીન રહેશે.
+                    આ વેબસાઇટ પર દર્શાવેલ મારા વંશજ, ઇતિહાસ અથવા પુષ્ટિમાર્ગીય વિચારોનો દુરુપયોગ કરી મારી અથવા મારા પરિવારની સામાજિક પ્રતિષ્ઠાને હાનિ પહોંચાડવાનો પ્રયાસ કરનાર વિરુદ્ધ <b>ભારતીય ન્યાય સંહિતા (BNS-2023) ની કલમ ૩૫૬</b> હેઠળ <b>"ફોજદારી માનહાનિનો દાવો" (Criminal Defamation Suit)</b> માંડવામાં આવશે અને ભારે રકમનું વળતર (Damages) વસૂલવામાં આવશે.
                 </p>
             </div>
 
-            <p style="text-align: center; font-weight: bold; margin-top: 20px;">
-                © 2025 Sisodiya Bhargavsinh. All Rights Reserved under International Copyright Laws.
+            <div class="legal-text">
+                <h3>૫. ન્યાયક્ષેત્ર (Jurisdiction)</h3>
+                <p>
+                    આ વેબસાઇટ અને તેના વિષયવસ્તુ (Content) ને લગતા કોઈપણ કાનૂની વિવાદ માટેનું ન્યાયક્ષેત્ર માત્ર ને માત્ર <b>લુણાવાડા, જી. મહીસાગર (ગુજરાત)</b> ની અદાલતોને આધીન રહેશે.
+                </p>
+            </div>
+
+            <p style="text-align: center; font-weight: bold; margin-top: 30px; color: #8b0000; border-top: 1px solid #ccc; padding-top: 20px;">
+                © 2026 Sisodiya Bhargavsinh. All Rights Reserved.
             </p>
         </div>
     </section>
 
-       <footer>
+    <footer>
         <p style="font-size: 0.8rem; margin-bottom: 5px;">
             <a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a>
         </p>
         
-        <marquee style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2025</marquee>
+        <marquee style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
 
         <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed gold; text-align: center;">
             <p style="font-size: 0.8rem; color: #ffebcd; margin-bottom: 5px; font-family: sans-serif;">Visitor Count:</p>
@@ -110,12 +152,12 @@
             <a href="https://www.hitwebcounter.com/" target="_blank">
                 <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" title="Visitor Counter" Alt="Bhargavsinh Website Visitors" border="0" />
             </a>
-            </div>
+        </div>
     </footer>
 
     
     <script>
-        // કી-બોર્ડ અને માઉસ લોક (હાઈ સિક્યુરિટી)
+        // High Security: Disable Right Click & Inspect
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) {
             if(e.keyCode == 123) { return false; } // F12
