@@ -88,25 +88,29 @@
             font-size: 0.85rem;
         }
 
+        /* NEW BUTTON STYLE */
+        .view-btn {
+            display: inline-block;
+            background-color: var(--maroon);
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 8px;
+            border: 1px solid #a52a2a;
+            font-family: sans-serif;
+            transition: background 0.3s;
+        }
+        .view-btn:hover {
+            background-color: #5c0000;
+        }
+
         .personal-details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
             font-size: 0.95rem;
-        }
-
-        .print-btn {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            padding: 10px;
-            background: var(--maroon);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-            border: 2px solid var(--gold);
         }
     </style>
 </head>
@@ -188,9 +192,13 @@
                 Authored and submitted a formal representation regarding <i>"Nationwide Ban on Cow Slaughter & Animal Welfare Laws"</i>. 
                 The petition is officially recorded by the <b>President's Secretariat</b>.
                 <br>
-                <span style="font-size: 0.85rem; color: #555; background-color: #f9f9f9; padding: 2px 5px; border-radius: 3px; border: 1px solid #ddd;">
+                <span style="font-size: 0.85rem; color: #555; background-color: #f9f9f9; padding: 2px 5px; border-radius: 3px; border: 1px solid #ddd; margin-right: 10px;">
                     Ref: Reg. No. RB/MSG/26010914813 | Tracking No. 14813
                 </span>
+                <br>
+                <a href="https://www.presidentofindia.gov.in/sites/default/files/webform/request_for_president_s_message/7040/request_to_ban_cow_slaughter_in_bharat.pdf" target="_blank" class="view-btn">
+                    📄 View Official Letter
+                </a>
             </li>
         </ul>
         <div class="section-title">Languages Known</div>
