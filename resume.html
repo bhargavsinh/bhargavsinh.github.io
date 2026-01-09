@@ -108,14 +108,6 @@
             cursor: pointer;
             border: 2px solid var(--gold);
         }
-        .print-btn:hover { background: #5a1212; }
-
-        /* PRINT SETTINGS */
-        @media print {
-            body { background: #fff; }
-            nav, footer, .print-btn, section marquee { display: none !important; }
-            .resume-container { box-shadow: none; border: none; margin: 0; padding: 0; width: 100%; }
-        }
     </style>
 </head>
 <body>
@@ -131,9 +123,6 @@
             <li><a href="contact.html">સંપર્ક</a></li>
         </ul>
     </nav>
-
-    <button onclick="window.print()" class="print-btn">🖨️ Download / Print PDF</button>
-
     <div class="resume-container">
         <div class="resume-header">
             <h1 class="resume-name">Sisodiya Bhargavsinh Mahendrasinh</h1>
