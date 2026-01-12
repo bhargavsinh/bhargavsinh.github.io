@@ -453,7 +453,7 @@
     // WhatsApp Share Function
     function shareOnWhatsApp() {
         // આ લખાણ તમે બદલી શકો છો
-        var message = "જુઓ આ સુંદર લેખ: પુષ્ટિમાર્ગ માં 'ગૃહ સેવા' જ છે. લેખક: ભાર્ગવસિંહ સિસોદિયા\n";
+        var message = "જુઓ આ સુંદર લેખ: પુષ્ટિમાર્ગ માં ગૃહ સેવા. લેખક: ભાર્ગવસિંહ સિસોદિયા\n";
         var url = window.location.href;
         
         // Mobile અને Desktop બંને માટે લિંક જનરેટ કરશે
@@ -466,7 +466,7 @@
         if (navigator.share) {
             try {
                 await navigator.share({
-                    title: "પુષ્ટિમાર્ગ માં 'ગૃહ સેવા' જ છે",
+                    title: "પુષ્ટિમાર્ગ માં ગૃહ સેવા,
                     text: "આ આર્ટિકલ જરૂર વાંચવા જેવો છે.",
                     url: window.location.href
                 });
