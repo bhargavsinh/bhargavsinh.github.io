@@ -1,27 +1,29 @@
-/* --- GOOGLE FONTS IMPORT (TECH LOOK) --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Yatra+One&display=swap');
+/* --- NEW FONTS IMPORT (Best for Gujarati) --- */
+/* Noto Sans: લખાણ માટે | Rasa: હેડિંગ માટે | Great Vibes: સહી માટે */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@300;400;600;700&family=Rasa:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
-/* --- ROOT VARIABLES (ROYAL NAVY & GOLD THEME) --- */
+/* --- ROOT VARIABLES (Teal & Copper Theme) --- */
 :root { 
-    --primary: #0A192F;       /* Royal Navy Blue (Main) */
-    --primary-light: #112240; /* Lighter Navy (For cards/hover) */
-    --gold: #D4AF37;          /* Metallic Gold (Accent) */
-    --gold-dim: #b5952f;      /* Darker Gold */
-    --bg-color: #F4F4F4;      /* Clean Light Grey (Tech vibe) */
+    --primary: #004d40;       /* Deep Teal (ગાઢ મોરપીંછ રંગ - મુખ્ય) */
+    --primary-light: #00695c; /* Lighter Teal (હોવર માટે) */
+    --accent: #bf360c;        /* Burnt Copper (તામ્રવર્ણ - હાઇલાઇટ) */
+    --bg-color: #fdfbf7;      /* Warm White (કાગળ જેવો રંગ) */
     --white: #ffffff;
-    --text-dark: #1F2937;     /* Dark Grey Text */
-    --shadow: 0 10px 30px rgba(10, 25, 47, 0.15);
+    --text-main: #263238;     /* Dark Blue-Grey Text (કાળા કરતા વધુ સારું) */
+    --text-light: #546e7a;    /* Light Grey Text */
+    --shadow: 0 8px 24px rgba(0, 77, 64, 0.08); /* Soft Teal Shadow */
+    --border-radius: 10px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 /* --- BODY & TYPOGRAPHY --- */
 body { 
-    font-family: 'Poppins', sans-serif; /* Modern Tech Font */
+    font-family: 'Noto Sans Gujarati', sans-serif; /* શ્રેષ્ઠ ગુજરાતી ફોન્ટ */
     background: var(--bg-color); 
-    color: var(--text-dark); 
-    line-height: 1.6;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    color: var(--text-main); 
+    line-height: 1.7; /* વાંચવામાં સરળતા રહે તે માટે */
+    overflow-x: hidden;
 }
 
 /* --- COPY PROTECTION (SECURITY) --- */
@@ -33,7 +35,7 @@ body, * {
     -webkit-touch-callout: none !important;
 }
 
-/* Allow selection ONLY in inputs */
+/* માત્ર Input બોક્સમાં લખવાની છૂટ */
 input, textarea, .selectable {
     -webkit-user-select: text !important;
     -moz-user-select: text !important;
@@ -44,177 +46,203 @@ input, textarea, .selectable {
 /* --- NAVIGATION BAR --- */
 nav { 
     position: sticky; top: 0; width: 100%; 
-    background: var(--primary); /* Solid Navy */
+    background: rgba(255, 255, 255, 0.95); /* થોડું પારદર્શક વ્હાઈટ */
+    backdrop-filter: blur(10px); /* પાછળ બ્લર ઈફેક્ટ */
     padding: 15px 10%; 
     z-index: 1000; 
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border-bottom: 2px solid var(--gold); /* Royal Gold Line */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border-bottom: 3px solid var(--primary); /* Teal Line */
 }
-nav ul { display: flex; justify-content: center; list-style: none; padding: 0; flex-wrap: wrap; gap: 20px; }
+
+nav ul { display: flex; justify-content: center; list-style: none; padding: 0; flex-wrap: wrap; gap: 25px; }
+
 nav ul li a { 
-    color: #cbd5e1; /* Light Grey Text */
+    color: var(--primary); /* Teal Text */
     text-decoration: none; 
-    font-weight: 500; 
-    font-size: 0.95rem; 
-    letter-spacing: 0.5px;
+    font-weight: 600; 
+    font-size: 1rem; 
     transition: 0.3s;
+    position: relative;
 }
-nav ul li a:hover { color: var(--gold); transform: translateY(-2px); }
+
+/* લિંક નીચે લાઇન એનિમેશન */
+nav ul li a::after {
+    content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
+    background-color: var(--accent); transition: 0.3s;
+}
+nav ul li a:hover::after { width: 100%; }
+nav ul li a:hover { color: var(--accent); }
 
 /* --- SECTIONS & HEADINGS --- */
-section { min-height: 80vh; padding: 60px 10%; }
+section { min-height: 80vh; padding: 70px 10%; }
 
+/* હેડિંગ માટે 'Rasa' ફોન્ટ - જે શાહી લાગે છે */
 h1, h2, h3 { 
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Rasa', serif; 
     text-align: center; 
     color: var(--primary); 
     font-weight: 700;
 }
 
-h1 { font-size: 2.5rem; margin-bottom: 10px; }
+h1 { font-size: 3rem; margin-bottom: 15px; letter-spacing: 1px; }
 h2 { 
-    font-size: 2rem; 
-    margin-bottom: 30px; 
-    position: relative;
-    display: inline-block;
+    font-size: 2.5rem; 
+    margin-bottom: 40px; 
+    color: var(--text-main);
 }
-/* Title Underline Effect */
+
+/* હેડિંગની નીચે નાની ડિઝાઈન */
 h2::after {
-    content: ''; display: block; width: 60%; height: 3px; 
-    background: var(--gold); margin: 8px auto 0; 
-    border-radius: 2px;
+    content: '◈'; /* Diamond Symbol */
+    display: block; font-size: 1.5rem; 
+    color: var(--accent); margin-top: 10px;
 }
 
-p { text-align: center; font-size: 1.05rem; color: #4b5563; margin-bottom: 15px; max-width: 800px; margin-left: auto; margin-right: auto; }
+p { 
+    text-align: center; 
+    font-size: 1.15rem; 
+    color: var(--text-light); 
+    margin-bottom: 20px; 
+    max-width: 850px; 
+    margin-left: auto; margin-right: auto; 
+}
 
-/* Divider */
-.divider { text-align: center; font-size: 1.5rem; color: var(--gold); margin: 30px 0; opacity: 0.7; }
+/* Divider Line */
+.divider { 
+    height: 1px; background: linear-gradient(to right, transparent, var(--accent), transparent);
+    margin: 40px 0; opacity: 0.6;
+}
 
-/* --- BUTTONS & CARDS --- */
+/* --- BUTTONS & SOCIAL --- */
 .social-btn { 
     display: inline-block; 
     text-decoration: none; 
     background: var(--white); 
     color: var(--primary); 
-    border: 1px solid var(--primary); 
-    padding: 12px 25px; 
+    border: 2px solid var(--primary); 
+    padding: 12px 30px; 
     text-align: center; 
-    font-weight: 600; 
-    border-radius: 8px; 
+    font-weight: 700; 
+    border-radius: 50px; /* ગોળ બટન */
     margin: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
 }
+
 .social-btn:hover { 
     background: var(--primary); 
-    color: var(--gold); 
-    border-color: var(--gold);
+    color: var(--white); 
     transform: translateY(-3px);
-    box-shadow: 0 10px 15px rgba(10, 25, 47, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 77, 64, 0.2);
 }
 
-/* Blog Cards */
+/* Blog/Project Cards */
 .blog-card { 
     background: var(--white); 
-    border: none; 
-    border-left: 5px solid var(--gold); /* Gold Accent Line */
-    border-radius: 12px; 
-    padding: 25px; 
-    margin-bottom: 25px; 
+    border: 1px solid #eee;
+    border-top: 5px solid var(--accent); /* Copper Top Line */
+    border-radius: var(--border-radius); 
+    padding: 30px; 
+    margin-bottom: 30px; 
     box-shadow: var(--shadow);
-    transition: 0.3s;
+    transition: 0.4s;
 }
-.blog-card:hover { transform: translateY(-5px); }
+.blog-card:hover { transform: translateY(-7px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
 
-.blog-meta { display: flex; justify-content: space-between; color: #888; font-size: 0.85rem; border-bottom: 1px solid #eee; margin-bottom: 15px; padding-bottom: 10px; }
+.blog-meta { display: flex; justify-content: space-between; color: var(--accent); font-weight: 600; font-size: 0.9rem; border-bottom: 1px solid #f0f0f0; margin-bottom: 15px; padding-bottom: 10px; }
 
 /* --- TABLES & FORMS --- */
-table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 8px; box-shadow: var(--shadow); margin-top: 20px; background: var(--white); }
-th, td { padding: 15px; border-bottom: 1px solid #eee; text-align: left; }
-th { background: var(--primary); color: var(--gold); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
-td { color: #555; }
-tr:hover { background-color: #f8f9fa; }
+table { 
+    width: 100%; border-collapse: separate; border-spacing: 0; 
+    border-radius: 12px; overflow: hidden; 
+    box-shadow: var(--shadow); margin-top: 25px; 
+    background: var(--white); border: 1px solid #e0e0e0;
+}
+th, td { padding: 18px; text-align: left; border-bottom: 1px solid #eee; }
+th { 
+    background: var(--primary); color: var(--white); 
+    font-family: 'Rasa', serif; font-size: 1.1rem; letter-spacing: 0.5px; 
+}
+tr:last-child td { border-bottom: none; }
+tr:hover { background-color: #e0f2f1; } /* Light Teal Hover */
 
 input, textarea { 
-    width: 100%; padding: 12px; margin: 10px 0; 
-    border: 1px solid #ddd; border-radius: 6px; 
-    background: #fafafa; transition: 0.3s;
+    width: 100%; padding: 15px; margin: 12px 0; 
+    border: 2px solid #e0e0e0; border-radius: 8px; 
+    background: #ffffff; transition: 0.3s; font-family: 'Noto Sans Gujarati', sans-serif;
 }
-input:focus, textarea:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1); background: #fff; }
+input:focus, textarea:focus { 
+    border-color: var(--primary); outline: none; 
+    background: #e0f2f1; 
+}
 
 button { 
-    width: 100%; padding: 14px; 
-    background: var(--primary); color: var(--white); 
-    border: none; font-weight: 600; border-radius: 6px; 
-    cursor: pointer; letter-spacing: 0.5px; transition: 0.3s;
+    width: 100%; padding: 15px; 
+    background: linear-gradient(135deg, var(--primary), var(--primary-light)); 
+    color: var(--white); 
+    border: none; font-weight: 700; border-radius: 8px; 
+    cursor: pointer; letter-spacing: 1px; transition: 0.3s;
+    font-family: 'Noto Sans Gujarati', sans-serif;
 }
-button:hover { background: var(--gold); color: var(--primary); }
+button:hover { background: linear-gradient(135deg, var(--accent), #d84315); box-shadow: 0 5px 15px rgba(191, 54, 12, 0.3); }
 
-/* --- ROYAL PRELOADER (Navy Blue Gradient) --- */
+/* --- ROYAL PRELOADER (Updated Colors) --- */
 #preloader {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle, #112240, #020c1b); /* Deep Tech Navy */
+    background: var(--primary); /* Solid Teal Background */
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    z-index: 10000;
-    transition: opacity 1s ease-out;
+    z-index: 10000; transition: opacity 1s ease-out;
 }
 
-/* Signature & Greeting */
+/* Signature */
 .signature {
-    font-family: 'Great Vibes', cursive; /* Keeping this for Royal feel */
-    font-size: 4.5rem;
-    color: var(--gold);
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-    animation: signAnim 2s ease-in-out;
+    font-family: 'Great Vibes', cursive; 
+    font-size: 5rem;
+    color: #ffd54f; /* Light Gold for contrast on Teal */
+    text-shadow: 0 0 10px rgba(0,0,0,0.2);
+    animation: signAnim 2.5s ease-in-out;
 }
 
 .greeting {
-    font-family: 'Yatra One', cursive; /* Keeping for "Jay Shri Krishna" */
-    font-size: 1.2rem;
-    color: #a8b2d1; /* Soft Blue-Grey */
-    margin-top: 15px;
-    opacity: 0;
-    letter-spacing: 1px;
-    animation: fadeInText 1s ease-in-out 1s forwards;
+    font-family: 'Rasa', serif; 
+    font-size: 1.4rem;
+    color: #b2dfdb; /* Very Light Teal */
+    margin-top: 10px; opacity: 0; letter-spacing: 1px;
+    animation: fadeInText 1s ease-in-out 1.5s forwards;
 }
 
-@keyframes signAnim { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes signAnim { 
+    0% { opacity: 0; stroke-dashoffset: 500; transform: scale(0.9); } 
+    100% { opacity: 1; stroke-dashoffset: 0; transform: scale(1); } 
+}
 @keyframes fadeInText { to { opacity: 1; transform: translateY(-5px); } }
 
-/* --- GOOGLE TRANSLATE STYLING (Themed) --- */
+/* --- GOOGLE TRANSLATE STYLING --- */
 .goog-te-banner-frame.skiptranslate { display: none !important; } 
 body { top: 0px !important; }
 
 .goog-te-gadget-simple {
     background-color: var(--white) !important;
-    border: 1px solid var(--primary) !important;
-    padding: 6px 12px !important;
-    border-radius: 50px !important;
-    font-family: 'Poppins', sans-serif !important;
-    transition: all 0.3s;
+    border: 1px solid #ddd !important;
+    padding: 8px 15px !important;
+    border-radius: 20px !important;
+    font-family: 'Noto Sans Gujarati', sans-serif !important;
+    font-weight: 600;
 }
-
-.goog-te-gadget-simple:hover {
-    background-color: var(--primary) !important;
-    border-color: var(--gold) !important;
-}
-
-.goog-te-gadget-simple span { color: var(--primary) !important; font-weight: 500; }
-.goog-te-gadget-simple:hover span { color: var(--gold) !important; }
+.goog-te-gadget-simple span { color: var(--primary) !important; }
 .goog-te-gadget-icon { display: none !important; }
 
 /* --- FOOTER --- */
 footer { 
     background: var(--primary); 
-    color: #8892b0; 
+    color: #e0f2f1; 
     text-align: center; 
-    padding: 20px; 
-    margin-top: 50px; 
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
-    border-top: 3px solid var(--gold);
+    padding: 30px; 
+    margin-top: 60px; 
+    font-family: 'Rasa', serif;
+    font-size: 1.1rem;
+    border-top: 4px solid var(--accent);
 }
-footer strong { color: var(--gold); }
 
 /* --- IFRAME SHIELD --- */
 .iframe-shield { position: relative; }
