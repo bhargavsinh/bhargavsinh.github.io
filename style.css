@@ -239,3 +239,18 @@ body { top: 0px !important; }
 /* Google Form Styling */
 .google-form-wrapper { width: 100%; overflow: hidden; border-radius: 10px; }
 
+/* MOBILE RESPONSIVE FIX */
+@media (max-width: 600px) {
+    .resume-name {
+        font-size: 1.5rem; /* મોબાઈલમાં ફોન્ટ નાના થશે */
+        word-break: break-word; /* શબ્દ તૂટશે નહીં પણ બીજી લાઈનમાં આવશે */
+    }
+    .resume-paper {
+        padding: 20px; /* સાઈડમાં જગ્યા થોડી ઘટાડી જેથી લખાણને જગ્યા મળે */
+        margin: 15px;
+    }
+    .profile-img {
+        width: 120px; height: 120px; /* ફોટો પણ થોડો નાનો */
+    }
+}
+
