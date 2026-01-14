@@ -3,169 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <title>Legal Warning & Disclaimer | Sisodiya Bhargavsinh</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow"> <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/webp" href="bhargavsinh.webp">
+
     <style>
+        /* --- SUPREME COURT STYLE THEME --- */
         body {
-            font-family: 'Playfair Display', serif;
-            background-color: #fdfdfd;
+            background-color: #fdfbf7; /* Off-white legal paper color */
+            background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png"); /* Paper Texture */
+            font-family: 'Noto Serif Gujarati', serif;
+            color: #1a1a1a;
         }
-        .legal-container {
-            border: 5px solid #8b0000; /* Pushtimarg Maroon Color */
-            padding: 30px;
-            background-color: #fffafa;
-            max-width: 900px;
-            margin: 30px auto;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .legal-text {
-            text-align: justify;
-            margin-bottom: 25px;
-            padding: 15px;
-            border-left: 6px solid #8b0000;
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .alert-box {
+
+        /* Warning Strip at Top */
+        .warning-strip {
             background: #8b0000;
-            color: white;
-            padding: 15px;
+            color: #fff;
+            padding: 8px;
             text-align: center;
             font-weight: bold;
-            font-size: 1.4rem;
-            margin-bottom: 30px;
-            border-radius: 5px;
-            font-family: 'Yatra One', cursive;
-            border: 3px solid #ffcc00; /* Gold Border */
-            text-shadow: 1px 1px 2px black;
+            font-family: 'Noto Sans Gujarati', sans-serif;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #ffd700;
         }
-        h3 {
+
+        /* Main Legal Document Container */
+        .legal-doc {
+            max-width: 850px;
+            margin: 40px auto;
+            background: #fff;
+            border: 1px solid #d4af37; /* Gold Border */
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 60px;
+            position: relative;
+        }
+
+        /* Border inside the paper (Double Border Effect) */
+        .legal-doc::before {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 2px solid #8b0000; /* Maroon Inner Border */
+            pointer-events: none;
+        }
+
+        /* Watermark (પાછળ ઝાંખું લખાણ) */
+        .watermark {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 6rem;
+            color: rgba(139, 0, 0, 0.03); /* Very light maroon */
+            font-weight: bold;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Title */
+        h1.doc-title {
+            text-align: center;
+            font-family: 'Cinzel', serif; /* Royal English Font */
             color: #8b0000;
+            border-bottom: 2px solid #1a1a1a;
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+
+        /* Sections */
+        .clause {
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h3.clause-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
             text-decoration: underline;
-            margin-top: 0;
-            font-size: 1.2rem;
-            font-weight: bold;
         }
+
         p {
-            line-height: 1.6;
-            color: #333;
-            font-size: 1.05rem;
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 15px;
         }
-        .highlight {
+
+        /* Highlighted Text (Red) */
+        .strict-text {
+            color: #d32f2f;
             font-weight: bold;
-            color: #d32f2f; /* Dark Red */
-            background-color: #ffebee;
-            padding: 2px 5px;
+            background: rgba(255, 0, 0, 0.05);
+            padding: 0 3px;
         }
-        
-        /* Mobile responsive fix */
+
+        /* Official Seal (સિક્કો) */
+        .official-seal {
+            float: right;
+            border: 3px double #8b0000;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #8b0000;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-top: 20px;
+            transform: rotate(-10deg);
+            opacity: 0.8;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.1"><text x="10" y="50" font-size="20">SEALED</text></svg>');
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: block; width: fit-content; margin: 30px auto;
+            text-decoration: none; color: #8b0000; border: 1px solid #8b0000;
+            padding: 10px 20px; font-weight: bold; transition: 0.3s;
+        }
+        .back-btn:hover { background: #8b0000; color: #fff; }
+
         @media (max-width: 600px) {
-            .legal-container {
-                padding: 15px;
-                margin: 10px;
-                border-width: 3px;
-            }
-            .alert-box {
-                font-size: 1.1rem;
-            }
-            h3 {
-                font-size: 1.1rem;
-            }
+            .legal-doc { padding: 30px 20px; margin: 20px 10px; }
+            h1.doc-title { font-size: 1.4rem; }
+            .official-seal { width: 90px; height: 90px; font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="pushtimarg.html">પુષ્ટિમાર્ગ</a></li>
-            <li><a href="projects.html">પ્રોજેક્ટ્સ</a></li>
-            <li><a href="blog.html">Articles</a></li>
-            <li><a href="contact.html">સંપર્ક</a></li>
-        </ul>
-    </nav>
 
-    <section>
-        <div class="legal-container">
-            <div class="alert-box">
-                ⚠️ કાયદાકીય ચેતવણી (STRICT LEGAL WARNING) ⚠️
-            </div>
+    <div class="warning-strip">
+        <marquee scrollamount="8">⚠️ NOTICE: ANY COPYING OF CONTENT FROM THIS SITE IS A PUNISHABLE OFFENCE UNDER INDIAN LAW. ⚠️</marquee>
+    </div>
 
-            <div class="legal-text">
-                <h3>૧. કોપીરાઈટ ઉલ્લંઘન અને સંપત્તિ ચોરી</h3>
-                <p>
-                    આ વેબસાઇટ (https://bhargavsinh.github.io) ની તમામ સામગ્રી (ફોટો, કોડ, ગ્રાફિક્સ, Articles, લખાણ) એ લેખક <b>"સિસોદિયા ભાર્ગવસિંહ"</b> ની અનન્ય 'બૌદ્ધિક સંપદા' (Intellectual Property) છે. 
-                    <br><br>
-                    અમારી લેખિત પરવાનગી વગર આ વેબસાઇટમાંથી એક પણ શબ્દ કે ફોટો કોપી કરવો, સ્ક્રીનશોટ લેવો કે અન્યત્ર વાપરવો એ <b>'ભારતીય ન્યાય સંહિતા-૨૦૨૩' (BNS)</b> ની કલમ ૩૦૩ (ચોરી) અને <b>'ઇન્ફોર્મેશન ટેકનોલોજી એક્ટ, ૨૦૦૦'</b> હેઠળ <span class="highlight">ગંભીર કાયદાકીય ગુનો</span> ગણવામાં આવશે. બૌદ્ધિક સંપત્તિની ચોરીના કિસ્સામાં, ઉલ્લંઘન કરનાર વ્યક્તિ વિરુદ્ધ સીધી કાયદેસરની કાર્યવાહી કરવાનો અમને સંપૂર્ણ અધિકાર છે.
-                </p>
-            </div>
+    <nav style="display:none;"></nav> <div class="legal-doc">
+        
+        <div class="watermark">LEGAL COPY</div>
 
-            <div class="legal-text">
-                <h3>૨. પુષ્ટિમાર્ગીય સાહિત્ય અને સિદ્ધાંત</h3>
-                <p>
-                    આ વેબસાઇટ પર પ્રકાશિત થયેલ લેખો (જેમ કે 'ગૃહ સેવા' આર્ટિકલ) માત્ર <b>શૈક્ષણિક અને સિદ્ધાંતિક સંશોધન હેતુસર</b> લખાયેલ છે. પૂજ્ય ગોસ્વામી આચાર્યશ્રીઓ કે ભગવદીય વૈષ્ણવોની લાગણી દુભાવવાનો લેખકનો કોઈ જ આશય નથી.
-                    <br><br>
-                    તેમ છતાં, જો કોઈ વ્યક્તિ આ લેખના લખાણને સંદર્ભ (Context) વગર તોડી-મરોડીને રજૂ કરશે અથવા તેનું ખોટું અર્થઘટન કરી સમાજમાં ગેરસમજ ફેલાવશે, તો તે વ્યક્તિ વિરુદ્ધ <b>BNS કલમ ૨૯૯</b> (ધાર્મિક લાગણી દુભાવવી) અને <b>BNS કલમ ૩૫૬</b> (બદનક્ષી/Defamation) હેઠળ કડક પગલાં લેવામાં આવશે. સત્ય અને સિદ્ધાંતની મર્યાદામાં રહીને રજૂઆત કરવી એ અમારો બંધારણીય અધિકાર છે.
-                </p>
-            </div>
+        <h1 class="doc-title">LEGAL WARNING & DISCLAIMER</h1>
 
-            <div class="legal-text">
-                <h3>૩. સાયબર સુરક્ષા અને અનધિકૃત પ્રવેશ</h3>
-                <p>
-                    આ વેબસાઇટના સોર્સ કોડ (Source Code) સાથે કોઈપણ પ્રકારના ચેડાં કરવા (Tampering), ડેટા ચોરી કરવાનો પ્રયાસ કરવો અથવા વેબસાઇટને નુકસાન પહોંચાડવું એ <b>'ઇન્ફોર્મેશન ટેકનોલોજી એક્ટ, ૨૦૦૦' ની કલમ ૬૬</b> હેઠળ દંડનીય અપરાધ છે. આવી કોઈપણ અનધિકૃત (Unauthorized) પ્રવૃત્તિ સાયબર ક્રાઈમ હેઠળ ગણવામાં આવશે અને તે મુજબ કાયદાકીય કાર્યવાહી કરવામાં આવશે.
-                </p>
-            </div>
-
-            <div class="legal-text">
-                <h3>૪. સામાજિક પ્રતિષ્ઠા અને માનહાનિ (Defamation)</h3>
-                <p>
-                    આ વેબસાઇટ પર દર્શાવેલ મારા વંશજ, ઇતિહાસ અથવા પુષ્ટિમાર્ગીય વિચારોનો દુરુપયોગ કરી મારી અથવા મારા પરિવારની સામાજિક પ્રતિષ્ઠાને હાનિ પહોંચાડવાનો પ્રયાસ કરનાર વિરુદ્ધ <b>ભારતીય ન્યાય સંહિતા (BNS-2023) ની કલમ ૩૫૬</b> હેઠળ <b>"ફોજદારી માનહાનિનો દાવો" (Criminal Defamation Suit)</b> માંડવામાં આવશે અને ભારે રકમનું વળતર (Damages) વસૂલવામાં આવશે.
-                </p>
-            </div>
-
-            <div class="legal-text">
-                <h3>૫. ન્યાયક્ષેત્ર (Jurisdiction)</h3>
-                <p>
-                    આ વેબસાઇટ અને તેના વિષયવસ્તુ (Content) ને લગતા કોઈપણ કાનૂની વિવાદ માટેનું ન્યાયક્ષેત્ર માત્ર ને માત્ર <b>લુણાવાડા, જી. મહીસાગર (ગુજરાત)</b> ની અદાલતોને આધીન રહેશે.
-                </p>
-            </div>
-
-            <p style="text-align: center; font-weight: bold; margin-top: 30px; color: #8b0000; border-top: 1px solid #ccc; padding-top: 20px;">
-                © 2026 Sisodiya Bhargavsinh. All Rights Reserved.
+        <div class="clause">
+            <h3 class="clause-title">૧. કોપીરાઈટ ઉલ્લંઘન અને સંપત્તિ ચોરી</h3>
+            <p>
+                આ વેબસાઇટ (https://bhargavsinh.github.io) ની તમામ સામગ્રી (ફોટો, કોડ, ગ્રાફિક્સ, Articles, લખાણ) એ લેખક <b>"સિસોદિયા ભાર્ગવસિંહ"</b> ની અનન્ય 'બૌદ્ધિક સંપદા' (Intellectual Property) છે.
+            </p>
+            <p>
+                અમારી લેખિત પરવાનગી વગર આ વેબસાઇટમાંથી એક પણ શબ્દ કે ફોટો કોપી કરવો, સ્ક્રીનશોટ લેવો કે અન્યત્ર વાપરવો એ <b>'ભારતીય ન્યાય સંહિતા-૨૦૨૩' (BNS)</b> ની કલમ ૩૦૩ (ચોરી) અને <b>'ઇન્ફોર્મેશન ટેકનોલોજી એક્ટ, ૨૦૦૦'</b> હેઠળ <span class="strict-text">ગંભીર કાયદાકીય ગુનો</span> ગણવામાં આવશે. બૌદ્ધિક સંપત્તિની ચોરીના કિસ્સામાં, ઉલ્લંઘન કરનાર વ્યક્તિ વિરુદ્ધ સીધી કાયદેસરની કાર્યવાહી કરવાનો અમને સંપૂર્ણ અધિકાર છે.
             </p>
         </div>
-    </section>
 
-    <footer>
-        <p style="font-size: 0.8rem; margin-bottom: 5px;">
-            <a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a>
-        </p>
-        
-        <marquee style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
-
-        <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed gold; text-align: center;">
-            <p style="font-size: 0.8rem; color: #ffebcd; margin-bottom: 5px; font-family: sans-serif;">Visitor Count:</p>
-            
-            <a href="https://www.hitwebcounter.com/" target="_blank">
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" title="Visitor Counter" Alt="Bhargavsinh Website Visitors" border="0" />
-            </a>
+        <div class="clause">
+            <h3 class="clause-title">૨. પુષ્ટિમાર્ગીય સાહિત્ય અને સિદ્ધાંત</h3>
+            <p>
+                આ વેબસાઇટ પર પ્રકાશિત થયેલ લેખો (જેમ કે 'ગૃહ સેવા' આર્ટિકલ) માત્ર <b>શૈક્ષણિક અને સિદ્ધાંતિક સંશોધન હેતુસર</b> લખાયેલ છે. પૂજ્ય ગોસ્વામી આચાર્યશ્રીઓ કે ભગવદીય વૈષ્ણવોની લાગણી દુભાવવાનો લેખકનો કોઈ જ આશય નથી.
+            </p>
+            <p>
+                તેમ છતાં, જો કોઈ વ્યક્તિ આ લેખના લખાણને સંદર્ભ (Context) વગર તોડી-મરોડીને રજૂ કરશે અથવા તેનું ખોટું અર્થઘટન કરી સમાજમાં ગેરસમજ ફેલાવશે, તો તે વ્યક્તિ વિરુદ્ધ <b>BNS કલમ ૨૯૯</b> (ધાર્મિક લાગણી દુભાવવી) અને <b>BNS કલમ ૩૫૬</b> (બદનક્ષી/Defamation) હેઠળ કડક પગલાં લેવામાં આવશે. સત્ય અને સિદ્ધાંતની મર્યાદામાં રહીને રજૂઆત કરવી એ અમારો બંધારણીય અધિકાર છે.
+            </p>
         </div>
-    </footer>
 
-    
+        <div class="clause">
+            <h3 class="clause-title">૩. સાયબર સુરક્ષા અને અનધિકૃત પ્રવેશ</h3>
+            <p>
+                આ વેબસાઇટના સોર્સ કોડ (Source Code) સાથે કોઈપણ પ્રકારના ચેડાં કરવા (Tampering), ડેટા ચોરી કરવાનો પ્રયાસ કરવો અથવા વેબસાઇટને નુકસાન પહોંચાડવું એ <b>'ઇન્ફોર્મેશન ટેકનોલોજી એક્ટ, ૨૦૦૦' ની કલમ ૬૬</b> હેઠળ દંડનીય અપરાધ છે. આવી કોઈપણ અનધિકૃત (Unauthorized) પ્રવૃત્તિ સાયબર ક્રાઈમ હેઠળ ગણવામાં આવશે અને તે મુજબ કાયદાકીય કાર્યવાહી કરવામાં આવશે.
+            </p>
+        </div>
+
+        <div class="clause">
+            <h3 class="clause-title">૪. સામાજિક પ્રતિષ્ઠા અને માનહાનિ (Defamation)</h3>
+            <p>
+                આ વેબસાઇટ પર દર્શાવેલ મારા વંશજ, ઇતિહાસ અથવા પુષ્ટિમાર્ગીય વિચારોનો દુરુપયોગ કરી મારી અથવા મારા પરિવારની સામાજિક પ્રતિષ્ઠાને હાનિ પહોંચાડવાનો પ્રયાસ કરનાર વિરુદ્ધ <b>ભારતીય ન્યાય સંહિતા (BNS-2023) ની કલમ ૩૫૬</b> હેઠળ <b>"ફોજદારી માનહાનિનો દાવો" (Criminal Defamation Suit)</b> માંડવામાં આવશે અને ભારે રકમનું વળતર (Damages) વસૂલવામાં આવશે.
+            </p>
+        </div>
+
+        <div class="clause">
+            <h3 class="clause-title">૫. ન્યાયક્ષેત્ર (Jurisdiction)</h3>
+            <p>
+                આ વેબસાઇટ અને તેના વિષયવસ્તુ (Content) ને લગતા કોઈપણ કાનૂની વિવાદ માટેનું ન્યાયક્ષેત્ર માત્ર ને માત્ર <b>લુણાવાડા, જી. મહીસાગર (ગુજરાત)</b> ની અદાલતોને આધીન રહેશે.
+            </p>
+        </div>
+
+        <hr style="border: 1px solid #000; margin: 40px 0;">
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div>
+                <p style="margin: 0;"><b>Issued By:</b> Sisodiya Bhargavsinh</p>
+                <p style="margin: 0;"><b>Date:</b> 2026</p>
+            </div>
+            
+            <div class="official-seal">
+                OFFICIAL<br>LEGAL<br>COPY
+            </div>
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back-btn">← I Accept & Return Home</a>
+
     <script>
-        // High Security: Disable Right Click & Inspect
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) {
-            if(e.keyCode == 123) { return false; } // F12
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } // Ctrl+U
-            if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } // Ctrl+C
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } // Ctrl+Shift+I
-            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) { return false; } // Ctrl+S (Save)
-            if(e.ctrlKey && e.keyCode == 'P'.charCodeAt(0)) { return false; } // Ctrl+P (Print)
+            if(e.keyCode == 123) { return false; }
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.keyCode == 'P'.charCodeAt(0)) { return false; } 
+            // Disable PrintScreen (PrntScrn) - Though hard to block 100%, this works in some browsers
+            if (e.key == "PrintScreen") {
+                navigator.clipboard.writeText("");
+                alert("Screenshots are strictly prohibited on this legal page.");
+                return false;
+            }
         }
     </script>
 </body>
