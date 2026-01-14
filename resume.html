@@ -7,60 +7,69 @@
 
     <meta name="description" content="Resume of Sisodiya Bhargavsinh Mahendrasinh - BCA Student. Skills in Computer Accounting, Logo Design, and Chat Support.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index,follow"> <link rel="stylesheet" href="style.css">
+    <meta name="robots" content="index,follow"> 
+    
+    <link rel="stylesheet" href="style.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
     <style>
-        /* RESUME SPECIFIC STYLES */
+        /* --- RESUME SPECIFIC STYLES (UPDATED FOR TEAL THEME) --- */
         .resume-container {
             max-width: 800px;
             margin: 40px auto;
-            background: #fff;
+            background: var(--white);
             padding: 40px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--maroon);
-            font-family: 'Playfair Display', serif;
-            color: #333;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--primary); /* Updated Color */
+            font-family: 'Noto Sans Gujarati', sans-serif;
+            color: var(--text-main);
+            border-radius: 12px;
         }
 
         .resume-header {
             text-align: center;
-            border-bottom: 2px solid var(--gold);
+            border-bottom: 2px solid var(--accent); /* Updated Color */
             padding-bottom: 20px;
             margin-bottom: 20px;
         }
 
         .resume-name {
-            font-family: 'Yatra One', cursive;
-            font-size: 2rem;
-            color: var(--maroon);
+            font-family: 'Rasa', serif;
+            font-size: 2.2rem;
+            color: var(--primary); /* Updated Color */
             margin: 0;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
         }
 
         .resume-sub {
             font-size: 1rem;
-            color: #555;
+            color: var(--text-light);
             margin-top: 5px;
             font-weight: bold;
         }
 
         .contact-info {
             margin-top: 10px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
         }
 
         .section-title {
-            background: #f4f4f4;
-            color: var(--maroon);
-            padding: 5px 10px;
+            background: #e0f2f1; /* Light Teal Background */
+            color: var(--primary); /* Updated Color */
+            padding: 8px 15px;
             font-weight: bold;
             text-transform: uppercase;
-            border-left: 4px solid var(--gold);
+            border-left: 5px solid var(--accent); /* Updated Color */
             margin-top: 25px;
             margin-bottom: 15px;
-            font-family: sans-serif;
+            font-family: 'Rasa', serif;
+            font-size: 1.1rem;
+            border-radius: 0 5px 5px 0;
         }
 
         .edu-table {
@@ -69,48 +78,53 @@
             margin-bottom: 10px;
         }
         .edu-table td {
-            padding: 8px;
+            padding: 10px;
             border-bottom: 1px solid #eee;
             vertical-align: top;
         }
-        .edu-year { font-weight: bold; color: var(--maroon); width: 120px; }
+        .edu-year { font-weight: bold; color: var(--primary); width: 120px; }
 
+        /* --- SKILLS FIX --- */
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
         .skill-badge {
-            background: var(--maroon);
-            color: #fff;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            background: var(--primary); /* Teal Background */
+            color: var(--white);        /* White Text */
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* NEW BUTTON STYLE */
+        /* BUTTON STYLE */
         .view-btn {
             display: inline-block;
-            background-color: var(--maroon);
+            background-color: var(--primary);
             color: white;
-            padding: 5px 12px;
-            font-size: 0.8rem;
+            padding: 8px 15px;
+            font-size: 0.85rem;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             margin-top: 8px;
-            border: 1px solid #a52a2a;
-            font-family: sans-serif;
             transition: background 0.3s;
         }
         .view-btn:hover {
-            background-color: #5c0000;
+            background-color: var(--accent);
         }
 
         .personal-details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 15px;
             font-size: 0.95rem;
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #eee;
         }
     </style>
 </head>
@@ -121,7 +135,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="projects.html">પ્રોજેક્ટ્સ</a></li>
-            <li><a href="resume.html" style="color: gold;">Resume</a></li> 
+            <li><a href="resume.html" style="color: var(--accent);">Resume</a></li> 
             <li><a href="pushtimarg.html">પુષ્ટિમાર્ગ</a></li>
             <li><a href="blog.html">Articles</a></li>
             <li><a href="contact.html">સંપર્ક</a></li>
@@ -130,9 +144,9 @@
 
     <div class="resume-container">
         <div class="resume-header">
-<div style="text-align: center; margin-top: 30px;">
-            <img src="bhargavsinh.webp" alt="Bhargavsinh" width="200" style="border-radius: 50%; border: 4px solid var(--gold);">
-        </div>
+            <div style="text-align: center; margin-top: 10px;">
+                <img src="bhargavsinh.webp" alt="Bhargavsinh" width="180" style="border-radius: 50%; border: 4px solid var(--accent); padding: 3px;">
+            </div>
             <h1 class="resume-name">Sisodiya Bhargavsinh Mahendrasinh</h1>
             <p class="resume-sub">BCA Student | Computer Applications</p>
             <div class="contact-info">
@@ -142,7 +156,7 @@
         </div>
 
         <div class="section-title">Resume Summary</div>
-        <p style="text-align: justify;">
+        <p style="text-align: justify; padding: 0 10px;">
             I am a BCA student from Mahisagar BCA College, Lunawada, with skills in Gujarati typing, logo design, and chat support. I am eager to leverage my computerized accounting knowledge and social awareness to build a dynamic career.
         </p>
 
@@ -184,20 +198,20 @@
         </div>
 
         <div class="section-title">Certifications & Achievements</div>
-        <ul>
+        <ul style="padding-left: 20px;">
             <li>Received <b>Scholarship</b> in School for academic excellence.</li>
             <li>Certified in <b>Computerized Accounting</b> (by RSETI & Bank of Baroda).</li>
         </ul>
 
-        <div class="section-title">Social Leadership & Civic Engagement</div>
-        <ul>
-            <li style="margin-bottom: 10px; line-height: 1.6;">
+        <div class="section-title">Social Leadership</div>
+        <ul style="padding-left: 20px;">
+            <li style="margin-bottom: 15px; line-height: 1.6;">
                 <b>Representation to the President of India:</b><br>
                 Authored and submitted a formal representation regarding <i>"Nationwide Ban on Cow Slaughter & Animal Welfare Laws"</i>. 
                 The petition is officially recorded by the <b>President's Secretariat</b>.
                 <br>
-                <span style="font-size: 0.85rem; color: #555; background-color: #f9f9f9; padding: 2px 5px; border-radius: 3px; border: 1px solid #ddd; margin-right: 10px;">
-                    Ref: Reg. No. RB/MSG/26010914813 | Tracking No. 14813
+                <span style="font-size: 0.85rem; color: #555; background-color: #e0f2f1; padding: 2px 8px; border-radius: 4px; border: 1px solid #b2dfdb; margin-top: 5px; display: inline-block;">
+                    Ref: Reg. No. RB/MSG/26010914813
                 </span>
                 <br>
                 <a href="https://www.presidentofindia.gov.in/sites/default/files/webform/request_for_president_s_message/7040/request_to_ban_cow_slaughter_in_bharat.pdf" target="_blank" class="view-btn">
@@ -205,12 +219,13 @@
                 </a>
             </li>
         </ul>
+
         <div class="section-title">Languages Known</div>
-        <p>
-            🗣️ <b>Gujarati:</b> Read, Write & Speak (Native)<br>
-            🗣️ <b>Hindi:</b> Read, Write & Speak<br>
-            🗣️ <b>English:</b> Read, Write & Speak<br>
-            🗣️ <b>Sanskrit:</b> Read & Write
+        <p style="padding: 0 10px;">
+            🗣️ <b>Gujarati:</b> Native<br>
+            🗣️ <b>Hindi:</b> Fluent<br>
+            🗣️ <b>English:</b> Intermediate<br>
+            🗣️ <b>Sanskrit:</b> Basic Read & Write
         </p>
 
         <div class="section-title">Personal Details</div>
@@ -224,13 +239,13 @@
     </div>
 
     <footer>
-        <p style="font-size: 0.8rem; margin-bottom: 5px;">
-            <a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a>
+        <p style="font-size: 0.85rem; margin-bottom: 5px;">
+            <a href="disclaimer.html" style="color: var(--white); text-decoration: none; opacity: 0.8;">Legal Disclaimer</a>
         </p>
-        <marquee style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
+        <marquee style="color: var(--accent); font-weight: bold;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
         
-        <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed gold; text-align: center;">
-            <p style="font-size: 0.8rem; color: #ffebcd; margin-bottom: 5px;">Visitor Count:</p>
+        <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.3); text-align: center;">
+            <p style="font-size: 0.8rem; color: #e0f2f1; margin-bottom: 5px;">Visitor Count:</p>
             <a href="https://www.hitwebcounter.com/" target="_blank">
                 <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" title="Visitor Counter" border="0" />
             </a>
