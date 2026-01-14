@@ -1,217 +1,171 @@
-/* --- FONTS IMPORT (Best for Gujarati & English) --- */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@300;400;600;700&family=Rasa:wght@400;500;600;700&family=Great+Vibes&display=swap');
-
-/* --- ROOT VARIABLES (ORIGINAL MAROON & GOLD THEME) --- */
-:root {
-    /* આપના મૂળ રંગો (Original Colors) */
-    --maroon: #7b1c1c;       /* Deep Royal Maroon */
-    --gold: #daa520;         /* Classic Gold */
-    --ivory: #fffff0;        /* Ivory White Background */
-    --text-dark: #4a1c0a;    /* Dark Brown Text */
-    
-    /* આધુનિક ઉપયોગ માટે મેપિંગ (Compatibility) */
-    --primary: var(--maroon);
-    --accent: var(--gold);
-    --bg-color: var(--ivory);
-    --white: #ffffff;
-    --shadow: 0 8px 20px rgba(123, 28, 28, 0.15); /* Maroon Shadow */
-    --border-radius: 8px;
+/* લખાણ સિલેક્ટ થતું અટકાવવા (Copy Protection) */
+body {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Standard */
 }
 
+/* જેને સિલેક્ટ કરવા દેવું હોય (જેમ કે કોડ) તેને છૂટ આપવા */
+.selectable {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* style.css - Main Design File */
+:root { --maroon: #7b1c1c; --gold: #daa520; --ivory: #fffff0; --text-dark: #4a1c0a; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Playfair Display',serif; background: #fff8ec; color: #4a1c0a; -webkit-user-select: none; user-select: none; }
 
-/* --- BODY & TYPOGRAPHY --- */
-body { 
-    font-family: 'Noto Sans Gujarati', sans-serif; /* વાંચવામાં સરળ ગુજરાતી ફોન્ટ */
-    background: var(--bg-color); 
-    color: var(--text-dark); 
-    line-height: 1.7; 
-    overflow-x: hidden;
+body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
-/* --- COPY PROTECTION --- */
-body, * {
-    -webkit-user-select: none !important;
-    -moz-user-select: none !important;
-    -ms-user-select: none !important;
-    user-select: none !important;
+
+
+/* NAV */
+nav { position: sticky; top: 0; width: 100%; background: linear-gradient(to right, #7b1c1c, #b8860b); padding: 12px; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+nav ul { display: flex; justify-content: center; list-style: none; padding: 0; flex-wrap: wrap; }
+nav ul li a { color: #fff3c4; text-decoration: none; margin: 0 10px; font-weight: bold; font-size: 0.9rem; }
+nav ul li a:hover { color: gold; text-decoration: underline; }
+
+/* SECTIONS */
+section { min-height: 80vh; padding: 40px 10% 60px; }
+h1, h2, h3 { font-family: 'Yatra One'; text-align: center; color: #7b1c1c; }
+h1 { font-size: 2.2rem; margin: 20px 0; }
+h2 { font-size: 2.2rem; margin-bottom: 20px; border-bottom: 2px dashed var(--gold); display: inline-block; padding-bottom: 10px; }
+p { text-align: center; font-size: 1.1rem; line-height: 1.8; margin-bottom: 10px; }
+.divider { text-align: center; font-size: 2rem; color: gold; margin: 20px 0; }
+
+/* SPECIFIC ELEMENTS */
+.social-btn { display: block; text-decoration: none; background: var(--ivory); color: var(--maroon); border: 2px solid var(--gold); padding: 15px; text-align: center; font-weight: bold; border-radius: 10px; margin-bottom: 15px; }
+.blog-card { background: #fff; border: 1px solid var(--gold); border-left: 6px solid var(--maroon); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+.blog-meta { display: flex; justify-content: space-between; color: #777; font-size: 0.85rem; border-bottom: 1px solid #eee; margin-bottom: 10px; }
+table { width: 100%; border-collapse: collapse; border: 2px solid var(--gold); margin-top: 20px; }
+th, td { padding: 12px; border: 1px solid var(--gold); text-align: left; }
+th { background: var(--maroon); color: var(--gold); }
+input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid goldenrod; }
+button { width: 100%; padding: 12px; background: var(--maroon); color: white; border: none; font-weight: bold; cursor: pointer; }
+/* --- ROYAL PRELOADER (LOADING SCREEN) --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #7b1c1c, #2e0808); /* Royal Gradient Background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000; /* બધાથી ઉપર */
+    transition: opacity 1s ease-out; /* ધીમેથી ગાયબ થવા માટે */
 }
 
-input, textarea, .selectable {
+/* Signature Style Font */
+.signature {
+    font-family: 'Great Vibes', cursive; /* સહી જેવો ફોન્ટ */
+    font-size: 4rem;
+    color: #daa520; /* Gold */
+    text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+    animation: signAnim 2s ease-in-out;
+}
+
+/* Jay Shri Krishna Text */
+.greeting {
+    font-family: 'Yatra One', cursive;
+    font-size: 1.5rem;
+    color: #fffff0; /* Ivory */
+    margin-top: 15px;
+    opacity: 0;
+    animation: fadeInText 1s ease-in-out 1s forwards; /* 1 સેકન્ડ પછી દેખાશે */
+}
+
+/* Animations */
+@keyframes signAnim {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInText {
+    to { opacity: 1; transform: translateY(-5px); }
+}
+
+/* આ કોડ વેબસાઇટના દરેક એલિમેન્ટ પર લાગુ પડશે */
+* {
+    -webkit-user-select: none !important; /* Chrome/Safari/Opera */
+    -moz-user-select: none !important;    /* Firefox */
+    -ms-user-select: none !important;     /* Internet Explorer/Edge */
+    user-select: none !important;         /* Standard */
+    -webkit-touch-callout: none !important; /* iOS Safari - Long press બંધ કરવા */
+}
+
+/* માત્ર Input અને Textarea માં જ લખવાની છૂટ આપવી (જો Contact form હોય તો) */
+input, textarea {
     -webkit-user-select: text !important;
     -moz-user-select: text !important;
     -ms-user-select: text !important;
     user-select: text !important;
 }
 
-/* --- NAVIGATION BAR --- */
-nav { 
-    position: sticky; top: 0; width: 100%; 
-    background: linear-gradient(to right, #7b1c1c, #902020); /* મરૂન ગ્રેડિએન્ટ */
-    padding: 12px 10%; 
-    z-index: 1000; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    border-bottom: 2px solid var(--gold);
+/* Google Drive Iframe પર પારદર્શક પડદો (Shield) */
+.iframe-shield {
+    position: relative;
+}
+.iframe-shield::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent; /* દેખાય નહીં તેવો પડદો */
+    z-index: 9999;
+}
+/* GOOGLE TRANSLATE STYLING */
+
+/* ઉપરની વાદળી પટ્ટી છુપાવવા માટે */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+} 
+body {
+    top: 0px !important; 
 }
 
-nav ul { display: flex; justify-content: center; list-style: none; padding: 0; flex-wrap: wrap; gap: 20px; }
-
-nav ul li a { 
-    color: #fff8e1; /* Light Goldish White */
-    text-decoration: none; 
-    font-weight: 600; 
-    font-size: 0.95rem; 
-    letter-spacing: 0.5px;
-    transition: 0.3s;
-}
-
-nav ul li a:hover { color: var(--gold); text-shadow: 0 0 5px rgba(218, 165, 32, 0.5); }
-
-/* --- SECTIONS & HEADINGS --- */
-section { min-height: 80vh; padding: 60px 10%; }
-
-/* હેડિંગ માટે 'Rasa' - જે જૂના Yatra One કરતાં વધુ પ્રોફેશનલ છે */
-h1, h2, h3 { 
-    font-family: 'Rasa', serif; 
-    text-align: center; 
-    color: var(--maroon); 
-    font-weight: 700;
-}
-
-h1 { font-size: 2.8rem; margin-bottom: 15px; }
-h2 { 
-    font-size: 2.2rem; 
-    margin-bottom: 30px; 
-    border-bottom: 2px dashed var(--gold);
-    display: inline-block;
-    padding-bottom: 10px;
-}
-
-p { 
-    text-align: center; 
-    font-size: 1.15rem; 
-    margin-bottom: 20px; 
-    max-width: 850px; 
-    margin-left: auto; margin-right: auto; 
-}
-
-/* Divider */
-.divider { text-align: center; font-size: 2rem; color: var(--gold); margin: 30px 0; }
-
-/* --- BUTTONS & SOCIAL --- */
-.social-btn { 
-    display: inline-block; 
-    text-decoration: none; 
-    background: var(--ivory); 
-    color: var(--maroon); 
-    border: 2px solid var(--gold); 
-    padding: 12px 25px; 
-    text-align: center; 
-    font-weight: 700; 
-    border-radius: 8px; 
-    margin: 10px;
-    transition: all 0.3s ease;
-}
-
-.social-btn:hover { 
-    background: var(--maroon); 
-    color: var(--gold); 
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(123, 28, 28, 0.3);
-}
-
-/* Blog Cards */
-.blog-card { 
-    background: var(--white); 
-    border: 1px solid var(--gold);
-    border-left: 6px solid var(--maroon); 
-    border-radius: 8px; 
-    padding: 25px; 
-    margin-bottom: 25px; 
-    box-shadow: var(--shadow);
-    transition: 0.3s;
-}
-.blog-card:hover { transform: translateY(-5px); }
-
-.blog-meta { display: flex; justify-content: space-between; color: #888; font-size: 0.9rem; border-bottom: 1px solid #eee; margin-bottom: 15px; padding-bottom: 5px; }
-
-/* --- TABLES & FORMS --- */
-table { 
-    width: 100%; border-collapse: collapse; 
-    border: 2px solid var(--gold); margin-top: 20px; 
-    background: var(--white);
-}
-th, td { padding: 15px; border: 1px solid var(--gold); text-align: left; }
-th { 
-    background: var(--maroon); color: var(--gold); 
-    font-family: 'Rasa', serif; font-size: 1.1rem; 
-}
-tr:hover { background-color: #fff8e1; }
-
-input, textarea { 
-    width: 100%; padding: 12px; margin: 10px 0; 
-    border: 2px solid var(--gold); border-radius: 5px; 
-    background: #fff; transition: 0.3s;
-    font-family: 'Noto Sans Gujarati', sans-serif;
-}
-input:focus, textarea:focus { outline: none; box-shadow: 0 0 10px rgba(218, 165, 32, 0.3); }
-
-button { 
-    width: 100%; padding: 14px; 
-    background: var(--maroon); color: white; 
-    border: none; font-weight: 700; border-radius: 5px; 
-    cursor: pointer; font-family: 'Noto Sans Gujarati', sans-serif;
-}
-button:hover { background: #5c1515; }
-
-/* --- ROYAL PRELOADER (Original Style) --- */
-#preloader {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle, #7b1c1c, #2e0808);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    z-index: 10000; transition: opacity 1s ease-out;
-}
-
-.signature {
-    font-family: 'Great Vibes', cursive; 
-    font-size: 4.5rem;
-    color: var(--gold);
-    text-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
-    animation: signAnim 2s ease-in-out;
-}
-
-.greeting {
-    font-family: 'Rasa', serif;
-    font-size: 1.5rem; color: var(--ivory);
-    margin-top: 15px; opacity: 0;
-    animation: fadeInText 1s ease-in-out 1s forwards;
-}
-
-@keyframes signAnim { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
-@keyframes fadeInText { to { opacity: 1; transform: translateY(-5px); } }
-
-/* --- FOOTER --- */
-footer { 
-    background: var(--maroon); 
-    color: var(--gold); 
-    text-align: center; 
-    padding: 20px; 
-    margin-top: 50px; 
-    font-family: 'Rasa', serif;
-    font-size: 1.1rem;
-    border-top: 4px double var(--gold);
-}
-
-/* --- GOOGLE TRANSLATE & EXTRAS --- */
-.goog-te-banner-frame.skiptranslate { display: none !important; } 
-body { top: 0px !important; }
+/* ડ્રોપડાઉન બોક્સની ડિઝાઈન */
 .goog-te-gadget-simple {
-    background-color: var(--ivory) !important;
+    background-color: #fff8ec !important;
     border: 1px solid var(--gold) !important;
-    padding: 5px 12px !important;
+    padding: 5px 10px !important;
     border-radius: 20px !important;
-    font-family: 'Rasa', serif !important;
+    font-family: 'Playfair Display', serif !important;
+    transition: all 0.3s;
 }
-.goog-te-gadget-simple span { color: var(--maroon) !important; font-weight: bold; }
-.iframe-shield { position: relative; }
-.iframe-shield::after { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: transparent; z-index: 9999; }
+
+.goog-te-gadget-simple:hover {
+    background-color: var(--maroon) !important;
+    color: #fff !important;
+    border-color: var(--maroon) !important;
+}
+
+/* ટેક્સ્ટ કલર */
+.goog-te-gadget-simple span {
+    color: #7b1c1c !important; /* Maroon Text */
+    font-weight: bold;
+}
+
+.goog-te-gadget-simple:hover span {
+    color: #fff !important; /* White Text on Hover */
+}
+
+/* ગૂગલનો લોગો છુપાવો (ઓપ્શનલ) */
+.goog-te-gadget-icon {
+    display: none !important;
+}
+
+/* FOOTER */
+footer { background: #7b1c1c; color: gold; text-align: center; padding: 5px; margin-top: 50px; font-family: 'Yatra One'; }
