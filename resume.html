@@ -3,114 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <title>Resume | Sisodiya Bhargavsinh</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com;">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; frame-src 'self' https://www.google.com;">
 
     <meta name="description" content="Resume of Sisodiya Bhargavsinh Mahendrasinh - BCA Student. Skills in Computer Accounting, Logo Design, and Chat Support.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index,follow"> <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
+    <meta name="robots" content="index,follow">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
     <style>
-        /* RESUME SPECIFIC STYLES */
-        .resume-container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 40px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--maroon);
-            font-family: 'Playfair Display', serif;
-            color: #333;
+        /* --- ROYAL RESUME STYLES --- */
+        
+        body {
+            background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
+            background-attachment: fixed;
+            font-family: 'Noto Sans', sans-serif;
+            color: #2c1a1a;
         }
 
+        /* Resume Paper Container (Glass Effect) */
+        .resume-paper {
+            max-width: 850px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 50px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-top: 6px solid var(--maroon);
+            border-radius: 5px;
+            position: relative;
+        }
+
+        /* Header Section */
         .resume-header {
             text-align: center;
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+            border-bottom: 2px dashed var(--gold);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 160px; height: 160px; object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4);
+            margin-bottom: 15px;
         }
 
         .resume-name {
             font-family: 'Yatra One', cursive;
-            font-size: 2rem;
+            font-size: 2.4rem;
             color: var(--maroon);
-            margin: 0;
+            margin: 10px 0;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .resume-sub {
-            font-size: 1rem;
-            color: #555;
-            margin-top: 5px;
-            font-weight: bold;
+            font-size: 1.1rem; color: #555; font-weight: bold; margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
         }
 
         .contact-info {
-            margin-top: 10px;
-            font-size: 0.9rem;
+            font-size: 0.95rem; color: #444; background: #fff8ec;
+            display: inline-block; padding: 8px 20px; border-radius: 50px;
+            border: 1px solid var(--gold);
         }
 
+        /* Section Titles */
         .section-title {
-            background: #f4f4f4;
             color: var(--maroon);
-            padding: 5px 10px;
+            font-size: 1.3rem;
             font-weight: bold;
             text-transform: uppercase;
-            border-left: 4px solid var(--gold);
-            margin-top: 25px;
-            margin-bottom: 15px;
-            font-family: sans-serif;
+            border-left: 5px solid var(--gold);
+            padding-left: 15px;
+            margin-top: 35px; margin-bottom: 20px;
+            font-family: 'Yatra One', cursive;
+            background: linear-gradient(90deg, rgba(218,165,32,0.1), transparent);
+            padding-top: 5px; padding-bottom: 5px;
         }
 
-        .edu-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 10px;
-        }
-        .edu-table td {
-            padding: 8px;
-            border-bottom: 1px solid #eee;
-            vertical-align: top;
-        }
-        .edu-year { font-weight: bold; color: var(--maroon); width: 120px; }
+        /* Content Text */
+        p, li { line-height: 1.7; text-align: justify; }
 
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        /* Education Table (Timeline Look) */
+        .edu-table { width: 100%; border-collapse: collapse; }
+        .edu-table td { padding: 15px 10px; vertical-align: top; border-bottom: 1px solid #eee; }
+        .edu-year {
+            font-weight: bold; color: var(--maroon); width: 130px;
+            font-family: 'Playfair Display', serif; font-size: 1.1rem;
         }
+
+        /* Skills Badges */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
         .skill-badge {
-            background: var(--maroon);
-            color: #fff;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            background: #fff; border: 1px solid var(--maroon); color: var(--maroon);
+            padding: 6px 18px; border-radius: 25px; font-size: 0.9rem; font-weight: 600;
+            transition: 0.3s;
+        }
+        .skill-badge:hover {
+            background: var(--maroon); color: #fff; transform: scale(1.05);
+            box-shadow: 0 5px 10px rgba(123, 28, 28, 0.2);
         }
 
-        /* NEW BUTTON STYLE */
+        /* Official Letter Button */
         .view-btn {
-            display: inline-block;
-            background-color: var(--maroon);
-            color: white;
-            padding: 5px 12px;
-            font-size: 0.8rem;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-top: 8px;
-            border: 1px solid #a52a2a;
-            font-family: sans-serif;
-            transition: background 0.3s;
+            display: inline-block; background-color: var(--maroon); color: white;
+            padding: 8px 20px; font-size: 0.85rem; text-decoration: none; border-radius: 5px;
+            margin-top: 10px; transition: background 0.3s;
+            box-shadow: 0 4px 10px rgba(123, 28, 28, 0.3);
         }
-        .view-btn:hover {
-            background-color: #5c0000;
+        .view-btn:hover { background-color: #5c0000; transform: translateY(-2px); }
+
+        /* Personal Details Grid */
+        .personal-details-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px; background: #fafafa; padding: 20px; border-radius: 8px;
+            border: 1px dashed #ccc;
         }
 
-        .personal-details-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            font-size: 0.95rem;
+        /* SECURITY: DISABLE PRINTING */
+        /* જો કોઈ Ctrl+P દબાવે તો બધું ગાયબ થઈ જશે */
+        @media print {
+            html, body {
+                display: none !important;
+                height: 0;
+                overflow: hidden;
+            }
         }
     </style>
 </head>
@@ -121,28 +146,27 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="projects.html">પ્રોજેક્ટ્સ</a></li>
-            <li><a href="resume.html" style="color: gold;">Resume</a></li> 
+            <li><a href="resume.html" style="color: var(--gold); font-weight: bold;">Resume</a></li> 
             <li><a href="pushtimarg.html">પુષ્ટિમાર્ગ</a></li>
             <li><a href="blog.html">Articles</a></li>
             <li><a href="contact.html">સંપર્ક</a></li>
         </ul>
     </nav>
 
-    <div class="resume-container">
+    <div class="resume-paper">
+        
         <div class="resume-header">
-<div style="text-align: center; margin-top: 30px;">
-            <img src="bhargavsinh.webp" alt="Bhargavsinh" width="200" style="border-radius: 50%; border: 4px solid var(--gold);">
-        </div>
+            <img src="bhargavsinh.webp" alt="Sisodiya Bhargavsinh" class="profile-img">
             <h1 class="resume-name">Sisodiya Bhargavsinh Mahendrasinh</h1>
             <p class="resume-sub">BCA Student | Computer Applications</p>
             <div class="contact-info">
-                📧 bhargavsinh[dot]bca[at]gmail [dot]com <br>
+                📧 bhargavsinh[dot]bca[at]gmail [dot]com &nbsp;|&nbsp; 
                 📍 Lunawada, Gujarat, India
             </div>
         </div>
 
         <div class="section-title">Resume Summary</div>
-        <p style="text-align: justify;">
+        <p>
             I am a BCA student from Mahisagar BCA College, Lunawada, with skills in Gujarati typing, logo design, and chat support. I am eager to leverage my computerized accounting knowledge and social awareness to build a dynamic career.
         </p>
 
@@ -190,21 +214,24 @@
         </ul>
 
         <div class="section-title">Social Leadership & Civic Engagement</div>
-        <ul>
-            <li style="margin-bottom: 10px; line-height: 1.6;">
-                <b>Representation to the President of India:</b><br>
-                Authored and submitted a formal representation regarding <i>"Nationwide Ban on Cow Slaughter & Animal Welfare Laws"</i>. 
-                The petition is officially recorded by the <b>President's Secretariat</b>.
-                <br>
-                <span style="font-size: 0.85rem; color: #555; background-color: #f9f9f9; padding: 2px 5px; border-radius: 3px; border: 1px solid #ddd; margin-right: 10px;">
-                    Ref: Reg. No. RB/MSG/26010914813 | Tracking No. 14813
-                </span>
-                <br>
-                <a href="https://www.presidentofindia.gov.in/sites/default/files/webform/request_for_president_s_message/7040/request_to_ban_cow_slaughter_in_bharat.pdf" target="_blank" class="view-btn">
-                    📄 View Official Letter
-                </a>
-            </li>
-        </ul>
+        <div style="background: #fffdf5; border-left: 3px solid var(--maroon); padding: 15px;">
+            <ul>
+                <li style="margin-bottom: 0; line-height: 1.7; list-style: none;">
+                    <b>Representation to the President of India:</b><br>
+                    Authored and submitted a formal representation regarding <i>"Nationwide Ban on Cow Slaughter & Animal Welfare Laws"</i>. 
+                    The petition is officially recorded by the <b>President's Secretariat</b>.
+                    <br>
+                    <span style="font-size: 0.8rem; color: #666; display:inline-block; margin-top:5px; margin-bottom: 8px;">
+                        📌 Ref: Reg. No. RB/MSG/26010914813 | Tracking No. 14813
+                    </span>
+                    <br>
+                    <a href="https://www.presidentofindia.gov.in/sites/default/files/webform/request_for_president_s_message/7040/request_to_ban_cow_slaughter_in_bharat.pdf" target="_blank" class="view-btn">
+                        📄 View Official Letter
+                    </a>
+                </li>
+            </ul>
+        </div>
+
         <div class="section-title">Languages Known</div>
         <p>
             🗣️ <b>Gujarati:</b> Read, Write & Speak (Native)<br>
