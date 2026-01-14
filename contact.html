@@ -7,113 +7,182 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; frame-src 'self' https://docs.google.com https://www.google.com;">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/webp" href="bhargavsinh.webp">
     
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/webp" href="bhargavsinh.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        /* --- ROYAL CONTACT THEME --- */
+
+        :root {
+            --maroon: #7b1c1c;
+            --gold: #daa520;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
+            background-attachment: fixed;
+            font-family: 'Noto Sans', sans-serif;
+            color: #2c1a1a;
+            margin: 0;
+        }
+
+        /* Hero Title */
+        h1 {
+            font-family: 'Yatra One', cursive;
+            color: var(--maroon);
+            text-align: center;
+            font-size: 2.5rem;
+            margin-top: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        p {
+            text-align: center; margin-bottom: 30px; font-size: 1.1rem; color: #444;
+        }
+
+        /* --- CONTACT GRID --- */
         .contact-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
             justify-content: center;
             align-items: flex-start;
-            margin-top: 30px;
+            margin: 40px auto;
+            max-width: 1200px;
+            padding: 0 20px;
         }
 
-        /* Common Card Style */
+        /* Common Glass Card Style */
         .contact-card, .appointment-card {
-            background: rgba(255, 255, 255, 0.6); /* Glass Effect */
+            background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px;
             text-align: left;
             transition: transform 0.3s;
         }
 
         .contact-card:hover, .appointment-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(218, 165, 32, 0.15);
+            box-shadow: 0 15px 35px rgba(218, 165, 32, 0.15);
+            background: rgba(255, 255, 255, 0.85);
         }
 
-        /* Specific Borders */
+        /* Specific Card Styles */
         .contact-card {
-            flex: 1 1 300px;
+            flex: 1 1 350px;
             border-top: 5px solid var(--maroon);
         }
 
+        .contact-card:hover { border-top-color: var(--gold); }
+
         .appointment-card {
-            flex: 1 1 450px;
+            flex: 11500px;
             border-top: 5px solid var(--gold);
         }
 
+        .appointment-card:hover { border-top-color: var(--maroon); }
+appointment-card:hover { border-top-color: var(--maroon); }
+
+        /* Headings inside cards */
+        h3 {
+            font-family: 'Yatra One', cursive;
+            font-size: 1.5rem;
+            color: var(--maroon);
+            margin-bottom: 20px;
+            border-bottom: 2px dashed var(--gold);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* Contact Details */
+        .info-block { margin-bottom: 25px; }
+        .info-label { font-weight: bold; color: var(--maroon); display: block; margin-bottom: 5px; }
+        .info-text { color: #333; font-size: 1.05rem; line-height: 1.6; }
+
+        /* Social Links as Buttons */
         .social-link {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
-            color: var(--text-dark);
-            margin-bottom: 10px;
+            color: #333;
+            margin-bottom: 12px;
             font-weight: 600;
-            padding: 8px;
+            padding: 10px 15px;
             border-radius: 8px;
+            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(218, 165, 32, 0.3);
             transition: 0.3s;
         }
         .social-link:hover {
-            background: rgba(218, 165, 32, 0.1);
-            color: var(--maroon);
+            background: var(--maroon);
+            color: #fff;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(123, 28, 28, 0.2);
+        }
+/* Nav Link Hover */
+        .nav-link { transition: 0.3s; }
+        .nav-link:hover { color: var(--gold) !important; }
+
+        /* Mobile Fix */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .contact-grid { padding: 0 15px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="pushtimarg.html">પુષ્ટિમાર્ગ</a></li>
-            <li><a href="projects.html">પ્રોજેક્ટ્સ</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="blog.html">Articles</a></li>
-            <li><a href="contact.html" style="color: var(--maroon); font-weight: bold;">સંપર્ક</a></li>
+    <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px; background: rgba(255, 248, 236, 0.9); border-bottom: 3px solid var(--gold); backdrop-filter: blur(10px);">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="logo.png" alt="Logo" style="height: 50px; border-radius: 5px;">
+            <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: var(--maroon);">Sisodiya Bhargavsinh</span>
+        </div>
+        <ul style="display: flex; gap: 15px; list-style: none; margin: 0; padding: 10px 0; flex-wrap: wrap; justify-content: center;">
+            <li><a href="index.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Home</a></li>
+            <li><a href="about.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">About</a></li>
+            <li><a href="pushtimarg.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Pushtimarg</a></li>
+            <li><a href="projects.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Projects</a></li>
+            <li><a href="resume.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Resume</a></li>
+            <li><a href="blog.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Articles</a></li>
+            <li><a href="contact.html" class="nav-link" style="color: var(--gold); text-decoration: none; font-weight: bold;">Contact</a></li>
         </ul>
     </nav>
-
     <section>
-        <h1 style="font-family: 'Yatra One', cursive; color: var(--maroon); text-align: center;">સંપર્ક કરો (Contact Me)</h1>
-        <p style="text-align: center; margin-bottom: 20px;">
+        <h1>સંપર્ક કરો (Contact Me)</h1>
+        <p>
             ટેકનિકલ પ્રોજેક્ટ, ઇતિહાસ સંશોધન અથવા પુષ્ટિમાર્ગ અંગે ચર્ચા કરવા માટે આપ મારો સંપર્ક કરી શકો છો.
         </p>
 
         <div class="contact-grid">
             
             <div class="contact-card">
-                <h3 style="border-bottom: 2px dashed var(--gold); display: inline-block; margin-bottom: 15px; color: var(--maroon);">
-                    📍 સંપર્ક માહિતી
-                </h3>
+                <h3>📍 સંપર્ક માહિતી</h3>
                 
-                <div style="margin-bottom: 20px;">
-                    <strong>સરનામું:</strong><br>
-                    <span style="color: #555;">
+                <div class="info-block">
+                    <span class="info-label">સરનામું:</span>
+                    <span class="info-text">
                         ચુંથાના મુવાડા, તાલુકો: ગોધર,<br>
                         જીલ્લો: મહીસાગર, ગુજરાત - ૩૮૯૨૩૦
                     </span>
                 </div>
                 
-                <div style="margin-bottom: 20px;">
-                    <strong>ઈમેલ:</strong><br>
+                <div class="info-block">
+                    <span class="info-label">ઈમેલ:</span>
                     <a href="mailto:bhargavsinh.bca@gmail.com" style="color: var(--maroon); text-decoration: none; font-weight: bold;">
                         bhargavsinh[dot]bca[at]gmail[dot]com
                     </a>
                 </div>
                 
                 <div>
-                    <strong>સોશિયલ મીડિયા:</strong>
-                    <div style="margin-top: 10px;">
+                    <span class="info-label">સોશિયલ મીડિયા:</span>
+                    <div style="margin-top: 15px;">
                         <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="social-link">
                             <span>💬</span> WhatsApp
                         </a>
@@ -128,11 +197,8 @@
             </div>
 
             <div class="appointment-card">
-                <h3 style="text-align: center; color: var(--maroon); font-family: 'Yatra One', cursive; margin-bottom: 15px;">
-                    📅 Appointment Request
-                </h3>
-                
-                <div style="width: 100%; overflow: hidden;">
+                <h3 style="display: block; text-align: center; border: none;">📅 Appointment Request</h3>
+<div style="width: 100%; overflow: hidden; border-radius: 10px; border: 1px solid #eee;">
                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1zE0D-SbtdWlD0wT6TEwJ4hxw7RinkhbxNPOBX2vygD4x3A/viewform?embedded=true" width="100%" height="1400" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                 </div>
             </div>
@@ -144,7 +210,6 @@
         <p style="font-size: 0.8rem; margin-bottom: 5px;">
             <a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a>
         </p>
-        
         <marquee style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
 
         <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed gold; text-align: center;">
@@ -162,3 +227,4 @@
 
 </body>
 </html>
+
