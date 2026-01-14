@@ -17,163 +17,196 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com;">
 
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
     <style>
-        /* HOME PAGE SPECIFIC STYLES */
+        /* --- ROYAL GLASS THEME STYLES --- */
         
-        /* 1. Shloka Box */
-        .shloka-box {
-            background: #7b1c1c; /* Maroon */
-            color: #daa520; /* Gold */
-            padding: 15px;
-            text-align: center;
-            margin: 20px 0;
-            border-radius: 5px;
-            font-family: 'Yatra One', cursive;
-            border: 1px dashed #daa520;
+        :root {
+            --maroon: #7b1c1c;
+            --gold: #daa520;
         }
 
-        /* 2. Highlights Cards Grid */
+        body {
+            background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
+            background-attachment: fixed;
+            font-family: 'Noto Sans', sans-serif;
+            margin: 0;
+            color: #2c1a1a;
+        }
+
+        /* Nav Bar Glass Effect */
+        nav {
+            background: rgba(255, 248, 236, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--gold) !important;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 40px 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .profile-img {
+            width: 180px; height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--gold);
+            box-shadow: 0 0 25px rgba(218, 165, 32, 0.4);
+            transition: transform 0.5s;
+            margin-top: 20px;
+        }
+        .profile-img:hover { transform: scale(1.05) rotate(2deg); }
+
+        h1 {
+            font-family: 'Yatra One', cursive;
+            font-size: 2.2rem;
+            color: var(--maroon);
+            margin: 15px 0;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin: 8px 0;
+            font-weight: 500;
+        }
+
+        /* Shloka Box (Glass) */
+        .shloka-box {
+            background: rgba(123, 28, 28, 0.05);
+            border: 2px dashed var(--gold);
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 700px;
+            margin: 30px auto;
+            color: var(--maroon);
+            font-family: 'Yatra One', cursive;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Highlights Grid (Glass Cards) */
         .highlights-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
-            margin-top: 30px;
-            margin-bottom: 30px;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
+
         .h-card {
-            flex: 1 1 280px; /* Mobile responsive */
-            background: #fff;
-            border: 1px solid #7b1c1c;
-            border-bottom: 5px solid #daa520;
-            padding: 20px;
+            flex: 1 1 280px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-top: 5px solid var(--maroon);
+            padding: 30px 20px;
             text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+            transition: all 0.3s ease;
         }
+
         .h-card:hover {
-            transform: translateY(-5px);
-            background: #fff8ec;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(218, 165, 32, 0.2);
+            border-top-color: var(--gold);
+            background: rgba(255, 255, 255, 0.8);
         }
-        .h-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+
+        .h-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+        
         .h-link { 
             display: inline-block; 
-            margin-top: 10px; 
-            color: #7b1c1c; 
-            font-weight: bold; 
-            text-decoration: none; 
-            border-bottom: 1px dotted #7b1c1c;
+            margin-top: 15px; 
+            background: var(--maroon);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .h-link:hover { background: var(--gold); color: #000; }
+
+        /* Tech Stack (Glass) */
+        .tech-stack {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
-        /* 3. Tech Skills Badges */
-        .tech-stack {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            background: rgba(218, 165, 32, 0.1); /* Light Gold BG */
-            border-radius: 10px;
-        }
         .tech-badge {
             display: inline-block;
-            padding: 5px 15px;
+            padding: 8px 18px;
             margin: 5px;
-            border: 1px solid #7b1c1c;
-            border-radius: 20px;
+            border: 1px solid var(--gold);
+            border-radius: 25px;
             font-size: 0.9rem;
             background: #fff;
-            color: #333;
+            color: var(--maroon);
             font-weight: bold;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05);
         }
-        
-        /* 4. Navigation Link Styles */
-        .nav-link {
+
+        /* Button Style */
+        .social-btn {
+            background: linear-gradient(45deg, var(--maroon), #5a1212);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(123, 28, 28, 0.3);
             text-decoration: none;
-            color: #333;
             font-weight: bold;
-            font-family: 'Playfair Display', serif;
-            transition: color 0.3s;
+            transition: 0.3s;
         }
-        .nav-link:hover {
-            color: #7b1c1c; /* Maroon on hover */
+        .social-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(123, 28, 28, 0.4); }
+
+        .nav-link { transition: 0.3s; }
+        .nav-link:hover { color: var(--gold) !important; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.6rem; flex-direction: column; }
+            .profile-img { width: 150px; height: 150px; }
+            .shloka-box { margin: 20px; font-size: 1rem; }
         }
-
-    /* --- NEW ULTRA MODERN GLASS THEME --- */
-
-    /* 1. રોયલ બેકગ્રાઉન્ડ (પાછળનું દ્રશ્ય) */
-    body {
-        /* આછો ગોલ્ડ અને ક્રીમ કલરનો ગ્રેડિયન્ટ */
-        background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
-        background-attachment: fixed; /* સ્ક્રોલ કરતી વખતે બેકગ્રાઉન્ડ સ્થિર રહેશે */
-    }
-
-    /* 2. બધા બોક્સને કાચ જેવા બનાવવા */
-    .h-card, .shloka-box, .tech-stack, section marquee {
-        background: rgba(255, 255, 255, 0.4) !important; /* પારદર્શક સફેદ */
-        backdrop-filter: blur(10px) !important; /* બ્લર ઈફેક્ટ (કાચ) */
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.8) !important; /* સફેદ બોર્ડર */
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05) !important; /* સોફ્ટ શેડો */
-        border-radius: 15px !important;
-    }
-
-    /* 3. હોવર ઈફેક્ટ (માઉસ લઈ જતા ચમકશે) */
-    .h-card:hover {
-        background: rgba(255, 255, 255, 0.7) !important;
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(218, 165, 32, 0.2) !important; /* ગોલ્ડ શેડો */
-        border: 1px solid var(--gold) !important;
-    }
-
-    /* 4. ફોટો પણ થોડો મોડર્ન */
-    img[src="bhargavsinh.webp"] {
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        transition: transform 0.5s;
-    }
-    img[src="bhargavsinh.webp"]:hover {
-        transform: scale(1.05) rotate(2deg); /* ફોટા પર માઉસ જતા થોડો ઝૂમ થશે */
-    }
-
     </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Sisodiya Bhargavsinh",
-  "url": "https://bhargavsinh.github.io/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://bhargavsinh.github.io/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  },
-  "hasPart": [
+
+    <script type="application/ld+json">
     {
-      "@type": "WebPage",
-      "name": "About Me",
-      "url": "https://bhargavsinh.github.io/about.html"
-    },
-    {
-      "@type": "WebPage",
-      "name": "Pushtimarg Seva",
-      "url": "https://bhargavsinh.github.io/pushtimarg.html"
-    },
-    {
-      "@type": "WebPage",
-      "name": "Gruh Seva Article",
-      "url": "https://bhargavsinh.github.io/artgruhseva.html"
-    },
-    {
-      "@type": "WebPage",
-      "name": "Contact",
-      "url": "https://bhargavsinh.github.io/contact.html"
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Sisodiya Bhargavsinh",
+      "url": "https://bhargavsinh.github.io/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://bhargavsinh.github.io/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "hasPart": [
+        { "@type": "WebPage", "name": "About Me", "url": "https://bhargavsinh.github.io/about.html" },
+        { "@type": "WebPage", "name": "Pushtimarg Seva", "url": "https://bhargavsinh.github.io/pushtimarg.html" },
+        { "@type": "WebPage", "name": "Gruh Seva Article", "url": "https://bhargavsinh.github.io/artgruhseva.html" },
+        { "@type": "WebPage", "name": "Contact", "url": "https://bhargavsinh.github.io/contact.html" }
+      ]
     }
-  ]
-}
-</script>
+    </script>
 
 </head>
 <body>
@@ -183,40 +216,40 @@
         <p class="greeting">|| જય શ્રી કૃષ્ણ ||</p>
     </div>
 
-    <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px; background: #fff8ec; border-bottom: 3px solid var(--gold);">
-        
+    <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px;">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="logo.png" alt="Sisodiya Logo" style="height: 50px; width: auto; border-radius: 5px;">
+            <img src="logo.png" alt="Sisodiya Logo" style="height: 50px; width: auto; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
             <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: #7b1c1c;">Sisodiya Bhargavsinh</span>
         </div>
 
         <ul style="display: flex; gap: 15px; list-style: none; margin: 0; padding: 10px 0; flex-wrap: wrap; justify-content: center;">
-            <li><a href="index.html" class="nav-link" style="color: #7b1c1c;">Home</a></li>
+            <li><a href="index.html" class="nav-link" style="color: #daa520; font-weight: bold;">Home</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="pushtimarg.html" class="nav-link">Pushtimarg</a></li>
             <li><a href="projects.html" class="nav-link">Projects</a></li>
             <li><a href="resume.html" class="nav-link">Resume</a></li>
             <li><a href="blog.html" class="nav-link">Articles</a></li>
             <li><a href="contact.html" class="nav-link">Contact me</a></li>
-<div id="google_translate_element" style="margin-left: 20px;"></div>
-
+            <div id="google_translate_element" style="margin-left: 10px;"></div>
         </ul>
     </nav>
 
-    <section>
-        <marquee style="color: var(--maroon); background: var(--ivory); padding: 5px; border-bottom: 2px solid var(--gold);"> 
-            <b>|| જય શ્રી કૃષ્ણ 🙏 આપનું સ્વાગત છે ||</b>
+    <section class="hero-section">
+        <marquee style="color: var(--maroon); background: rgba(255,255,255,0.5); padding: 8px; border-bottom: 2px dashed var(--gold); border-radius: 5px; font-weight: bold;"> 
+            || જય શ્રી કૃષ્ણ 🙏 આપનું સ્વાગત છે ||
         </marquee>
 
-        <div style="text-align: center; margin-top: 30px;">
-            <img src="bhargavsinh.webp" alt="Bhargavsinh" width="200" style="border-radius: 50%; border: 4px solid var(--gold);">
+        <div style="text-align: center;">
+            <img src="bhargavsinh.webp" alt="Bhargavsinh" class="profile-img">
         </div>
         
-        <h1>SISODIYA BHARGAVSINH<svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-left: 6px; margin-bottom: 4px;">
-    <path d="M12.0002 2.05945C12.7836 2.05945 13.5226 2.3751 14.0722 2.9248L14.7354 3.58795C15.0097 3.86225 15.3817 4.0163 15.7695 4.0163H16.7072C17.8105 4.0163 18.705 4.9108 18.705 6.0141V6.9518C18.705 7.3396 18.859 7.71155 19.1333 7.9859L19.7965 8.6491C20.3462 9.19865 20.6618 9.93775 20.6618 10.7212V13.279C20.6618 14.0624 20.3462 14.8015 19.7965 15.3511L19.1333 16.0142C18.859 16.2886 18.705 16.6605 18.705 17.0484V17.9861C18.705 19.0894 17.8105 19.9839 16.7072 19.9839H15.7695C15.3817 19.9839 15.0097 20.1379 14.7354 20.4122L14.0722 21.0754C13.5226 21.625 12.7836 21.9407 12.0002 21.9407C11.2168 21.9407 10.4777 21.625 9.92817 21.0754L9.26498 20.4122C8.99068 20.1379 8.61873 19.9839 8.23093 19.9839H7.29323C6.18993 19.9839 5.29543 19.0894 5.29543 17.9861V17.0484C5.29543 16.6605 5.14138 16.2886 4.86708 16.0142L4.20388 15.3511C3.65423 14.8015 3.33862 14.0624 3.33862 13.279V10.7212C3.33862 9.93775 3.65423 9.19865 4.20388 8.6491L4.86708 7.9859C5.14138 7.71155 5.29543 7.3396 5.29543 6.9518V6.0141C5.29543 4.9108 6.18993 4.0163 7.29323 4.0163H8.23093C8.61873 4.0163 8.99068 3.86225 9.26498 3.58795L9.92817 2.9248C10.4777 2.3751 11.2168 2.05945 12.0002 2.05945Z" fill="#3897F0"/>
-    <path d="M10.2096 15.6191C9.99887 15.6191 9.78817 15.5386 9.62757 15.378L7.22127 12.9717C6.90007 12.6505 6.90007 12.1298 7.22127 11.8086C7.54247 11.4874 8.06317 11.4874 8.38437 11.8086L10.2096 13.6338L15.6159 8.22749C15.9371 7.90629 16.4578 7.90629 16.779 8.22749C17.1002 8.54869 17.1002 9.06939 16.779 9.39059L10.7916 15.378C10.631 15.5386 10.4203 15.6191 10.2096 15.6191Z" fill="white"/>
-</svg>
- </h1>
+        <h1>SISODIYA BHARGAVSINH
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                <path d="M12.0002 2.05945C12.7836 2.05945 13.5226 2.3751 14.0722 2.9248L14.7354 3.58795C15.0097 3.86225 15.3817 4.0163 15.7695 4.0163H16.7072C17.8105 4.0163 18.705 4.9108 18.705 6.0141V6.9518C18.705 7.3396 18.859 7.71155 19.1333 7.9859L19.7965 8.6491C20.3462 9.19865 20.6618 9.93775 20.6618 10.7212V13.279C20.6618 14.0624 20.3462 14.8015 19.7965 15.3511L19.1333 16.0142C18.859 16.2886 18.705 16.6605 18.705 17.0484V17.9861C18.705 19.0894 17.8105 19.9839 16.7072 19.9839H15.7695C15.3817 19.9839 15.0097 20.1379 14.7354 20.4122L14.0722 21.0754C13.5226 21.625 12.7836 21.9407 12.0002 21.9407C11.2168 21.9407 10.4777 21.625 9.92817 21.0754L9.26498 20.4122C8.99068 20.1379 8.61873 19.9839 8.23093 19.9839H7.29323C6.18993 19.9839 5.29543 19.0894 5.29543 17.9861V17.0484C5.29543 16.6605 5.14138 16.2886 4.86708 16.0142L4.20388 15.3511C3.65423 14.8015 3.33862 14.0624 3.33862 13.279V10.7212C3.33862 9.93775 3.65423 9.19865 4.20388 8.6491L4.86708 7.9859C5.14138 7.71155 5.29543 7.3396 5.29543 6.9518V6.0141C5.29543 4.9108 6.18993 4.0163 7.29323 4.0163H8.23093C8.61873 4.0163 8.99068 3.86225 9.26498 3.58795L9.92817 2.9248C10.4777 2.3751 11.2168 2.05945 12.0002 2.05945Z" fill="#3897F0"/>
+                <path d="M10.2096 15.6191C9.99887 15.6191 9.78817 15.5386 9.62757 15.378L7.22127 12.9717C6.90007 12.6505 6.90007 12.1298 7.22127 11.8086C7.54247 11.4874 8.06317 11.4874 8.38437 11.8086L10.2096 13.6338L15.6159 8.22749C15.9371 7.90629 16.4578 7.90629 16.779 8.22749C17.1002 8.54869 17.1002 9.06939 16.779 9.39059L10.7916 15.378C10.631 15.5386 10.4203 15.6191 10.2096 15.6191Z" fill="white"/>
+            </svg>
+        </h1>
+
         <p>🙏 श्रीकृष्णदासानुदासोऽहम् ।</p>
         <p>🚩 પુષ્ટિમાર્ગીય વૈષ્ણવ</p>
         <p>🎓 BCA | 🛡️ Rajput | 🙏 Theist</p>
@@ -227,40 +260,40 @@
         <div class="shloka-box">
             "स वै पुंसां परो धर्मो यतो भक्तिरधोक्षजे। (श्रीमद्भागवत महापुराण 1.2.6)"
             <br>
-            <span style="font-size: 0.8rem; color: #000000;">(જે ધર્મ દ્વારા ભગવાનમાં નિર્મળ ભક્તિ થાય, એ જ માનવ માટે પરમ ધર્મ છે.)</span>
+            <span style="font-size: 0.9rem; color: #555; margin-top: 5px; display:block;">(જે ધર્મ દ્વારા ભગવાનમાં નિર્મળ ભક્તિ થાય, એ જ માનવ માટે પરમ ધર્મ છે.)</span>
         </div>
 
         <div style="text-align: center; margin-bottom: 40px;">
-            <a href="about.html" class="social-btn" style="display: inline-block; width: auto; padding: 10px 30px;">વધુ જાણો 👉</a>
+            <a href="about.html" class="social-btn" style="display: inline-block; width: auto; padding: 12px 35px;">વધુ જાણો 👉</a>
         </div>
 
-        <h2 style="font-size: 1.5rem; border-bottom: 2px dashed gold; display:inline-block;">વિશેષ વિભાગો</h2>
+        <h2 style="font-size: 1.8rem; font-family: 'Yatra One', cursive; color: var(--maroon); border-bottom: 3px solid var(--gold); display:inline-block; padding-bottom: 5px;">વિશેષ વિભાગો</h2>
         
         <div class="highlights-grid">
             <div class="h-card">
                 <span class="h-icon">📜</span>
-                <h3>વંશાવલી</h3>
+                <h3 style="color: var(--maroon); margin-bottom: 10px;">વંશાવલી</h3>
                 <p>મહારાણા પ્રતાપથી લઈને અત્યાર સુધીની પેઢીઓનો ગૌરવવંતો ઈતિહાસ.</p>
-                <a href="about.html" class="h-link">જુઓ &rarr;</a>
+                <a href="about.html" class="h-link">જુઓ →</a>
             </div>
 
             <div class="h-card">
                 <span class="h-icon">🪔</span>
-                <h3>પુષ્ટિ સિદ્ધાંત</h3>
+                <h3 style="color: var(--maroon); margin-bottom: 10px;">પુષ્ટિ સિદ્ધાંત</h3>
                 <p>ગૃહ સેવા, અમૃત વચનાવલી અને શુદ્ધાદ્વૈત વિચારધારા.</p>
-                <a href="pushtimarg.html" class="h-link">વાંચો &rarr;</a>
+                <a href="pushtimarg.html" class="h-link">વાંચો →</a>
             </div>
 
             <div class="h-card">
                 <span class="h-icon">✒️</span>
-                <h3>સંશોધન લેખ</h3>
+                <h3 style="color: var(--maroon); margin-bottom: 10px;">સંશોધન લેખ</h3>
                 <p>"પુષ્ટિમાર્ગ માં ગૃહ સેવા જ છે" પર શાસ્ત્રીય સંશોધન.</p>
-                <a href="blog.html" class="h-link">Article વાંચો &rarr;</a>
+                <a href="blog.html" class="h-link">Article વાંચો →</a>
             </div>
         </div>
 
         <div class="tech-stack">
-            <h3 style="color: #7b1c1c; margin-bottom: 10px;">Technical Skills 💻</h3>
+            <h3 style="color: #7b1c1c; margin-bottom: 15px; font-family: 'Yatra One', cursive;">Technical Skills 💻</h3>
             <div>
                 <span class="tech-badge">HTML5</span>
                 <span class="tech-badge">CSS3</span>
@@ -303,23 +336,17 @@
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) { if(e.keyCode == 123) return false; }
     </script>
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'gu', // તમારી સાઇટની મુખ્ય ભાષા (ગુજરાતી)
-            includedLanguages: 'gu,en,hi,sa', // કઈ ભાષાઓ બતાવવી? (Gujarati, English, Hindi, Sanskrit)
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-    }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'gu', 
+                includedLanguages: 'gu,en,hi,sa', 
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
-
-
-
-
-
-
-
