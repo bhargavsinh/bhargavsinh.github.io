@@ -4,106 +4,177 @@
     <meta charset="UTF-8">
     <title>Projects | Sisodiya Bhargavsinh</title>
     
-    <meta name="description" content="Academic and Research Projects of Sisodiya Bhargavsinh - BCA Student. Web Design, C Programming, and Genealogy Research.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; frame-src 'self' https://www.google.com;">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://www.hitwebcounter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https://hitwebcounter.com data:; script-src 'self' 'unsafe-inline';">
-
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        /* PROJECT CARDS STYLE */
+        /* --- ROYAL PROJECT THEME --- */
+
+        :root {
+            --maroon: #7b1c1c;
+            --gold: #daa520;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
+            background-attachment: fixed;
+            font-family: 'Noto Sans', sans-serif;
+            color: #2c1a1a;
+            margin: 0;
+        }
+
+        /* Hero Title */
+        h2 {
+            text-align: center;
+            font-family: 'Yatra One', cursive;
+            color: var(--maroon);
+            font-size: 2.5rem;
+            margin-top: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .divider {
+            text-align: center; font-size: 1.5rem; margin-bottom: 20px; margin-top: 5px;
+        }
+
+        /* --- PROJECT GRID STYLES --- */
         .project-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 30px;
             justify-content: center;
-            margin-top: 30px;
+            margin: 40px auto;
+            max-width: 1200px;
+            padding: 0 20px;
         }
 
+        /* Glass Project Card */
         .project-card {
-            background: #fff;
-            border: 1px solid var(--gold);
-            border-radius: 10px;
-            width: 350px; /* Card Width */
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-top: 5px solid var(--maroon);
+            border-radius: 15px;
+            width: 350px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--maroon);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(218, 165, 32, 0.15);
+            border-top-color: var(--gold);
+            background: rgba(255, 255, 255, 0.85);
         }
 
         .p-header {
-            background: var(--maroon);
-            color: var(--gold);
+            background: linear-gradient(90deg, var(--maroon), #5a1212);
+            color: #fff;
             padding: 15px;
             text-align: center;
             font-family: 'Yatra One', cursive;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            border-bottom: 3px solid var(--gold);
         }
 
         .p-body {
-            padding: 20px;
+            padding: 25px;
             text-align: justify;
-            font-size: 0.95rem;
-            color: #444;
+            font-size: 1rem;
+            color: #333;
+            flex-grow: 1; /* સમાન ઊંચાઈ માટે */
         }
 
         .tech-tags {
-            margin-top: 15px;
+            margin-top: 20px;
             text-align: center;
         }
 
         .tag {
-            background: #fff8ec;
-            border: 1px solid #ccc;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            color: #7b1c1c;
-            margin: 2px;
+            background: #fff;
+            border: 1px solid var(--gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--maroon);
+            margin: 3px;
             display: inline-block;
             font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .p-footer {
-            padding: 15px;
+            padding: 20px;
             text-align: center;
-            border-top: 1px dashed #ccc;
-            background: #fafafa;
+            border-top: 1px dashed rgba(218, 165, 32, 0.5);
+            background: rgba(255, 248, 236, 0.5);
+        }
+
+        .social-btn {
+            background: var(--maroon);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+            border: 1px solid transparent;
+        }
+        .social-btn:hover {
+            background: #fff;
+            color: var(--maroon);
+            border-color: var(--maroon);
+            box-shadow: 0 5px 15px rgba(123, 28, 28, 0.2);
+        }
+
+        /* Nav Link Hover */
+        .nav-link { transition: 0.3s; }
+        .nav-link:hover { color: var(--gold) !important; }
+
+        /* Mobile Fix */
+        @media (max-width: 600px) {
+            h2 { font-size: 2rem; }
+            .project-card { width: 100%; margin-bottom: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-          <li><a href="resume.html">Resume</a></li>
-  <li><a href="pushtimarg.html">પુષ્ટિમાર્ગ</a></li>
-            <li><a href="projects.html">પ્રોજેક્ટ્સ</a></li>
-            <li><a href="blog.html">Articles</a></li>
-            <li><a href="contact.html">સંપર્ક</a></li>
+    <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px; background: rgba(255, 248, 236, 0.9); border-bottom: 3px solid var(--gold); backdrop-filter: blur(10px);">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="logo.png" alt="Logo" style="height: 50px; border-radius: 5px;">
+            <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: var(--maroon);">Sisodiya Bhargavsinh</span>
+        </div>
+        <ul style="display: flex; gap: 15px; list-style: none; margin: 0; padding: 10px 0; flex-wrap: wrap; justify-content: center;">
+            <li><a href="index.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Home</a></li>
+            <li><a href="about.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">About</a></li>
+            <li><a href="pushtimarg.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Pushtimarg</a></li>
+            <li><a href="projects.html" class="nav-link" style="color: var(--gold); text-decoration: none; font-weight: bold;">Projects</a></li>
+            <li><a href="resume.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Resume</a></li>
+            <li><a href="blog.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Articles</a></li>
+            <li><a href="contact.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Contact</a></li>
         </ul>
     </nav>
 
     <section>
-        <marquee style="color: var(--maroon); background: var(--ivory); padding: 5px; border-bottom: 2px solid var(--gold);">
+        <marquee style="color: var(--maroon); background: rgba(255,255,255,0.5); padding: 8px; border-bottom: 2px dashed var(--gold); border-radius: 5px; font-weight: bold;">
             || કર્મણ્યેવાધિકારસ્તે મા ફલેષુ કદાચન || મારા શૈક્ષણિક અને સંશોધનાત્મક કાર્યો ||
         </marquee>
 
         <h2>મારા પ્રોજેક્ટ્સ</h2>
         <div class="divider">💻</div>
         
-        <p style="text-align: center; margin-bottom: 30px;">
+        <p style="text-align: center; margin-bottom: 30px; font-size: 1.1rem; color: #444;">
             અહીં મારા BCA અભ્યાસ દરમિયાન બનાવેલા સોફ્ટવેર પ્રોજેક્ટ્સ અને મારા વ્યક્તિગત સંશોધન કાર્યો રજૂ કર્યા છે.
         </p>
 
@@ -121,7 +192,7 @@
                     </div>
                 </div>
                 <div class="p-footer">
-                    <a href="index.html" class="social-btn" style="padding: 5px 15px; font-size: 0.9rem;">Live Demo 👁️</a>
+                    <a href="index.html" class="social-btn">Live Demo 👁️</a>
                 </div>
             </div>
 
@@ -136,7 +207,7 @@
                     </div>
                 </div>
                 <div class="p-footer">
-                    <a href="about.html" class="social-btn" style="padding: 5px 15px; font-size: 0.9rem;">View Research 📜</a>
+                    <a href="about.html" class="social-btn">View Research 📜</a>
                 </div>
             </div>
 
@@ -151,7 +222,7 @@
                     </div>
                 </div>
                 <div class="p-footer">
-                    <a href=" https://bhargavsinh.github.io/studentdatamanagement.github.io/index.html" class="social-btn" style="padding: 5px 15px; font-size: 0.9rem; background: #555;">visit hear 💻</a>
+                    <a href=" https://bhargavsinh.github.io/studentdatamanagement.github.io/index.html" class="social-btn" style="background: #444;">visit hear 💻</a>
                 </div>
             </div>
 
