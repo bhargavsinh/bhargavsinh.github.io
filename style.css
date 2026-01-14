@@ -203,3 +203,39 @@ footer {
 body { top: 0px !important; }
 .iframe-shield { position: relative; }
 .iframe-shield::after { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: transparent; z-index: 9999; }
+
+/* --- CONTACT PAGE CARDS CSS --- */
+
+.contact-grid {
+    display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 30px;
+}
+
+/* ડાબી બાજુનું કાર્ડ */
+.contact-info-card {
+    flex: 1 1 300px; padding: 30px; text-align: left; height: fit-content;
+    
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.45); 
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8); 
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius); 
+    border-top: 5px solid var(--maroon);
+}
+
+/* જમણી બાજુનું કાર્ડ (Appointment) */
+.appointment-card {
+    flex: 1 1 400px; padding: 25px; text-align: center;
+
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.45); 
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8); 
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius); 
+    border-top: 5px solid var(--gold);
+}
+
+/* Google Form Styling */
+.google-form-wrapper { width: 100%; overflow: hidden; border-radius: 10px; }
+
