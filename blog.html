@@ -2,146 +2,223 @@
 <html lang="gu">
 <head>
     <meta charset="UTF-8">
-    <title>Pushtimarg Research Articles | Sisodiya Bhargavsinh | પુષ્ટિમાર્ગીય લેખ</title>
+    <title>Pushtimarg Research Articles | Sisodiya Bhargavsinh</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Read research articles by Sisodiya Bhargavsinh on Pushtimarg, Gruh Seva, and Indian Culture. પુષ્ટિમાર્ગ અને ગૃહ સેવા વિશેના મૌલિક સંશોધન લેખો વાંચો.">
+    <meta name="description" content="Read research articles by Sisodiya Bhargavsinh on Pushtimarg, Gruh Seva, and Indian Culture.">
     <meta name="robots" content="index, follow, noai, noimageai"> 
     
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com;">
 
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* ROYAL GLASS THEME */
+        /* --- ROYAL BLOG THEME --- */
+
+        :root {
+            --maroon: #7b1c1c;
+            --gold: #daa520;
+        }
+
         body {
             background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
             background-attachment: fixed;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Noto Sans', sans-serif;
+            color: #2c1a1a;
+            margin: 0;
         }
 
-        /* Glass Cards - Updated to support 'article' tag */
-        article.blog-card, .research-disclaimer {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+        /* Hero Title */
+        h1 {
+            text-align: center;
+            font-family: 'Yatra One', cursive;
+            color: var(--maroon);
+            font-size: 2.5rem;
+            margin-top: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .divider {
+            text-align: center; font-size: 1.5rem; margin-bottom: 30px; margin-top: 5px;
+        }
+
+        /* Blog Card Style */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        article.blog-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.8);
+            border-left: 5px solid var(--maroon);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 25px;
             transition: transform 0.3s;
         }
 
         article.blog-card:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.7);
-            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 15px 35px rgba(218, 165, 32, 0.15);
+            border-left-color: var(--gold);
         }
 
-        /* DISCLAIMER STYLE */
-        .research-disclaimer {
-            border-left: 5px solid #c00;
-            background: rgba(255, 245, 245, 0.6); 
-        }
-        .disclaimer-title {
-            color: #c00;
-            font-weight: bold;
-            font-family: 'Yatra One', cursive;
-            font-size: 1.1rem;
-            border-bottom: 1px dashed #c00;
-            display: block;
+        .blog-meta {
+            font-size: 0.85rem;
+            color: #666;
             margin-bottom: 10px;
-        }
-        .copyright-warning {
-            margin-top: 10px;
             font-weight: bold;
-            color: #7b1c1c;
-            background: #fff;
-            padding: 8px;
-            border: 1px solid #7b1c1c;
+            display: flex; gap: 15px;
+        }
+
+        h2 {
+            font-family: 'Yatra One', cursive;
+            color: var(--maroon);
+            font-size: 1.6rem;
+            margin: 10px 0;
+        }
+        
+        h2 a { text-decoration: none; color: inherit; transition: 0.3s; }
+        h2 a:hover { color: var(--gold); }
+
+        p {
+            text-align: justify;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #333;
+        }
+
+        /* Disclaimer Box */
+        .research-disclaimer {
+            background: rgba(255, 240, 240, 0.7);
+            border: 1px solid #ffcccc;
+            border-left: 5px solid #c00;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .disclaimer-title {
+            color: #c00; font-weight: bold; font-family: 'Yatra One', cursive;
+            font-size: 1.2rem; display: block; margin-bottom: 10px;
+            border-bottom: 1px dashed #c00; padding-bottom: 5px;
+        }
+
+        .copyright-warning {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #fff;
+            background: var(--maroon);
+            padding: 8px 15px;
             border-radius: 5px;
             display: inline-block;
             font-size: 0.85rem;
         }
 
-        /* NAV LINKS */
-        .nav-link { text-decoration: none; color: #333; font-weight: bold; margin: 0 10px; transition: color 0.3s; }
-        .nav-link:hover { color: #7b1c1c; }
+        /* Button */
+        .social-btn {
+            background: var(--maroon); color: white; padding: 10px 25px;
+            text-decoration: none; border-radius: 5px; display: inline-block;
+            margin-top: 15px; font-weight: bold; transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .social-btn:hover {
+            background: transparent; color: var(--maroon); border-color: var(--maroon);
+        }
+
+        /* Nav Link Hover */
+        .nav-link { transition: 0.3s; }
+        .nav-link:hover { color: var(--gold) !important; }
+
+        /* Mobile Fix */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .blog-container { padding: 0 15px; }
+        }
     </style>
 </head>
 <body>
 
-    <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px; background: rgba(255, 248, 236, 0.9); border-bottom: 3px solid var(--gold);">
+    <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px; background: rgba(255, 248, 236, 0.9); border-bottom: 3px solid var(--gold); backdrop-filter: blur(10px);">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="logo.png" alt="Sisodiya Bhargavsinh Pushtimarg Research" style="height: 50px; width: auto; border-radius: 5px;">
-            <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: #7b1c1c;">Sisodiya Bhargavsinh</span>
+            <img src="logo.png" alt="Logo" style="height: 50px; border-radius: 5px;">
+            <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: var(--maroon);">Sisodiya Bhargavsinh</span>
         </div>
         <ul style="display: flex; gap: 15px; list-style: none; margin: 0; padding: 10px 0; flex-wrap: wrap; justify-content: center;">
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="about.html" class="nav-link">About</a></li>
-            <li><a href="pushtimarg.html" class="nav-link">પુષ્ટિમાર્ગ</a></li>
-            <li><a href="projects.html" class="nav-link">પ્રોજેક્ટ્સ</a></li>
-            <li><a href="resume.html" class="nav-link">Resume</a></li>
-            <li><a href="blog.html" class="nav-link" style="color: #7b1c1c; border-bottom: 2px solid #7b1c1c;">Articles</a></li>
-            <li><a href="contact.html" class="nav-link">સંપર્ક</a></li>
+            <li><a href="index.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Home</a></li>
+            <li><a href="about.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">About</a></li>
+            <li><a href="pushtimarg.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Pushtimarg</a></li>
+            <li><a href="projects.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Projects</a></li>
+            <li><a href="resume.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Resume</a></li>
+            <li><a href="blog.html" class="nav-link" style="color: var(--gold); text-decoration: none; font-weight: bold;">Articles</a></li>
+            <li><a href="contact.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Contact</a></li>
         </ul>
     </nav>
 
     <main>
         <section>
-            <marquee style="color: var(--maroon); background: rgba(255,255,255,0.5); padding: 5px; border-bottom: 2px solid var(--gold); border-radius: 10px; margin-bottom: 20px;">
+            <marquee style="color: var(--maroon); background: rgba(255,255,255,0.5); padding: 8px; border-bottom: 2px dashed var(--gold); border-radius: 5px; margin-bottom: 20px; font-weight: bold;">
                 || સત્યમ વદ || ધર્મમ ચર || મારા વિચારો અને સંશોધન ||
             </marquee>
 
-            <h1 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 10px;">Articles & Research</h1>
+            <h1>Articles & Research</h1>
             <div class="divider">✒️</div>
 
-            <div class="research-disclaimer" data-aos="fade-down">
-                <span class="disclaimer-title">⚠️ કાયદાકીય અસ્વીકરણ (Legal Disclaimer)</span>
-                <p style="text-align: justify; font-size: 0.95rem;">
-                    ૧. આ સંશોધન અહેવાલ સંપૂર્ણપણે શ્રી મહાપ્રભુજીના મૂળ ગ્રંથો અને વચનામૃતો પર આધારિત છે. પ્રસ્તુત લેખનો હેતુ માત્ર શાસ્ત્રીય સત્ય ઉજાગર કરવાનો છે, <b>કોઈપણ વ્યક્તિ, સંસ્થા, હવેલી, ટ્રસ્ટ કે સંપ્રદાયના આચાર્ય ની ભાવના દુભાવવાનો લેખકનો લેશમાત્રપણ હેતુ નથી.</b>
-                    <br><br>
-                    ૨. આ એક સ્વતંત્ર સંશોધન છે. વાંચકે આમાં રજૂ કરેલા તથ્યોનું અર્થઘટન કરતી વખતે સ્વયંની <b>વિવેક બુદ્ધિ (Self-Discretion)</b> નો ઉપયોગ કરવો.
-                </p>
-                <div class="copyright-warning">
-                    ૩. © Copyright Warning: આ આર્ટિકલના તમામ કોપીરાઈટ લેખક (સિસોદિયા ભાર્ગવસિંહ) ને આધીન છે.
-                </div>
-            </div>
+            <div class="blog-container">
 
-            <article class="blog-card" data-aos="fade-up">
-                <div class="blog-meta">
-                    <time datetime="2025-12-30">📅 30 Dec 2025</time>
-                    <span>✒️ Research Report</span>
+                <div class="research-disclaimer" data-aos="fade-down">
+                    <span class="disclaimer-title">⚠️ કાયદાકીય અસ્વીકરણ (Legal Disclaimer)</span>
+                    <p>
+                        ૧. આ સંશોધન અહેવાલ સંપૂર્ણપણે શ્રી મહાપ્રભુજીના મૂળ ગ્રંથો અને વચનામૃતો પર આધારિત છે. પ્રસ્તુત લેખનો હેતુ માત્ર શાસ્ત્રીય સત્ય ઉજાગર કરવાનો છે, <b>કોઈપણ વ્યક્તિ, સંસ્થા, હવેલી, ટ્રસ્ટ કે સંપ્રદાયના આચાર્ય ની ભાવના દુભાવવાનો લેખકનો લેશમાત્રપણ હેતુ નથી.</b>
+                        <br><br>
+                        ૨. આ એક સ્વતંત્ર સંશોધન છે. વાંચકે આમાં રજૂ કરેલા તથ્યોનું અર્થઘટન કરતી વખતે સ્વયંની <b>વિવેક બુદ્ધિ (Self-Discretion)</b> નો ઉપયોગ કરવો.
+                    </p>
+                    <div class="copyright-warning">
+                        ૩. © Copyright Warning: આ આર્ટિકલના તમામ કોપીરાઈટ લેખક (સિસોદિયા ભાર્ગવસિંહ) ને આધીન છે.
+                    </div>
                 </div>
-                <h2 style="font-family: 'Yatra One'; color: var(--maroon); font-size: 1.4rem; margin-top:5px;">
-                    <a href="pushtimarg-ma-gruh-seva.html" style="text-decoration:none; color:inherit;">
-                        પુષ્ટિમાર્ગ માં ગૃહ સેવા
+
+                <article class="blog-card" data-aos="fade-up">
+                    <div class="blog-meta">
+                        <time datetime="2025-12-30">📅 30 Dec 2025</time>
+                        <span>✒️ Research Report</span>
+                    </div>
+                    <h2>
+                        <a href="pushtimarg-ma-gruh-seva.html">
+                            પુષ્ટિમાર્ગ માં ગૃહ સેવા
+                        </a>
+                    </h2>
+                    <p> 
+                        વર્તમાન સમયમાં 'ગૃહ સેવા' અને 'હવેલી સેવા' વચ્ચેના તફાવત વિશે ઘણી ગેરસમજણો છે. સ્વમાર્ગીય સિદ્ધાંત તો સ્પષ્ટ જ છે: <b> "નિજ ગૃહ માં નિજ સેવ્ય ની જ સેવા". (પોતાના ઘરે જ સેવા કરવી) સેવા તો માત્ર અને માત્ર 'નિજ ગૃહ' (પોતાના ઘર) માં પોતાના જ તન અને પોતાના જ ધન થી કરવી તેજ </b> સિદ્ધાંતસંમત અને પુષ્ટિમાર્ગીય રીત અનુસાર છે. આ સંશોધન અહેવાલ ષોડશ ગ્રંથોના આધારે સિદ્ધ કરે છે કે, 'ગૃહ સેવા' જ એકમાત્ર શાસ્ત્રસંમત માર્ગ છે.
+                    </p>
+
+                    <a href="pushtimarg-ma-gruh-seva.html" class="social-btn">
+                        સંપૂર્ણ લેખ વાંચો &rarr;
                     </a>
-                </h2>
-                <p style="text-align: justify; color: #444;"> 
-                    વર્તમાન સમયમાં 'ગૃહ સેવા' અને 'હવેલી સેવા' વચ્ચેના તફાવત વિશે ઘણી ગેરસમજણો છે. સ્વમાર્ગીય સિદ્ધાંત તો સ્પષ્ટ જ છે: <b> "નિજ ગૃહ માં નિજ સેવ્ય ની જ સેવા". (પોતાના ઘરે જ સેવા કરવી) સેવા તો માત્ર અને માત્ર 'નિજ ગૃહ' (પોતાના ઘર) માં પોતાના જ તન અને પોતાના જ ધન થી કરવી તેજ </b> સિદ્ધાંતસંમત અને પુષ્ટિમાર્ગીય રીત અનુસાર છે. આ સંશોધન અહેવાલ ષોડશ ગ્રંથોના આધારે સિદ્ધ કરે છે કે, 'ગૃહ સેવા' જ એકમાત્ર શાસ્ત્રસંમત માર્ગ છે.
-                </p>
+                </article>
+          
+                <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-meta">
+                        <time datetime="2025-12-28">📅 28 Dec 2025</time>
+                        <span>🕒 10:34 am</span>
+                    </div>
+                    <h2>પુષ્ટિમાર્ગ અને આધુનિક યુગ</h2>
+                    <p>
+                        આજના ડિજિટલ યુગમાં આપણે ટેકનોલોજીનો ઉપયોગ કરીને ઠાકોરજીની સેવા કરી શકીએ છીએ. સ્માર્ટફોનનો ઉપયોગ માત્ર મનોરંજન માટે જ નહીં, પણ સત્સંગ માટે પણ થઈ શકે છે.
+                    </p>
+                </article>
 
-                <a href="pushtimarg-ma-gruh-seva.html" class="social-btn" style="display: inline-block; padding: 8px 25px; font-size: 0.9rem; margin-top: 10px;">
-                    સંપૂર્ણ લેખ વાંચો &rarr;
-                </a>
-            </article>
-      
-            <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="blog-meta">
-                    <time datetime="2025-12-28">📅 28 Dec 2025</time>
-                    <span>🕒 10:34 am</span>
-                </div>
-                <h2 style="font-family: 'Yatra One'; color: var(--maroon); font-size: 1.4rem; margin-top:5px;">પુષ્ટિમાર્ગ અને આધુનિક યુગ</h2>
-                <p style="text-align: justify;">
-                    આજના ડિજિટલ યુગમાં આપણે ટેકનોલોજીનો ઉપયોગ કરીને ઠાકોરજીની સેવા કરી શકીએ છીએ. સ્માર્ટફોનનો ઉપયોગ માત્ર મનોરંજન માટે જ નહીં, પણ સત્સંગ માટે પણ થઈ શકે છે.
-                </p>
-            </article>
-
+            </div>
         </section>
     </main>
 
