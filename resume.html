@@ -22,9 +22,10 @@
             background-attachment: fixed;
             font-family: 'Noto Sans', sans-serif;
             color: #2c1a1a;
+            margin: 0;
         }
 
-        /* Resume Paper Container (Glass Effect) */
+        /* Resume Paper Container */
         .resume-paper {
             max-width: 850px;
             margin: 40px auto;
@@ -62,6 +63,7 @@
             margin: 10px 0;
             text-transform: uppercase;
             letter-spacing: 1px;
+            line-height: 1.3;
         }
 
         .resume-sub {
@@ -73,6 +75,7 @@
             font-size: 0.95rem; color: #444; background: #fff8ec;
             display: inline-block; padding: 8px 20px; border-radius: 50px;
             border: 1px solid var(--gold);
+            word-break: break-all; /* મોબાઈલમાં ઈમેલ તૂટે નહીં */
         }
 
         /* Section Titles */
@@ -89,10 +92,9 @@
             padding-top: 5px; padding-bottom: 5px;
         }
 
-        /* Content Text */
         p, li { line-height: 1.7; text-align: justify; }
 
-        /* Education Table (Timeline Look) */
+        /* Education Table */
         .edu-table { width: 100%; border-collapse: collapse; }
         .edu-table td { padding: 15px 10px; vertical-align: top; border-bottom: 1px solid #eee; }
         .edu-year {
@@ -100,28 +102,21 @@
             font-family: 'Playfair Display', serif; font-size: 1.1rem;
         }
 
-        /* Skills Badges */
+        /* Skills */
         .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
         .skill-badge {
             background: #fff; border: 1px solid var(--maroon); color: var(--maroon);
             padding: 6px 18px; border-radius: 25px; font-size: 0.9rem; font-weight: 600;
             transition: 0.3s;
         }
-        .skill-badge:hover {
-            background: var(--maroon); color: #fff; transform: scale(1.05);
-            box-shadow: 0 5px 10px rgba(123, 28, 28, 0.2);
-        }
 
-        /* Official Letter Button */
         .view-btn {
             display: inline-block; background-color: var(--maroon); color: white;
             padding: 8px 20px; font-size: 0.85rem; text-decoration: none; border-radius: 5px;
             margin-top: 10px; transition: background 0.3s;
             box-shadow: 0 4px 10px rgba(123, 28, 28, 0.3);
         }
-        .view-btn:hover { background-color: #5c0000; transform: translateY(-2px); }
 
-        /* Personal Details Grid */
         .personal-details-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px; background: #fafafa; padding: 20px; border-radius: 8px;
@@ -129,12 +124,36 @@
         }
 
         /* SECURITY: DISABLE PRINTING */
-        /* જો કોઈ Ctrl+P દબાવે તો બધું ગાયબ થઈ જશે */
         @media print {
-            html, body {
-                display: none !important;
-                height: 0;
-                overflow: hidden;
+            html, body { display: none !important; height: 0; overflow: hidden; }
+        }
+
+        /* --- MOBILE RESPONSIVE FIX (અહીં મુખ્ય સુધારો છે) --- */
+        @media (max-width: 600px) {
+            .resume-paper {
+                margin: 10px;
+                padding: 20px 15px; /* સાઈડનું પેડિંગ ઘટાડ્યું */
+                width: auto;
+            }
+            
+            .resume-name {
+                /* ફોન્ટ સાઈઝ સ્ક્રીનની પહોળાઈના 7% રહેશે, જેથી ક્યારેય બહાર નહીં જાય */
+                font-size: clamp(1.4rem, 7vw, 2rem) !important; 
+                word-wrap: break-word; /* લાંબા શબ્દોને તોડશે */
+                line-height: 1.2;
+            }
+
+            .profile-img {
+                width: 120px; height: 120px;
+            }
+
+            .edu-year {
+                width: 100%; display: block; margin-bottom: 5px;
+            }
+            .edu-table td { display: block; padding: 5px 0; }
+            
+            .personal-details-grid {
+                grid-template-columns: 1fr; /* મોબાઈલમાં એક લાઈનમાં */
             }
         }
     </style>
@@ -157,10 +176,10 @@
         
         <div class="resume-header">
             <img src="bhargavsinh.webp" alt="Sisodiya Bhargavsinh" class="profile-img">
-            <h3 class="resume-name"> <center>Sisodiya Bhargavsinh Mahendrasinh</center> </h3>
+            <h1 class="resume-name">Sisodiya Bhargavsinh Mahendrasinh</h1>
             <p class="resume-sub">BCA Student | Computer Applications</p>
             <div class="contact-info">
-                📧 bhargavsinh.bca@gmail.com &nbsp;|&nbsp; 
+                📧 bhargavsinh[dot]bca[at]gmail [dot]com <br> 
                 📍 Lunawada, Gujarat, India
             </div>
         </div>
