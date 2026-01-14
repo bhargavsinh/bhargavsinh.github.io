@@ -5,139 +5,186 @@
     <title>Legal Warning & Disclaimer | Sisodiya Bhargavsinh</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow"> <link rel="stylesheet" href="style.css">
+    <meta name="robots" content="noindex, nofollow"> <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; frame-src 'self' https://www.google.com;">
+
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
     <style>
-        /* --- SUPREME COURT STYLE THEME --- */
+        /* --- ROYAL LEGAL THEME --- */
+        
+        :root {
+            --maroon: #7b1c1c;
+            --gold: #daa520;
+        }
+
         body {
-            background-color: #fdfbf7; /* Off-white legal paper color */
-            background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png"); /* Paper Texture */
+            /* Website Theme Background */
+            background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
+            background-attachment: fixed;
             font-family: 'Noto Serif Gujarati', serif;
             color: #1a1a1a;
+            margin: 0;
+            padding-bottom: 50px;
         }
 
-        /* Warning Strip at Top */
+        /* Moving Warning Strip */
         .warning-strip {
-            background: #8b0000;
+            background: var(--maroon);
             color: #fff;
-            padding: 8px;
+            padding: 10px;
             text-align: center;
             font-weight: bold;
-            font-family: 'Noto Sans Gujarati', sans-serif;
+            font-family: sans-serif;
             letter-spacing: 1px;
-            border-bottom: 2px solid #ffd700;
+            border-bottom: 3px solid var(--gold);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        /* Main Legal Document Container */
+        /* The Legal Paper (Stamp Paper Look) */
         .legal-doc {
             max-width: 850px;
-            margin: 40px auto;
-            background: #fff;
-            border: 1px solid #d4af37; /* Gold Border */
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            padding: 60px;
+            margin: 50px auto;
+            background-color: #fdfbf7; /* Cream Paper Color */
+            background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+            border: 1px solid #d4af37;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15); /* Floating Effect */
+            padding: 70px;
             position: relative;
+            border-radius: 5px;
         }
 
-        /* Border inside the paper (Double Border Effect) */
-        .legal-doc::before {
+        /* Inner Decorative Border */
+        .legal-doc::after {
             content: '';
             position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 2px solid #8b0000; /* Maroon Inner Border */
+            top: 15px; left: 15px; right: 15px; bottom: 15px;
+            border: 2px solid var(--maroon);
             pointer-events: none;
         }
 
-        /* Watermark (પાછળ ઝાંખું લખાણ) */
+        .legal-doc::before {
+            content: '';
+            position: absolute;
+            top: 18px; left: 18px; right: 18px; bottom: 18px;
+            border: 1px dashed var(--gold);
+            pointer-events: none;
+        }
+
+        /* Watermark */
         .watermark {
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%) rotate(-45deg);
             font-size: 6rem;
-            color: rgba(139, 0, 0, 0.03); /* Very light maroon */
+            color: rgba(139, 0, 0, 0.04);
             font-weight: bold;
             white-space: nowrap;
             pointer-events: none;
+            user-select: none;
             z-index: 0;
+            font-family: 'Cinzel', serif;
         }
 
         /* Title */
         h1.doc-title {
             text-align: center;
-            font-family: 'Cinzel', serif; /* Royal English Font */
-            color: #8b0000;
-            border-bottom: 2px solid #1a1a1a;
-            padding-bottom: 10px;
+            font-family: 'Cinzel', serif;
+            color: var(--maroon);
+            border-bottom: 3px double #1a1a1a;
+            padding-bottom: 15px;
             margin-bottom: 40px;
             text-transform: uppercase;
-            font-size: 1.8rem;
+            font-size: 2rem;
             letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Sections */
+        /* Clauses */
         .clause {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             position: relative;
             z-index: 1;
         }
 
         h3.clause-title {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: #000;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             text-decoration: underline;
+            text-decoration-color: var(--maroon);
         }
 
         p {
-            font-size: 1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
             text-align: justify;
             margin-bottom: 15px;
+            color: #222;
         }
 
-        /* Highlighted Text (Red) */
+        /* Highlighted Text */
         .strict-text {
             color: #d32f2f;
             font-weight: bold;
-            background: rgba(255, 0, 0, 0.05);
-            padding: 0 3px;
+            background: rgba(255, 0, 0, 0.08);
+            padding: 2px 5px;
+            border-radius: 3px;
         }
 
-        /* Official Seal (સિક્કો) */
+        /* Official Seal */
         .official-seal {
             float: right;
-            border: 3px double #8b0000;
+            border: 4px double var(--maroon);
             border-radius: 50%;
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: #8b0000;
+            color: var(--maroon);
             font-weight: bold;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             margin-top: 20px;
-            transform: rotate(-10deg);
-            opacity: 0.8;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.1"><text x="10" y="50" font-size="20">SEALED</text></svg>');
+            transform: rotate(-15deg);
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 0 5px rgba(139, 0, 0, 0.1);
+            font-family: 'Cinzel', serif;
         }
 
         /* Back Button */
         .back-btn {
-            display: block; width: fit-content; margin: 30px auto;
-            text-decoration: none; color: #8b0000; border: 1px solid #8b0000;
-            padding: 10px 20px; font-weight: bold; transition: 0.3s;
+            display: block; width: fit-content; margin: 0 auto;
+            text-decoration: none; 
+            background: var(--maroon);
+            color: #fff; 
+            border: 1px solid var(--maroon);
+            padding: 12px 30px; font-weight: bold; 
+            transition: 0.3s;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-family: sans-serif;
         }
-        .back-btn:hover { background: #8b0000; color: #fff; }
+        .back-btn:hover { 
+            background: var(--gold); 
+            color: #000; 
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
 
+        /* Mobile Adjustments */
         @media (max-width: 600px) {
-            .legal-doc { padding: 30px 20px; margin: 20px 10px; }
-            h1.doc-title { font-size: 1.4rem; }
-            .official-seal { width: 90px; height: 90px; font-size: 0.7rem; }
+            .legal-doc { padding: 40px 25px; margin: 30px 15px; }
+            h1.doc-title { font-size: 1.5rem; }
+            .official-seal { width: 100px; height: 100px; font-size: 0.7rem; float: none; margin: 20px auto; }
+            .watermark { font-size: 3rem; }
         }
     </style>
 </head>
@@ -147,7 +194,9 @@
         <marquee scrollamount="8">⚠️ NOTICE: ANY COPYING OF CONTENT FROM THIS SITE IS A PUNISHABLE OFFENCE UNDER INDIAN LAW. ⚠️</marquee>
     </div>
 
-    <nav style="display:none;"></nav> <div class="legal-doc">
+    <nav style="display:none;"></nav> 
+    
+    <div class="legal-doc">
         
         <div class="watermark">LEGAL COPY</div>
 
@@ -172,8 +221,7 @@
                 તેમ છતાં, જો કોઈ વ્યક્તિ આ લેખના લખાણને સંદર્ભ (Context) વગર તોડી-મરોડીને રજૂ કરશે અથવા તેનું ખોટું અર્થઘટન કરી સમાજમાં ગેરસમજ ફેલાવશે, તો તે વ્યક્તિ વિરુદ્ધ <b>BNS કલમ ૨૯૯</b> (ધાર્મિક લાગણી દુભાવવી) અને <b>BNS કલમ ૩૫૬</b> (બદનક્ષી/Defamation) હેઠળ કડક પગલાં લેવામાં આવશે. સત્ય અને સિદ્ધાંતની મર્યાદામાં રહીને રજૂઆત કરવી એ અમારો બંધારણીય અધિકાર છે.
             </p>
         </div>
-
-        <div class="clause">
+   <div class="clause">
             <h3 class="clause-title">૩. સાયબર સુરક્ષા અને અનધિકૃત પ્રવેશ</h3>
             <p>
                 આ વેબસાઇટના સોર્સ કોડ (Source Code) સાથે કોઈપણ પ્રકારના ચેડાં કરવા (Tampering), ડેટા ચોરી કરવાનો પ્રયાસ કરવો અથવા વેબસાઇટને નુકસાન પહોંચાડવું એ <b>'ઇન્ફોર્મેશન ટેકનોલોજી એક્ટ, ૨૦૦૦' ની કલમ ૬૬</b> હેઠળ દંડનીય અપરાધ છે. આવી કોઈપણ અનધિકૃત (Unauthorized) પ્રવૃત્તિ સાયબર ક્રાઈમ હેઠળ ગણવામાં આવશે અને તે મુજબ કાયદાકીય કાર્યવાહી કરવામાં આવશે.
@@ -219,7 +267,7 @@
             if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
             if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
             if(e.ctrlKey && e.keyCode == 'P'.charCodeAt(0)) { return false; } 
-            // Disable PrintScreen (PrntScrn) - Though hard to block 100%, this works in some browsers
+            // Disable PrintScreen (PrntScrn)
             if (e.key == "PrintScreen") {
                 navigator.clipboard.writeText("");
                 alert("Screenshots are strictly prohibited on this legal page.");
