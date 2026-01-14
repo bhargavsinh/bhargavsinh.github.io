@@ -15,8 +15,13 @@
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
     <style>
-        /* --- ROYAL RESUME STYLES --- */
+        /* --- ROYAL RESUME THEME --- */
         
+        :root {
+            --maroon: #7b1c1c;
+            --gold: #daa520;
+        }
+
         body {
             background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
             background-attachment: fixed;
@@ -25,18 +30,18 @@
             margin: 0;
         }
 
-        /* Resume Paper Container */
+        /* Resume Paper Container (Glass Effect) */
         .resume-paper {
             max-width: 850px;
             margin: 40px auto;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 50px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             border: 1px solid rgba(255, 255, 255, 0.9);
             border-top: 6px solid var(--maroon);
-            border-radius: 5px;
+            border-radius: 10px;
             position: relative;
         }
 
@@ -54,7 +59,9 @@
             border: 4px solid var(--gold);
             box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4);
             margin-bottom: 15px;
+            transition: transform 0.3s;
         }
+        .profile-img:hover { transform: scale(1.05); }
 
         .resume-name {
             font-family: 'Yatra One', cursive;
@@ -64,111 +71,137 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             line-height: 1.3;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .resume-sub {
-            font-size: 1.1rem; color: #555; font-weight: bold; margin-bottom: 10px;
+            font-size: 1.1rem; color: #555; font-weight: bold; margin-bottom: 15px;
             font-family: 'Playfair Display', serif;
         }
 
         .contact-info {
-            font-size: 0.95rem; color: #444; background: #fff8ec;
-            display: inline-block; padding: 8px 20px; border-radius: 50px;
+            font-size: 0.95rem; color: #444; 
+            background: rgba(255, 255, 255, 0.6);
+            display: inline-block; padding: 10px 25px; border-radius: 50px;
             border: 1px solid var(--gold);
-            word-break: break-all; /* મોબાઈલમાં ઈમેલ તૂટે નહીં */
+            word-break: break-all;
         }
 
         /* Section Titles */
         .section-title {
             color: var(--maroon);
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             text-transform: uppercase;
             border-left: 5px solid var(--gold);
             padding-left: 15px;
-            margin-top: 35px; margin-bottom: 20px;
+            margin-top: 40px; margin-bottom: 20px;
             font-family: 'Yatra One', cursive;
-            background: linear-gradient(90deg, rgba(218,165,32,0.1), transparent);
-            padding-top: 5px; padding-bottom: 5px;
+            background: linear-gradient(90deg, rgba(218,165,32,0.15), transparent);
+            padding-top: 8px; padding-bottom: 8px;
+            border-radius: 0 5px 5px 0;
         }
 
-        p, li { line-height: 1.7; text-align: justify; }
+        p, li { line-height: 1.8; text-align: justify; font-size: 1.05rem; }
 
         /* Education Table */
-        .edu-table { width: 100%; border-collapse: collapse; }
-        .edu-table td { padding: 15px 10px; vertical-align: top; border-bottom: 1px solid #eee; }
+        .edu-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .edu-table td { 
+            padding: 15px 10px; vertical-align: top; 
+            border-bottom: 1px solid rgba(218, 165, 32, 0.3); 
+        }
         .edu-year {
             font-weight: bold; color: var(--maroon); width: 130px;
             font-family: 'Playfair Display', serif; font-size: 1.1rem;
         }
 
         /* Skills */
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 15px; }
         .skill-badge {
-            background: #fff; border: 1px solid var(--maroon); color: var(--maroon);
-            padding: 6px 18px; border-radius: 25px; font-size: 0.9rem; font-weight: 600;
-            transition: 0.3s;
+            background: #fff; border: 1px solid var(--gold); color: var(--maroon);
+            padding: 8px 20px; border-radius: 25px; font-size: 0.95rem; font-weight: 600;
+            transition: 0.3s; box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+        }
+        .skill-badge:hover {
+            background: var(--maroon); color: #fff; transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(123, 28, 28, 0.2);
+        }
+
+        /* Leadership Box */
+        .leadership-box {
+            background: rgba(255, 253, 245, 0.8);
+            border: 2px dashed var(--gold);
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
         }
 
         .view-btn {
             display: inline-block; background-color: var(--maroon); color: white;
-            padding: 8px 20px; font-size: 0.85rem; text-decoration: none; border-radius: 5px;
-            margin-top: 10px; transition: background 0.3s;
+            padding: 10px 25px; font-size: 0.9rem; text-decoration: none; border-radius: 5px;
+            margin-top: 15px; transition: background 0.3s;
             box-shadow: 0 4px 10px rgba(123, 28, 28, 0.3);
+            border: 1px solid transparent;
+        }
+        .view-btn:hover { 
+            background-color: #fff; color: var(--maroon); border-color: var(--maroon);
+            transform: translateY(-2px); 
         }
 
         .personal-details-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px; background: #fafafa; padding: 20px; border-radius: 8px;
-            border: 1px dashed #ccc;
+            gap: 15px; background: rgba(255, 255, 255, 0.5); padding: 25px; border-radius: 10px;
+            border: 1px solid rgba(218, 165, 32, 0.3);
         }
+
+        /* Nav Link Hover */
+        .nav-link { transition: 0.3s; }
+        .nav-link:hover { color: var(--gold) !important; }
 
         /* SECURITY: DISABLE PRINTING */
         @media print {
             html, body { display: none !important; height: 0; overflow: hidden; }
         }
 
-        /* --- MOBILE RESPONSIVE FIX (અહીં મુખ્ય સુધારો છે) --- */
+        /* --- MOBILE RESPONSIVE FIX --- */
         @media (max-width: 600px) {
             .resume-paper {
-                margin: 10px;
-                padding: 20px 15px; /* સાઈડનું પેડિંગ ઘટાડ્યું */
+                margin: 15px;
+                padding: 25px 15px;
                 width: auto;
             }
             
             .resume-name {
                 /* ફોન્ટ સાઈઝ સ્ક્રીનની પહોળાઈના 7% રહેશે, જેથી ક્યારેય બહાર નહીં જાય */
-                font-size: clamp(1.4rem, 7vw, 2rem) !important; 
-                word-wrap: break-word; /* લાંબા શબ્દોને તોડશે */
+                font-size: clamp(1.4rem, 7vw, 2.2rem) !important; 
+                word-wrap: break-word;
                 line-height: 1.2;
             }
 
-            .profile-img {
-                width: 120px; height: 120px;
-            }
+            .profile-img { width: 130px; height: 130px; }
 
-            .edu-year {
-                width: 100%; display: block; margin-bottom: 5px;
-            }
-            .edu-table td { display: block; padding: 5px 0; }
+            .edu-year { width: 100%; display: block; margin-bottom: 5px; color: var(--gold); }
+            .edu-table td { display: block; padding: 10px 0; }
             
-            .personal-details-grid {
-                grid-template-columns: 1fr; /* મોબાઈલમાં એક લાઈનમાં */
-            }
+            .personal-details-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="projects.html">પ્રોજેક્ટ્સ</a></li>
-            <li><a href="resume.html" style="color: var(--gold); font-weight: bold;">Resume</a></li> 
-            <li><a href="pushtimarg.html">પુષ્ટિમાર્ગ</a></li>
-            <li><a href="blog.html">Articles</a></li>
-            <li><a href="contact.html">સંપર્ક</a></li>
+    <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px; background: rgba(255, 248, 236, 0.9); border-bottom: 3px solid var(--gold); backdrop-filter: blur(10px);">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="logo.png" alt="Logo" style="height: 50px; border-radius: 5px;">
+            <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: var(--maroon);">Sisodiya Bhargavsinh</span>
+        </div>
+        <ul style="display: flex; gap: 15px; list-style: none; margin: 0; padding: 10px 0; flex-wrap: wrap; justify-content: center;">
+            <li><a href="index.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Home</a></li>
+            <li><a href="about.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">About</a></li>
+            <li><a href="pushtimarg.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Pushtimarg</a></li>
+            <li><a href="projects.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Projects</a></li>
+            <li><a href="resume.html" class="nav-link" style="color: var(--gold); text-decoration: none; font-weight: bold;">Resume</a></li>
+            <li><a href="blog.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Articles</a></li>
+            <li><a href="contact.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Contact</a></li>
         </ul>
     </nav>
 
@@ -233,7 +266,7 @@
         </ul>
 
         <div class="section-title">Social Leadership & Civic Engagement</div>
-        <div style="background: #fffdf5; border-left: 3px solid var(--maroon); padding: 15px;">
+        <div class="leadership-box">
             <ul>
                 <li style="margin-bottom: 0; line-height: 1.7; list-style: none;">
                     <b>Representation to the President of India:</b><br>
