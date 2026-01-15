@@ -60,9 +60,10 @@
 
         h2, h3 { font-family: 'Yatra One', cursive; color: var(--maroon); text-align: center; }
         h2 { font-size: 2.2rem; }
-        p { line-height: 1.8; text-align: justify; font-size: 1.1rem; }
+        p { line-height: 1.8; text-align: justify; font-size: 1.1rem; margin-bottom: 20px; }
+        .divider { text-align: center; font-size: 1.5rem; margin-bottom: 20px; }
 
-        /* --- TIMELINE STYLE --- */
+        /* --- TIMELINE CSS --- */
         .timeline { position: relative; max-width: 1000px; margin: 50px auto; padding: 0 20px; }
         .timeline::after {
             content: ''; position: absolute; width: 4px; background-color: var(--line-color);
@@ -86,8 +87,21 @@
         .content:hover { transform: scale(1.03); background: #fff; }
 
         .gen-num { font-weight: bold; color: var(--gold); font-size: 0.8rem; text-transform: uppercase; }
-        h4 { margin: 5px 0; color: var(--maroon); font-family: 'Yatra One', cursive; font-size: 1.3rem; }
-        .desc { margin: 0; font-size: 0.9rem; font-weight: bold; color: #555; }
+        h4 { margin: 5px 0; color: var(--maroon); font-family: 'Yatra One', cursive; font-size: 1.3rem; text-align: left;}
+        .desc { margin: 0; font-size: 0.9rem; font-weight: bold; color: #555; text-align: left;}
+
+        /* Official Box */
+        .official-box {
+            background: rgba(255, 253, 245, 0.85); border: 2px solid var(--gold);
+            padding: 30px; margin: 40px auto; max-width: 900px; border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(218, 165, 32, 0.15);
+        }
+        .official-btn {
+            background: var(--maroon); color: #fff; padding: 12px 25px;
+            text-decoration: none; font-weight: bold; border-radius: 5px;
+            display: inline-block; transition: 0.3s; margin-top: 15px;
+        }
+        .official-btn:hover { background: var(--gold); color: #000; }
 
         @media (max-width: 600px) {
             .timeline::after { left: 31px; }
@@ -116,13 +130,17 @@
         </ul>
     </nav>
 
-    <section id="about">
+    <section id="about" style="padding: 0 20px;">
+        
         <div class="intro-card">
             <h2>મારા વિષે</h2>
-            <p>હું, શ્રી મહાપ્રભુજી દ્વારા પ્રણીત <b>"પુષ્ટિભક્તિમાર્ગ"</b> નો નિષ્ઠાવાન અનુયાયી છું. મારા મતે, શુદ્ધાદ્વૈતવાદ માત્ર એક ધાર્મિક વાદ નથી, પરંતુ વિશ્વશાંતિ અને માનવીય સંવેદનાઓને ઉજાગર કરતી એક જીવનશૈલી છે. મને વીર શિરોમણી મહારાણા પ્રતાપના ૧૧મા પુત્ર શ્રી પૂરનમલજી ના વંશજ હોવાનું ગૌરવ છે.</p>
+            <div class="divider">📜</div>
+            <p>હું, શ્રી મહાપ્રભુજી દ્વારા પ્રણીત <b>"પુષ્ટિભક્તિમાર્ગ"</b> નો નિષ્ઠાવાન અનુયાયી છું. મારા મતે, શુદ્ધાદ્વૈતવાદ માત્ર એક ધાર્મિક વાદ નથી, પરંતુ વિશ્વશાંતિ અને માનવીય સંવેદનાઓને ઉજાગર કરતી એક જીવનશૈલી છે.</p>
+            <p><b>વારસો અને માર્ગદર્શન:</b> એક તરફ મને વીર શિરોમણી મહારાણા પ્રતાપના ૧૧મા પુત્ર શ્રી પૂરનમલજી ના (15th Generation) વંશજ હોવાનું ગૌરવ છે, તો બીજી તરફ સમર્થ સદ્દગુરુનું આધ્યાત્મિક માર્ગદર્શન પણ પ્રાપ્ત છે. શૌર્ય અને સમર્પણનો આ સુમેળ મને જીવનના દરેક ક્ષેત્રમાં અડગ રહેવાની પ્રેરણા આપે છે.</p>
         </div>
 
         <h3>।। શ્રી સિસોદિયા વંશાવલી ।।</h3>
+        <p style="text-align: center; font-size: 0.95rem; color: #555;">(મેવાડના મહારાણા પ્રતાપથી ભાર્ગવસિંહ સુધીની ૧૫ પેઢીઓ)</p>
 
         <div class="timeline">
             <div class="container left"><div class="content"><span class="gen-num">પેઢી ૧</span><h4>🛡️ શ્રી મહારાણા પ્રતાપસિંહજી</h4><p class="desc">હિન્દુઆ સૂરજ | મેવાડ અધિપતિ</p></div></div>
@@ -139,9 +157,40 @@
             <div class="container right"><div class="content"><span class="gen-num">પેઢી ૧૨</span><h4>⚔️ શ્રી રણજીતસિંહજી</h4></div></div>
             <div class="container left"><div class="content"><span class="gen-num">પેઢી ૧૩</span><h4>🦁 શ્રી ચંદનસિંહજી</h4><p class="desc">(દાદાજી)</p></div></div>
             <div class="container right"><div class="content"><span class="gen-num">પેઢી ૧૪</span><h4>🦁 શ્રી મહેન્દ્રસિંહજી</h4><p class="desc">(પિતાશ્રી)</p></div></div>
-            <div class="container left"><div class="content" style="border-color: var(--gold);"><span class="gen-num">પેઢી ૧૫</span><h4>🎓 શ્રી ભાર્ગવસિંહજી</h4><p class="desc">BCA Student</p></div></div>
+            <div class="container left"><div class="content" style="border-color: var(--gold);"><span class="gen-num">પેઢી ૧૫</span><h4>🎓 શ્રી ભાર્ગવસિંહજી</h4><p class="desc">BCA Student | Pushtimargiya Vaishnav</p></div></div>
         </div>
+
+        <div class="intro-card" style="border-top-color: var(--gold);">
+            <p><b>શિક્ષણ અને ધ્યેય:</b> વર્તમાનમાં હું <b>BCA (Bachelor of Computer Applications)</b> નો વિદ્યાર્થી છું. મારો ઉદ્દેશ્ય વેબ ડેવલપમેન્ટ અને કોડિંગ જેવી આધુનિક સ્કીલ્સનો ઉપયોગ કરીને એવું ડિજિટલ ભવિષ્ય બનાવવાનો છે જે આપણા પ્રાચીન વારસાને પણ જાળવી રાખે. હું માનું છું કે વિજ્ઞાન અને અધ્યાત્મ એકબીજાના વિરોધી નથી, પરંતુ પૂરક છે.</p>
+        </div>
+
+        <div class="official-box">
+            <div style="text-align: center; border-bottom: 2px solid rgba(0,0,0,0.1); padding-bottom: 20px; margin-bottom: 20px;">
+                <h3 style="color: var(--maroon); margin: 0; font-family: 'Playfair Display', serif; font-size: 1.8rem;">🏛️ રાષ્ટ્ર નિર્માણમાં મારું યોગદાન</h3>
+                <p style="color: #555; font-size: 0.9rem; margin-top: 5px; font-weight: bold;">(Recognized by the President of India)</p>
+            </div>
+            <p>એક સનાતની અને ગૌભક્ત તરીકે, મેં ભારત સરકાર સમક્ષ <strong>"ગૌહત્યા પર સંપૂર્ણ પ્રતિબંધ" (Nationwide Ban on Cow Slaughter)</strong> માટે મજબૂત રજૂઆત કરી હતી. મારા આ પ્રયાસની નોંધ ભારતના સર્વોચ્ચ બંધારણીય પદ - <strong>મહામહિમ રાષ્ટ્રપતિજી (President of India)</strong> ના કાર્યાલય દ્વારા લેવામાં આવી છે.</p>
+            <ul style="list-style: none; padding: 15px; margin: 20px 0; color: #2c1a1a; background: var(--card-glass); border-radius: 5px; text-align: left;">
+                <li style="margin-bottom: 10px;">📅 <strong>તારીખ:</strong> 18 જુલાઈ, 2024</li>
+                <li style="margin-bottom: 10px;">📍 <strong>વિષય:</strong> Request for Nationwide Ban on Cow Slaughter</li>
+                <li style="margin-bottom: 0;">✅ <strong>સ્ટેટસ:</strong> Official Record on Govt Website</li>
+            </ul>
+            <div style="text-align: center;">
+                <a href="https://www.presidentofindia.gov.in/sites/default/files/webform/request_for_president_s_message/7040/request_to_ban_cow_slaughter_in_bharat.pdf" target="_blank" class="official-btn">📄 View Official Letter (presidentofindia.gov.in)</a>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-weight: bold; margin-top: 40px; font-size: 1.4rem; color: var(--maroon); font-family: 'Yatra One', cursive;">“સર્વમ્ શ્રીકૃષ્ણાર્પણમસ્તુ”</p>
     </section>
+
+    <footer>
+        <p style="font-size: 0.8rem; margin-bottom: 5px;"><a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a></p>
+        <marquee style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
+        <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed gold; text-align: center;">
+            <p style="font-size: 0.8rem; color: #ffebcd; margin-bottom: 5px; font-family: sans-serif;">Visitor Count:</p>
+            <a href="https://www.hitwebcounter.com/" target="_blank"><img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" title="Visitor Counter" border="0" /></a>
+        </div>
+    </footer>
 
     <script>
         function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
@@ -151,6 +200,8 @@
             });
             document.querySelectorAll('.container').forEach((el) => observer.observe(el));
         };
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) { if(e.keyCode == 123) return false; }
     </script>
 </body>
 </html>
