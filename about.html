@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>About & Lineage | Sisodiya Bhargavsinh</title>
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About Sisodiya Bhargavsinh - 15th Generation Descendant of Maharana Pratap.">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; frame-src 'self' https://www.google.com https://docs.google.com;">
 
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
@@ -13,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- ROYAL THEME (LIGHT ONLY) --- */
         :root {
             --bg-gradient: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
             --nav-bg: rgba(255, 248, 236, 0.95);
@@ -23,7 +20,6 @@
             --card-glass: rgba(255, 255, 255, 0.7);
             --card-border: rgba(255, 255, 255, 0.8);
             --line-color: #daa520;
-            --timeline-circle: #fff;
         }
 
         body {
@@ -35,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVIGATION --- */
         nav {
             background: var(--nav-bg) !important;
             backdrop-filter: blur(10px);
@@ -47,104 +42,66 @@
         .nav-links { display: flex; gap: 15px; list-style: none; margin: 0; padding: 0; align-items: center; }
         .nav-link { transition: 0.3s; font-weight: bold; text-decoration: none; color: var(--text-main); }
         .nav-link:hover { color: var(--gold) !important; }
-        
         .hamburger { display: none; font-size: 2rem; color: var(--maroon); cursor: pointer; }
 
         @media (max-width: 850px) {
             .hamburger { display: block; }
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--nav-bg); padding: 20px 0; border-bottom: 3px solid var(--gold); box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--nav-bg); padding: 20px 0; border-bottom: 3px solid var(--gold); }
             .nav-links.active { display: flex; animation: slideDown 0.3s ease-in-out; }
         }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- ABOUT CONTENT --- */
         .intro-card {
             max-width: 900px; margin: 40px auto; padding: 30px;
             background: var(--card-glass); backdrop-filter: blur(10px);
             border: 1px solid var(--card-border); border-top: 5px solid var(--maroon);
             border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            animation: fadeIn 1.5s ease;
         }
 
         h2, h3 { font-family: 'Yatra One', cursive; color: var(--maroon); text-align: center; }
-        h2 { font-size: 2.2rem; margin-bottom: 10px; }
-        p { line-height: 1.8; text-align: justify; font-size: 1.1rem; margin-bottom: 20px; }
-        .divider { text-align: center; font-size: 1.5rem; margin-bottom: 20px; }
+        h2 { font-size: 2.2rem; }
+        p { line-height: 1.8; text-align: justify; font-size: 1.1rem; }
 
-        /* --- TIMELINE CSS --- */
-        .timeline {
-            position: relative; max-width: 1000px; margin: 50px auto; padding: 0 20px;
-        }
+        /* --- TIMELINE STYLE --- */
+        .timeline { position: relative; max-width: 1000px; margin: 50px auto; padding: 0 20px; }
         .timeline::after {
             content: ''; position: absolute; width: 4px; background-color: var(--line-color);
-            top: 0; bottom: 0; left: 50%; margin-left: -2px; box-shadow: 0 0 10px var(--gold);
+            top: 0; bottom: 0; left: 50%; margin-left: -2px;
         }
-        .container {
-            padding: 10px 40px; position: relative; width: 50%; box-sizing: border-box;
-            opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out;
-        }
+        .container { padding: 10px 40px; position: relative; width: 50%; box-sizing: border-box; opacity: 0; transform: translateY(30px); transition: 0.6s ease-out; }
         .container.show { opacity: 1; transform: translateY(0); }
         .container::after {
-            content: '⚔️'; position: absolute; width: 35px; height: 35px;
-            right: -21px; background-color: var(--timeline-circle);
-            border: 3px solid var(--gold); top: 20px; border-radius: 50%; z-index: 1;
-            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            content: '🛡️'; position: absolute; width: 30px; height: 30px;
+            right: -17px; background: #fff; border: 2px solid var(--gold);
+            top: 20px; border-radius: 50%; z-index: 1; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
         }
-        .left { left: 0; }
-        .right { left: 50%; }
-        .left::after { right: -21px; }
-        .right::after { left: -21px; }
+        .left { left: 0; } .right { left: 50%; }
+        .left::after { right: -17px; } .right::after { left: -17px; }
 
         .content {
-            padding: 20px 30px; background: var(--card-glass);
-            backdrop-filter: blur(10px); border: 1px solid var(--gold);
-            border-radius: 10px; position: relative; border-left: 5px solid var(--maroon);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s;
+            padding: 15px 25px; background: var(--card-glass);
+            border: 1px solid var(--gold); border-radius: 12px;
+            border-left: 5px solid var(--maroon); transition: 0.3s;
         }
-        .content:hover { transform: scale(1.02); background: rgba(255,255,255,0.9); }
+        .content:hover { transform: scale(1.03); background: #fff; }
 
-        .gen-number {
-            position: absolute; top: -15px; right: -10px; background: var(--maroon);
-            color: #fff; padding: 5px 10px; border-radius: 20px; font-weight: bold;
-            font-size: 0.8rem; border: 1px solid var(--gold);
-        }
-
-        .timeline h4 { margin: 0 0 5px 0; color: var(--maroon); font-family: 'Yatra One', cursive; font-size: 1.4rem; text-align: left; }
-        .desc { margin: 0; font-size: 0.9rem; font-weight: bold; color: var(--text-main); text-align: left;}
-
-        /* Research Node Style */
-        .research-node .content { border: 2px dashed var(--gold); background: rgba(100, 100, 100, 0.1); opacity: 0.8; }
-        
-        /* Official Letter Box */
-        .official-box {
-            background: rgba(255, 253, 245, 0.85); border: 2px solid var(--gold);
-            padding: 30px; margin: 40px auto; max-width: 900px; border-radius: 10px;
-            position: relative; box-shadow: 0 10px 25px rgba(218, 165, 32, 0.15);
-        }
-
-        .official-btn {
-            background: var(--maroon); color: #fff; padding: 12px 25px;
-            text-decoration: none; font-weight: bold; border-radius: 5px;
-            display: inline-block; transition: 0.3s; margin-top: 15px;
-        }
-        .official-btn:hover { background: var(--gold); color: #000; }
+        .gen-num { font-weight: bold; color: var(--gold); font-size: 0.8rem; text-transform: uppercase; }
+        h4 { margin: 5px 0; color: var(--maroon); font-family: 'Yatra One', cursive; font-size: 1.3rem; }
+        .desc { margin: 0; font-size: 0.9rem; font-weight: bold; color: #555; }
 
         @media (max-width: 600px) {
             .timeline::after { left: 31px; }
             .container { width: 100%; padding-left: 70px; padding-right: 25px; }
-            .container::after { left: 13px; }
-            .left::after, .right::after { left: 13px; }
+            .container::after { left: 15px; }
             .right { left: 0%; }
-            h2 { font-size: 1.8rem; }
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo-container">
-            <img src="logo.png" alt="Logo" style="height: 50px; border-radius: 5px;">
+            <img src="logo.png" alt="Logo" style="height: 50px;">
             <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: var(--maroon);">Sisodiya Bhargavsinh</span>
         </div>
         <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -159,193 +116,41 @@
         </ul>
     </nav>
 
-    <section id="about" style="padding: 0 20px;">
-        
+    <section id="about">
         <div class="intro-card">
             <h2>મારા વિષે</h2>
-            <div class="divider">📜</div>
-            <p>
-                હું, શ્રી મહાપ્રભુજી દ્વારા પ્રણીત <b>"પુષ્ટિભક્તિમાર્ગ"</b> નો નિષ્ઠાવાન અનુયાયી છું. મારા મતે, શુદ્ધાદ્વૈતવાદ માત્ર એક ધાર્મિક વાદ નથી, પરંતુ વિશ્વશાંતિ અને માનવીય સંવેદનાઓને ઉજાગર કરતી એક જીવનશૈલી છે.
-            </p>
-            <p>
-                <b>વારસો અને માર્ગદર્શન:</b> એક તરફ મને વીર શિરોમણી મહારાણા પ્રતાપના ૧૧મા પુત્ર શ્રી પૂરનમલજી ના (15th Generation) વંશજ હોવાનું ગૌરવ છે, તો બીજી તરફ સમર્થ સદ્દગુરુનું આધ્યાત્મિક માર્ગદર્શન પણ પ્રાપ્ત છે.
-            </p>
+            <p>હું, શ્રી મહાપ્રભુજી દ્વારા પ્રણીત <b>"પુષ્ટિભક્તિમાર્ગ"</b> નો નિષ્ઠાવાન અનુયાયી છું. મારા મતે, શુદ્ધાદ્વૈતવાદ માત્ર એક ધાર્મિક વાદ નથી, પરંતુ વિશ્વશાંતિ અને માનવીય સંવેદનાઓને ઉજાગર કરતી એક જીવનશૈલી છે. મને વીર શિરોમણી મહારાણા પ્રતાપના ૧૧મા પુત્ર શ્રી પૂરનમલજી ના વંશજ હોવાનું ગૌરવ છે.</p>
         </div>
 
-        <h3 style="text-align: center; margin-top: 50px; font-size: 2rem;">।। શ્રી સિસોદિયા વંશાવલી ।।</h3>
-        <p style="text-align: center; font-size: 0.95rem; color: #555;">(મેવાડના મહારાણા પ્રતાપથી ભાર્ગવસિંહ સુધીની ગૌરવવંતી યાત્રા)</p>
+        <h3>।। શ્રી સિસોદિયા વંશાવલી ।।</h3>
 
         <div class="timeline">
-            <div class="container left">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૧</div>
-                    <h4>🛡️ શ્રી મહારાણા પ્રતાપસિંહજી</h4>
-                    <p class="desc">હિન્દુઆ સૂરજ | મેવાડ અધિપતિ</p>
-                </div>
-            </div>
-            <div class="container right">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૨</div>
-                    <h4>⚔️ શ્રી પૂરનમલજી (પૂરાજી)</h4>
-                </div>
-            </div>
-            <div class="container left">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૩</div>
-                    <h4>⚔️ શ્રી સાવલદાસ જી (સબલસિંહ જી)</h4>
-                </div>
-            </div>
-            <div class="container right">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૪</div>
-                    <h4>⚔️ શ્રી લાલસિંહજી</h4>
-                </div>
-            </div>
-            <div class="container left">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૫</div>
-                    <h4>⚔️ શ્રી કેસરસિંહજી</h4>
-                </div>
-            </div>
-            <div class="container right">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૬</div>
-                    <h4>⚔️ શ્રી ગુમાનસિંહજી</h4>
-                </div>
-            </div>
-            <div class="container left">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૭</div>
-                    <h4>⚔️ શ્રી જગરુપસિંહ જી</h4>
-                </div>
-            </div>
-            <div class="container right research-node">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૮</div>
-                    <h4>⚠️ સંશોધન કે અધીન</h4>
-                </div>
-            </div>
-            <div class="container left research-node">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૯</div>
-                    <h4>⚠️ સંશોધન કે અધીન</h4>
-                </div>
-            </div>
-            <div class="container right">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૧૦</div>
-                    <h4>⚔️ શ્રી દલેલસિંહજી</h4>
-                </div>
-            </div>
-            <div class="container left">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૧૧</div>
-                    <h4>⚔️ શ્રી મોકમસિંહજી</h4>
-                </div>
-            </div>
-            <div class="container right">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૧૨</div>
-                    <h4>⚔️ શ્રી જોરાવરસિંહજી</h4>
-                </div>
-            </div>
-            <div class="container left">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૧૩</div>
-                    <h4>⚔️ શ્રી રણજીતસિંહજી</h4>
-                </div>
-            </div>
-            <div class="container right">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૧૪</div>
-                    <h4>🦁 શ્રી ચંદનસિંહજી</h4>
-                    <p class="desc">(દાદાજી)</p>
-                </div>
-            </div>
-            <div class="container left">
-                <div class="content">
-                    <div class="gen-number">પેઢી ૧૫</div>
-                    <h4>🦁 શ્રી મહેન્દ્રસિંહજી</h4>
-                    <p class="desc">(પિતાશ્રી)</p>
-                </div>
-            </div>
-            <div class="container right">
-                <div class="content" style="border-color: var(--gold);">
-                    <div class="gen-number">પેઢી ૧૬</div>
-                    <h4>🎓 શ્રી ભાર્ગવસિંહજી</h4>
-                    <p class="desc">BCA Student | Pushtimargiya Vaishnav</p>
-                </div>
-            </div>
+            <div class="container left"><div class="content"><span class="gen-num">પેઢી ૧</span><h4>🛡️ શ્રી મહારાણા પ્રતાપસિંહજી</h4><p class="desc">હિન્દુઆ સૂરજ | મેવાડ અધિપતિ</p></div></div>
+            <div class="container right"><div class="content"><span class="gen-num">પેઢી ૨</span><h4>⚔️ શ્રી પૂરનમલજી (પૂરાજી)</h4></div></div>
+            <div class="container left"><div class="content"><span class="gen-num">પેઢી ૩</span><h4>⚔️ શ્રી સાંવલદાસ જી (સબલસિંહ જી)</h4></div></div>
+            <div class="container right"><div class="content"><span class="gen-num">પેઢી ૪</span><h4>⚔️ શ્રી લાલસિંહજી</h4></div></div>
+            <div class="container left"><div class="content"><span class="gen-num">પેઢી ૫</span><h4>⚔️ શ્રી કેસરસિંહજી</h4></div></div>
+            <div class="container right"><div class="content"><span class="gen-num">પેઢી ૬</span><h4>⚔️ શ્રી ગુમાનસિંહજી</h4></div></div>
+            <div class="container left"><div class="content"><span class="gen-num">પેઢી ૭</span><h4>⚔️ શ્રી જગરુપસિંહ જી</h4></div></div>
+            <div class="container right"><div class="content" style="border-style: dashed;"><span class="gen-num">પેઢી ૮</span><h4>⚠️ સંશોધન હેઠળ</h4></div></div>
+            <div class="container left"><div class="content"><span class="gen-num">પેઢી ૯</span><h4>⚔️ શ્રી દલેલસિંહજી</h4></div></div>
+            <div class="container right"><div class="content"><span class="gen-num">પેઢી ૧૦</span><h4>⚔️ શ્રી મોકમસિંહજી</h4></div></div>
+            <div class="container left"><div class="content"><span class="gen-num">પેઢી ૧૧</span><h4>⚔️ શ્રી જોરાવરસિંહજી</h4></div></div>
+            <div class="container right"><div class="content"><span class="gen-num">પેઢી ૧૨</span><h4>⚔️ શ્રી રણજીતસિંહજી</h4></div></div>
+            <div class="container left"><div class="content"><span class="gen-num">પેઢી ૧૩</span><h4>🦁 શ્રી ચંદનસિંહજી</h4><p class="desc">(દાદાજી)</p></div></div>
+            <div class="container right"><div class="content"><span class="gen-num">પેઢી ૧૪</span><h4>🦁 શ્રી મહેન્દ્રસિંહજી</h4><p class="desc">(પિતાશ્રી)</p></div></div>
+            <div class="container left"><div class="content" style="border-color: var(--gold);"><span class="gen-num">પેઢી ૧૫</span><h4>🎓 શ્રી ભાર્ગવસિંહજી</h4><p class="desc">BCA Student</p></div></div>
         </div>
-
-        <div class="intro-card" style="border-top-color: var(--gold);">
-            <p>
-                <b>શિક્ષણ અને ધ્યેય:</b> વર્તમાનમાં હું <b>BCA (Bachelor of Computer Applications)</b> નો વિદ્યાર્થી છું. મારો ઉદ્દેશ્ય વેબ ડેવલપમેન્ટ અને કોડિંગ જેવી આધુનિક સ્કીલ્સનો ઉપયોગ કરીને એવું ડિજિટલ ભવિષ્ય બનાવવાનો છે જે આપણા પ્રાચીન વારસાને પણ જાળવી રાખે.
-            </p>
-        </div>
-
-        <div class="official-box">
-            <div style="text-align: center; border-bottom: 2px solid rgba(0,0,0,0.1); padding-bottom: 20px; margin-bottom: 20px;">
-                <h3 style="color: var(--maroon); margin: 0; font-family: 'Playfair Display', serif; font-size: 1.8rem;">
-                    🏛️ રાષ્ટ્ર નિર્માણમાં મારું યોગદાન
-                </h3>
-                <p style="color: #555; font-size: 0.9rem; margin-top: 5px; font-weight: bold;">
-                    (Recognized by the President of India)
-                </p>
-            </div>
-
-            <p style="color: #2c1a1a; font-size: 1.1rem;">
-                એક સનાતની અને ગૌભક્ત તરીકે, મેં ભારત સરકાર સમક્ષ <strong>"ગૌહત્યા પર સંપૂર્ણ પ્રતિબંધ" (Nationwide Ban on Cow Slaughter)</strong> માટે મજબૂત રજૂઆત કરી હતી. મારા આ પ્રયાસની નોંધ ભારતના સર્વોચ્ચ બંધારણીય પદ - <strong>મહામહિમ રાષ્ટ્રપતિજી (President of India)</strong> ના કાર્યાલય દ્વારા લેવામાં આવી છે.
-            </p>
-
-            <ul style="list-style: none; padding: 15px; margin: 20px 0; color: #2c1a1a; background: var(--card-glass); border-radius: 5px; text-align: left;">
-                <li style="margin-bottom: 10px;">📅 <strong>તારીખ:</strong> 18 જુલાઈ, 2024</li>
-                <li style="margin-bottom: 10px;">📍 <strong>વિષય:</strong> Request for Nationwide Ban on Cow Slaughter</li>
-                <li style="margin-bottom: 0;">✅ <strong>સ્ટેટસ:</strong> Official Record on Govt Website</li>
-            </ul>
-
-            <div style="text-align: center; margin-top: 25px;">
-                <a href="https://www.presidentofindia.gov.in/sites/default/files/webform/request_for_president_s_message/7040/request_to_ban_cow_slaughter_in_bharat.pdf" target="_blank" class="official-btn">
-                   📄 View Official Letter (presidentofindia.gov.in)
-                </a>
-            </div>
-        </div>
-
-        <p style="text-align: center; font-weight: bold; margin-top: 40px; font-size: 1.4rem; color: var(--maroon); font-family: 'Yatra One', cursive;">
-            “સર્વમ્ શ્રીકૃષ્ણાર્પણમસ્તુ”
-        </p>
-
     </section>
 
-    <footer>
-        <p style="font-size: 0.8rem; margin-bottom: 5px;">
-            <a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a>
-        </p>
-        <marquee style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
-        <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed gold; text-align: center;">
-            <p style="font-size: 0.8rem; color: #ffebcd; margin-bottom: 5px; font-family: sans-serif;">Visitor Count:</p>
-            <a href="https://www.hitwebcounter.com/" target="_blank">
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" title="Visitor Counter" border="0" />
-            </a>
-        </div>
-    </footer>
-
     <script>
-        // Menu Toggle
         function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
-
-        // Timeline Animation
         window.onload = function() {
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('show');
-                });
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
             });
             document.querySelectorAll('.container').forEach((el) => observer.observe(el));
         };
-
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) { if(e.keyCode == 123) return false; }
     </script>
 </body>
 </html>
