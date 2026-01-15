@@ -9,10 +9,7 @@
     <meta name="keywords" content="Bhargavsinh Sisodiya, Pushtimarg, Gruh Seva, Maharana Pratap Genealogy, Rajput History, Purawat Sisodiya, BCA Student">
     <meta name="author" content="Sisodiya Bhargavsinh">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <meta name="robots" content="noai, noimageai">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta name="referrer" content="no-referrer-when-downgrade">
     
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com;">
 
@@ -36,151 +33,144 @@
             color: #2c1a1a;
         }
 
-        /* Nav Bar Glass Effect */
+        /* --- NAVIGATION STYLES (HAMBURGER MENU ADDED) --- */
         nav {
-            background: rgba(255, 248, 236, 0.9) !important;
+            background: rgba(255, 248, 236, 0.95) !important;
             backdrop-filter: blur(10px);
             border-bottom: 3px solid var(--gold) !important;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            text-align: center;
-            padding: 40px 20px;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        .profile-img {
-            width: 180px; height: 180px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid var(--gold);
-            box-shadow: 0 0 25px rgba(218, 165, 32, 0.4);
-            transition: transform 0.5s;
-            margin-top: 20px;
-        }
-        .profile-img:hover { transform: scale(1.05) rotate(2deg); }
-
-        h1 {
-            font-family: 'Yatra One', cursive;
-            font-size: 2.2rem;
-            color: var(--maroon);
-            margin: 15px 0;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-            display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap;
-        }
-
-        p {
-            font-size: 1.1rem;
-            margin: 8px 0;
-            font-weight: 500;
-        }
-
-        /* Shloka Box (Glass) */
-        .shloka-box {
-            background: rgba(123, 28, 28, 0.05);
-            border: 2px dashed var(--gold);
-            border-radius: 15px;
-            padding: 20px;
-            max-width: 700px;
-            margin: 30px auto;
-            color: var(--maroon);
-            font-family: 'Yatra One', cursive;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        /* Highlights Grid (Glass Cards) */
-        .highlights-grid {
             display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            justify-content: center;
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: relative;
+            z-index: 1000;
         }
 
-        .h-card {
-            flex: 1 1 280px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-top: 5px solid var(--maroon);
-            padding: 30px 20px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-            transition: all 0.3s ease;
+        .logo-container {
+            display: flex; align-items: center; gap: 15px;
         }
 
-        .h-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(218, 165, 32, 0.2);
-            border-top-color: var(--gold);
-            background: rgba(255, 255, 255, 0.8);
+        /* Nav Links (Desktop Default) */
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
-        .h-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
-        
-        .h-link { 
-            display: inline-block; 
-            margin-top: 15px; 
-            background: var(--maroon);
-            color: #fff;
-            padding: 8px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-        .h-link:hover { background: var(--gold); color: #000; }
-
-        /* Tech Stack (Glass) */
-        .tech-stack {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-        }
-
-        .tech-badge {
-            display: inline-block;
-            padding: 8px 18px;
-            margin: 5px;
-            border: 1px solid var(--gold);
-            border-radius: 25px;
-            font-size: 0.9rem;
-            background: #fff;
+        /* Hamburger Icon (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
             color: var(--maroon);
-            font-weight: bold;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+            cursor: pointer;
+            user-select: none;
         }
 
-        /* Button Style */
-        .social-btn {
-            background: linear-gradient(45deg, var(--maroon), #5a1212);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(123, 28, 28, 0.3);
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .social-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(123, 28, 28, 0.4); }
-
-        .nav-link { transition: 0.3s; }
+        .nav-link { transition: 0.3s; font-weight: bold; text-decoration: none; }
         .nav-link:hover { color: var(--gold) !important; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* --- MOBILE MENU STYLES --- */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block; /* Show hamburger on mobile */
+            }
 
-        /* Responsive */
+            .nav-links {
+                display: none; /* Hide links initially */
+                flex-direction: column;
+                position: absolute;
+                top: 100%; /* Exactly below the nav bar */
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(15px);
+                border-bottom: 3px solid var(--gold);
+                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+
+            /* This class is added by JS to show menu */
+            .nav-links.active {
+                display: flex;
+                animation: slideDown 0.3s ease-in-out;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- REST OF THE STYLES (UNCHANGED) --- */
+        .hero-section {
+            text-align: center; padding: 40px 20px; animation: fadeIn 1.5s ease-in-out;
+        }
+        .profile-img {
+            width: 180px; height: 180px; object-fit: cover; border-radius: 50%;
+            border: 5px solid var(--gold); box-shadow: 0 0 25px rgba(218, 165, 32, 0.4);
+            transition: transform 0.5s; margin-top: 20px;
+        }
+        .profile-img:hover { transform: scale(1.05) rotate(2deg); }
+        h1 {
+            font-family: 'Yatra One', cursive; font-size: 2.2rem; color: var(--maroon);
+            margin: 15px 0; text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap;
+        }
+        p { font-size: 1.1rem; margin: 8px 0; font-weight: 500; }
+        .shloka-box {
+            background: rgba(123, 28, 28, 0.05); border: 2px dashed var(--gold);
+            border-radius: 15px; padding: 20px; max-width: 700px; margin: 30px auto;
+            color: var(--maroon); font-family: 'Yatra One', cursive; font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .highlights-grid {
+            display: flex; flex-wrap: wrap; gap: 25px; justify-content: center;
+            max-width: 1000px; margin: 40px auto; padding: 0 20px;
+        }
+        .h-card {
+            flex: 1 1 280px; background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8); border-top: 5px solid var(--maroon);
+            padding: 30px 20px; text-align: center; border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05); transition: all 0.3s ease;
+        }
+        .h-card:hover {
+            transform: translateY(-8px); box-shadow: 0 15px 30px rgba(218, 165, 32, 0.2);
+            border-top-color: var(--gold); background: rgba(255, 255, 255, 0.8);
+        }
+        .h-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+        .h-link { 
+            display: inline-block; margin-top: 15px; background: var(--maroon);
+            color: #fff; padding: 8px 20px; border-radius: 50px; text-decoration: none;
+            font-size: 0.9rem; transition: 0.3s;
+        }
+        .h-link:hover { background: var(--gold); color: #000; }
+        .tech-stack {
+            max-width: 800px; margin: 40px auto; padding: 25px;
+            background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px);
+            border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .tech-badge {
+            display: inline-block; padding: 8px 18px; margin: 5px;
+            border: 1px solid var(--gold); border-radius: 25px; font-size: 0.9rem;
+            background: #fff; color: var(--maroon); font-weight: bold;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+        }
+        .social-btn {
+            background: linear-gradient(45deg, var(--maroon), #5a1212); color: white;
+            border: none; border-radius: 5px; box-shadow: 0 5px 15px rgba(123, 28, 28, 0.3);
+            text-decoration: none; font-weight: bold; transition: 0.3s;
+        }
+        .social-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(123, 28, 28, 0.4); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 600px) {
             h1 { font-size: 1.6rem; flex-direction: column; }
             .profile-img { width: 150px; height: 150px; }
@@ -202,7 +192,6 @@
       "hasPart": [
         { "@type": "WebPage", "name": "About Me", "url": "https://bhargavsinh.github.io/about.html" },
         { "@type": "WebPage", "name": "Pushtimarg Seva", "url": "https://bhargavsinh.github.io/pushtimarg.html" },
-        { "@type": "WebPage", "name": "Gruh Seva Article", "url": "https://bhargavsinh.github.io/artgruhseva.html" },
         { "@type": "WebPage", "name": "Contact", "url": "https://bhargavsinh.github.io/contact.html" }
       ]
     }
@@ -216,20 +205,24 @@
         <p class="greeting">|| જય શ્રી કૃષ્ણ ||</p>
     </div>
 
-    <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px;">
-        <div style="display: flex; align-items: center; gap: 15px;">
+    <nav>
+        <div class="logo-container">
             <img src="logo.png" alt="Sisodiya Logo" style="height: 50px; width: auto; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
             <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: #7b1c1c;">Sisodiya Bhargavsinh</span>
         </div>
 
-        <ul style="display: flex; gap: 15px; list-style: none; margin: 0; padding: 10px 0; flex-wrap: wrap; justify-content: center;">
+        <div class="hamburger" onclick="toggleMenu()">
+            ☰
+        </div>
+
+        <ul class="nav-links" id="navLinks">
             <li><a href="index.html" class="nav-link" style="color: #daa520; font-weight: bold;">Home</a></li>
-            <li><a href="about.html" class="nav-link">About</a></li>
-            <li><a href="pushtimarg.html" class="nav-link">Pushtimarg</a></li>
-            <li><a href="projects.html" class="nav-link">Projects</a></li>
-            <li><a href="resume.html" class="nav-link">Resume</a></li>
-            <li><a href="blog.html" class="nav-link">Articles</a></li>
-            <li><a href="contact.html" class="nav-link">Contact me</a></li>
+            <li><a href="about.html" class="nav-link" style="color: #7b1c1c;">About</a></li>
+            <li><a href="pushtimarg.html" class="nav-link" style="color: #7b1c1c;">Pushtimarg</a></li>
+            <li><a href="projects.html" class="nav-link" style="color: #7b1c1c;">Projects</a></li>
+            <li><a href="resume.html" class="nav-link" style="color: #7b1c1c;">Resume</a></li>
+            <li><a href="blog.html" class="nav-link" style="color: #7b1c1c;">Articles</a></li>
+            <li><a href="contact.html" class="nav-link" style="color: #7b1c1c;">Contact me</a></li>
             <div id="google_translate_element" style="margin-left: 10px;"></div>
         </ul>
     </nav>
@@ -287,7 +280,7 @@
             <div class="h-card">
                 <span class="h-icon">✒️</span>
                 <h3 style="color: var(--maroon); margin-bottom: 10px;">સંશોધન લેખ</h3>
-                <p>"પુષ્ટિમાર્ગ માં ગૃહ સેવા" પર શાસ્ત્રીય સંશોધન.</p>
+                <p>"પુષ્ટિમાર્ગ માં ગૃહ સેવા જ છે" પર શાસ્ત્રીય સંશોધન.</p>
                 <a href="blog.html" class="h-link">Article વાંચો →</a>
             </div>
         </div>
@@ -321,6 +314,12 @@
     </footer>
 
     <script>
+        // Toggle Hamburger Menu
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
         // Preloader Logic
         window.addEventListener("load", function() {
             setTimeout(function() {
