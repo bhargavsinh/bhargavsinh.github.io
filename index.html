@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="gu">
-<head>
+<html lang="gu"> <head>
     <meta charset="UTF-8">
     <title>Home | Sisodiya Bhargavsinh</title>
     
@@ -10,323 +9,203 @@
     <meta name="author" content="Sisodiya Bhargavsinh">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noai, noimageai">
-
-    <meta property="og:title" content="Home | Sisodiya Bhargavsinh">
-    <meta property="og:description" content="Official website of Sisodiya Bhargavsinh - Descendant of Maharana Pratap.">
-    <meta property="og:image" content="bhargavsinh.webp">
-    <meta property="og:url" content="https://bhargavsinh.github.io">
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com https://translate.google.com https://translate.googleapis.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com https://www.google.com; script-src 'self' 'unsafe-inline' https://translate.google.com https://translate.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; frame-src 'self' https://www.google.com http://googleusercontent.com/maps.google.com/;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com;">
 
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
     <style>
         :root {
-            /* Modern Color Palette (Maintaining Royal Theme) */
             --bg-gradient: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
-            --nav-bg: rgba(255, 248, 236, 0.85);
+            --nav-bg: rgba(255, 248, 236, 0.95);
             --text-main: #2c1a1a;
             --maroon: #7b1c1c;
             --gold: #daa520;
-            --gold-hover: #b8860b;
-            --card-glass: rgba(255, 255, 255, 0.75);
-            --shadow-soft: 0 10px 30px -10px rgba(0,0,0,0.1);
-            --border-radius: 16px;
+            --card-glass: rgba(255, 255, 255, 0.6);
+            --card-border: rgba(255, 255, 255, 0.8);
+            --shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        /* Modern CSS Reset */
-        *, *::before, *::after { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
         body {
             background: var(--bg-gradient);
-            background-attachment: fixed; /* Parallax feel */
+            background-attachment: fixed;
             font-family: 'Noto Sans', sans-serif;
             margin: 0;
             color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* Accessibility: Focus States */
-        a:focus-visible, button:focus-visible {
-            outline: 3px solid var(--gold);
-            outline-offset: 4px;
-            border-radius: 4px;
-        }
-
-        /* Skip Link for Screen Readers */
+        /* WCAG 2.4.1: Skip Link Styling */
         .skip-link {
-            position: absolute; top: -100px; left: 0;
-            background: var(--maroon); color: white; padding: 1rem;
-            z-index: 2000; text-decoration: none; transition: top 0.3s;
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--maroon);
+            color: white;
+            padding: 10px;
+            z-index: 2000;
+            text-decoration: none;
+            transition: top 0.3s;
         }
         .skip-link:focus { top: 0; }
 
-        /* Modern Navbar */
-        nav {
-            background: var(--nav-bg) !important;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(218, 165, 32, 0.3) !important;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0.8rem 2rem; position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        /* WCAG 2.4.7: Focus Indicators */
+        a:focus, button:focus {
+            outline: 3px solid #007bff;
+            outline-offset: 4px;
         }
 
-        .logo-container {
-            display: flex; align-items: center; gap: 10px;
+        nav {
+            background: var(--nav-bg) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--gold) !important;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 20px; position: sticky; top: 0; z-index: 1000;
         }
 
         .nav-links {
-            display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; align-items: center;
+            display: flex; gap: 15px; list-style: none; margin: 0; padding: 0; align-items: center;
         }
 
-        .nav-link { 
-            position: relative;
-            font-weight: 600; text-decoration: none; color: var(--text-main);
-            padding: 5px 0; transition: color 0.3s ease;
-        }
-        
-        .nav-link::after {
-            content: ''; position: absolute; width: 0; height: 2px;
-            bottom: 0; left: 0; background-color: var(--gold);
-            transition: width 0.3s ease;
-        }
+        .nav-link { transition: 0.3s; font-weight: bold; text-decoration: none; color: var(--text-main); }
+        .nav-link:hover { color: var(--gold) !important; }
 
-        .nav-link:hover::after { width: 100%; }
-        .nav-link:hover { color: var(--maroon) !important; }
+        .hamburger { display: none; font-size: 2rem; color: var(--maroon); cursor: pointer; }
 
-        /* Hamburger Menu */
-        .hamburger { display: none; font-size: 1.8rem; color: var(--maroon); cursor: pointer; border: none; background: none; }
-
-        /* Mobile View */
         @media (max-width: 850px) {
             .hamburger { display: block; }
             .nav-links {
                 display: none; flex-direction: column; position: absolute;
                 top: 100%; left: 0; width: 100%;
-                background: rgba(255, 248, 236, 0.98); padding: 2rem 0;
-                border-bottom: 2px solid var(--gold);
-                backdrop-filter: blur(15px);
-                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                background: var(--nav-bg); padding: 20px 0;
+                border-bottom: 3px solid var(--gold);
+                text-align: center;
             }
-            .nav-links.active { display: flex; animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+            .nav-links.active { display: flex; animation: slideDown 0.3s ease-in-out; }
         }
 
-        /* Hero Section */
-        .hero-section { 
-            text-align: center; padding: 60px 20px; 
-            max-width: 1200px; margin: 0 auto;
-        }
+        .hero-section { text-align: center; padding: 40px 20px; }
         
-        /* Profile Image with Ring Animation */
-        .profile-wrapper { position: relative; display: inline-block; margin-top: 20px; }
         .profile-img {
             width: 180px; height: 180px; object-fit: cover; border-radius: 50%;
-            border: 4px solid var(--gold); 
-            box-shadow: 0 0 30px rgba(218, 165, 32, 0.3);
-            transition: transform 0.5s ease;
+            border: 5px solid var(--gold); box-shadow: 0 0 25px rgba(218, 165, 32, 0.4);
+            margin-top: 20px;
         }
-        .profile-wrapper::before {
-            content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px;
-            border-radius: 50%; border: 1px solid var(--gold);
-            animation: pulse 3s infinite; opacity: 0.6;
-        }
-        .profile-img:hover { transform: scale(1.05); }
 
-        /* Typography */
         h1 {
-            font-family: 'Yatra One', cursive; 
-            font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive Text */
-            color: var(--maroon);
-            margin: 20px 0; 
-            display: flex; justify-content: center; align-items: center; 
-            gap: 10px; flex-wrap: wrap;
+            font-family: 'Yatra One', cursive; font-size: 2.2rem; color: var(--maroon);
+            margin: 15px 0; display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap;
         }
-
-        .verified-badge { width: 28px; height: 28px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
         
-        .role-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 15px 0; }
-        .tag {
-            background: rgba(123, 28, 28, 0.08); color: var(--maroon);
-            padding: 5px 12px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;
-            border: 1px solid rgba(123, 28, 28, 0.1);
-        }
-
-        /* Modern Replacement for Marquee (CSS Animation) */
-        .marquee-container {
-            width: 100%; overflow: hidden; white-space: nowrap;
-            background: rgba(218, 165, 32, 0.1); padding: 8px 0;
-            border-top: 1px solid rgba(218, 165, 32, 0.2);
-            border-bottom: 1px solid rgba(218, 165, 32, 0.2);
-            margin-bottom: 2rem;
-        }
-        .marquee-content {
-            display: inline-block;
-            padding-left: 100%;
-            animation: scroll-text 15s linear infinite;
-            color: var(--maroon); font-weight: bold; font-family: 'Yatra One', cursive;
-        }
-        .marquee-content:hover { animation-play-state: paused; }
-
-        /* Shloka Box */
         .shloka-box {
-            background: linear-gradient(to right, rgba(123, 28, 28, 0.02), rgba(218, 165, 32, 0.05));
-            border: 2px dashed var(--gold);
-            border-radius: var(--border-radius); padding: 25px; 
-            max-width: 750px; margin: 30px auto;
-            color: var(--maroon); font-family: 'Yatra One', cursive; font-size: 1.25rem;
-            position: relative;
+            background: rgba(123, 28, 28, 0.05); border: 2px dashed var(--gold);
+            border-radius: 15px; padding: 20px; max-width: 700px; margin: 30px auto;
+            color: var(--maroon); font-family: 'Yatra One', cursive; font-size: 1.2rem;
         }
-        .shloka-box::before { content: '❝'; font-size: 4rem; position: absolute; top: -20px; left: 20px; color: rgba(218, 165, 32, 0.2); }
 
-        /* Highlights Grid */
         .highlights-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px; max-width: 1100px; margin: 50px auto; padding: 0 20px;
+            display: flex; flex-wrap: wrap; gap: 25px; justify-content: center;
+            max-width: 1000px; margin: 40px auto;
         }
 
         .h-card {
-            background: var(--card-glass);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-top: 4px solid var(--maroon);
-            padding: 40px 25px; text-align: center; 
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-soft); 
-            transition: all 0.4s ease;
-            position: relative; overflow: hidden;
+            flex: 1 1 280px; background: var(--card-glass);
+            border-top: 5px solid var(--maroon);
+            padding: 30px 20px; text-align: center; border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05); transition: 0.3s;
         }
 
-        .h-card:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border-top-color: var(--gold);
-        }
+        .h-card:hover { transform: translateY(-8px); border-top-color: var(--gold); }
 
-        .h-icon { font-size: 3rem; margin-bottom: 20px; display: block; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+        .h-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
         
-        .h-card h2 { margin: 0 0 15px; color: var(--maroon); font-family: 'Yatra One', cursive; }
-        .h-card p { color: #555; margin-bottom: 25px; }
-
         .h-link { 
-            display: inline-block; background: var(--maroon);
-            color: #fff; padding: 10px 28px; border-radius: 50px; 
-            text-decoration: none; font-size: 0.95rem; font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(123, 28, 28, 0.2);
+            display: inline-block; margin-top: 15px; background: var(--maroon);
+            color: #fff; padding: 8px 20px; border-radius: 50px; text-decoration: none;
+            font-size: 0.9rem; transition: 0.3s;
         }
-        .h-link:hover { 
-            background: var(--gold); color: #2c1a1a; 
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(218, 165, 32, 0.3);
+        .h-link:hover { background: var(--gold); color: #000; }
+
+        .tech-badge {
+            display: inline-block; padding: 8px 18px; margin: 5px;
+            border: 1px solid var(--gold); border-radius: 25px; font-size: 0.9rem;
+            background: #fff; color: var(--maroon); font-weight: bold;
         }
 
-        /* Footer */
-        footer { 
-            background: #2c1a1a; color: #fdf5e6; 
-            padding: 40px 20px; text-align: center; margin-top: 80px; 
-            border-top: 4px solid var(--gold);
-        }
+        footer { background: var(--maroon); color: white; padding: 20px; text-align: center; margin-top: 50px; }
         
-        .footer-marquee {
-            overflow: hidden; white-space: nowrap; width: 100%;
-            color: var(--gold); margin: 15px 0; font-size: 0.9rem;
-        }
-        .footer-marquee span {
-            display: inline-block; padding-left: 100%;
-            animation: scroll-text 20s linear infinite;
-        }
-
-        /* Keyframe Animations */
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.05); opacity: 0.3; } 100% { transform: scale(1); opacity: 0.6; } }
-        @keyframes scroll-text { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-
-        /* Google Translate Reset */
-        .goog-te-gadget-simple { background: rgba(255,255,255,0.5) !important; border: 1px solid var(--gold) !important; border-radius: 20px !important; padding: 5px 10px !important; }
-
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body oncontextmenu="return false"> <a href="#main-content" class="skip-link">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
+<body>
+
+    <a href="#main-content" class="skip-link">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
 
     <nav role="navigation" aria-label="મુખ્ય મેનુ">
         <div class="logo-container">
-            <img src="logo.png" alt="સિસોદિયા વંશનો રાજવી લોગો" style="height: 50px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-            <span style="font-family: 'Yatra One', cursive; font-size: 1.3rem; color: var(--maroon); letter-spacing: 0.5px;">Sisodiya Bhargavsinh</span>
+            <img src="logo.png" alt="સિસોદિયા વંશનો રાજવી લોગો" style="height: 50px; border-radius: 5px;">
+            <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: var(--maroon);">Sisodiya Bhargavsinh</span>
         </div>
 
-        <button class="hamburger" onclick="toggleMenu()" aria-label="મેનુ ખોલો" aria-expanded="false">☰</button>
+        <div class="hamburger" onclick="toggleMenu()" aria-label="મેનુ ખોલો" role="button" aria-expanded="false">☰</div>
 
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html" class="nav-link" style="color: var(--gold-hover);">Home</a></li>
+            <li><a href="index.html" class="nav-link" style="color: var(--gold);">Home</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="pushtimarg.html" class="nav-link">Pushtimarg</a></li>
             <li><a href="projects.html" class="nav-link">Projects</a></li>
             <li><a href="resume.html" class="nav-link">Resume</a></li>
             <li><a href="blog.html" class="nav-link">Articles</a></li>
             <li><a href="contact.html" class="nav-link">Contact</a></li>
-            <li><div id="google_translate_element"></div></li>
+            <li><div id="google_translate_element"></div>
         </ul>
     </nav>
 
-    <main id="main-content">
-        <section class="hero-section">
-            <div class="marquee-container" aria-hidden="true">
-                <div class="marquee-content">|| જય શ્રી કૃષ્ણ 🙏 આપનું સ્વાગત છે || &nbsp;&nbsp;&nbsp;&nbsp; || જય શ્રી કૃષ્ણ 🙏 આપનું સ્વાગત છે ||</div>
-            </div>
+    <main id="main-content"> <section class="hero-section">
+            <marquee aria-hidden="true" style="color: var(--maroon); font-weight: bold;"> 
+                || જય શ્રી કૃષ્ણ 🙏 આપનું સ્વાગત છે ||
+            </marquee>
 
-            <div class="profile-wrapper">
-                <img src="bhargavsinh.webp" alt="ભાર્ગવસિંહ સિસોદિયાનો ફોટો" class="profile-img">
-            </div>
+            <img src="bhargavsinh.webp" alt="ભાર્ગવસિંહ સિસોદિયાનો ફોટો" class="profile-img">
             
-            <h1>
-                SISODIYA BHARGAVSINH
-                <svg class="verified-badge" viewBox="0 0 24 24" fill="none" role="img" aria-label="Verified Profile">
+            <h1>SISODIYA BHARGAVSINH
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" role="img" aria-label="Verified Profile">
                     <path d="M12.0002 2.05945C12.7836 2.05945 13.5226 2.3751 14.0722 2.9248L14.7354 3.58795C15.0097 3.86225 15.3817 4.0163 15.7695 4.0163H16.7072C17.8105 4.0163 18.705 4.9108 18.705 6.0141V6.9518C18.705 7.3396 18.859 7.71155 19.1333 7.9859L19.7965 8.6491C20.3462 9.19865 20.6618 9.93775 20.6618 10.7212V13.279C20.6618 14.0624 20.3462 14.8015 19.7965 15.3511L19.1333 16.0142C18.859 16.2886 18.705 16.6605 18.705 17.0484V17.9861C18.705 19.0894 17.8105 19.9839 16.7072 19.9839H15.7695C15.3817 19.9839 15.0097 20.1379 14.7354 20.4122L14.0722 21.0754C13.5226 21.625 12.7836 21.9407 12.0002 21.9407C11.2168 21.9407 10.4777 21.625 9.92817 21.0754L9.26498 20.4122C8.99068 20.1379 8.61873 19.9839 8.23093 19.9839H7.29323C6.18993 19.9839 5.29543 19.0894 5.29543 17.9861V17.0484C5.29543 16.6605 5.14138 16.2886 4.86708 16.0142L4.20388 15.3511C3.65423 14.8015 3.33862 14.0624 3.33862 13.279V10.7212C3.33862 9.93775 3.65423 9.19865 4.20388 8.6491L4.86708 7.9859C5.14138 7.71155 5.29543 7.3396 5.29543 6.9518V6.0141C5.29543 4.9108 6.18993 4.0163 7.29323 4.0163H8.23093C8.61873 4.0163 8.99068 3.86225 9.26498 3.58795L9.92817 2.9248C10.4777 2.3751 11.2168 2.05945 12.0002 2.05945Z" fill="#3897F0"/>
                     <path d="M10.2096 15.6191C9.99887 15.6191 9.78817 15.5386 9.62757 15.378L7.22127 12.9717C6.90007 12.6505 6.90007 12.1298 7.22127 11.8086C7.54247 11.4874 8.06317 11.4874 8.38437 11.8086L10.2096 13.6338L15.6159 8.22749C15.9371 7.90629 16.4578 7.90629 16.779 8.22749C17.1002 8.54869 17.1002 9.06939 16.779 9.39059L10.7916 15.378C10.631 15.5386 10.4203 15.6191 10.2096 15.6191Z" fill="white"/>
                 </svg>
             </h1>
 
-            <div class="role-tags">
-                <span class="tag">🎓 BCA</span>
-                <span class="tag">🛡️ Rajput</span>
-                <span class="tag">🙏 Theist</span>
-            </div>
-
-            <p style="font-weight: 500; font-size: 1.1rem; margin-top: 10px;">🙏 શ્રીકૃષ્ણદાસાનુદાસોડહમ્ ।</p>
+            <p>🙏 શ્રીકૃષ્ણદાસાનુદાસોડહમ્ ।</p>
             <p>🚩 પુષ્ટિમાર્ગીય વૈષ્ણવ</p>
-            <p style="color: var(--maroon); font-weight: bold;">⚔️ 15th Generation Descendant of Shri Maharana Pratap</p>
+            <p>🎓 BCA | 🛡️ Rajput | 🙏 Theist</p>
+            <p>⚔️ 15th Generation Descendant of Shri Maharana Pratap</p>
             
             <div class="shloka-box" role="complementary" aria-label="શ્રીમદ્દ ભાગવત શ્લોક">
                 "સ વૈ પુસાં પરો ધર્મો યતો ભક્તિરધોક્ષજે। (શ્રીમદ્ભાગવત મહાપુરાણ 1.2.6)"
                 <br>
-                <span style="font-size: 0.95rem; color: #555; margin-top: 10px; display:block; font-family: 'Noto Sans', sans-serif;">(જે ધર્મ દ્વારા ભગવાનમાં નિર્મળ ભક્તિ થાય, એ જ માનવ માટે પરમ ધર્મ છે.)</span>
+                <span style="font-size: 0.9rem; color: #555; margin-top: 5px; display:block;">(જે ધર્મ દ્વારા ભગવાનમાં નિર્મળ ભક્તિ થાય, એ જ માનવ માટે પરમ ધર્મ છે.)</span>
             </div>
         </section>
 
         <section class="highlights-grid" aria-label="વિશેષ વિભાગો">
             <div class="h-card">
                 <span class="h-icon" aria-hidden="true">📜</span>
-                <h2>વંશાવલી</h2>
+                <h2 style="color: var(--maroon); font-size: 1.5rem;">વંશાવલી</h2>
                 <p>મહારાણા પ્રતાપથી લઈને અત્યાર સુધીની પેઢીઓનો ગૌરવવંતો ઈતિહાસ.</p>
                 <a href="about.html" class="h-link" aria-label="સિસોદિયા વંશાવલી જુઓ">જુઓ →</a>
             </div>
 
             <div class="h-card">
                 <span class="h-icon" aria-hidden="true">🪔</span>
-                <h2>પુષ્ટિ સિદ્ધાંત</h2>
+                <h2 style="color: var(--maroon); font-size: 1.5rem;">પુષ્ટિ સિદ્ધાંત</h2>
                 <p>ગૃહ સેવા અને અમૃત વચનાવલી</p>
                 <a href="pushtimarg.html" class="h-link" aria-label="પુષ્ટિ સિદ્ધાંત વિશે વાંચો">વાંચો →</a>
             </div>
 
             <div class="h-card">
                 <span class="h-icon" aria-hidden="true">✒️</span>
-                <h2>સંશોધન લેખ</h2>
+                <h2 style="color: var(--maroon); font-size: 1.5rem;">સંશોધન લેખ</h2>
                 <p>"પુષ્ટિમાર્ગ માં ગૃહ સેવા" પર શાસ્ત્રીય સંશોધન.</p>
                 <a href="blog.html" class="h-link" aria-label="સંશોધન લેખ વાંચો">Article વાંચો →</a>
             </div>
@@ -334,40 +213,28 @@
     </main>
 
     <footer>
-        <p><a href="disclaimer.html" style="color: var(--gold); text-decoration: none; border-bottom: 1px dotted var(--gold);">Legal Disclaimer</a></p>
-        
-        <div class="footer-marquee" aria-hidden="true">
-            <span>Designed by Sisodiya Bhargavsinh | © 2026 &nbsp;&nbsp;&nbsp;&nbsp; Designed by Sisodiya Bhargavsinh | © 2026</span>
-        </div>
-
-        <div style="margin-top: 25px;">
-            <p style="font-size: 0.8rem; color: #ffebcd; margin-bottom: 5px;">Visitor Count:</p>
-            <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="વેબસાઇટ વિઝિટર કાઉન્ટર" referrerpolicy="no-referrer-when-downgrade">
+        <p><a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a></p>
+        <marquee aria-hidden="true" style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
+        <div style="margin-top: 15px;">
+            <p style="font-size: 0.8rem; color: #ffebcd;">Visitor Count:</p>
+            <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="વેબસાઇટ વિઝિટર કાઉન્ટર">
         </div>
     </footer>
 
     <script>
-        // Toggle Menu for Mobile
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             const hamburger = document.querySelector('.hamburger');
             const isActive = navLinks.classList.toggle('active');
             hamburger.setAttribute('aria-expanded', isActive);
         }
-
-        // Prevent Right Click (User Preference preserved)
         document.addEventListener('contextmenu', event => event.preventDefault());
-
-        // Google Translate Init
+    </script>
+    <script type="text/javascript">
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'gu', 
-                includedLanguages: 'gu,en,hi,sa', 
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
+            new google.translate.TranslateElement({pageLanguage: 'gu', includedLanguages: 'gu,en,hi,sa', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
         }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
