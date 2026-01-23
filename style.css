@@ -253,4 +253,11 @@ body { top: 0px !important; }
         width: 120px; height: 120px; /* ફોટો પણ થોડો નાનો */
     }
 }
+/* આ કોડથી વેબસાઇટ પરનું લખાણ સિલેક્ટ કરી શકાશે નહીં */
+body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
+}
+
 
