@@ -260,4 +260,109 @@ body {
     user-select: none; /* Standard syntax */
 }
 
+/* Notification Container */
+.notification-container {
+    position: relative;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* Bell Button */
+.notif-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.notif-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Red Dot Badge */
+.badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: none; /* JS will show this if new items exist */
+    border: 1px solid white;
+}
+
+/* Dropdown Styling */
+.notif-dropdown {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 50px;
+    right: -10px;
+    width: 300px;
+    background: rgba(255, 248, 236, 0.98); /* Matching your nav-bg */
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 2000;
+    overflow: hidden;
+    animation: slideDown 0.3s ease;
+}
+
+.notif-header {
+    background: var(--maroon);
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.notif-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.notif-dropdown li {
+    padding: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-size: 0.9rem;
+}
+
+.notif-dropdown li:hover {
+    background: rgba(218, 165, 32, 0.1); /* Light Gold hover */
+}
+
+.notif-date {
+    font-size: 0.75rem;
+    color: #666;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.notif-link {
+    text-decoration: none;
+    color: var(--maroon);
+    font-weight: 600;
+}
+
+.notif-link:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .notif-dropdown {
+        position: fixed;
+        top: 60px;
+        left: 5%;
+        width: 90%;
+    }
+}
+
 
