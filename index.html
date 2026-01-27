@@ -161,6 +161,22 @@
             <li><div id="google_translate_element"></div>
         </ul>
     </nav>
+<div class="notification-container">
+    <button class="notif-btn" onclick="toggleNotif()" aria-label="નોટિફિકેશન જુઓ">
+        🔔
+        <span class="badge" id="notif-badge"></span>
+    </button>
+
+    <div class="notif-dropdown" id="notif-box">
+        <div class="notif-header">
+            <span>Updates</span>
+            <button onclick="toggleNotif()" style="background:none; border:none; cursor:pointer;">✖</button>
+        </div>
+        <ul id="notif-list">
+            <li>Loading...</li>
+        </ul>
+    </div>
+</div>
 
     <main id="main-content"> <section class="hero-section">
             <marquee aria-hidden="true" style="color: var(--maroon); font-weight: bold;"> 
