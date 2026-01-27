@@ -138,11 +138,41 @@
         
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* --- New Notification CSS --- */
+        .notification-container {
+            position: relative;
+            margin-left: 10px;
+            display: flex; align-items: center;
+        }
+        .notif-btn {
+            background: transparent; border: none; font-size: 1.5rem;
+            cursor: pointer; position: relative; transition: transform 0.2s;
+        }
+        .notif-btn:hover { transform: scale(1.1); }
+        .badge {
+            position: absolute; top: 0; right: 0; width: 10px; height: 10px;
+            background-color: red; border-radius: 50%; display: none;
+            border: 1px solid white;
+        }
+        .notif-dropdown {
+            display: none; position: absolute; top: 50px; right: -10px;
+            width: 280px; background: var(--nav-bg);
+            border: 2px solid var(--gold); border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 2000;
+            overflow: hidden; text-align: left;
+        }
+        .notif-header {
+            background: var(--maroon); color: white; padding: 10px 15px;
+            font-weight: bold; display: flex; justify-content: space-between;
+        }
+        #notif-list { list-style: none; padding: 0; margin: 0; max-height: 250px; overflow-y: auto; }
+        #notif-list li { padding: 12px; border-bottom: 1px solid rgba(0,0,0,0.1); font-size: 0.9rem; }
+        #notif-list li:hover { background: rgba(218, 165, 32, 0.1); }
     </style>
 
 </head>
 <body>
-<a href="#main-content" class="skip-link">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
+    <a href="#main-content" class="skip-link">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
 
     <nav role="navigation" aria-label="મુખ્ય મેનુ">
         <div class="logo-container">
@@ -160,27 +190,29 @@
             <li><a href="resume.html" class="nav-link">Resume</a></li>
             <li><a href="blog.html" class="nav-link">Articles</a></li>
             <li><a href="contact.html" class="nav-link">Contact</a></li>
-            <li><div id="google_translate_element"></div>
+            <li><div id="google_translate_element"></div></li>
         </ul>
-    </nav>
-<div class="notification-container">
-    <button class="notif-btn" onclick="toggleNotif()" aria-label="નોટિફિકેશન જુઓ">
-        🔔
-        <span class="badge" id="notif-badge"></span>
-    </button>
 
-    <div class="notif-dropdown" id="notif-box">
-        <div class="notif-header">
-            <span>Updates</span>
-            <button onclick="toggleNotif()" style="background:none; border:none; cursor:pointer;">✖</button>
+        <div class="notification-container">
+            <button class="notif-btn" onclick="toggleNotif()" aria-label="નોટિફિકેશન જુઓ">
+                🔔
+                <span class="badge" id="notif-badge"></span>
+            </button>
+        
+            <div class="notif-dropdown" id="notif-box">
+                <div class="notif-header">
+                    <span>Updates</span>
+                    <button onclick="toggleNotif()" style="background:none; border:none; cursor:pointer; color:white;">✖</button>
+                </div>
+                <ul id="notif-list">
+                    <li>Loading...</li>
+                </ul>
+            </div>
         </div>
-        <ul id="notif-list">
-            <li>Loading...</li>
-        </ul>
-    </div>
-</div>
+    </nav>
 
-    <main id="main-content"> <section class="hero-section">
+    <main id="main-content"> 
+        <section class="hero-section">
             <marquee aria-hidden="true" style="color: var(--maroon); font-weight: bold;"> 
                 || જય શ્રી કૃષ્ણ 🙏 આપનું સ્વાગત છે ||
             </marquee>
@@ -254,87 +286,70 @@
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script>
-    // --- Notification Logic Starts Here ---
 
-    // 1. નોટિફિકેશન બોક્સ ખોલવા/બંધ કરવા માટેનું ફંક્શન
-    function toggleNotif() {
-        const box = document.getElementById('notif-box');
-        
-        // જો બોક્સ અત્યારે દેખાતું હોય (block), તો તેને છુપાવો (none)
-        if (box.style.display === 'block') {
-            box.style.display = 'none';
-        } else {
-            // જો બંધ હોય, તો ખોલો (block) અને ડેટા લોડ કરો
-            box.style.display = 'block';
-            fetchNotifications(); 
+    <script>
+        function toggleNotif() {
+            const box = document.getElementById('notif-box');
+            if (box.style.display === 'block') {
+                box.style.display = 'none';
+            } else {
+                box.style.display = 'block';
+                fetchNotifications();
+            }
         }
-    }
 
-    // 2. JSON ફાઈલમાંથી ડેટા લાવવા માટેનું અસિંક્રનસ (Async) ફંક્શન
-    async function fetchNotifications() {
-        const list = document.getElementById('notif-list');
-        const badge = document.getElementById('notif-badge');
-        
-        try {
-            // 'fetch' કમાન્ડથી notifications.json ફાઈલ વંચાય છે.
-            // '?t=' + new Date().getTime() એ બ્રાઉઝરને જૂનો ડેટા (Cache) વાપરતા રોકે છે.
-            const response = await fetch('notifications.json?t=' + new Date().getTime());
+        async function fetchNotifications() {
+            const list = document.getElementById('notif-list');
+            const badge = document.getElementById('notif-badge');
             
-            // ડેટાને JSON ફોર્મેટમાં કન્વર્ટ કરો
-            const data = await response.json();
-            
-            list.innerHTML = ''; // લોડિંગ ટેક્સ્ટ કાઢી નાખો
-            let hasNew = false;  // નવી નોટિફિકેશન છે કે નહીં તે ચેક કરવા માટેનો ફ્લેગ
-
-            // લૂપ ચલાવીને લિસ્ટ બનાવો
-            data.forEach(item => {
-                if (item.new) hasNew = true; // જો આઈટમ નવી હોય તો ફ્લેગ true કરો
+            try {
+                // Fetching JSON with timestamp to prevent caching
+                const response = await fetch('notifications.json?t=' + new Date().getTime());
+                const data = await response.json();
                 
-                const li = document.createElement('li');
-                // HTML લિસ્ટ આઈટમ બનાવો
-                li.innerHTML = `
-                    <span class="notif-date" style="font-size:0.75rem; color:#666; display:block;">${item.date}</span>
-                    <a href="${item.link}" class="notif-link" style="text-decoration:none; color:#7b1c1c; font-weight:bold;">
-                        ${item.new ? '🆕 ' : ''}${item.text}
-                    </a>
-                `;
-                list.appendChild(li); // લિસ્ટમાં ઉમેરો
-            });
+                list.innerHTML = ''; 
+                let hasNew = false;
 
-            // જો નવી નોટિફિકેશન હોય તો લાલ ટપકું (Badge) બતાવો
-            badge.style.display = hasNew ? 'block' : 'none';
+                data.forEach(item => {
+                    if (item.new) hasNew = true;
+                    
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <span style="font-size:0.75rem; color:#666; display:block;">${item.date}</span>
+                        <a href="${item.link}" style="text-decoration:none; color:#7b1c1c; font-weight:bold;">
+                            ${item.new ? '🆕 ' : ''}${item.text}
+                        </a>
+                    `;
+                    list.appendChild(li);
+                });
 
-        } catch (error) {
-            console.error('Error:', error);
-            list.innerHTML = '<li style="color:red; padding:10px;">Failed to load updates.</li>';
+                badge.style.display = hasNew ? 'block' : 'none';
+
+            } catch (error) {
+                console.error('Error:', error);
+                list.innerHTML = '<li style="color:red; padding:10px;">Failed to load updates.</li>';
+            }
         }
-    }
 
-    // 3. પેજ લોડ થાય ત્યારે જ ચેક કરો (માત્ર લાલ ટપકું બતાવવા માટે)
-    window.addEventListener('load', function() {
-        fetch('notifications.json?t=' + new Date().getTime())
-        .then(res => res.json())
-        .then(data => {
-            // .some() એરેમાં ચેક કરે છે કે કોઈ એક પણ આઈટમ 'new' છે કે નહીં
-            const hasNew = data.some(item => item.new);
-            document.getElementById('notif-badge').style.display = hasNew ? 'block' : 'none';
-        })
-        .catch(e => console.log(e));
-    });
+        // Initial Load Check
+        window.addEventListener('load', function() {
+            fetch('notifications.json?t=' + new Date().getTime())
+            .then(res => res.json())
+            .then(data => {
+                const hasNew = data.some(item => item.new);
+                document.getElementById('notif-badge').style.display = hasNew ? 'block' : 'none';
+            })
+            .catch(e => console.log(e));
+        });
 
-    // 4. જો યુઝર બોક્સની બહાર ક્લિક કરે તો બોક્સ બંધ થઈ જવું જોઈએ
-    document.addEventListener('click', function(event) {
-        const container = document.querySelector('.notification-container');
-        const box = document.getElementById('notif-box');
-        
-        // જો ક્લિક કન્ટેનરની બહાર થયું હોય અને બોક્સ ખુલ્લું હોય
-        if (!container.contains(event.target) && box.style.display === 'block') {
-            box.style.display = 'none';
-        }
-    });
-</script>
-
-
+        // Close when clicking outside
+        document.addEventListener('click', function(event) {
+            const container = document.querySelector('.notification-container');
+            const box = document.getElementById('notif-box');
+            if (!container.contains(event.target) && box.style.display === 'block') {
+                box.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
