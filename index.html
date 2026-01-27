@@ -141,75 +141,7 @@
 
 </head>
 <body>
-// Toggle Dropdown Visibility
-function toggleNotif() {
-    const box = document.getElementById('notif-box');
-    if (box.style.display === 'block') {
-        box.style.display = 'none';
-    } else {
-        box.style.display = 'block';
-        fetchNotifications(); // Load data when opened
-    }
-}
-
-// Fetch Data from JSON File
-async function fetchNotifications() {
-    const list = document.getElementById('notif-list');
-    const badge = document.getElementById('notif-badge');
-    
-    try {
-        // બદલાયેલી ફાઈલ તરત લોડ થાય તે માટે timestamp ઉમેર્યો છે
-        const response = await fetch('notifications.json?t=' + new Date().getTime());
-        const data = await response.json();
-        
-        list.innerHTML = ''; // Clear loading text
-        let hasNew = false;
-
-        data.forEach(item => {
-            if (item.new) hasNew = true;
-            
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <span class="notif-date">${item.date}</span>
-                <a href="${item.link}" class="notif-link">
-                    ${item.new ? '🆕 ' : ''}${item.text}
-                </a>
-            `;
-            list.appendChild(li);
-        });
-
-        // Show red badge if there is a 'new' item
-        badge.style.display = hasNew ? 'block' : 'none';
-
-    } catch (error) {
-        console.error('Error loading notifications:', error);
-        list.innerHTML = '<li style="color:red; text-align:center;">Failed to load updates.</li>';
-    }
-}
-
-// Initial check for badge (without opening dropdown)
-window.onload = function() {
-    fetch('notifications.json?t=' + new Date().getTime())
-    .then(res => res.json())
-    .then(data => {
-        const hasNew = data.some(item => item.new);
-        document.getElementById('notif-badge').style.display = hasNew ? 'block' : 'none';
-    })
-    .catch(e => console.log(e));
-    
-    // Google Translate script calls can go here too
-};
-
-// Close dropdown when clicking outside
-document.addEventListener('click', function(event) {
-    const container = document.querySelector('.notification-container');
-    const box = document.getElementById('notif-box');
-    if (!container.contains(event.target) && box.style.display === 'block') {
-        box.style.display = 'none';
-    }
-});
-
-    <a href="#main-content" class="skip-link">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
+<a href="#main-content" class="skip-link">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
 
     <nav role="navigation" aria-label="મુખ્ય મેનુ">
         <div class="logo-container">
