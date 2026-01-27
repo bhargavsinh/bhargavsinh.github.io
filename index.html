@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="gu"> <head>
+<html lang="gu"> 
+<head>
     <meta charset="UTF-8">
     <title>Home | Sisodiya Bhargavsinh</title>
     
@@ -253,5 +254,87 @@
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+    // --- Notification Logic Starts Here ---
+
+    // 1. નોટિફિકેશન બોક્સ ખોલવા/બંધ કરવા માટેનું ફંક્શન
+    function toggleNotif() {
+        const box = document.getElementById('notif-box');
+        
+        // જો બોક્સ અત્યારે દેખાતું હોય (block), તો તેને છુપાવો (none)
+        if (box.style.display === 'block') {
+            box.style.display = 'none';
+        } else {
+            // જો બંધ હોય, તો ખોલો (block) અને ડેટા લોડ કરો
+            box.style.display = 'block';
+            fetchNotifications(); 
+        }
+    }
+
+    // 2. JSON ફાઈલમાંથી ડેટા લાવવા માટેનું અસિંક્રનસ (Async) ફંક્શન
+    async function fetchNotifications() {
+        const list = document.getElementById('notif-list');
+        const badge = document.getElementById('notif-badge');
+        
+        try {
+            // 'fetch' કમાન્ડથી notifications.json ફાઈલ વંચાય છે.
+            // '?t=' + new Date().getTime() એ બ્રાઉઝરને જૂનો ડેટા (Cache) વાપરતા રોકે છે.
+            const response = await fetch('notifications.json?t=' + new Date().getTime());
+            
+            // ડેટાને JSON ફોર્મેટમાં કન્વર્ટ કરો
+            const data = await response.json();
+            
+            list.innerHTML = ''; // લોડિંગ ટેક્સ્ટ કાઢી નાખો
+            let hasNew = false;  // નવી નોટિફિકેશન છે કે નહીં તે ચેક કરવા માટેનો ફ્લેગ
+
+            // લૂપ ચલાવીને લિસ્ટ બનાવો
+            data.forEach(item => {
+                if (item.new) hasNew = true; // જો આઈટમ નવી હોય તો ફ્લેગ true કરો
+                
+                const li = document.createElement('li');
+                // HTML લિસ્ટ આઈટમ બનાવો
+                li.innerHTML = `
+                    <span class="notif-date" style="font-size:0.75rem; color:#666; display:block;">${item.date}</span>
+                    <a href="${item.link}" class="notif-link" style="text-decoration:none; color:#7b1c1c; font-weight:bold;">
+                        ${item.new ? '🆕 ' : ''}${item.text}
+                    </a>
+                `;
+                list.appendChild(li); // લિસ્ટમાં ઉમેરો
+            });
+
+            // જો નવી નોટિફિકેશન હોય તો લાલ ટપકું (Badge) બતાવો
+            badge.style.display = hasNew ? 'block' : 'none';
+
+        } catch (error) {
+            console.error('Error:', error);
+            list.innerHTML = '<li style="color:red; padding:10px;">Failed to load updates.</li>';
+        }
+    }
+
+    // 3. પેજ લોડ થાય ત્યારે જ ચેક કરો (માત્ર લાલ ટપકું બતાવવા માટે)
+    window.addEventListener('load', function() {
+        fetch('notifications.json?t=' + new Date().getTime())
+        .then(res => res.json())
+        .then(data => {
+            // .some() એરેમાં ચેક કરે છે કે કોઈ એક પણ આઈટમ 'new' છે કે નહીં
+            const hasNew = data.some(item => item.new);
+            document.getElementById('notif-badge').style.display = hasNew ? 'block' : 'none';
+        })
+        .catch(e => console.log(e));
+    });
+
+    // 4. જો યુઝર બોક્સની બહાર ક્લિક કરે તો બોક્સ બંધ થઈ જવું જોઈએ
+    document.addEventListener('click', function(event) {
+        const container = document.querySelector('.notification-container');
+        const box = document.getElementById('notif-box');
+        
+        // જો ક્લિક કન્ટેનરની બહાર થયું હોય અને બોક્સ ખુલ્લું હોય
+        if (!container.contains(event.target) && box.style.display === 'block') {
+            box.style.display = 'none';
+        }
+    });
+</script>
+
+
 </body>
 </html>
