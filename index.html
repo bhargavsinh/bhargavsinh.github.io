@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="gu"> 
+<html lang="gu">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Sisodiya Bhargavsinh</title>
     
     <meta name="google-site-verification" content="google424fbe164e6bb481" />
     <meta name="description" content="Official website of Sisodiya Bhargavsinh - Descendant of Maharana Pratap. Research on Pushtimarg, Gruh Seva, and Genealogy history.">
     <meta name="keywords" content="Bhargavsinh Sisodiya, Pushtimarg, Gruh Seva, Maharana Pratap Genealogy, Rajput History, Purawat Sisodiya, BCA Student">
     <meta name="author" content="Sisodiya Bhargavsinh">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noai, noimageai">
+    <link rel="canonical" href="https://bhargavsinh.github.io/" />
     
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com;">
 
@@ -17,7 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
-<link rel="canonical" href="https://bhargavsinh.github.io/" />
     <style>
         :root {
             --bg-gradient: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
@@ -26,7 +26,6 @@
             --maroon: #7b1c1c;
             --gold: #daa520;
             --card-glass: rgba(255, 255, 255, 0.6);
-            --card-border: rgba(255, 255, 255, 0.8);
             --shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
@@ -36,9 +35,10 @@
             font-family: 'Noto Sans', sans-serif;
             margin: 0;
             color: var(--text-main);
+            line-height: 1.6;
         }
 
-        /* WCAG 2.4.1: Skip Link Styling */
+        /* Accessibility: Skip Link */
         .skip-link {
             position: absolute;
             top: -100px;
@@ -47,190 +47,158 @@
             color: white;
             padding: 10px;
             z-index: 2000;
-            text-decoration: none;
             transition: top 0.3s;
         }
         .skip-link:focus { top: 0; }
 
-        /* WCAG 2.4.7: Focus Indicators */
-        a:focus, button:focus {
-            outline: 3px solid #007bff;
-            outline-offset: 4px;
-        }
-
+        /* Navigation */
         nav {
-            background: var(--nav-bg) !important;
+            background: var(--nav-bg);
             backdrop-filter: blur(10px);
-            border-bottom: 3px solid var(--gold) !important;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 20px; position: sticky; top: 0; z-index: 1000;
+            border-bottom: 3px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .nav-links {
-            display: flex; gap: 15px; list-style: none; margin: 0; padding: 0; align-items: center;
-        }
+        .logo-container { text-align: center; }
+        .logo-container img { height: 50px; border-radius: 5px; }
+        .brand-name { font-family: 'Yatra One', cursive; font-size: 1.2rem; color: var(--maroon); display: block; }
 
-        .nav-link { transition: 0.3s; font-weight: bold; text-decoration: none; color: var(--text-main); }
-        .nav-link:hover { color: var(--gold) !important; }
+        .nav-links { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; align-items: center; }
+        .nav-link { font-weight: bold; text-decoration: none; color: var(--text-main); transition: 0.3s; }
+        .nav-link:hover { color: var(--gold); }
+        .nav-link.active { color: var(--gold); }
 
         .hamburger { display: none; font-size: 2rem; color: var(--maroon); cursor: pointer; }
 
-        @media (max-width: 850px) {
-            .hamburger { display: block; }
-            .nav-links {
-                display: none; flex-direction: column; position: absolute;
-                top: 100%; left: 0; width: 100%;
-                background: var(--nav-bg); padding: 20px 0;
-                border-bottom: 3px solid var(--gold);
-                text-align: center;
-            }
-            .nav-links.active { display: flex; animation: slideDown 0.3s ease-in-out; }
-        }
-
-        .hero-section { text-align: center; padding: 40px 20px; }
-        
+        /* Hero Section */
+        .hero-section { text-align: center; padding: 60px 20px; }
         .profile-img {
             width: 180px; height: 180px; object-fit: cover; border-radius: 50%;
             border: 5px solid var(--gold); box-shadow: 0 0 25px rgba(218, 165, 32, 0.4);
-            margin-top: 20px;
         }
 
         h1 {
-            font-family: 'Yatra One', cursive; font-size: 2.2rem; color: var(--maroon);
-            margin: 15px 0; display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap;
+            font-family: 'Yatra One', cursive; font-size: 2.5rem; color: var(--maroon);
+            margin: 20px 0; display: flex; justify-content: center; align-items: center; gap: 10px;
         }
-        
+
         .shloka-box {
             background: rgba(123, 28, 28, 0.05); border: 2px dashed var(--gold);
-            border-radius: 15px; padding: 20px; max-width: 700px; margin: 30px auto;
+            border-radius: 15px; padding: 25px; max-width: 700px; margin: 40px auto;
             color: var(--maroon); font-family: 'Yatra One', cursive; font-size: 1.2rem;
         }
 
+        /* Content Cards Grid */
         .highlights-grid {
-            display: flex; flex-wrap: wrap; gap: 25px; justify-content: center;
-            max-width: 1000px; margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
         .h-card {
-            flex: 1 1 280px; background: var(--card-glass);
+            background: var(--card-glass);
             border-top: 5px solid var(--maroon);
-            padding: 30px 20px; text-align: center; border-radius: 15px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05); transition: 0.3s;
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: 0.3s ease;
         }
 
-        .h-card:hover { transform: translateY(-8px); border-top-color: var(--gold); }
-
-        .h-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
-        
+        .h-card:hover { transform: translateY(-10px); border-top-color: var(--gold); }
+        .h-icon { font-size: 3rem; margin-bottom: 15px; display: block; }
         .h-link { 
-            display: inline-block; margin-top: 15px; background: var(--maroon);
-            color: #fff; padding: 8px 20px; border-radius: 50px; text-decoration: none;
-            font-size: 0.9rem; transition: 0.3s;
+            display: inline-block; margin-top: 20px; background: var(--maroon);
+            color: #fff; padding: 10px 25px; border-radius: 50px; text-decoration: none;
+            transition: 0.3s;
         }
         .h-link:hover { background: var(--gold); color: #000; }
 
-        .tech-badge {
-            display: inline-block; padding: 8px 18px; margin: 5px;
-            border: 1px solid var(--gold); border-radius: 25px; font-size: 0.9rem;
-            background: #fff; color: var(--maroon); font-weight: bold;
-        }
-
-        footer { background: var(--maroon); color: white; padding: 20px; text-align: center; margin-top: 50px; }
-        
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- Notification CSS --- */
-        .notification-container {
-            position: relative;
-            margin-left: 10px;
-            display: flex; align-items: center;
-        }
-        .notif-btn {
-            background: transparent; border: none; font-size: 1.5rem;
-            cursor: pointer; position: relative; transition: transform 0.2s;
-        }
-        .notif-btn:hover { transform: scale(1.1); }
+        /* Notifications */
+        .notification-container { position: relative; margin-left: 15px; }
+        .notif-btn { background: none; border: none; font-size: 1.6rem; cursor: pointer; position: relative; }
         .badge {
             position: absolute; top: 0; right: 0; width: 10px; height: 10px;
-            background-color: red; border-radius: 50%; display: none;
-            border: 1px solid white;
+            background: red; border-radius: 50%; border: 1.5px solid white; display: none;
         }
         .notif-dropdown {
-            display: none; 
-            position: absolute; 
-            top: 50px; 
-            right: 0px; /* Aligns to right edge */
-            width: 280px; 
-            background: var(--nav-bg);
-            border: 2px solid var(--gold); border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 2000;
-            overflow: hidden; text-align: left;
+            display: none; position: absolute; top: 55px; right: 0; width: 300px;
+            background: #fff8ec; border: 2px solid var(--gold); border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 2000; overflow: hidden;
         }
-        .notif-header {
-            background: var(--maroon); color: white; padding: 10px 15px;
-            font-weight: bold; display: flex; justify-content: space-between;
-        }
-        #notif-list { list-style: none; padding: 0; margin: 0; max-height: 250px; overflow-y: auto; }
-        #notif-list li { padding: 12px; border-bottom: 1px solid rgba(0,0,0,0.1); font-size: 0.9rem; }
-        #notif-list li:hover { background: rgba(218, 165, 32, 0.1); }
+        .notif-header { background: var(--maroon); color: white; padding: 12px 15px; font-weight: bold; display: flex; justify-content: space-between; }
+        #notif-list { list-style: none; padding: 0; margin: 0; max-height: 300px; overflow-y: auto; }
+        #notif-list li { padding: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 0.95rem; }
 
-        /* --- MOBILE FIX: Ensure dropdown fits on screen --- */
-        @media (max-width: 600px) {
-            .notif-dropdown {
-                position: fixed; /* Fix to screen, not button */
-                top: 70px;       /* Push below navbar */
-                left: 5%;        /* Center horizontally */
-                right: 5%;
-                width: 90%;      /* Take full width minus margins */
-                max-width: 400px;
+        /* Footer */
+        footer { background: var(--maroon); color: white; padding: 40px 20px; text-align: center; margin-top: 60px; }
+        .footer-link { color: gold; text-decoration: none; font-weight: bold; }
+
+        /* Responsive Design */
+        @media (max-width: 850px) {
+            nav { padding: 10px 20px; }
+            .hamburger { display: block; }
+            .nav-links {
+                display: none; flex-direction: column; position: absolute;
+                top: 100%; left: 0; width: 100%; background: var(--nav-bg);
+                padding: 20px 0; border-bottom: 3px solid var(--gold);
             }
+            .nav-links.active { display: flex; }
+            .notif-dropdown { position: fixed; top: 80px; left: 5%; right: 5%; width: 90%; max-width: none; }
         }
     </style>
-
 </head>
 <body>
+
     <a href="#main-content" class="skip-link">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
 
-    <nav role="navigation" aria-label="મુખ્ય મેનુ">
-        <div class="logo-container">
-          <center>  <img src="logo.png" alt="સિસોદિયા વંશનો રાજવી લોગો" style="height: 50px; border-radius: 5px;"> </center>
-            <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: var(--maroon);"><center>Sisodiya Bhargavsinh</center></span>
-        </div>
-
-        <div class="hamburger" onclick="toggleMenu()" aria-label="મેનુ ખોલો" role="button" aria-expanded="false">☰</div>
-
-        <ul class="nav-links" id="navLinks">
-            <li><a href="index.html" class="nav-link" style="color: var(--gold);">Home</a></li>
-            <li><a href="about.html" class="nav-link">About</a></li>
-            <li><a href="pushtimarg.html" class="nav-link">Pushtimarg</a></li>
-            <li><a href="projects.html" class="nav-link">Projects</a></li>
-            <li><a href="resume.html" class="nav-link">Resume</a></li>
-            <li><a href="blog.html" class="nav-link">Articles</a></li>
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
-            <li><div id="google_translate_element"></div></li>
-        </ul>
-
-        <div class="notification-container">
-            <button class="notif-btn" onclick="toggleNotif()" aria-label="નોટિફિકેશન જુઓ">
-                🔔
-                <span class="badge" id="notif-badge"></span>
-            </button>
-        
-            <div class="notif-dropdown" id="notif-box">
-                <div class="notif-header">
-                    <span>Updates</span>
-                    <button onclick="toggleNotif()" style="background:none; border:none; cursor:pointer; color:white;">✖</button>
-                </div>
-                <ul id="notif-list">
-                    <li>Loading...</li>
-                </ul>
+    <header>
+        <nav role="navigation" aria-label="મુખ્ય મેનુ">
+            <div class="logo-container">
+                <img src="logo.png" alt="સિસોદિયા વંશનો રાજવી લોગો">
+                <span class="brand-name">Sisodiya Bhargavsinh</span>
             </div>
-        </div>
-    </nav>
 
-    <main id="main-content"> 
+            <div class="hamburger" onclick="toggleMenu()" aria-label="મેનુ ખોલો" role="button" aria-expanded="false">☰</div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="pushtimarg.html" class="nav-link">Pushtimarg</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="resume.html" class="nav-link">Resume</a></li>
+                <li><a href="blog.html" class="nav-link">Articles</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><div id="google_translate_element"></div></li>
+            </ul>
+
+            <div class="notification-container">
+                <button class="notif-btn" onclick="toggleNotif()" aria-label="નોટિફિકેશન જુઓ">
+                    🔔 <span class="badge" id="notif-badge"></span>
+                </button>
+                <div class="notif-dropdown" id="notif-box">
+                    <div class="notif-header">
+                        <span>Updates</span>
+                        <span onclick="toggleNotif()" style="cursor:pointer;">✖</span>
+                    </div>
+                    <ul id="notif-list"><li>Loading...</li></ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
         <section class="hero-section">
-            <marquee aria-hidden="true" style="color: var(--maroon); font-weight: bold;"> 
+            <marquee aria-hidden="true" style="color: var(--maroon); font-weight: bold; margin-bottom: 20px;"> 
                 || જય શ્રી કૃષ્ણ 🙏 આપનું સ્વાગત છે ||
             </marquee>
 
@@ -243,68 +211,58 @@
                 </svg>
             </h1>
 
-            <p>🙏 શ્રીકૃષ્ણદાસાનુદાસોડહમ્ ।</p>
-            <p>🚩 પુષ્ટિમાર્ગીય વૈષ્ણવ</p>
-            <p>🎓 BCA | 🛡️ Rajput | 🙏 Theist</p>
+            <p>🙏 શ્રીકૃષ્ણદાસાનુદાસોડહમ્ । | 🚩 પુષ્ટિમાર્ગીય વૈષ્ણવ</p>
+            <p>🎓 BCA Student | 🛡️ Rajput Heritage | 🙏 Theist</p>
             <p>⚔️ 16th Generation Descendant of Shri Maharana Pratap</p>
             
             <div class="shloka-box" role="complementary" aria-label="શ્રીમદ્દ ભાગવત શ્લોક">
                 "સ વૈ પુસાં પરો ધર્મો યતો ભક્તિરધોક્ષજે। (શ્રીમદ્ભાગવત મહાપુરાણ 1.2.6)"
                 <br>
-                <span style="font-size: 0.9rem; color: #555; margin-top: 5px; display:block;">(જે ધર્મ દ્વારા ભગવાનમાં નિર્મળ ભક્તિ થાય, એ જ માનવ માટે પરમ ધર્મ છે.)</span>
+                <span style="font-size: 0.9rem; color: #555; margin-top: 10px; display:block;">(જે ધર્મ દ્વારા ભગવાનમાં નિર્મળ ભક્તિ થાય, એ જ માનવ માટે પરમ ધર્મ છે.)</span>
             </div>
         </section>
 
         <section class="highlights-grid" aria-label="વિશેષ વિભાગો">
             <div class="h-card">
-                <span class="h-icon" aria-hidden="true">📜</span>
-                <h2 style="color: var(--maroon); font-size: 1.5rem;">વંશાવલી</h2>
-                <p>મહારાણા પ્રતાપથી લઈને અત્યાર સુધીની પેઢીઓનો ગૌરવવંતો ઈતિહાસ.</p>
-                <a href="about.html" class="h-link" aria-label="સિસોદિયા વંશાવલી જુઓ">જુઓ →</a>
+                <span class="h-icon">📜</span>
+                <h2 style="color: var(--maroon); margin-bottom: 15px;">વંશાવલી</h2>
+                <p>મહારાણા પ્રતાપથી લઈને અત્યાર સુધીની પેઢીઓનો ગૌરવવંતો ઈતિહાસ અને દસ્તાવેજો.</p>
+                <a href="about.html" class="h-link">જુઓ →</a>
             </div>
 
             <div class="h-card">
-                <span class="h-icon" aria-hidden="true">🪔</span>
-                <h2 style="color: var(--maroon); font-size: 1.5rem;">પુષ્ટિ સિદ્ધાંત</h2>
-                <p>ગૃહ સેવા અને અમૃત વચનાવલી</p>
-                <a href="pushtimarg.html" class="h-link" aria-label="પુષ્ટિ સિદ્ધાંત વિશે વાંચો">વાંચો →</a>
+                <span class="h-icon">🪔</span>
+                <h2 style="color: var(--maroon); margin-bottom: 15px;">પુષ્ટિ સિદ્ધાંત</h2>
+                <p>શ્રીમદ વલ્લભાચાર્યજી પ્રણીત પુષ્ટિમાર્ગ, ગૃહ સેવા અને શુદ્ધાદ્વૈત બ્રહ્મવાદ ના સિદ્ધાંતો.</p>
+                <a href="pushtimarg.html" class="h-link">વાંચો →</a>
             </div>
 
             <div class="h-card">
-                <span class="h-icon" aria-hidden="true">✒️</span>
-                <h2 style="color: var(--maroon); font-size: 1.5rem;">સંશોધન લેખ</h2>
-                <p>"પુષ્ટિમાર્ગ માં ગૃહ સેવા" પર શાસ્ત્રીય સંશોધન.</p>
-                <a href="blog.html" class="h-link" aria-label="સંશોધન લેખ વાંચો">Article વાંચો →</a>
+                <span class="h-icon">✒️</span>
+                <h2 style="color: var(--maroon); margin-bottom: 15px;">સંશોધન લેખ</h2>
+                <p>"પુષ્ટિમાર્ગ માં ગૃહ સેવા" પર કરવામાં આવેલ ઊંડાણપૂર્વકનું શાસ્ત્રીય સંશોધન.</p>
+                <a href="blog.html" class="h-link">લેખ વાંચો →</a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p><a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a></p>
-        <marquee aria-hidden="true" style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
-        <div style="margin-top: 15px;">
-            <p style="font-size: 0.8rem; color: #ffebcd;">Visitor Count:</p>
-            <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="વેબસાઇટ વિઝિટર કાઉન્ટર">
+        <p><a href="disclaimer.html" class="footer-link">Legal Disclaimer</a></p>
+        <marquee aria-hidden="true" style="color: gold; margin: 10px 0;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
+        <div style="margin-top: 20px;">
+            <p style="font-size: 0.85rem; color: #ffebcd; margin-bottom: 5px;">Visitor Count:</p>
+            <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Visitor Counter">
         </div>
     </footer>
 
     <script>
         function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            const hamburger = document.querySelector('.hamburger');
-            const isActive = navLinks.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', isActive);
+            const nav = document.getElementById('navLinks');
+            const burger = document.querySelector('.hamburger');
+            nav.classList.toggle('active');
+            burger.setAttribute('aria-expanded', nav.classList.contains('active'));
         }
-        document.addEventListener('contextmenu', event => event.preventDefault());
-    </script>
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'gu', includedLanguages: 'gu,en,hi,sa', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <script>
         function toggleNotif() {
             const box = document.getElementById('notif-box');
             if (box.style.display === 'block') {
@@ -318,52 +276,52 @@
         async function fetchNotifications() {
             const list = document.getElementById('notif-list');
             const badge = document.getElementById('notif-badge');
-            
             try {
-                const response = await fetch('notifications.json?t=' + new Date().getTime());
-                const data = await response.json();
-                
-                list.innerHTML = ''; 
+                const res = await fetch('notifications.json?t=' + Date.now());
+                const data = await res.json();
+                list.innerHTML = '';
                 let hasNew = false;
-
                 data.forEach(item => {
                     if (item.new) hasNew = true;
-                    
                     const li = document.createElement('li');
                     li.innerHTML = `
-                        <span style="font-size:0.75rem; color:#666; display:block;">${item.date}</span>
-                        <a href="${item.link}" style="text-decoration:none; color:#7b1c1c; font-weight:bold;">
+                        <small style="color:#666;">${item.date}</small><br>
+                        <a href="${item.link}" style="text-decoration:none; color:var(--maroon); font-weight:bold;">
                             ${item.new ? '🆕 ' : ''}${item.text}
-                        </a>
-                    `;
+                        </a>`;
                     list.appendChild(li);
                 });
-
                 badge.style.display = hasNew ? 'block' : 'none';
-
-            } catch (error) {
-                console.error('Error:', error);
-                list.innerHTML = '<li style="color:red; padding:10px;">Failed to load updates.</li>';
+            } catch (e) {
+                list.innerHTML = '<li style="color:red;">Failed to load updates.</li>';
             }
         }
 
-        window.addEventListener('load', function() {
-            fetch('notifications.json?t=' + new Date().getTime())
-            .then(res => res.json())
-            .then(data => {
-                const hasNew = data.some(item => item.new);
-                document.getElementById('notif-badge').style.display = hasNew ? 'block' : 'none';
-            })
-            .catch(e => console.log(e));
+        // Initialization
+        window.addEventListener('load', () => {
+            fetch('notifications.json?t=' + Date.now())
+                .then(r => r.json())
+                .then(d => {
+                    if(d.some(i => i.new)) document.getElementById('notif-badge').style.display = 'block';
+                }).catch(console.error);
         });
 
-        document.addEventListener('click', function(event) {
-            const container = document.querySelector('.notification-container');
-            const box = document.getElementById('notif-box');
-            if (!container.contains(event.target) && box.style.display === 'block') {
-                box.style.display = 'none';
+        document.addEventListener('click', (e) => {
+            if (!document.querySelector('.notification-container').contains(e.target)) {
+                document.getElementById('notif-box').style.display = 'none';
             }
         });
+
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'gu', 
+                includedLanguages: 'gu,en,hi,sa', 
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
     </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
