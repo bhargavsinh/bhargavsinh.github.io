@@ -2,9 +2,9 @@
 <html lang="gu">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal Warning & Disclaimer | Sisodiya Bhargavsinh</title>
     
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow"> 
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; frame-src 'self' https://www.google.com;">
 
@@ -13,11 +13,10 @@
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
     <style>
-        /* --- ROYAL LEGAL THEME --- */
-        
         :root {
             --maroon: #7b1c1c;
             --gold: #daa520;
+            --paper-bg: #fdfbf7;
         }
 
         body {
@@ -26,52 +25,42 @@
             font-family: 'Noto Serif Gujarati', serif;
             color: #1a1a1a;
             margin: 0;
-            padding-bottom: 50px;
+            line-height: 1.8;
+            user-select: none; /* Text selection prevention */
         }
 
-        /* Moving Warning Strip */
+        /* Warning Strip */
         .warning-strip {
             background: var(--maroon);
             color: #fff;
-            padding: 10px;
+            padding: 12px;
             text-align: center;
             font-weight: bold;
-            font-family: sans-serif;
-            letter-spacing: 1px;
             border-bottom: 3px solid var(--gold);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
-        /* The Legal Paper (Stamp Paper Look) */
+        /* Legal Document Styling */
         .legal-doc {
             max-width: 850px;
             margin: 50px auto;
-            background-color: #fdfbf7; 
+            background: var(--paper-bg);
             background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
             border: 1px solid #d4af37;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
-            padding: 70px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15); 
+            padding: 60px 70px;
             position: relative;
-            border-radius: 5px;
+            border-radius: 4px;
         }
 
-        /* Inner Decorative Border */
+        /* Inner Borders */
         .legal-doc::after {
             content: '';
             position: absolute;
             top: 15px; left: 15px; right: 15px; bottom: 15px;
             border: 2px solid var(--maroon);
-            pointer-events: none;
-        }
-
-        .legal-doc::before {
-            content: '';
-            position: absolute;
-            top: 18px; left: 18px; right: 18px; bottom: 18px;
-            border: 1px dashed var(--gold);
             pointer-events: none;
         }
 
@@ -83,14 +72,11 @@
             font-size: 6rem;
             color: rgba(139, 0, 0, 0.04);
             font-weight: bold;
-            white-space: nowrap;
             pointer-events: none;
-            user-select: none;
             z-index: 0;
             font-family: 'Cinzel', serif;
         }
 
-        /* Title */
         h1.doc-title {
             text-align: center;
             font-family: 'Cinzel', serif;
@@ -98,89 +84,56 @@
             border-bottom: 3px double #1a1a1a;
             padding-bottom: 15px;
             margin-bottom: 40px;
-            text-transform: uppercase;
-            font-size: 2rem;
-            letter-spacing: 2px;
+            font-size: 2.2rem;
             position: relative;
             z-index: 1;
         }
 
-        /* Clauses */
-        .clause {
-            margin-bottom: 35px;
-            position: relative;
-            z-index: 1;
-        }
-
-        h3.clause-title {
-            font-size: 1.15rem;
+        .clause { margin-bottom: 35px; position: relative; z-index: 1; }
+        .clause-title {
+            font-size: 1.2rem;
             font-weight: 700;
             color: #000;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             text-decoration: underline;
             text-decoration-color: var(--maroon);
-        }
-
-        p {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            text-align: justify;
-            margin-bottom: 15px;
-            color: #222;
         }
 
         .strict-text {
             color: #d32f2f;
             font-weight: bold;
-            background: rgba(255, 0, 0, 0.08);
-            padding: 2px 5px;
-            border-radius: 3px;
+            background: rgba(255, 0, 0, 0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
         }
 
+        /* Seal & Sign */
         .official-seal {
-            float: right;
             border: 4px double var(--maroon);
             border-radius: 50%;
-            width: 130px;
-            height: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--maroon);
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-top: 20px;
+            width: 130px; height: 130px;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; color: var(--maroon);
+            font-weight: bold; font-size: 0.85rem;
             transform: rotate(-15deg);
-            background: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 0 5px rgba(139, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.4);
             font-family: 'Cinzel', serif;
         }
 
         .back-btn {
-            display: block; width: fit-content; margin: 0 auto;
+            display: block; width: fit-content; margin: 30px auto;
             text-decoration: none; 
             background: var(--maroon);
-            color: #fff; 
-            border: 1px solid var(--maroon);
-            padding: 12px 30px; font-weight: bold; 
-            transition: 0.3s;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            font-family: sans-serif;
+            color: #fff; padding: 14px 40px; font-weight: bold; 
+            border-radius: 8px; transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(123, 28, 28, 0.3);
         }
-        .back-btn:hover { 
-            background: var(--gold); 
-            color: #000; 
-            border-color: var(--gold);
-            transform: translateY(-2px);
-        }
+        .back-btn:hover { background: var(--gold); color: #000; transform: translateY(-3px); }
 
         @media (max-width: 600px) {
-            .legal-doc { padding: 40px 25px; margin: 30px 15px; }
-            h1.doc-title { font-size: 1.5rem; }
-            .official-seal { width: 100px; height: 100px; font-size: 0.7rem; float: none; margin: 20px auto; }
-            .watermark { font-size: 3rem; }
+            .legal-doc { padding: 40px 25px; margin: 20px 10px; }
+            h1.doc-title { font-size: 1.6rem; }
+            .official-seal { margin: 30px auto; float: none; }
         }
     </style>
 </head>
@@ -190,86 +143,75 @@
         <marquee scrollamount="8">⚠️ LEGAL NOTICE: INTELLECTUAL PROPERTY THEFT IS A CRIME. VIOLATORS WILL BE PROSECUTED UNDER BNS-2023 & IT ACT-2000. ⚠️</marquee>
     </div>
 
-    <div class="legal-doc">
-        
+    <main class="legal-doc">
         <div class="watermark">LEGAL COPY</div>
 
         <h1 class="doc-title">LEGAL WARNING & DISCLAIMER</h1>
 
         <div class="clause">
             <h3 class="clause-title">૧. બૌદ્ધિક સંપદા અને કોપીરાઈટ (Intellectual Property)</h3>
-            <p>
-                આ વેબસાઇટ (https://bhargavsinh.github.io) ની તમામ સામગ્રી (ફોટો, કોડ, ગ્રાફિક્સ, સંશોધન લેખ અને વંશાવલી) એ લેખક <b>"સિસોદિયા ભાર્ગવસિંહ"</b> ની અનન્ય માલિકીની બૌદ્ધિક સંપદા છે.
-            </p>
-            <p>
-                પ્રચલિત કાયદા હેઠળ મળતી <b>'Fair Dealing' (શૈક્ષણિક કે સમીક્ષા હેતુ)</b> ની મર્યાદા સિવાય, લેખકની લેખિત પરવાનગી વગર આ સામગ્રીની નકલ કરવી, સ્ક્રીનશોટ લેવા કે તેને અન્યત્ર વાપરવી એ <b>'કોપીરાઈટ એક્ટ, ૧૯૫૭'</b> અને <b>'ભારતીય ન્યાય સંહિતા-૨૦૨૩' (BNS)</b> હેઠળ <span class="strict-text">દંડનીય અપરાધ</span> છે.
-            </p>
+            <p>આ વેબસાઇટ (https://bhargavsinh.github.io) ની તમામ સામગ્રી (ફોટો, કોડ, ગ્રાફિક્સ, સંશોધન લેખ અને વંશાવલી) એ લેખક <b>"સિસોદિયા ભાર્ગવસિંહ"</b> ની અનન્ય માલિકીની બૌદ્ધિક સંપદા છે.</p>
+            <p>પ્રચલિત કાયદા હેઠળ મળતી <b>'Fair Dealing' (શૈક્ષણિક કે સમીક્ષા હેતુ)</b> ની મર્યાદા સિવાય, લેખકની લેખિત પરવાનગી વગર આ સામગ્રીની નકલ કરવી, સ્ક્રીનશોટ લેવા કે તેને અન્યત્ર વાપરવી એ <b>'કોપીરાઈટ એક્ટ, ૧૯૫૭'</b> અને <b>'ભારતીય ન્યાય સંહિતા-૨૦૨૩' (BNS)</b> હેઠળ <span class="strict-text">દંડનીય અપરાધ</span> છે.</p>
         </div>
 
         <div class="clause">
             <h3 class="clause-title">૨. ધાર્મિક આસ્થા અને સૈદ્ધાંતિક સંશોધન</h3>
-            <p>
-                અહીં પ્રકાશિત લેખો (જેમ કે 'ગૃહ સેવા') લેખકના શાસ્ત્રીય સંશોધન પર આધારિત છે. લેખકનો હેતુ કોઈપણ આચાર્યશ્રી કે વૈષ્ણવોની લાગણી દુભાવવાનો નથી. 
-            </p>
-            <p>
-                જો કે, આ લખાણને <b>ઈરાદાપૂર્વક ખોટી રીતે (Malicious Intent)</b> અથવા મૂળ સંદર્ભ વગર રજૂ કરી સામાજિક ગેરસમજ ફેલાવનાર વિરુદ્ધ <b>BNS કલમ ૨૯૯</b> (ધાર્મિક લાગણી દુભાવવી) અને <b>BNS કલમ ૩૫૬</b> (માનહાનિ) હેઠળ <span class="strict-text">કોઈપણ પૂર્વ સૂચના વગર</span> કડક ફોજદારી કાર્યવાહી કરવામાં આવશે.
-            </p>
+            <p>અહીં પ્રકાશિત લેખો (જેમ કે 'ગૃહ સેવા') લેખકના શાસ્ત્રીય સંશોધન પર આધારિત છે. લેખકનો હેતુ કોઈપણ આચાર્યશ્રી કે વૈષ્ણવોની લાગણી દુભાવવાનો નથી.</p>
+            <p>જો કે, આ લખાણને <b>ઈરાદાપૂર્વક ખોટી રીતે (Malicious Intent)</b> અથવા મૂળ સંદર્ભ વગર રજૂ કરી સામાજિક ગેરસમજ ફેલાવનાર વિરુદ્ધ <b>BNS કલમ ૨૯૯</b> (ધાર્મિક લાગણી દુભાવવી) અને <b>BNS કલમ ૩૫૬</b> (માનહાનિ) હેઠળ <span class="strict-text">કોઈપણ પૂર્વ સૂચના વગર</span> કડક ફોજદારી કાર્યવાહી કરવામાં આવશે.</p>
         </div>
 
         <div class="clause">
             <h3 class="clause-title">૩. સાયબર સુરક્ષા (Cyber Security)</h3>
-            <p>
-                વેબસાઇટના સોર્સ કોડ સાથે છેડછાડ કરવી, અનધિકૃત પ્રવેશ (Unauthorized Access) કે ડેટા ચોરીનો પ્રયાસ કરવો એ <b>'ઇન્ફોર્મેશન ટેકનોલોજી એક્ટ, ૨૦૦૦' ની કલમ ૬૬</b> હેઠળ ગંભીર સાયબર ગુનો છે. આવી પ્રવૃત્તિ જણાતા તુરંત સાયબર ક્રાઈમ સેલમાં ફરિયાદ નોંધાવવામાં આવશે.
-            </p>
+            <p>વેબસાઇટના સોર્સ કોડ સાથે છેડછાડ કરવી, અનધિકૃત પ્રવેશ (Unauthorized Access) કે ડેટા ચોરીનો પ્રયાસ કરવો એ <b>'ઇન્ફોર્મેશન ટેકનોલોજી એક્ટ, ૨૦૦૦' ની કલમ ૬૬</b> હેઠળ ગંભીર સાયબર ગુનો છે. આવી પ્રવૃત્તિ જણાતા તુરંત સાયબર ક્રાઈમ સેલમાં ફરિયાદ નોંધાવવામાં આવશે.</p>
         </div>
 
         <div class="clause">
             <h3 class="clause-title">૪. સામાજિક પ્રતિષ્ઠા અને માનહાનિ (Defamation)</h3>
-            <p>
-                લેખક અથવા તેમના પરિવારની સામાજિક પ્રતિષ્ઠાને હાનિ પહોંચાડવાના હેતુથી કરાયેલ કોઈપણ પ્રવૃત્તિ બદલ <b>BNS-2023 ની કલમ ૩૫૬</b> હેઠળ "ફોજદારી માનહાનિનો દાવો" માંડવામાં આવશે અને કાયદેસરનું ભારે વળતર વસૂલવામાં આવશે.
-            </p>
+            <p>લેખક અથવા તેમના પરિવારની સામાજિક પ્રતિષ્ઠાને હાનિ પહોંચાડવાના હેતુથી કરાયેલ કોઈપણ પ્રવૃત્તિ બદલ <b>BNS-2023 ની કલમ ૩૫૬</b> હેઠળ "ફોજદારી માનહાનિનો દાવો" માંડવામાં આવશે અને કાયદેસરનું ભારે વળતર વસૂલવામાં આવશે.</p>
         </div>
 
         <div class="clause">
             <h3 class="clause-title">૫. ન્યાયક્ષેત્ર (Jurisdiction)</h3>
-            <p>
-                આ વેબસાઇટ સંબંધિત કોઈપણ કાનૂની વિવાદ માટેનું ન્યાયક્ષેત્ર માત્ર અને માત્ર <b>લુણાવાડા, જી. મહીસાગર (ગુજરાત)</b> ની અદાલતોને આધીન રહેશે.
-            </p>
+            <p>આ વેબસાઇટ સંબંધિત કોઈપણ કાનૂની વિવાદ માટેનું ન્યાયક્ષેત્ર માત્ર અને માત્ર <b>લુણાવાડા, જી. મહીસાગર (ગુજરાત)</b> ની અદાલતોને આધીન રહેશે.</p>
         </div>
 
-        <hr style="border: 1px solid #000; margin: 40px 0;">
+        <hr style="border: 1px solid rgba(0,0,0,0.1); margin: 40px 0;">
 
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
             <div>
                 <p style="margin: 0;"><b>Issued By:</b> Sisodiya Bhargavsinh</p>
                 <p style="margin: 0;"><b>Status:</b> Without Prejudice</p>
                 <p style="margin: 0;"><b>Updated:</b> 23/01/2026</p>
             </div>
             
-            <div class="official-seal">
-                AUTHORIZED<br>LEGAL<br>VERSION
-            </div>
+            <div class="official-seal">AUTHORIZED<br>LEGAL<br>VERSION</div>
         </div>
-
-    </div>
+    </main>
 
     <a href="index.html" class="back-btn">← I Accept & Return Home</a>
 
     <script>
-        document.addEventListener('contextmenu', event => event.preventDefault());
+        // Security Script
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
         document.onkeydown = function(e) {
-            if(e.keyCode == 123) { return false; }
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
-            if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
-            if(e.ctrlKey && e.keyCode == 'P'.charCodeAt(0)) { return false; } 
-            
-            if (e.key == "PrintScreen") {
-                navigator.clipboard.writeText("");
-                alert("Screenshots are strictly prohibited on this legal page.");
+            // Disable F12, Ctrl+U, Ctrl+C, Ctrl+Shift+I, Ctrl+P
+            if(e.keyCode == 123 || 
+               (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || 
+                              e.keyCode == 'C'.charCodeAt(0) || 
+                              e.keyCode == 'P'.charCodeAt(0))) || 
+               (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0))) {
                 return false;
             }
-        }
+        };
+
+        // Screenshot Prevention (Experimental)
+        document.addEventListener('keyup', (e) => {
+            if (e.key == "PrintScreen") {
+                navigator.clipboard.writeText("");
+                alert("Screenshots are strictly prohibited for legal security.");
+            }
+        });
     </script>
 </body>
 </html>
