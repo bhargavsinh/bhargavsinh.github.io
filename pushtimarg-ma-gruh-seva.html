@@ -183,9 +183,66 @@
         
         /* હાઈલાઈટ કરેલા શબ્દો */
         strong { color: #5a1212; }
-    </style>
+    
+/* Disclaimer Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(44, 26, 26, 0.9); /* ઘાટો મરૂન શેડ */
+    backdrop-filter: blur(10px); /* પાછળનું પેજ બ્લર થશે */
+    display: flex; justify-content: center; align-items: center;
+    z-index: 10000;
+}
+
+.modal-box {
+    background: #fff8ec;
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 2px solid #daa520;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-icon { font-size: 3rem; margin-bottom: 15px; }
+.modal-box h3 { color: #7b1c1c; font-family: 'Yatra One', cursive; margin-bottom: 15px; }
+.modal-box p { font-size: 1.1rem; color: #2c1a1a; margin-bottom: 30px; line-height: 1.6; }
+
+.disclaimer-link { color: #7b1c1c; font-weight: bold; text-decoration: underline; }
+
+.modal-buttons { display: flex; gap: 15px; justify-content: center; }
+
+.btn-yes { background: #7b1c1c; color: white; padding: 14px 28px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; flex: 2; transition: 0.3s; }
+.btn-yes:hover { background: #daa520; color: #000; }
+
+.btn-no { background: #e0e0e0; color: #333; padding: 14px 28px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; flex: 1; transition: 0.3s; }
+.btn-no:hover { background: #bdc3c7; }
+
+body.modal-open { overflow: hidden; } /* મોડલ ખુલ્લું હોય ત્યારે સ્ક્ર્રોલિંગ બંધ થશે */
+
+</style>
 </head>
+
 <body>
+
+<div id="disclaimerModal" class="modal-overlay">
+    <div class="modal-box">
+        <div class="modal-icon">📜</div>
+        <h3>કાનૂની જાહેરાત (Disclaimer)</h3>
+        <p>શું તમે આ વેબસાઇટનું સંપૂર્ણ <a href="disclaimer.html" target="_blank" class="disclaimer-link">લીગલ ડિસક્લેમર</a> વાંચ્યું છે અને તમે તેની તમામ શરતો સાથે સંપૂર્ણ રીતે સહમત છો?</p>
+        <div class="modal-buttons">
+            <button onclick="acceptDisclaimer()" class="btn-yes">હા, હું સહમત છું</button>
+            <button onclick="rejectDisclaimer()" class="btn-no">ના</button>
+        </div>
+    </div>
+</div>
 
     <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px; background: rgba(255, 248, 236, 0.9); border-bottom: 3px solid var(--gold);">
         <div style="display: flex; align-items: center; gap: 15px;">
@@ -540,6 +597,30 @@
             </a>
         </div>
     </footer>
+
+// પેજ લોડ થાય ત્યારે ચેક કરો
+window.addEventListener('load', function() {
+    // જો તમે ઈચ્છો કે એકવાર હા પાડ્યા પછી વારંવાર ન પૂછે, તો આ કન્ડિશન વાપરી શકાય
+    if (!sessionStorage.getItem('disclaimerAccepted')) {
+        document.getElementById('disclaimerModal').style.display = 'flex';
+        document.body.classList.add('modal-open');
+    } else {
+        document.getElementById('disclaimerModal').style.display = 'none';
+    }
+});
+
+function acceptDisclaimer() {
+    // હા પર ક્લિક કરતા: મોડલ બંધ કરો અને સેશન યાદ રાખો
+    document.getElementById('disclaimerModal').style.display = 'none';
+    document.body.classList.remove('modal-open');
+    sessionStorage.setItem('disclaimerAccepted', 'true');
+}
+
+function rejectDisclaimer() {
+    // ના પર ક્લિક કરતા: હોમપેજ પર પાછા મોકલી દો
+    window.location.href = "index.html";
+}
+
 </body>
 </html>
       
