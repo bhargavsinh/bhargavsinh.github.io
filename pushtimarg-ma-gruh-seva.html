@@ -597,29 +597,31 @@ body.modal-open { overflow: hidden; } /* મોડલ ખુલ્લું હ�
             </a>
         </div>
     </footer>
+<script>
+    // પેજ લોડ થાય ત્યારે મોડલ બતાવવા માટે
+    window.onload = function() {
+        // મોડલ અને બોડી ક્લાસ સેટ કરો
+        var modal = document.getElementById('disclaimerModal');
+        if (modal) {
+            modal.style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+    };
 
-// પેજ લોડ થાય ત્યારે ચેક કરો
-window.addEventListener('load', function() {
-    // જો તમે ઈચ્છો કે એકવાર હા પાડ્યા પછી વારંવાર ન પૂછે, તો આ કન્ડિશન વાપરી શકાય
-    if (!sessionStorage.getItem('disclaimerAccepted')) {
-        document.getElementById('disclaimerModal').style.display = 'flex';
-        document.body.classList.add('modal-open');
-    } else {
-        document.getElementById('disclaimerModal').style.display = 'none';
+    // 'હા' બટન માટેનું ફંક્શન
+    function acceptDisclaimer() {
+        var modal = document.getElementById('disclaimerModal');
+        if (modal) {
+            modal.style.display = 'none'; // મોડલ બંધ થશે
+            document.body.classList.remove('modal-open'); // સ્ક્ર્રોલિંગ ચાલુ થશે
+        }
     }
-});
 
-function acceptDisclaimer() {
-    // હા પર ક્લિક કરતા: મોડલ બંધ કરો અને સેશન યાદ રાખો
-    document.getElementById('disclaimerModal').style.display = 'none';
-    document.body.classList.remove('modal-open');
-    sessionStorage.setItem('disclaimerAccepted', 'true');
-}
-
-function rejectDisclaimer() {
-    // ના પર ક્લિક કરતા: હોમપેજ પર પાછા મોકલી દો
-    window.location.href = "index.html";
-}
+    // 'ના' બટન માટેનું ફંક્શન
+    function rejectDisclaimer() {
+        window.location.href = "index.html"; // હોમપેજ પર રીડાયરેક્ટ થશે
+    }
+</script>
 
 </body>
 </html>
