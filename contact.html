@@ -1,230 +1,197 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="gu" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact & Appointment | Sisodiya Bhargavsinh</title>
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; frame-src 'self' https://docs.google.com https://www.google.com;">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com https://unpkg.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline' https://unpkg.com; frame-src 'self' https://docs.google.com https://www.google.com;">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
-    
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: '#7b1c1c',
+                        gold: '#daa520',
+                        cream: '#fff8ec',
+                    },
+                    fontFamily: {
+                        yatra: ['Yatra One', 'cursive'],
+                        noto: ['Noto Sans', 'sans-serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-        /* --- ROYAL CONTACT THEME --- */
-
-        :root {
-            --maroon: #7b1c1c;
-            --gold: #daa520;
-        }
-
-        body {
-            background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
-            background-attachment: fixed;
-            font-family: 'Noto Sans', sans-serif;
-            color: #2c1a1a;
-            margin: 0;
-        }
-
-        /* Hero Title */
-        h1 {
-            font-family: 'Yatra One', cursive;
-            color: var(--maroon);
-            text-align: center;
-            font-size: 2.5rem;
-            margin-top: 30px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-        }
-
-        p {
-            text-align: center; margin-bottom: 30px; font-size: 1.1rem; color: #444;
-        }
-
-        /* --- CONTACT GRID --- */
-        .contact-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            align-items: flex-start;
-            margin: 40px auto;
-            max-width: 1200px;
-            padding: 0 20px;
-        }
-
-        /* Common Glass Card Style */
-        .contact-card, .appointment-card {
-            background: rgba(255, 255, 255, 0.65);
+        .glass {
+            background: rgba(255, 248, 236, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: left;
-            transition: transform 0.3s;
         }
-
-        .contact-card:hover, .appointment-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(218, 165, 32, 0.15);
-            background: rgba(255, 255, 255, 0.85);
+        .hero-gradient {
+            background: radial-gradient(circle at top, #fff8ec 0%, #fdf5e6 100%);
         }
-
-        /* Specific Card Styles */
         .contact-card {
-            flex: 1 1 350px;
-            border-top: 5px solid var(--maroon);
+            background: rgba(255, 255, 255, 0.8);
+            border-top: 6px solid #7b1c1c;
+            transition: all 0.3s ease;
         }
-
-        .contact-card:hover { border-top-color: var(--gold); }
-
         .appointment-card {
-            flex: 11500px;
-            border-top: 5px solid var(--gold);
+            background: rgba(255, 255, 255, 0.8);
+            border-top: 6px solid #daa520;
+            transition: all 0.3s ease;
         }
-
-        .appointment-card:hover { border-top-color: var(--maroon); }
-appointment-card:hover { border-top-color: var(--maroon); }
-
-        /* Headings inside cards */
-        h3 {
-            font-family: 'Yatra One', cursive;
-            font-size: 1.5rem;
-            color: var(--maroon);
-            margin-bottom: 20px;
-            border-bottom: 2px dashed var(--gold);
-            padding-bottom: 10px;
-            display: inline-block;
+        .nav-link-ltr {
+            position: relative;
         }
-
-        /* Contact Details */
-        .info-block { margin-bottom: 25px; }
-        .info-label { font-weight: bold; color: var(--maroon); display: block; margin-bottom: 5px; }
-        .info-text { color: #333; font-size: 1.05rem; line-height: 1.6; }
-
-        /* Social Links as Buttons */
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: #333;
-            margin-bottom: 12px;
-            font-weight: 600;
-            padding: 10px 15px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.5);
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            transition: 0.3s;
+        .nav-link-ltr::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            display: block; margin-top: 2px; right: 0; background: #daa520;
+            transition: width .3s ease;
         }
-        .social-link:hover {
-            background: var(--maroon);
-            color: #fff;
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(123, 28, 28, 0.2);
-        }
-/* Nav Link Hover */
-        .nav-link { transition: 0.3s; }
-        .nav-link:hover { color: var(--gold) !important; }
-
-        /* Mobile Fix */
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .contact-grid { padding: 0 15px; }
-        }
+        .nav-link-ltr:hover::after { width: 100%; left: 0; }
+        
+        /* Fixed Header spacing fix */
+        header { border-bottom: 2px solid rgba(218, 165, 32, 0.3); }
     </style>
 </head>
-<body>
 
-    <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px; background: rgba(255, 248, 236, 0.9); border-bottom: 3px solid var(--gold); backdrop-filter: blur(10px);">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="logo.png" alt="Logo" style="height: 50px; border-radius: 5px;">
-            <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: var(--maroon);">Sisodiya Bhargavsinh</span>
+<body class="font-inter text-slate-800 hero-gradient min-h-screen overflow-x-hidden">
+
+    <header class="fixed top-0 w-full z-50 glass">
+        <nav class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo" class="h-10 w-auto">
+                <span class="font-yatra text-maroon text-lg sm:text-xl truncate">Sisodiya Bhargavsinh</span>
+            </div>
+
+            <ul class="hidden lg:flex items-center gap-8 font-semibold text-sm uppercase tracking-wider">
+                <li><a href="index.html" class="nav-link-ltr">Home</a></li>
+                <li><a href="about.html" class="nav-link-ltr">About</a></li>
+                <li><a href="pushtimarg.html" class="nav-link-ltr">Pushtimarg</a></li>
+                <li><a href="projects.html" class="nav-link-ltr">Projects</a></li>
+                <li><a href="resume.html" class="nav-link-ltr">Resume</a></li>
+                <li><a href="blog.html" class="nav-link-ltr">Articles</a></li>
+                <li><a href="contact.html" class="nav-link-ltr text-gold font-bold">Contact</a></li>
+            </ul>
+
+            <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl focus:outline-none p-2">☰</button>
+        </nav>
+
+        <div id="navLinks" class="hidden lg:hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-2xl">
+            <a href="index.html" class="block font-medium">Home</a>
+            <a href="about.html" class="block font-medium">About</a>
+            <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
+            <a href="projects.html" class="block font-medium">Projects</a>
+            <a href="resume.html" class="block font-medium">Resume</a>
+            <a href="blog.html" class="block font-medium">Articles</a>
+            <a href="contact.html" class="block font-bold text-maroon underline">Contact</a>
         </div>
-        <ul style="display: flex; gap: 15px; list-style: none; margin: 0; padding: 10px 0; flex-wrap: wrap; justify-content: center;">
-            <li><a href="index.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Home</a></li>
-            <li><a href="about.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">About</a></li>
-            <li><a href="pushtimarg.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Pushtimarg</a></li>
-            <li><a href="projects.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Projects</a></li>
-            <li><a href="resume.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Resume</a></li>
-            <li><a href="blog.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Articles</a></li>
-            <li><a href="contact.html" class="nav-link" style="color: var(--gold); text-decoration: none; font-weight: bold;">Contact</a></li>
-        </ul>
-    </nav>
-    <section>
-        <h1>સંપર્ક કરો</h1>
-        <p>
-            ટેકનિકલ પ્રોજેક્ટ, ઇતિહાસ સંશોધન અથવા પુષ્ટિમાર્ગ અંગે ચર્ચા કરવા માટે આપ મારો સંપર્ક કરી શકો છો.
-        </p>
+    </header>
 
-        <div class="contact-grid">
+    <main class="pt-32 pb-16 px-4">
+        
+        <div class="text-center mb-16" data-aos="fade-down">
+            <h1 class="font-yatra text-4xl md:text-5xl text-maroon mb-4">સંપર્ક કરો</h1>
+            <p class="max-w-2xl mx-auto text-lg text-slate-600 font-noto px-4">
+                ટેકનિકલ પ્રોજેક્ટ, ઇતિહાસ સંશોધન અથવા પુષ્ટિમાર્ગ અંગે ચર્ચા કરવા માટે આપ મારો સંપર્ક કરી શકો છો.
+            </p>
+        </div>
+
+        <div class="max-w-7xl mx-auto flex flex-wrap gap-8 justify-center items-start">
             
-            <div class="contact-card">
-                <h3>📍 સંપર્ક માહિતી</h3>
+            <div class="contact-card w-full lg:w-[400px] p-8 rounded-3xl shadow-xl" data-aos="fade-right">
+                <h3 class="font-yatra text-2xl text-maroon mb-8 border-b-2 border-dashed border-gold pb-4 inline-block">📍 સંપર્ક માહિતી</h3>
                 
-                <div class="info-block">
-                    <span class="info-label">સરનામું:</span>
-                    <span class="info-text">
-                        ચુંથાના મુવાડા, તાલુકો: ગોધર,<br>
-                        જીલ્લો: મહીસાગર, ગુજરાત - ૩૮૯૨૩૦
-                    </span>
-                </div>
-                
-                <div class="info-block">
-                    <span class="info-label">ઈમેલ:</span>
-                    <a href="mailto:bhargavsinh.bca@gmail.com" style="color: var(--maroon); text-decoration: none; font-weight: bold;">
-                        bhargavsinh[dot]bca[at]gmail[dot]com
-                    </a>
-                </div>
-                
-                <div>
-                    <span class="info-label">સોશિયલ મીડિયા:</span>
-                    <div style="margin-top: 15px;">
-                        <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="social-link">
-                            <span>💬</span> WhatsApp
+                <div class="space-y-8">
+                    <div>
+                        <span class="block font-bold text-maroon mb-2">સરનામું:</span>
+                        <p class="text-slate-700 leading-relaxed text-left">
+                            ચુંથાના મુવાડા, તાલુકો: ગોધર,<br>
+                            જીલ્લો: મહીસાગર, ગુજરાત - ૩૮૯૨૩૦
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <span class="block font-bold text-maroon mb-2">ઈમેલ:</span>
+                        <a href="mailto:bhargavsinh.bca@gmail.com" class="text-maroon font-bold hover:text-gold transition break-all font-inter">
+                            bhargavsinh.bca@gmail.com
                         </a>
-                        <a href="https://instagram.com/bs_pushtisoul" target="_blank" class="social-link">
-                            <span>📸</span> Instagram
-                        </a>
-                        <a href="https://github.com/bhargavsinh" target="_blank" class="social-link">
-                            <span>💻</span> GitHub
-                        </a>
+                    </div>
+                    
+                    <div>
+                        <span class="block font-bold text-maroon mb-4">સોશિયલ મીડિયા:</span>
+                        <div class="space-y-3">
+                            <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="flex items-center gap-4 p-3 bg-white border border-gold/20 rounded-xl hover:bg-maroon hover:text-white transition-all transform hover:translate-x-2 group">
+                                <span class="text-xl group-hover:scale-110 transition">💬</span> <span class="font-semibold">WhatsApp</span>
+                            </a>
+                            <a href="https://instagram.com/bs_pushtisoul" target="_blank" class="flex items-center gap-4 p-3 bg-white border border-gold/20 rounded-xl hover:bg-maroon hover:text-white transition-all transform hover:translate-x-2 group">
+                                <span class="text-xl group-hover:scale-110 transition">📸</span> <span class="font-semibold">Instagram</span>
+                            </a>
+                            <a href="https://github.com/bhargavsinh" target="_blank" class="flex items-center gap-4 p-3 bg-white border border-gold/20 rounded-xl hover:bg-maroon hover:text-white transition-all transform hover:translate-x-2 group">
+                                <span class="text-xl group-hover:scale-110 transition">💻</span> <span class="font-semibold">GitHub</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="appointment-card">
-                <h3 style="display: block; text-align: center; border: none;">📅 Appointment Request</h3>
-<div style="width: 100%; overflow: hidden; border-radius: 10px; border: 1px solid #eee;">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1zE0D-SbtdWlD0wT6TEwJ4hxw7RinkhbxNPOBX2vygD4x3A/viewform?embedded=true" width="100%" height="1400" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <div class="appointment-card flex-1 min-w-full md:min-w-[500px] p-4 md:p-8 rounded-3xl shadow-xl" data-aos="fade-left">
+                <h3 class="font-yatra text-2xl text-maroon block text-center mb-8">📅 Appointment Request</h3>
+                <div class="w-full bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-inner">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1zE0D-SbtdWlD0wT6TEwJ4hxw7RinkhbxNPOBX2vygD4x3A/viewform?embedded=true" width="100%" height="1000" frameborder="0" marginheight="0" marginwidth="0" class="w-full min-h-[600px] md:min-h-[1000px]">Loading…</iframe>
                 </div>
             </div>
 
         </div>
-    </section>
+    </main>
 
-    <footer>
-        <p style="font-size: 0.8rem; margin-bottom: 5px;">
-            <a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a>
-        </p>
-        <marquee style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
-
-        <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed gold; text-align: center;">
-            <p style="font-size: 0.8rem; color: #ffebcd; margin-bottom: 5px; font-family: sans-serif;">Visitor Count:</p>
-            <a href="https://www.hitwebcounter.com/" target="_blank">
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" title="Visitor Counter" border="0" />
-            </a>
+    <footer class="bg-maroon text-white pt-16 pb-8 text-center px-4 mt-20">
+        <div class="max-w-4xl mx-auto">
+            <a href="disclaimer.html" class="text-gold font-bold hover:underline mb-8 block">Legal Disclaimer</a>
+            <div class="overflow-hidden border-y border-white/10 py-4 mb-8">
+                <marquee class="text-gold font-medium">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
+            </div>
+            <div class="bg-black/20 inline-block p-4 rounded-xl border border-white/5">
+                <p class="text-xs uppercase tracking-widest text-white/60 mb-2 font-inter">Visitor Count</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 mx-auto">
+            </div>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) { if(e.keyCode == 123) return false; }
-    </script>
+        AOS.init({ duration: 1000, once: true });
+        
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('hidden');
+        }
 
+        // Close menu on resize to prevent overlap
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                document.getElementById('navLinks').classList.add('hidden');
+            }
+        });
+
+        // Security
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) { 
+            if(e.keyCode == 123) return false; 
+            if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+        }
+    </script>
 </body>
 </html>
-
