@@ -33,6 +33,23 @@
     </script>
 
     <style>
+/* આખા પેજ પર ટેક્સ્ટ સિલેક્શન બંધ કરવા માટે */
+body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10+ */
+    user-select: none;         /* Standard syntax */
+    
+    /* લખાણ પર ક્લિક (Interaction) ના થાય તે માટે (વૈકલ્પિક) */
+    /* સાવચેતી: આનાથી લિંક્સ અને બટન્સ પર ક્લિક કરવાનું પણ બંધ થઈ શકે છે */
+    /* pointer-events: none; */ 
+}
+
+/* જો તમારે બટન્સ અને લિંક્સ પર ક્લિક ચાલુ રાખવી હોય તો આ ઉમેરો */
+a, button, iframe, .nav-link, .social-link {
+    pointer-events: auto !important;
+}
+
+
         .glass {
             background: rgba(255, 248, 236, 0.9);
             backdrop-filter: blur(12px);
@@ -269,5 +286,37 @@
         }
     </script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+    // 1. Right-Click બંધ કરવા માટે
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    }, false);
+
+    // 2. Keyboard Shortcuts (Ctrl+C, Ctrl+U, Ctrl+Shift+I) બંધ કરવા માટે
+    document.onkeydown = function(e) {
+        // F12 બંધ કરો
+        if(e.keyCode == 123) {
+            return false;
+        }
+        // Ctrl+Shift+I (Inspect) બંધ કરો
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+            return false;
+        }
+        // Ctrl+Shift+J (Console) બંધ કરો
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+            return false;
+        }
+        // Ctrl+U (View Source) બંધ કરો
+        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            return false;
+        }
+        // Ctrl+C (Copy) બંધ કરો
+        if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) {
+            return false;
+        }
+    };
+</script>
+
 </body>
 </html>
