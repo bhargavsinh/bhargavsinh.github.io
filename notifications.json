@@ -1,9 +1,15 @@
 [
     {
+        "date": "13 Feb 2026",
+        "text": "UI Modernization & Content Protection Update (V2.1)",
+        "link": "#",
+        "new": true
+    },
+{
         "date": "28 Jan 2026",
         "text": "નવી અપડેટ: વેબસાઇટમાં નવા ફીચર્સ ઉમેરવામાં આવ્યા છે.",
         "link": "#",
-        "new": true
+        "new": false
     },
     
     {
