@@ -9,86 +9,61 @@
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Noto+Sans:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        maroon: '#7b1c1c',
-                        gold: '#daa520',
-                        cream: '#fff8ec',
-                    },
-                    fontFamily: {
-                        yatra: ['Yatra One', 'cursive'],
-                        noto: ['Noto Sans', 'sans-serif'],
-                        playfair: ['Playfair Display', 'serif'],
-                        inter: ['Inter', 'sans-serif'],
-                    }
+                    colors: { maroon: '#7b1c1c', gold: '#daa520', cream: '#fff8ec' },
+                    fontFamily: { yatra: ['Yatra One', 'cursive'], noto: ['Noto Sans', 'sans-serif'], inter: ['Inter', 'sans-serif'] }
                 }
             }
         }
     </script>
 
     <style>
-        .glass {
-            background: rgba(255, 248, 236, 0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .hero-gradient {
-            background: radial-gradient(circle at top, #fff8ec 0%, #fdf5e6 100%);
-        }
-        .contact-card {
-            background: rgba(255, 255, 255, 0.8);
-            border-top: 6px solid #7b1c1c;
-            transition: all 0.3s ease;
-        }
-        .appointment-card {
-            background: rgba(255, 255, 255, 0.8);
-            border-top: 6px solid #daa520;
-            transition: all 0.3s ease;
-        }
-        .nav-link-ltr {
-            position: relative;
-        }
+        .glass { background: rgba(255, 248, 236, 0.98); backdrop-filter: blur(10px); }
+        .hero-gradient { background: radial-gradient(circle at top, #fff8ec 0%, #fdf5e6 100%); }
+        
+        /* ઓવરલેપિંગ સમસ્યાનો કાયમી ઉકેલ */
+        body { padding-top: 100px; } /* હેડરની નીચે જગ્યા આપવા માટે */
+        
+        #navLinks.active { display: block !important; }
+        .nav-link-ltr { position: relative; }
         .nav-link-ltr::after {
             content: ''; position: absolute; width: 0; height: 2px;
             display: block; margin-top: 2px; right: 0; background: #daa520;
             transition: width .3s ease;
         }
         .nav-link-ltr:hover::after { width: 100%; left: 0; }
-        
-        /* Fixed Header spacing fix */
-        header { border-bottom: 2px solid rgba(218, 165, 32, 0.3); }
     </style>
 </head>
 
 <body class="font-inter text-slate-800 hero-gradient min-h-screen overflow-x-hidden">
 
-    <header class="fixed top-0 w-full z-50 glass">
-        <nav class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+    <header class="fixed top-0 w-full z-[100] glass border-b-2 border-gold/30 h-20">
+        <nav class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <img src="logo.png" alt="Logo" class="h-10 w-auto">
-                <span class="font-yatra text-maroon text-lg sm:text-xl truncate">Sisodiya Bhargavsinh</span>
+                <span class="font-yatra text-maroon text-lg sm:text-xl">Sisodiya Bhargavsinh</span>
             </div>
 
-            <ul class="hidden lg:flex items-center gap-8 font-semibold text-sm uppercase tracking-wider">
+            <ul class="hidden lg:flex items-center gap-6 font-semibold text-sm uppercase">
                 <li><a href="index.html" class="nav-link-ltr">Home</a></li>
                 <li><a href="about.html" class="nav-link-ltr">About</a></li>
                 <li><a href="pushtimarg.html" class="nav-link-ltr">Pushtimarg</a></li>
                 <li><a href="projects.html" class="nav-link-ltr">Projects</a></li>
                 <li><a href="resume.html" class="nav-link-ltr">Resume</a></li>
                 <li><a href="blog.html" class="nav-link-ltr">Articles</a></li>
-                <li><a href="contact.html" class="nav-link-ltr text-gold font-bold">Contact</a></li>
+                <li><a href="contact.html" class="nav-link-ltr text-gold">Contact</a></li>
             </ul>
 
-            <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl focus:outline-none p-2">☰</button>
+            <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl p-2">☰</button>
         </nav>
 
-        <div id="navLinks" class="hidden lg:hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-2xl">
+        <div id="navLinks" class="hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-2xl lg:hidden">
             <a href="index.html" class="block font-medium">Home</a>
             <a href="about.html" class="block font-medium">About</a>
             <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
@@ -99,99 +74,64 @@
         </div>
     </header>
 
-    <main class="pt-32 pb-16 px-4">
+    <main class="max-w-7xl mx-auto px-4 mt-10">
         
         <div class="text-center mb-16" data-aos="fade-down">
-            <h1 class="font-yatra text-4xl md:text-5xl text-maroon mb-4">સંપર્ક કરો</h1>
-            <p class="max-w-2xl mx-auto text-lg text-slate-600 font-noto px-4">
+            <h1 class="font-yatra text-4xl md:text-5xl text-maroon mb-6">સંપર્ક કરો</h1>
+            <p class="max-w-2xl mx-auto text-lg text-slate-600 font-noto">
                 ટેકનિકલ પ્રોજેક્ટ, ઇતિહાસ સંશોધન અથવા પુષ્ટિમાર્ગ અંગે ચર્ચા કરવા માટે આપ મારો સંપર્ક કરી શકો છો.
             </p>
         </div>
 
-        <div class="max-w-7xl mx-auto flex flex-wrap gap-8 justify-center items-start">
+        <div class="flex flex-wrap gap-8 justify-center items-start">
             
-            <div class="contact-card w-full lg:w-[400px] p-8 rounded-3xl shadow-xl" data-aos="fade-right">
-                <h3 class="font-yatra text-2xl text-maroon mb-8 border-b-2 border-dashed border-gold pb-4 inline-block">📍 સંપર્ક માહિતી</h3>
+            <div class="bg-white p-8 rounded-3xl shadow-xl border-t-8 border-maroon w-full lg:w-[400px]" data-aos="fade-right">
+                <h3 class="font-yatra text-2xl text-maroon mb-8 border-b-2 border-gold/30 pb-4">📍 સંપર્ક માહિતી</h3>
                 
-                <div class="space-y-8">
+                <div class="space-y-6">
                     <div>
-                        <span class="block font-bold text-maroon mb-2">સરનામું:</span>
-                        <p class="text-slate-700 leading-relaxed text-left">
-                            ચુંથાના મુવાડા, તાલુકો: ગોધર,<br>
-                            જીલ્લો: મહીસાગર, ગુજરાત - ૩૮૯૨૩૦
-                        </p>
+                        <span class="block font-bold text-maroon mb-1">સરનામું:</span>
+                        <p class="text-slate-700">ચુંથાના મુવાડા, તાલુકો: ગોધર, જીલ્લો: મહીસાગર, ગુજરાત - ૩૮૯૨૩૦</p>
                     </div>
                     
                     <div>
-                        <span class="block font-bold text-maroon mb-2">ઈમેલ:</span>
-                        <a href="mailto:bhargavsinh.bca@gmail.com" class="text-maroon font-bold hover:text-gold transition break-all font-inter">
-                            bhargavsinh.bca@gmail.com
-                        </a>
+                        <span class="block font-bold text-maroon mb-1">ઈમેલ:</span>
+                        <a href="mailto:bhargavsinh.bca@gmail.com" class="text-maroon font-bold break-all">bhargavsinh.bca@gmail.com</a>
                     </div>
                     
-                    <div>
-                        <span class="block font-bold text-maroon mb-4">સોશિયલ મીડિયા:</span>
-                        <div class="space-y-3">
-                            <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="flex items-center gap-4 p-3 bg-white border border-gold/20 rounded-xl hover:bg-maroon hover:text-white transition-all transform hover:translate-x-2 group">
-                                <span class="text-xl group-hover:scale-110 transition">💬</span> <span class="font-semibold">WhatsApp</span>
-                            </a>
-                            <a href="https://instagram.com/bs_pushtisoul" target="_blank" class="flex items-center gap-4 p-3 bg-white border border-gold/20 rounded-xl hover:bg-maroon hover:text-white transition-all transform hover:translate-x-2 group">
-                                <span class="text-xl group-hover:scale-110 transition">📸</span> <span class="font-semibold">Instagram</span>
-                            </a>
-                            <a href="https://github.com/bhargavsinh" target="_blank" class="flex items-center gap-4 p-3 bg-white border border-gold/20 rounded-xl hover:bg-maroon hover:text-white transition-all transform hover:translate-x-2 group">
-                                <span class="text-xl group-hover:scale-110 transition">💻</span> <span class="font-semibold">GitHub</span>
-                            </a>
-                        </div>
+                    <div class="space-y-3 pt-4">
+                        <span class="block font-bold text-maroon">સોશિયલ મીડિયા:</span>
+                        <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="flex items-center gap-3 p-3 bg-cream/30 border border-gold/20 rounded-xl hover:bg-maroon hover:text-white transition">💬 WhatsApp</a>
+                        <a href="https://instagram.com/bs_pushtisoul" target="_blank" class="flex items-center gap-3 p-3 bg-cream/30 border border-gold/20 rounded-xl hover:bg-maroon hover:text-white transition">📸 Instagram</a>
+                        <a href="https://github.com/bhargavsinh" target="_blank" class="flex items-center gap-3 p-3 bg-cream/30 border border-gold/20 rounded-xl hover:bg-maroon hover:text-white transition">💻 GitHub</a>
                     </div>
                 </div>
             </div>
 
-            <div class="appointment-card flex-1 min-w-full md:min-w-[500px] p-4 md:p-8 rounded-3xl shadow-xl" data-aos="fade-left">
-                <h3 class="font-yatra text-2xl text-maroon block text-center mb-8">📅 Appointment Request</h3>
-                <div class="w-full bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-inner">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1zE0D-SbtdWlD0wT6TEwJ4hxw7RinkhbxNPOBX2vygD4x3A/viewform?embedded=true" width="100%" height="1000" frameborder="0" marginheight="0" marginwidth="0" class="w-full min-h-[600px] md:min-h-[1000px]">Loading…</iframe>
+            <div class="bg-white p-4 md:p-8 rounded-3xl shadow-xl border-t-8 border-gold flex-1 min-w-full md:min-w-[500px]" data-aos="fade-left">
+                <h3 class="font-yatra text-2xl text-maroon text-center mb-8">📅 Appointment Request</h3>
+                <div class="rounded-xl overflow-hidden border border-slate-100">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1zE0D-SbtdWlD0wT6TEwJ4hxw7RinkhbxNPOBX2vygD4x3A/viewform?embedded=true" width="100%" height="800" frameborder="0">Loading…</iframe>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <footer class="bg-maroon text-white pt-16 pb-8 text-center px-4 mt-20">
-        <div class="max-w-4xl mx-auto">
-            <a href="disclaimer.html" class="text-gold font-bold hover:underline mb-8 block">Legal Disclaimer</a>
-            <div class="overflow-hidden border-y border-white/10 py-4 mb-8">
-                <marquee class="text-gold font-medium">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
-            </div>
-            <div class="bg-black/20 inline-block p-4 rounded-xl border border-white/5">
-                <p class="text-xs uppercase tracking-widest text-white/60 mb-2 font-inter">Visitor Count</p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 mx-auto">
-            </div>
+    <footer class="bg-maroon text-white pt-12 pb-6 text-center mt-20">
+        <a href="disclaimer.html" class="text-gold font-bold hover:underline mb-6 block">Legal Disclaimer</a>
+        <marquee class="text-gold font-medium border-y border-white/10 py-2 mb-6">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
+        <div class="bg-black/20 inline-block p-4 rounded-xl border border-white/5">
+            <p class="text-[10px] uppercase text-white/50 mb-1">Visitor Count</p>
+            <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" class="mx-auto opacity-80">
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-        
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            nav.classList.toggle('hidden');
-        }
-
-        // Close menu on resize to prevent overlap
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 1024) {
-                document.getElementById('navLinks').classList.add('hidden');
-            }
-        });
-
-        // Security
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) { 
-            if(e.keyCode == 123) return false; 
-            if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
-        }
+        AOS.init({ duration: 800, once: true });
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('hidden'); }
+        document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
 </body>
 </html>
