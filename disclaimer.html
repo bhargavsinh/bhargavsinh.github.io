@@ -30,6 +30,29 @@
     </script>
 
     <style>
+/* મોબાઈલ વ્યુ (640px થી નીચેની સ્ક્રીન) માટે ખાસ ફેરફાર */
+@media (max-width: 640px) {
+    /* મુખ્ય શીર્ષકની સાઈઝ ઓછી કરવી */
+    h1 { font-size: 1.8rem !important; line-height: 1.2 !important; }
+    h2 { font-size: 1.5rem !important; }
+    h3 { font-size: 1.3rem !important; }
+
+    /* ફકરાનું વાંચન સરળ બનાવવું */
+    p, .article-content { 
+        font-size: 1rem !important; 
+        line-height: 1.7 !important;
+        text-align: left !important; /* Gaps ટાળવા માટે */
+    }
+
+    /* કન્ટેનરની પેડિંગ ઓછી કરવી */
+    main { padding-left: 15px !important; padding-right: 15px !important; }
+    
+    /* કાર્ડ્સ અને બોક્સ માટે */
+    .glass-card, .vachan-card, .bg-white {
+        padding: 20px 15px !important;
+    }
+}
+
         /* Security Protocol V2.1 */
         body {
             -webkit-user-select: none;
