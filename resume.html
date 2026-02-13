@@ -1,324 +1,278 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="gu" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume | Sisodiya Bhargavsinh</title>
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; frame-src 'self' https://www.google.com;">
-
     <meta name="description" content="Resume of Sisodiya Bhargavsinh Mahendrasinh - BCA Student. Skills in Computer Accounting, Logo Design, and Chat Support.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index,follow">
-    
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: '#7b1c1c',
+                        gold: '#daa520',
+                        cream: '#fff8ec',
+                    },
+                    fontFamily: {
+                        yatra: ['Yatra One', 'cursive'],
+                        noto: ['Noto Sans', 'sans-serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* --- ROYAL RESUME THEME --- */
+        .glass {
+            background: rgba(255, 248, 236, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top, #fff8ec 0%, #fdf5e6 100%);
+        }
+        .resume-shadow {
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+        }
+        .nav-link-ltr {
+            position: relative;
+        }
+        .nav-link-ltr::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            display: block; margin-top: 2px; right: 0; background: #daa520;
+            transition: width .3s ease;
+        }
+        .nav-link-ltr:hover::after { width: 100%; left: 0; }
         
-        :root {
-            --maroon: #7b1c1c;
-            --gold: #daa520;
-        }
-
-        body {
-            background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
-            background-attachment: fixed;
-            font-family: 'Noto Sans', sans-serif;
-            color: #2c1a1a;
-            margin: 0;
-        }
-
-        /* Resume Paper Container (Glass Effect) */
-        .resume-paper {
-            max-width: 850px;
-            margin: 40px auto;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 50px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            border-top: 6px solid var(--maroon);
-            border-radius: 10px;
-            position: relative;
-        }
-
-        /* Header Section */
-        .resume-header {
-            text-align: center;
-            border-bottom: 2px dashed var(--gold);
-            padding-bottom: 30px;
-            margin-bottom: 30px;
-        }
-
-        .profile-img {
-            width: 160px; height: 160px; object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid var(--gold);
-            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4);
-            margin-bottom: 15px;
-            transition: transform 0.3s;
-        }
-        .profile-img:hover { transform: scale(1.05); }
-
-        .resume-name {
-            font-family: 'Yatra One', cursive;
-            font-size: 2.4rem;
-            color: var(--maroon);
-            margin: 10px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.3;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .resume-sub {
-            font-size: 1.1rem; color: #555; font-weight: bold; margin-bottom: 15px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .contact-info {
-            font-size: 0.95rem; color: #444; 
-            background: rgba(255, 255, 255, 0.6);
-            display: inline-block; padding: 10px 25px; border-radius: 50px;
-            border: 1px solid var(--gold);
-            word-break: break-all;
-        }
-
-        /* Section Titles */
-        .section-title {
-            color: var(--maroon);
-            font-size: 1.4rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-left: 5px solid var(--gold);
-            padding-left: 15px;
-            margin-top: 40px; margin-bottom: 20px;
-            font-family: 'Yatra One', cursive;
-            background: linear-gradient(90deg, rgba(218,165,32,0.15), transparent);
-            padding-top: 8px; padding-bottom: 8px;
-            border-radius: 0 5px 5px 0;
-        }
-
-        p, li { line-height: 1.8; text-align: justify; font-size: 1.05rem; }
-
-        /* Education Table */
-        .edu-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .edu-table td { 
-            padding: 15px 10px; vertical-align: top; 
-            border-bottom: 1px solid rgba(218, 165, 32, 0.3); 
-        }
-        .edu-year {
-            font-weight: bold; color: var(--maroon); width: 130px;
-            font-family: 'Playfair Display', serif; font-size: 1.1rem;
-        }
-
-        /* Skills */
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 15px; }
-        .skill-badge {
-            background: #fff; border: 1px solid var(--gold); color: var(--maroon);
-            padding: 8px 20px; border-radius: 25px; font-size: 0.95rem; font-weight: 600;
-            transition: 0.3s; box-shadow: 0 3px 5px rgba(0,0,0,0.05);
-        }
-        .skill-badge:hover {
-            background: var(--maroon); color: #fff; transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(123, 28, 28, 0.2);
-        }
-
-        /* Leadership Box */
-        .leadership-box {
-            background: rgba(255, 253, 245, 0.8);
-            border: 2px dashed var(--gold);
-            padding: 20px;
-            border-radius: 10px;
-            position: relative;
-        }
-
-        .view-btn {
-            display: inline-block; background-color: var(--maroon); color: white;
-            padding: 10px 25px; font-size: 0.9rem; text-decoration: none; border-radius: 5px;
-            margin-top: 15px; transition: background 0.3s;
-            box-shadow: 0 4px 10px rgba(123, 28, 28, 0.3);
-            border: 1px solid transparent;
-        }
-        .view-btn:hover { 
-            background-color: #fff; color: var(--maroon); border-color: var(--maroon);
-            transform: translateY(-2px); 
-        }
-
-        .personal-details-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px; background: rgba(255, 255, 255, 0.5); padding: 25px; border-radius: 10px;
-            border: 1px solid rgba(218, 165, 32, 0.3);
-        }
-
-        /* Nav Link Hover */
-        .nav-link { transition: 0.3s; }
-        .nav-link:hover { color: var(--gold) !important; }
-
-        /* SECURITY: DISABLE PRINTING */
+        /* Disable Print */
         @media print {
-            html, body { display: none !important; height: 0; overflow: hidden; }
-        }
-
-        /* --- MOBILE RESPONSIVE FIX --- */
-        @media (max-width: 600px) {
-            .resume-paper {
-                margin: 15px;
-                padding: 25px 15px;
-                width: auto;
-            }
-            
-            .resume-name {
-                /* ફોન્ટ સાઈઝ સ્ક્રીનની પહોળાઈના 7% રહેશે, જેથી ક્યારેય બહાર નહીં જાય */
-                font-size: clamp(1.4rem, 7vw, 2.2rem) !important; 
-                word-wrap: break-word;
-                line-height: 1.2;
-            }
-
-            .profile-img { width: 130px; height: 130px; }
-
-            .edu-year { width: 100%; display: block; margin-bottom: 5px; color: var(--gold); }
-            .edu-table td { display: block; padding: 10px 0; }
-            
-            .personal-details-grid { grid-template-columns: 1fr; }
+            html, body { display: none !important; }
         }
     </style>
 </head>
-<body>
 
-    <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px; background: rgba(255, 248, 236, 0.9); border-bottom: 3px solid var(--gold); backdrop-filter: blur(10px);">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="logo.png" alt="Logo" style="height: 50px; border-radius: 5px;">
-            <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: var(--maroon);">Sisodiya Bhargavsinh</span>
+<body class="font-inter text-slate-800 hero-gradient min-h-screen">
+
+    <header class="fixed top-0 w-full z-50 glass border-b-2 border-gold/30">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo" class="h-12 w-auto">
+                <span class="font-yatra text-maroon text-xl hidden sm:block">Sisodiya Bhargavsinh</span>
+            </div>
+
+            <ul class="hidden lg:flex items-center gap-8 font-semibold text-sm uppercase tracking-wider">
+                <li><a href="index.html" class="nav-link-ltr hover:text-maroon transition">Home</a></li>
+                <li><a href="about.html" class="nav-link-ltr hover:text-maroon transition">About</a></li>
+                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-maroon transition">Pushtimarg</a></li>
+                <li><a href="projects.html" class="nav-link-ltr hover:text-maroon transition">Projects</a></li>
+                <li><a href="resume.html" class="nav-link-ltr text-gold">Resume</a></li>
+                <li><a href="blog.html" class="nav-link-ltr hover:text-maroon transition">Articles</a></li>
+                <li><a href="contact.html" class="nav-link-ltr hover:text-maroon transition">Contact</a></li>
+            </ul>
+
+            <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl">☰</button>
+        </nav>
+
+        <div id="navLinks" class="hidden lg:hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-xl">
+            <a href="index.html" class="block font-medium">Home</a>
+            <a href="about.html" class="block font-medium">About</a>
+            <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
+            <a href="projects.html" class="block font-medium">Projects</a>
+            <a href="resume.html" class="block font-bold text-maroon">Resume</a>
+            <a href="blog.html" class="block font-medium">Articles</a>
+            <a href="contact.html" class="block font-medium">Contact</a>
         </div>
-        <ul style="display: flex; gap: 15px; list-style: none; margin: 0; padding: 10px 0; flex-wrap: wrap; justify-content: center;">
-            <li><a href="index.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Home</a></li>
-            <li><a href="about.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">About</a></li>
-            <li><a href="pushtimarg.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Pushtimarg</a></li>
-            <li><a href="projects.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Projects</a></li>
-            <li><a href="resume.html" class="nav-link" style="color: var(--gold); text-decoration: none; font-weight: bold;">Resume</a></li>
-            <li><a href="blog.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Articles</a></li>
-            <li><a href="contact.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Contact</a></li>
-        </ul>
-    </nav>
+    </header>
 
-    <div class="resume-paper">
+    <main id="main-content" class="pt-28 pb-16 px-4">
         
-        <div class="resume-header">
-            <img src="bhargavsinh.webp" alt="Sisodiya Bhargavsinh" class="profile-img">
-            <h1 class="resume-name">Sisodiya Bhargavsinh Mahendrasinh</h1>
-            <p class="resume-sub">BCA Student | Computer Applications</p>
-            <div class="contact-info">
-                📧 bhargavsinh.bca@gmail.com <br> 
-                📍 Lunawada, Gujarat,Bharat
+        <div class="max-w-4xl mx-auto bg-white rounded-3xl overflow-hidden resume-shadow border border-gold/20" data-aos="fade-up">
+            
+            <div class="bg-maroon p-8 md:p-12 text-center text-white relative">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gold"></div>
+                <img src="bhargavsinh.webp" alt="Sisodiya Bhargavsinh" class="w-40 h-40 rounded-full border-4 border-gold mx-auto mb-6 shadow-2xl object-cover hover:scale-105 transition-transform duration-300">
+                <h1 class="font-yatra text-3xl md:text-5xl text-gold mb-2 uppercase tracking-wide">Sisodiya Bhargavsinh Mahendrasinh</h1>
+                <p class="font-playfair text-xl text-cream/80 italic">BCA Student | Computer Applications</p>
+                
+                <div class="mt-8 flex flex-col md:flex-row justify-center gap-4 md:gap-8 text-sm">
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-gold">📧</span> bhargavsinh.bca@gmail.com
+                    </div>
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-gold">📍</span> Lunawada, Gujarat, Bharat
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-8 md:p-12 space-y-12">
+                
+                <section data-aos="fade-up">
+                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-4">Resume Summary</h2>
+                    <p class="text-slate-600 leading-relaxed font-inter">
+                        I am a BCA student from Mahisagar BCA College, Lunawada, with skills in Gujarati typing, logo design, and chat support. I am eager to leverage my computerized accounting knowledge and social awareness to build a dynamic career.
+                    </p>
+                </section>
+
+                <section data-aos="fade-up">
+                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-6">Education</h2>
+                    <div class="space-y-6">
+                        <div class="flex flex-col md:flex-row gap-2 md:gap-8 pb-4 border-b border-gold/10">
+                            <span class="font-playfair font-bold text-maroon min-w-[120px]">Pursuing</span>
+                            <div>
+                                <h3 class="font-bold text-slate-800">BCA (Bachelor of Computer Applications)</h3>
+                                <p class="text-slate-500">Mahisagar BCA College, Lunawada</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-2 md:gap-8 pb-4 border-b border-gold/10">
+                            <span class="font-playfair font-bold text-maroon min-w-[120px]">2025</span>
+                            <div>
+                                <h3 class="font-bold text-slate-800">HSC (Class XII) | Science (PCB)</h3>
+                                <p class="text-slate-500">National Institute of Open Schooling</p>
+                                <p class="text-maroon font-semibold">Result: 69%</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-2 md:gap-8">
+                            <span class="font-playfair font-bold text-maroon min-w-[120px]">2022</span>
+                            <div>
+                                <h3 class="font-bold text-slate-800">SSC (Class X)</h3>
+                                <p class="text-slate-500">Gujarat Secondary Education Board (Gujarati Medium)</p>
+                                <p class="text-maroon font-semibold">Result: 79.16%</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-aos="fade-up">
+                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-6">Skills</h2>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-5 py-2 bg-cream text-maroon border border-gold/30 rounded-full font-semibold text-sm hover:bg-maroon hover:text-white transition-colors cursor-default">Gujarati Typing</span>
+                        <span class="px-5 py-2 bg-cream text-maroon border border-gold/30 rounded-full font-semibold text-sm hover:bg-maroon hover:text-white transition-colors cursor-default">Logo Design</span>
+                        <span class="px-5 py-2 bg-cream text-maroon border border-gold/30 rounded-full font-semibold text-sm hover:bg-maroon hover:text-white transition-colors cursor-default">Chat Support</span>
+                        <span class="px-5 py-2 bg-cream text-maroon border border-gold/30 rounded-full font-semibold text-sm hover:bg-maroon hover:text-white transition-colors cursor-default">Chat Process</span>
+                        <span class="px-5 py-2 bg-cream text-maroon border border-gold/30 rounded-full font-semibold text-sm hover:bg-maroon hover:text-white transition-colors cursor-default">Computerized Accounting</span>
+                        <span class="px-5 py-2 bg-cream text-maroon border border-gold/30 rounded-full font-semibold text-sm hover:bg-maroon hover:text-white transition-colors cursor-default">Communication</span>
+                    </div>
+                </section>
+
+                <section data-aos="fade-up">
+                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-4">Certifications & Achievements</h2>
+                    <ul class="list-none space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold mt-1">⭐</span>
+                            <p>Received <b>Scholarship</b> in School for academic excellence.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold mt-1">⭐</span>
+                            <p>Certified in <b>Computerized Accounting</b> (by RSETI & Bank of Baroda).</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-aos="fade-up">
+                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-6">Social Leadership & Civic Engagement</h2>
+                    <div class="bg-cream/50 border-2 border-dashed border-gold p-6 rounded-2xl">
+                        <h3 class="font-bold text-slate-800 mb-2">Representation to the President of India:</h3>
+                        <p class="text-slate-600 mb-4 leading-relaxed">
+                            Authored and submitted a formal representation regarding <i>"Nationwide Ban on Cow Slaughter & Animal Welfare Laws"</i>. 
+                            The petition is officially recorded by the <b>President's Secretariat</b>.
+                        </p>
+                        <p class="text-xs text-slate-500 mb-4 italic">
+                            📌 Ref: Reg. No. RB/MSG/26010914813 | Tracking No. 14813
+                        </p>
+                        <a href="https://www.presidentofindia.gov.in/sites/default/files/webform/request_for_president_s_message/7040/request_to_ban_cow_slaughter_in_bharat.pdf" target="_blank" class="inline-block bg-maroon text-white px-6 py-2 rounded-lg font-bold hover:bg-gold hover:text-maroon transition shadow-md">
+                            📄 View Official Letter
+                        </a>
+                    </div>
+                </section>
+
+                <section data-aos="fade-up">
+                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-6">Languages Known</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div class="p-4 bg-white border border-gold/10 rounded-xl shadow-sm">
+                            <p class="font-bold text-maroon mb-1">Gujarati</p>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-widest">Native</p>
+                        </div>
+                        <div class="p-4 bg-white border border-gold/10 rounded-xl shadow-sm">
+                            <p class="font-bold text-maroon mb-1">Hindi</p>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-widest">Read/Write/Speak</p>
+                        </div>
+                        <div class="p-4 bg-white border border-gold/10 rounded-xl shadow-sm">
+                            <p class="font-bold text-maroon mb-1">English</p>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-widest">Read/Write/Speak</p>
+                        </div>
+                        <div class="p-4 bg-white border border-gold/10 rounded-xl shadow-sm">
+                            <p class="font-bold text-maroon mb-1">Sanskrit</p>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-widest">Read/Write</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-aos="fade-up">
+                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-6">Personal Details</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <div class="flex justify-between border-b border-slate-200 pb-2">
+                            <span class="text-slate-500 font-medium">Date of Birth:</span>
+                            <span class="text-slate-800 font-bold">21st December, 2006</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-200 pb-2">
+                            <span class="text-slate-500 font-medium">Gender:</span>
+                            <span class="text-slate-800 font-bold">Male</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-200 pb-2 md:border-none">
+                            <span class="text-slate-500 font-medium">Nationality:</span>
+                            <span class="text-slate-800 font-bold">Indian</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-200 pb-2 md:border-none">
+                            <span class="text-slate-500 font-medium">Current Location:</span>
+                            <span class="text-slate-800 font-bold">Lunawada</span>
+                        </div>
+                    </div>
+                </section>
+                
             </div>
         </div>
+    </main>
 
-        <div class="section-title">Resume Summary</div>
-        <p>
-            I am a BCA student from Mahisagar BCA College, Lunawada, with skills in Gujarati typing, logo design, and chat support. I am eager to leverage my computerized accounting knowledge and social awareness to build a dynamic career.
-        </p>
-
-        <div class="section-title">Education</div>
-        <table class="edu-table">
-            <tr>
-                <td class="edu-year">Pursuing</td>
-                <td>
-                    <b>BCA (Bachelor of Computer Applications)</b><br>
-                    Mahisagar BCA College, Lunawada 
-                </td>
-            </tr>
-            <tr>
-                <td class="edu-year">2025</td>
-                <td>
-                    <b>HSC (Class XII)</b> | Science (PCB)<br>
-                   National Institute of Open Schooling<br>
-                    Result: 69%
-                </td>
-            </tr>
-            <tr>
-                <td class="edu-year">2022</td>
-                <td>
-                    <b>SSC (Class X)</b><br>
-                    Gujarat Secondary Education Board (Gujarati Medium)<br>
-                    Result: 79.16%
-                </td>
-            </tr>
-        </table>
-
-        <div class="section-title">Skills</div>
-        <div class="skills-grid">
-            <span class="skill-badge">Gujarati Typing</span>
-            <span class="skill-badge">Logo Design</span>
-            <span class="skill-badge">Chat Support</span>
-            <span class="skill-badge">Chat Process</span>
-            <span class="skill-badge">Computerized Accounting</span>
-            <span class="skill-badge">Communication</span>
-        </div>
-
-        <div class="section-title">Certifications & Achievements</div>
-        <ul>
-            <li>Received <b>Scholarship</b> in School for academic excellence.</li>
-            <li>Certified in <b>Computerized Accounting</b> (by RSETI & Bank of Baroda).</li>
-        </ul>
-
-        <div class="section-title">Social Leadership & Civic Engagement</div>
-        <div class="leadership-box">
-            <ul>
-                <li style="margin-bottom: 0; line-height: 1.7; list-style: none;">
-                    <b>Representation to the President of India:</b><br>
-                    Authored and submitted a formal representation regarding <i>"Nationwide Ban on Cow Slaughter & Animal Welfare Laws"</i>. 
-                    The petition is officially recorded by the <b>President's Secretariat</b>.
-                    <br>
-                    <span style="font-size: 0.8rem; color: #666; display:inline-block; margin-top:5px; margin-bottom: 8px;">
-                        📌 Ref: Reg. No. RB/MSG/26010914813 | Tracking No. 14813
-                    </span>
-                    <br>
-                    <a href="https://www.presidentofindia.gov.in/sites/default/files/webform/request_for_president_s_message/7040/request_to_ban_cow_slaughter_in_bharat.pdf" target="_blank" class="view-btn">
-                        📄 View Official Letter
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="section-title">Languages Known</div>
-        <p>
-            🗣️ <b>Gujarati:</b> Read, Write & Speak (Native)<br>
-            🗣️ <b>Hindi:</b> Read, Write & Speak<br>
-            🗣️ <b>English:</b> Read, Write & Speak<br>
-            🗣️ <b>Sanskrit:</b> Read & Write
-        </p>
-
-        <div class="section-title">Personal Details</div>
-        <div class="personal-details-grid">
-            <div><b>Date of Birth:</b> 21st December, 2006</div>
-            <div><b>Gender:</b> Male</div>
-            <div><b>Nationality:</b> Indian</div>
-            <div><b>Current Location:</b> Lunawada</div>
-        </div>
-        
-    </div>
-
-    <footer>
-        <p style="font-size: 0.8rem; margin-bottom: 5px;">
-            <a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a>
-        </p>
-        <marquee style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
-        
-        <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed gold; text-align: center;">
-            <p style="font-size: 0.8rem; color: #ffebcd; margin-bottom: 5px;">Visitor Count:</p>
-            <a href="https://www.hitwebcounter.com/" target="_blank">
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" title="Visitor Counter" border="0" />
-            </a>
+    <footer class="bg-maroon text-white pt-16 pb-8 text-center px-4 mt-20">
+        <div class="max-w-4xl mx-auto">
+            <a href="disclaimer.html" class="text-gold font-bold hover:underline mb-8 block">Legal Disclaimer</a>
+            <div class="overflow-hidden border-y border-white/10 py-4 mb-8">
+                <marquee class="text-gold font-medium">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
+            </div>
+            <div class="bg-black/20 inline-block p-4 rounded-xl border border-white/5">
+                <p class="text-xs uppercase tracking-widest text-white/60 mb-2 font-inter">Visitor Count</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 mx-auto">
+            </div>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('hidden');
+        }
+
+        // Security
         document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) { if(e.keyCode == 123) return false; }
+        document.onkeydown = function(e) { 
+            if(e.keyCode == 123) return false; 
+            if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+        }
     </script>
 </body>
 </html>
