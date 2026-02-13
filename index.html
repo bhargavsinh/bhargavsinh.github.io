@@ -1,277 +1,238 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="gu" class="scroll-smooth">
 <head>
-<meta name="google-site-verification" content="_E7Z6G0NoRhB5vJAsVj7XEiR4MKyb-GJFycV2dpdsPU" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Sisodiya Bhargavsinh</title>
     
+    <meta name="google-site-verification" content="_E7Z6G0NoRhB5vJAsVj7XEiR4MKyb-GJFycV2dpdsPU" />
     <meta name="google-site-verification" content="google424fbe164e6bb481" />
     <meta name="description" content="Official website of Sisodiya Bhargavsinh - Descendant of Maharana Pratap. Research on Pushtimarg, Gruh Seva, and Genealogy history.">
     <meta name="keywords" content="Bhargavsinh Sisodiya, Pushtimarg, Gruh Seva, Maharana Pratap Genealogy, Rajput History, Purawat Sisodiya, BCA Student">
     <meta name="author" content="Sisodiya Bhargavsinh">
     <meta name="robots" content="noai, noimageai">
     <link rel="canonical" href="https://bhargavsinh.github.io/" />
-    
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com;">
 
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
-    <style>
-        :root {
-            --bg-gradient: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
-            --nav-bg: rgba(255, 248, 236, 0.95);
-            --text-main: #2c1a1a;
-            --maroon: #7b1c1c;
-            --gold: #daa520;
-            --card-glass: rgba(255, 255, 255, 0.6);
-            --shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        body {
-            background: var(--bg-gradient);
-            background-attachment: fixed;
-            font-family: 'Noto Sans', sans-serif;
-            margin: 0;
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        /* Accessibility: Skip Link */
-        .skip-link {
-            position: absolute;
-            top: -100px;
-            left: 0;
-            background: var(--maroon);
-            color: white;
-            padding: 10px;
-            z-index: 2000;
-            transition: top 0.3s;
-        }
-        .skip-link:focus { top: 0; }
-
-        /* Navigation */
-        nav {
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            border-bottom: 3px solid var(--gold);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo-container { text-align: center; }
-        .logo-container img { height: 50px; border-radius: 5px; }
-        .brand-name { font-family: 'Yatra One', cursive; font-size: 1.2rem; color: var(--maroon); display: block; }
-
-        .nav-links { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; align-items: center; }
-        .nav-link { font-weight: bold; text-decoration: none; color: var(--text-main); transition: 0.3s; }
-        .nav-link:hover { color: var(--gold); }
-        .nav-link.active { color: var(--gold); }
-
-        .hamburger { display: none; font-size: 2rem; color: var(--maroon); cursor: pointer; }
-
-        /* Hero Section */
-        .hero-section { text-align: center; padding: 60px 20px; }
-        .profile-img {
-            width: 180px; height: 180px; object-fit: cover; border-radius: 50%;
-            border: 5px solid var(--gold); box-shadow: 0 0 25px rgba(218, 165, 32, 0.4);
-        }
-
-        h1 {
-            font-family: 'Yatra One', cursive; font-size: 2.5rem; color: var(--maroon);
-            margin: 20px 0; display: flex; justify-content: center; align-items: center; gap: 10px;
-        }
-
-        .shloka-box {
-            background: rgba(123, 28, 28, 0.05); border: 2px dashed var(--gold);
-            border-radius: 15px; padding: 25px; max-width: 700px; margin: 40px auto;
-            color: var(--maroon); font-family: 'Yatra One', cursive; font-size: 1.2rem;
-        }
-
-        /* Content Cards Grid */
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .h-card {
-            background: var(--card-glass);
-            border-top: 5px solid var(--maroon);
-            padding: 35px 25px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: 0.3s ease;
-        }
-
-        .h-card:hover { transform: translateY(-10px); border-top-color: var(--gold); }
-        .h-icon { font-size: 3rem; margin-bottom: 15px; display: block; }
-        .h-link { 
-            display: inline-block; margin-top: 20px; background: var(--maroon);
-            color: #fff; padding: 10px 25px; border-radius: 50px; text-decoration: none;
-            transition: 0.3s;
-        }
-        .h-link:hover { background: var(--gold); color: #000; }
-
-        /* Notifications */
-        .notification-container { position: relative; margin-left: 15px; }
-        .notif-btn { background: none; border: none; font-size: 1.6rem; cursor: pointer; position: relative; }
-        .badge {
-            position: absolute; top: 0; right: 0; width: 10px; height: 10px;
-            background: red; border-radius: 50%; border: 1.5px solid white; display: none;
-        }
-        .notif-dropdown {
-            display: none; position: absolute; top: 55px; right: 0; width: 300px;
-            background: #fff8ec; border: 2px solid var(--gold); border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 2000; overflow: hidden;
-        }
-        .notif-header { background: var(--maroon); color: white; padding: 12px 15px; font-weight: bold; display: flex; justify-content: space-between; }
-        #notif-list { list-style: none; padding: 0; margin: 0; max-height: 300px; overflow-y: auto; }
-        #notif-list li { padding: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 0.95rem; }
-
-        /* Footer */
-        footer { background: var(--maroon); color: white; padding: 40px 20px; text-align: center; margin-top: 60px; }
-        .footer-link { color: gold; text-decoration: none; font-weight: bold; }
-
-        /* Responsive Design */
-        @media (max-width: 850px) {
-            nav { padding: 10px 20px; }
-            .hamburger { display: block; }
-            .nav-links {
-                display: none; flex-direction: column; position: absolute;
-                top: 100%; left: 0; width: 100%; background: var(--nav-bg);
-                padding: 20px 0; border-bottom: 3px solid var(--gold);
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: '#7b1c1c',
+                        gold: '#daa520',
+                        cream: '#fff8ec',
+                    },
+                    fontFamily: {
+                        yatra: ['Yatra One', 'cursive'],
+                        noto: ['Noto Sans', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
             }
-            .nav-links.active { display: flex; }
-            .notif-dropdown { position: fixed; top: 80px; left: 5%; right: 5%; width: 90%; max-width: none; }
+        }
+    </script>
+
+    <style>
+        .glass {
+            background: rgba(255, 248, 236, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top, #fff8ec 0%, #fdf5e6 100%);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fff8ec; }
+        ::-webkit-scrollbar-thumb { background: #7b1c1c; border-radius: 10px; }
+        
+        .nav-link-ltr {
+            position: relative;
+        }
+        .nav-link-ltr::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            display: block; margin-top: 2px; right: 0; background: #daa520;
+            transition: width .3s ease;
+        }
+        .nav-link-ltr:hover::after { width: 100%; left: 0; background: #daa520; }
+        
+        #notif-box { display: none; }
+        #notif-box.show { display: block; animation: slideIn 0.3s ease-out; }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body>
 
-    <a href="#main-content" class="skip-link">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
+<body class="font-inter text-slate-800 hero-gradient min-h-screen">
 
-    <header>
-        <nav role="navigation" aria-label="મુખ્ય મેનુ">
-            <div class="logo-container">
-                <img src="logo.png" alt="સિસોદિયા વંશનો રાજવી લોગો">
-                <span class="brand-name">Sisodiya Bhargavsinh</span>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-maroon focus:text-white">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
+
+    <header class="fixed top-0 w-full z-50 glass border-b-2 border-gold/30">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo" class="h-12 w-auto drop-shadow-sm">
+                <span class="font-yatra text-maroon text-xl hidden sm:block">Sisodiya Bhargavsinh</span>
             </div>
 
-            <div class="hamburger" onclick="toggleMenu()" aria-label="મેનુ ખોલો" role="button" aria-expanded="false">☰</div>
-
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="pushtimarg.html" class="nav-link">Pushtimarg</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="resume.html" class="nav-link">Resume</a></li>
-                <li><a href="blog.html" class="nav-link">Articles</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><div id="google_translate_element"></div></li>
+            <ul class="hidden lg:flex items-center gap-8 font-semibold text-sm uppercase tracking-wider">
+                <li><a href="index.html" class="nav-link-ltr text-gold">Home</a></li>
+                <li><a href="about.html" class="nav-link-ltr hover:text-maroon transition">About</a></li>
+                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-maroon transition">Pushtimarg</a></li>
+                <li><a href="projects.html" class="nav-link-ltr hover:text-maroon transition">Projects</a></li>
+                <li><a href="resume.html" class="nav-link-ltr hover:text-maroon transition">Resume</a></li>
+                <li><a href="blog.html" class="nav-link-ltr hover:text-maroon transition">Articles</a></li>
+                <li><a href="contact.html" class="nav-link-ltr hover:text-maroon transition">Contact</a></li>
+                <li><div id="google_translate_element" class="scale-90"></div></li>
             </ul>
 
-            <div class="notification-container">
-                <button class="notif-btn" onclick="toggleNotif()" aria-label="નોટિફિકેશન જુઓ">
-                    🔔 <span class="badge" id="notif-badge"></span>
-                </button>
-                <div class="notif-dropdown" id="notif-box">
-                    <div class="notif-header">
-                        <span>Updates</span>
-                        <span onclick="toggleNotif()" style="cursor:pointer;">✖</span>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button onclick="toggleNotif()" class="p-2 hover:bg-gold/10 rounded-full transition relative">
+                        <span class="text-2xl">🔔</span>
+                        <span id="notif-badge" class="absolute top-2 right-2 w-3 h-3 bg-red-600 border-2 border-white rounded-full hidden"></span>
+                    </button>
+                    <div id="notif-box" class="absolute right-0 mt-4 w-72 bg-white rounded-xl shadow-2xl border border-gold/20 overflow-hidden">
+                        <div class="bg-maroon text-white px-4 py-3 flex justify-between items-center">
+                            <span class="font-bold">Updates</span>
+                            <button onclick="toggleNotif()" class="text-xl">&times;</button>
+                        </div>
+                        <ul id="notif-list" class="max-h-64 overflow-y-auto divide-y divide-gray-100">
+                            <li class="p-4 text-sm text-gray-500">Loading...</li>
+                        </ul>
                     </div>
-                    <ul id="notif-list"><li>Loading...</li></ul>
                 </div>
+
+                <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl">☰</button>
             </div>
         </nav>
+
+        <div id="navLinks" class="hidden lg:hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-xl">
+            <a href="index.html" class="block font-bold text-maroon">Home</a>
+            <a href="about.html" class="block font-medium">About</a>
+            <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
+            <a href="projects.html" class="block font-medium">Projects</a>
+            <a href="resume.html" class="block font-medium">Resume</a>
+            <a href="blog.html" class="block font-medium">Articles</a>
+            <a href="contact.html" class="block font-medium">Contact</a>
+        </div>
     </header>
 
-    <main id="main-content">
-        <section class="hero-section">
-            <marquee aria-hidden="true" style="color: var(--maroon); font-weight: bold; margin-bottom: 20px;"> 
-                || જય શ્રી કૃષ્ણ 🙏 આપનું સ્વાગત છે ||
-            </marquee>
+    <main id="main-content" class="pt-24">
+        <section class="max-w-4xl mx-auto px-4 py-16 text-center">
+            <div class="mb-8 overflow-hidden">
+                <p class="text-maroon font-bold animate-pulse">|| જય શ્રી કૃષ્ણ 🙏 આપનું સ્વાગત છે ||</p>
+            </div>
 
-            <img src="bhargavsinh.webp" alt="ભાર્ગવસિંહ સિસોદિયાનો ફોટો" class="profile-img">
-            
-            <h1>SISODIYA BHARGAVSINH
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" role="img" aria-label="Verified Profile">
-                    <path d="M12.0002 2.05945C12.7836 2.05945 13.5226 2.3751 14.0722 2.9248L14.7354 3.58795C15.0097 3.86225 15.3817 4.0163 15.7695 4.0163H16.7072C17.8105 4.0163 18.705 4.9108 18.705 6.0141V6.9518C18.705 7.3396 18.859 7.71155 19.1333 7.9859L19.7965 8.6491C20.3462 9.19865 20.6618 9.93775 20.6618 10.7212V13.279C20.6618 14.0624 20.3462 14.8015 19.7965 15.3511L19.1333 16.0142C18.859 16.2886 18.705 16.6605 18.705 17.0484V17.9861C18.705 19.0894 17.8105 19.9839 16.7072 19.9839H15.7695C15.3817 19.9839 15.0097 20.1379 14.7354 20.4122L14.0722 21.0754C13.5226 21.625 12.7836 21.9407 12.0002 21.9407C11.2168 21.9407 10.4777 21.625 9.92817 21.0754L9.26498 20.4122C8.99068 20.1379 8.61873 19.9839 8.23093 19.9839H7.29323C6.18993 19.9839 5.29543 19.0894 5.29543 17.9861V17.0484C5.29543 16.6605 5.14138 16.2886 4.86708 16.0142L4.20388 15.3511C3.65423 14.8015 3.33862 14.0624 3.33862 13.279V10.7212C3.33862 9.93775 3.65423 9.19865 4.20388 8.6491L4.86708 7.9859C5.14138 7.71155 5.29543 7.3396 5.29543 6.9518V6.0141C5.29543 4.9108 6.18993 4.0163 7.29323 4.0163H8.23093C8.61873 4.0163 8.99068 3.86225 9.26498 3.58795L9.92817 2.9248C10.4777 2.3751 11.2168 2.05945 12.0002 2.05945Z" fill="#3897F0"/>
-                    <path d="M10.2096 15.6191C9.99887 15.6191 9.78817 15.5386 9.62757 15.378L7.22127 12.9717C6.90007 12.6505 6.90007 12.1298 7.22127 11.8086C7.54247 11.4874 8.06317 11.4874 8.38437 11.8086L10.2096 13.6338L15.6159 8.22749C15.9371 7.90629 16.4578 7.90629 16.779 8.22749C17.1002 8.54869 17.1002 9.06939 16.779 9.39059L10.7916 15.378C10.631 15.5386 10.4203 15.6191 10.2096 15.6191Z" fill="white"/>
-                </svg>
+            <div class="relative inline-block" data-aos="zoom-in">
+                <img src="bhargavsinh.webp" alt="ભાર્ગવસિંહ સિસોદિયા" class="w-48 h-48 rounded-full border-4 border-gold shadow-2xl mx-auto object-cover transform hover:scale-105 transition duration-500">
+                <div class="absolute -bottom-2 -right-2 bg-white rounded-full p-1 shadow-lg">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <path d="M12.0002 2.05945C12.7836 2.05945 13.5226 2.3751 14.0722 2.9248L14.7354 3.58795C15.0097 3.86225 15.3817 4.0163 15.7695 4.0163H16.7072C17.8105 4.0163 18.705 4.9108 18.705 6.0141V6.9518C18.705 7.3396 18.859 7.71155 19.1333 7.9859L19.7965 8.6491C20.3462 9.19865 20.6618 9.93775 20.6618 10.7212V13.279C20.6618 14.0624 20.3462 14.8015 19.7965 15.3511L19.1333 16.0142C18.859 16.2886 18.705 16.6605 18.705 17.0484V17.9861C18.705 19.0894 17.8105 19.9839 16.7072 19.9839H15.7695C15.3817 19.9839 15.0097 20.1379 14.7354 20.4122L14.0722 21.0754C13.5226 21.625 12.7836 21.9407 12.0002 21.9407C11.2168 21.9407 10.4777 21.625 9.92817 21.0754L9.26498 20.4122C8.99068 20.1379 8.61873 19.9839 8.23093 19.9839H7.29323C6.18993 19.9839 5.29543 19.0894 5.29543 17.9861V17.0484C5.29543 16.6605 5.14138 16.2886 4.86708 16.0142L4.20388 15.3511C3.65423 14.8015 3.33862 14.0624 3.33862 13.279V10.7212C3.33862 9.93775 3.65423 9.19865 4.20388 8.6491L4.86708 7.9859C5.14138 7.71155 5.29543 7.3396 5.29543 6.9518V6.0141C5.29543 4.9108 6.18993 4.0163 7.29323 4.0163H8.23093C8.61873 4.0163 8.99068 3.86225 9.26498 3.58795L9.92817 2.9248C10.4777 2.3751 11.2168 2.05945 12.0002 2.05945Z" fill="#3897F0"/>
+                        <path d="M10.2096 15.6191C9.99887 15.6191 9.78817 15.5386 9.62757 15.378L7.22127 12.9717C6.90007 12.6505 6.90007 12.1298 7.22127 11.8086C7.54247 11.4874 8.06317 11.4874 8.38437 11.8086L10.2096 13.6338L15.6159 8.22749C15.9371 7.90629 16.4578 7.90629 16.779 8.22749C17.1002 8.54869 17.1002 9.06939 16.779 9.39059L10.7916 15.378C10.631 15.5386 10.4203 15.6191 10.2096 15.6191Z" fill="white"/>
+                    </svg>
+                </div>
+            </div>
+
+            <h1 id="typewriter" class="font-yatra text-4xl md:text-5xl text-maroon mt-8 mb-4 min-h-[60px]">
+                SISODIYA BHARGAVSINH
             </h1>
 
-            <p>🙏 શ્રીકૃષ્ણદાસાનુદાસોડહમ્ । | 🚩 પુષ્ટિમાર્ગીય વૈષ્ણવ</p>
-            <p>🎓 BCA Student | 🛡️ Rajput Heritage | 🙏 Theist</p>
-            <p>⚔️ 16th Generation Descendant of Shri Maharana Pratap</p>
+            <div class="space-y-2 text-lg text-slate-600 font-medium" data-aos="fade-up" data-aos-delay="200">
+                <p>🙏 શ્રીકૃષ્ણદાસાનુદાસોડહમ્ । | 🚩 પુષ્ટિમાર્ગીય વૈષ્ણવ</p>
+                <p>🎓 BCA Student | 🛡️ Rajput Heritage | 🙏 Theist</p>
+                <p class="text-maroon/80 font-bold italic">⚔️ 16th Generation Descendant of Shri Maharana Pratap</p>
+            </div>
             
-            <div class="shloka-box" role="complementary" aria-label="શ્રીમદ્દ ભાગવત શ્લોક">
-                "સ વૈ પુસાં પરો ધર્મો યતો ભક્તિરધોક્ષજે। (શ્રીમદ્ભાગવત મહાપુરાણ 1.2.6)"
-                <br>
-                <span style="font-size: 0.9rem; color: #555; margin-top: 10px; display:block;">(જે ધર્મ દ્વારા ભગવાનમાં નિર્મળ ભક્તિ થાય, એ જ માનવ માટે પરમ ધર્મ છે.)</span>
+            <div class="mt-12 p-8 bg-white/50 border-2 border-dashed border-gold rounded-3xl relative" data-aos="fade-up" data-aos-delay="400">
+                <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cream px-4 text-maroon font-bold text-2xl">“</span>
+                <p class="font-yatra text-xl text-maroon mb-2">
+                    "સ વૈ પુસાં પરો ધર્મો યતો ભક્તિરધોક્ષજે। (શ્રીમદ્ભાગવત મહાપુરાણ 1.2.6)"
+                </p>
+                <p class="text-slate-500 text-sm leading-relaxed">
+                    (જે ધર્મ દ્વારા ભગવાનમાં નિર્મળ ભક્તિ થાય, એ જ માનવ માટે પરમ ધર્મ છે.)
+                </p>
             </div>
         </section>
 
-        <section class="highlights-grid" aria-label="વિશેષ વિભાગો">
-            <div class="h-card">
-                <span class="h-icon">📜</span>
-                <h2 style="color: var(--maroon); margin-bottom: 15px;">વંશાવલી</h2>
-                <p>મહારાણા પ્રતાપથી લઈને અત્યાર સુધીની પેઢીઓનો ગૌરવવંતો ઈતિહાસ અને દસ્તાવેજો.</p>
-                <a href="about.html" class="h-link">જુઓ →</a>
+        <section class="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-maroon hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-4xl mb-4">📜</div>
+                <h2 class="font-yatra text-2xl text-maroon mb-4">વંશાવલી</h2>
+                <p class="text-slate-600 mb-6">મહારાણા પ્રતાપથી લઈને અત્યાર સુધીની પેઢીઓનો ગૌરવવંતો ઈતિહાસ અને દસ્તાવેજો.</p>
+                <a href="about.html" class="inline-flex items-center text-white bg-maroon px-6 py-2 rounded-full font-bold hover:bg-gold transition">જુઓ →</a>
             </div>
 
-            <div class="h-card">
-                <span class="h-icon">🪔</span>
-                <h2 style="color: var(--maroon); margin-bottom: 15px;">પુષ્ટિ સિદ્ધાંત</h2>
-                <p>શ્રીમદ વલ્લભાચાર્યજી પ્રણીત પુષ્ટિમાર્ગ, ગૃહ સેવા અને શુદ્ધાદ્વૈત બ્રહ્મવાદ ના સિદ્ધાંતો.</p>
-                <a href="pushtimarg.html" class="h-link">વાંચો →</a>
+            <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-maroon hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-4xl mb-4">🪔</div>
+                <h2 class="font-yatra text-2xl text-maroon mb-4">પુષ્ટિ સિદ્ધાંત</h2>
+                <p class="text-slate-600 mb-6">શ્રીમદ વલ્લભાચાર્યજી પ્રણીત પુષ્ટિમાર્ગ, ગૃહ સેવા અને શુદ્ધાદ્વૈત બ્રહ્મવાદ ના સિદ્ધાંતો.</p>
+                <a href="pushtimarg.html" class="inline-flex items-center text-white bg-maroon px-6 py-2 rounded-full font-bold hover:bg-gold transition">વાંચો →</a>
             </div>
 
-            <div class="h-card">
-                <span class="h-icon">✒️</span>
-                <h2 style="color: var(--maroon); margin-bottom: 15px;">સંશોધન લેખ</h2>
-                <p>"પુષ્ટિમાર્ગ માં ગૃહ સેવા" પર કરવામાં આવેલ ઊંડાણપૂર્વકનું શાસ્ત્રીય સંશોધન.</p>
-                <a href="blog.html" class="h-link">લેખ વાંચો →</a>
+            <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-maroon hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                <div class="text-4xl mb-4">✒️</div>
+                <h2 class="font-yatra text-2xl text-maroon mb-4">સંશોધન લેખ</h2>
+                <p class="text-slate-600 mb-6">"પુષ્ટિમાર્ગ માં ગૃહ સેવા" પર કરવામાં આવેલ ઊંડાણપૂર્વકનું શાસ્ત્રીય સંશોધન.</p>
+                <a href="blog.html" class="inline-flex items-center text-white bg-maroon px-6 py-2 rounded-full font-bold hover:bg-gold transition">લેખ વાંચો →</a>
             </div>
+
         </section>
     </main>
 
-    <footer>
-        <p><a href="disclaimer.html" class="footer-link">Legal Disclaimer</a></p>
-        <marquee aria-hidden="true" style="color: gold; margin: 10px 0;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
-        <div style="margin-top: 20px;">
-            <p style="font-size: 0.85rem; color: #ffebcd; margin-bottom: 5px;">Visitor Count:</p>
-            <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Visitor Counter">
+    <footer class="bg-maroon text-white pt-16 pb-8 text-center px-4 mt-20">
+        <div class="max-w-4xl mx-auto">
+            <a href="disclaimer.html" class="text-gold font-bold hover:underline mb-8 block">Legal Disclaimer</a>
+            
+            <div class="overflow-hidden border-y border-white/10 py-4 mb-8">
+                <div class="animate-marquee whitespace-nowrap text-gold font-medium">
+                    Designed by Sisodiya Bhargavsinh | © 2026 | Maintaining Heritage with Technology
+                </div>
+            </div>
+
+            <div class="bg-black/20 inline-block p-4 rounded-xl border border-white/5">
+                <p class="text-xs uppercase tracking-widest text-white/60 mb-2">Visitor Count</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90">
+            </div>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
     <script>
+        // Init Scroll Animations
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Typewriter Effect
+        new TypeIt("#typewriter", {
+            speed: 50,
+            waitUntilVisible: true,
+            cursor: false
+        }).go();
+
+        // UI Interactions
         function toggleMenu() {
             const nav = document.getElementById('navLinks');
-            const burger = document.querySelector('.hamburger');
-            nav.classList.toggle('active');
-            burger.setAttribute('aria-expanded', nav.classList.contains('active'));
+            nav.classList.toggle('hidden');
         }
 
         function toggleNotif() {
             const box = document.getElementById('notif-box');
-            if (box.style.display === 'block') {
-                box.style.display = 'none';
-            } else {
-                box.style.display = 'block';
-                fetchNotifications();
-            }
+            box.classList.toggle('show');
+            if (box.classList.contains('show')) fetchNotifications();
         }
 
         async function fetchNotifications() {
@@ -285,36 +246,38 @@
                 data.forEach(item => {
                     if (item.new) hasNew = true;
                     const li = document.createElement('li');
+                    li.className = "p-4 hover:bg-gray-50 transition cursor-pointer";
                     li.innerHTML = `
-                        <small style="color:#666;">${item.date}</small><br>
-                        <a href="${item.link}" style="text-decoration:none; color:var(--maroon); font-weight:bold;">
-                            ${item.new ? '🆕 ' : ''}${item.text}
+                        <small class="text-gray-400 block mb-1 text-xs">${item.date}</small>
+                        <a href="${item.link}" class="text-maroon font-bold text-sm block">
+                            ${item.new ? '<span class="bg-red-100 text-red-600 px-2 py-0.5 rounded text-[10px] mr-1">NEW</span>' : ''}${item.text}
                         </a>`;
                     list.appendChild(li);
                 });
-                badge.style.display = hasNew ? 'block' : 'none';
+                badge.classList.toggle('hidden', !hasNew);
             } catch (e) {
-                list.innerHTML = '<li style="color:red;">Failed to load updates.</li>';
+                list.innerHTML = '<li class="p-4 text-red-500 text-sm">Failed to load updates.</li>';
             }
         }
 
-        // Initialization
+        // Global Event Listeners
         window.addEventListener('load', () => {
             fetch('notifications.json?t=' + Date.now())
                 .then(r => r.json())
                 .then(d => {
-                    if(d.some(i => i.new)) document.getElementById('notif-badge').style.display = 'block';
+                    if(d.some(i => i.new)) document.getElementById('notif-badge').classList.remove('hidden');
                 }).catch(console.error);
         });
 
         document.addEventListener('click', (e) => {
-            if (!document.querySelector('.notification-container').contains(e.target)) {
-                document.getElementById('notif-box').style.display = 'none';
-            }
+            const container = document.querySelector('.relative');
+            const box = document.getElementById('notif-box');
+            if (!container.contains(e.target)) box.classList.remove('show');
         });
 
         document.addEventListener('contextmenu', e => e.preventDefault());
 
+        // Google Translate
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'gu', 
