@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About & Lineage | Sisodiya Bhargavsinh</title>
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; frame-src 'self' https://www.google.com https://docs.google.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com https://unpkg.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline' https://unpkg.com; frame-src 'self' https://www.google.com https://docs.google.com;">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -24,7 +24,6 @@
                     fontFamily: {
                         yatra: ['Yatra One', 'cursive'],
                         noto: ['Noto Sans', 'sans-serif'],
-                        playfair: ['Playfair Display', 'serif'],
                         inter: ['Inter', 'sans-serif'],
                     }
                 }
@@ -33,35 +32,30 @@
     </script>
 
     <style>
-        .glass {
-            background: rgba(255, 248, 236, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
         .hero-gradient {
             background: radial-gradient(circle at top, #fff8ec 0%, #fdf5e6 100%);
         }
+        .glass {
+            background: rgba(255, 248, 236, 0.85);
+            backdrop-filter: blur(12px);
+        }
         /* Custom Timeline Line */
         .timeline-line::before {
-            content: ''; position: absolute; left: 50%; width: 4px; height: 100%;
-            background: #daa520; transform: translateX(-50%); opacity: 0.3;
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #7b1c1c, #daa520, #7b1c1c);
+            border-radius: 10px;
         }
         @media (max-width: 768px) {
             .timeline-line::before { left: 20px; }
         }
-        .nav-link-ltr {
-            position: relative;
-        }
-        .nav-link-ltr::after {
-            content: ''; position: absolute; width: 0; height: 2px;
-            display: block; margin-top: 2px; right: 0; background: #daa520;
-            transition: width .3s ease;
-        }
-        .nav-link-ltr:hover::after { width: 100%; left: 0; }
     </style>
 </head>
-
-<body class="font-inter text-slate-800 hero-gradient min-h-screen selection:bg-gold selection:text-white">
+<body class="font-inter text-slate-800 hero-gradient min-h-screen">
 
     <header class="fixed top-0 w-full z-50 glass border-b-2 border-gold/30">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -69,21 +63,21 @@
                 <img src="logo.png" alt="Logo" class="h-12 w-auto">
                 <span class="font-yatra text-maroon text-xl hidden sm:block">Sisodiya Bhargavsinh</span>
             </div>
+            
+            <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl">☰</button>
 
             <ul class="hidden lg:flex items-center gap-8 font-semibold text-sm uppercase tracking-wider">
-                <li><a href="index.html" class="nav-link-ltr hover:text-maroon transition">Home</a></li>
-                <li><a href="about.html" class="nav-link-ltr text-gold">About</a></li>
-                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-maroon transition">Pushtimarg</a></li>
-                <li><a href="projects.html" class="nav-link-ltr hover:text-maroon transition">Projects</a></li>
-                <li><a href="resume.html" class="nav-link-ltr hover:text-maroon transition">Resume</a></li>
-                <li><a href="blog.html" class="nav-link-ltr hover:text-maroon transition">Articles</a></li>
-                <li><a href="contact.html" class="nav-link-ltr hover:text-maroon transition">Contact</a></li>
+                <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
+                <li><a href="about.html" class="text-gold">About</a></li>
+                <li><a href="pushtimarg.html" class="hover:text-gold transition">Pushtimarg</a></li>
+                <li><a href="projects.html" class="hover:text-gold transition">Projects</a></li>
+                <li><a href="resume.html" class="hover:text-gold transition">Resume</a></li>
+                <li><a href="blog.html" class="hover:text-gold transition">Articles</a></li>
+                <li><a href="contact.html" class="hover:text-gold transition">Contact</a></li>
             </ul>
-
-            <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl">☰</button>
         </nav>
 
-        <div id="navLinks" class="hidden lg:hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-xl">
+        <div id="navLinks" class="hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-xl">
             <a href="index.html" class="block font-medium">Home</a>
             <a href="about.html" class="block font-bold text-maroon">About</a>
             <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
@@ -94,168 +88,143 @@
         </div>
     </header>
 
-    <main class="pt-32 pb-20 px-4 max-w-5xl mx-auto">
-        
-        <section class="bg-white/70 border-t-4 border-maroon rounded-2xl p-8 md:p-12 shadow-xl mb-16" data-aos="fade-up">
+    <main class="pt-32 pb-16 px-4">
+        <section class="max-w-4xl mx-auto bg-white/60 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl border-t-8 border-maroon mb-16" data-aos="fade-up">
             <h2 class="font-yatra text-4xl text-maroon text-center mb-6">મારા વિષે</h2>
-            <div class="text-center text-3xl mb-8">📜</div>
-            <div class="space-y-6 text-lg leading-relaxed text-slate-700 font-noto">
+            <div class="text-center text-3xl mb-6">📜</div>
+            <div class="space-y-6 text-lg leading-relaxed text-slate-700">
                 <p>હું, શ્રી મહાપ્રભુજી દ્વારા પ્રણીત <b>"પુષ્ટિભક્તિમાર્ગ"</b> નો નિષ્ઠાવાન અનુયાયી છું. મારા મતે, શુદ્ધાદ્વૈતવાદ માત્ર એક ધાર્મિક વાદ નથી, પરંતુ વિશ્વશાંતિ અને માનવીય સંવેદનાઓને ઉજાગર કરતી એક જીવનશૈલી છે.</p>
                 <p><b>વારસો અને માર્ગદર્શન:</b> એક તરફ મને વીર શિરોમણી મહારાણા પ્રતાપના ૧૧મા પુત્ર શ્રી પૂરનમલજી ના (16th Generation) વંશજ હોવાનું ગૌરવ છે, તો બીજી તરફ સમર્થ સદ્દગુરુનું આધ્યાત્મિક માર્ગદર્શન પણ પ્રાપ્ત છે. શૌર્ય અને સમર્પણનો આ સુમેળ મને જીવનના દરેક ક્ષેત્રમાં અડગ રહેવાની પ્રેરણા આપે છે.</p>
             </div>
         </section>
 
-        <div class="text-center mb-12" data-aos="zoom-in">
-            <h3 class="font-yatra text-3xl text-maroon">।।વંશાવલી।।</h3>
-            <p class="text-slate-500 mt-2 font-medium">(મેવાડના શ્રી મહારાણા પ્રતાપસિંહજી થી ભાર્ગવસિંહ સુધીની ૧૫ પેઢીઓ)</p>
-        </div>
+        <section class="max-w-6xl mx-auto mb-20">
+            <h3 class="font-yatra text-4xl text-maroon text-center mb-2" data-aos="zoom-in">।।વંશાવલી।।</h3>
+            <p class="text-center text-slate-500 mb-12" data-aos="fade-up">(મેવાડના શ્રી મહારાણા પ્રતાપસિંહજી થી ભાર્ગવસિંહ સુધીની ૧૫ પેઢીઓ)</p>
 
-        <section class="relative timeline-line space-y-12 mb-20">
-            
-            <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon hover:shadow-xl transition relative">
-                    <span class="text-gold font-bold text-xs uppercase tracking-tighter">પેઢી ૧</span>
-                    <h4 class="font-yatra text-2xl text-maroon mt-1">🛡️ શ્રી મહારાણા પ્રતાપસિંહજી</h4>
-                    <p class="text-sm text-slate-500 mt-2 italic">હિન્દુઆ સૂરજ રાષ્ટ્રીય ગૌરવ, પ્રાતઃ સ્મરણીય, સનાતન ધર્મ રક્ષક, સિસોદિયા કુલભૂષણ, ક્રાંતિસૂર્ય, એકલિંગજી દીવાન</p>
-                    <div class="hidden md:block absolute top-1/2 -right-12 translate-x-1/2 -translate-y-1/2 bg-white border-2 border-gold rounded-full p-1 text-xs">🛡️</div>
+            <div class="relative timeline-line">
+                <div class="mb-12 flex justify-between items-center w-full right-timeline" data-aos="fade-right">
+                    <div class="hidden md:block w-5/12"></div>
+                    <div class="z-20 flex items-center bg-maroon shadow-xl w-10 h-10 rounded-full border-2 border-gold absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
+                        <span class="mx-auto text-white text-xs">🛡️</span>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-xl w-full md:w-5/12 px-6 py-6 border-l-4 border-maroon hover:scale-105 transition">
+                        <span class="text-gold font-bold text-xs uppercase tracking-widest">પેઢી ૧</span>
+                        <h4 class="font-yatra text-xl text-maroon mt-1">🛡️ શ્રી મહારાણા પ્રતાપસિંહજી</h4>
+                        <p class="text-sm text-slate-500 mt-2">હિન્દુઆ સૂરજ રાષ્ટ્રીય ગૌરવ, પ્રાતઃ સ્મરણીય, સનાતન ધર્મ રક્ષક, સિસોદિયા કુલભૂષણ, ક્રાંતિસૂર્ય, એકલિંગજી દીવાન</p>
+                    </div>
                 </div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
 
-            <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon hover:shadow-xl transition relative">
-                    <span class="text-gold font-bold text-xs uppercase tracking-tighter">પેઢી ૨</span>
-                    <h4 class="font-yatra text-2xl text-maroon mt-1">⚔️ શ્રી પૂરનમલજી (પૂરાજી)</h4>
-                    <div class="hidden md:block absolute top-1/2 -left-12 -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-gold rounded-full p-1 text-xs">🛡️</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto py-10 relative z-10">
+                    <div class="bg-white/80 p-4 rounded-xl shadow border-l-4 border-gold" data-aos="fade-up">
+                        <span class="text-xs font-bold text-slate-400">પેઢી ૨</span> <h4 class="font-yatra text-maroon">⚔️ શ્રી પૂરનમલજી (પૂરાજી)</h4>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-xl shadow border-l-4 border-gold" data-aos="fade-up">
+                        <span class="text-xs font-bold text-slate-400">પેઢી ૩</span> <h4 class="font-yatra text-maroon">⚔️ શ્રી સાંવલદાસજી (સબલસિંહજી)</h4>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-xl shadow border-l-4 border-gold" data-aos="fade-up">
+                        <span class="text-xs font-bold text-slate-400">પેઢી ૪</span> <h4 class="font-yatra text-maroon">⚔️ શ્રી લાલસિંહજી</h4>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-xl shadow border-l-4 border-gold" data-aos="fade-up">
+                        <span class="text-xs font-bold text-slate-400">પેઢી ૫</span> <h4 class="font-yatra text-maroon">⚔️ શ્રી કેસરસિંહજી</h4>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-xl shadow border-l-4 border-gold" data-aos="fade-up">
+                        <span class="text-xs font-bold text-slate-400">પેઢી ૬</span> <h4 class="font-yatra text-maroon">⚔️ શ્રી ગુમાનસિંહજી</h4>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-xl shadow border-l-4 border-gold" data-aos="fade-up">
+                        <span class="text-xs font-bold text-slate-400">પેઢી ૭</span> <h4 class="font-yatra text-maroon">⚔️ શ્રી જગરુપસિંહજી</h4>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-xl shadow border-l-4 border-gold" data-aos="fade-up">
+                        <span class="text-xs font-bold text-slate-400">પેઢી ૮</span> <h4 class="font-yatra text-maroon">⚔️ શ્રીવધારસિંહજી</h4>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-xl shadow border-l-4 border-gold" data-aos="fade-up">
+                        <span class="text-xs font-bold text-slate-400">પેઢી ૯</span> <h4 class="font-yatra text-maroon">⚔️ શ્રીપ્રતાપસિંહજી</h4>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-xl shadow border-l-4 border-gold" data-aos="fade-up">
+                        <span class="text-xs font-bold text-slate-400">પેઢી ૧૦</span> <h4 class="font-yatra text-maroon">⚔️ શ્રી દલેલસિંહજી</h4>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-xl shadow border-l-4 border-gold" data-aos="fade-up">
+                        <span class="text-xs font-bold text-slate-400">પેઢી ૧૧</span> <h4 class="font-yatra text-maroon">⚔️ શ્રી મોકમસિંહજી</h4>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-xl shadow border-l-4 border-gold" data-aos="fade-up">
+                        <span class="text-xs font-bold text-slate-400">પેઢી ૧૨</span> <h4 class="font-yatra text-maroon">⚔️ શ્રી જોરાવરસિંહજી</h4>
+                    </div>
+                    <div class="bg-white/80 p-4 rounded-xl shadow border-l-4 border-gold" data-aos="fade-up">
+                        <span class="text-xs font-bold text-slate-400">પેઢી ૧૩</span> <h4 class="font-yatra text-maroon">⚔️ શ્રી રણજીતસિંહજી</h4>
+                    </div>
                 </div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
 
-            <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon transition"><span class="text-gold font-bold text-xs">પેઢી ૩</span><h4 class="font-yatra text-2xl text-maroon">⚔️ શ્રી સાંવલદાસજી (સબલસિંહજી)</h4></div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-            <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon transition"><span class="text-gold font-bold text-xs">પેઢી ૪</span><h4 class="font-yatra text-2xl text-maroon">⚔️ શ્રી લાલસિંહજી</h4></div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-            <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon transition"><span class="text-gold font-bold text-xs">પેઢી ૫</span><h4 class="font-yatra text-2xl text-maroon">⚔️ શ્રી કેસરસિંહજી</h4></div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-            <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon transition"><span class="text-gold font-bold text-xs">પેઢી ૬</span><h4 class="font-yatra text-2xl text-maroon">⚔️ શ્રી ગુમાનસિંહજી</h4></div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-            <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon transition"><span class="text-gold font-bold text-xs">પેઢી ૭</span><h4 class="font-yatra text-2xl text-maroon">⚔️ શ્રી જગરુપસિંહજી</h4></div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-            <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon transition"><span class="text-gold font-bold text-xs">પેઢી ૮</span><h4 class="font-yatra text-2xl text-maroon">⚔️ શ્રીવધારસિંહજી</h4></div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-            <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon transition"><span class="text-gold font-bold text-xs">પેઢી ૯</span><h4 class="font-yatra text-2xl text-maroon">⚔️ શ્રીપ્રતાપસિંહજી</h4></div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-            <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon transition"><span class="text-gold font-bold text-xs">પેઢી ૧૦</span><h4 class="font-yatra text-2xl text-maroon">⚔️ શ્રી દલેલસિંહજી</h4></div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-            <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon transition"><span class="text-gold font-bold text-xs">પેઢી ૧૧</span><h4 class="font-yatra text-2xl text-maroon">⚔️ શ્રી મોકમસિંહજી</h4></div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-            <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon transition"><span class="text-gold font-bold text-xs">પેઢી ૧૨</span><h4 class="font-yatra text-2xl text-maroon">⚔️ શ્રી જોરાવરસિંહજી</h4></div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-            <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon transition"><span class="text-gold font-bold text-xs">પેઢી ૧૩</span><h4 class="font-yatra text-2xl text-maroon">⚔️ શ્રી રણજીતસિંહજી</h4></div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-
-            <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon hover:shadow-xl transition">
-                    <span class="text-gold font-bold text-xs uppercase tracking-tighter">પેઢી ૧૪</span>
-                    <h4 class="font-yatra text-2xl text-maroon mt-1">🦁 શ્રી ચંદનસિંહજી</h4>
-                    <p class="text-sm text-slate-500 font-bold mt-1">(દાદાજી)</p>
+                <div class="space-y-8 mt-10">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-6" data-aos="zoom-in">
+                        <div class="bg-white p-6 rounded-2xl shadow-xl border-b-4 border-maroon w-full max-w-md text-center">
+                            <span class="text-xs font-bold text-gold uppercase">પેઢી ૧૪</span>
+                            <h4 class="font-yatra text-2xl text-maroon">🦁 શ્રી ચંદનસિંહજી</h4>
+                            <p class="text-slate-500">(દાદાજી)</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-6" data-aos="zoom-in">
+                        <div class="bg-white p-6 rounded-2xl shadow-xl border-b-4 border-maroon w-full max-w-md text-center">
+                            <span class="text-xs font-bold text-gold uppercase">પેઢી ૧૫</span>
+                            <h4 class="font-yatra text-2xl text-maroon">🦁 શ્રી મહેન્દ્રસિંહજી</h4>
+                            <p class="text-slate-500">(પિતાશ્રી)</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-6" data-aos="zoom-in">
+                        <div class="bg-gold/10 p-8 rounded-2xl shadow-2xl border-4 border-gold w-full max-w-lg text-center transform scale-110">
+                            <span class="bg-gold text-white px-3 py-1 rounded-full text-xs font-bold uppercase">પેઢી ૧૬</span>
+                            <h4 class="font-yatra text-3xl text-maroon mt-4">🎓 શ્રી ભાર્ગવસિંહજી</h4>
+                            <p class="text-maroon font-semibold mt-2">BCA Student | Pushtimargiya Vaishnav</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-
-            <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
-                <div class="w-full md:w-[45%] bg-white p-6 rounded-xl shadow-md border-l-4 border-maroon hover:shadow-xl transition">
-                    <span class="text-gold font-bold text-xs uppercase tracking-tighter">પેઢી ૧૫</span>
-                    <h4 class="font-yatra text-2xl text-maroon mt-1">🦁 શ્રી મહેન્દ્રસિંહજી</h4>
-                    <p class="text-sm text-slate-500 font-bold mt-1">(પિતાશ્રી)</p>
-                </div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-
-            <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="zoom-in-up">
-                <div class="w-full md:w-[45%] bg-white p-8 rounded-2xl shadow-2xl border-2 border-gold ring-4 ring-gold/10 relative">
-                    <span class="bg-gold text-white px-3 py-1 rounded text-[10px] font-bold absolute -top-3 left-6">CURRENT</span>
-                    <span class="text-gold font-bold text-xs uppercase tracking-tighter">પેઢી ૧૬</span>
-                    <h4 class="font-yatra text-3xl text-maroon mt-1">🎓 શ્રી ભાર્ગવસિંહજી</h4>
-                    <p class="text-sm text-slate-600 font-bold mt-2">BCA Student | Pushtimargiya Vaishnav</p>
-                </div>
-                <div class="hidden md:block w-[45%]"></div>
             </div>
         </section>
 
-        <section class="bg-white/70 border-t-4 border-gold rounded-2xl p-8 md:p-12 shadow-xl mb-16" data-aos="fade-up">
-            <div class="text-slate-700 leading-relaxed font-noto">
-                <p><b>શિક્ષણ અને ધ્યેય:</b> વર્તમાનમાં હું <b>BCA (Bachelor of Computer Applications)</b> નો વિદ્યાર્થી છું. મારો ઉદ્દેશ્ય વેબ ડેવલપમેન્ટ અને કોડિંગ જેવી આધુનિક સ્કીલ્સનો ઉપયોગ કરીને એવું ડિજિટલ ભવિષ્ય બનાવવાનો છે જે આપણા પ્રાચીન વારસાને પણ જાળવી રાખે. હું માનું છું કે વિજ્ઞાન અને અધ્યાત્મ એકબીજાના વિરોધી નથી, પરંતુ પૂરક છે.</p>
+        <section class="max-w-4xl mx-auto bg-maroon text-white p-8 md:p-12 rounded-3xl shadow-2xl mb-16" data-aos="fade-up">
+            <p class="text-lg leading-relaxed"><b>શિક્ષણ અને ધ્યેય:</b> વર્તમાનમાં હું <b>BCA (Bachelor of Computer Applications)</b> નો વિદ્યાર્થી છું. મારો ઉદ્દેશ્ય વેબ ડેવલપમેન્ટ અને કોડિંગ જેવી આધુનિક સ્કીલ્સનો ઉપયોગ કરીને એવું ડિજિટલ ભવિષ્ય બનાવવાનો છે જે આપણા પ્રાચીન વારસાને પણ જાળવી રાખે. હું માનું છું કે વિજ્ઞાન અને અધ્યાત્મ એકબીજાના વિરોધી નથી, પરંતુ પૂરક છે.</p>
+        </section>
+
+        <section class="max-w-4xl mx-auto bg-white border-2 border-gold rounded-3xl overflow-hidden shadow-2xl" data-aos="fade-up">
+            <div class="bg-cream p-8 text-center border-b border-gold/20">
+                <h3 class="font-yatra text-3xl text-maroon">🏛️ રાષ્ટ્ર નિર્માણમાં મારું યોગદાન</h3>
+                <p class="text-slate-500 font-bold mt-2">(Recognized by the President of India)</p>
+            </div>
+            <div class="p-8 space-y-6">
+                <p class="text-slate-700 leading-relaxed">એક સનાતની અને ગૌભક્ત તરીકે, મેં ભારત સરકાર સમક્ષ <strong>"ગૌહત્યા પર સંપૂર્ણ પ્રતિબંધ" (Nationwide Ban on Cow Slaughter)</strong> માટે મજબૂત રજૂઆત કરી હતી. મારા આ પ્રયાસની નોંધ ભારતના સર્વોચ્ચ બંધારણીય પદ - <strong>મહામહિમ રાષ્ટ્રપતિજી (President of India)</strong> ના કાર્યાલય દ્વારા લેવામાં આવી છે.</p>
+                
+                <div class="grid md:grid-cols-3 gap-4 bg-cream/50 p-6 rounded-2xl border border-gold/10">
+                    <div class="text-center">
+                        <span class="block text-xs uppercase text-slate-400">તારીખ</span>
+                        <span class="font-bold">18 જુલાઈ, 2024</span>
+                    </div>
+                    <div class="text-center border-y md:border-y-0 md:border-x border-gold/10 py-4 md:py-0">
+                        <span class="block text-xs uppercase text-slate-400">વિષય</span>
+                        <span class="font-bold">Ban on Cow Slaughter</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-xs uppercase text-slate-400">સ્ટેટસ</span>
+                        <span class="text-green-600 font-bold">✅ Official Record</span>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="https://www.presidentofindia.gov.in/sites/default/files/webform/request_for_president_s_message/7040/request_to_ban_cow_slaughter_in_bharat.pdf" target="_blank" class="inline-block bg-maroon text-white font-bold py-4 px-8 rounded-xl hover:bg-gold transition transform hover:-translate-y-1">📄 View Official Letter</a>
+                </div>
             </div>
         </section>
 
-        <section class="bg-white border-2 border-gold rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden" data-aos="fade-up">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full -mr-16 -mt-16"></div>
-            
-            <div class="text-center border-b border-slate-100 pb-8 mb-8">
-                <h3 class="font-playfair text-3xl text-maroon font-bold">🏛️ રાષ્ટ્ર નિર્માણમાં મારું યોગદાન</h3>
-                <p class="text-sm text-slate-500 mt-2 font-bold uppercase tracking-widest">(Recognized by the President of India)</p>
-            </div>
-
-            <p class="text-lg text-slate-700 leading-relaxed font-noto mb-8">એક સનાતની અને ગૌભક્ત તરીકે, મેં ભારત સરકાર સમક્ષ <strong>"ગૌહત્યા પર સંપૂર્ણ પ્રતિબંધ" (Nationwide Ban on Cow Slaughter)</strong> માટે મજબૂત રજૂઆત કરી હતી. મારા આ પ્રયાસની નોંધ ભારતના સર્વોચ્ચ બંધારણીય પદ - <strong>મહામહિમ રાષ્ટ્રપતિજી (President of India)</strong> ના કાર્યાલય દ્વારા લેવામાં આવી છે.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                <div class="bg-cream p-5 rounded-xl border border-gold/20 text-center">
-                    <span class="block text-xs text-slate-400 font-bold uppercase">તારીખ</span>
-                    <span class="text-maroon font-bold">18 જુલાઈ, 2024</span>
-                </div>
-                <div class="bg-cream p-5 rounded-xl border border-gold/20 text-center md:col-span-2">
-                    <span class="block text-xs text-slate-400 font-bold uppercase">વિષય</span>
-                    <span class="text-maroon font-bold text-sm">Request for Nationwide Ban on Cow Slaughter</span>
-                </div>
-            </div>
-
-            <div class="text-center">
-                <a href="https://www.presidentofindia.gov.in/sites/default/files/webform/request_for_president_s_message/7040/request_to_ban_cow_slaughter_in_bharat.pdf" target="_blank" class="inline-block bg-maroon text-white font-bold px-8 py-4 rounded-full shadow-lg hover:bg-gold hover:text-maroon transition duration-300 transform hover:-translate-y-1">
-                    📄 View Official Letter (presidentofindia.gov.in)
-                </a>
-                <p class="text-[10px] text-slate-400 mt-4 italic font-bold tracking-widest uppercase">Verified Status: Official Record on Govt Website</p>
-            </div>
-        </section>
-
-        <p class="text-center font-yatra text-3xl text-maroon my-20" data-aos="zoom-in">“સર્વમ્ શ્રીકૃષ્ણાર્પણમસ્તુ”</p>
+        <p class="text-center font-yatra text-3xl text-maroon mt-20" data-aos="zoom-in">“સર્વમ્ શ્રીકૃષ્ણાર્પણમસ્તુ”</p>
     </main>
 
     <footer class="bg-maroon text-white pt-16 pb-8 text-center px-4">
         <div class="max-w-4xl mx-auto">
-            <a href="disclaimer.html" class="text-gold font-bold hover:underline mb-8 block">Legal Disclaimer</a>
-            
-            <div class="overflow-hidden border-y border-white/10 py-4 mb-8">
-                <div class="animate-marquee whitespace-nowrap text-gold font-medium">
-                    Designed by Sisodiya Bhargavsinh | © 2026 | Promoting Sanatan Values
-                </div>
+            <p class="mb-4"><a href="disclaimer.html" class="text-gold font-bold hover:underline">Legal Disclaimer</a></p>
+            <div class="border-y border-white/10 py-4 mb-8">
+                <marquee class="text-gold font-bold">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
             </div>
-
             <div class="bg-black/20 inline-block p-4 rounded-xl border border-white/5">
-                <p class="text-xs uppercase tracking-widest text-white/60 mb-2">Visitor Count</p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90">
+                <p class="text-xs uppercase text-white/60 mb-2">Visitor Count</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter">
             </div>
         </div>
     </footer>
@@ -264,12 +233,12 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        function toggleMenu() {
+        function toggleMenu() { 
             const nav = document.getElementById('navLinks');
-            nav.classList.toggle('hidden');
+            nav.classList.toggle('hidden'); 
         }
 
-        // Security Features
+        // Security
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.onkeydown = function(e) {
             if(e.keyCode == 123) return false;
