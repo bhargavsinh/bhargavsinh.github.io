@@ -5,55 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pushtimarg | Sisodiya Bhargavsinh</title>
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com https://unpkg.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline' https://unpkg.com; frame-src 'self' https://www.google.com;">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        maroon: '#7b1c1c',
-                        gold: '#daa520',
-                        cream: '#fff8ec',
-                    },
-                    fontFamily: {
-                        yatra: ['Yatra One', 'cursive'],
-                        noto: ['Noto Sans', 'sans-serif'],
-                        playfair: ['Playfair Display', 'serif'],
-                        inter: ['Inter', 'sans-serif'],
-                    }
+                    colors: { maroon: '#7b1c1c', gold: '#daa520', cream: '#fff8ec' },
+                    fontFamily: { yatra: ['Yatra One', 'cursive'], noto: ['Noto Sans', 'sans-serif'], playfair: ['Playfair Display', 'serif'], inter: ['Inter', 'sans-serif'] }
                 }
             }
         }
     </script>
 
     <style>
-        .glass {
-            background: rgba(255, 248, 236, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .hero-gradient {
-            background: radial-gradient(circle at top, #fff8ec 0%, #fdf5e6 100%);
-        }
-        .vachan-card {
-            background: rgba(255, 255, 255, 0.8);
-            border-top: 6px solid #7b1c1c;
-            transition: all 0.4s ease;
-        }
-        .vachan-card:hover {
-            transform: translateY(-8px);
-            border-top-color: #daa520;
-            box-shadow: 0 20px 40px rgba(123, 28, 28, 0.1);
-        }
-        .nav-link-ltr {
-            position: relative;
-        }
+        .glass { background: rgba(255, 248, 236, 0.95); backdrop-filter: blur(12px); }
+        .hero-gradient { background: radial-gradient(circle at top, #fff8ec 0%, #fdf5e6 100%); }
+        .vachan-card { background: white; border-top: 6px solid #7b1c1c; transition: all 0.3s ease; }
+        .nav-link-ltr { position: relative; }
         .nav-link-ltr::after {
             content: ''; position: absolute; width: 0; height: 2px;
             display: block; margin-top: 2px; right: 0; background: #daa520;
@@ -61,40 +33,35 @@
         }
         .nav-link-ltr:hover::after { width: 100%; left: 0; }
         
-        /* Table Styling */
-        .royal-table-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        .royal-table-container::-webkit-scrollbar-thumb {
-            background: #daa520;
-            border-radius: 10px;
-        }
+        /* Table responsive fix */
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        table { min-width: 500px; width: 100%; }
     </style>
 </head>
 
-<body class="font-inter text-slate-800 hero-gradient min-h-screen">
+<body class="font-inter text-slate-800 hero-gradient min-h-screen overflow-x-hidden">
 
     <header class="fixed top-0 w-full z-50 glass border-b-2 border-gold/30">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" class="h-12 w-auto">
-                <span class="font-yatra text-maroon text-xl hidden sm:block">Sisodiya Bhargavsinh</span>
+        <nav class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <img src="logo.png" alt="Logo" class="h-10 w-auto">
+                <span class="font-yatra text-maroon text-lg sm:text-xl truncate">Sisodiya Bhargavsinh</span>
             </div>
 
-            <ul class="hidden lg:flex items-center gap-8 font-semibold text-sm uppercase tracking-wider">
-                <li><a href="index.html" class="nav-link-ltr hover:text-maroon transition">Home</a></li>
-                <li><a href="about.html" class="nav-link-ltr hover:text-maroon transition">About</a></li>
+            <ul class="hidden lg:flex items-center gap-6 font-semibold text-sm uppercase tracking-wider">
+                <li><a href="index.html" class="nav-link-ltr">Home</a></li>
+                <li><a href="about.html" class="nav-link-ltr">About</a></li>
                 <li><a href="pushtimarg.html" class="nav-link-ltr text-gold">Pushtimarg</a></li>
-                <li><a href="projects.html" class="nav-link-ltr hover:text-maroon transition">Projects</a></li>
-                <li><a href="resume.html" class="nav-link-ltr hover:text-maroon transition">Resume</a></li>
-                <li><a href="blog.html" class="nav-link-ltr hover:text-maroon transition">Articles</a></li>
-                <li><a href="contact.html" class="nav-link-ltr hover:text-maroon transition">Contact</a></li>
+                <li><a href="projects.html" class="nav-link-ltr">Projects</a></li>
+                <li><a href="resume.html" class="nav-link-ltr">Resume</a></li>
+                <li><a href="blog.html" class="nav-link-ltr">Articles</a></li>
+                <li><a href="contact.html" class="nav-link-ltr">Contact</a></li>
             </ul>
 
-            <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl">☰</button>
+            <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl p-2">☰</button>
         </nav>
 
-        <div id="navLinks" class="hidden lg:hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-xl">
+        <div id="navLinks" class="hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-xl lg:hidden">
             <a href="index.html" class="block font-medium">Home</a>
             <a href="about.html" class="block font-medium">About</a>
             <a href="pushtimarg.html" class="block font-bold text-maroon">Pushtimarg</a>
@@ -107,45 +74,44 @@
 
     <main class="pt-28 pb-16 px-4">
         
-        <section id="pushtimarg" class="max-w-5xl mx-auto mb-20">
-            <h2 class="font-yatra text-4xl md:text-5xl text-maroon text-center mb-2" data-aos="fade-down">પુષ્ટિમાર્ગ</h2>
-            <div class="text-center text-3xl mb-12">🏛️</div>
+        <section class="max-w-5xl mx-auto mb-16">
+            <h2 class="font-yatra text-4xl text-maroon text-center mb-2">પુષ્ટિમાર્ગ</h2>
+            <div class="text-center text-2xl mb-10">🏛️</div>
             
-            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gold/20" data-aos="fade-up">
-                <div class="bg-maroon p-6 text-center text-white">
-                    <h3 class="font-playfair text-2xl">ગૃહ સેવા vs. હવેલી સેવા (તુલનાત્મક દ્રષ્ટિકોણ)</h3>
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gold/20">
+                <div class="bg-maroon p-5 text-center text-white">
+                    <h3 class="font-playfair text-xl">ગૃહ સેવા vs. હવેલી સેવા (તુલનાત્મક દ્રષ્ટિકોણ)</h3>
                 </div>
-                <div class="royal-table-container overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
+                <div class="table-wrapper">
+                    <table class="text-left border-collapse">
                         <thead>
                             <tr class="bg-cream/50 border-b border-gold/20">
-                                <th class="p-5 font-yatra text-maroon text-lg">વિષય</th>
-                                <th class="p-5 font-yatra text-maroon text-lg">ગૃહ સેવા <br><span class="text-xs font-inter text-gold uppercase tracking-tighter">(પુષ્ટિમાર્ગીય સિદ્ધાંત)</span></th>
-                                <th class="p-5 font-yatra text-maroon text-lg">હવેલી સેવા <br><span class="text-xs font-inter text-gold uppercase tracking-tighter">(વર્તમાન કુપરંપરા)</span></th>
+                                <th class="p-4 font-yatra text-maroon">વિષય</th>
+                                <th class="p-4 font-yatra text-maroon text-sm">ગૃહ સેવા <br><span class="text-[10px] uppercase font-inter text-gold">પુષ્ટિમાર્ગીય સિદ્ધાંત</span></th>
+                                <th class="p-4 font-yatra text-maroon text-sm">હવેલી સેવા <br><span class="text-[10px] uppercase font-inter text-gold">વર્તમાન કુપરંપરા</span></th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gold/10">
-                            <tr class="hover:bg-cream/30 transition">
-                                <td class="p-5 font-bold text-maroon">દ્રવ્ય સ્ત્રોત</td>
-                                <td class="p-5 font-playfair text-slate-700">સ્વ-દ્રવ્ય <br>(સેવકનું પોતાનું કમાયેલું)</td>
-                                <td class="p-5 font-playfair text-slate-700">દેવદ્રવ્ય <br>(સમાજની ભેટ/દાન)</td>
+                            <tr>
+                                <td class="p-4 font-bold text-maroon text-sm">દ્રવ્ય સ્ત્રોત</td>
+                                <td class="p-4 text-sm">સ્વ-દ્રવ્ય <br>(પોતાનું કમાયેલું)</td>
+                                <td class="p-4 text-sm">દેવદ્રવ્ય <br>(ભેટ/દાન)</td>
                             </tr>
-                            <tr class="hover:bg-cream/30 transition">
-                                <td class="p-5 font-bold text-maroon">સેવક</td>
-                                <td class="p-5 font-playfair text-slate-700">સ્વયં (તનુજા) <br>ઘરના સભ્યો દ્વારા</td>
-                                <td class="p-5 font-playfair text-slate-700">પગારદાર મુખિયાજી <br>અથવા કર્મચારી</td>
+                            <tr>
+                                <td class="p-4 font-bold text-maroon text-sm">સેવક</td>
+                                <td class="p-4 text-sm">સ્વયં (તનુજા) <br>ઘરના સભ્યો</td>
+                                <td class="p-4 text-sm">મુખિયાજી <br>કર્મચારી</td>
                             </tr>
-                            <tr class="hover:bg-cream/30 transition">
-                                <td class="p-5 font-bold text-maroon">ભાવ</td>
-                                <td class="p-5 font-playfair text-slate-700 italic">નંદાલય (વૈષ્ણવનું ઘર) <br><strong class="text-maroon font-noto">વાત્સલ્ય ભાવ</strong></td>
-                                <td class="p-5 font-playfair text-slate-700 italic">મંદિર <br><strong class="text-maroon font-noto">ઐશ્વર્ય / પૂજા ભાવ</strong></td>
+                            <tr>
+                                <td class="p-4 font-bold text-maroon text-sm">ભાવ</td>
+                                <td class="p-4 text-sm font-semibold">વાત્સલ્ય ભાવ</td>
+                                <td class="p-4 text-sm font-semibold">ઐશ્વર્ય ભાવ</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </section>
-
         <section class="max-w-4xl mx-auto">
             <h2 class="font-yatra text-4xl md:text-5xl text-maroon text-center mb-2" data-aos="fade-down">અમૃત વચનાવલી</h2>
             <div class="text-center text-3xl mb-8">🪔</div>
