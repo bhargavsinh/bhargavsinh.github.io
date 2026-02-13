@@ -1,156 +1,183 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="gu" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Legal Disclaimer | Sisodiya Bhargavsinh</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
-<style>
-/* ===== Base Styles ===== */
-body {
-  font-family: 'Noto Serif Gujarati', serif;
-  margin:0;
-  line-height:1.8;
-  background: linear-gradient(135deg,#fff8ec 0%,#fdf5e6 50%,#ffe4b5 100%);
-  color:#1a1a1a;
-}
-.legal-doc {
-  max-width:900px;
-  margin:60px auto;
-  padding:50px 40px;
-  border-radius:8px;
-  background:#fffaf0;
-  box-shadow:0 12px 30px rgba(0,0,0,0.12);
-  position:relative;
-  overflow:hidden;
-}
-h1, h3 { font-family:'Cinzel', serif; color:#7b1c1c; margin:0; }
-h1 { text-align:center; margin-bottom:40px; font-size:2rem; border-bottom:3px double #1a1a1a; padding-bottom:10px; }
-.clause { margin-bottom:30px; }
-.clause-title { font-size:1.2rem; font-weight:700; text-decoration:underline; text-decoration-color:#7b1c1c; margin-bottom:10px; }
-p { margin-bottom:10px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Disclaimer | Sisodiya Bhargavsinh</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Noto+Sans+Gujarati:wght@400;700&family=Inter:wght@300;400;600&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-/* ===== Modern Seal / Stamp ===== */
-.official-seal-wrapper {
-  position: sticky; /* Sticky for mobile scroll */
-  top:20px;
-  display:flex;
-  justify-content:flex-end;
-  padding-right:20px;
-  z-index:999;
-}
-.official-seal {
-  border:4px double #7b1c1c;
-  border-radius:50%;
-  width:100px; height:100px;
-  display:flex; justify-content:center; align-items:center;
-  text-align:center;
-  font-weight:bold;
-  font-family:'Cinzel', serif;
-  background: rgba(255,255,255,0.65);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  transform: rotate(-10deg);
-  flex-shrink:0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.official-seal:hover {
-  transform: rotate(0deg) scale(1.05);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.2);
-}
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: '#7b1c1c',
+                        gold: '#daa520',
+                        cream: '#fff8ec',
+                    },
+                    fontFamily: {
+                        yatra: ['Yatra One', 'cursive'],
+                        gujarati: ['Noto Sans Gujarati', 'sans-serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
-/* ===== Click-to-Accept Box ===== */
-#consentBox {
-  position:fixed; bottom:0; width:100%; background:#1a1a1a; color:#fff; padding:20px; text-align:center; z-index:9999;
-  font-size:0.95rem;
-}
-#consentBox button {
-  padding:10px 25px;
-  font-weight:bold;
-  cursor:pointer;
-  border:none;
-  border-radius:6px;
-  background:#daa520;
-  color:#1a1a1a;
-  transition:0.3s;
-}
-#consentBox button:hover {
-  background:#fff;
-  color:#7b1c1c;
-}
+    <style>
+        /* Security: Disable Text Selection */
+        body {
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background: radial-gradient(circle at top, #fff8ec 0%, #fdf5e6 100%);
+        }
 
-/* ===== Responsive ===== */
-@media (max-width:600px){
-  .legal-doc { padding:30px 20px; margin:20px 10px; }
-  h1 { font-size:1.6rem; }
-  .official-seal-wrapper { justify-content:center; padding-right:0; margin-bottom:20px; }
-  .official-seal { width:80px; height:80px; font-size:0.8rem; }
-}
-</style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .official-seal {
+            border: 4px double #7b1c1c;
+            transform: rotate(-10deg);
+            transition: all 0.5s ease;
+        }
+        .official-seal:hover {
+            transform: rotate(0deg) scale(1.1);
+            background: #7b1c1c;
+            color: white;
+        }
+
+        /* Allow clicking on buttons and links only */
+        a, button { pointer-events: auto !important; }
+    </style>
 </head>
-<body>
 
-<main class="legal-doc">
+<body class="font-inter text-slate-800 min-h-screen">
 
-<!-- Modern Sticky Seal / Stamp -->
-<div class="official-seal-wrapper">
-  <div class="official-seal">AUTHORIZED<br>LEGAL<br>VERSION</div>
-</div>
+    <header class="fixed top-0 w-full z-50 bg-cream/80 backdrop-blur-md border-b-2 border-gold/30">
+        <nav class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo" class="h-10 w-auto">
+                <span class="font-yatra text-maroon text-xl">Sisodiya Bhargavsinh</span>
+            </div>
+            <a href="index.html" class="bg-maroon text-white px-6 py-2 rounded-lg font-bold hover:bg-gold hover:text-maroon transition-all shadow-md">Back to Home</a>
+        </nav>
+    </header>
 
-<h1>LEGAL DISCLAIMER & AFFIDAVIT</h1>
+    <main class="pt-32 pb-20 px-4">
+        <div class="max-w-4xl mx-auto relative" data-aos="fade-up">
+            
+            <div class="absolute -top-10 -right-4 sm:right-0 z-10">
+                <div class="official-seal bg-white/80 w-24 h-24 sm:w-32 sm:h-32 rounded-full flex items-center justify-center text-center font-cinzel text-[10px] sm:text-xs font-bold text-maroon shadow-xl border-4 border-double border-maroon">
+                    AUTHORIZED<br>LEGAL<br>VERSION
+                </div>
+            </div>
 
-<div class="clause">
-<h3 class="clause-title">૧. Intellectual Property / બૌદ્ધિક સંપદા</h3>
-<p><b>EN:</b> All content on this website including text, photos, graphics, code, and lineage records is the original intellectual property of <b>Sisodiya Bhargavsinh</b>. Use beyond legally permitted fair dealing without prior written consent may attract civil and/or criminal proceedings under Indian law.</p>
-<p><b>GU:</b> આ વેબસાઇટ પરની તમામ સામગ્રી (લખાણ, ફોટા, ગ્રાફિક્સ, કોડ, વંશાવલી) <b>સિસોદિયા ભાર્ગવસિંહ</b> ની મૂળ બૌદ્ધિક સંપદા છે. કાયદા મુજબ માન્ય Fair Dealing સિવાયનો કોઈપણ ઉપયોગ, લેખકની પૂર્વ લેખિત મંજૂરી વિના, નાગરિક કે ફોજદારી કાર્યવાહી માટે આધીન રહેશે.</p>
-</div>
+            <div class="glass-card rounded-3xl shadow-2xl overflow-hidden border border-gold/20">
+                <div class="bg-maroon p-8 text-center">
+                    <h1 class="font-cinzel text-2xl md:text-4xl text-gold tracking-widest">LEGAL DISCLAIMER & AFFIDAVIT</h1>
+                    <div class="w-24 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
+                </div>
 
-<div class="clause">
-<h3 class="clause-title">૨. Nature of Content / સામગ્રીનું સ્વરૂપ</h3>
-<p><b>EN:</b> The content is informational, academic, historical, and opinion-based. It does not constitute legal, religious, or professional advice.</p>
-<p><b>GU:</b> સામગ્રી માહિતીપ્રદ, શૈક્ષણિક, ઐતિહાસિક અને વૈચારિક સ્વરૂપની છે. તે કાનૂની, ધાર્મિક કે વ્યાવસાયિક સલાહ રૂપે નથી.</p>
-</div>
+                <div class="p-8 md:p-12 space-y-12 font-gujarati text-slate-700 leading-relaxed">
+                    
+                    <section class="border-b border-gold/10 pb-8">
+                        <h3 class="font-cinzel text-maroon text-xl mb-4 font-bold tracking-wide">૧. Intellectual Property / બૌદ્ધિક સંપદા</h3>
+                        <div class="space-y-3">
+                            <p class="text-sm italic text-slate-500"><b>EN:</b> All content on this website including text, photos, graphics, code, and lineage records is the original intellectual property of <b>Sisodiya Bhargavsinh</b>. Use beyond legally permitted fair dealing without prior written consent may attract civil and/or criminal proceedings under Indian law.</p>
+                            <p class="text-md"><b>GU:</b> આ વેબસાઇટ પરની તમામ સામગ્રી (લખાણ, ફોટા, ગ્રાફિક્સ, કોડ, વંશાવલી) <b>સિસોદિયા ભાર્ગવસિંહ</b> ની મૂળ બૌદ્ધિક સંપદા છે. કાયદા મુજબ માન્ય Fair Dealing સિવાયનો કોઈપણ ઉપયોગ, લેખકની પૂર્વ લેખિત મંજૂરી વિના, નાગરિક કે ફોજદારી કાર્યવાહી માટે આધીન રહેશે.</p>
+                        </div>
+                    </section>
 
-<div class="clause">
-<h3 class="clause-title">૩. Religious & Social Sensitivity / ધાર્મિક સંવેદનશીલતા</h3>
-<p><b>EN:</b> No content intends to offend any individual or community. Misrepresentation may attract legal remedies under applicable law.</p>
-<p><b>GU:</b> કોઈ વ્યક્તિ કે સમુદાયની લાગણીઓને દુભાવવાનો હેતુ નથી. ખોટી રજૂઆત કાયદા મુજબ કાર્યવાહી માટે લાયક છે.</p>
-</div>
+                    <section class="border-b border-gold/10 pb-8">
+                        <h3 class="font-cinzel text-maroon text-xl mb-4 font-bold tracking-wide">૨. Nature of Content / સામગ્રીનું સ્વરૂપ</h3>
+                        <div class="space-y-3">
+                            <p class="text-sm italic text-slate-500"><b>EN:</b> The content is informational, academic, historical, and opinion-based. It does not constitute legal, religious, or professional advice.</p>
+                            <p class="text-md"><b>GU:</b> સામગ્રી માહિતીપ્રદ, શૈક્ષણિક, ઐતિહાસિક અને વૈચારિક સ્વરૂપની છે. તે કાનૂની, ધાર્મિક કે વ્યાવસાયિક સલાહ રૂપે નથી.</p>
+                        </div>
+                    </section>
 
-<div class="clause">
-<h3 class="clause-title">૪. Defamation / માનહાનિ</h3>
-<p><b>EN:</b> Any false, misleading, or malicious attempt to harm reputation may result in civil/criminal proceedings as determined by the court.</p>
-<p><b>GU:</b> ખોટા, ભ્રામક અથવા દુર્ભાવનાપૂર્વકના પ્રયાસો સામે કાયદા મુજબ કાર્યવાહી થશે, અને નક્કી કરાયેલ હર્જાનો માત્ર અદાલત દ્વારા મળશે.</p>
-</div>
+                    <section class="border-b border-gold/10 pb-8">
+                        <h3 class="font-cinzel text-maroon text-xl mb-4 font-bold tracking-wide">૩. Religious & Social Sensitivity / ધાર્મિક સંવેદનશીલતા</h3>
+                        <div class="space-y-3">
+                            <p class="text-sm italic text-slate-500"><b>EN:</b> No content intends to offend any individual or community. Misrepresentation may attract legal remedies under applicable law.</p>
+                            <p class="text-md"><b>GU:</b> કોઈ વ્યક્તિ કે સમુદાયની લાગણીઓને દુભાવવાનો હેતુ નથી. ખોટી રજૂઆત કાયદા મુજબ કાર્યવાહી માટે લાયક છે.</p>
+                        </div>
+                    </section>
 
-<div class="clause">
-<h3 class="clause-title">૫. Cyber Security / સાયબર સુરક્ષા</h3>
-<p><b>EN:</b> Unauthorized access, interference, or misuse is punishable under the IT Act, 2000 and other applicable laws.</p>
-<p><b>GU:</b> અનધિકૃત પ્રવેશ અથવા દુરુપયોગ IT Act, 2000 હેઠળ ગુનો ગણાય છે.</p>
-</div>
+                    <section class="border-b border-gold/10 pb-8">
+                        <h3 class="font-cinzel text-maroon text-xl mb-4 font-bold tracking-wide">૪. Defamation / માનહાનિ</h3>
+                        <div class="space-y-3">
+                            <p class="text-sm italic text-slate-500"><b>EN:</b> Any false, misleading, or malicious attempt to harm reputation may result in civil/criminal proceedings as determined by the court.</p>
+                            <p class="text-md"><b>GU:</b> ખોટા, ભ્રામક અથવા દુર્ભાવનાપૂર્વકના પ્રયાસો સામે કાયદા મુજબ કાર્યવાહી થશે, અને નક્કી કરાયેલ હર્જાનો માત્ર અદાલત દ્વારા મળશે.</p>
+                        </div>
+                    </section>
 
-<div class="clause">
-<h3 class="clause-title">૬. Governing Law & Jurisdiction / કાયદો અને ન્યાયક્ષેત્ર</h3>
-<p><b>EN:</b> This website is governed by the laws of India. Jurisdiction may lie with competent courts at Lunawada, District Mahisagar, Gujarat.</p>
-<p><b>GU:</b> આ વેબસાઇટ ભારતના કાયદા હેઠળ શાસિત છે. ન્યાયક્ષેત્ર લુણાવાડા, જી. મહીસાગર (ગુજરાત) ની સક્ષમ અદાલતોને આધીન રહેશે.</p>
-</div>
+                    <section class="border-b border-gold/10 pb-8">
+                        <h3 class="font-cinzel text-maroon text-xl mb-4 font-bold tracking-wide">૫. Cyber Security / સાયબર સુરક્ષા</h3>
+                        <div class="space-y-3">
+                            <p class="text-sm italic text-slate-500"><b>EN:</b> Unauthorized access, interference, or misuse is punishable under the IT Act, 2000 and other applicable laws.</p>
+                            <p class="text-md"><b>GU:</b> અનધિકૃત પ્રવેશ અથવા દુરુપયોગ IT Act, 2000 હેઠળ ગુનો ગણાય છે.</p>
+                        </div>
+                    </section>
 
-<p style="margin-top:30px; font-weight:bold;">Declared & Affirmed by: Sisodiya Bhargavsinh | Date: 11-02-2026</p>
-</main>
+                    <section class="pb-4">
+                        <h3 class="font-cinzel text-maroon text-xl mb-4 font-bold tracking-wide">૬. Governing Law & Jurisdiction / કાયદો અને ન્યાયક્ષેત્ર</h3>
+                        <div class="space-y-3">
+                            <p class="text-sm italic text-slate-500"><b>EN:</b> This website is governed by the laws of India. Jurisdiction may lie with competent courts at Lunawada, District Mahisagar, Gujarat.</p>
+                            <p class="text-md"><b>GU:</b> આ વેબસાઇટ ભારતના કાયદા હેઠળ શાસિત છે. ન્યાયક્ષેત્ર લુણાવાડા, જી. મહીસાગર (ગુજરાત) ની સક્ષમ અદાલતોને આધીન રહેશે.</p>
+                        </div>
+                    </section>
 
-<!-- Click-to-Accept Box -->
-<div id="consentBox">
-  <p>By clicking “I Agree”, you confirm that you have read, understood, and accepted this Legal Disclaimer & Terms of Use of this website.</p>
-  <button onclick="acceptTerms()">I Agree</button>
-</div>
+                    <div class="mt-12 pt-8 border-t-4 border-double border-gold/30 text-center">
+                        <p class="font-cinzel text-maroon text-lg font-bold">Declared & Affirmed by: Sisodiya Bhargavsinh</p>
+                        <p class="text-slate-500 text-sm mt-1">Date: 11-02-2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-<script>
-function acceptTerms(){
-  localStorage.setItem("legalConsent","accepted");
-  document.getElementById("consentBox").style.display="none";
-}
-if(localStorage.getItem("legalConsent")==="accepted"){
-  document.getElementById("consentBox").style.display="none";
-}
-</script>
+    <div id="consentBox" class="fixed bottom-0 w-full bg-maroon/95 backdrop-blur-md text-white p-6 shadow-2xl z-[100] transform transition-transform duration-500">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-center md:text-left font-noto">By clicking “I Agree”, you confirm that you have read, understood, and accepted this Legal Disclaimer & Terms of Use of this website.</p>
+            <button onclick="acceptTerms()" class="whitespace-nowrap bg-gold text-maroon px-10 py-3 rounded-full font-bold hover:bg-white hover:scale-105 transition-all shadow-lg">I Agree</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Consent Manager
+        function acceptTerms(){
+            localStorage.setItem("legalConsent","accepted");
+            document.getElementById("consentBox").classList.add('translate-y-full');
+        }
+        window.onload = function() {
+            if(localStorage.getItem("legalConsent") === "accepted"){
+                document.getElementById("consentBox").style.display = "none";
+            }
+        };
+
+        // Security Protocols
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) return false; // F12
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; // Ctrl+Shift+I
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
+            if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) return false; // Ctrl+C
+        }
+    </script>
+
 </body>
 </html>
