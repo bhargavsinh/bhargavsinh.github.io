@@ -1,246 +1,272 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="gu" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pushtimarg Research Articles | Sisodiya Bhargavsinh</title>
     
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Read research articles by Sisodiya Bhargavsinh on Pushtimarg, Gruh Seva, and Indian Culture.">
     <meta name="robots" content="index, follow, noai, noimageai"> 
-    
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://*.hitwebcounter.com https://hitwebcounter.com; img-src 'self' data: https://*.hitwebcounter.com https://hitwebcounter.com; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com;">
-
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: '#7b1c1c',
+                        gold: '#daa520',
+                        cream: '#fff8ec',
+                    },
+                    fontFamily: {
+                        yatra: ['Yatra One', 'cursive'],
+                        noto: ['Noto Sans', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-        /* --- ROYAL BLOG THEME --- */
-
-        :root {
-            --maroon: #7b1c1c;
-            --gold: #daa520;
-        }
-
-        body {
-            background: linear-gradient(135deg, #fff8ec 0%, #fdf5e6 50%, #ffe4b5 100%);
-            background-attachment: fixed;
-            font-family: 'Noto Sans', sans-serif;
-            color: #2c1a1a;
-            margin: 0;
-        }
-
-        /* Hero Title */
-        h1 {
-            text-align: center;
-            font-family: 'Yatra One', cursive;
-            color: var(--maroon);
-            font-size: 2.5rem;
-            margin-top: 30px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .divider {
-            text-align: center; font-size: 1.5rem; margin-bottom: 30px; margin-top: 5px;
-        }
-
-        /* Blog Card Style */
-        .blog-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        article.blog-card {
-            background: rgba(255, 255, 255, 0.65);
+        .glass {
+            background: rgba(255, 248, 236, 0.9);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-left: 5px solid var(--maroon);
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-            transition: transform 0.3s;
         }
-
-        article.blog-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.85);
-            box-shadow: 0 15px 35px rgba(218, 165, 32, 0.15);
-            border-left-color: var(--gold);
+        .hero-gradient {
+            background: radial-gradient(circle at top, #fff8ec 0%, #fdf5e6 100%);
         }
-
-        .blog-meta {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 10px;
-            font-weight: bold;
-            display: flex; gap: 15px;
-        }
-
-        h2 {
-            font-family: 'Yatra One', cursive;
-            color: var(--maroon);
-            font-size: 1.6rem;
-            margin: 10px 0;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fff8ec; }
+        ::-webkit-scrollbar-thumb { background: #7b1c1c; border-radius: 10px; }
         
-        h2 a { text-decoration: none; color: inherit; transition: 0.3s; }
-        h2 a:hover { color: var(--gold); }
-
-        p {
-            text-align: justify;
-            line-height: 1.8;
-            font-size: 1.05rem;
-            color: #333;
+        .nav-link-ltr {
+            position: relative;
         }
-
-        /* Disclaimer Box */
-        .research-disclaimer {
-            background: rgba(255, 240, 240, 0.7);
-            border: 1px solid #ffcccc;
-            border-left: 5px solid #c00;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        .nav-link-ltr::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            display: block; margin-top: 2px; right: 0; background: #daa520;
+            transition: width .3s ease;
         }
-
-        .disclaimer-title {
-            color: #c00; font-weight: bold; font-family: 'Yatra One', cursive;
-            font-size: 1.2rem; display: block; margin-bottom: 10px;
-            border-bottom: 1px dashed #c00; padding-bottom: 5px;
-        }
-
-        .copyright-warning {
-            margin-top: 15px;
-            font-weight: bold;
-            color: #fff;
-            background: var(--maroon);
-            padding: 8px 15px;
-            border-radius: 5px;
-            display: inline-block;
-            font-size: 0.85rem;
-        }
-
-        /* Button */
-        .social-btn {
-            background: var(--maroon); color: white; padding: 10px 25px;
-            text-decoration: none; border-radius: 5px; display: inline-block;
-            margin-top: 15px; font-weight: bold; transition: 0.3s;
-            border: 1px solid transparent;
-        }
-        .social-btn:hover {
-            background: transparent; color: var(--maroon); border-color: var(--maroon);
-        }
-
-        /* Nav Link Hover */
-        .nav-link { transition: 0.3s; }
-        .nav-link:hover { color: var(--gold) !important; }
-
-        /* Mobile Fix */
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .blog-container { padding: 0 15px; }
+        .nav-link-ltr:hover::after { width: 100%; left: 0; background: #daa520; }
+        
+        #notif-box { display: none; }
+        #notif-box.show { display: block; animation: slideIn 0.3s ease-out; }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body>
 
-    <nav style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px; background: rgba(255, 248, 236, 0.9); border-bottom: 3px solid var(--gold); backdrop-filter: blur(10px);">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="logo.png" alt="Logo" style="height: 50px; border-radius: 5px;">
-            <span style="font-family: 'Yatra One', cursive; font-size: 1.2rem; color: var(--maroon);">Sisodiya Bhargavsinh</span>
+<body class="font-inter text-slate-800 hero-gradient min-h-screen">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-maroon focus:text-white">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
+
+    <header class="fixed top-0 w-full z-50 glass border-b-2 border-gold/30">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo" class="h-12 w-auto drop-shadow-sm">
+                <span class="font-yatra text-maroon text-xl hidden sm:block">Sisodiya Bhargavsinh</span>
+            </div>
+
+            <ul class="hidden lg:flex items-center gap-8 font-semibold text-sm uppercase tracking-wider">
+                <li><a href="index.html" class="nav-link-ltr hover:text-maroon transition">Home</a></li>
+                <li><a href="about.html" class="nav-link-ltr hover:text-maroon transition">About</a></li>
+                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-maroon transition">Pushtimarg</a></li>
+                <li><a href="projects.html" class="nav-link-ltr hover:text-maroon transition">Projects</a></li>
+                <li><a href="resume.html" class="nav-link-ltr hover:text-maroon transition">Resume</a></li>
+                <li><a href="blog.html" class="nav-link-ltr text-gold">Articles</a></li>
+                <li><a href="contact.html" class="nav-link-ltr hover:text-maroon transition">Contact</a></li>
+                <li><div id="google_translate_element" class="scale-90"></div></li>
+            </ul>
+
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button onclick="toggleNotif()" class="p-2 hover:bg-gold/10 rounded-full transition relative">
+                        <span class="text-2xl">🔔</span>
+                        <span id="notif-badge" class="absolute top-2 right-2 w-3 h-3 bg-red-600 border-2 border-white rounded-full hidden"></span>
+                    </button>
+                    <div id="notif-box" class="absolute right-0 mt-4 w-72 bg-white rounded-xl shadow-2xl border border-gold/20 overflow-hidden">
+                        <div class="bg-maroon text-white px-4 py-3 flex justify-between items-center">
+                            <span class="font-bold">Updates</span>
+                            <button onclick="toggleNotif()" class="text-xl">&times;</button>
+                        </div>
+                        <ul id="notif-list" class="max-h-64 overflow-y-auto divide-y divide-gray-100">
+                            <li class="p-4 text-sm text-gray-500">Loading...</li>
+                        </ul>
+                    </div>
+                </div>
+                <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl">☰</button>
+            </div>
+        </nav>
+
+        <div id="navLinks" class="hidden lg:hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-xl">
+            <a href="index.html" class="block font-medium">Home</a>
+            <a href="about.html" class="block font-medium">About</a>
+            <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
+            <a href="projects.html" class="block font-medium">Projects</a>
+            <a href="resume.html" class="block font-medium">Resume</a>
+            <a href="blog.html" class="block font-bold text-maroon">Articles</a>
+            <a href="contact.html" class="block font-medium">Contact</a>
         </div>
-        <ul style="display: flex; gap: 15px; list-style: none; margin: 0; padding: 10px 0; flex-wrap: wrap; justify-content: center;">
-            <li><a href="index.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Home</a></li>
-            <li><a href="about.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">About</a></li>
-            <li><a href="pushtimarg.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Pushtimarg</a></li>
-            <li><a href="projects.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Projects</a></li>
-            <li><a href="resume.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Resume</a></li>
-            <li><a href="blog.html" class="nav-link" style="color: var(--gold); text-decoration: none; font-weight: bold;">Articles</a></li>
-            <li><a href="contact.html" class="nav-link" style="color: #333; text-decoration: none; font-weight: bold;">Contact</a></li>
-        </ul>
-    </nav>
+    </header>
 
-    <main>
+    <main id="main-content" class="pt-28 pb-16">
         <section>
-            <marquee style="color: var(--maroon); background: rgba(255,255,255,0.5); padding: 8px; border-bottom: 2px dashed var(--gold); border-radius: 5px; margin-bottom: 20px; font-weight: bold;">
-                || સત્યમ વદ || ધર્મમ ચર || મારા વિચારો અને સંશોધન ||
-            </marquee>
+            <div class="max-w-7xl mx-auto px-4 mb-8">
+                <marquee class="bg-white/50 backdrop-blur-sm p-3 border-y border-dashed border-gold rounded-lg font-bold text-maroon">
+                    || સત્યમ વદ || ધર્મમ ચર || મારા વિચારો અને સંશોધન ||
+                </marquee>
+            </div>
 
-            <h1>Articles & Research</h1>
-            <div class="divider">✒️</div>
+            <div class="text-center mb-12" data-aos="fade-down">
+                <h1 class="font-yatra text-4xl md:text-5xl text-maroon mb-2">Articles & Research</h1>
+                <div class="text-2xl">✒️</div>
+            </div>
 
-            <div class="blog-container">
-
-                <div class="research-disclaimer" data-aos="fade-down">
-                    <span class="disclaimer-title">⚠️ કાયદાકીય અસ્વીકરણ (Legal Disclaimer)</span>
-                    <p>
-                        ૧. આ સંશોધન અહેવાલ સંપૂર્ણપણે શ્રી મહાપ્રભુજીના મૂળ ગ્રંથો અને વચનામૃતો પર આધારિત છે. પ્રસ્તુત લેખનો હેતુ માત્ર શાસ્ત્રીય સત્ય ઉજાગર કરવાનો છે, <b>કોઈપણ વ્યક્તિ, સંસ્થા, હવેલી, ટ્રસ્ટ કે સંપ્રદાયના આચાર્ય ની ભાવના દુભાવવાનો લેખકનો લેશમાત્રપણ હેતુ નથી.</b>
-                        <br><br>
-                        ૨. આ એક સ્વતંત્ર સંશોધન છે. વાંચકે આમાં રજૂ કરેલા તથ્યોનું અર્થઘટન કરતી વખતે સ્વયંની <b>વિવેક બુદ્ધિ (Self-Discretion)</b> નો ઉપયોગ કરવો.
-                    </p>
-                    <div class="copyright-warning">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="bg-red-50/70 border border-red-200 border-l-8 border-l-red-600 p-6 md:p-8 rounded-xl shadow-sm mb-12" data-aos="fade-up">
+                    <span class="text-red-700 font-bold font-yatra text-xl block mb-4 border-b border-dashed border-red-300 pb-2">⚠️ કાયદાકીય અસ્વીકરણ (Legal Disclaimer)</span>
+                    <div class="text-slate-700 leading-relaxed font-noto space-y-4">
+                        <p>
+                            ૧. આ સંશોધન અહેવાલ સંપૂર્ણપણે શ્રી મહાપ્રભુજીના મૂળ ગ્રંથો અને વચનામૃતો પર આધારિત છે. પ્રસ્તુત લેખનો હેતુ માત્ર શાસ્ત્રીય સત્ય ઉજાગર કરવાનો છે, <b>કોઈપણ વ્યક્તિ, સંસ્થા, હવેલી, ટ્રસ્ટ કે સંપ્રદાયના આચાર્ય ની ભાવના દુભાવવાનો લેખકનો લેશમાત્રપણ હેતુ નથી.</b>
+                        </p>
+                        <p>
+                            ૨. આ એક સ્વતંત્ર સંશોધન છે. વાંચકે આમાં રજૂ કરેલા તથ્યોનું અર્થઘટન કરતી વખતે સ્વયંની <b>વિવેક બુદ્ધિ (Self-Discretion)</b> નો ઉપયોગ કરવો.
+                        </p>
+                    </div>
+                    <div class="mt-6 inline-block bg-maroon text-white px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider shadow-md">
                         ૩. © Copyright Warning: આ આર્ટિકલના તમામ કોપીરાઈટ લેખક (સિસોદિયા ભાર્ગવસિંહ) ને આધીન છે.
                     </div>
                 </div>
 
-                <article class="blog-card" data-aos="fade-up">
-                    <div class="blog-meta">
-                        <time datetime="2025-12-30">📅 30 Dec 2025</time>
-                        <span>✒️ Research Report</span>
-                    </div>
-                    <h2>
-                        <a href="pushtimarg-ma-gruh-seva.html">
-                            પુષ્ટિમાર્ગ માં ગૃહ સેવા
+                <div class="space-y-10">
+                    <article class="bg-white/70 backdrop-blur-md p-8 rounded-2xl shadow-lg border-l-8 border-maroon hover:-translate-y-1 hover:bg-white transition-all duration-300 group" data-aos="fade-up">
+                        <div class="flex gap-6 text-xs font-bold text-slate-400 mb-4 font-noto uppercase tracking-widest">
+                            <time datetime="2025-12-30">📅 30 Dec 2025</time>
+                            <span class="text-gold">✒️ Research Report</span>
+                        </div>
+                        <h2 class="font-yatra text-2xl text-maroon mb-4 group-hover:text-gold transition-colors">
+                            <a href="pushtimarg-ma-gruh-seva.html">પુષ્ટિમાર્ગ માં ગૃહ સેવા</a>
+                        </h2>
+                        <p class="text-slate-600 leading-relaxed font-noto text-justify mb-8"> 
+                            વર્તમાન સમયમાં 'ગૃહ સેવા' અને 'હવેલી સેવા' વચ્ચેના તફાવત વિશે ઘણી ગેરસમજણો છે. સ્વમાર્ગીય સિદ્ધાંત તો સ્પષ્ટ જ છે: <b> "નિજ ગૃહ માં નિજ સેવ્ય ની જ સેવા". (પોતાના ઘરે જ સેવા કરવી) સેવા તો માત્ર અને માત્ર 'નિજ ગૃહ' (પોતાના ઘર) માં પોતાના જ તન અને પોતાના જ ધન થી કરવી તેજ </b> સિદ્ધાંતસંમત અને પુષ્ટિમાર્ગીય રીત અનુસાર છે. આ સંશોધન અહેવાલ ષોડશ ગ્રંથોના આધારે સિદ્ધ કરે છે કે, 'ગૃહ સેવા' જ એકમાત્ર શાસ્ત્રસંમત માર્ગ છે.
+                        </p>
+                        <a href="pushtimarg-ma-gruh-seva.html" class="inline-flex items-center bg-maroon text-white px-8 py-3 rounded-xl font-bold hover:bg-gold hover:text-maroon transition-all shadow-lg transform active:scale-95">
+                            સંપૂર્ણ લેખ વાંચો &nbsp; &rarr;
                         </a>
-                    </h2>
-                    <p> 
-                        વર્તમાન સમયમાં 'ગૃહ સેવા' અને 'હવેલી સેવા' વચ્ચેના તફાવત વિશે ઘણી ગેરસમજણો છે. સ્વમાર્ગીય સિદ્ધાંત તો સ્પષ્ટ જ છે: <b> "નિજ ગૃહ માં નિજ સેવ્ય ની જ સેવા". (પોતાના ઘરે જ સેવા કરવી) સેવા તો માત્ર અને માત્ર 'નિજ ગૃહ' (પોતાના ઘર) માં પોતાના જ તન અને પોતાના જ ધન થી કરવી તેજ </b> સિદ્ધાંતસંમત અને પુષ્ટિમાર્ગીય રીત અનુસાર છે. આ સંશોધન અહેવાલ ષોડશ ગ્રંથોના આધારે સિદ્ધ કરે છે કે, 'ગૃહ સેવા' જ એકમાત્ર શાસ્ત્રસંમત માર્ગ છે.
-                    </p>
-
-                    <a href="pushtimarg-ma-gruh-seva.html" class="social-btn">
-                        સંપૂર્ણ લેખ વાંચો &rarr;
-                    </a>
-                </article>
-          
-                <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="blog-meta">
-                        <time datetime="2025-12-28">📅 28 Dec 2025</time>
-                        <span>🕒 10:34 am</span>
-                    </div>
-                    <h2>પુષ્ટિમાર્ગ અને આધુનિક યુગ</h2>
-                    <p>
-                        આજના ડિજિટલ યુગમાં આપણે ટેકનોલોજીનો ઉપયોગ કરીને ઠાકોરજીની સેવા કરી શકીએ છીએ. સ્માર્ટફોનનો ઉપયોગ માત્ર મનોરંજન માટે જ નહીં, પણ સત્સંગ માટે પણ થઈ શકે છે.
-                    </p>
-                </article>
-
+                    </article>
+              
+                    <article class="bg-white/70 backdrop-blur-md p-8 rounded-2xl shadow-lg border-l-8 border-maroon hover:-translate-y-1 hover:bg-white transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex gap-6 text-xs font-bold text-slate-400 mb-4 font-noto uppercase tracking-widest">
+                            <time datetime="2025-12-28">📅 28 Dec 2025</time>
+                            <span>🕒 10:34 am</span>
+                        </div>
+                        <h2 class="font-yatra text-2xl text-maroon mb-4">પુષ્ટિમાર્ગ અને આધુનિક યુગ</h2>
+                        <p class="text-slate-600 leading-relaxed font-noto text-justify">
+                            આજના ડિજિટલ યુગમાં આપણે ટેકનોલોજીનો ઉપયોગ કરીને ઠાકોરજીની સેવા કરી શકીએ છીએ. સ્માર્ટફોનનો ઉપયોગ માત્ર મનોરંજન માટે જ નહીં, પણ સત્સંગ માટે પણ થઈ શકે છે.
+                        </p>
+                    </article>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p style="font-size: 0.8rem; margin-bottom: 5px;">
-            <a href="disclaimer.html" style="color: gold; text-decoration: none;">Legal Disclaimer</a>
-        </p>
-        <marquee style="color: gold;">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
+    <footer class="bg-maroon text-white pt-16 pb-8 text-center px-4 mt-20">
+        <div class="max-w-4xl mx-auto">
+            <a href="disclaimer.html" class="text-gold font-bold hover:underline mb-8 block">Legal Disclaimer</a>
+            
+            <div class="overflow-hidden border-y border-white/10 py-4 mb-8">
+                <div class="animate-marquee whitespace-nowrap text-gold font-medium">
+                    Designed by Sisodiya Bhargavsinh | © 2026 | Maintaining Heritage with Technology
+                </div>
+            </div>
 
-        <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed gold; text-align: center;">
-            <p style="font-size: 0.8rem; color: #ffebcd; margin-bottom: 5px; font-family: sans-serif;">Visitor Count:</p>
-            <a href="https://www.hitwebcounter.com/" target="_blank">
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" title="Visitor Counter" border="0" />
-            </a>
+            <div class="bg-black/20 inline-block p-4 rounded-xl border border-white/5">
+                <p class="text-xs uppercase tracking-widest text-white/60 mb-2 font-inter">Visitor Count</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 mx-auto">
+            </div>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init(); 
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) { if(e.keyCode == 123) return false; }
+        // Init Scroll Animations
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // UI Interactions
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('hidden');
+        }
+
+        function toggleNotif() {
+            const box = document.getElementById('notif-box');
+            box.classList.toggle('show');
+            if (box.classList.contains('show')) fetchNotifications();
+        }
+
+        async function fetchNotifications() {
+            const list = document.getElementById('notif-list');
+            const badge = document.getElementById('notif-badge');
+            try {
+                const res = await fetch('notifications.json?t=' + Date.now());
+                const data = await res.json();
+                list.innerHTML = '';
+                let hasNew = false;
+                data.forEach(item => {
+                    if (item.new) hasNew = true;
+                    const li = document.createElement('li');
+                    li.className = "p-4 hover:bg-gray-50 transition cursor-pointer text-left";
+                    li.innerHTML = `
+                        <small class="text-gray-400 block mb-1 text-xs">${item.date}</small>
+                        <a href="${item.link}" class="text-maroon font-bold text-sm block">
+                            ${item.new ? '<span class="bg-red-100 text-red-600 px-2 py-0.5 rounded text-[10px] mr-1">NEW</span>' : ''}${item.text}
+                        </a>`;
+                    list.appendChild(li);
+                });
+                badge.classList.toggle('hidden', !hasNew);
+            } catch (e) {
+                list.innerHTML = '<li class="p-4 text-red-500 text-sm">Failed to load updates.</li>';
+            }
+        }
+
+        // Global Event Listeners
+        window.addEventListener('load', () => {
+            fetch('notifications.json?t=' + Date.now())
+                .then(r => r.json())
+                .then(d => {
+                    if(d.some(i => i.new)) document.getElementById('notif-badge').classList.remove('hidden');
+                }).catch(console.error);
+        });
+
+        document.addEventListener('click', (e) => {
+            const container = document.querySelector('.relative');
+            const box = document.getElementById('notif-box');
+            if (container && !container.contains(e.target)) box.classList.remove('show');
+        });
+
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'gu', 
+                includedLanguages: 'gu,en,hi,sa', 
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
     </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
