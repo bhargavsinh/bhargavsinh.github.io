@@ -30,28 +30,36 @@
     </script>
 
     <style>
-/* મોબાઈલ વ્યુ (640px થી નીચેની સ્ક્રીન) માટે ખાસ ફેરફાર */
-@media (max-width: 640px) {
-    /* મુખ્ય શીર્ષકની સાઈઝ ઓછી કરવી */
-    h1 { font-size: 1.8rem !important; line-height: 1.2 !important; }
-    h2 { font-size: 1.5rem !important; }
-    h3 { font-size: 1.3rem !important; }
+        /* મોબાઈલ વ્યુ માટે કસ્ટમ રિસ્પોન્સિવ સેટિંગ્સ */
+        @media (max-width: 640px) {
+            h1 { font-size: 1.5rem !important; line-height: 1.3 !important; }
+            h2 { font-size: 1.2rem !important; }
+            h3 { font-size: 1.1rem !important; }
 
-    /* ફકરાનું વાંચન સરળ બનાવવું */
-    p, .article-content { 
-        font-size: 1rem !important; 
-        line-height: 1.7 !important;
-        text-align: left !important; /* Gaps ટાળવા માટે */
-    }
+            /* મોબાઈલમાં લખાણની સાઈઝ ઘટાડી અને જસ્ટિફાઈ હટાવ્યું જેથી ગેપ્સ ના પડે */
+            p, .legal-section p { 
+                font-size: 0.95rem !important; 
+                line-height: 1.6 !important;
+                text-align: left !important; 
+            }
 
-    /* કન્ટેનરની પેડિંગ ઓછી કરવી */
-    main { padding-left: 15px !important; padding-right: 15px !important; }
-    
-    /* કાર્ડ્સ અને બોક્સ માટે */
-    .glass-card, .vachan-card, .bg-white {
-        padding: 20px 15px !important;
-    }
-}
+            /* સેક્શન વચ્ચેની જગ્યા મોબાઈલ માટે ઓછી કરી */
+            .legal-section {
+                padding-left: 12px !important;
+                margin-bottom: 25px !important;
+            }
+
+            /* મુખ્ય કન્ટેનરની પેડિંગ મોબાઈલ માટે */
+            main { padding-top: 110px !important; padding-bottom: 40px !important; }
+            .content-box { padding: 25px 15px !important; }
+            
+            /* Consent Box ના બટનની સાઈઝ મોબાઈલ માટે */
+            #consentBox button {
+                width: 100%;
+                padding: 12px !important;
+                font-size: 0.8rem !important;
+            }
+        }
 
         /* Security Protocol V2.1 */
         body {
@@ -62,7 +70,7 @@
             background-attachment: fixed;
         }
 
-        /* Allow interaction for functional elements */
+        /* Interaction for functional elements */
         a, button { pointer-events: auto !important; }
         
         .legal-section {
@@ -75,91 +83,91 @@
 
 <body class="font-inter text-slate-900 min-h-screen overflow-x-hidden">
 
-    <header class="fixed top-0 w-full z-50 bg-cream/90 backdrop-blur-md border-b-4 border-double border-maroon h-24">
+    <header class="fixed top-0 w-full z-50 bg-cream/90 backdrop-blur-md border-b-4 border-double border-maroon h-20 sm:h-24">
         <nav class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <img src="logo.png" alt="Royal Seal" class="h-14 w-auto">
+            <div class="flex items-center gap-2 sm:gap-4">
+                <img src="logo.png" alt="Royal Seal" class="h-10 sm:h-14 w-auto">
                 <div class="flex flex-col">
-                    <span class="font-yatra text-maroon text-2xl leading-none">Sisodiya Bhargavsinh</span>
-                    <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-gold">Official Legal Repository</span>
+                    <span class="font-yatra text-maroon text-lg sm:text-2xl leading-none">Sisodiya Bhargavsinh</span>
+                    <span class="text-[8px] sm:text-[10px] uppercase tracking-[0.1em] sm:tracking-[0.2em] font-bold text-gold">Official Legal Repository</span>
                 </div>
             </div>
-            <a href="index.html" class="border-2 border-maroon px-6 py-2 rounded text-maroon font-bold hover:bg-maroon hover:text-white transition-all font-cinzel">Exit to Home</a>
+            <a href="index.html" class="border sm:border-2 border-maroon px-3 py-1 sm:px-6 sm:py-2 rounded text-maroon font-bold hover:bg-maroon hover:text-white transition-all font-cinzel text-[10px] sm:text-base">Home</a>
         </nav>
     </header>
 
-    <main class="pt-36 pb-24 px-4 sm:px-8">
-        <div class="max-w-4xl mx-auto bg-white/80 p-8 md:p-16 rounded-sm shadow-2xl relative border-4 border-double border-gold/50" data-aos="fade-up">
+    <main class="pt-28 sm:pt-36 pb-20 sm:pb-24 px-4 sm:px-8">
+        <div class="max-w-4xl mx-auto bg-white/80 p-6 sm:p-16 rounded-sm shadow-2xl relative border-2 sm:border-4 border-double border-gold/50 content-box" data-aos="fade-up">
             
-            <div class="text-center mb-16 relative z-10">
-                <h1 class="font-cinzel text-3xl md:text-5xl text-maroon mb-4 tracking-widest uppercase">Comprehensive Legal Affidavit</h1>
-                <h2 class="font-yatra text-xl md:text-2xl text-gold tracking-wide">વેબસાઇટ અને સંશોધન લેખ સુરક્ષા નીતિ</h2>
-                <div class="w-48 h-1 bg-maroon mx-auto mt-6"></div>
+            <div class="text-center mb-10 sm:mb-16 relative z-10">
+                <h1 class="font-cinzel text-2xl sm:text-5xl text-maroon mb-2 sm:mb-4 tracking-widest uppercase font-bold">Comprehensive Legal Affidavit</h1>
+                <h2 class="font-yatra text-lg sm:text-2xl text-gold tracking-wide">વેબસાઇટ અને સંશોધન લેખ સુરક્ષા નીતિ</h2>
+                <div class="w-24 sm:w-48 h-1 bg-maroon mx-auto mt-4 sm:mt-6"></div>
             </div>
 
-            <div class="space-y-12 relative z-10 font-gujarati text-slate-800 leading-relaxed text-justify">
+            <div class="space-y-8 sm:space-y-12 relative z-10 font-gujarati text-slate-800 leading-relaxed text-justify">
 
-                <div class="bg-slate-50/50 p-6 rounded-lg mb-10">
-                    <h2 class="font-cinzel text-maroon text-xl font-bold mb-6 text-center border-b border-gold pb-2">SECTION I: GENERAL TERMS / સામાન્ય શરતો</h2>
+                <div class="bg-slate-50/50 p-4 sm:p-6 rounded-lg mb-6 sm:mb-10">
+                    <h2 class="font-cinzel text-maroon text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-center border-b border-gold pb-2 uppercase">SECTION I: GENERAL TERMS / સામાન્ય શરતો</h2>
                     
                     <div class="legal-section">
-                        <h3 class="font-bold text-maroon text-lg mb-2">૧. Ownership / માલિકી હક</h3>
+                        <h3 class="font-bold text-maroon text-md sm:text-lg mb-2">૧. Ownership / માલિકી હક</h3>
                         <p>આ વેબસાઇટ પર ઉપલબ્ધ તમામ વિગતો, વંશાવલી અને પ્રોજેક્ટ્સ <strong>સિસોદિયા ભાર્ગવસિંહ</strong> ની માલિકીના છે.</p>
                     </div>
 
                     <div class="legal-section">
-                        <h3 class="font-bold text-maroon text-lg mb-2">૨. Cyber Security / સાયબર કાયદો</h3>
+                        <h3 class="font-bold text-maroon text-md sm:text-lg mb-2">૨. Cyber Security / સાયબર કાયદો</h3>
                         <p>IT Act, ૨૦૦૦ હેઠળ આ પોર્ટલ સુરક્ષિત છે. અનધિકૃત હસ્તક્ષેપ કરનાર સામે કાયદેસર કાર્યવાહી થશે.</p>
                     </div>
 
                     <div class="legal-section">
-                        <h3 class="font-bold text-maroon text-lg mb-2">૩. Liability / જવાબદારીની મર્યાદા</h3>
+                        <h3 class="font-bold text-maroon text-md sm:text-lg mb-2">૩. Liability / જવાબદારીની મર્યાદા</h3>
                         <p>આ સાઇટ શૈક્ષણિક હેતુ માટે છે. કોઈપણ વિગતોનો ઉપયોગ કરતા પહેલા વિવેકબુદ્ધિ વાપરવી.</p>
                     </div>
                 </div>
 
-                <div class="bg-maroon/5 p-6 rounded-lg border-2 border-maroon/20">
-                    <h2 class="font-cinzel text-maroon text-xl font-bold mb-6 text-center border-b border-gold pb-2 uppercase tracking-wider">SECTION II: RESEARCH ARTICLE PROTECTION / સંશોધન લેખ સંરક્ષણ</h2>
+                <div class="bg-maroon/5 p-4 sm:p-6 rounded-lg border-2 border-maroon/20">
+                    <h2 class="font-cinzel text-maroon text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-center border-b border-gold pb-2 uppercase tracking-wider">SECTION II: RESEARCH ARTICLE PROTECTION</h2>
                     
                     <div class="legal-section">
-                        <h3 class="font-bold text-maroon text-lg mb-2">૪. Exclusive Research Rights / સંશોધન અધિકારો</h3>
-                        <p class="mb-4 font-inter text-sm italic text-slate-500"><strong>EN:</strong> The research papers and articles published herein represent the exclusive intellectual effort of the author. Misrepresentation or selective use of data to distort the original findings is prohibited.</p>
+                        <h3 class="font-bold text-maroon text-md sm:text-lg mb-2">૪. Exclusive Research Rights / સંશોધન અધિકારો</h3>
+                        <p class="mb-2 sm:mb-4 font-inter text-[12px] sm:text-sm italic text-slate-500"><strong>EN:</strong> The research papers and articles published herein represent the exclusive intellectual effort of the author. Misrepresentation or selective use of data to distort the original findings is prohibited.</p>
                         <p>આ પોર્ટલ પર પ્રકાશિત સંશોધન લેખો લેખકના અંગત બૌદ્ધિક પરિશ્રમનું પરિણામ છે. સંશોધનના તારણોને તોડી-મરોડીને રજૂ કરવા અથવા લેખકની ભાવનાથી વિપરીત ઉપયોગ કરવા પર સખત મનાઈ છે.</p>
                     </div>
 
                     <div class="legal-section">
-                        <h3 class="font-bold text-maroon text-lg mb-2">૫. No Unauthorized Commercialization / વ્યાપારી ઉપયોગ મનાઈ</h3>
+                        <h3 class="font-bold text-maroon text-md sm:text-lg mb-2">૫. No Unauthorized Commercialization / વ્યાપારી ઉપયોગ મનાઈ</h3>
                         <p>કોઈપણ સંશોધન લેખનો વ્યાપારી હેતુ (જેમ કે પેઇડ સેમિનાર, પુસ્તક પ્રકાશન કે વેચાણ) માટે ઉપયોગ કરવા પર સંપૂર્ણ પ્રતિબંધ છે.</p>
                     </div>
 
                     <div class="legal-section">
-                        <h3 class="font-bold text-maroon text-lg mb-2 text-red-800">૬. Adjudication of Damages / ન્યાયનિર્ણય અને હર્જાનો</h3>
-                        <p class="mb-4 font-inter text-sm italic text-slate-500"><strong>EN:</strong> Any attempt to cause defamation through the misinterpretation of data shall attract legal liability. All claims for damages shall be adjudicated strictly through the Honorable Courts of Law only.</p>
+                        <h3 class="font-bold text-maroon text-md sm:text-lg mb-2 text-red-800">૬. Adjudication of Damages / ન્યાયનિર્ણય અને હર્જાનો</h3>
+                        <p class="mb-2 sm:mb-4 font-inter text-[12px] sm:text-sm italic text-slate-500"><strong>EN:</strong> Any attempt to cause defamation through the misinterpretation of data shall attract legal liability. All claims for damages shall be adjudicated strictly through the Honorable Courts of Law only.</p>
                         <p class="font-bold">રજૂ કરવામાં આવેલી માહિતીનો ખોટો અર્થઘટન કરી અથવા દુર્ભાવનાપૂર્વક ઉપયોગ કરી માનહાનિ કરવાનો પ્રયાસ કરનાર સામે કાનૂની કાર્યવાહી કરવામાં આવશે. <strong>માનહાનિ અંગેનો કોઈપણ હર્જાનો (Damages/Compensation) માત્ર અને માત્ર માનનીય અદાલત દ્વારા જ નક્કી કરીને વસૂલવામાં આવશે જેની ગંભીર નોંધ લેવી.</strong></p>
                     </div>
                 </div>
 
-                <div class="bg-gold/5 p-6 rounded-lg border-2 border-gold/20">
-                    <h2 class="font-cinzel text-maroon text-xl font-bold mb-6 text-center border-b border-maroon pb-2">SECTION III: FINAL JURISDICTION / અંતિમ ન્યાયક્ષેત્ર</h2>
-                    <p class="text-center font-bold">તમામ કાયદાકીય વિવાદો લુણાવાડા, જી. મહીસાગર (ગુજરાત) ની સક્ષમ અદાલતોના કાર્યક્ષેત્ર હેઠળ રહેશે.</p>
+                <div class="bg-gold/5 p-4 sm:p-6 rounded-lg border-2 border-gold/20 text-center">
+                    <h2 class="font-cinzel text-maroon text-lg sm:text-xl font-bold mb-4 sm:mb-6 border-b border-maroon pb-2 uppercase">SECTION III: FINAL JURISDICTION</h2>
+                    <p class="font-bold">તમામ કાયદાકીય વિવાદો લુણાવાડા, જી. મહીસાગર (ગુજરાત) ની સક્ષમ અદાલતોના કાર્યક્ષેત્ર હેઠળ રહેશે.</p>
                 </div>
 
-                <div class="mt-20 pt-10 border-t-2 border-maroon/20 text-center">
-                    <p class="font-cinzel text-maroon text-xl font-bold uppercase tracking-widest">Attested & Authenticated By</p>
-                    <p class="font-yatra text-3xl text-gold mt-2">સિસોદિયા ભાર્ગવસિંહ મહેન્દ્રસિંહ</p>
-                    <p class="text-slate-500 text-xs mt-4 tracking-tighter uppercase font-bold">Unified Digital Legal Version 2.1</p>
+                <div class="mt-12 sm:mt-20 pt-10 border-t-2 border-maroon/20 text-center">
+                    <p class="font-cinzel text-maroon text-lg sm:text-xl font-bold uppercase tracking-widest">Attested & Authenticated By</p>
+                    <p class="font-yatra text-2xl sm:text-3xl text-gold mt-2">સિસોદિયા ભાર્ગવસિંહ મહેન્દ્રસિંહ</p>
+                    <p class="text-slate-500 text-[10px] sm:text-xs mt-4 tracking-tighter uppercase font-bold">Unified Digital Legal Version 2.1</p>
                 </div>
             </div>
         </div>
     </main>
 
-    <div id="consentBox" class="fixed bottom-0 w-full bg-[#111] text-white p-8 shadow-[0_-10px_50px_rgba(0,0,0,0.5)] z-[100] transition-transform duration-700">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 font-gujarati">
-            <div class="flex-1 text-sm md:text-base leading-relaxed">
-                <p class="text-gold font-bold mb-2 uppercase tracking-widest font-cinzel">Mandatory Legal Agreement:</p>
-                આ વેબસાઇટ અને સંશોધન લેખો વાંચવા માટે, તમે પુષ્ટિ કરો છો કે તમે ઉપરોક્ત તમામ કાયદાકીય કલમો (Sections I, II, III) વાંચી છે અને તમે તેની તમામ શરતો સાથે સંપૂર્ણપણે સહમત છો.
+    <div id="consentBox" class="fixed bottom-0 w-full bg-[#111] text-white p-6 sm:p-8 shadow-[0_-10px_50px_rgba(0,0,0,0.5)] z-[100] transition-transform duration-700">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-8 font-gujarati">
+            <div class="flex-1 text-[12px] sm:text-sm md:text-base leading-relaxed text-center md:text-left">
+                <p class="text-gold font-bold mb-1 sm:mb-2 uppercase tracking-widest font-cinzel text-[10px] sm:text-sm">Mandatory Legal Agreement:</p>
+                આ વેબસાઇટ અને સંશોધન લેખો વાંચવા માટે, તમે પુષ્ટિ કરો છો કે તમે ઉપરોક્ત તમામ કાયદાકીય કલમો (Sections I, II, III) વાંચી છે અને તેની તમામ શરતો સાથે સંપૂર્ણપણે સહમત છો.
             </div>
-            <button onclick="acceptTerms()" class="whitespace-nowrap bg-maroon text-white border-2 border-gold px-12 py-4 rounded-sm font-bold hover:bg-gold hover:text-black transition-all shadow-xl font-cinzel uppercase tracking-widest text-sm">Execute Agreement</button>
+            <button onclick="acceptTerms()" class="bg-maroon text-white border-2 border-gold px-8 py-3 sm:px-12 sm:py-4 rounded-sm font-bold hover:bg-gold hover:text-black transition-all shadow-xl font-cinzel uppercase tracking-widest text-[10px] sm:text-sm">Execute Agreement</button>
         </div>
     </div>
 
@@ -177,7 +185,6 @@
             }
         };
 
-        // Strict Protection Protocol
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.onkeydown = function(e) {
             if(e.keyCode == 123 || 
