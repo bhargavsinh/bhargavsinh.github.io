@@ -13,28 +13,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <script>
-tailwind.config={
-theme:{extend:{
+tailwind.config={theme:{extend:{
 colors:{maroon:'#7b1c1c',gold:'#daa520',cream:'#fff8ec'},
-fontFamily:{
-yatra:['Yatra One','cursive'],
-noto:['Noto Sans','sans-serif'],
-playfair:['Playfair Display','serif'],
-inter:['Inter','sans-serif']
-}}}}
+fontFamily:{yatra:['Yatra One','cursive'],noto:['Noto Sans','sans-serif'],playfair:['Playfair Display','serif'],inter:['Inter','sans-serif']}
+}}}
 </script>
 
 <style>
-body{
--webkit-user-select:none;
--ms-user-select:none;
-user-select:none;
-}
-
-a,button,iframe,.nav-link,.social-link{
-pointer-events:auto!important;
-}
-
+body{-webkit-user-select:none;-ms-user-select:none;user-select:none;}
+a,button,iframe,.nav-link,.social-link{pointer-events:auto!important;}
 .glass{background:rgba(255,248,236,.9);backdrop-filter:blur(10px);}
 .hero-gradient{background:radial-gradient(circle at top,#fff8ec 0%,#fdf5e6 100%);}
 
@@ -43,7 +30,6 @@ pointer-events:auto!important;
 content:'';position:absolute;width:4px;background:#daa520;
 top:0;bottom:0;left:50%;margin-left:-2px;z-index:0;
 }
-
 @media(max-width:768px){
 .timeline-wrapper::before{left:20px;margin-left:0;}
 }
@@ -62,6 +48,7 @@ transition:width .3s ease;
 
 <body class="font-inter text-slate-800 hero-gradient min-h-screen overflow-x-hidden">
 
+<!-- HEADER -->
 <header class="fixed top-0 w-full z-50 glass border-b-2 border-gold/30">
 <nav class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
 
@@ -80,19 +67,37 @@ transition:width .3s ease;
 <li><a href="contact.html" class="nav-link-ltr hover:text-maroon transition">Contact</a></li>
 </ul>
 
-<button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="lg:hidden text-maroon text-3xl">☰</button>
+<button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl">☰</button>
 </nav>
 
+<!-- MOBILE MENU -->
 <div id="mobileMenu" class="hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-xl lg:hidden">
 <a href="index.html" class="block font-medium">Home</a>
 <a href="about.html" class="block font-bold text-maroon">About</a>
 <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
 <a href="projects.html" class="block font-medium">Projects</a>
+<a href="resume.html" class="block font-medium">Resume</a>
 <a href="blog.html" class="block font-medium">Articles</a>
 <a href="contact.html" class="block font-medium">Contact</a>
 </div>
 </header>
 
+<script>
+function toggleMenu(){
+document.getElementById('mobileMenu').classList.toggle('hidden');
+}
+
+/* AUTO CLOSE MENU AFTER CLICK */
+document.addEventListener("DOMContentLoaded",()=>{
+document.querySelectorAll("#mobileMenu a").forEach(link=>{
+link.addEventListener("click",()=>{
+document.getElementById('mobileMenu').classList.add('hidden');
+});
+});
+});
+</script>
+
+<!-- MAIN -->
 <main class="pt-28 pb-16 px-4">
 
 <!-- ABOUT -->
@@ -116,7 +121,8 @@ transition:width .3s ease;
 <!-- TIMELINE -->
 <section class="max-w-5xl mx-auto timeline-wrapper px-2">
 
-<div class="mb-12 flex flex-col md:flex-row items-center w-full" data-aos="fade-right">
+<!-- HERO -->
+<div class="mb-12 flex flex-col md:flex-row items-center w-full">
 <div class="hidden md:block w-1/2"></div>
 <div class="z-20 bg-gold w-10 h-10 rounded-full flex items-center justify-center text-white border-4 border-white shadow-md mx-4">🛡️</div>
 <div class="w-full md:w-1/2 timeline-content-box p-6 rounded-2xl shadow-lg border-l-8 border-maroon">
@@ -126,7 +132,7 @@ transition:width .3s ease;
 </div>
 </div>
 
-<!-- GRID NAMES -->
+<!-- GRID 2-13 (UNCHANGED) -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-12 relative z-10">
 
 <div class="bg-white p-5 rounded-xl border-l-4 border-gold shadow-md flex items-center gap-4 ml-10 md:ml-0"><span class="text-gold font-bold">02</span><h4 class="font-yatra text-maroon text-xl">શ્રી પૂરનમલજી (પૂરાજી)</h4></div>
@@ -144,25 +150,28 @@ transition:width .3s ease;
 
 </div>
 
-<div class="mb-12 flex flex-col md:flex-row items-center w-full">
+<!-- 14 RIGHT -->
+<div class="mb-12 flex flex-col md:flex-row-reverse items-center w-full">
 <div class="hidden md:block w-1/2"></div>
 <div class="z-20 bg-maroon w-10 h-10 rounded-full flex items-center justify-center text-white border-4 border-white shadow-md mx-4">🦁</div>
-<div class="w-full md:w-1/2 timeline-content-box p-6 rounded-2xl shadow-lg border-l-8 border-maroon">
+<div class="w-full md:w-1/2 timeline-content-box p-6 rounded-2xl shadow-lg border-r-8 border-gold text-right md:text-left">
 <span class="text-gold font-bold text-xs uppercase">પેઢી ૧૪</span>
 <h4 class="font-yatra text-2xl text-maroon mt-1">શ્રી ચંદનસિંહજી</h4>
 </div>
 </div>
 
-<div class="mb-12 flex flex-col md:flex-row-reverse items-center w-full">
+<!-- 15 LEFT -->
+<div class="mb-12 flex flex-col md:flex-row items-center w-full">
 <div class="hidden md:block w-1/2"></div>
 <div class="z-20 bg-maroon w-10 h-10 rounded-full flex items-center justify-center text-white border-4 border-white shadow-md mx-4">🦁</div>
-<div class="w-full md:w-1/2 timeline-content-box p-6 rounded-2xl shadow-lg border-r-8 border-gold text-right md:text-left">
+<div class="w-full md:w-1/2 timeline-content-box p-6 rounded-2xl shadow-lg border-l-8 border-maroon">
 <span class="text-gold font-bold text-xs uppercase">પેઢી ૧૫</span>
 <h4 class="font-yatra text-2xl text-maroon mt-1">શ્રી મહેન્દ્રસિંહજી</h4>
 </div>
 </div>
 
-<div class="mb-12 flex flex-col md:flex-row items-center w-full">
+<!-- 16 RIGHT -->
+<div class="mb-12 flex flex-col md:flex-row-reverse items-center w-full">
 <div class="hidden md:block w-1/2"></div>
 <div class="z-30 bg-gold w-14 h-14 rounded-full flex items-center justify-center text-white border-4 border-maroon shadow-xl mx-4 animate-bounce">🎓</div>
 <div class="w-full md:w-1/2 timeline-content-box bg-maroon text-white p-8 rounded-2xl shadow-2xl">
@@ -183,23 +192,10 @@ transition:width .3s ease;
 <div class="border-y border-white/10 py-4 mb-8">
 <marquee class="text-gold font-medium">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
 </div>
-<div class="bg-black/20 inline-block p-4 rounded-xl border border-white/5">
-<p class="text-xs uppercase tracking-widest text-white/60 mb-2 font-inter">Visitor Count</p>
-<img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 mx-auto">
-</div>
 </footer>
 
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-AOS.init({duration:1000,once:true});
-
-document.addEventListener('contextmenu',e=>e.preventDefault());
-document.addEventListener('keydown',function(e){
-if(e.key==="F12")e.preventDefault();
-if(e.ctrlKey&&e.shiftKey&&["I","J"].includes(e.key))e.preventDefault();
-if(e.ctrlKey&&["U","C"].includes(e.key))e.preventDefault();
-});
-</script>
+<script>AOS.init({duration:1000,once:true});</script>
 
 </body>
 </html>
