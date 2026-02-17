@@ -56,6 +56,7 @@
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            overflow-x: hidden; /* Prevent horizontal scroll on mobile */
         }
         a, button, iframe, .nav-link, .social-link {
             pointer-events: auto !important;
@@ -72,7 +73,7 @@
         }
 
         .glass-nav {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(218, 165, 32, 0.3);
@@ -85,16 +86,8 @@
             box-shadow: 0 8px 32px 0 rgba(123, 28, 28, 0.1);
         }
 
-        /* Gold Text Effect */
-        .text-gradient-gold {
-            background: linear-gradient(to bottom, #cfc09f 22%, #634f2c 24%, #cfc09f 26%, #cfc09f 27%, #ffecb3 40%, #3a2c0f 78%); 
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; 
-            color: #b8860b;
-        }
-
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #fff8ec; }
         ::-webkit-scrollbar-thumb { 
             background: linear-gradient(to bottom, #7b1c1c, #daa520); 
@@ -120,7 +113,7 @@
 
         /* Image Glow */
         .profile-glow {
-            box-shadow: 0 0 40px rgba(218, 165, 32, 0.4);
+            box-shadow: 0 0 30px rgba(218, 165, 32, 0.3);
         }
     </style>
 </head>
@@ -130,16 +123,16 @@
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-maroon focus:text-white">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
 
     <header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" class="h-14 w-auto drop-shadow-md hover:scale-105 transition duration-300">
-                <div class="hidden sm:flex flex-col">
-                    <span class="font-yatra text-maroon text-2xl leading-none tracking-wide">Sisodiya Bhargavsinh</span>
-                    <span class="text-[10px] uppercase tracking-[0.2em] text-gold-dark font-bold">Heritage & Tech</span>
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 md:gap-3">
+                <img src="logo.png" alt="Logo" class="h-10 md:h-14 w-auto drop-shadow-md hover:scale-105 transition duration-300">
+                <div class="flex flex-col">
+                    <span class="font-yatra text-maroon text-lg md:text-2xl leading-none tracking-wide">Sisodiya Bhargavsinh</span>
+                    <span class="hidden sm:block text-[10px] uppercase tracking-[0.2em] text-gold-dark font-bold">Heritage & Tech</span>
                 </div>
             </div>
 
-            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-sm uppercase tracking-widest text-slate-700">
+            <ul class="hidden lg:flex items-center gap-6 xl:gap-8 font-playfair font-bold text-sm uppercase tracking-widest text-slate-700">
                 <li><a href="index.html" class="nav-link-ltr text-maroon">Home</a></li>
                 <li><a href="about.html" class="nav-link-ltr hover:text-maroon transition">About</a></li>
                 <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-maroon transition">Pushtimarg</a></li>
@@ -149,145 +142,145 @@
                 <li><a href="contact.html" class="nav-link-ltr hover:text-maroon transition">Contact</a></li>
             </ul>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3 md:gap-4">
                 <div class="relative">
                     <button onclick="toggleNotif()" class="p-2 hover:bg-gold/20 rounded-full transition relative group">
-                        <span class="text-2xl group-hover:scale-110 transition display-block">🔔</span>
-                        <span id="notif-badge" class="absolute top-2 right-2 w-3 h-3 bg-red-600 border-2 border-white rounded-full hidden animate-ping"></span>
+                        <span class="text-xl md:text-2xl group-hover:scale-110 transition display-block">🔔</span>
+                        <span id="notif-badge" class="absolute top-2 right-2 w-2.5 h-2.5 bg-red-600 border-2 border-white rounded-full hidden animate-ping"></span>
                     </button>
-                    <div id="notif-box" class="absolute right-0 mt-4 w-80 bg-white/95 backdrop-blur-xl rounded-xl shadow-2xl border border-gold/30 overflow-hidden z-50">
+                    <div id="notif-box" class="absolute right-0 mt-4 w-[280px] sm:w-80 bg-white/95 backdrop-blur-xl rounded-xl shadow-2xl border border-gold/30 overflow-hidden z-50">
                         <div class="bg-gradient-to-r from-maroon to-maroon-dark text-white px-4 py-3 flex justify-between items-center">
                             <span class="font-yatra tracking-wide">Updates</span>
                             <button onclick="toggleNotif()" class="text-xl hover:text-gold transition">&times;</button>
                         </div>
-                        <ul id="notif-list" class="max-h-64 overflow-y-auto divide-y divide-gray-100/50">
+                        <ul id="notif-list" class="max-h-60 overflow-y-auto divide-y divide-gray-100/50">
                             <li class="p-4 text-sm text-gray-500">Loading...</li>
                         </ul>
                     </div>
                 </div>
 
-                <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl hover:text-gold transition">☰</button>
+                <button onclick="toggleMenu()" class="lg:hidden text-maroon text-2xl md:text-3xl hover:text-gold transition p-1">☰</button>
             </div>
         </nav>
 
-        <div id="navLinks" class="hidden lg:hidden bg-cream/95 backdrop-blur-md border-t border-gold/20 p-6 space-y-4 shadow-xl">
+        <div id="navLinks" class="hidden lg:hidden bg-cream/98 backdrop-blur-md border-t border-gold/20 p-6 space-y-4 shadow-xl absolute w-full left-0 top-16 md:top-20">
             <a href="index.html" class="block font-yatra text-maroon text-lg border-l-4 border-gold pl-3">Home</a>
-            <a href="about.html" class="block font-medium hover:text-maroon pl-4">About</a>
-            <a href="pushtimarg.html" class="block font-medium hover:text-maroon pl-4">Pushtimarg</a>
-            <a href="projects.html" class="block font-medium hover:text-maroon pl-4">Projects</a>
-            <a href="resume.html" class="block font-medium hover:text-maroon pl-4">Resume</a>
-            <a href="blog.html" class="block font-medium hover:text-maroon pl-4">Articles</a>
-            <a href="contact.html" class="block font-medium hover:text-maroon pl-4">Contact</a>
+            <a href="about.html" class="block font-medium hover:text-maroon pl-4 border-l-4 border-transparent hover:border-maroon/30 transition">About</a>
+            <a href="pushtimarg.html" class="block font-medium hover:text-maroon pl-4 border-l-4 border-transparent hover:border-maroon/30 transition">Pushtimarg</a>
+            <a href="projects.html" class="block font-medium hover:text-maroon pl-4 border-l-4 border-transparent hover:border-maroon/30 transition">Projects</a>
+            <a href="resume.html" class="block font-medium hover:text-maroon pl-4 border-l-4 border-transparent hover:border-maroon/30 transition">Resume</a>
+            <a href="blog.html" class="block font-medium hover:text-maroon pl-4 border-l-4 border-transparent hover:border-maroon/30 transition">Articles</a>
+            <a href="contact.html" class="block font-medium hover:text-maroon pl-4 border-l-4 border-transparent hover:border-maroon/30 transition">Contact</a>
         </div>
     </header>
 
-    <main id="main-content" class="pt-24 min-h-screen flex flex-col justify-center">
-        <section class="max-w-5xl mx-auto px-4 py-12 text-center relative">
+    <main id="main-content" class="pt-24 min-h-screen flex flex-col justify-center overflow-hidden">
+        <section class="max-w-5xl mx-auto px-4 py-8 md:py-12 text-center relative">
             
-            <div class="absolute top-10 left-10 w-24 h-24 border-t-4 border-l-4 border-gold/30 rounded-tl-3xl hidden md:block" data-aos="fade-right"></div>
-            <div class="absolute bottom-10 right-10 w-24 h-24 border-b-4 border-r-4 border-gold/30 rounded-br-3xl hidden md:block" data-aos="fade-left"></div>
+            <div class="absolute top-10 left-10 w-24 h-24 border-t-4 border-l-4 border-gold/30 rounded-tl-3xl hidden lg:block" data-aos="fade-right"></div>
+            <div class="absolute bottom-10 right-10 w-24 h-24 border-b-4 border-r-4 border-gold/30 rounded-br-3xl hidden lg:block" data-aos="fade-left"></div>
 
             <div class="mb-6 overflow-hidden">
-                <p class="text-maroon font-yatra text-lg tracking-wider animate-pulse flex items-center justify-center gap-2">
+                <p class="text-maroon font-yatra text-base md:text-lg tracking-wider animate-pulse flex items-center justify-center gap-2">
                     <span class="text-gold">✦</span> || જય શ્રી કૃષ્ણ 🙏 આપનું સ્વાગત છે || <span class="text-gold">✦</span>
                 </p>
             </div>
 
             <div class="relative inline-block group" data-aos="zoom-in" data-aos-duration="1200">
                 <div class="absolute inset-0 bg-gold rounded-full blur opacity-40 group-hover:opacity-60 transition duration-500"></div>
-                <img src="bhargavsinh.webp" alt="ભાર્ગવસિંહ સિસોદિયા" class="relative z-10 w-56 h-56 rounded-full border-[6px] border-white shadow-2xl mx-auto object-cover transform group-hover:scale-105 transition duration-500 profile-glow ring-4 ring-gold/50">
+                <img src="bhargavsinh.webp" alt="ભાર્ગવસિંહ સિસોદિયા" class="relative z-10 w-40 h-40 md:w-56 md:h-56 rounded-full border-[4px] md:border-[6px] border-white shadow-2xl mx-auto object-cover transform group-hover:scale-105 transition duration-500 profile-glow ring-2 md:ring-4 ring-gold/50">
                 
-                <div class="absolute bottom-2 right-4 z-20 bg-white rounded-full p-1.5 shadow-lg border border-gray-100 hover:scale-110 transition">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <div class="absolute bottom-1 right-2 md:bottom-2 md:right-4 z-20 bg-white rounded-full p-1 md:p-1.5 shadow-lg border border-gray-100 hover:scale-110 transition">
+                    <svg width="24" height="24" md:width="28" md:height="28" viewBox="0 0 24 24" fill="none" class="w-6 h-6 md:w-7 md:h-7">
                         <path d="M12.0002 2.05945C12.7836 2.05945 13.5226 2.3751 14.0722 2.9248L14.7354 3.58795C15.0097 3.86225 15.3817 4.0163 15.7695 4.0163H16.7072C17.8105 4.0163 18.705 4.9108 18.705 6.0141V6.9518C18.705 7.3396 18.859 7.71155 19.1333 7.9859L19.7965 8.6491C20.3462 9.19865 20.6618 9.93775 20.6618 10.7212V13.279C20.6618 14.0624 20.3462 14.8015 19.7965 15.3511L19.1333 16.0142C18.859 16.2886 18.705 16.6605 18.705 17.0484V17.9861C18.705 19.0894 17.8105 19.9839 16.7072 19.9839H15.7695C15.3817 19.9839 15.0097 20.1379 14.7354 20.4122L14.0722 21.0754C13.5226 21.625 12.7836 21.9407 12.0002 21.9407C11.2168 21.9407 10.4777 21.625 9.92817 21.0754L9.26498 20.4122C8.99068 20.1379 8.61873 19.9839 8.23093 19.9839H7.29323C6.18993 19.9839 5.29543 19.0894 5.29543 17.9861V17.0484C5.29543 16.6605 5.14138 16.2886 4.86708 16.0142L4.20388 15.3511C3.65423 14.8015 3.33862 14.0624 3.33862 13.279V10.7212C3.33862 9.93775 3.65423 9.19865 4.20388 8.6491L4.86708 7.9859C5.14138 7.71155 5.29543 7.3396 5.29543 6.9518V6.0141C5.29543 4.9108 6.18993 4.0163 7.29323 4.0163H8.23093C8.61873 4.0163 8.99068 3.86225 9.26498 3.58795L9.92817 2.9248C10.4777 2.3751 11.2168 2.05945 12.0002 2.05945Z" fill="#3897F0"/>
                         <path d="M10.2096 15.6191C9.99887 15.6191 9.78817 15.5386 9.62757 15.378L7.22127 12.9717C6.90007 12.6505 6.90007 12.1298 7.22127 11.8086C7.54247 11.4874 8.06317 11.4874 8.38437 11.8086L10.2096 13.6338L15.6159 8.22749C15.9371 7.90629 16.4578 7.90629 16.779 8.22749C17.1002 8.54869 17.1002 9.06939 16.779 9.39059L10.7916 15.378C10.631 15.5386 10.4203 15.6191 10.2096 15.6191Z" fill="white"/>
                     </svg>
                 </div>
             </div>
 
-            <h1 id="typewriter" class="font-yatra text-5xl md:text-7xl text-maroon mt-8 mb-4 min-h-[90px] drop-shadow-lg">
+            <h1 id="typewriter" class="font-yatra text-3xl sm:text-4xl md:text-7xl text-maroon mt-6 md:mt-8 mb-4 min-h-[60px] md:min-h-[90px] drop-shadow-lg leading-tight px-2">
                 SISODIYA BHARGAVSINH
             </h1>
 
-            <div class="space-y-3 text-lg md:text-xl text-slate-700 font-medium" data-aos="fade-up" data-aos-delay="200">
-                <div class="flex flex-col md:flex-row justify-center gap-2 md:gap-6 items-center opacity-90">
+            <div class="space-y-2 md:space-y-3 text-base md:text-xl text-slate-700 font-medium px-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex flex-col md:flex-row justify-center gap-1 md:gap-6 items-center opacity-90">
                      <p>🙏 श्रीकृष्णदासानुदास:</p>
                      <span class="hidden md:block text-gold">•</span>
                      <p>🚩 પુષ્ટિમાર્ગીય વૈષ્ણવ</p>
                 </div>
-                <div class="flex flex-col md:flex-row justify-center gap-2 md:gap-6 items-center text-sm uppercase tracking-wider font-bold text-slate-500">
+                <div class="flex flex-col md:flex-row justify-center gap-1 md:gap-6 items-center text-xs md:text-sm uppercase tracking-wider font-bold text-slate-500 mt-2 md:mt-0">
                     <p>🎓 BCA Student</p>
                     <span class="hidden md:block text-gold">|</span>
                     <p>🛡️ Rajput Heritage</p>
                     <span class="hidden md:block text-gold">|</span>
                     <p>🙏 Theist</p>
                 </div>
-                <div class="mt-4 inline-block relative">
+                <div class="mt-4 inline-block relative max-w-full">
                     <div class="absolute -inset-1 bg-gradient-to-r from-maroon to-gold opacity-20 blur rounded-lg"></div>
-                    <p class="relative text-maroon font-bold italic font-playfair text-xl px-4 py-1">⚔️ 16th Generation Descendant of Shri Maharana Pratapsinhji</p>
+                    <p class="relative text-maroon font-bold italic font-playfair text-base md:text-xl px-2 md:px-4 py-1 leading-snug">⚔️ 16th Generation Descendant of Shri Maharana Pratapsinhji</p>
                 </div>
             </div>
             
-            <div class="mt-14 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
-                <div class="glass-card p-8 rounded-3xl relative border-t border-white/80">
-                    <span class="absolute -top-6 left-1/2 -translate-x-1/2 bg-maroon text-gold px-4 py-2 rounded-b-xl shadow-md font-yatra text-2xl">“</span>
-                    <p class="font-yatra text-2xl text-maroon mb-3 leading-relaxed">
+            <div class="mt-10 md:mt-14 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+                <div class="glass-card p-6 md:p-8 rounded-3xl relative border-t border-white/80 mx-2 md:mx-0">
+                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 bg-maroon text-gold px-3 py-1 rounded-b-xl shadow-md font-yatra text-xl md:text-2xl">“</span>
+                    <p class="font-yatra text-lg md:text-2xl text-maroon mb-3 leading-relaxed">
                         "सच्चिदानन्दरूपाय विश्वोत्पत्त्यादिहेतवे।<br>
                         तापत्रयविनाशाय श्रीकृष्णाय वयं नुमः॥"
                     </p>
-                    <div class="w-16 h-1 bg-gold/50 mx-auto my-4 rounded-full"></div>
-                    <p class="text-slate-600 text-sm font-noto">
+                    <div class="w-12 md:w-16 h-1 bg-gold/50 mx-auto my-3 md:my-4 rounded-full"></div>
+                    <p class="text-slate-600 text-xs md:text-sm font-noto">
                         (अर्थ: सच्चिदानंद स्वरूप, विश्व की उत्पत्ति के कारण और तीनों प्रकार के कष्टों का नाश करने वाले श्रीकृष्ण को हम प्रणाम करते हैं।)
                     </p>
                 </div>
             </div>
         </section>
 
-        <section class="max-w-7xl mx-auto px-4 pb-20 pt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <section class="max-w-7xl mx-auto px-4 pb-12 md:pb-20 pt-4 md:pt-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             
-            <div class="glass-card p-8 rounded-2xl group hover:-translate-y-3 transition duration-500 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+            <div class="glass-card p-6 md:p-8 rounded-2xl group hover:-translate-y-3 transition duration-500 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-maroon via-gold to-maroon transform scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
-                <div class="bg-maroon/5 w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-6 group-hover:bg-maroon group-hover:text-white transition duration-300">📜</div>
-                <h2 class="font-yatra text-2xl text-maroon mb-3 group-hover:text-gold-dark transition">વંશાવલી</h2>
-                <p class="text-slate-600 mb-8 leading-relaxed text-sm">મહારાણા પ્રતાપથી લઈને અત્યાર સુધીની પેઢીઓનો ગૌરવવંતો ઈતિહાસ અને દસ્તાવેજો.</p>
-                <a href="about.html" class="absolute bottom-8 text-maroon font-bold text-sm tracking-wider uppercase border-b-2 border-gold hover:text-gold-dark transition">જુઓ →</a>
+                <div class="bg-maroon/5 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:bg-maroon group-hover:text-white transition duration-300">📜</div>
+                <h2 class="font-yatra text-xl md:text-2xl text-maroon mb-2 md:mb-3 group-hover:text-gold-dark transition">વંશાવલી</h2>
+                <p class="text-slate-600 mb-6 md:mb-8 leading-relaxed text-sm">મહારાણા પ્રતાપથી લઈને અત્યાર સુધીની પેઢીઓનો ગૌરવવંતો ઈતિહાસ અને દસ્તાવેજો.</p>
+                <a href="about.html" class="absolute bottom-6 md:bottom-8 text-maroon font-bold text-xs md:text-sm tracking-wider uppercase border-b-2 border-gold hover:text-gold-dark transition">જુઓ →</a>
             </div>
 
-            <div class="glass-card p-8 rounded-2xl group hover:-translate-y-3 transition duration-500 relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+            <div class="glass-card p-6 md:p-8 rounded-2xl group hover:-translate-y-3 transition duration-500 relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-maroon via-gold to-maroon transform scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
-                <div class="bg-maroon/5 w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-6 group-hover:bg-maroon group-hover:text-white transition duration-300">🪔</div>
-                <h2 class="font-yatra text-2xl text-maroon mb-3 group-hover:text-gold-dark transition">પુષ્ટિ સિદ્ધાંત</h2>
-                <p class="text-slate-600 mb-8 leading-relaxed text-sm">શ્રીમદ વલ્લભાચાર્યજી પ્રણીત પુષ્ટિમાર્ગ, ગૃહ સેવા અને શુદ્ધાદ્વૈત બ્રહ્મવાદ ના સિદ્ધાંતો.</p>
-                <a href="pushtimarg.html" class="absolute bottom-8 text-maroon font-bold text-sm tracking-wider uppercase border-b-2 border-gold hover:text-gold-dark transition">વાંચો →</a>
+                <div class="bg-maroon/5 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:bg-maroon group-hover:text-white transition duration-300">🪔</div>
+                <h2 class="font-yatra text-xl md:text-2xl text-maroon mb-2 md:mb-3 group-hover:text-gold-dark transition">પુષ્ટિ સિદ્ધાંત</h2>
+                <p class="text-slate-600 mb-6 md:mb-8 leading-relaxed text-sm">શ્રીમદ વલ્લભાચાર્યજી પ્રણીત પુષ્ટિમાર્ગ, ગૃહ સેવા અને શુદ્ધાદ્વૈત બ્રહ્મવાદ ના સિદ્ધાંતો.</p>
+                <a href="pushtimarg.html" class="absolute bottom-6 md:bottom-8 text-maroon font-bold text-xs md:text-sm tracking-wider uppercase border-b-2 border-gold hover:text-gold-dark transition">વાંચો →</a>
             </div>
 
-            <div class="glass-card p-8 rounded-2xl group hover:-translate-y-3 transition duration-500 relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+            <div class="glass-card p-6 md:p-8 rounded-2xl group hover:-translate-y-3 transition duration-500 relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-maroon via-gold to-maroon transform scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
-                <div class="bg-maroon/5 w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-6 group-hover:bg-maroon group-hover:text-white transition duration-300">✒️</div>
-                <h2 class="font-yatra text-2xl text-maroon mb-3 group-hover:text-gold-dark transition">સંશોધન લેખ</h2>
-                <p class="text-slate-600 mb-8 leading-relaxed text-sm">"પુષ્ટિમાર્ગ માં ગૃહ સેવા" પર કરવામાં આવેલ ઊંડાણપૂર્વકનું શાસ્ત્રીય સંશોધન.</p>
-                <a href="blog.html" class="absolute bottom-8 text-maroon font-bold text-sm tracking-wider uppercase border-b-2 border-gold hover:text-gold-dark transition">લેખ વાંચો →</a>
+                <div class="bg-maroon/5 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:bg-maroon group-hover:text-white transition duration-300">✒️</div>
+                <h2 class="font-yatra text-xl md:text-2xl text-maroon mb-2 md:mb-3 group-hover:text-gold-dark transition">સંશોધન લેખ</h2>
+                <p class="text-slate-600 mb-6 md:mb-8 leading-relaxed text-sm">"પુષ્ટિમાર્ગ માં ગૃહ સેવા" પર કરવામાં આવેલ ઊંડાણપૂર્વકનું શાસ્ત્રીય સંશોધન.</p>
+                <a href="blog.html" class="absolute bottom-6 md:bottom-8 text-maroon font-bold text-xs md:text-sm tracking-wider uppercase border-b-2 border-gold hover:text-gold-dark transition">લેખ વાંચો →</a>
             </div>
 
         </section>
     </main>
 
-    <footer class="bg-maroon-dark text-white pt-20 pb-10 text-center px-4 mt-12 relative overflow-hidden">
+    <footer class="bg-maroon-dark text-white pt-16 md:pt-20 pb-8 md:pb-10 text-center px-4 mt-8 md:mt-12 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gold via-yellow-200 to-gold"></div>
         <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-maroon-dark rotate-45 border-4 border-gold"></div>
 
         <div class="max-w-4xl mx-auto relative z-10">
-            <a href="disclaimer.html" class="text-gold/80 hover:text-white font-playfair font-bold hover:underline mb-10 block tracking-widest text-sm">LEGAL DISCLAIMER</a>
+            <a href="disclaimer.html" class="text-gold/80 hover:text-white font-playfair font-bold hover:underline mb-8 md:mb-10 block tracking-widest text-xs md:text-sm">LEGAL DISCLAIMER</a>
             
-            <div class="overflow-hidden border-y border-white/10 py-6 mb-10 bg-white/5 backdrop-blur-sm"> 
-                <div class="animate-marquee whitespace-nowrap text-gold font-medium font-playfair text-lg"> 
+            <div class="overflow-hidden border-y border-white/10 py-4 md:py-6 mb-8 md:mb-10 bg-white/5 backdrop-blur-sm"> 
+                <div class="animate-marquee whitespace-nowrap text-gold font-medium font-playfair text-sm md:text-lg"> 
                     Designed by Sisodiya Bhargavsinh  ✦  © 2026  ✦  Maintaining Heritage with Technology
                 </div>
             </div>
 
-            <div class="bg-black/40 inline-block p-5 rounded-2xl border border-gold/20 shadow-xl backdrop-blur-md hover:border-gold/50 transition">
-                <p class="text-[10px] uppercase tracking-[0.3em] text-white/50 mb-3">Visitor Count</p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 grayscale hover:grayscale-0 transition">
+            <div class="bg-black/40 inline-block p-4 md:p-5 rounded-2xl border border-gold/20 shadow-xl backdrop-blur-md hover:border-gold/50 transition">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-white/50 mb-2 md:mb-3">Visitor Count</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 grayscale hover:grayscale-0 transition h-4 md:h-auto">
             </div>
         </div>
     </footer>
@@ -298,13 +291,13 @@
     <script>
         // Init Scroll Animations
         AOS.init({
-            duration: 1200,
+            duration: 1000,
             once: true,
-            offset: 100,
+            offset: 50,
             easing: 'ease-out-cubic'
         });
 
-    // Typewriter Effect
+        // Typewriter Effect
         new TypeIt("#typewriter", {
             speed: 70,
             waitUntilVisible: true,
@@ -363,9 +356,6 @@
             const box = document.getElementById('notif-box');
             if (!container.contains(e.target) && box && box.classList.contains('show')) box.classList.remove('show');
         });
-
-        document.addEventListener('contextmenu', e => e.preventDefault());
-
     </script>
     
 <script>
