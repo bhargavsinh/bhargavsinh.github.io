@@ -18,8 +18,8 @@
             theme: {
                 extend: {
                     colors: {
-                        maroon: '#7b1c1c',
-                        gold: '#daa520',
+                        maroon: { DEFAULT: '#7b1c1c', dark: '#4a0404' },
+                        gold: { DEFAULT: '#daa520', light: '#ffd700', dark: '#b8860b' },
                         cream: '#fff8ec',
                     },
                     fontFamily: {
@@ -34,37 +34,45 @@
     </script>
 
     <style>
+        /* Security & Core Styles */
+        body {
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        a, button, iframe, .nav-link, .social-link {
+            pointer-events: auto !important;
+        }
 
-/* આખા પેજ પર ટેક્સ્ટ સિલેક્શન બંધ કરવા માટે */
-body {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none;     /* IE 10+ */
-    user-select: none;         /* Standard syntax */
-    
-    /* લખાણ પર ક્લિક (Interaction) ના થાય તે માટે (વૈકલ્પિક) */
-    /* સાવચેતી: આનાથી લિંક્સ અને બટન્સ પર ક્લિક કરવાનું પણ બંધ થઈ શકે છે */
-    /* pointer-events: none; */ 
-}
+        /* Royal Theme Styles */
+        .royal-bg {
+            background-color: #fff8ec;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(27,96%,90%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(25,95%,85%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(27,96%,90%,1) 0, transparent 50%);
+            background-attachment: fixed;
+        }
 
-/* જો તમારે બટન્સ અને લિંક્સ પર ક્લિક ચાલુ રાખવી હોય તો આ ઉમેરો */
-a, button, iframe, .nav-link, .social-link {
-    pointer-events: auto !important;
-}
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+        }
 
-        .glass {
-            background: rgba(255, 248, 236, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 40px -10px rgba(123, 28, 28, 0.15);
         }
-        .hero-gradient {
-            background: radial-gradient(circle at top, #fff8ec 0%, #fdf5e6 100%);
+
+        /* Resume Specific Details */
+        .profile-glow {
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
         }
-        .resume-shadow {
-            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-        }
-        .nav-link-ltr {
-            position: relative;
-        }
+
+        .nav-link-ltr { position: relative; }
         .nav-link-ltr::after {
             content: ''; position: absolute; width: 0; height: 2px;
             display: block; margin-top: 2px; right: 0; background: #daa520;
@@ -72,223 +80,278 @@ a, button, iframe, .nav-link, .social-link {
         }
         .nav-link-ltr:hover::after { width: 100%; left: 0; }
         
-        /* Disable Print */
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fff8ec; }
+        ::-webkit-scrollbar-thumb { 
+            background: linear-gradient(to bottom, #7b1c1c, #daa520); 
+            border-radius: 10px; 
+            border: 2px solid #fff8ec;
+        }
+
         @media print {
             html, body { display: none !important; }
         }
     </style>
 </head>
 
-<body class="font-inter text-slate-800 hero-gradient min-h-screen">
+<body class="font-inter text-slate-800 royal-bg min-h-screen selection:bg-gold selection:text-maroon">
 
-    <header class="fixed top-0 w-full z-50 glass border-b-2 border-gold/30">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" class="h-12 w-auto">
-                <span class="font-yatra text-maroon text-xl hidden sm:block">Sisodiya Bhargavsinh</span>
+                <img src="logo.png" alt="Logo" class="h-10 md:h-14 w-auto drop-shadow-md hover:scale-105 transition">
+                <span class="font-yatra text-maroon text-lg md:text-2xl tracking-wide hidden sm:block">Sisodiya Bhargavsinh</span>
             </div>
 
-            <ul class="hidden lg:flex items-center gap-8 font-semibold text-sm uppercase tracking-wider">
+            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-sm uppercase tracking-widest text-slate-700">
                 <li><a href="index.html" class="nav-link-ltr hover:text-maroon transition">Home</a></li>
                 <li><a href="about.html" class="nav-link-ltr hover:text-maroon transition">About</a></li>
                 <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-maroon transition">Pushtimarg</a></li>
                 <li><a href="projects.html" class="nav-link-ltr hover:text-maroon transition">Projects</a></li>
-                <li><a href="resume.html" class="nav-link-ltr text-gold">Resume</a></li>
+                <li><a href="resume.html" class="nav-link-ltr text-maroon border-b-2 border-gold">Resume</a></li>
                 <li><a href="blog.html" class="nav-link-ltr hover:text-maroon transition">Articles</a></li>
                 <li><a href="contact.html" class="nav-link-ltr hover:text-maroon transition">Contact</a></li>
             </ul>
 
-            <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl">☰</button>
+            <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl hover:text-gold transition">☰</button>
         </nav>
 
-        <div id="navLinks" class="hidden lg:hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-xl">
-            <a href="index.html" class="block font-medium">Home</a>
-            <a href="about.html" class="block font-medium">About</a>
-            <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
-            <a href="projects.html" class="block font-medium">Projects</a>
-            <a href="resume.html" class="block font-bold text-maroon">Resume</a>
-            <a href="blog.html" class="block font-medium">Articles</a>
-            <a href="contact.html" class="block font-medium">Contact</a>
+        <div id="navLinks" class="hidden lg:hidden bg-cream/95 backdrop-blur-md border-t border-gold/20 p-6 space-y-4 shadow-xl absolute w-full z-50">
+            <a href="index.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Home</a>
+            <a href="about.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">About</a>
+            <a href="pushtimarg.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Pushtimarg</a>
+            <a href="projects.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Projects</a>
+            <a href="resume.html" class="block font-yatra text-maroon pl-3 border-l-4 border-gold">Resume</a>
+            <a href="blog.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Articles</a>
+            <a href="contact.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Contact</a>
         </div>
     </header>
 
-    <main id="main-content" class="pt-28 pb-16 px-4">
+    <main id="main-content" class="pt-24 md:pt-32 pb-16 px-4">
         
-        <div class="max-w-4xl mx-auto bg-white rounded-3xl overflow-hidden resume-shadow border border-gold/20" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto glass-card rounded-3xl overflow-hidden relative" data-aos="fade-up">
             
-            <div class="bg-maroon p-8 md:p-12 text-center text-white relative">
-                <div class="absolute top-0 left-0 w-full h-2 bg-gold"></div>
-                <img src="bhargavsinh.webp" alt="Sisodiya Bhargavsinh" class="w-40 h-40 rounded-full border-4 border-gold mx-auto mb-6 shadow-2xl object-cover hover:scale-105 transition-transform duration-300">
-                <h1 class="font-yatra text-3xl md:text-5xl text-gold mb-2 uppercase tracking-wide">Sisodiya Bhargavsinh Mahendrasinh</h1>
-                <p class="font-playfair text-xl text-cream/80 italic">BCA Student | Computer Applications</p>
+            <div class="bg-gradient-to-r from-maroon via-maroon-dark to-maroon p-8 md:p-14 text-center text-white relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#daa520 1px, transparent 1px); background-size: 20px 20px;"></div>
                 
-                <div class="mt-8 flex flex-col md:flex-row justify-center gap-4 md:gap-8 text-sm">
-                    <div class="flex items-center justify-center gap-2">
-                        <span class="text-gold">📧</span> bhargavsinh.bca@gmail.com
-                    </div>
-                    <div class="flex items-center justify-center gap-2">
-                        <span class="text-gold">📍</span> Lunawada, Gujarat, Bharat
+                <div class="relative z-10">
+                    <img src="bhargavsinh.webp" alt="Sisodiya Bhargavsinh" class="w-40 h-40 md:w-48 md:h-48 rounded-full border-[6px] border-gold mx-auto mb-6 object-cover hover:scale-105 transition-transform duration-500 profile-glow">
+                    
+                    <h1 class="font-yatra text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-b from-gold to-yellow-200 mb-3 uppercase tracking-wider drop-shadow-sm">
+                        Sisodiya Bhargavsinh Mahendrasinh
+                    </h1>
+                    <p class="font-playfair text-lg md:text-2xl text-cream/90 italic tracking-wide">BCA Student | Computer Applications</p>
+                    
+                    <div class="mt-8 flex flex-col md:flex-row justify-center gap-4 md:gap-10 text-sm md:text-base font-medium">
+                        <div class="flex items-center justify-center gap-2 bg-black/20 px-4 py-2 rounded-full border border-gold/30 backdrop-blur-sm">
+                            <span class="text-gold text-lg">📧</span> bhargavsinh.bca@gmail.com
+                        </div>
+                        <div class="flex items-center justify-center gap-2 bg-black/20 px-4 py-2 rounded-full border border-gold/30 backdrop-blur-sm">
+                            <span class="text-gold text-lg">📍</span> Lunawada, Gujarat, Bharat
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="p-8 md:p-12 space-y-12">
+            <div class="p-6 md:p-12 space-y-10 md:space-y-14">
                 
                 <section data-aos="fade-up">
-                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-4">Resume Summary</h2>
-                    <p class="text-slate-600 leading-relaxed font-inter">
+                    <div class="flex items-center gap-4 mb-4">
+                        <h2 class="font-yatra text-2xl md:text-3xl text-maroon">Resume Summary</h2>
+                        <div class="h-1 flex-grow bg-gradient-to-r from-gold to-transparent rounded-full"></div>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed font-inter text-lg text-justify md:text-left bg-white/50 p-6 rounded-2xl border-l-4 border-gold shadow-sm">
                         I am a BCA student from Mahisagar BCA College, Lunawada, with skills in Gujarati typing, logo design, and chat support. I am eager to leverage my computerized accounting knowledge and social awareness to build a dynamic career.
                     </p>
                 </section>
 
-                <section data-aos="fade-up">
-                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-6">Education</h2>
-                    <div class="space-y-6">
-                        <div class="flex flex-col md:flex-row gap-2 md:gap-8 pb-4 border-b border-gold/10">
-                            <span class="font-playfair font-bold text-maroon min-w-[120px]">Pursuing</span>
-                            <div>
-                                <h3 class="font-bold text-slate-800">BCA (Bachelor of Computer Applications)</h3>
-                                <p class="text-slate-500">Mahisagar BCA College, Lunawada</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <section data-aos="fade-up">
+                         <div class="flex items-center gap-4 mb-6">
+                            <h2 class="font-yatra text-2xl md:text-3xl text-maroon">Education</h2>
+                            <div class="h-1 w-16 bg-gold rounded-full"></div>
+                        </div>
+
+                        <div class="space-y-6 relative border-l-2 border-gold/30 ml-3 pl-8 md:pl-10">
+                            <div class="relative group">
+                                <span class="absolute -left-[45px] md:-left-[53px] top-1 h-6 w-6 rounded-full bg-gold border-4 border-white shadow-md group-hover:scale-110 transition"></span>
+                                <div class="bg-white p-5 rounded-xl border border-gold/20 shadow-sm hover:shadow-md transition">
+                                    <span class="font-playfair font-bold text-white bg-maroon px-3 py-1 rounded text-xs uppercase tracking-wider">Pursuing</span>
+                                    <h3 class="font-bold text-slate-800 text-lg mt-2">BCA (Bachelor of Computer Applications)</h3>
+                                    <p class="text-slate-500 text-sm">Mahisagar BCA College, Lunawada</p>
+                                </div>
+                            </div>
+
+                            <div class="relative group">
+                                <span class="absolute -left-[45px] md:-left-[53px] top-1 h-6 w-6 rounded-full bg-maroon border-4 border-white shadow-md group-hover:scale-110 transition"></span>
+                                <div class="bg-white p-5 rounded-xl border border-gold/20 shadow-sm hover:shadow-md transition">
+                                    <span class="font-playfair font-bold text-maroon text-lg">2025</span>
+                                    <h3 class="font-bold text-slate-800 mt-1">HSC (Class XII) | Science (PCB)</h3>
+                                    <p class="text-slate-500 text-sm">National Institute of Open Schooling</p>
+                                    <p class="text-maroon font-semibold text-sm mt-1">Result: 69%</p>
+                                </div>
+                            </div>
+
+                            <div class="relative group">
+                                <span class="absolute -left-[45px] md:-left-[53px] top-1 h-6 w-6 rounded-full bg-maroon border-4 border-white shadow-md group-hover:scale-110 transition"></span>
+                                <div class="bg-white p-5 rounded-xl border border-gold/20 shadow-sm hover:shadow-md transition">
+                                    <span class="font-playfair font-bold text-maroon text-lg">2022</span>
+                                    <h3 class="font-bold text-slate-800 mt-1">SSC (Class X)</h3>
+                                    <p class="text-slate-500 text-sm">Gujarat Secondary Education Board (Gujarati Medium)</p>
+                                    <p class="text-maroon font-semibold text-sm mt-1">Result: 79.16%</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex flex-col md:flex-row gap-2 md:gap-8 pb-4 border-b border-gold/10">
-                            <span class="font-playfair font-bold text-maroon min-w-[120px]">2025</span>
-                            <div>
-                                <h3 class="font-bold text-slate-800">HSC (Class XII) | Science (PCB)</h3>
-                                <p class="text-slate-500">National Institute of Open Schooling</p>
-                                <p class="text-maroon font-semibold">Result: 69%</p>
+                    </section>
+
+                    <div class="space-y-10">
+                        <section data-aos="fade-up" data-aos-delay="100">
+                             <div class="flex items-center gap-4 mb-6">
+                                <h2 class="font-yatra text-2xl md:text-3xl text-maroon">Skills</h2>
+                                <div class="h-1 w-16 bg-gold rounded-full"></div>
+                            </div>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-5 py-2 bg-gradient-to-r from-cream to-white text-maroon border border-gold/50 rounded-full font-bold text-sm shadow-sm hover:bg-maroon hover:text-white hover:border-maroon transition-all cursor-default transform hover:-translate-y-1">Gujarati Typing</span>
+                                <span class="px-5 py-2 bg-gradient-to-r from-cream to-white text-maroon border border-gold/50 rounded-full font-bold text-sm shadow-sm hover:bg-maroon hover:text-white hover:border-maroon transition-all cursor-default transform hover:-translate-y-1">Logo Design</span>
+                                <span class="px-5 py-2 bg-gradient-to-r from-cream to-white text-maroon border border-gold/50 rounded-full font-bold text-sm shadow-sm hover:bg-maroon hover:text-white hover:border-maroon transition-all cursor-default transform hover:-translate-y-1">Chat Support</span>
+                                <span class="px-5 py-2 bg-gradient-to-r from-cream to-white text-maroon border border-gold/50 rounded-full font-bold text-sm shadow-sm hover:bg-maroon hover:text-white hover:border-maroon transition-all cursor-default transform hover:-translate-y-1">Chat Process</span>
+                                <span class="px-5 py-2 bg-gradient-to-r from-cream to-white text-maroon border border-gold/50 rounded-full font-bold text-sm shadow-sm hover:bg-maroon hover:text-white hover:border-maroon transition-all cursor-default transform hover:-translate-y-1">Computerized Accounting</span>
+                                <span class="px-5 py-2 bg-gradient-to-r from-cream to-white text-maroon border border-gold/50 rounded-full font-bold text-sm shadow-sm hover:bg-maroon hover:text-white hover:border-maroon transition-all cursor-default transform hover:-translate-y-1">Communication</span>
+                            </div>
+                        </section>
+
+                        <section data-aos="fade-up" data-aos-delay="200">
+                            <div class="flex items-center gap-4 mb-6">
+                                <h2 class="font-yatra text-2xl md:text-3xl text-maroon">Achievements</h2>
+                                <div class="h-1 w-16 bg-gold rounded-full"></div>
+                            </div>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border-l-4 border-maroon">
+                                    <div class="bg-gold/20 p-2 rounded-full text-xl">⭐</div>
+                                    <div>
+                                        <p class="font-bold text-slate-800">Received Scholarship</p>
+                                        <p class="text-sm text-slate-500">Awarded in School for academic excellence.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border-l-4 border-maroon">
+                                    <div class="bg-gold/20 p-2 rounded-full text-xl">🎓</div>
+                                    <div>
+                                        <p class="font-bold text-slate-800">Certified in Computerized Accounting</p>
+                                        <p class="text-sm text-slate-500">Certified by RSETI & Bank of Baroda.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+
+                <section data-aos="fade-up">
+                    <div class="relative bg-cream border-2 border-gold rounded-2xl p-1 overflow-hidden">
+                        <div class="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-maroon rounded-tl-lg z-10"></div>
+                        <div class="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-maroon rounded-br-lg z-10"></div>
+                        
+                        <div class="bg-white/60 p-6 md:p-8 rounded-xl backdrop-blur-sm text-center md:text-left">
+                            <h2 class="font-yatra text-2xl text-maroon mb-4 flex items-center justify-center md:justify-start gap-3">
+                                <span>📜</span> Social Leadership & Civic Engagement
+                            </h2>
+                            
+                            <div class="md:flex items-start justify-between gap-6">
+                                <div>
+                                    <h3 class="font-bold text-slate-800 text-lg mb-2">Representation to the President of India:</h3>
+                                    <p class="text-slate-600 mb-3 leading-relaxed">
+                                        Authored and submitted a formal representation regarding <i>"Nationwide Ban on Cow Slaughter & Animal Welfare Laws"</i>. 
+                                        The petition is officially recorded by the <b>President's Secretariat</b>.
+                                    </p>
+                                    <p class="text-xs text-maroon font-mono mb-4 bg-maroon/5 inline-block px-2 py-1 rounded border border-maroon/20">
+                                        📌 Ref: Reg. No. RB/MSG/26010914813 | Tracking No. 14813
+                                    </p>
+                                </div>
+                                <div class="mt-4 md:mt-0 flex-shrink-0">
+                                    <a href="https://www.presidentofindia.gov.in/sites/default/files/webform/request_for_president_s_message/7040/request_to_ban_cow_slaughter_in_bharat.pdf" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-maroon to-maroon-dark text-white px-6 py-3 rounded-lg font-bold hover:from-gold hover:to-gold-dark hover:text-maroon transition shadow-lg transform hover:-translate-y-1 border border-gold">
+                                        <span>📄</span> View Official Letter
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex flex-col md:flex-row gap-2 md:gap-8">
-                            <span class="font-playfair font-bold text-maroon min-w-[120px]">2022</span>
-                            <div>
-                                <h3 class="font-bold text-slate-800">SSC (Class X)</h3>
-                                <p class="text-slate-500">Gujarat Secondary Education Board (Gujarati Medium)</p>
-                                <p class="text-maroon font-semibold">Result: 79.16%</p>
+                    </div>
+                </section>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <section data-aos="fade-up">
+                        <h2 class="font-yatra text-2xl text-maroon mb-6 border-b-2 border-gold/20 pb-2 inline-block">Languages Known</h2>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div class="p-4 bg-white border border-gold/20 rounded-xl shadow-sm hover:border-maroon transition">
+                                <p class="font-bold text-maroon text-lg">Gujarati</p>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Native</p>
+                            </div>
+                            <div class="p-4 bg-white border border-gold/20 rounded-xl shadow-sm hover:border-maroon transition">
+                                <p class="font-bold text-maroon text-lg">Hindi</p>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Read/Write/Speak</p>
+                            </div>
+                            <div class="p-4 bg-white border border-gold/20 rounded-xl shadow-sm hover:border-maroon transition">
+                                <p class="font-bold text-maroon text-lg">English</p>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Read/Write/Speak</p>
+                            </div>
+                            <div class="p-4 bg-white border border-gold/20 rounded-xl shadow-sm hover:border-maroon transition">
+                                <p class="font-bold text-maroon text-lg">Sanskrit</p>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Read/Write</p>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <section data-aos="fade-up">
-                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-6">Skills</h2>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-5 py-2 bg-cream text-maroon border border-gold/30 rounded-full font-semibold text-sm hover:bg-maroon hover:text-white transition-colors cursor-default">Gujarati Typing</span>
-                        <span class="px-5 py-2 bg-cream text-maroon border border-gold/30 rounded-full font-semibold text-sm hover:bg-maroon hover:text-white transition-colors cursor-default">Logo Design</span>
-                        <span class="px-5 py-2 bg-cream text-maroon border border-gold/30 rounded-full font-semibold text-sm hover:bg-maroon hover:text-white transition-colors cursor-default">Chat Support</span>
-                        <span class="px-5 py-2 bg-cream text-maroon border border-gold/30 rounded-full font-semibold text-sm hover:bg-maroon hover:text-white transition-colors cursor-default">Chat Process</span>
-                        <span class="px-5 py-2 bg-cream text-maroon border border-gold/30 rounded-full font-semibold text-sm hover:bg-maroon hover:text-white transition-colors cursor-default">Computerized Accounting</span>
-                        <span class="px-5 py-2 bg-cream text-maroon border border-gold/30 rounded-full font-semibold text-sm hover:bg-maroon hover:text-white transition-colors cursor-default">Communication</span>
-                    </div>
-                </section>
-
-                <section data-aos="fade-up">
-                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-4">Certifications & Achievements</h2>
-                    <ul class="list-none space-y-3 text-slate-600">
-                        <li class="flex items-start gap-3">
-                            <span class="text-gold mt-1">⭐</span>
-                            <p>Received <b>Scholarship</b> in School for academic excellence.</p>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-gold mt-1">⭐</span>
-                            <p>Certified in <b>Computerized Accounting</b> (by RSETI & Bank of Baroda).</p>
-                        </li>
-                    </ul>
-                </section>
-
-                <section data-aos="fade-up">
-                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-6">Social Leadership & Civic Engagement</h2>
-                    <div class="bg-cream/50 border-2 border-dashed border-gold p-6 rounded-2xl">
-                        <h3 class="font-bold text-slate-800 mb-2">Representation to the President of India:</h3>
-                        <p class="text-slate-600 mb-4 leading-relaxed">
-                            Authored and submitted a formal representation regarding <i>"Nationwide Ban on Cow Slaughter & Animal Welfare Laws"</i>. 
-                            The petition is officially recorded by the <b>President's Secretariat</b>.
-                        </p>
-                        <p class="text-xs text-slate-500 mb-4 italic">
-                            📌 Ref: Reg. No. RB/MSG/26010914813 | Tracking No. 14813
-                        </p>
-                        <a href="https://www.presidentofindia.gov.in/sites/default/files/webform/request_for_president_s_message/7040/request_to_ban_cow_slaughter_in_bharat.pdf" target="_blank" class="inline-block bg-maroon text-white px-6 py-2 rounded-lg font-bold hover:bg-gold hover:text-maroon transition shadow-md">
-                            📄 View Official Letter
-                        </a>
-                    </div>
-                </section>
-
-                <section data-aos="fade-up">
-                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-6">Languages Known</h2>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                        <div class="p-4 bg-white border border-gold/10 rounded-xl shadow-sm">
-                            <p class="font-bold text-maroon mb-1">Gujarati</p>
-                            <p class="text-[10px] text-slate-500 uppercase tracking-widest">Native</p>
+                    <section data-aos="fade-up" data-aos-delay="100">
+                        <h2 class="font-yatra text-2xl text-maroon mb-6 border-b-2 border-gold/20 pb-2 inline-block">Personal Details</h2>
+                        <div class="bg-white p-6 rounded-2xl border border-gold/20 shadow-sm space-y-4">
+                            <div class="flex justify-between items-center border-b border-dashed border-slate-200 pb-3">
+                                <span class="text-slate-500 font-medium">Date of Birth</span>
+                                <span class="text-slate-800 font-bold bg-cream px-3 py-1 rounded-lg">21st December, 2006</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-dashed border-slate-200 pb-3">
+                                <span class="text-slate-500 font-medium">Gender</span>
+                                <span class="text-slate-800 font-bold">Male</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-dashed border-slate-200 pb-3">
+                                <span class="text-slate-500 font-medium">Nationality</span>
+                                <span class="text-slate-800 font-bold">Indian</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-500 font-medium">Current Location</span>
+                                <span class="text-slate-800 font-bold">Lunawada</span>
+                            </div>
                         </div>
-                        <div class="p-4 bg-white border border-gold/10 rounded-xl shadow-sm">
-                            <p class="font-bold text-maroon mb-1">Hindi</p>
-                            <p class="text-[10px] text-slate-500 uppercase tracking-widest">Read/Write/Speak</p>
-                        </div>
-                        <div class="p-4 bg-white border border-gold/10 rounded-xl shadow-sm">
-                            <p class="font-bold text-maroon mb-1">English</p>
-                            <p class="text-[10px] text-slate-500 uppercase tracking-widest">Read/Write/Speak</p>
-                        </div>
-                        <div class="p-4 bg-white border border-gold/10 rounded-xl shadow-sm">
-                            <p class="font-bold text-maroon mb-1">Sanskrit</p>
-                            <p class="text-[10px] text-slate-500 uppercase tracking-widest">Read/Write</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-aos="fade-up">
-                    <h2 class="font-yatra text-2xl text-maroon border-l-4 border-gold pl-4 mb-6">Personal Details</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                        <div class="flex justify-between border-b border-slate-200 pb-2">
-                            <span class="text-slate-500 font-medium">Date of Birth:</span>
-                            <span class="text-slate-800 font-bold">21st December, 2006</span>
-                        </div>
-                        <div class="flex justify-between border-b border-slate-200 pb-2">
-                            <span class="text-slate-500 font-medium">Gender:</span>
-                            <span class="text-slate-800 font-bold">Male</span>
-                        </div>
-                        <div class="flex justify-between border-b border-slate-200 pb-2 md:border-none">
-                            <span class="text-slate-500 font-medium">Nationality:</span>
-                            <span class="text-slate-800 font-bold">Indian</span>
-                        </div>
-                        <div class="flex justify-between border-b border-slate-200 pb-2 md:border-none">
-                            <span class="text-slate-500 font-medium">Current Location:</span>
-                            <span class="text-slate-800 font-bold">Lunawada</span>
-                        </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
                 
             </div>
         </div>
     </main>
 
-    <footer class="bg-maroon text-white pt-16 pb-8 text-center px-4 mt-20">
-        <div class="max-w-4xl mx-auto">
-            <a href="disclaimer.html" class="text-gold font-bold hover:underline mb-8 block">Legal Disclaimer</a>
-            <div class="overflow-hidden border-y border-white/10 py-4 mb-8">
-                <marquee class="text-gold font-medium">Designed by Sisodiya Bhargavsinh | © 2026</marquee>
+    <footer class="bg-maroon-dark text-white pt-16 md:pt-20 pb-8 text-center px-4 mt-20 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gold via-yellow-200 to-gold"></div>
+        <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-maroon-dark rotate-45 border-4 border-gold"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <a href="disclaimer.html" class="text-gold/80 hover:text-white font-playfair font-bold hover:underline mb-10 block tracking-widest text-sm">LEGAL DISCLAIMER</a>
+            <div class="overflow-hidden border-y border-white/10 py-6 mb-8 bg-white/5 backdrop-blur-sm">
+                <div class="animate-marquee whitespace-nowrap text-gold font-medium font-playfair text-lg">
+                    Designed by Sisodiya Bhargavsinh  ✦  © 2026  ✦  Maintaining Heritage with Technology
+                </div>
             </div>
-            <div class="bg-black/20 inline-block p-4 rounded-xl border border-white/5">
-                <p class="text-xs uppercase tracking-widest text-white/60 mb-2 font-inter">Visitor Count</p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 mx-auto">
+            <div class="bg-black/40 inline-block p-5 rounded-2xl border border-gold/20 shadow-xl backdrop-blur-md hover:border-gold/50 transition">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-white/50 mb-3 font-inter">Visitor Count</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 grayscale hover:grayscale-0 transition">
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1200, once: true, offset: 50 });
         
         function toggleMenu() {
             const nav = document.getElementById('navLinks');
             nav.classList.toggle('hidden');
-        }
-
-        // Security
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) { 
-            if(e.keyCode == 123) return false; 
-            if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
         }
     </script>
 
