@@ -18,14 +18,18 @@
             theme: {
                 extend: {
                     colors: {
-                        maroon: '#7b1c1c',
-                        gold: '#daa520',
+                        maroon: { DEFAULT: '#7b1c1c', dark: '#4a0404' },
+                        gold: { DEFAULT: '#daa520', light: '#ffd700', dark: '#b8860b' },
                         cream: '#fff8ec',
                     },
                     fontFamily: {
                         yatra: ['Yatra One', 'cursive'],
                         noto: ['Noto Sans', 'sans-serif'],
+                        playfair: ['Playfair Display', 'serif'],
                         inter: ['Inter', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'royal-pattern': "radial-gradient(circle at 50% 50%, #fff8ec 0%, #ffe4c4 100%)"
                     }
                 }
             }
@@ -33,48 +37,55 @@
     </script>
 
     <style>
-/* આખા પેજ પર ટેક્સ્ટ સિલેક્શન બંધ કરવા માટે */
-body {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none;     /* IE 10+ */
-    user-select: none;         /* Standard syntax */
-    
-    /* લખાણ પર ક્લિક (Interaction) ના થાય તે માટે (વૈકલ્પિક) */
-    /* સાવચેતી: આનાથી લિંક્સ અને બટન્સ પર ક્લિક કરવાનું પણ બંધ થઈ શકે છે */
-    /* pointer-events: none; */ 
-}
-
-/* જો તમારે બટન્સ અને લિંક્સ પર ક્લિક ચાલુ રાખવી હોય તો આ ઉમેરો */
-a, button, iframe, .nav-link, .social-link {
-    pointer-events: auto !important;
-}
-
-
-        .glass {
-            background: rgba(255, 248, 236, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        /* Security Styles */
+        body {
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
-        .hero-gradient {
-            background: radial-gradient(circle at top, #fff8ec 0%, #fdf5e6 100%);
+        a, button, iframe, .nav-link, .social-link {
+            pointer-events: auto !important;
         }
+
+        /* Royal Theme Styles */
+        .royal-bg {
+            background-color: #fff8ec;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(27,96%,90%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(25,95%,85%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(27,96%,90%,1) 0, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px -5px rgba(123, 28, 28, 0.1);
+        }
+
+        /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #fff8ec; }
-        ::-webkit-scrollbar-thumb { background: #7b1c1c; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #7b1c1c, #daa520); border-radius: 10px; }
         
-        .nav-link-ltr {
-            position: relative;
-        }
+        /* Nav Hover */
+        .nav-link-ltr { position: relative; }
         .nav-link-ltr::after {
             content: ''; position: absolute; width: 0; height: 2px;
             display: block; margin-top: 2px; right: 0; background: #daa520;
             transition: width .3s ease;
         }
-        .nav-link-ltr:hover::after { width: 100%; left: 0; background: #daa520; }
+        .nav-link-ltr:hover::after { width: 100%; left: 0; }
         
         #notif-box { display: none; }
         #notif-box.show { display: block; animation: slideIn 0.3s ease-out; }
-        
         @keyframes slideIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -82,77 +93,85 @@ a, button, iframe, .nav-link, .social-link {
     </style>
 </head>
 
-<body class="font-inter text-slate-800 hero-gradient min-h-screen">
+<body class="font-inter text-slate-800 royal-bg min-h-screen selection:bg-gold selection:text-maroon">
 
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-maroon focus:text-white">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
 
-    <header class="fixed top-0 w-full z-50 glass border-b-2 border-gold/30">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" class="h-12 w-auto drop-shadow-sm">
-                <span class="font-yatra text-maroon text-xl hidden sm:block">Sisodiya Bhargavsinh</span>
+                <img src="logo.png" alt="Logo" class="h-10 md:h-14 w-auto drop-shadow-md hover:scale-105 transition">
+                <span class="font-yatra text-maroon text-lg md:text-2xl tracking-wide hidden sm:block">Sisodiya Bhargavsinh</span>
             </div>
 
-            <ul class="hidden lg:flex items-center gap-8 font-semibold text-sm uppercase tracking-wider">
+            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-sm uppercase tracking-widest text-slate-700">
                 <li><a href="index.html" class="nav-link-ltr hover:text-maroon transition">Home</a></li>
                 <li><a href="about.html" class="nav-link-ltr hover:text-maroon transition">About</a></li>
                 <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-maroon transition">Pushtimarg</a></li>
                 <li><a href="projects.html" class="nav-link-ltr hover:text-maroon transition">Projects</a></li>
                 <li><a href="resume.html" class="nav-link-ltr hover:text-maroon transition">Resume</a></li>
                 <li><a href="blog.html" class="nav-link-ltr hover:text-maroon transition">Articles</a></li>
-                <li><a href="contact.html" class="nav-link-ltr text-gold">Contact</a></li>
-                <li><div id="google_translate_element" class="scale-90"></div></li>
+                <li><a href="contact.html" class="nav-link-ltr text-maroon border-b-2 border-gold">Contact</a></li>
+                <li><div id="google_translate_element" class="scale-90 opacity-80 hover:opacity-100 transition"></div></li>
             </ul>
 
             <div class="flex items-center gap-4">
                 <div class="relative">
-                    <button onclick="toggleNotif()" class="p-2 hover:bg-gold/10 rounded-full transition relative">
-                        <span class="text-2xl">🔔</span>
-                        <span id="notif-badge" class="absolute top-2 right-2 w-3 h-3 bg-red-600 border-2 border-white rounded-full hidden"></span>
+                    <button onclick="toggleNotif()" class="p-2 hover:bg-gold/20 rounded-full transition relative group">
+                        <span class="text-2xl group-hover:scale-110 transition display-block">🔔</span>
+                        <span id="notif-badge" class="absolute top-2 right-2 w-3 h-3 bg-red-600 border-2 border-white rounded-full hidden animate-ping"></span>
                     </button>
-                    <div id="notif-box" class="absolute right-0 mt-4 w-72 bg-white rounded-xl shadow-2xl border border-gold/20 overflow-hidden">
-                        <div class="bg-maroon text-white px-4 py-3 flex justify-between items-center">
-                            <span class="font-bold">Updates</span>
-                            <button onclick="toggleNotif()" class="text-xl">&times;</button>
+                    <div id="notif-box" class="absolute right-0 mt-4 w-80 bg-white/95 backdrop-blur-xl rounded-xl shadow-2xl border border-gold/30 overflow-hidden z-50">
+                        <div class="bg-gradient-to-r from-maroon to-maroon-dark text-white px-4 py-3 flex justify-between items-center">
+                            <span class="font-yatra tracking-wide">Updates</span>
+                            <button onclick="toggleNotif()" class="text-xl hover:text-gold transition">&times;</button>
                         </div>
-                        <ul id="notif-list" class="max-h-64 overflow-y-auto divide-y divide-gray-100">
+                        <ul id="notif-list" class="max-h-64 overflow-y-auto divide-y divide-gray-100/50">
                             <li class="p-4 text-sm text-gray-500">Loading...</li>
                         </ul>
                     </div>
                 </div>
-                <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl">☰</button>
+                <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl hover:text-gold transition">☰</button>
             </div>
         </nav>
 
-        <div id="navLinks" class="hidden lg:hidden bg-cream border-t border-gold/20 p-6 space-y-4 shadow-xl">
-            <a href="index.html" class="block font-medium">Home</a>
-            <a href="about.html" class="block font-medium">About</a>
-            <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
-            <a href="projects.html" class="block font-medium">Projects</a>
-            <a href="resume.html" class="block font-medium">Resume</a>
-            <a href="blog.html" class="block font-medium">Articles</a>
-            <a href="contact.html" class="block font-bold text-maroon">Contact</a>
+        <div id="navLinks" class="hidden lg:hidden bg-cream/95 backdrop-blur-md border-t border-gold/20 p-6 space-y-4 shadow-xl absolute w-full z-50">
+            <a href="index.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Home</a>
+            <a href="about.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">About</a>
+            <a href="pushtimarg.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Pushtimarg</a>
+            <a href="projects.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Projects</a>
+            <a href="resume.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Resume</a>
+            <a href="blog.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Articles</a>
+            <a href="contact.html" class="block font-yatra text-maroon pl-3 border-l-4 border-gold">Contact</a>
         </div>
     </header>
 
-    <main id="main-content" class="pt-28 pb-16 px-4">
+    <main id="main-content" class="pt-24 md:pt-32 pb-16 px-4">
+        
         <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-down">
-            <h1 class="font-yatra text-4xl md:text-5xl text-maroon mb-6">સંપર્ક કરો</h1>
-            <p class="max-w-2xl mx-auto text-lg text-slate-600 font-noto">
+            <div class="inline-block relative">
+                <h1 class="font-yatra text-4xl md:text-6xl text-maroon mb-2 relative z-10 drop-shadow-md">સંપર્ક કરો</h1>
+                <div class="absolute -bottom-2 left-0 w-full h-3 bg-gold/30 -z-0 skew-x-12"></div>
+            </div>
+            <p class="max-w-2xl mx-auto text-lg text-slate-600 font-noto mt-6 leading-relaxed">
                 ટેકનિકલ પ્રોજેક્ટ, ઇતિહાસ સંશોધન અથવા પુષ્ટિમાર્ગ અંગે ચર્ચા કરવા માટે આપ મારો સંપર્ક કરી શકો છો.
             </p>
         </div>
 
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
             
-            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border-t-8 border-maroon space-y-8" data-aos="fade-right">
-                <h3 class="font-yatra text-2xl text-maroon border-b-2 border-dashed border-gold pb-4 inline-block">📍 સંપર્ક માહિતી</h3>
+            <div class="glass-card p-8 md:p-12 rounded-3xl border-t-4 border-gold relative overflow-hidden" data-aos="fade-right">
+                 <div class="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-gold/10 to-transparent rounded-br-full"></div>
                 
-                <div class="space-y-6">
-                    <div class="flex items-start gap-4">
-                        <div class="text-2xl mt-1">🏠</div>
+                <h3 class="font-yatra text-2xl md:text-3xl text-maroon mb-8 flex items-center gap-3">
+                    <span class="text-3xl">📍</span> સંપર્ક માહિતી
+                </h3>
+                
+                <div class="space-y-8">
+                    <div class="flex items-start gap-5 group">
+                        <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center text-2xl group-hover:bg-maroon group-hover:text-white transition-colors">🏠</div>
                         <div>
-                            <span class="block font-bold text-maroon">સરનામું:</span>
+                            <span class="block font-bold text-maroon text-lg mb-1">સરનામું:</span>
                             <p class="text-slate-700 leading-relaxed font-noto">
                                 ચુંથાના મુવાડા, તાલુકો: ગોધર,<br>
                                 જીલ્લો: મહીસાગર, ગુજરાત - ૩૮૯૨૩૦
@@ -160,36 +179,38 @@ a, button, iframe, .nav-link, .social-link {
                         </div>
                     </div>
                     
-                    <div class="flex items-start gap-4">
-                        <div class="text-2xl mt-1">📧</div>
+                    <div class="flex items-start gap-5 group">
+                        <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center text-2xl group-hover:bg-maroon group-hover:text-white transition-colors">📧</div>
                         <div>
-                            <span class="block font-bold text-maroon">ઈમેલ:</span>
-                            <a href="mailto:bhargavsinh.bca@gmail.com" class="text-maroon font-bold hover:text-gold transition break-all">
+                            <span class="block font-bold text-maroon text-lg mb-1">ઈમેલ:</span>
+                            <a href="mailto:bhargavsinh.bca@gmail.com" class="text-slate-700 font-medium hover:text-gold-dark transition break-all border-b border-transparent hover:border-gold">
                                 bhargavsinh.bca@gmail.com
                             </a>
                         </div>
                     </div>
                     
-                    <div class="pt-6">
-                        <span class="block font-bold text-maroon mb-4">સોશિયલ મીડિયા:</span>
+                    <div class="pt-8 border-t border-gold/20">
+                        <span class="block font-bold text-maroon mb-6 text-lg">સોશિયલ મીડિયા:</span>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="flex items-center gap-3 p-3 bg-cream/50 border border-gold/20 rounded-xl hover:bg-maroon hover:text-white transition group">
-                                <span class="text-xl">💬</span> <span class="font-semibold">WhatsApp</span>
+                            <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="flex items-center gap-3 p-4 bg-white/50 border border-gold/20 rounded-xl hover:bg-green-600 hover:text-white hover:border-green-600 transition group shadow-sm">
+                                <span class="text-2xl group-hover:scale-110 transition">💬</span> <span class="font-semibold">WhatsApp</span>
                             </a>
-                            <a href="https://instagram.com/bs_pushtisoul" target="_blank" class="flex items-center gap-3 p-3 bg-cream/50 border border-gold/20 rounded-xl hover:bg-maroon hover:text-white transition group">
-                                <span class="text-xl">📸</span> <span class="font-semibold">Instagram</span>
+                            <a href="https://instagram.com/bs_pushtisoul" target="_blank" class="flex items-center gap-3 p-4 bg-white/50 border border-gold/20 rounded-xl hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white hover:border-transparent transition group shadow-sm">
+                                <span class="text-2xl group-hover:scale-110 transition">📸</span> <span class="font-semibold">Instagram</span>
                             </a>
-                            <a href="https://github.com/bhargavsinh" target="_blank" class="flex items-center gap-3 p-3 bg-cream/50 border border-gold/20 rounded-xl hover:bg-maroon hover:text-white transition group">
-                                <span class="text-xl">💻</span> <span class="font-semibold">GitHub</span>
+                            <a href="https://github.com/bhargavsinh" target="_blank" class="flex items-center gap-3 p-4 bg-white/50 border border-gold/20 rounded-xl hover:bg-gray-800 hover:text-white hover:border-gray-800 transition group shadow-sm">
+                                <span class="text-2xl group-hover:scale-110 transition">💻</span> <span class="font-semibold">GitHub</span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white p-4 md:p-8 rounded-3xl shadow-xl border-t-8 border-gold" data-aos="fade-left">
-                <h3 class="font-yatra text-2xl text-maroon text-center mb-8 block">📅 Appointment Request</h3>
-                <div class="rounded-2xl overflow-hidden border border-slate-100 shadow-inner">
+            <div class="glass-card p-4 md:p-8 rounded-3xl border-t-4 border-maroon" data-aos="fade-left">
+                <h3 class="font-yatra text-2xl md:text-3xl text-maroon text-center mb-8 flex items-center justify-center gap-3">
+                    <span>📅</span> Appointment Request
+                </h3>
+                <div class="rounded-2xl overflow-hidden border border-gold/20 shadow-inner bg-white">
                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1zE0D-SbtdWlD0wT6TEwJ4hxw7RinkhbxNPOBX2vygD4x3A/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" class="w-full">Loading…</iframe>
                 </div>
             </div>
@@ -197,19 +218,22 @@ a, button, iframe, .nav-link, .social-link {
         </div>
     </main>
 
-    <footer class="bg-maroon text-white pt-16 pb-8 text-center px-4 mt-20">
-        <div class="max-w-4xl mx-auto">
-            <a href="disclaimer.html" class="text-gold font-bold hover:underline mb-8 block">Legal Disclaimer</a>
+    <footer class="bg-maroon-dark text-white pt-16 md:pt-20 pb-8 text-center px-4 mt-20 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gold via-yellow-200 to-gold"></div>
+        <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-maroon-dark rotate-45 border-4 border-gold"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <a href="disclaimer.html" class="text-gold/80 hover:text-white font-playfair font-bold hover:underline mb-10 block tracking-widest text-sm">LEGAL DISCLAIMER</a>
             
-            <div class="overflow-hidden border-y border-white/10 py-4 mb-8">
-                <div class="animate-marquee whitespace-nowrap text-gold font-medium">
-                    Designed by Sisodiya Bhargavsinh | © 2026 | Maintaining Heritage with Technology
+            <div class="overflow-hidden border-y border-white/10 py-6 mb-8 bg-white/5 backdrop-blur-sm">
+                <div class="animate-marquee whitespace-nowrap text-gold font-medium font-playfair text-lg">
+                    Designed by Sisodiya Bhargavsinh  ✦  © 2026  ✦  Maintaining Heritage with Technology
                 </div>
             </div>
 
-            <div class="bg-black/20 inline-block p-4 rounded-xl border border-white/5">
-                <p class="text-xs uppercase tracking-widest text-white/60 mb-2">Visitor Count</p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90">
+            <div class="bg-black/40 inline-block p-5 rounded-2xl border border-gold/20 shadow-xl backdrop-blur-md hover:border-gold/50 transition">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-white/50 mb-3 font-inter">Visitor Count</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 grayscale hover:grayscale-0 transition">
             </div>
         </div>
     </footer>
@@ -218,7 +242,7 @@ a, button, iframe, .nav-link, .social-link {
     <script>
         // Init Scroll Animations
         AOS.init({
-            duration: 1000,
+            duration: 1200,
             once: true,
             offset: 100
         });
@@ -246,11 +270,11 @@ a, button, iframe, .nav-link, .social-link {
                 data.forEach(item => {
                     if (item.new) hasNew = true;
                     const li = document.createElement('li');
-                    li.className = "p-4 hover:bg-gray-50 transition cursor-pointer";
+                    li.className = "p-4 hover:bg-gold/5 transition cursor-pointer text-left border-l-2 border-transparent hover:border-maroon";
                     li.innerHTML = `
-                        <small class="text-gray-400 block mb-1 text-xs">${item.date}</small>
-                        <a href="${item.link}" class="text-maroon font-bold text-sm block">
-                            ${item.new ? '<span class="bg-red-100 text-red-600 px-2 py-0.5 rounded text-[10px] mr-1">NEW</span>' : ''}${item.text}
+                        <small class="text-gray-400 block mb-1 text-xs font-mono">${item.date}</small>
+                        <a href="${item.link}" class="text-maroon font-bold text-sm block font-noto">
+                            ${item.new ? '<span class="bg-red-600 text-white px-2 py-0.5 rounded text-[10px] mr-2 shadow-sm">NEW</span>' : ''}${item.text}
                         </a>`;
                     list.appendChild(li);
                 });
@@ -272,7 +296,7 @@ a, button, iframe, .nav-link, .social-link {
         document.addEventListener('click', (e) => {
             const container = document.querySelector('.relative');
             const box = document.getElementById('notif-box');
-            if (container && !container.contains(e.target)) box.classList.remove('show');
+            if (container && !container.contains(e.target) && box && box.classList.contains('show')) box.classList.remove('show');
         });
 
         document.addEventListener('contextmenu', e => e.preventDefault());
@@ -286,7 +310,6 @@ a, button, iframe, .nav-link, .social-link {
         }
     </script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 <script>
     // 1. Right-Click બંધ કરવા માટે
     document.addEventListener('contextmenu', function(e) {
