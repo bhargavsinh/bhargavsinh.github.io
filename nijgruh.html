@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="gu" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nijgruh | Private Royal Chamber</title>
 
+<title>Nijgruh | Inner Chamber</title>
 <meta name="robots" content="noindex, nofollow">
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -13,11 +13,12 @@
 
 <script>
 tailwind.config = {
-theme:{
-extend:{
-colors:{
-maroon:{DEFAULT:'#7b1c1c',dark:'#4a0404'},
-gold:{DEFAULT:'#daa520',light:'#ffd700'}
+theme: {
+extend: {
+colors: {
+maroon: { DEFAULT:'#7b1c1c', dark:'#4a0404' },
+gold: { DEFAULT:'#daa520', light:'#ffd700' },
+cream:'#fff8ec'
 },
 fontFamily:{
 yatra:['Yatra One','cursive'],
@@ -32,126 +33,79 @@ inter:['Inter','sans-serif']
 <style>
 body{
 margin:0;
-overflow:hidden;
-background:black;
+background:radial-gradient(circle at center,#fff8ec 0%,#ffe4c4 60%,#f5deb3 100%);
+overflow-x:hidden;
 }
 
-/* Golden ambient glow */
+/* Soft golden glow pulse */
 body::before{
 content:"";
 position:fixed;
 inset:0;
-background:radial-gradient(circle at center,#daa52055 0%,black 70%);
-animation:pulse 4s infinite alternate;
+background:radial-gradient(circle at center,#daa52030 0%,transparent 70%);
+animation:pulse 5s infinite alternate;
 z-index:-1;
 }
 
 @keyframes pulse{
-from{opacity:.6;}
+from{opacity:.5;}
 to{opacity:1;}
 }
 
-/* Royal Door */
-.door{
-position:fixed;
-top:0;
-width:50%;
-height:100%;
-background:linear-gradient(145deg,#4a0404,#7b1c1c);
-z-index:50;
-transition:transform 2.5s ease-in-out;
-}
-
-.left-door{ left:0; border-right:3px solid #daa520; }
-.right-door{ right:0; border-left:3px solid #daa520; }
-
-.open-left{ transform:translateX(-100%); }
-.open-right{ transform:translateX(100%); }
-
-/* Main Content */
-#mainContent{
+/* Entrance animation */
+.fade-in{
 opacity:0;
-transform:scale(.95);
-transition:opacity 2s ease, transform 2s ease;
+transform:translateY(30px) scale(.97);
+animation:fadeUp 1.8s ease forwards;
 }
 
-.show-content{
-opacity:1 !important;
-transform:scale(1) !important;
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+/* Decorative glow circle */
+.glow-ring{
+box-shadow:0 0 40px rgba(218,165,32,0.4);
 }
 </style>
+
 </head>
 
-<body class="font-inter text-white flex items-center justify-center">
+<body class="font-inter text-slate-800 flex items-center justify-center min-h-screen px-6">
 
-<!-- Royal Doors -->
-<div id="leftDoor" class="door left-door"></div>
-<div id="rightDoor" class="door right-door"></div>
+<div class="text-center max-w-3xl fade-in">
 
-<!-- Main Content -->
-<div id="mainContent" class="text-center px-6 max-w-2xl">
-
-<h1 class="font-yatra text-5xl text-gold mb-6 tracking-wide">
+<h1 class="font-yatra text-5xl md:text-6xl text-maroon mb-6 tracking-wide">
 નિજ ગૃહ
 </h1>
 
-<p class="font-playfair text-xl mb-4">
+<div class="w-24 h-1 bg-gold mx-auto mb-8 rounded-full glow-ring"></div>
+
+<p class="font-playfair text-xl md:text-2xl text-maroon mb-6">
 અંતરંગ સેવા ક્ષેત્ર
 </p>
 
-<div class="w-20 h-1 bg-gold mx-auto my-6 rounded-full"></div>
+<div class="bg-white/60 backdrop-blur-xl border border-white/80 shadow-xl rounded-3xl p-8 md:p-10">
 
-<div id="loginBox" class="mt-8">
-<input id="passwordInput" type="password"
-placeholder="Enter Access Code"
-class="px-4 py-3 rounded-lg text-black w-64 text-center outline-none">
-
+<p class="leading-relaxed text-slate-700 text-base md:text-lg">
+આ વિભાગ નિજ પરંપરા, ગૃહ સેવા નિયમાવલી, કુટુંબ આધ્યાત્મિક ચર્ચા અને અંતરંગ દસ્તાવેજો માટે અનામત છે.
 <br><br>
-
-<button onclick="checkPassword()"
-class="bg-gold text-maroon font-bold px-6 py-2 rounded-lg hover:bg-yellow-400 transition">
-Enter
-</button>
-</div>
-
-<div id="secretContent" class="hidden mt-8 text-slate-200 leading-relaxed">
-<p>
-આ વિભાગ નિજ પરંપરા, ગૃહ સેવા નિયમાવલી અને કુટુંબ આધ્યાત્મિક ચર્ચા માટે અનામત છે.
+અહીંની માહિતી શ્રદ્ધા અને મર્યાદા સાથે જ જોવી.
 </p>
 
-<br>
+</div>
 
+<div class="mt-10">
 <a href="index.html"
-class="text-gold underline hover:text-yellow-300 transition">
+class="text-maroon font-bold border-b-2 border-gold hover:text-gold-dark transition">
 ← Home પર પાછા જાઓ
 </a>
 </div>
 
 </div>
-
-<script>
-function openDoors(){
-document.getElementById('leftDoor').classList.add('open-left');
-document.getElementById('rightDoor').classList.add('open-right');
-
-setTimeout(()=>{
-document.getElementById('mainContent').classList.add('show-content');
-},1200);
-}
-
-function checkPassword(){
-const pass="1088";
-const input=document.getElementById("passwordInput").value;
-
-if(input===pass){
-document.getElementById("loginBox").classList.add("hidden");
-document.getElementById("secretContent").classList.remove("hidden");
-openDoors();
-}else{
-alert("Access Denied");
-}
-}
-</script>
 
 </body>
 </html>
