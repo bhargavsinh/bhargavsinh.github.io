@@ -3,90 +3,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Nij Gruh | Private</title>
+<title>Nijgruh | Private Royal Chamber</title>
 
 <meta name="robots" content="noindex, nofollow">
 
-<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+theme:{
+extend:{
+colors:{
+maroon:{DEFAULT:'#7b1c1c',dark:'#4a0404'},
+gold:{DEFAULT:'#daa520',light:'#ffd700'}
+},
+fontFamily:{
+yatra:['Yatra One','cursive'],
+playfair:['Playfair Display','serif'],
+inter:['Inter','sans-serif']
+}
+}
+}
+}
+</script>
 
 <style>
 body{
-    background: linear-gradient(135deg,#4a0404,#7b1c1c,#000);
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family: serif;
+margin:0;
+overflow:hidden;
+background:black;
 }
-.glass{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(255,215,0,0.2);
+
+/* Golden ambient glow */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:radial-gradient(circle at center,#daa52055 0%,black 70%);
+animation:pulse 4s infinite alternate;
+z-index:-1;
+}
+
+@keyframes pulse{
+from{opacity:.6;}
+to{opacity:1;}
+}
+
+/* Royal Door */
+.door{
+position:fixed;
+top:0;
+width:50%;
+height:100%;
+background:linear-gradient(145deg,#4a0404,#7b1c1c);
+z-index:50;
+transition:transform 2.5s ease-in-out;
+}
+
+.left-door{ left:0; border-right:3px solid #daa520; }
+.right-door{ right:0; border-left:3px solid #daa520; }
+
+.open-left{ transform:translateX(-100%); }
+.open-right{ transform:translateX(100%); }
+
+/* Main Content */
+#mainContent{
+opacity:0;
+transform:scale(.95);
+transition:opacity 2s ease, transform 2s ease;
+}
+
+.show-content{
+opacity:1 !important;
+transform:scale(1) !important;
 }
 </style>
 </head>
 
-<body>
+<body class="font-inter text-white flex items-center justify-center">
 
-<div id="loginBox" class="glass p-10 rounded-3xl text-center text-white max-w-md w-full shadow-2xl">
+<!-- Royal Doors -->
+<div id="leftDoor" class="door left-door"></div>
+<div id="rightDoor" class="door right-door"></div>
 
-<h1 class="text-3xl mb-6 text-yellow-400 tracking-widest">
-    निजगृह प्रवेश
+<!-- Main Content -->
+<div id="mainContent" class="text-center px-6 max-w-2xl">
+
+<h1 class="font-yatra text-5xl text-gold mb-6 tracking-wide">
+નિજ ગૃહ
 </h1>
 
-<p class="text-sm mb-6 opacity-80">
-    Enter Mantra Passphrase
+<p class="font-playfair text-xl mb-4">
+અંતરંગ સેવા ક્ષેત્ર
 </p>
 
-<input type="password" id="passInput"
-class="w-full p-3 rounded-xl bg-black/40 border border-yellow-500 text-center outline-none mb-4">
+<div class="w-20 h-1 bg-gold mx-auto my-6 rounded-full"></div>
 
-<button onclick="checkPass()"
-class="bg-yellow-600 hover:bg-yellow-500 px-6 py-2 rounded-xl font-bold tracking-wide transition">
-    प्रवेश
-</button>
-
-<p id="errorMsg" class="text-red-400 mt-4 hidden">Incorrect Mantra</p>
-
-</div>
-
-<div id="contentBox" class="hidden text-white text-center max-w-4xl px-6">
-
-<h2 class="text-4xl text-yellow-400 mb-6">श्रीदेवदमनप्रभु</h2>
-
-<p class="mb-6 leading-relaxed">
-આ નિજગૃહ વિભાગ માત્ર અંતરંગ અધ્યયન અને ગૃહસેવા સંબંધિત દસ્તાવેજો માટે છે.
-</p>
-
-<div class="glass p-6 rounded-2xl">
-    <h3 class="text-2xl text-yellow-300 mb-3">Private Resources</h3>
-    <ul class="space-y-3">
-        <li><a href="#" class="hover:text-yellow-400">📜 Nij Seva Notes</a></li>
-        <li><a href="#" class="hover:text-yellow-400">🪔 Gruh Maryada Draft</a></li>
-        <li><a href="#" class="hover:text-yellow-400">📖 Research Manuscripts</a></li>
-    </ul>
-</div>
+<div id="loginBox" class="mt-8">
+<input id="passwordInput" type="password"
+placeholder="Enter Access Code"
+class="px-4 py-3 rounded-lg text-black w-64 text-center outline-none">
 
 <br><br>
-<a href="index.html" class="text-yellow-500 hover:underline">Return</a>
+
+<button onclick="checkPassword()"
+class="bg-gold text-maroon font-bold px-6 py-2 rounded-lg hover:bg-yellow-400 transition">
+Enter
+</button>
+</div>
+
+<div id="secretContent" class="hidden mt-8 text-slate-200 leading-relaxed">
+<p>
+આ વિભાગ નિજ પરંપરા, ગૃહ સેવા નિયમાવલી અને કુટુંબ આધ્યાત્મિક ચર્ચા માટે અનામત છે.
+</p>
+
+<br>
+
+<a href="index.html"
+class="text-gold underline hover:text-yellow-300 transition">
+← Home પર પાછા જાઓ
+</a>
+</div>
 
 </div>
 
 <script>
+function openDoors(){
+document.getElementById('leftDoor').classList.add('open-left');
+document.getElementById('rightDoor').classList.add('open-right');
 
-function checkPass(){
-    const input = document.getElementById('passInput').value;
-    const correct = "guhyaseva";  // CHANGE THIS
-
-    if(input === correct){
-        document.getElementById('loginBox').classList.add('hidden');
-        document.getElementById('contentBox').classList.remove('hidden');
-    } else {
-        document.getElementById('errorMsg').classList.remove('hidden');
-    }
+setTimeout(()=>{
+document.getElementById('mainContent').classList.add('show-content');
+},1200);
 }
 
+function checkPassword(){
+const pass="1088";
+const input=document.getElementById("passwordInput").value;
+
+if(input===pass){
+document.getElementById("loginBox").classList.add("hidden");
+document.getElementById("secretContent").classList.remove("hidden");
+openDoors();
+}else{
+alert("Access Denied");
+}
+}
 </script>
 
 </body>
