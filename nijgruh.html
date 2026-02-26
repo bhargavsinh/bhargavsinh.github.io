@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nij Gruh | Private</title>
+
+<meta name="robots" content="noindex, nofollow">
+
+<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+
+<style>
+body{
+    background: linear-gradient(135deg,#4a0404,#7b1c1c,#000);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family: serif;
+}
+.glass{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,215,0,0.2);
+}
+</style>
+</head>
+
+<body>
+
+<div id="loginBox" class="glass p-10 rounded-3xl text-center text-white max-w-md w-full shadow-2xl">
+
+<h1 class="text-3xl mb-6 text-yellow-400 tracking-widest">
+    निजगृह प्रवेश
+</h1>
+
+<p class="text-sm mb-6 opacity-80">
+    Enter Mantra Passphrase
+</p>
+
+<input type="password" id="passInput"
+class="w-full p-3 rounded-xl bg-black/40 border border-yellow-500 text-center outline-none mb-4">
+
+<button onclick="checkPass()"
+class="bg-yellow-600 hover:bg-yellow-500 px-6 py-2 rounded-xl font-bold tracking-wide transition">
+    प्रवेश
+</button>
+
+<p id="errorMsg" class="text-red-400 mt-4 hidden">Incorrect Mantra</p>
+
+</div>
+
+<div id="contentBox" class="hidden text-white text-center max-w-4xl px-6">
+
+<h2 class="text-4xl text-yellow-400 mb-6">श्रीदेवदमनप्रभु</h2>
+
+<p class="mb-6 leading-relaxed">
+આ નિજગૃહ વિભાગ માત્ર અંતરંગ અધ્યયન અને ગૃહસેવા સંબંધિત દસ્તાવેજો માટે છે.
+</p>
+
+<div class="glass p-6 rounded-2xl">
+    <h3 class="text-2xl text-yellow-300 mb-3">Private Resources</h3>
+    <ul class="space-y-3">
+        <li><a href="#" class="hover:text-yellow-400">📜 Nij Seva Notes</a></li>
+        <li><a href="#" class="hover:text-yellow-400">🪔 Gruh Maryada Draft</a></li>
+        <li><a href="#" class="hover:text-yellow-400">📖 Research Manuscripts</a></li>
+    </ul>
+</div>
+
+<br><br>
+<a href="index.html" class="text-yellow-500 hover:underline">Return</a>
+
+</div>
+
+<script>
+
+function checkPass(){
+    const input = document.getElementById('passInput').value;
+    const correct = "guhyaseva";  // CHANGE THIS
+
+    if(input === correct){
+        document.getElementById('loginBox').classList.add('hidden');
+        document.getElementById('contentBox').classList.remove('hidden');
+    } else {
+        document.getElementById('errorMsg').classList.remove('hidden');
+    }
+}
+
+</script>
+
+</body>
+</html>
