@@ -661,43 +661,42 @@ opacity:0.8;
         }
     };
 
-    // 'હા' બટન માટેનું ફંક્શન
-    function acceptDisclaimer() {
-        var modal = document.getElementById('disclaimerModal');
-        if (modal) {
-            modal.style.display = 'none'; // મોડલ બંધ થશે
-       
-       // Line 669 માં સુધાર કરો
+    // પેજ લોડ થતાં મોડલ બતાવો
+window.onload = function() {
+    var modal = document.getElementById('disclaimerModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.classList.add('modal-open');
+    }
+};
+
+// ✅ એક જ સાચો acceptDisclaimer ફંક્શન
 function acceptDisclaimer() {
     var modal = document.getElementById('disclaimerModal');
     if (modal) {
         modal.style.display = 'none';
         document.body.classList.remove('modal-open');
-        document.body.style.overflow = 'auto'; // ✅ Explicit reset
+        document.body.style.overflow = 'auto';
+        localStorage.setItem('articleConsent', 'true'); // સેવ કર
     }
 }
 
-// 'ના' બટન માટેનું ફંક્શન
-    function rejectDisclaimer() {
-        window.location.href = "index.html"; // હોમપેજ પર રીડાયરેક્ટ થશે
-    }
-</script>
-<script>
-  const checkbox = document.getElementById('agreeCheckbox');
-  const acceptBtn = document.getElementById('btnAccept');
+// ✅ એક જ સાચો rejectDisclaimer ફંક્શન
+function rejectDisclaimer() {
+    window.location.href = "index.html"; // હોમ પર જાવો
+}
 
-  checkbox.addEventListener('change', function() {
+// Checkbox logic (આ તો બરાબર છે)
+const checkbox = document.getElementById('agreeCheckbox');
+const acceptBtn = document.getElementById('btnAccept');
+
+checkbox.addEventListener('change', function() {
     acceptBtn.disabled = !this.checked;
-  });
+});
 
-  acceptBtn.addEventListener('click', function() {
-    localStorage.setItem('articleConsent', 'true');
-    document.getElementById('disclaimerModal').style.display = 'none';
-  });
-
-  function rejectDisclaimer() {
-    window.location.href = "index.html";
-  }
+acceptBtn.addEventListener('click', function() {
+    acceptDisclaimer(); // અગાઉ વાળો ફંક્શન કોલ કરો
+});
 </script>
 </body>
 </html>
