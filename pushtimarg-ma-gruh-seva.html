@@ -666,11 +666,18 @@ opacity:0.8;
         var modal = document.getElementById('disclaimerModal');
         if (modal) {
             modal.style.display = 'none'; // મોડલ બંધ થશે
-            document.body.classList.remove('modal-open'); // સ્ક્ર્રોલિંગ ચાલુ થશે
-        }
+       
+       // Line 669 માં સુધાર કરો
+function acceptDisclaimer() {
+    var modal = document.getElementById('disclaimerModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = 'auto'; // ✅ Explicit reset
     }
+}
 
-    // 'ના' બટન માટેનું ફંક્શન
+// 'ના' બટન માટેનું ફંક્શન
     function rejectDisclaimer() {
         window.location.href = "index.html"; // હોમપેજ પર રીડાયરેક્ટ થશે
     }
