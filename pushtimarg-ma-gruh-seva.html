@@ -675,6 +675,22 @@ opacity:0.8;
         window.location.href = "index.html"; // હોમપેજ પર રીડાયરેક્ટ થશે
     }
 </script>
+<script>
+  const checkbox = document.getElementById('agreeCheckbox');
+  const acceptBtn = document.getElementById('btnAccept');
 
+  checkbox.addEventListener('change', function() {
+    acceptBtn.disabled = !this.checked;
+  });
+
+  acceptBtn.addEventListener('click', function() {
+    localStorage.setItem('articleConsent', 'true');
+    document.getElementById('disclaimerModal').style.display = 'none';
+  });
+
+  function rejectDisclaimer() {
+    window.location.href = "index.html";
+  }
+</script>
 </body>
 </html>
