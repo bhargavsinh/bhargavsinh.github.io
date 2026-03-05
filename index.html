@@ -1,57 +1,23 @@
 <!DOCTYPE html>
 <html lang="gu" class="scroll-smooth">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-K3HRTXL9');</script>
-<!-- End Google Tag Manager -->
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Sisodiya Bhargavsinh</title>
+    <title>Home | Sisodiya Bhargavsinh V5.0</title>
     
-    <meta name="google-site-verification" content="_E7Z6G0NoRhB5vJAsVj7XEiR4MKyb-GJFycV2dpdsPU" />
-    <meta name="google-site-verification" content="google424fbe164e6bb481" />
-    <meta name="description" content="Official website of Sisodiya Bhargavsinh - Descendant of Maharana Pratap. Research on Pushtimarg, Gruh Seva, and Genealogy history.">
-    <meta name="keywords" content="Bhargavsinh Sisodiya, Pushtimarg, Gruh Seva, Maharana Pratap Genealogy, Rajput History, Purawat Sisodiya, BCA Student">
-    <meta name="author" content="Sisodiya Bhargavsinh">
-    <meta name="robots" content="noai, noimageai">
-    <link rel="canonical" href="https://bhargavsinh.github.io/" />
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="icon" type="image/webp" href="bhargavsinh.webp">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        maroon: {
-                            DEFAULT: '#7b1c1c',
-                            dark: '#4a0404',
-                            light: '#a52a2a'
-                        },
-                        gold: {
-                            DEFAULT: '#daa520',
-                            light: '#ffd700',
-                            dark: '#b8860b'
-                        },
-                        cream: '#fff8ec',
-                    },
-                    fontFamily: {
-                        yatra: ['Yatra One', 'cursive'],
-                        playfair: ['Playfair Display', 'serif'],
-                        noto: ['Noto Sans', 'sans-serif'],
-                        inter: ['Inter', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'royal-pattern': "radial-gradient(circle at 50% 50%, #fff8ec 0%, #ffe4c4 100%)",
-                        'gold-gradient': "linear-gradient(135deg, #b8860b 0%, #ffd700 50%, #b8860b 100%)",
+                        royal: '#0a0a0a',
+                        gold: { DEFAULT: '#daa520', premium: '#f3cf7a', glow: 'rgba(218, 165, 32, 0.4)' },
+                        heritage: '#7b1c1c'
                     }
                 }
             }
@@ -59,347 +25,174 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </script>
 
     <style>
-        /* Security Styles */
-        body {
-            -webkit-user-select: none;
-            -ms-user-select: none;
+        /* 2026 Modern Security & Aesthetic */
+        body { 
+            cursor: none; /* We will use a custom cursor */
+            background: #050505; 
+            color: #fff;
             user-select: none;
-            overflow-x: hidden; /* Prevent horizontal scroll on mobile */
-        }
-        a, button, iframe, .nav-link, .social-link {
-            pointer-events: auto !important;
+            -webkit-user-select: none;
         }
 
-        /* Artistic Styles */
-        .royal-bg {
-            background-color: #fff8ec;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(27,96%,90%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(25,95%,85%,1) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(27,96%,90%,1) 0, transparent 50%);
-            background-attachment: fixed;
+        /* Custom Cursor */
+        #cursor {
+            width: 20px; height: 20px;
+            background: #daa520;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
         }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+        /* Mesh Background */
+        .v5-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a0a0a 0%, #050505 100%);
+            z-index: -1;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 32px 0 rgba(123, 28, 28, 0.1);
+        .premium-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #fff8ec; }
-        ::-webkit-scrollbar-thumb { 
-            background: linear-gradient(to bottom, #7b1c1c, #daa520); 
-            border-radius: 10px; 
-            border: 2px solid #fff8ec;
+        .premium-card:hover {
+            border-color: #daa520;
+            box-shadow: 0 0 30px rgba(218, 165, 32, 0.15);
+            transform: translateY(-10px) scale(1.02);
         }
 
-        .nav-link-ltr { position: relative; }
-        .nav-link-ltr::after {
-            content: ''; position: absolute; width: 0; height: 2px;
-            display: block; margin-top: 2px; right: 0; background: #daa520;
-            transition: width .3s ease;
-        }
-        .nav-link-ltr:hover::after { width: 100%; left: 0; background: #daa520; }
-        
-        #notif-box { display: none; }
-        #notif-box.show { display: block; animation: slideIn 0.3s ease-out; }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .text-glow { text-shadow: 0 0 15px rgba(218, 165, 32, 0.5); }
 
-        /* Image Glow */
-        .profile-glow {
-            box-shadow: 0 0 30px rgba(218, 165, 32, 0.3);
-        }
+        /* Smooth Scroll Bar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #daa520; border-radius: 10px; }
     </style>
 </head>
+<body class="font-inter">
 
-<body class="font-inter text-slate-800 royal-bg min-h-screen selection:bg-gold selection:text-maroon">
+    <div id="cursor"></div>
+    <div class="v5-bg"></div>
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3HRTXL9"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-maroon focus:text-white">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
-
-    <header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
-            <div class="flex items-center gap-2 md:gap-3">
-                <img src="logo.png" alt="Logo" class="h-10 md:h-14 w-auto drop-shadow-md hover:scale-105 transition duration-300">
-                <div class="flex flex-col">
-                    <span class="font-yatra text-maroon text-lg md:text-2xl leading-none tracking-wide">Sisodiya Bhargavsinh</span>
-                    <span class="hidden sm:block text-[10px] uppercase tracking-[0.2em] text-gold-dark font-bold">Heritage & Tech</span>
-                </div>
+    <header class="fixed top-0 w-full z-50 px-6 py-4">
+        <nav class="max-w-7xl mx-auto premium-card rounded-full px-8 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" class="h-10 w-auto" alt="Logo">
+                <span class="font-yatra text-gold text-xl tracking-tighter">Sisodiya Bhargavsinh</span>
             </div>
-
-            <ul class="hidden lg:flex items-center gap-6 xl:gap-8 font-playfair font-bold text-sm uppercase tracking-widest text-slate-700">
-                <li><a href="index.html" class="nav-link-ltr text-maroon">Home</a></li>
-                <li><a href="about.html" class="nav-link-ltr hover:text-maroon transition">About</a></li>
-                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-maroon transition">Pushtimarg</a></li>
-                <li><a href="projects.html" class="nav-link-ltr hover:text-maroon transition">Projects</a></li>
-                <li><a href="resume.html" class="nav-link-ltr hover:text-maroon transition">Resume</a></li>
-                <li><a href="blog.html" class="nav-link-ltr hover:text-maroon transition">Articles</a></li>
-                <li><a href="contact.html" class="nav-link-ltr hover:text-maroon transition">Contact</a></li>
+            <ul class="hidden lg:flex gap-8 text-xs font-bold uppercase tracking-widest">
+                <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
+                <li><a href="about.html" class="hover:text-gold transition">About</a></li>
+                <li><a href="pushtimarg.html" class="hover:text-gold transition">Pushtimarg</a></li>
+                <li><a href="blog.html" class="hover:text-gold transition">Articles</a></li>
+                <li><a href="contact.html" class="bg-gold text-black px-4 py-2 rounded-full hover:bg-white transition">Contact</a></li>
             </ul>
-
-            <div class="flex items-center gap-3 md:gap-4">
-                <div class="relative">
-                    <button onclick="toggleNotif()" class="p-2 hover:bg-gold/20 rounded-full transition relative group">
-                        <span class="text-xl md:text-2xl group-hover:scale-110 transition display-block">🔔</span>
-                        <span id="notif-badge" class="absolute top-2 right-2 w-2.5 h-2.5 bg-red-600 border-2 border-white rounded-full hidden animate-ping"></span>
-                    </button>
-                    <div id="notif-box" class="absolute right-0 mt-4 w-[280px] sm:w-80 bg-white/95 backdrop-blur-xl rounded-xl shadow-2xl border border-gold/30 overflow-hidden z-50">
-                        <div class="bg-gradient-to-r from-maroon to-maroon-dark text-white px-4 py-3 flex justify-between items-center">
-                            <span class="font-yatra tracking-wide">Updates</span>
-                            <button onclick="toggleNotif()" class="text-xl hover:text-gold transition">&times;</button>
-                        </div>
-                        <ul id="notif-list" class="max-h-60 overflow-y-auto divide-y divide-gray-100/50">
-                            <li class="p-4 text-sm text-gray-500">Loading...</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <button onclick="toggleMenu()" class="lg:hidden text-maroon text-2xl md:text-3xl hover:text-gold transition p-1">☰</button>
-            </div>
         </nav>
-
-        <div id="navLinks" class="hidden lg:hidden bg-cream/98 backdrop-blur-md border-t border-gold/20 p-6 space-y-4 shadow-xl absolute w-full left-0 top-16 md:top-20">
-            <a href="index.html" class="block font-yatra text-maroon text-lg border-l-4 border-gold pl-3">Home</a>
-            <a href="about.html" class="block font-medium hover:text-maroon pl-4 border-l-4 border-transparent hover:border-maroon/30 transition">About</a>
-            <a href="pushtimarg.html" class="block font-medium hover:text-maroon pl-4 border-l-4 border-transparent hover:border-maroon/30 transition">Pushtimarg</a>
-            <a href="projects.html" class="block font-medium hover:text-maroon pl-4 border-l-4 border-transparent hover:border-maroon/30 transition">Projects</a>
-            <a href="resume.html" class="block font-medium hover:text-maroon pl-4 border-l-4 border-transparent hover:border-maroon/30 transition">Resume</a>
-            <a href="blog.html" class="block font-medium hover:text-maroon pl-4 border-l-4 border-transparent hover:border-maroon/30 transition">Articles</a>
-            <a href="contact.html" class="block font-medium hover:text-maroon pl-4 border-l-4 border-transparent hover:border-maroon/30 transition">Contact</a>
-        </div>
     </header>
 
-    <main id="main-content" class="pt-24 min-h-screen flex flex-col justify-center overflow-hidden">
-        <section class="max-w-5xl mx-auto px-4 py-8 md:py-12 text-center relative">
-            
-            <div class="absolute top-10 left-10 w-24 h-24 border-t-4 border-l-4 border-gold/30 rounded-tl-3xl hidden lg:block" data-aos="fade-right"></div>
-            <div class="absolute bottom-10 right-10 w-24 h-24 border-b-4 border-r-4 border-gold/30 rounded-br-3xl hidden lg:block" data-aos="fade-left"></div>
-
-            <div class="mb-6 overflow-hidden">
-                <p class="text-maroon font-yatra text-base md:text-lg tracking-wider animate-pulse flex items-center justify-center gap-2">
-                    <span class="text-gold">✦</span>જય શ્રીકૃષ્ણ 🙏 આપનું સ્વાગત છે<span class="text-gold">✦</span>
-                </p>
-            </div>
-
-            <div class="relative inline-block group" data-aos="zoom-in" data-aos-duration="1200">
-                <div class="absolute inset-0 bg-gold rounded-full blur opacity-40 group-hover:opacity-60 transition duration-500"></div>
-                <img src="bhargavsinh.webp" alt="ભાર્ગવસિંહ સિસોદિયા" class="relative z-10 w-40 h-40 md:w-56 md:h-56 rounded-full border-[4px] md:border-[6px] border-white shadow-2xl mx-auto object-cover transform group-hover:scale-105 transition duration-500 profile-glow ring-2 md:ring-4 ring-gold/50">
+    <main class="pt-32">
+        <section class="max-w-6xl mx-auto px-6 text-center">
+            <div class="hero-reveal">
+                <p class="font-yatra text-gold-premium tracking-[0.3em] mb-4 opacity-80">✦ જય શ્રીકૃષ્ણ 🙏 આપનું સ્વાગત છે ✦</p>
                 
-                <div class="absolute bottom-1 right-2 md:bottom-2 md:right-4 z-20 bg-white rounded-full p-1 md:p-1.5 shadow-lg border border-gray-100 hover:scale-110 transition">
-                    <svg width="24" height="24" md:width="28" md:height="28" viewBox="0 0 24 24" fill="none" class="w-6 h-6 md:w-7 md:h-7">
-                        <path d="M12.0002 2.05945C12.7836 2.05945 13.5226 2.3751 14.0722 2.9248L14.7354 3.58795C15.0097 3.86225 15.3817 4.0163 15.7695 4.0163H16.7072C17.8105 4.0163 18.705 4.9108 18.705 6.0141V6.9518C18.705 7.3396 18.859 7.71155 19.1333 7.9859L19.7965 8.6491C20.3462 9.19865 20.6618 9.93775 20.6618 10.7212V13.279C20.6618 14.0624 20.3462 14.8015 19.7965 15.3511L19.1333 16.0142C18.859 16.2886 18.705 16.6605 18.705 17.0484V17.9861C18.705 19.0894 17.8105 19.9839 16.7072 19.9839H15.7695C15.3817 19.9839 15.0097 20.1379 14.7354 20.4122L14.0722 21.0754C13.5226 21.625 12.7836 21.9407 12.0002 21.9407C11.2168 21.9407 10.4777 21.625 9.92817 21.0754L9.26498 20.4122C8.99068 20.1379 8.61873 19.9839 8.23093 19.9839H7.29323C6.18993 19.9839 5.29543 19.0894 5.29543 17.9861V17.0484C5.29543 16.6605 5.14138 16.2886 4.86708 16.0142L4.20388 15.3511C3.65423 14.8015 3.33862 14.0624 3.33862 13.279V10.7212C3.33862 9.93775 3.65423 9.19865 4.20388 8.6491L4.86708 7.9859C5.14138 7.71155 5.29543 7.3396 5.29543 6.9518V6.0141C5.29543 4.9108 6.18993 4.0163 7.29323 4.0163H8.23093C8.61873 4.0163 8.99068 3.86225 9.26498 3.58795L9.92817 2.9248C10.4777 2.3751 11.2168 2.05945 12.0002 2.05945Z" fill="#3897F0"/>
-                        <path d="M10.2096 15.6191C9.99887 15.6191 9.78817 15.5386 9.62757 15.378L7.22127 12.9717C6.90007 12.6505 6.90007 12.1298 7.22127 11.8086C7.54247 11.4874 8.06317 11.4874 8.38437 11.8086L10.2096 13.6338L15.6159 8.22749C15.9371 7.90629 16.4578 7.90629 16.779 8.22749C17.1002 8.54869 17.1002 9.06939 16.779 9.39059L10.7916 15.378C10.631 15.5386 10.4203 15.6191 10.2096 15.6191Z" fill="white"/>
-                    </svg>
+                <div class="relative inline-block mb-8">
+                    <div class="absolute inset-0 bg-gold blur-[60px] opacity-20 animate-pulse"></div>
+                    <img src="bhargavsinh.webp" class="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-2 border-gold/50 object-cover shadow-2xl" alt="Bhargavsinh">
+                </div>
+
+                <h1 id="hero-title" class="font-yatra text-5xl md:text-8xl text-white mb-6 leading-tight">
+                    SISODIYA BHARGAVSINH
+                </h1>
+
+                <div class="flex flex-wrap justify-center gap-4 text-sm font-bold tracking-widest text-gold/70 mb-12 uppercase">
+                    <span>🙏 શ્રીકૃષ્ણદાસાનુદાસ:</span>
+                    <span class="text-white/20">|</span>
+                    <span>🚩 પુષ્ટિમાર્ગીય વૈષ્ણવ</span>
+                    <span class="text-white/20">|</span>
+                    <span>⚔️ Heritage of Maharana Pratap</span>
                 </div>
             </div>
 
-            <h1 id="typewriter" class="font-yatra text-3xl sm:text-4xl md:text-7xl text-maroon mt-6 md:mt-8 mb-4 min-h-[60px] md:min-h-[90px] drop-shadow-lg leading-tight px-2">
-                SISODIYA BHARGAVSINH
-            </h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+                <div class="premium-card p-10 rounded-3xl text-left reveal-card">
+                    <div class="text-4xl mb-6">📜</div>
+                    <h2 class="font-yatra text-2xl text-gold mb-4">વંશાવલી</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">મહારાણા પ્રતાપથી લઈને અત્યાર સુધીની પેઢીઓનો ગૌરવવંતો ઈતિહાસ અને દસ્તાવેજો.</p>
+                    <a href="about.html" class="text-white font-bold text-xs border-b border-gold pb-1">EXPLORE →</a>
+                </div>
 
-            <div class="space-y-2 md:space-y-3 text-base md:text-xl text-slate-700 font-medium px-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="flex flex-col md:flex-row justify-center gap-1 md:gap-6 items-center opacity-90">
-                     <p>🙏 श्रीकृष्णदासानुदास:</p>
-                     <span class="hidden md:block text-gold">•</span>
-                     <p>🚩 પુષ્ટિમાર્ગીય વૈષ્ણવ</p>
+                <div class="premium-card p-10 rounded-3xl text-left reveal-card">
+                    <div class="text-4xl mb-6">🪔</div>
+                    <h2 class="font-yatra text-2xl text-gold mb-4">પુષ્ટિ સિદ્ધાંત</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">શ્રીમદ વલ્લભાચાર્યજી પ્રણીત પુષ્ટિમાર્ગ, ગૃહ સેવા અને શુદ્ધાદ્વૈત બ્રહ્મવાદ ના સિદ્ધાંતો.</p>
+                    <a href="pushtimarg.html" class="text-white font-bold text-xs border-b border-gold pb-1">LEARN MORE →</a>
                 </div>
-                <div class="flex flex-col md:flex-row justify-center gap-1 md:gap-6 items-center text-xs md:text-sm uppercase tracking-wider font-bold text-slate-500 mt-2 md:mt-0">
-                    <p>🎓 BCA Student</p>
-                    <span class="hidden md:block text-gold">|</span>
-                    <p>🛡️ Rajput Heritage</p>
-                    <span class="hidden md:block text-gold">|</span>
-                    <p>🙏 Theist</p>
-                </div>
-                <div class="mt-4 inline-block relative max-w-full">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-maroon to-gold opacity-20 blur rounded-lg"></div>
-                    <p class="relative text-maroon font-bold italic font-playfair text-base md:text-xl px-2 md:px-4 py-1 leading-snug">⚔️ 16th Generation Descendant of Shri Maharana Pratapsinhji</p>
-                </div>
-            </div>
-            
-            <div class="mt-10 md:mt-14 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
-                <div class="glass-card p-6 md:p-8 rounded-3xl relative border-t border-white/80 mx-2 md:mx-0">
-                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 bg-maroon text-gold px-3 py-1 rounded-b-xl shadow-md font-yatra text-xl md:text-2xl">“</span>
-                    <p class="font-yatra text-lg md:text-2xl text-maroon mb-3 leading-relaxed">
-                        "सच्चिदानन्दरूपाय विश्वोत्पत्त्यादिहेतवे।<br>
-                        तापत्रयविनाशाय श्रीकृष्णाय वयं नुमः॥"
-                    </p>
-                    <div class="w-12 md:w-16 h-1 bg-gold/50 mx-auto my-3 md:my-4 rounded-full"></div>
-                    <p class="text-slate-600 text-xs md:text-sm font-noto">
-                        (अर्थ: सच्चिदानंद स्वरूप, विश्व की उत्पत्ति के कारण और तीनों प्रकार के कष्टों का नाश करने वाले श्रीकृष्ण को हम प्रणाम करते हैं।)
-                    </p>
+
+                <div class="premium-card p-10 rounded-3xl text-left reveal-card">
+                    <div class="text-4xl mb-6">✒️</div>
+                    <h2 class="font-yatra text-2xl text-gold mb-4">સંશોધન લેખ</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">"પુષ્ટિમાર્ગ માં ગૃહ સેવા" પર કરવામાં આવેલ ઊંડાણપૂર્વકનું શાસ્ત્રીય સંશોધન.</p>
+                    <a href="blog.html" class="text-white font-bold text-xs border-b border-gold pb-1">READ ARTICLES →</a>
                 </div>
             </div>
-        </section>
-
-        <section class="max-w-7xl mx-auto px-4 pb-12 md:pb-20 pt-4 md:pt-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            
-            <div class="glass-card p-6 md:p-8 rounded-2xl group hover:-translate-y-3 transition duration-500 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-maroon via-gold to-maroon transform scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
-                <div class="bg-maroon/5 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:bg-maroon group-hover:text-white transition duration-300">📜</div>
-                <h2 class="font-yatra text-xl md:text-2xl text-maroon mb-2 md:mb-3 group-hover:text-gold-dark transition">વંશાવલી</h2>
-                <p class="text-slate-600 mb-6 md:mb-8 leading-relaxed text-sm">મહારાણા પ્રતાપથી લઈને અત્યાર સુધીની પેઢીઓનો ગૌરવવંતો ઈતિહાસ અને દસ્તાવેજો.</p>
-                <a href="about.html" class="absolute bottom-6 md:bottom-8 text-maroon font-bold text-xs md:text-sm tracking-wider uppercase border-b-2 border-gold hover:text-gold-dark transition">જુઓ →</a>
-            </div>
-
-            <div class="glass-card p-6 md:p-8 rounded-2xl group hover:-translate-y-3 transition duration-500 relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-maroon via-gold to-maroon transform scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
-                <div class="bg-maroon/5 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:bg-maroon group-hover:text-white transition duration-300">🪔</div>
-                <h2 class="font-yatra text-xl md:text-2xl text-maroon mb-2 md:mb-3 group-hover:text-gold-dark transition">પુષ્ટિ સિદ્ધાંત</h2>
-                <p class="text-slate-600 mb-6 md:mb-8 leading-relaxed text-sm">શ્રીમદ વલ્લભાચાર્યજી પ્રણીત પુષ્ટિમાર્ગ, ગૃહ સેવા અને શુદ્ધાદ્વૈત બ્રહ્મવાદ ના સિદ્ધાંતો.</p>
-                <a href="pushtimarg.html" class="absolute bottom-6 md:bottom-8 text-maroon font-bold text-xs md:text-sm tracking-wider uppercase border-b-2 border-gold hover:text-gold-dark transition">વાંચો →</a>
-            </div>
-
-            <div class="glass-card p-6 md:p-8 rounded-2xl group hover:-translate-y-3 transition duration-500 relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-maroon via-gold to-maroon transform scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
-                <div class="bg-maroon/5 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:bg-maroon group-hover:text-white transition duration-300">✒️</div>
-                <h2 class="font-yatra text-xl md:text-2xl text-maroon mb-2 md:mb-3 group-hover:text-gold-dark transition">સંશોધન લેખ</h2>
-                <p class="text-slate-600 mb-6 md:mb-8 leading-relaxed text-sm">"પુષ્ટિમાર્ગ માં ગૃહ સેવા" પર કરવામાં આવેલ ઊંડાણપૂર્વકનું શાસ્ત્રીય સંશોધન.</p>
-                <a href="blog.html" class="absolute bottom-6 md:bottom-8 text-maroon font-bold text-xs md:text-sm tracking-wider uppercase border-b-2 border-gold hover:text-gold-dark transition">લેખ વાંચો →</a>
-            </div>
-
         </section>
     </main>
 
-    <footer class="bg-maroon-dark text-white pt-16 md:pt-20 pb-8 md:pb-10 text-center px-4 mt-8 md:mt-12 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gold via-yellow-200 to-gold"></div>
-        <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-maroon-dark rotate-45 border-4 border-gold"></div>
-
-        <div class="max-w-4xl mx-auto relative z-10">
-            <a href="disclaimer.html" class="text-gold/80 hover:text-white font-playfair font-bold hover:underline mb-8 md:mb-10 block tracking-widest text-xs md:text-sm">LEGAL DISCLAIMER</a>
-            
-            <div class="overflow-hidden border-y border-white/10 py-4 md:py-6 mb-8 md:mb-10 bg-white/5 backdrop-blur-sm"> 
-                <div class="animate-marquee whitespace-nowrap text-gold font-medium font-playfair text-sm md:text-lg"> <p> Designed by Sisodiya Bhargavsinh </p><p> ✦  © 2026  ✦ </p><p>Maintaining Heritage with Technology</p>
-                </div>
-            </div>
-
-            <div class="bg-black/40 inline-block p-4 md:p-5 rounded-2xl border border-gold/20 shadow-xl backdrop-blur-md hover:border-gold/50 transition">
-                <p class="text-[10px] uppercase tracking-[0.3em] text-white/50 mb-2 md:mb-3">Visitor Count</p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 grayscale hover:grayscale-0 transition h-4 md:h-auto">
-            </div>
-        </div>
+    <footer class="mt-40 py-20 border-t border-white/10 text-center">
+        <p class="font-playfair italic text-gold/50 mb-4 tracking-widest">Maintaining Heritage with Technology</p>
+        <p class="text-xs text-gray-600 uppercase">© 2026 Sisodiya Bhargavsinh | V5.0 Ultra Pro Max</p>
     </footer>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
-
     <script>
-        // Init Scroll Animations
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 50,
-            easing: 'ease-out-cubic'
+        // Custom Cursor Logic
+        const cursor = document.querySelector('#cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
         });
 
-        // Typewriter Effect
-        new TypeIt("#typewriter", {
-            speed: 70,
-            waitUntilVisible: true,
-            cursor: false,
-            lifeLike: true
-        }).go();
+        // GSAP Animations (2026 Style)
+        gsap.registerPlugin(ScrollTrigger);
 
-        // UI Interactions
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            nav.classList.toggle('hidden');
-        }
+        // Hero Reveal
+        gsap.from(".hero-reveal", {
+            duration: 2,
+            y: 50,
+            opacity: 0,
+            ease: "expo.out",
+            stagger: 0.3
+        });
 
-        function toggleNotif() {
-            const box = document.getElementById('notif-box');
-            box.classList.toggle('show');
-            if (box.classList.contains('show')) fetchNotifications();
-        }
+        // Cards Scroll Animation
+        gsap.from(".reveal-card", {
+            scrollTrigger: {
+                trigger: ".reveal-card",
+                start: "top 90%",
+            },
+            y: 100,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.2,
+            ease: "power4.out"
+        });
 
-        async function fetchNotifications() {
-            const list = document.getElementById('notif-list');
-            const badge = document.getElementById('notif-badge');
-            try {
-                const res = await fetch('notifications.json?t=' + Date.now());
-                const data = await res.json();
-                list.innerHTML = '';
-                let hasNew = false;
-                data.forEach(item => {
-                    if (item.new) hasNew = true;
-                    const li = document.createElement('li');
-                    li.className = "p-4 hover:bg-gold/5 transition cursor-pointer border-l-2 border-transparent hover:border-maroon";
-                    li.innerHTML = `
-                        <small class="text-gray-400 block mb-1 text-xs font-mono">${item.date}</small>
-                        <a href="${item.link}" class="text-maroon font-bold text-sm block font-noto">
-                            ${item.new ? '<span class="bg-red-600 text-white px-2 py-0.5 rounded text-[10px] mr-2 shadow-sm">NEW</span>' : ''}${item.text}
-                        </a>`;
-                    list.appendChild(li);
-                });
-                badge.classList.toggle('hidden', !hasNew);
-            } catch (e) {
-                list.innerHTML = '<li class="p-4 text-red-500 text-sm">Failed to load updates.</li>';
+        // Anti-DevTools Security
+        setInterval(() => {
+            if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
+                document.body.innerHTML = "<h1 style='color:white; text-align:center; margin-top:20%;'>Security Protocol Active: Inspection Prohibited.</h1>";
             }
-        }
+        }, 1000);
 
-        // Global Event Listeners
-        window.addEventListener('load', () => {
-            fetch('notifications.json?t=' + Date.now())
-                .then(r => r.json())
-                .then(d => {
-                    if(d.some(i => i.new)) document.getElementById('notif-badge').classList.remove('hidden');
-                }).catch(console.error);
-        });
-
-        document.addEventListener('click', (e) => {
-            const container = document.querySelector('.relative');
-            const box = document.getElementById('notif-box');
-            if (!container.contains(e.target) && box && box.classList.contains('show')) box.classList.remove('show');
+        // Disable shortcuts
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i' || e.key === 'j')) {
+                e.preventDefault();
+            }
         });
     </script>
-    
-<script>
-    // 1. Right-Click બંધ કરવા માટે
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    }, false);
-
-    // 2. Keyboard Shortcuts (Ctrl+C, Ctrl+U, Ctrl+Shift+I) બંધ કરવા માટે
-    document.onkeydown = function(e) {
-        // F12 બંધ કરો
-        if(e.keyCode == 123) {
-            return false;
-        }
-        // Ctrl+Shift+I (Inspect) બંધ કરો
-        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-            return false;
-        }
-        // Ctrl+Shift+J (Console) બંધ કરો
-        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-            return false;
-        }
-        // Ctrl+U (View Source) બંધ કરો
-        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-            return false;
-        }
-        // Ctrl+C (Copy) બંધ કરો
-        if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) {
-            return false;
-        }
-    };
-</script>
-
 </body>
 </html>
