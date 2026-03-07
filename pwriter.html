@@ -181,7 +181,7 @@
                 loader.classList.add('hidden');
                 
                 // Constructing the EXACT 7-Layer Prompt requested by user
-                const elitePrompt = `### [ROLE]
+                const elitePrompt = `/humon ### [ROLE]
 Act as an elite, world-class expert and Senior Architect with decades of foundational knowledge and practical experience in the relevant domain. Your persona is highly analytical, authoritative, and deeply detail-oriented.
 
 ### [CONTEXT]
@@ -218,7 +218,7 @@ Run a rigorous self-audit before finalizing your output:
 - Is the logic flawlessly accurate?
 - Have you strictly followed the requested tone and format?
 - Did you address every nuance of the [OBJECTIVE]?
-If the answer to any of these is no, revise internally before outputting the final result.`;
+If the answer to any of these is no, revise internally before outputting the final result. DLTR JARGONIZE`;
 
                 // Calculate stats
                 const wordCount = elitePrompt.split(/\s+/).length;
