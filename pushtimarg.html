@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pushtimarg | Sisodiya Bhargavsinh</title>
-    
+
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -15,18 +15,17 @@
             theme: {
                 extend: {
                     colors: {
-                        maroon: { DEFAULT: '#7b1c1c', dark: '#4a0404' },
-                        gold: { DEFAULT: '#daa520', light: '#ffd700', dark: '#b8860b' },
-                        cream: '#fff8ec',
+                        'royal-maroon': '#6b0f1a',
+                        'divine-gold': '#d4af37',
+                        'saffron-glow': '#ff9933',
+                        'parchment': '#fdfaf0',
+                        'night-void': '#0a0012',
                     },
                     fontFamily: {
                         yatra: ['Yatra One', 'cursive'],
                         noto: ['Noto Sans', 'sans-serif'],
                         playfair: ['Playfair Display', 'serif'],
                         inter: ['Inter', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'royal-pattern': "radial-gradient(circle at 50% 50%, #fff8ec 0%, #ffe4c4 100%)"
                     }
                 }
             }
@@ -34,137 +33,110 @@
     </script>
 
     <style>
-        /* Security Styles */
         body {
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;
-        }
-        a, button, iframe, .nav-link, .social-link {
-            pointer-events: auto !important;
-        }
-
-        /* Royal Theme Styles */
-        .royal-bg {
-            background-color: #fff8ec;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(27,96%,90%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(25,95%,85%,1) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(27,96%,90%,1) 0, transparent 50%);
-            background-attachment: fixed;
-        }
-
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+            background-color: #fdfaf0;
+            color: #1a1a1a;
+            overflow-x: hidden;
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 10px 30px -5px rgba(123, 28, 28, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px -5px rgba(123, 28, 28, 0.15);
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 40px -10px rgba(107, 15, 26, 0.08);
         }
 
         .nav-link-ltr { position: relative; }
         .nav-link-ltr::after {
             content: ''; position: absolute; width: 0; height: 2px;
-            display: block; margin-top: 2px; right: 0; background: #daa520;
+            display: block; margin-top: 2px; right: 0; background: #d4af37;
             transition: width .3s ease;
         }
         .nav-link-ltr:hover::after { width: 100%; left: 0; }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.04;
+            background-image: radial-gradient(#d4af37 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fdfaf0; }
+        ::-webkit-scrollbar-thumb { background: #6b0f1a; border-radius: 10px; }
         
-        /* Table Styling */
-        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 1rem; }
-        table { min-width: 600px; width: 100%; }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #fff8ec; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #7b1c1c, #daa520); border-radius: 10px; }
+        audio::-webkit-media-controls-panel { background-color: #fdfaf0; }
     </style>
 </head>
 
-<body class="font-inter text-slate-800 royal-bg min-h-screen overflow-x-hidden selection:bg-gold selection:text-maroon">
+<body class="font-inter selection:bg-divine-gold selection:text-royal-maroon">
+    <div class="bg-pattern"></div>
 
-    <header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
+    <header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-divine-gold/20">
+        <nav class="max-w-7xl mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" class="h-10 md:h-14 w-auto drop-shadow-md hover:scale-105 transition">
-                <span class="font-yatra text-maroon text-lg md:text-2xl tracking-wide hidden sm:block">Sisodiya Bhargavsinh</span>
+                <img src="logo.png" alt="Logo" class="h-10 md:h-14 hover:scale-105 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none">Sisodiya Bhargavsinh</span>
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-divine-gold font-bold">2050 Heritage Tech</span>
+                </div>
             </div>
 
-            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-sm uppercase tracking-widest text-slate-700">
-                <li><a href="index.html" class="nav-link-ltr hover:text-maroon transition">Home</a></li>
-                <li><a href="about.html" class="nav-link-ltr hover:text-maroon transition">About</a></li>
-                <li><a href="pushtimarg.html" class="nav-link-ltr text-maroon border-b-2 border-gold">Pushtimarg</a></li>
-                <li><a href="projects.html" class="nav-link-ltr hover:text-maroon transition">Projects</a></li>
-                <li><a href="resume.html" class="nav-link-ltr hover:text-maroon transition">Resume</a></li>
-                <li><a href="blog.html" class="nav-link-ltr hover:text-maroon transition">Articles</a></li>
-                <li><a href="contact.html" class="nav-link-ltr hover:text-maroon transition">Contact</a></li>
+            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-xs uppercase tracking-widest text-slate-700">
+                <li><a href="index.html" class="nav-link-ltr hover:text-royal-maroon transition">Home</a></li>
+                <li><a href="about.html" class="nav-link-ltr hover:text-royal-maroon transition">About</a></li>
+                <li><a href="pushtimarg.html" class="nav-link-ltr text-royal-maroon">Pushtimarg</a></li>
+                <li><a href="projects.html" class="nav-link-ltr hover:text-royal-maroon transition">Projects</a></li>
+                <li><a href="resume.html" class="nav-link-ltr hover:text-royal-maroon transition">Resume</a></li>
+                <li><a href="blog.html" class="nav-link-ltr hover:text-royal-maroon transition">Articles</a></li>
+                <li><a href="contact.html" class="nav-link-ltr hover:text-royal-maroon transition">Contact</a></li>
             </ul>
 
-            <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl hover:text-gold transition">☰</button>
+            <button onclick="toggleMenu()" class="lg:hidden text-royal-maroon text-2xl">☰</button>
         </nav>
-
-        <div id="navLinks" class="hidden lg:hidden bg-cream/95 backdrop-blur-md border-t border-gold/20 p-6 space-y-4 shadow-xl absolute w-full z-50">
-            <a href="index.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Home</a>
-            <a href="about.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">About</a>
-            <a href="pushtimarg.html" class="block font-yatra text-maroon pl-3 border-l-4 border-gold">Pushtimarg</a>
-            <a href="projects.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Projects</a>
-            <a href="resume.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Resume</a>
-            <a href="blog.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Articles</a>
-            <a href="contact.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Contact</a>
-        </div>
     </header>
 
-    <main class="pt-24 md:pt-32 pb-16 px-4">
-        
+    <main class="pt-32 pb-20 px-4">
         <section class="max-w-5xl mx-auto mb-20 text-center" data-aos="fade-down">
-            <div class="inline-block relative mb-4">
-                <h2 class="font-yatra text-4xl md:text-6xl text-maroon relative z-10 drop-shadow-md">પુષ્ટિમાર્ગ</h2>
-                <div class="absolute -bottom-2 left-0 w-full h-3 bg-gold/30 -z-0 skew-x-12"></div>
+            <div class="inline-block relative mb-6">
+                <h2 class="font-yatra text-5xl md:text-7xl text-royal-maroon relative z-10 drop-shadow-md">પુષ્ટિમાર્ગ</h2>
+                <div class="absolute -bottom-3 left-0 w-full h-4 bg-divine-gold/20 -z-10 skew-x-12"></div>
             </div>
-            <div class="flex justify-center items-center gap-4 text-gold mb-8">
-                <span class="h-[2px] w-12 bg-gold/50"></span>
-                <div class="text-3xl animate-pulse">🏛️</div>  
-                <span class="h-[2px] w-12 bg-gold/50"></span>
-            </div>
-            
-            <div class="glass-card rounded-2xl p-2 md:p-4 border border-gold/30" data-aos="fade-up">
-                <div class="bg-gradient-to-r from-maroon via-maroon-dark to-maroon p-4 md:p-6 text-center text-white rounded-t-xl">
-                    <h3 class="font-playfair text-xl md:text-2xl tracking-wide">ગૃહ સેવા vs. હવેલી સેવા <span class="text-gold text-sm block mt-1">(તુલનાત્મક દ્રષ્ટિકોણ)</span></h3>
+
+            <div class="glass-card rounded-[2.5rem] overflow-hidden border border-divine-gold/30 mt-12 shadow-2xl">
+                <div class="bg-royal-maroon p-6 text-center text-white">
+                    <h3 class="font-playfair text-xl md:text-3xl tracking-wide">ગૃહ સેવા vs. હવેલી સેવા <span class="text-divine-gold text-sm block mt-2">(તુલનાત્મક દ્રષ્ટિકોણ)</span></h3>
                 </div>
-                <div class="table-wrapper bg-white/50">
-                    <table class="text-left border-collapse">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
                         <thead>
-                            <tr class="bg-gold/10 border-b-2 border-gold/30">
-                                <th class="p-5 font-yatra text-maroon text-lg">વિષય</th>
-                                <th class="p-5 font-yatra text-maroon text-lg border-l border-gold/20">ગૃહ સેવા <br><span class="text-xs uppercase font-inter text-slate-500 tracking-wider">પુષ્ટિમાર્ગીય સિદ્ધાંત</span></th>
-                                <th class="p-5 font-yatra text-maroon text-lg border-l border-gold/20">હવેલી સેવા <br><span class="text-xs uppercase font-inter text-slate-500 tracking-wider">વર્તમાન કુપરંપરા</span></th>
+                            <tr class="bg-divine-gold/10 border-b border-divine-gold/20">
+                                <th class="p-6 font-yatra text-royal-maroon text-xl">વિષય</th>
+                                <th class="p-6 font-yatra text-royal-maroon text-xl border-l border-divine-gold/10">ગૃહ સેવા</th>
+                                <th class="p-6 font-yatra text-royal-maroon text-xl border-l border-divine-gold/10">હવેલી સેવા</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gold/10">
-                            <tr class="hover:bg-gold/5 transition">
-                                <td class="p-5 font-bold text-maroon">દ્રવ્ય સ્ત્રોત</td>
-                                <td class="p-5 border-l border-gold/20 text-slate-700 font-medium">સ્વ-દ્રવ્ય <br><span class="text-xs text-slate-500">(પોતાનું કમાયેલું)</span></td>
-                                <td class="p-5 border-l border-gold/20 text-slate-700 font-medium">દેવદ્રવ્ય <br><span class="text-xs text-slate-500">(ભેટ/દાન)</span></td>
+                        <tbody class="divide-y divide-divine-gold/10 bg-white/30 font-noto">
+                            <tr>
+                                <td class="p-6 font-bold text-royal-maroon">દ્રવ્ય સ્ત્રોત</td>
+                                <td class="p-6 border-l border-divine-gold/10">સ્વ-દ્રવ્ય (પોતાનું કમાયેલું)</td>
+                                <td class="p-6 border-l border-divine-gold/10">દેવદ્રવ્ય (ભેટ/દાન)</td>
                             </tr>
-                            <tr class="hover:bg-gold/5 transition">
-                                <td class="p-5 font-bold text-maroon">સેવક</td>
-                                <td class="p-5 border-l border-gold/20 text-slate-700 font-medium">સ્વયં (તનુજા) <br><span class="text-xs text-slate-500">ઘરના સભ્યો</span></td>
-                                <td class="p-5 border-l border-gold/20 text-slate-700 font-medium">મુખિયાજી <br><span class="text-xs text-slate-500">કર્મચારી</span></td>
+                            <tr>
+                                <td class="p-6 font-bold text-royal-maroon">સેવક</td>
+                                <td class="p-6 border-l border-divine-gold/10">સ્વયં (તનુજા/ઘરના સભ્યો)</td>
+                                <td class="p-6 border-l border-divine-gold/10">મુખિયાજી (કર્મચારી)</td>
                             </tr>
-                            <tr class="hover:bg-gold/5 transition">
-                                <td class="p-5 font-bold text-maroon">ભાવ</td>
-                                <td class="p-5 border-l border-gold/20 text-maroon font-bold bg-gold/5">વાત્સલ્ય ભાવ</td>
-                                <td class="p-5 border-l border-gold/20 text-slate-700 font-medium">ઐશ્વર્ય ભાવ </td>
+                            <tr>
+                                <td class="p-6 font-bold text-royal-maroon">ભાવ</td>
+                                <td class="p-6 border-l border-divine-gold/10 bg-divine-gold/5 font-extrabold text-royal-maroon">વાત્સલ્ય ભાવ</td>
+                                <td class="p-6 border-l border-divine-gold/10">ઐશ્વર્ય ભાવ</td>
                             </tr>
                         </tbody>
                     </table>
@@ -172,108 +144,103 @@
             </div>
         </section>
 
-        <section class="max-w-4xl mx-auto">
+        <section class="max-w-4xl mx-auto space-y-12">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="font-yatra text-4xl md:text-5xl text-maroon mb-4">અમૃત વચનાવલી</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-4"></div>
-                <p class="text-slate-600 italic font-playfair text-lg px-4">
-                    "પુષ્ટિમાર્ગીય આચાર્યો અને પ્રભુચરણોના સિદ્ધાંત વચનો"
-                </p>
+                <h2 class="font-yatra text-4xl md:text-5xl text-royal-maroon mb-4">અમૃત વચનાવલી</h2>
+                <div class="w-32 h-[1px] bg-divine-gold mx-auto"></div>
             </div>
 
-            <div class="space-y-10">
-                
-                <div class="glass-card p-8 md:p-10 rounded-3xl border-t-4 border-gold" data-aos="fade-up">
-                    <div class="flex items-center gap-4 mb-6 border-b border-gold/20 pb-4">
-                        <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center text-2xl ring-2 ring-gold/50">🚩</div>
-                        <h3 class="font-yatra text-2xl md:text-3xl text-maroon">શ્રીનાથજી</h3>
-                    </div>
-                    <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-maroon/20 pl-6">
-(ક) શ્રીગુસાંઈજીએ શ્રીગોવર્ધનધરને પૂછ્યું કે “મહારાજ! કૃષ્ણદાસનો તો દેહ છૂટ્યો... હવે અમે કોને અધિકાર (ટ્રસ્ટીનું પદ) આપીને બગાડ કરીએ તેથી આપ કહો તેને અધિકારી (ટ્રસ્ટી) બનાવીએ’”. ત્યારે શ્રીગોવર્ધનનાથજીએ કહ્યું કે ‘‘અમે પણ કયા જીવનો બગાડ કરીએ? જે પણ અધિકાર સ્વીકારશે (ટ્રસ્ટી બનશે) તેનો બગાડ થશે! તેથી તમે એક કામ કરો કે અધિકારનો ઉપરણો હાથમાં લઈને બધાની સામે કહો કે જેને અધિકારી (ટ્રસ્ટી) થવું હોય તે ઉપરણો ઓઢે. ત્યારે જે આવીને કહે તેને (ટ્રસ્ટી પદ) આપો. જેનો બગાડ થવાનો હશે તે તેની મેળેજ (ટ્રસ્ટી થવા) આવશે!''.
-<span class="text-sm font-bold text-maroon block mt-2">(શ્રીનાથજી, ૮૪ વૈષ્ણવવાર્તા, કૃષ્ણદાસની વાર્તા)</span>
-
-(ખ) એક દિવસ એક વૈષ્ણવે કિશોરીબાઈને કાંઈક સામગ્રી આપી હતી. ત્યારે કિશોરીબાઈએ તેની સામગ્રી સિદ્ધ કરીને શ્રીઠાકોરજીને ભોગ સમાર્પયા. તે દિવસે શ્રીઠાકોરજી આરોગવા પધાર્યા નહીં. ત્યારે કિશોરીબાઈ પોતાના મનમાં ખૂબજ ખેદ કરવા લાગ્યા. ત્યારે શ્રીઠાકોરજી બોલ્યા: “તેં મારા માટે સામગ્રી કેમ લીધી? તે અમે કેવી રીતે આરોગીએ?"
-ભાવપ્રકાશ : આમાં એ જતાવ્યું કે <b>પારકી, બીજાની સત્તા, સામગ્રી પોતાના શ્રીઠાકોરજીને આરોગાવવી નહીં.</b> અને કોઈ પણ વસ્તુ વૈષ્ણવ પાસેથી લઈને શ્રીઠાકોરજીને વિનિયોગ ન કરાવવી. તે શ્રીઠાકોરજી અંગીકાર કરતા નથી.
-<span class="text-sm font-bold text-maroon block mt-2">(૨૫ર વૈ.વાર્તા, કિશોરીબાઈ વા.પ્ર.2)</span>
-                    </div>
+            <div class="glass-card p-8 md:p-10 rounded-3xl border-l-8 border-divine-gold" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6 border-b border-divine-gold/20 pb-4">
+                    <div class="w-12 h-12 rounded-full bg-royal-maroon/10 flex items-center justify-center text-2xl ring-2 ring-divine-gold/50">🚩</div>
+                    <h3 class="font-yatra text-2xl md:text-3xl text-royal-maroon">શ્રીનાથજી</h3>
                 </div>
+                <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-royal-maroon/20 pl-6">
+(ક) શ્રીગુસાંઈજીએ શ્રીગોવર્ધનધરને પૂછ્યું કે “મહારાજ! કૃષ્ણદાસનો તો દેહ છૂટ્યો... હવે અમે કોને અધિકાર (ટ્રસ્ટીનું પદ) આપીને બગાડ કરીએ તેથી આપ કહો તેને અધિકારી (ટ્રસ્ટી) બનાવીએ’”. ત્યારે શ્રીગોવર્ધનનાથજીએ કહ્યું કે ‘‘અમે પણ કયા જીવનો બગાડ કરીએ? જે પણ અધિકાર સ્વીકારશે (ટ્રસ્ટી બનશે) તેનો બગાડ થશે! તેથી તમે એક કામ કરો કે અધિકારનો ઉપરણો હાથમાં લઈને બધાની સામે કહો કે જેને અધિકારી (ટ્રસ્ટી) થવું હોય તે ઉપરણો ઓઢે. ત્યારે જે આવીને કહે તેને (ટ્રસ્ટી પદ) આપો. જેનો બગાડ થવાનો હશે તે તેની મેળેજ (ટ્રસ્ટી થવા) આવશે!''.
+<span class="text-sm font-bold text-royal-maroon block mt-2">(શ્રીનાથજી, ૮૪ વૈષ્ણવવાર્તા, કૃષ્ણદાસની વાર્તા)</span>
 
-                <div class="glass-card p-8 md:p-10 rounded-3xl border-t-4 border-gold" data-aos="fade-up">
-                    <div class="flex items-center gap-4 mb-6 border-b border-gold/20 pb-4">
-                         <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center text-2xl ring-2 ring-gold/50">🔥</div>
-                        <h3 class="font-yatra text-2xl md:text-3xl text-maroon">શ્રી મહાપ્રભુજી</h3>
-                    </div>
-                    <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-maroon/20 pl-6">
+(ખ) એક દિવસ એક વૈષ્ણવે કિશોરીબાઈને કાંઈક સામગ્રી આપી હતી. ત્યારે કિશોરીબાઈએ તેની સામગ્રી સિદ્ધ કરીને શ્રીઠાકોરજીને ભોગ સમાર્પયા. તે દિવસે શ્રીઠાકોરજી આરોગવા પધાર્યા નહીં. ત્યારે કિશોરીબાઈ પોતાના મનમાં ખૂબજ ખેદ કરવા લાગ્યા. ત્યારે શ્રીઠાકોરજી બોલ્યા: “તેં મારા માટે સામગ્રી કેમ લીજી? તે અમે કેવી રીતે આરોગીએ?"
+ભાવપ્રકાશ : આમાં એ જતાવ્યું કે <b>પારકી, બીજાની સત્તા, સામગ્રી પોતાના શ્રીઠાકોરજીને આરોગાવવી નહીં.</b> અને કોઈ પણ વસ્તુ વૈષ્ણવ પાસેથી લઈને શ્રીઠાકોરજીને વિનિયોગ ન કરાવવી. તે શ્રીઠાકોરજી અંગીકાર કરતા નથી.
+<span class="text-sm font-bold text-royal-maroon block mt-2">(૨૫ર વૈ.વાર્તા, કિશોરીબાઈ વા.પ્ર.2)</span>
+                </div>
+            </div>
+
+            <div class="glass-card p-8 md:p-10 rounded-3xl border-l-8 border-royal-maroon" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6 border-b border-divine-gold/20 pb-4">
+                    <div class="w-12 h-12 rounded-full bg-royal-maroon/10 flex items-center justify-center text-2xl ring-2 ring-divine-gold/50">🔥</div>
+                    <h3 class="font-yatra text-2xl md:text-3xl text-royal-maroon">શ્રી મહાપ્રભુજી</h3>
+                </div>
+                <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-royal-maroon/20 pl-6">
 (ક)"જે કટોરી (ગિરવિ) મૂકીને સામગ્રી આવી તેનો તો ભોગ શ્રીઠાકોરજી પોતાના જ દ્રવ્યનો આરોગ્યા, તેથી તે ભોગ તો આપનો જ થયો. <b>જે શ્રીઠાકોરજીનું (દેવ) દ્રવ્ય ખાશે તે મારો (પુષ્ટિમાર્ગી) નહીં કહેવાય. અને મારો સેવક ભગવદીય હશે તે દેવદ્રવ્ય ક્યારેય નહીં ખાય. જે (દેવદ્રવ્યનો પ્રસાદ) ખાશે તે મહાપતિત થશે.</b> તેથી તે (દેવદ્રવ્યના) પ્રસાદમાંથી ભોજન કરવાનો આપણો અધિકાર ન હતો તેથી તે ગાયોને ખવડાવ્યો અને શ્રીયમુનાજીમાં પધરાવ્યો" આ સાંભળીને બધા વૈષ્ણવો ચુપ થઈ ગયા.
-<span class="text-sm font-bold text-maroon block mt-2">(ધરુવાર્તા-૩).</span>
+<span class="text-sm font-bold text-royal-maroon block mt-2">(ધરુવાર્તા-૩).</span>
 
 (ખ) શ્રીભાગવતનો પાઠ પોતે જ કરવો જોઈએ. લૌકિક (ફંડફાળા)-પારલૌકિક (મૃતકનો ઉદ્ધાર-પુણ્ય-પ્રાયશ્ચિત્ત) કોઈ પણ હેતુ-પ્રયોજનથી શ્રીભાગવતનો પાઠ કે તેનું શ્રવણ કરવું ન જોઈએ. <b> પ્રાણ કંઠ સુધી આવી ગયા હોય તો ભૂખ્યા મરી ભલે જવું પણ ભાગવતની કથા યજમાન પાસેથી દક્ષિણા લઈને આજીવિકા માટે ન જ કરવી.</b>
-<span class="text-sm font-bold text-maroon block mt-2">(તત્ત્વાર્થદીપનિબંધ)</span>
+<span class="text-sm font-bold text-royal-maroon block mt-2">(તત્ત્વાર્થદીપનિબંધ)</span>
 
 (ગ)<b> કથા-કીર્તન કરીને પોતાની આજીવિકા ચલાવનારા નીચ લોકોના મનોભાવને, તેઓ ભગવદ્ગુણગાન કરતા હોય તો પણ, મોટું-મળ વગેરેને ધોતાં નીકળેલા ગંદા પાણીના નિકાલ માટે ખોદેલા ખાડા (સેસ્પોલ-ગટર) જેવા જાણવા. ભાગવત વગેરેની કથા કરીને દક્ષિણા લેનારા કથાકારો પણ આવા નીચ કીંતનકારો (ગટર) જેવા જ હોય છે. તેથી આવા નીચ લોકોદ્વારા કરવામાં આવતા થા-કીર્તન પુષ્ટિમાર્ગીઓએ ન સાંભળવા. </b>
-<span class="text-sm font-bold text-maroon block mt-2">(જલભેદ)</span>
-   </div>
+<span class="text-sm font-bold text-royal-maroon block mt-2">(જલભેદ)</span>
                 </div>
-                <div class="glass-card p-8 md:p-10 rounded-3xl border-t-4 border-gold" data-aos="fade-up">
-                    <div class="flex items-center gap-4 mb-6 border-b border-gold/20 pb-4">
-                         <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center text-2xl ring-2 ring-gold/50">✨</div>
-                        <h3 class="font-yatra text-2xl md:text-3xl text-maroon">શ્રીગોપીનાથપ્રભુચરણ</h3>
-                    </div>
-                    <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-maroon/20 pl-6">
+            </div>
+
+            <div class="glass-card p-8 md:p-10 rounded-3xl border-l-8 border-divine-gold" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6 border-b border-divine-gold/20 pb-4">
+                    <div class="w-12 h-12 rounded-full bg-royal-maroon/10 flex items-center justify-center text-2xl ring-2 ring-divine-gold/50">✨</div>
+                    <h3 class="font-yatra text-2xl md:text-3xl text-royal-maroon">શ્રીગોપીનાથપ્રભુચરણ</h3>
+                </div>
+                <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-royal-maroon/20 pl-6">
 ...શ્રીઆચાર્યજીને વૈષ્ણવે આવીને કહ્યું : “મહારાજ! શ્રીદ્વારકાનાથજી વૈભવ સહિત પધાર્યા છે...”.
 ત્યારે શ્રીઆચાર્યજીએ કહ્યું : “ઠાકોરજીનો વૈભવ જોઈને તમે રાજી થયા?”.
 ત્યારે <b> શ્રીગોપીનાથજીએ કહ્યું : “આપનો કહવડાવીને જે શ્રીઠાકોરજીની વસ્તુ (દેવદ્રવ્ય) ઊપર પોતાનું મન બગાડશે તેનો નિર્મૂળ નાશ થશે” </b>
 આ સાંભળીને શ્રીઆચાર્યજીએ કહ્યું : “અમારો માર્ગ તો આવો જ છે”.
-<span class="text-sm font-bold text-maroon block mt-2">(શ્રીગોપીનાથપ્રભુચરણ, ૮૪ વૈષ્ણવવાર્તા, દામોદારદાસ સમ્ભલવાળાની વાર્તા)</span>
-                    </div>
+<span class="text-sm font-bold text-royal-maroon block mt-2">(શ્રીગોપીનાથપ્રભુચરણ, ૮૪ વૈષ્ણવવાર્તા, દામોદારદાસ સમ્ભલવાળાની વાર્તા)</span>
                 </div>
+            </div>
 
-                <div class="glass-card p-8 md:p-10 rounded-3xl border-t-4 border-gold" data-aos="fade-up">
-                    <div class="flex items-center gap-4 mb-6 border-b border-gold/20 pb-4">
-                        <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center text-2xl ring-2 ring-gold/50">☀️</div>
-                        <h3 class="font-yatra text-2xl md:text-3xl text-maroon">શ્રીવિઠ્ઠલનાથપ્રભુચરણ (શ્રી ગુસાંઈજી)</h3>
-                    </div>
-                    <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-maroon/20 pl-6">
+            <div class="glass-card p-8 md:p-10 rounded-3xl border-l-8 border-royal-maroon" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6 border-b border-divine-gold/20 pb-4">
+                    <div class="w-12 h-12 rounded-full bg-royal-maroon/10 flex items-center justify-center text-2xl ring-2 ring-divine-gold/50">☀️</div>
+                    <h3 class="font-yatra text-2xl md:text-3xl text-royal-maroon">શ્રી ગુસાંઈજી</h3>
+                </div>
+                <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-royal-maroon/20 pl-6">
 (ક) ધન ની કામનાઓને પૂર્ણ કરવામાટે જે શાસ્ત્રમાં બતાવેલા શ્રવણ-કીર્તન-સેવા વગેરે કરવામાં આવે છે તેને કર્મમાર્ગીય સમજવા જોઈએ. <b> પોતાની આજીવિકા (ભરણ-પોષણ) ચલાવવામાટે પૈસા કમાવવાના રૂપમાં જે શ્રવણ-કથા-કીર્તન-સેવા વિગેરે કરવામાં આવતાં હોય તો તેમને તો ખેતી-વાડીના ધંધાની માફક 'લૌકિકકર્મ” જ કહેવા જોઈએ (ધર્મ-ભક્તિ કદાપિ નહીં). </b> (જો કોઈ અધમ માણસ) મળત્યાગ કરી પોતાના મળને ધોવા માટે ગંગાજળનો ઉપયોગ કરે તો શું તેને ગંગાસ્નાનું શાસ્ત્રોક્ત ઉચ્ચ ફળ મળી શકે? ના. પવિત્ર ગંગાનો આવો દુરુપયોગ કરવાથી તો તેને માત્ર અને માત્ર પાપ જ લાગે છે. આ જ પ્રમાણે જેઓ પૈસા કમાવવામાટે પ્રભુની સેવા–કથા કરે છે તેઓને પણ તેવી સેવ-કથાનું કંઈ પણ ફળ મળતું નથી. ઉલટાનું, આવા અધમ આચરણને કારણે તેઓ પાપના જ ભાગીદાર બને છે. 
-<span class="text-sm font-bold text-maroon block mt-2">(શ્રીવિઠ્ઠલનાથપ્રભુચરણ : ભક્તિહંસ).</span>
+<span class="text-sm font-bold text-royal-maroon block mt-2">(શ્રીવિઠ્ઠલનાથપ્રભુચરણ : ભક્તિહંસ).</span>
 
 (ખ) આજીવિકા કે યશ વગેરે કમાવવા માટે ભજન કરે તો શી ગતિ થાય? ....તે વ્યક્તિ અન્તે ક્લેશ જ પામે છે એવો શ્રીમહાપ્રભુજીના કથનનો સાફસાફ અર્થ છે. વાત કેવળ ઐહિક ક્લેશ પર નથી અટક્તી, તેના પરલોકના અધિકાર અને ફળ નો પણ આવા નિપિદ્ધ આચરણને કારણે નાશ થાય છે. અત્યલ્પ પણ જ્ઞાન કે સંસ્કાર હોય તે આવું કુકૃત્ય કરી શકતો નથી. 
-<span class="text-sm font-bold text-maroon block mt-2">(સિદ્ધાન્તમુક્તાવલી વિવૃતિ)</span>
+<span class="text-sm font-bold text-royal-maroon block mt-2">(સિદ્ધાન્તમુક્તાવલી વિવૃતિ)</span>
 
 (ગ) શ્રીગુસાઈજીએ શ્રીગોવર્ધનઘરને પૂછ્યું કે “મહારાજ! કૃષ્ણદાસનો તો દેહ છૂટ્યો... હવે અમે કોને અધિકાર (ટ્રસ્ટીનું પદ) આપીને બગાડ કરીએ? તેથી આપ કહો તેને અધિકારી (ટ્રસ્ટી) બનાવીએ”. ત્યારે શ્રીગોવર્ધનનાથજીએ કહ્યું કે “અમે પણ ક્યા જીવનો બગાડ કરીએ? જે પણ અધિકાર સ્વીકારશે (ટ્રસ્ટી બનશે) તેનો બગાડ થશે! તેથી તમે એક કામ કરો કે અધિકારનો ઉપરણો હાથમાં લઈને બધાની સામે કહો કે જેને અધિકારી (ટ્રસ્ટી) થવું હોય તે ઉપરણો ઓઢે. ત્યારે જે આવીને કહે તેને (ટ્રસ્ટી પદ) આપો. જેનો બગાડ થવાનો હશે તે તેની મેળે જ (ટ્રસ્ટી થવા) આવશે!’’ 
-<span class="text-sm font-bold text-maroon block mt-2">(૮૪ વૈષ્ણવવાર્તા, કૃષ્ણદાસની વાર્તા, પ્ર.૧૦)</span>
-                    </div>
+<span class="text-sm font-bold text-royal-maroon block mt-2">(૮૪ વૈષ્ણવવાર્તા, કૃષ્ણદાસની વાર્તા, પ્ર.૧૦)</span>
                 </div>
+            </div>
 
-                <div class="glass-card p-8 md:p-10 rounded-3xl border-t-4 border-gold" data-aos="fade-up">
-                    <div class="flex items-center gap-4 mb-6 border-b border-gold/20 pb-4">
-                        <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center text-2xl ring-2 ring-gold/50">🔥</div>
-                        <h3 class="font-yatra text-2xl md:text-3xl text-maroon">શ્રીગોકુલનાથજી</h3>
-                    </div>
-                    <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-maroon/20 pl-6"> <b>
-પોતાના સેવ્ય સ્વરૂપની સેવા જાતે જ કરવી. અને ઉત્સવ વગેરે સમય અનુસાર, પોતાના જ ધન અનુસાર, વસ્ત્ર-આભૂ પણ વિવિધ પ્રકારના મનોરથો કરી સામગ્રી કરવી. </b>
-
-<span class="text-sm font-bold text-maroon block mt-2">(શ્રીગોકુલનાથજી-ચતુર્થેશ : ૨૪ વચનામૃત)</span>
-                    </div>
+            <div class="glass-card p-8 md:p-10 rounded-3xl border-l-8 border-divine-gold" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6 border-b border-divine-gold/20 pb-4">
+                    <div class="w-12 h-12 rounded-full bg-royal-maroon/10 flex items-center justify-center text-2xl ring-2 ring-divine-gold/50">🔥</div>
+                    <h3 class="font-yatra text-2xl md:text-3xl text-royal-maroon">શ્રીગોકુલનાથજી</h3>
                 </div>
+                <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-royal-maroon/20 pl-6 font-bold">
+પોતાના સેવ્ય સ્વરૂપની સેવા જાતે જ કરવી. અને ઉત્સવ વગેરે સમય અનુસાર, પોતાના જ ધન અનુસાર, વસ્ત્ર-આભૂ પણ વિવિધ પ્રકારના મનોરથો કરી સામગ્રી કરવી. 
+<span class="text-sm font-bold text-royal-maroon block mt-2">(શ્રીગોકુલનાથજી-ચતુર્થેશ : ૨૪ વચનામૃત)</span>
+                </div>
+            </div>
 
-                <div class="glass-card p-8 md:p-10 rounded-3xl border-t-4 border-gold" data-aos="fade-up">
-                    <div class="flex items-center gap-4 mb-6 border-b border-gold/20 pb-4">
-                        <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center text-2xl ring-2 ring-gold/50">✒️</div>
-                        <h3 class="font-yatra text-2xl md:text-3xl text-maroon">ગોસ્વામી શ્રીપુરુષોત્તમચરણ</h3>
-                    </div>
-                    <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-maroon/20 pl-6">
+            <div class="glass-card p-8 md:p-10 rounded-3xl border-l-8 border-royal-maroon" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6 border-b border-divine-gold/20 pb-4">
+                    <div class="w-12 h-12 rounded-full bg-royal-maroon/10 flex items-center justify-center text-2xl ring-2 ring-divine-gold/50">✒️</div>
+                    <h3 class="font-yatra text-2xl md:text-3xl text-royal-maroon">ગોસ્વામી શ્રીપુરુષોત્તમચરણ</h3>
+                </div>
+                <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-royal-maroon/20 pl-6">
 મહેનતાણા (ન્યોછાવર-ભેટ-પગાર-મજૂરી) તરીકે રૂપિયા આપીને બીજા કોઈ પાસેથી સેવા કરાવવામાં આવતી હોય તો તેથી ચિત્તમાં અહંકાર વધે પણ ચિત્ત કદિ ભગવાન્માં ચોંટે નહીં. તે જ પ્રમાણે, જો ભગવત્સેવા કરવામાટે બીજા પાસેથી મહેનતાણા તરીકે રૂપીઆ લેવામાં આવે તો યજમાન વતી કર્મ કરનાર ગોર-મહારાજને જેમ યજ્ઞયાગનું ફળ ન મળે પણ યજમાનનેજ મળે તેમ પારકા પૈસે સેવા કરનારની ભગવત્સેવા પણ નિષ્ફલળ જાય છે. દક્ષિણા આપીને યજમાન ગોર-મહારાજદ્વારા જેમ યજ્ઞયાગ કરાવે તેમ ભગવત્સેવા (હાલમાં જેમ વૈષ્ણવો ભેટ-સામગ્રી-મનોરથો નોંધાવીનેં ગોસ્વામિ-મહારાજોદ્વારા હવેલી-મન્દિરોમાં કરાવે છે તેમ –અનુવાદક) કરાવી લેવામાં શો વાંધો? ઉત્તર : કર્મમાર્ગમાં તેવું કરવાનું શાસ્ત્રમાં કહ્યું હોવાથી તેમ કરી શકાય છે. ભક્તિમાર્ગમાં, પરંતુ, તેવી વિધિ ઉપદેશાયેલી ન હોવાથી, આવી રીતે ધન આપીને ભગવત્સેવા કરાવવી નહીં. ભક્તિમાર્ગમાં તો ભગવદુક્ત પ્રકારે(પોતાના તન-મન-ધનથી પોતાના ઘરે પોતાના પરિવારજનોના સહયોગથી)જ ભગવત્સેવા કરવી જોઈએ.
-<span class="text-sm font-bold text-maroon block mt-2">(સિદ્ધાન્તમુક્તાવલી વિવૃતિ પ્રકાશ. શ્લોક ક્ર. ૨)</span>
-                    </div>
+<span class="text-sm font-bold text-royal-maroon block mt-2">(સિદ્ધાન્તમુક્તાવલી વિવૃતિ પ્રકાશ. શ્લોક ક્ર. ૨)</span>
                 </div>
+            </div>
 
-                <div class="glass-card p-8 md:p-10 rounded-3xl border-t-4 border-gold" data-aos="fade-up">
-                    <div class="flex items-center gap-4 mb-6 border-b border-gold/20 pb-4">
-                        <div class="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center text-2xl ring-2 ring-gold/50">🙏</div>
-                        <h3 class="font-yatra text-2xl md:text-3xl text-maroon"> પૂ. પા. ગો. શ્રીપુરુષોત્તમલાલજી (જુનાગઢ)</h3>
-                    </div>
-                    <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-maroon/20 pl-6">
+            <div class="glass-card p-8 md:p-10 rounded-3xl border-t-8 border-divine-gold shadow-2xl" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6 border-b border-divine-gold/20 pb-4">
+                    <div class="w-12 h-12 rounded-full bg-royal-maroon/10 flex items-center justify-center text-2xl ring-2 ring-divine-gold/50">🙏</div>
+                    <h3 class="font-yatra text-2xl md:text-3xl text-royal-maroon">પૂ. પા. ગો. શ્રીપુરુષોત્તમલાલજી (જુનાગઢ)</h3>
+                </div>
+                <div class="font-noto text-slate-700 leading-loose text-justify text-lg whitespace-pre-line border-l-4 border-royal-maroon/20 pl-6">
 (ક) શ્રીમહાપ્રભુજી વલ્લભાચાર્યજીના પુષ્ટિસમ્પ્રદાયમાં બે દીક્ષા આપવામાં આવે છે. બન્ને દીક્ષાનું પ્રયોજન અને તત્પશ્ચાત્ કર્તવ્યનો પણ વિચાર ખુબજ આવશ્યક છે. કેવળ શિષ્યેષણાથી પ્રેરાઈને વધારે શિષ્યો બનાવવામાટે આપવામાં આવતી બ્રહ્મસમ્બન્ધ દીક્ષાથી કોઈ અર્થ સરતો નથી. જે વ્યક્તિ ભગવત્સેવા કરવામાટે તૈયાર નથી તેણે કદાપિ બ્રહ્મસમ્બન્ધ દીક્ષા લેવી જોઈએ નહીં. પણ શ્રીમહાપ્રભુજીના સિદ્ધાન્તમાં નિષ્ઠાવાળો જો હોય તો તેણે કેવળ નામદીક્ષા ગ્રહણ કરવી જોઈએ. અને અન્યાશ્રયનો ત્યાગ કરી શ્રીકૃષ્ણનો આશ્રય દઢ કરવા પ્રયત્નશીલ રહી નામસેવારત રહેવું જોઈએ. પરંતુ બ્રહ્મસમ્બન્ધ દીક્ષા લીધા પછી શ્રીકૃષ્ણની સેવા અનિવાર્ય છે.
 
 શ્રીકૃષ્ણની સેવા પણ શ્રીમહાપ્રભુજીએ બતાવેલ રીતિ અનુસાર જ થઈ શકે. <b>પોતાના ઘરમાં પોતાના પરિવારના સભ્યો સાથે પોતાના દ્રવ્યથી જ ભગવત્સેવા કરવી જોઈએ. </b> કોઈને દ્રવ્ય આપીને કે લઈને કરવામાં આવતી સેવા એ ભગવત્સેવા તો કદાપિ નથી જ પણ શ્રીમહાપ્રભુજીનો દ્રોહ હોવાથી ગુરુ અપરાધથી ગ્રસિત બનાવી આરૂઢપતિત બનાવે છે. અને આ ભક્તિમાર્ગથી ભ્રષ્ટ કરે છે. પોતાનું ગુજરાન ચલાવવા માટે કરવામાં આવતી ધંધાદારી સેવાથી તો ચાંડાલ સમાન હીન દેવલક થઈ જવાય છે. <b> અત: ભગવત્સેવા પોતાના ઘરમાં અને પોતાના દ્રવ્ય અને તન થી જ થઈ શકે. </b>
@@ -281,108 +248,49 @@
 સેવાની જેમ જ કથા પણ પોતે અથવા નિષ્કામ ભગવદીયો સાથે મળીને જ કરવી જોઈએ. ધંધાદારી કથાકારો પાસે દ્રવ્ય આપીને કરાવવામાં આવતી કથા પણ રાખમાં ઘી હોમવા બરાબર છે. આવી કથાઓ, પારાયણો, કીર્તનો કે સપ્તાહો પુષ્ટિમાર્ગીય સિદ્ધાન્તથી સદન્તર વિરુદ્ધ છે. અત: સેવા અને કથા બન્ને, દ્રવ્ય આપીને કે લઈને કરવાથી કોઈ પણ અલૌકિક પુષ્ટિફળની પ્રાપ્તિ સ્વપ્નેય ન થઈ શકે પણ બહિર્મુખ અવશ્ય થવાય.
 
 (ખ) અમે તો રાજના ખાસા ખવાસ મુક્તિ મન ન આવે રે” વ્રજાધિપનું સેવન કરનારા અમે મુક્તિ માંગતા નથી. છતાં પુષ્ટિમાર્ગી વૈષ્ણવો ભાગવત સપ્તાહ બેસાડીને પોતાના પિતૃઓને મોક્ષમાર્ગે મોકલે છે! પિતૃમોક્ષાર્થે ભાગવત સપ્તાહ! કોઈ એકસો આઠ! કોઈ એક હજાર આઠ!... આપણા પિતૃઓ તો ગોલોકમાં જાય છે એમને પાછા મોક્ષમાં શા માટે મોકલો છો? ... ભાગવત સપ્તાહ પૂરી કરીને પછી માળા પહેરામણી કરે અને કહે કે ગોલોકધામ... હવે ગોલોક ધામમાં મોકલવા છે! એટલે પિતૃઓને અહીંથી ત્યાં દોડા-દોડી જ કરાવવી છે! આપણું કોઈ ધ્યેય જ નક્કી નથી!! આપણે શ્રીમહાપ્રભુજીના ગ્રન્થો ખોલ્યા નથી એનું આ દુષ્પરિણામ છે કે જે આપણા પૂર્વજોને પણ ભોગવવું પડે છે.
-<span class="text-sm font-bold text-maroon block mt-2">(પૂ. પા. ગો. શ્રીપુરુષોત્તમલાલજી, જુનાગઢ શ્રીયમુનાષ્ટક પ્રવચન, રાજકોટ, ૨૦૦૬)</span>
-<div class="satsang-card" style="text-align: center; margin: 40px auto; padding: 30px; border: 1.5px solid #d4af37; border-radius: 15px; max-width: 500px; background-color: #ffffff; box-shadow: 0 10px 25px rgba(0,0,0,0.05); font-family: 'serif';">
-    
-    <h4 style="color: #a52a2a; margin-bottom: 30px; letter-spacing: 1px;">પુષ્ટિ સેવા સત્સંગ</h4>
-    
-    <div style="margin-bottom: 40px;">
-        <h2 style="color: #333; line-height: 1.6; font-size: 22px;">શ્રી મહાપ્રભુજી નાં સર્વસ્વ તમારા માથે બિરાજતા તમારા સેવ્ય જ છે.</h2>
-    </div>
+<span class="text-sm font-bold text-royal-maroon block mt-2">(પૂ. પા. ગો. શ્રીપુરુષોત્તમલાલજી, જુનાગઢ શ્રીયમુનાષ્ટક પ્રવચન, રાજકોટ, ૨૦૦૬)</span>
 
-    <div style="background-color: #f1f3f4; border-radius: 30px; padding: 5px; display: inline-block; width: 90%;">
-        <audio controls controlsList="nodownload" oncontextmenu="return false;" style="width: 100%;">
-            <source src="lion.mp3" type="audio/mpeg">
-            તમારું બ્રાઉઝર ઓડિયો સપોર્ટ કરતું નથી.
-        </audio>
-    </div>
-
-    <div style="margin-top: 50px; font-size: 13px; color: #999;">
-        <p>© પૂ. પા. ગો. શ્રીપુરુષોત્તમલાલજી, જૂનાગઢ</p>
-        <p style="font-size: 11px; margin-top: 5px;">Managed by: Bhargavsinh Sisodiya</p>
-    </div>
-</div>
-
-<script>
-    // ઓડિયો ડાઉનલોડ અટકાવવા માટે વધારાની સુરક્ષા
-    document.addEventListener('contextmenu', function(e) {
-        if (e.target.nodeName === "AUDIO") {
-            e.preventDefault();
-        }
-    }, false);
-</script>
-
+                <div class="satsang-card max-w-lg mx-auto bg-white p-8 rounded-[2.5rem] border-2 border-divine-gold/30 shadow-2xl text-center mt-12">
+                    <h4 class="font-yatra text-2xl text-royal-maroon mb-6">પુષ્ટિ સેવા સત્સંગ</h4>
+                    <p class="font-bold text-lg text-slate-800 mb-8 leading-relaxed">શ્રી મહાપ્રભુજી નાં સર્વસ્વ તમારા માથે બિરાજતા તમારા સેવ્ય જ છે.</p>
+                    <div class="bg-parchment p-3 rounded-full">
+                        <audio controls controlsList="nodownload" class="w-full">
+                            <source src="lion.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="mt-8 text-[10px] uppercase tracking-widest text-slate-400 font-inter">
+                        <p>© પૂ. પા. ગો. શ્રીપુરુષોત્તમલાલજી, જૂનાગઢ</p>
+                        <p class="mt-1">Managed by: Bhargavsinh Sisodiya</p>
                     </div>
                 </div>
-
             </div>
         </section>
+
+        <div class="text-center py-20" data-aos="zoom-in">
+            <p class="font-yatra text-4xl md:text-6xl text-royal-maroon opacity-80">“સર્વમ્ શ્રીકૃષ્ણાર્પણમસ્તુ”</p>
+        </div>
     </main>
 
-    <footer class="bg-maroon-dark text-white pt-16 md:pt-20 pb-8 text-center px-4 mt-20 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gold via-yellow-200 to-gold"></div>
-        <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-maroon-dark rotate-45 border-4 border-gold"></div>
-
-        <div class="max-w-4xl mx-auto relative z-10">
-            <a href="disclaimer.html" class="text-gold/80 hover:text-white font-playfair font-bold hover:underline mb-10 block tracking-widest text-sm">LEGAL DISCLAIMER</a>
-            <div class="overflow-hidden border-y border-white/10 py-6 mb-8 bg-white/5 backdrop-blur-sm">
-                <div class="animate-marquee whitespace-nowrap text-gold font-medium font-playfair text-lg">
-                   <p> Designed by Sisodiya Bhargavsinh </p> <p>  ✦  © 2026  ✦ </p><p> Maintaining Heritage with Technology </p>
-                </div>
+    <footer class="bg-royal-maroon text-white pt-24 pb-12 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
+        <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
+            <a href="disclaimer.html" class="text-divine-gold font-playfair font-bold hover:underline mb-12 block tracking-widest text-sm">LEGAL DISCLAIMER</a>
+            <div class="border-y border-white/10 py-8 mb-12 bg-white/5 backdrop-blur-sm">
+                <p class="text-divine-gold font-playfair text-xl">Designed by Sisodiya Bhargavsinh ✦ © 2026</p>
+                <p class="text-[10px] uppercase tracking-[0.5em] mt-3 opacity-40">Maintaining Heritage with Technology</p>
             </div>
-            <div class="bg-black/40 inline-block p-5 rounded-2xl border border-gold/20 shadow-xl backdrop-blur-md hover:border-gold/50 transition">
-                <p class="text-[10px] uppercase tracking-[0.3em] text-white/50 mb-3 font-inter">Visitor Count</p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 grayscale hover:grayscale-0 transition">
+            <div class="bg-black/20 inline-block p-6 rounded-3xl border border-divine-gold/20">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Visitor Count</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-80 h-5">
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-        
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            nav.classList.toggle('hidden');
-        }
-
-        // Security
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) { 
-            if(e.keyCode == 123) return false; 
-            if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
-        }
+        AOS.init({ duration: 1200, once: true });
+        function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+        document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
-<script>
-    // 1. Right-Click બંધ કરવા માટે
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    }, false);
-
-    // 2. Keyboard Shortcuts (Ctrl+C, Ctrl+U, Ctrl+Shift+I) બંધ કરવા માટે
-    document.onkeydown = function(e) {
-        // F12 બંધ કરો
-        if(e.keyCode == 123) {
-            return false;
-        }
-        // Ctrl+Shift+I (Inspect) બંધ કરો
-        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-            return false;
-        }
-        // Ctrl+Shift+J (Console) બંધ કરો
-        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-            return false;
-        }
-        // Ctrl+U (View Source) બંધ કરો
-        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-            return false;
-        }
-        // Ctrl+C (Copy) બંધ કરો
-        if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) {
-            return false;
-        }
-    };
-</script>
 </body>
 </html>
