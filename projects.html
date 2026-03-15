@@ -15,18 +15,17 @@
             theme: {
                 extend: {
                     colors: {
-                        maroon: { DEFAULT: '#7b1c1c', dark: '#4a0404' },
-                        gold: { DEFAULT: '#daa520', light: '#ffd700', dark: '#b8860b' },
-                        cream: '#fff8ec',
+                        'royal-maroon': '#6b0f1a',
+                        'divine-gold': '#d4af37',
+                        'saffron-glow': '#ff9933',
+                        'parchment': '#fdfaf0',
+                        'night-void': '#0a0012',
                     },
                     fontFamily: {
                         yatra: ['Yatra One', 'cursive'],
                         noto: ['Noto Sans', 'sans-serif'],
                         playfair: ['Playfair Display', 'serif'],
                         inter: ['Inter', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'royal-pattern': "radial-gradient(circle at 50% 50%, #fff8ec 0%, #ffe4c4 100%)"
                     }
                 }
             }
@@ -34,176 +33,173 @@
     </script>
 
     <style>
-        /* Security Styles */
         body {
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;
-        }
-        a, button, iframe, .nav-link, .social-link {
-            pointer-events: auto !important;
-        }
-
-        /* Royal Theme Styles */
-        .royal-bg {
-            background-color: #fff8ec;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(27,96%,90%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(25,95%,85%,1) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(27,96%,90%,1) 0, transparent 50%);
-            background-attachment: fixed;
+            background-color: #fdfaf0;
+            color: #1a1a1a;
+            overflow-x: hidden;
         }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(218, 165, 32, 0.3);
-        }
-
+        /* 2050 Glassmorphism */
         .glass-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 10px 30px -5px rgba(123, 28, 28, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 40px -10px rgba(107, 15, 26, 0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .glass-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -5px rgba(123, 28, 28, 0.2);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px -15px rgba(107, 15, 26, 0.15);
+            background: rgba(255, 255, 255, 0.6);
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #fff8ec; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #7b1c1c, #daa520); border-radius: 10px; }
-
-        /* Nav Hover */
         .nav-link-ltr { position: relative; }
         .nav-link-ltr::after {
             content: ''; position: absolute; width: 0; height: 2px;
-            display: block; margin-top: 2px; right: 0; background: #daa520;
+            display: block; margin-top: 2px; right: 0; background: #d4af37;
             transition: width .3s ease;
         }
         .nav-link-ltr:hover::after { width: 100%; left: 0; }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.04;
+            background-image: radial-gradient(#d4af37 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fdfaf0; }
+        ::-webkit-scrollbar-thumb { background: #6b0f1a; border-radius: 10px; }
     </style>
 </head>
 
-<body class="font-inter text-slate-800 royal-bg min-h-screen overflow-x-hidden selection:bg-gold selection:text-maroon">
+<body class="font-inter selection:bg-divine-gold selection:text-royal-maroon">
+    <div class="bg-pattern"></div>
 
-    <header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
+    <header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-divine-gold/20">
+        <nav class="max-w-7xl mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" class="h-10 md:h-14 w-auto drop-shadow-md hover:scale-105 transition">
-                <span class="font-yatra text-maroon text-lg md:text-2xl tracking-wide hidden sm:block">Sisodiya Bhargavsinh</span>
+                <img src="logo.png" alt="Logo" class="h-10 md:h-14 hover:scale-105 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none">Sisodiya Bhargavsinh</span>
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-divine-gold font-bold">Project Portfolio</span>
+                </div>
             </div>
 
-            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-sm uppercase tracking-widest text-slate-700">
-                <li><a href="index.html" class="nav-link-ltr hover:text-maroon transition">Home</a></li>
-                <li><a href="about.html" class="nav-link-ltr hover:text-maroon transition">About</a></li>
-                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-maroon transition">Pushtimarg</a></li>
-                <li><a href="projects.html" class="nav-link-ltr text-maroon border-b-2 border-gold">Projects</a></li>
-                <li><a href="resume.html" class="nav-link-ltr hover:text-maroon transition">Resume</a></li>
-                <li><a href="blog.html" class="nav-link-ltr hover:text-maroon transition">Articles</a></li>
-                <li><a href="contact.html" class="nav-link-ltr hover:text-maroon transition">Contact</a></li>
+            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-xs uppercase tracking-widest text-slate-700">
+                <li><a href="index.html" class="nav-link-ltr hover:text-royal-maroon transition">Home</a></li>
+                <li><a href="about.html" class="nav-link-ltr hover:text-royal-maroon transition">About</a></li>
+                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-royal-maroon transition">Pushtimarg</a></li>
+                <li><a href="projects.html" class="nav-link-ltr text-royal-maroon">Projects</a></li>
+                <li><a href="resume.html" class="nav-link-ltr hover:text-royal-maroon transition">Resume</a></li>
+                <li><a href="blog.html" class="nav-link-ltr hover:text-royal-maroon transition">Articles</a></li>
+                <li><a href="contact.html" class="nav-link-ltr hover:text-royal-maroon transition">Contact</a></li>
             </ul>
 
-            <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl hover:text-gold transition focus:outline-none">☰</button>
+            <button onclick="toggleMenu()" class="lg:hidden text-royal-maroon text-2xl">☰</button>
         </nav>
 
-        <div id="mobileMenu" class="hidden bg-cream/95 backdrop-blur-md border-t border-gold/20 p-6 space-y-4 shadow-xl lg:hidden absolute w-full z-50">
-            <a href="index.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Home</a>
-            <a href="about.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">About</a>
-            <a href="pushtimarg.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Pushtimarg</a>
-            <a href="projects.html" class="block font-yatra text-maroon pl-3 border-l-4 border-gold">Projects</a>
-            <a href="resume.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Resume</a>
-            <a href="blog.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Articles</a>
-            <a href="contact.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Contact</a>
+        <div id="mobileMenu" class="hidden lg:hidden bg-parchment/95 backdrop-blur-md border-t border-divine-gold/20 p-6 space-y-4 shadow-xl absolute w-full">
+            <a href="index.html" class="block font-medium">Home</a>
+            <a href="about.html" class="block font-medium">About</a>
+            <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
+            <a href="projects.html" class="block font-yatra text-royal-maroon">Projects</a>
+            <a href="resume.html" class="block font-medium">Resume</a>
+            <a href="blog.html" class="block font-medium">Articles</a>
+            <a href="contact.html" class="block font-medium">Contact</a>
         </div>
     </header>
 
-    <main class="pt-24 md:pt-32 pb-16 px-4">
+    <main class="pt-32 pb-20 px-4">
         
-        <div class="max-w-7xl mx-auto mb-12" data-aos="fade-down">
-            <div class="bg-white/60 backdrop-blur-md p-2 border-y border-gold/40 shadow-sm rounded-lg overflow-hidden flex items-center gap-4">
-                 <span class="bg-maroon text-white px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider shrink-0 hidden sm:block">Shloka</span>
-                <marquee class="font-bold text-maroon font-playfair tracking-wide text-lg">
+        <div class="max-w-7xl mx-auto mb-16" data-aos="fade-down">
+            <div class="glass-card p-4 rounded-2xl overflow-hidden flex items-center gap-4">
+                 <span class="bg-royal-maroon text-divine-gold px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest hidden sm:block">Shloka</span>
+                <marquee class="font-bold text-royal-maroon font-playfair tracking-wide text-lg">
                     || કર્મણ્યેવાધિકારસ્તે મા ફલેષુ કદાચન || મારા શૈક્ષણિક અને સંશોધનાત્મક કાર્યો ||
                 </marquee>
             </div>
         </div>
 
-        <div class="text-center mb-16" data-aos="zoom-in">
+        <div class="text-center mb-24" data-aos="zoom-in">
             <div class="inline-block relative">
-                <h2 class="font-yatra text-4xl md:text-6xl text-maroon mb-2 relative z-10 drop-shadow-md">મારા પ્રોજેક્ટ્સ</h2>
-                <div class="absolute -bottom-2 left-0 w-full h-3 bg-gold/30 -z-0 skew-x-12"></div>
+                <h2 class="font-yatra text-5xl md:text-7xl text-royal-maroon mb-4 relative z-10 drop-shadow-md">મારા પ્રોજેક્ટ્સ</h2>
+                <div class="absolute -bottom-3 left-0 w-full h-4 bg-divine-gold/20 -z-10 skew-x-12"></div>
             </div>
-            <div class="text-3xl mt-4 animate-bounce text-gold">💻</div>
-            <p class="max-w-2xl mx-auto text-lg text-slate-600 font-noto mt-6 leading-relaxed">
+            <div class="text-4xl mt-6 animate-bounce text-divine-gold">💻</div>
+            <p class="max-w-2xl mx-auto text-xl text-slate-600 font-noto mt-8 leading-relaxed">
                 અહીં મારા BCA અભ્યાસ દરમિયાન બનાવેલા સોફ્ટવેર પ્રોજેક્ટ્સ અને મારા વ્યક્તિગત સંશોધન કાર્યો રજૂ કર્યા છે.
             </p>
         </div>
 
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-2">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 px-2">
             
-            <div class="glass-card rounded-3xl overflow-hidden relative group" data-aos="fade-up">
-                <div class="bg-gradient-to-r from-maroon via-maroon-dark to-maroon p-5 text-center border-b-4 border-gold relative">
-                    <h3 class="font-yatra text-xl md:text-2xl text-white tracking-wide">૧. ડિજિટલ પોર્ટફોલિયો</h3>
-                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-gold rotate-45"></div>
+            <div class="glass-card rounded-[3rem] overflow-hidden relative group" data-aos="fade-up">
+                <div class="bg-royal-maroon p-8 text-center border-b-8 border-divine-gold relative">
+                    <h3 class="font-yatra text-2xl text-divine-gold tracking-wide">૧. ડિજિટલ પોર્ટફોલિયો</h3>
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-divine-gold rotate-45"></div>
                 </div>
-                <div class="p-8 pt-10">
-                    <p class="text-slate-600 leading-relaxed font-noto mb-8 text-justify h-auto md:h-24">
+                <div class="p-10 pt-12">
+                    <p class="text-slate-600 leading-relaxed font-noto mb-10 text-justify text-lg h-auto md:h-28">
                         આ મારી વ્યક્તિગત વેબસાઇટ છે. આમાં મેં HTML5, CSS3 અને JavaScript નો ઉપયોગ કરીને Responsive Design બનાવી છે. આ સાઈટ સંપૂર્ણપણે સુરક્ષિત અને SEO ફ્રેન્ડલી છે.
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-8 justify-center">
-                        <span class="bg-cream text-maroon px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-gold/30">HTML5</span>
-                        <span class="bg-cream text-maroon px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-gold/30">CSS3</span>
-                        <span class="bg-cream text-maroon px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-gold/30">SEO</span>
+                    <div class="flex flex-wrap gap-3 mb-10 justify-center">
+                        <span class="bg-divine-gold/10 text-royal-maroon px-4 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-widest border border-divine-gold/20">HTML5</span>
+                        <span class="bg-divine-gold/10 text-royal-maroon px-4 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-widest border border-divine-gold/20">CSS3</span>
+                        <span class="bg-divine-gold/10 text-royal-maroon px-4 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-widest border border-divine-gold/20">SEO</span>
                     </div>
                     <div class="text-center">
-                        <a href="index.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-maroon to-maroon-dark text-white px-8 py-3 rounded-xl font-bold hover:from-gold hover:to-gold-dark hover:text-maroon transition-all shadow-lg transform active:scale-95 border border-gold/50">
+                        <a href="index.html" class="inline-flex items-center gap-3 bg-royal-maroon text-divine-gold px-10 py-4 rounded-2xl font-bold hover:bg-divine-gold hover:text-royal-maroon transition-all duration-500 shadow-2xl transform active:scale-95">
                             Live Demo <span>👁️</span>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="glass-card rounded-3xl overflow-hidden relative group" data-aos="fade-up" data-aos-delay="100">
-                <div class="bg-gradient-to-r from-maroon via-maroon-dark to-maroon p-5 text-center border-b-4 border-gold relative">
-                    <h3 class="font-yatra text-xl md:text-2xl text-white tracking-wide">૨. વંશાવલી સંશોધન</h3>
-                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-gold rotate-45"></div>
+            <div class="glass-card rounded-[3rem] overflow-hidden relative group" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-royal-maroon p-8 text-center border-b-8 border-divine-gold relative">
+                    <h3 class="font-yatra text-2xl text-divine-gold tracking-wide">૨. વંશાવલી સંશોધન</h3>
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-divine-gold rotate-45"></div>
                 </div>
-                <div class="p-8 pt-10">
-                    <p class="text-slate-600 leading-relaxed font-noto mb-8 text-justify h-auto md:h-24">
+                <div class="p-10 pt-12">
+                    <p class="text-slate-600 leading-relaxed font-noto mb-10 text-justify text-lg h-auto md:h-28">
                         મહારાણા પ્રતાપના વંશજો (પુરાવત સિસોદિયા) નો ૧૫ પેઢીનો ઈતિહાસ ડિજિટલ સ્વરૂપે સાચવવાનો આ એક પ્રયાસ છે. 
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-8 justify-center">
-                        <span class="bg-cream text-maroon px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-gold/30">Research</span>
-                        <span class="bg-cream text-maroon px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-gold/30">History</span>
+                    <div class="flex flex-wrap gap-3 mb-10 justify-center">
+                        <span class="bg-divine-gold/10 text-royal-maroon px-4 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-widest border border-divine-gold/20">Research</span>
+                        <span class="bg-divine-gold/10 text-royal-maroon px-4 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-widest border border-divine-gold/20">History</span>
                     </div>
                     <div class="text-center">
-                        <a href="about.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-maroon to-maroon-dark text-white px-8 py-3 rounded-xl font-bold hover:from-gold hover:to-gold-dark hover:text-maroon transition-all shadow-lg transform active:scale-95 border border-gold/50">
+                        <a href="about.html" class="inline-flex items-center gap-3 bg-royal-maroon text-divine-gold px-10 py-4 rounded-2xl font-bold hover:bg-divine-gold hover:text-royal-maroon transition-all duration-500 shadow-2xl transform active:scale-95">
                             View Research <span>📜</span>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="glass-card rounded-3xl overflow-hidden relative group" data-aos="fade-up" data-aos-delay="200">
-                <div class="bg-gradient-to-r from-maroon via-maroon-dark to-maroon p-5 text-center border-b-4 border-gold relative">
-                    <h3 class="font-yatra text-xl md:text-2xl text-white tracking-wide">૩. Student Management (C)</h3>
-                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-gold rotate-45"></div>
+            <div class="glass-card rounded-[3rem] overflow-hidden relative group" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-royal-maroon p-8 text-center border-b-8 border-divine-gold relative">
+                    <h3 class="font-yatra text-2xl text-divine-gold tracking-wide">૩. Student Management</h3>
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-divine-gold rotate-45"></div>
                 </div>
-                <div class="p-8 pt-10">
-                    <p class="text-slate-600 leading-relaxed font-noto mb-8 text-justify h-auto md:h-24">
+                <div class="p-10 pt-12">
+                    <p class="text-slate-600 leading-relaxed font-noto mb-10 text-justify text-lg h-auto md:h-28">
                         BCA સેમેસ્ટર-1 ના પ્રોજેક્ટ તરીકે મેં 'C Language' માં સ્ટુડન્ટ ડેટાબેઝ મેનેજમેન્ટ સિસ્ટમ બનાવી છે. જે વિદ્યાર્થીઓના નામ, રોલ નંબર અને માર્ક્સ સ્ટોર કરી શકે છે.
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-8 justify-center">
-                        <span class="bg-cream text-maroon px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-gold/30">C Language</span>
-                        <span class="bg-cream text-maroon px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-gold/30">Logic</span>
+                    <div class="flex flex-wrap gap-3 mb-10 justify-center">
+                        <span class="bg-divine-gold/10 text-royal-maroon px-4 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-widest border border-divine-gold/20">C Language</span>
+                        <span class="bg-divine-gold/10 text-royal-maroon px-4 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-widest border border-divine-gold/20">Logic</span>
                     </div>
                     <div class="text-center">
-                        <a href="https://bhargavsinh.github.io/studentdatamanagement.github.io/index.html" class="inline-flex items-center gap-2 bg-slate-800 text-white px-8 py-3 rounded-xl font-bold hover:bg-gold hover:text-black transition-all shadow-lg transform active:scale-95 border border-slate-700">
-                            visit hear <span>💻</span>
+                        <a href="https://bhargavsinh.github.io/studentdatamanagement.github.io/index.html" class="inline-flex items-center gap-3 bg-slate-800 text-white px-10 py-4 rounded-2xl font-bold hover:bg-divine-gold hover:text-royal-maroon transition-all duration-500 shadow-2xl transform active:scale-95">
+                            Visit Project <span>💻</span>
                         </a>
                     </div>
                 </div>
@@ -212,75 +208,27 @@
         </div>
     </main>
 
-    <footer class="bg-maroon-dark text-white pt-16 md:pt-20 pb-8 text-center px-4 mt-20 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gold via-yellow-200 to-gold"></div>
-        <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-maroon-dark rotate-45 border-4 border-gold"></div>
-
-        <div class="max-w-4xl mx-auto relative z-10">
-            
-            <div class="overflow-hidden border-y border-white/10 py-6 mb-8 bg-white/5 backdrop-blur-sm">
-                <div class="animate-marquee whitespace-nowrap text-gold font-medium font-playfair text-lg">
-                   <p> Designed by Sisodiya Bhargavsinh </p> <p> ✦  © 2026 ✦</p><p>  Maintaining Heritage with Technology </p>
-                </div>
+    <footer class="bg-royal-maroon text-white pt-24 pb-12 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
+        <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
+            <div class="border-y border-white/10 py-8 mb-12 bg-white/5 backdrop-blur-sm">
+                <p class="text-divine-gold font-playfair text-xl">Designed by Sisodiya Bhargavsinh ✦ © 2026</p>
+                <p class="text-[10px] uppercase tracking-[0.5em] mt-3 opacity-40">Maintaining Heritage with Technology</p>
             </div>
 
-            <div class="bg-black/40 inline-block p-5 rounded-2xl border border-gold/20 shadow-xl backdrop-blur-md hover:border-gold/50 transition">
-                <p class="text-[10px] uppercase tracking-[0.3em] text-white/50 mb-3 font-inter">Visitor Count</p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 grayscale hover:grayscale-0 transition">
+            <div class="bg-black/20 inline-block p-6 rounded-3xl border border-divine-gold/20 shadow-2xl">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3 font-inter">Visitor Count</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-80 h-5">
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-
-        // મેનુ ને Toggle કરવાનું ફંક્શન
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        // પેજ લોડ થાય ત્યારે મેનુ ચેક કરવું
-        window.onload = function() {
-            const menu = document.getElementById('mobileMenu');
-            if(menu) menu.classList.add('hidden');
-        };
-
-        // કન્ટેક્ષ્ટ મેનુ બંધ કરવું
+        AOS.init({ duration: 1200, once: true, offset: 50 });
+        function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
         document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = e => { if(e.keyCode == 123 || (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 67))) return false; };
     </script>
-
-<script>
-    // 1. Right-Click બંધ કરવા માટે
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    }, false);
-
-    // 2. Keyboard Shortcuts (Ctrl+C, Ctrl+U, Ctrl+Shift+I) બંધ કરવા માટે
-    document.onkeydown = function(e) {
-        // F12 બંધ કરો
-        if(e.keyCode == 123) {
-            return false;
-        }
-        // Ctrl+Shift+I (Inspect) બંધ કરો
-        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-            return false;
-        }
-        // Ctrl+Shift+J (Console) બંધ કરો
-        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-            return false;
-        }
-        // Ctrl+U (View Source) બંધ કરો
-        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-            return false;
-        }
-        // Ctrl+C (Copy) બંધ કરો
-        if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) {
-            return false;
-        }
-    };
-</script>
-
 </body>
 </html>
