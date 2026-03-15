@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pushtimarg Research Articles | Sisodiya Bhargavsinh</title>
-    
+
     <meta name="description" content="Read research articles by Sisodiya Bhargavsinh on Pushtimarg, Gruh Seva, and Indian Culture.">
     <meta name="robots" content="index, follow, noai, noimageai"> 
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
@@ -18,18 +18,17 @@
             theme: {
                 extend: {
                     colors: {
-                        maroon: { DEFAULT: '#7b1c1c', dark: '#4a0404' },
-                        gold: { DEFAULT: '#daa520', light: '#ffd700', dark: '#b8860b' },
-                        cream: '#fff8ec',
+                        'royal-maroon': '#6b0f1a',
+                        'divine-gold': '#d4af37',
+                        'saffron-glow': '#ff9933',
+                        'parchment': '#fdfaf0',
+                        'night-void': '#0a0012',
                     },
                     fontFamily: {
                         yatra: ['Yatra One', 'cursive'],
                         noto: ['Noto Sans', 'sans-serif'],
                         playfair: ['Playfair Display', 'serif'],
                         inter: ['Inter', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'royal-pattern': "radial-gradient(circle at 50% 50%, #fff8ec 0%, #ffe4c4 100%)"
                     }
                 }
             }
@@ -37,53 +36,47 @@
     </script>
 
     <style>
-        /* Security Styles */
         body {
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;
-        }
-        a, button, iframe, .nav-link, .social-link {
-            pointer-events: auto !important;
-        }
-
-        /* Royal Theme Styles */
-        .royal-bg {
-            background-color: #fff8ec;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(27,96%,90%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(25,95%,85%,1) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(27,96%,90%,1) 0, transparent 50%);
-            background-attachment: fixed;
+            background-color: #fdfaf0;
+            color: #1a1a1a;
+            overflow-x: hidden;
         }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(218, 165, 32, 0.3);
-        }
-
+        /* 2050 Glassmorphism */
         .glass-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 10px 30px -5px rgba(123, 28, 28, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 40px -10px rgba(107, 15, 26, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px -5px rgba(123, 28, 28, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px -10px rgba(107, 15, 26, 0.15);
+            background: rgba(255, 255, 255, 0.6);
         }
 
-        /* Nav Hover */
         .nav-link-ltr { position: relative; }
         .nav-link-ltr::after {
             content: ''; position: absolute; width: 0; height: 2px;
-            display: block; margin-top: 2px; right: 0; background: #daa520;
+            display: block; margin-top: 2px; right: 0; background: #d4af37;
             transition: width .3s ease;
         }
         .nav-link-ltr:hover::after { width: 100%; left: 0; }
-        
+
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.04;
+            background-image: radial-gradient(#d4af37 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
         #notif-box { display: none; }
         #notif-box.show { display: block; animation: slideIn 0.3s ease-out; }
         @keyframes slideIn {
@@ -91,196 +84,180 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #fff8ec; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #7b1c1c, #daa520); border-radius: 10px; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fdfaf0; }
+        ::-webkit-scrollbar-thumb { background: #6b0f1a; border-radius: 10px; }
+
+        .goog-te-gadget-simple {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+            border: 1px solid rgba(212, 175, 55, 0.3) !important;
+            padding: 4px 8px !important;
+            border-radius: 8px !important;
+            font-family: 'Inter', sans-serif !important;
+        }
     </style>
 </head>
 
-<body class="font-inter text-slate-800 royal-bg min-h-screen selection:bg-gold selection:text-maroon">
+<body class="font-inter selection:bg-divine-gold selection:text-royal-maroon">
+    <div class="bg-pattern"></div>
 
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-maroon focus:text-white">મુખ્ય કન્ટેન્ટ પર જાઓ</a>
-
-    <header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
+    <header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-divine-gold/20">
+        <nav class="max-w-7xl mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" class="h-10 md:h-14 w-auto drop-shadow-md hover:scale-105 transition">
-                <span class="font-yatra text-maroon text-lg md:text-2xl tracking-wide hidden sm:block">Sisodiya Bhargavsinh</span>
+                <img src="logo.png" alt="Logo" class="h-10 md:h-14 hover:scale-105 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none">Sisodiya Bhargavsinh</span>
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-divine-gold font-bold">Heritage & Research</span>
+                </div>
             </div>
 
-            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-sm uppercase tracking-widest text-slate-700">
-                <li><a href="index.html" class="nav-link-ltr hover:text-maroon transition">Home</a></li>
-                <li><a href="about.html" class="nav-link-ltr hover:text-maroon transition">About</a></li>
-                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-maroon transition">Pushtimarg</a></li>
-                <li><a href="projects.html" class="nav-link-ltr hover:text-maroon transition">Projects</a></li>
-                <li><a href="resume.html" class="nav-link-ltr hover:text-maroon transition">Resume</a></li>
-                <li><a href="blog.html" class="nav-link-ltr text-maroon border-b-2 border-gold">Articles</a></li>
-                <li><a href="contact.html" class="nav-link-ltr hover:text-maroon transition">Contact</a></li>
-                <li><div id="google_translate_element" class="scale-90 opacity-80 hover:opacity-100 transition"></div></li>
+            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-xs uppercase tracking-widest text-slate-700">
+                <li><a href="index.html" class="nav-link-ltr hover:text-royal-maroon transition">Home</a></li>
+                <li><a href="about.html" class="nav-link-ltr hover:text-royal-maroon transition">About</a></li>
+                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-royal-maroon transition">Pushtimarg</a></li>
+                <li><a href="projects.html" class="nav-link-ltr hover:text-royal-maroon transition">Projects</a></li>
+                <li><a href="resume.html" class="nav-link-ltr hover:text-royal-maroon transition">Resume</a></li>
+                <li><a href="blog.html" class="nav-link-ltr text-royal-maroon">Articles</a></li>
+                <li><a href="contact.html" class="nav-link-ltr hover:text-royal-maroon transition">Contact</a></li>
+                <li><div id="google_translate_element" class="scale-90"></div></li>
             </ul>
 
             <div class="flex items-center gap-4">
-                <div class="relative">
-                    <button onclick="toggleNotif()" class="p-2 hover:bg-gold/20 rounded-full transition relative group">
-                        <span class="text-2xl group-hover:scale-110 transition display-block">🔔</span>
-                        <span id="notif-badge" class="absolute top-2 right-2 w-3 h-3 bg-red-600 border-2 border-white rounded-full hidden animate-ping"></span>
-                    </button>
-                    <div id="notif-box" class="absolute right-0 mt-4 w-80 bg-white/95 backdrop-blur-xl rounded-xl shadow-2xl border border-gold/30 overflow-hidden z-50">
-                        <div class="bg-gradient-to-r from-maroon to-maroon-dark text-white px-4 py-3 flex justify-between items-center">
-                            <span class="font-yatra tracking-wide">Updates</span>
-                            <button onclick="toggleNotif()" class="text-xl hover:text-gold transition">&times;</button>
-                        </div>
-                        <ul id="notif-list" class="max-h-64 overflow-y-auto divide-y divide-gray-100/50">
-                            <li class="p-4 text-sm text-gray-500">Loading...</li>
-                        </ul>
-                    </div>
-                </div>
-                <button onclick="toggleMenu()" class="lg:hidden text-maroon text-3xl hover:text-gold transition">☰</button>
+                <button onclick="toggleNotif()" class="p-2 hover:bg-divine-gold/10 rounded-full transition relative group">
+                    <span class="text-xl">🔔</span>
+                    <span id="notif-badge" class="absolute top-2 right-2 w-2 h-2 bg-red-600 rounded-full hidden"></span>
+                </button>
+                <button onclick="toggleMenu()" class="lg:hidden text-royal-maroon text-2xl">☰</button>
             </div>
         </nav>
 
-        <div id="navLinks" class="hidden lg:hidden bg-cream/95 backdrop-blur-md border-t border-gold/20 p-6 space-y-4 shadow-xl absolute w-full z-50">
-            <a href="index.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Home</a>
-            <a href="about.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">About</a>
-            <a href="pushtimarg.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Pushtimarg</a>
-            <a href="projects.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Projects</a>
-            <a href="resume.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Resume</a>
-            <a href="blog.html" class="block font-yatra text-maroon pl-3 border-l-4 border-gold">Articles</a>
-            <a href="contact.html" class="block font-medium hover:text-maroon pl-3 border-l-4 border-transparent hover:border-gold transition">Contact</a>
+        <div id="navLinks" class="hidden lg:hidden bg-parchment/95 backdrop-blur-md border-t border-divine-gold/20 p-6 space-y-4 shadow-2xl absolute w-full">
+            <a href="index.html" class="block font-medium">Home</a>
+            <a href="about.html" class="block font-medium">About</a>
+            <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
+            <a href="projects.html" class="block font-medium">Projects</a>
+            <a href="resume.html" class="block font-medium">Resume</a>
+            <a href="blog.html" class="block font-yatra text-royal-maroon">Articles</a>
+            <a href="contact.html" class="block font-medium">Contact</a>
+        </div>
+        
+        <div id="notif-box" class="absolute right-4 mt-2 w-72 bg-white/95 rounded-2xl shadow-2xl border border-divine-gold/30 overflow-hidden z-50">
+            <div class="bg-royal-maroon text-divine-gold px-4 py-3 font-yatra">Updates</div>
+            <ul id="notif-list" class="max-h-60 overflow-y-auto divide-y divide-gray-100">
+                <li class="p-4 text-sm text-gray-500 text-center">Loading...</li>
+            </ul>
         </div>
     </header>
 
-    <main id="main-content" class="pt-24 md:pt-32 pb-16">
-        
-        <section class="mb-10" data-aos="fade-in">
-            <div class="max-w-7xl mx-auto px-4">
-                <div class="bg-white/60 backdrop-blur-md p-3 border-y border-gold/40 shadow-sm rounded-lg overflow-hidden flex items-center gap-4">
-                    <span class="bg-maroon text-white px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider shrink-0">Thought</span>
-                    <marquee class="font-bold text-maroon font-playfair tracking-wide text-lg">
-                        || સત્યમ વદ || ધર્મમ ચર || મારા વિચારો અને સંશોધન ||
-                    </marquee>
-                </div>
+    <main class="pt-32 pb-20 px-4">
+        <section class="max-w-7xl mx-auto mb-12" data-aos="fade-in">
+            <div class="glass-card p-4 rounded-2xl flex items-center gap-4 overflow-hidden border-divine-gold/20">
+                <span class="bg-royal-maroon text-divine-gold px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest">Thought</span>
+                <marquee class="font-bold text-royal-maroon font-playfair tracking-wide text-lg">
+                    || સત્યમ વદ || ધર્મમ ચર || મારા વિચારો અને સંશોધન ||
+                </marquee>
             </div>
         </section>
 
-        <div class="text-center mb-16" data-aos="fade-down">
+        <div class="text-center mb-20" data-aos="fade-down">
             <div class="inline-block relative">
-                <h1 class="font-yatra text-4xl md:text-6xl text-maroon mb-2 relative z-10 drop-shadow-md">Articles & Research</h1>
-                <div class="absolute -bottom-2 left-0 w-full h-3 bg-gold/30 -z-0 skew-x-12"></div>
+                <h1 class="font-yatra text-5xl md:text-7xl text-royal-maroon relative z-10 drop-shadow-md">Articles & Research</h1>
+                <div class="absolute -bottom-3 left-0 w-full h-4 bg-divine-gold/20 -z-10 skew-x-12"></div>
             </div>
-            <div class="text-3xl mt-4 animate-bounce text-gold">✒️</div>
+            <div class="text-3xl mt-6 animate-bounce text-divine-gold">✒️</div>
         </div>
 
-        <div class="max-w-4xl mx-auto px-4">
-            
-            <div class="bg-red-50/80 border border-red-200 border-l-8 border-l-maroon p-6 md:p-8 rounded-xl shadow-lg mb-16 relative overflow-hidden" data-aos="fade-up">
-                <div class="absolute top-0 right-0 w-24 h-24 bg-maroon/5 rounded-bl-full -mr-10 -mt-10"></div>
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-card p-8 md:p-12 rounded-[3rem] border-l-8 border-royal-maroon mb-16 relative overflow-hidden" data-aos="fade-up">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-royal-maroon/5 rounded-bl-full"></div>
                 
-                <span class="text-maroon font-bold font-yatra text-xl md:text-2xl block mb-6 border-b border-dashed border-maroon/30 pb-2 flex items-center gap-3">
-                    <span class="text-2xl">⚠️</span> કાયદાકીય અસ્વીકરણ (Legal Disclaimer)
+                <span class="text-royal-maroon font-bold font-yatra text-2xl block mb-8 border-b border-divine-gold/20 pb-4 flex items-center gap-3">
+                    <span class="text-3xl">⚠️</span> કાયદાકીય અસ્વીકરણ (Legal Disclaimer)
                 </span>
-                <div class="text-slate-700 leading-relaxed font-noto space-y-4 text-justify">
-                    <p class="flex gap-3">
-                        <span class="font-bold text-maroon">૧.</span>
+                
+                <div class="text-slate-700 leading-relaxed font-noto space-y-6 text-justify text-lg">
+                    <p class="flex gap-4">
+                        <span class="font-bold text-royal-maroon">૧.</span>
                         <span>આ સંશોધન અહેવાલ સંપૂર્ણપણે શ્રી મહાપ્રભુજીના મૂળ ગ્રંથો અને વચનામૃતો પર આધારિત છે. પ્રસ્તુત લેખનો હેતુ માત્ર શાસ્ત્રીય સત્ય ઉજાગર કરવાનો છે, <b>કોઈપણ વ્યક્તિ, સંસ્થા, હવેલી, ટ્રસ્ટ કે સંપ્રદાયના આચાર્ય ની ભાવના દુભાવવાનો લેખકનો લેશમાત્રપણ હેતુ નથી.</b></span>
                     </p>
-                    <p class="flex gap-3">
-                        <span class="font-bold text-maroon">૨.</span>
+                    <p class="flex gap-4">
+                        <span class="font-bold text-royal-maroon">૨.</span>
                         <span>આ એક સ્વતંત્ર સંશોધન છે. વાંચકે આમાં રજૂ કરેલા તથ્યોનું અર્થઘટન કરતી વખતે સ્વયંની <b>વિવેક બુદ્ધિ (Self-Discretion)</b> નો ઉપયોગ કરવો.</span>
                     </p>
                 </div>
-                <div class="mt-8 inline-flex items-center gap-2 bg-gradient-to-r from-maroon to-maroon-dark text-white px-5 py-2 rounded-full font-bold text-xs uppercase tracking-wider shadow-md border border-gold/30">
+                
+                <div class="mt-10 inline-flex items-center gap-3 bg-royal-maroon text-divine-gold px-6 py-3 rounded-2xl font-bold text-xs uppercase tracking-wider shadow-xl border border-divine-gold/30">
                     <span>🛡️</span> © Copyright Warning: આ આર્ટિકલના તમામ કોપીરાઈટ લેખક (સિસોદિયા ભાર્ગવસિંહ) ને આધીન છે.
                 </div>
             </div>
 
-            <div class="space-y-12">
-                
-                <article class="glass-card p-8 md:p-10 rounded-3xl border-t-4 border-gold relative overflow-hidden group" data-aos="fade-up">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-110"></div>
-                    
-                    <div class="flex flex-wrap gap-4 md:gap-6 text-xs font-bold text-slate-500 mb-6 font-noto uppercase tracking-widest items-center">
-                        <time datetime="2025-12-30" class="flex items-center gap-1 bg-white/50 px-2 py-1 rounded border border-slate-200">
-                            <span>📅</span> 30 Dec 2025
+            <div class="space-y-16">
+                <article class="glass-card p-8 md:p-14 rounded-[3.5rem] relative overflow-hidden group border-t-8 border-divine-gold" data-aos="fade-up">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-divine-gold/5 rounded-bl-full group-hover:scale-110 transition duration-700"></div>
+
+                    <div class="flex flex-wrap gap-6 text-[10px] font-bold text-slate-400 mb-8 font-noto uppercase tracking-[0.2em] items-center">
+                        <time datetime="2025-12-30" class="flex items-center gap-2 bg-white/50 px-3 py-1.5 rounded-xl border border-divine-gold/10">
+                            📅 30 Dec 2025
                         </time>
-                        <span class="text-gold-dark bg-gold/10 px-2 py-1 rounded border border-gold/20 flex items-center gap-1">
-                            <span>✒️</span> Research Report
+                        <span class="text-royal-maroon bg-divine-gold/10 px-3 py-1.5 rounded-xl border border-divine-gold/20">
+                            ✒️ Research Report
                         </span>
                     </div>
-                    
-                    <h2 class="font-yatra text-2xl md:text-3xl text-maroon mb-6 group-hover:text-gold-dark transition-colors">
-                        <a href="pushtimarg-ma-gruh-seva.html" class="border-b-2 border-transparent hover:border-gold transition-all"><b>પુષ્ટિમાર્ગ માં ગૃહ સેવા</b></a>
+
+                    <h2 class="font-yatra text-3xl md:text-4xl text-royal-maroon mb-8 group-hover:text-divine-gold transition-colors duration-500">
+                        <a href="pushtimarg-ma-gruh-seva.html">પુષ્ટિમાર્ગ માં ગૃહ સેવા</a>
                     </h2>
-                    
-                    <p class="text-slate-600 leading-relaxed font-noto text-justify mb-8 text-lg"> 
-                        વર્તમાન સમયમાં 'ગૃહ સેવા' અને 'હવેલી સેવા' વચ્ચેના તફાવત વિશે ઘણી ગેરસમજણો છે. સ્વમાર્ગીય સિદ્ધાંત તો સ્પષ્ટ જ છે: <b class="text-maroon bg-gold/10 px-1">"નિજ ગૃહ માં નિજ સેવ્ય ની જ સેવા"</b>. સેવા તો માત્ર અને માત્ર 'નિજ ગૃહ' (પોતાના ઘર) માં પોતાના જ તન અને પોતાના જ ધન થી કરવી તેજ સિદ્ધાંતસંમત અને પુષ્ટિમાર્ગીય રીત અનુસાર છે. આ સંશોધન અહેવાલ ષોડશ ગ્રંથોના આધારે સિદ્ધ કરે છે કે, 'ગૃહ સેવા' જ એકમાત્ર શાસ્ત્રસંમત માર્ગ છે.
+
+                    <p class="text-slate-600 leading-relaxed font-noto text-justify mb-10 text-xl"> 
+                        વર્તમાન સમયમાં 'ગૃહ સેવા' અને 'હવેલી સેવા' વચ્ચેના તફાવત વિશે ઘણી ગેરસમજણો છે. સ્વમાર્ગીય સિદ્ધાંત તો સ્પષ્ટ જ છે: <b class="text-royal-maroon bg-divine-gold/10 px-2 rounded">"નિજ ગૃહ માં નિજ સેવ્ય ની જ સેવા"</b>. સેવા તો માત્ર અને માત્ર 'નિજ ગૃહ' (પોતાના ઘર) માં પોતાના જ તન અને પોતાના જ ધન થી કરવી તેજ સિદ્ધાંતસંમત અને પુષ્ટિમાર્ગીય રીત અનુસાર છે. આ સંશોધન અહેવાલ ષોડશ ગ્રંથોના આધારે સિદ્ધ કરે છે કે, 'ગૃહ સેવા' જ એકમાત્ર શાસ્ત્રસંમત માર્ગ છે.
                     </p>
-                    
-                    <a href="pushtimarg-ma-gruh-seva.html" class="inline-flex items-center gap-2 bg-maroon text-white px-8 py-3 rounded-full font-bold hover:bg-gold hover:text-maroon transition-all shadow-lg transform active:scale-95 border border-transparent hover:border-maroon">
+
+                    <a href="pushtimarg-ma-gruh-seva.html" class="inline-flex items-center gap-3 bg-royal-maroon text-divine-gold px-10 py-4 rounded-2xl font-bold hover:bg-divine-gold hover:text-royal-maroon transition-all duration-500 shadow-2xl transform active:scale-95">
                         સંપૂર્ણ લેખ વાંચો <span>&rarr;</span>
                     </a>
                 </article>
-          
-                <article class="glass-card p-8 md:p-10 rounded-3xl border-t-4 border-gold relative overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex flex-wrap gap-4 md:gap-6 text-xs font-bold text-slate-500 mb-6 font-noto uppercase tracking-widest items-center">
-                        <time datetime="2025-12-28" class="flex items-center gap-1 bg-white/50 px-2 py-1 rounded border border-slate-200">
-                            <span>📅</span> 28 Dec 2025
+
+                <article class="glass-card p-8 md:p-14 rounded-[3.5rem] relative overflow-hidden group border-t-8 border-royal-maroon" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex flex-wrap gap-6 text-[10px] font-bold text-slate-400 mb-8 font-noto uppercase tracking-[0.2em] items-center">
+                        <time datetime="2025-12-28" class="flex items-center gap-2 bg-white/50 px-3 py-1.5 rounded-xl border border-royal-maroon/10">
+                            📅 28 Dec 2025
                         </time>
-                        <span class="bg-white/50 px-2 py-1 rounded border border-slate-200">🕒 10:34 am</span>
+                        <span class="bg-white/50 px-3 py-1.5 rounded-xl border border-slate-200">🕒 10:34 am</span>
                     </div>
-                    
-                    <h2 class="font-yatra text-2xl md:text-3xl text-maroon mb-6 group-hover:text-gold-dark transition-colors">પુષ્ટિમાર્ગ અને આધુનિક યુગ</h2>
-                    
-                    <p class="text-slate-600 leading-relaxed font-noto text-justify text-lg">
+
+                    <h2 class="font-yatra text-3xl md:text-4xl text-royal-maroon mb-8">પુષ્ટિમાર્ગ અને આધુનિક યુગ</h2>
+
+                    <p class="text-slate-600 leading-relaxed font-noto text-justify text-xl">
                         આજના ડિજિટલ યુગમાં આપણે ટેકનોલોજીનો ઉપયોગ કરીને ઠાકોરજીની સેવા કરી શકીએ છીએ. સ્માર્ટફોનનો ઉપયોગ માત્ર મનોરંજન માટે જ નહીં, પણ સત્સંગ માટે પણ થઈ શકે છે.
                     </p>
                 </article>
-
             </div>
         </div>
     </main>
 
-    <footer class="bg-maroon-dark text-white pt-16 md:pt-20 pb-8 text-center px-4 mt-20 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gold via-yellow-200 to-gold"></div>
-        <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-maroon-dark rotate-45 border-4 border-gold"></div>
+    <footer class="bg-royal-maroon text-white pt-24 pb-12 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
+        <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
+            <a href="disclaimer.html" class="text-divine-gold font-playfair font-bold hover:underline mb-12 block tracking-widest text-sm">LEGAL DISCLAIMER</a>
 
-        <div class="max-w-4xl mx-auto relative z-10">
-            <a href="disclaimer.html" class="text-gold/80 hover:text-white font-playfair font-bold hover:underline mb-10 block tracking-widest text-sm">LEGAL DISCLAIMER</a>
-            
-            <div class="overflow-hidden border-y border-white/10 py-6 mb-8 bg-white/5 backdrop-blur-sm">
-                <div class="animate-marquee whitespace-nowrap text-gold font-medium font-playfair text-lg">
-                   <p> Designed by Sisodiya Bhargavsinh </p><p> ✦  © 2026  ✦ </p><p> Maintaining Heritage with Technology</p>
-                </div>
+            <div class="border-y border-white/10 py-8 mb-12 bg-white/5 backdrop-blur-sm">
+                <p class="text-divine-gold font-playfair text-xl">Designed by Sisodiya Bhargavsinh ✦ © 2026</p>
+                <p class="text-[10px] uppercase tracking-[0.5em] mt-3 opacity-40">Maintaining Heritage with Technology</p>
             </div>
 
-            <div class="bg-black/40 inline-block p-5 rounded-2xl border border-gold/20 shadow-xl backdrop-blur-md hover:border-gold/50 transition">
-                <p class="text-[10px] uppercase tracking-[0.3em] text-white/50 mb-3 font-inter">Visitor Count</p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 grayscale hover:grayscale-0 transition">
+            <div class="bg-black/20 inline-block p-6 rounded-3xl border border-divine-gold/20">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Visitor Count</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-80 h-5">
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Init Scroll Animations
-        AOS.init({
-            duration: 1200,
-            once: true,
-            offset: 100
-        });
+        AOS.init({ duration: 1200, once: true, offset: 50 });
 
-        // UI Interactions
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            nav.classList.toggle('hidden');
-        }
-
-        function toggleNotif() {
-            const box = document.getElementById('notif-box');
-            box.classList.toggle('show');
-            if (box.classList.contains('show')) fetchNotifications();
-        }
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('hidden'); }
+        function toggleNotif() { document.getElementById('notif-box').classList.toggle('show'); if (document.getElementById('notif-box').classList.contains('show')) fetchNotifications(); }
 
         async function fetchNotifications() {
             const list = document.getElementById('notif-list');
@@ -293,76 +270,23 @@
                 data.forEach(item => {
                     if (item.new) hasNew = true;
                     const li = document.createElement('li');
-                    li.className = "p-4 hover:bg-gold/5 transition cursor-pointer text-left border-l-2 border-transparent hover:border-maroon";
-                    li.innerHTML = `
-                        <small class="text-gray-400 block mb-1 text-xs font-mono">${item.date}</small>
-                        <a href="${item.link}" class="text-maroon font-bold text-sm block font-noto">
-                            ${item.new ? '<span class="bg-red-600 text-white px-2 py-0.5 rounded text-[10px] mr-2 shadow-sm">NEW</span>' : ''}${item.text}
-                        </a>`;
+                    li.className = "p-4 hover:bg-divine-gold/5 transition border-l-2 border-transparent hover:border-royal-maroon";
+                    li.innerHTML = `<small class="text-slate-400 block mb-1 text-xs font-mono">${item.date}</small>
+                        <a href="${item.link}" class="text-royal-maroon font-bold text-sm block font-noto">
+                        ${item.new ? '<span class="bg-red-600 text-white px-2 py-0.5 rounded text-[10px] mr-2">NEW</span>' : ''}${item.text}</a>`;
                     list.appendChild(li);
                 });
                 badge.classList.toggle('hidden', !hasNew);
-            } catch (e) {
-                list.innerHTML = '<li class="p-4 text-red-500 text-sm">Failed to load updates.</li>';
-            }
+            } catch (e) { list.innerHTML = '<li class="p-4 text-red-500 text-sm text-center">Failed to load.</li>'; }
         }
 
-        // Global Event Listeners
-        window.addEventListener('load', () => {
-            fetch('notifications.json?t=' + Date.now())
-                .then(r => r.json())
-                .then(d => {
-                    if(d.some(i => i.new)) document.getElementById('notif-badge').classList.remove('hidden');
-                }).catch(console.error);
-        });
-
-        document.addEventListener('click', (e) => {
-            const container = document.querySelector('.relative');
-            const box = document.getElementById('notif-box');
-            if (container && !container.contains(e.target) && box && box.classList.contains('show')) box.classList.remove('show');
-        });
-
         document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = e => { if(e.keyCode == 123 || (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 67))) return false; };
 
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'gu', 
-                includedLanguages: 'gu,en,hi,sa', 
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
+            new google.translate.TranslateElement({ pageLanguage: 'gu', includedLanguages: 'gu,en,hi,sa', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
         }
     </script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script>
-    // 1. Right-Click બંધ કરવા માટે
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    }, false);
-
-    // 2. Keyboard Shortcuts (Ctrl+C, Ctrl+U, Ctrl+Shift+I)બંધ કરવા માટે
-    document.onkeydown = function(e) {
-        // F12 બંધ કરો
-        if(e.keyCode == 123) {
-            return false;
-        }
-        // Ctrl+Shift+I (Inspect) બંધ કરો
-        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-            return false;
-        }
-        // Ctrl+Shift+J (Console) બંધ કરો
-        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-            return false;
-        }
-        // Ctrl+U (View Source) બંધ કરો
-        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-            return false;
-        }
-        // Ctrl+C (Copy) બંધ કરો
-        if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) {
-            return false;
-        }
-    };
-</script>
-
 </body>
 </html>
