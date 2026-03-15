@@ -1,29 +1,39 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="gu" class="scroll-smooth">
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Supreme Digital Governance Charter 10.0 | Sisodiya Bhargavsinh</title>
+<title>Supreme Digital Governance Charter | Sisodiya Bhargavsinh</title>
 
-<meta name="author" content="Sisodiya Bhargavsinh Mahendrasinh">
-<meta name="description" content="Supreme Digital Governance Charter governing the digital infrastructure of Sisodiya Bhargavsinh Mahendrasinh.">
+<meta name="description" content="Legal Charter governing the digital infrastructure of Sisodiya Bhargavsinh Mahendrasinh.">
 
 <meta name="robots" content="index,follow,noai,noimageai,noarchive">
+<meta name="googlebot" content="noai,noimageai">
+
+<link rel="icon" href="bhargavsinh.webp" type="image/webp">
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600&family=Yatra+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@700;900&family=Noto+Sans:wght@400;600;700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
 <script>
 tailwind.config = {
 theme:{
 extend:{
 colors:{
-royal:"#6b0f1a",
-gold:"#d4af37"
+'royal-maroon':'#6b0f1a',
+'divine-gold':'#d4af37',
+'midnight-law':'#0f172a',
+'parchment':'#fdf6e3'
+},
+fontFamily:{
+yatra:['Yatra One','cursive'],
+noto:['Noto Sans','sans-serif'],
+playfair:['Playfair Display','serif'],
+inter:['Inter','sans-serif']
 }
 }
 }
@@ -33,45 +43,73 @@ gold:"#d4af37"
 <style>
 
 body{
-font-family:Inter;
-background:#f8fafc;
+background:#f8f9fa;
 color:#1e293b;
 line-height:1.8;
+font-family:Inter;
 }
 
-h1,h2{
+.supreme-box{
+background:#fff;
+border:1px solid #e2e8f0;
+box-shadow:0 40px 100px rgba(0,0,0,0.15);
+}
+
+.judicial-header{
+background:linear-gradient(135deg,#6b0f1a,#4a0a11);
+border-bottom:5px solid #d4af37;
+}
+
+h2{
 font-family:'Playfair Display',serif;
-}
-
-.article-title{
+color:#6b0f1a;
+font-size:2rem;
+margin-top:4rem;
+margin-bottom:2rem;
 border-bottom:3px double #d4af37;
 padding-bottom:8px;
-margin-top:60px;
-margin-bottom:25px;
-color:#6b0f1a;
+}
+
+h3{
+font-weight:700;
+margin-top:2rem;
+margin-bottom:1rem;
+}
+
+p{
+font-family:'Noto Sans',sans-serif;
+margin-bottom:1.5rem;
+text-align:justify;
 }
 
 .clause{
-font-weight:700;
+font-weight:900;
 color:#6b0f1a;
+margin-right:6px;
 }
 
-.document{
-max-width:1100px;
-margin:auto;
-background:white;
-box-shadow:0 50px 120px rgba(0,0,0,0.2);
+.alert{
+background:#fff7f7;
+border-left:8px solid #6b0f1a;
+padding:2rem;
+margin:2rem 0;
 }
 
-.toc a{
-display:block;
-padding:6px;
-border-left:3px solid transparent;
+.signature{
+border:4px double #d4af37;
+padding:2rem;
+display:inline-block;
+background:#fffdf5;
 }
 
-.toc a:hover{
-border-left:3px solid #d4af37;
-color:#6b0f1a;
+#progress{
+position:fixed;
+top:0;
+left:0;
+height:6px;
+width:0%;
+background:linear-gradient(to right,#d4af37,#ff9933,#d4af37);
+z-index:999;
 }
 
 </style>
@@ -79,184 +117,164 @@ color:#6b0f1a;
 </head>
 
 
-<body>
+<body class="selection:bg-divine-gold selection:text-white">
 
+<div id="progress"></div>
 
-<div class="document p-12">
+<main class="max-w-5xl mx-auto py-16 px-6">
 
-<header class="text-center mb-16">
+<div class="supreme-box rounded-xl overflow-hidden">
 
-<div class="flex justify-center mb-6">
+<header class="judicial-header text-center text-white p-12">
 
-<svg width="90" height="90" viewBox="0 0 100 100">
+<p class="tracking-[0.4em] text-divine-gold uppercase text-sm mb-6">
+Official Legal Charter
+</p>
 
-<circle cx="50" cy="50" r="45" fill="none" stroke="#d4af37" stroke-width="3"/>
-
-<text x="50" y="58" text-anchor="middle" font-size="30" fill="#6b0f1a" font-family="serif">⚜</text>
-
-</svg>
-
-</div>
-
-<h1 class="text-5xl font-black text-royal">
+<h1 class="font-playfair text-5xl md:text-7xl font-black mb-6">
 SUPREME DIGITAL GOVERNANCE CHARTER
 </h1>
 
-<p class="mt-4 italic">
-Digital Constitutional Instrument
-</p>
-
-<p class="text-sm mt-3">
-Version 10.0 • Year 2026 • Republic of India
+<p class="italic text-parchment">
+Digital Infrastructure of Sisodiya Bhargavsinh Mahendrasinh
 </p>
 
 </header>
 
 
-<section class="toc mb-16">
+<div class="p-10">
 
-<h2 class="text-2xl font-bold text-royal mb-4">Table of Contents</h2>
+<section>
 
-<a href="#article1">Article I — Definitions</a>
-<a href="#article2">Article II — Intellectual Property</a>
-<a href="#article3">Article III — Artificial Intelligence Governance</a>
-<a href="#article4">Article IV — Data Protection</a>
-<a href="#article5">Article V — Academic Freedom</a>
-<a href="#article6">Article VI — Limitation of Liability</a>
-<a href="#article7">Article VII — User Obligations</a>
-<a href="#article8">Article VIII — Jurisdiction</a>
-<a href="#article9">Article IX — Severability</a>
+<h2>ARTICLE I — DEFINITIONS</h2>
+
+<p><span class="clause">1.1</span> “Infrastructure” refers to the digital ecosystem hosted at bhargavsinh.github.io including webpages, source code, digital assets, and scholarly writings.</p>
+
+<p><span class="clause">1.2</span> “Author” refers to Sisodiya Bhargavsinh Mahendrasinh, creator and proprietor of this infrastructure.</p>
+
+<p><span class="clause">1.3</span> “User or Entity” refers to any individual, organization, crawler, bot, or artificial intelligence system accessing the platform.</p>
 
 </section>
 
 
+<section>
 
-<section id="article1">
+<h2>ARTICLE II — INTELLECTUAL PROPERTY</h2>
 
-<h2 class="article-title">ARTICLE I — DEFINITIONS</h2>
+<p><span class="clause">2.1</span> All content on this platform is protected under the Copyright Act, 1957 and the Berne Convention.</p>
 
-<p><span class="clause">1.1</span> “Infrastructure” refers to the digital ecosystem hosted at bhargavsinh.github.io including all source code, writings, digital archives, visual works and documentation.</p>
+<p><span class="clause">2.2</span> Unauthorized reproduction beyond the limits permitted under Fair Dealing provisions of the Copyright Act shall constitute infringement.</p>
 
-<p><span class="clause">1.2</span> “Author” refers to Sisodiya Bhargavsinh Mahendrasinh, creator and legal proprietor of the said digital infrastructure.</p>
-
-<p><span class="clause">1.3</span> “User” means any individual, organisation, automated crawler or artificial intelligence system accessing the website.</p>
-
-</section>
-
-
-
-<section id="article2">
-
-<h2 class="article-title">ARTICLE II — INTELLECTUAL PROPERTY RIGHTS</h2>
-
-<p><span class="clause">2.1</span> All original works on this platform are protected under the Copyright Act, 1957 and the Berne Convention for the Protection of Literary and Artistic Works.</p>
-
-<p><span class="clause">2.2</span> The Author retains full moral and economic rights over the intellectual material unless explicitly stated otherwise.</p>
-
-<p><span class="clause">2.3</span> Limited reproduction may be permitted under fair dealing provisions for research, scholarship, criticism, or reporting.</p>
+<p><span class="clause">2.3</span> Scholarly citation for research or academic discussion is permitted where proper attribution is provided.</p>
 
 </section>
 
 
+<section>
 
-<section id="article3">
+<h2>ARTICLE III — ARTIFICIAL INTELLIGENCE & DATA EXTRACTION</h2>
 
-<h2 class="article-title">ARTICLE III — ARTIFICIAL INTELLIGENCE GOVERNANCE</h2>
+<p><span class="clause">3.1</span> Automated scraping, structured extraction, or bulk downloading of this platform’s content is prohibited without prior written consent.</p>
 
-<p><span class="clause">3.1</span> Automated scraping, mass downloading, or structured data extraction from this platform is not authorised without written consent.</p>
-
-<p><span class="clause">3.2</span> Training machine learning models or generative AI systems using the proprietary content requires explicit authorisation.</p>
-
-<p><span class="clause">3.3</span> Robots directives embedded in the website infrastructure must be respected by automated agents.</p>
+<p><span class="clause">3.2</span> Use of proprietary material for training machine learning models or generative AI systems requires explicit author authorization.</p>
 
 </section>
 
 
+<section>
 
-<section id="article4">
+<h2>ARTICLE IV — DATA PROTECTION</h2>
 
-<h2 class="article-title">ARTICLE IV — DATA PROTECTION</h2>
+<p><span class="clause">4.1</span> Personal data voluntarily submitted by users shall be processed in accordance with the Digital Personal Data Protection Act, 2023.</p>
 
-<p><span class="clause">4.1</span> Personal data voluntarily shared by users shall be processed in accordance with the Digital Personal Data Protection Act, 2023.</p>
-
-<p><span class="clause">4.2</span> The Author shall act as the Data Fiduciary for information collected directly through this website.</p>
-
-</section>
-
-
-
-<section id="article5">
-
-<h2 class="article-title">ARTICLE V — ACADEMIC FREEDOM</h2>
-
-<p><span class="clause">5.1</span> Historical commentary and genealogical documentation published herein constitute scholarly research protected under Article 19(1)(a) of the Constitution of India.</p>
+<p><span class="clause">4.2</span> The Author shall act as Data Fiduciary for information collected directly on this platform.</p>
 
 </section>
 
 
+<section>
 
-<section id="article6">
+<h2>ARTICLE V — SCHOLARLY EXPRESSION</h2>
 
-<h2 class="article-title">ARTICLE VI — LIMITATION OF LIABILITY</h2>
+<p><span class="clause">5.1</span> Historical and philosophical commentary published herein constitutes academic research protected under Article 19(1)(a) of the Constitution of India.</p>
 
-<p><span class="clause">6.1</span> The platform is provided on an “AS IS” basis without guarantees of completeness or accuracy.</p>
+<div class="alert">
 
-<p><span class="clause">6.2</span> The Author shall not be liable for indirect damages resulting from use of this website.</p>
+<b>Scholarly Notice</b>
 
-</section>
+<p>Historical genealogy and religious commentary may contain interpretive variations inherent in academic research and oral traditions.</p>
 
-
-
-<section id="article7">
-
-<h2 class="article-title">ARTICLE VII — USER OBLIGATIONS</h2>
-
-<p><span class="clause">7.1</span> Users shall refrain from malicious activity including hacking, vulnerability probing, or identity impersonation.</p>
+</div>
 
 </section>
 
 
+<section>
 
-<section id="article8">
+<h2>ARTICLE VI — LIMITATION OF LIABILITY</h2>
 
-<h2 class="article-title">ARTICLE VIII — GOVERNING LAW</h2>
+<p><span class="clause">6.1</span> This infrastructure is provided on an “AS IS” basis without warranties regarding completeness or accuracy.</p>
 
-<p><span class="clause">8.1</span> This Charter shall be governed by the laws of the Republic of India.</p>
-
-<p><span class="clause">8.2</span> Courts located at Lunawada, District Mahisagar, Gujarat shall exercise exclusive jurisdiction.</p>
-
-</section>
-
-
-
-<section id="article9">
-
-<h2 class="article-title">ARTICLE IX — SEVERABILITY</h2>
-
-<p>If any provision of this Charter is declared invalid, remaining provisions shall remain legally effective.</p>
+<p><span class="clause">6.2</span> The Author shall not be liable for indirect or consequential damages arising from use of the platform.</p>
 
 </section>
 
 
+<section>
 
-<footer class="text-center mt-20 border-t pt-10">
+<h2>ARTICLE VII — JURISDICTION</h2>
 
-<p class="text-2xl font-bold text-royal italic">
+<p><span class="clause">7.1</span> This Charter shall be governed by the laws of the Republic of India.</p>
+
+<p><span class="clause">7.2</span> Any dispute arising from the use of this infrastructure shall fall under the exclusive jurisdiction of the courts located at Lunawada, District Mahisagar, Gujarat.</p>
+
+</section>
+
+
+<section>
+
+<h2>ARTICLE VIII — ACCEPTANCE OF TERMS</h2>
+
+<p><span class="clause">8.1</span> Accessing or using this platform shall constitute deemed acceptance of this Charter and its provisions.</p>
+
+</section>
+
+
+<footer class="text-center mt-20">
+
+<div class="signature">
+
+<p class="font-playfair text-3xl italic text-royal-maroon">
 Sisodiya Bhargavsinh Mahendrasinh
 </p>
 
-<p class="text-sm mt-2">
+<p class="text-xs tracking-widest mt-2">
 Author • Researcher • Digital Custodian
 </p>
 
-<p class="text-xs mt-4 text-gray-500">
-Supreme Digital Governance Charter • Version 10.0
-</p>
+</div>
 
 </footer>
 
 
 </div>
+</div>
+
+</main>
+
+
+<script>
+
+window.onscroll=function(){
+let winScroll=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+let scrolled=(winScroll/height)*100;
+document.getElementById("progress").style.width=scrolled+"%";
+};
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+</script>
 
 </body>
 </html>
