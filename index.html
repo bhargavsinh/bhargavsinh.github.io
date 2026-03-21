@@ -7,7 +7,8 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta name="robots" content="index, follow, noimageai, noarchive">
     <meta name="copyright" content="© 2026 Sisodiya Bhargavsinh">
-    
+    <meta name="author" content="Bhargavsinh Sisodiya">
+
     <title>Bhargavsinh Sisodiya | Digital Heir of Mewar</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,6 +22,7 @@
                     colors: {
                         'royal-maroon': '#6b0f1a',
                         'divine-gold': '#d4af37',
+                        'saffron-glow': '#ff9933',
                         'parchment': '#fdfaf0',
                     },
                     fontFamily: {
@@ -34,124 +36,122 @@
     </script>
 
     <style>
-        /* Ultra Smooth Custom Animations */
-        @keyframes subtleZoom {
-            from { transform: scale(1); }
-            to { transform: scale(1.05); }
-        }
-
-        .fade-in { animation: fadeIn 2s cubic-bezier(0.4, 0, 0.2, 1); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Premium UI Elements */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
+        /* Pro-Level Smooth Transitions */
+        .fade-in { animation: fadeIn 1.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .btn-premium {
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(212, 175, 55, 0.3);
-            position: relative;
-            overflow: hidden;
         }
-
-        .btn-premium::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn-premium:hover::before { left: 100%; }
-
         .btn-premium:hover {
+            background: #6b0f1a;
+            color: #d4af37;
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(107, 15, 26, 0.15);
+            box-shadow: 0 15px 30px rgba(107, 15, 26, 0.2);
+            border-color: #d4af37;
         }
 
-        /* Anti-Copy Security UI */
+        /* Nav Link Hover Animation */
+        .nav-link-ltr { position: relative; }
+        .nav-link-ltr::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            display: block; margin-top: 2px; right: 0; background: #d4af37;
+            transition: width .4s ease;
+        }
+        .nav-link-ltr:hover::after { width: 100%; left: 0; }
+
+        /* Security: Disable Text Selection */
         body {
             -webkit-user-select: none;
+            -ms-user-select: none;
             user-select: none;
             background-color: #fdfaf0;
-            cursor: default;
         }
         
-        /* Premium Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
+        /* Custom Premium Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #fdfaf0; }
-        ::-webkit-scrollbar-thumb { 
-            background: linear-gradient(#6b0f1a, #d4af37); 
-            border-radius: 20px;
-        }
+        ::-webkit-scrollbar-thumb { background: #6b0f1a; border-radius: 10px; }
 
-        .hero-pattern {
-            background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');
-            animation: subtleZoom 20s infinite alternate linear;
-        }
-
-        .skill-card {
-            transition: all 0.4s ease;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .skill-card:hover {
-            border-color: #d4af37;
-            background: #ffffff;
-            transform: scale(1.05);
-        }
+        @media print { body { display: none !important; } }
     </style>
 </head>
 <body class="font-inter text-slate-900 overflow-x-hidden fade-in">
 
-    <div id="navbar-placeholder" class="glass-nav sticky top-0 z-50"></div>
-
-    <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-        <div class="absolute inset-0 opacity-5 pointer-events-none hero-pattern"></div>
-        
-        <div class="relative z-10 text-center" data-aos="zoom-out">
-            <div class="relative inline-block mb-10">
-                <div class="absolute inset-0 bg-divine-gold rounded-full blur-3xl opacity-30 animate-pulse"></div>
-                <img src="bhargavsinh.webp" alt="Bhargavsinh Sisodiya" 
-                     class="relative w-44 h-44 md:w-60 md:h-60 mx-auto rounded-full border-4 border-divine-gold shadow-2xl object-cover hover:rotate-3 transition-all duration-1000">
+    <header class="fixed top-0 w-full z-[100] bg-white/80 backdrop-blur-xl border-b border-divine-gold/20">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo" class="h-12 hover:scale-110 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-yatra text-royal-maroon text-xl leading-none">Sisodiya Bhargavsinh</span>
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-divine-gold font-bold">Heritage & Tech Professional</span>
+                </div>
             </div>
 
-            <h1 class="font-yatra text-5xl md:text-8xl text-royal-maroon mb-6 tracking-widest drop-shadow-sm">
+            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-[10px] uppercase tracking-[0.2em] text-slate-700">
+                <li><a href="index.html" class="nav-link-ltr text-royal-maroon">Home</a></li>
+                <li><a href="about.html" class="nav-link-ltr hover:text-royal-maroon transition">About</a></li>
+                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-royal-maroon transition">Pushtimarg</a></li>
+                <li><a href="projects.html" class="nav-link-ltr hover:text-royal-maroon transition">Projects</a></li>
+                <li><a href="resume.html" class="nav-link-ltr hover:text-royal-maroon transition">Resume</a></li>
+                <li><a href="contact.html" class="nav-link-ltr hover:text-royal-maroon transition">Contact</a></li>
+            </ul>
+
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-royal-maroon text-2xl">☰</button>
+        </nav>
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-parchment border-b border-divine-gold/20 p-6 space-y-4 shadow-xl">
+            <a href="index.html" class="block font-yatra text-royal-maroon">Home</a>
+            <a href="resume.html" class="block font-medium">Resume</a>
+            <a href="otherlinks.html" class="block font-medium">Other Links</a>
+            <a href="contact.html" class="block font-medium">Contact</a>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+        
+        <div class="relative z-10 text-center" data-aos="zoom-out" data-aos-duration="1500">
+            <div class="relative inline-block mb-8">
+                <div class="absolute inset-0 bg-divine-gold rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                <img src="bhargavsinh.webp" alt="Bhargavsinh Sisodiya" 
+                     class="relative w-44 h-44 md:w-56 md:h-56 mx-auto rounded-full border-4 border-divine-gold shadow-2xl object-cover grayscale hover:grayscale-0 transition-all duration-1000">
+            </div>
+
+            <h1 class="font-yatra text-5xl md:text-8xl text-royal-maroon mb-6 tracking-tighter" data-aos="fade-up" data-aos-delay="200">
                 Digital Heir of Mewar
             </h1>
-            <p class="font-playfair text-2xl md:text-3xl text-divine-gold italic mb-16 tracking-[0.3em] opacity-90">
+            <p class="font-playfair text-xl md:text-3xl text-divine-gold italic mb-14 tracking-[0.2em]" data-aos="fade-up" data-aos-delay="400">
                 Where Heritage Meets Code
             </p>
 
-            <div class="flex flex-wrap gap-6 justify-center max-w-3xl mx-auto">
-                <a href="resume.html" class="btn-premium bg-white text-royal-maroon px-12 py-5 rounded-2xl uppercase tracking-[0.2em] text-xs font-bold shadow-lg flex items-center gap-3">
+            <div class="flex flex-wrap gap-6 justify-center max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="600">
+                <a href="resume.html" class="btn-premium bg-white px-12 py-4 rounded-2xl uppercase tracking-widest text-xs font-bold shadow-md flex items-center gap-3">
                     <span class="text-lg">📜</span> Resume
                 </a>
-                <a href="otherlinks.html" class="btn-premium bg-white text-royal-maroon px-12 py-5 rounded-2xl uppercase tracking-[0.2em] text-xs font-bold shadow-lg flex items-center gap-3">
-                    <span class="text-lg">🔗</span> Resources
-                </a>
-                <a href="contact.html" class="btn-premium bg-royal-maroon text-divine-gold px-12 py-5 rounded-2xl uppercase tracking-[0.2em] text-xs font-bold shadow-2xl flex items-center gap-3">
+                <a href="contact.html" class="btn-premium bg-white px-12 py-4 rounded-2xl uppercase tracking-widest text-xs font-bold shadow-md flex items-center gap-3">
                     <span class="text-lg">📩</span> Contact
+                </a>
+                <a href="otherlinks.html" class="btn-premium bg-royal-maroon text-white px-12 py-4 rounded-2xl uppercase tracking-widest text-xs font-bold shadow-2xl flex items-center gap-3">
+                    <span class="text-lg">🔗</span> other links
                 </a>
             </div>
         </div>
     </section>
 
-    <section class="py-32 bg-white relative">
-        <div class="max-w-5xl mx-auto px-8" data-aos="fade-up">
+    <section class="py-32 bg-white relative border-y border-divine-gold/10">
+        <div class="max-w-4xl mx-auto px-6" data-aos="fade-right">
             <div class="flex items-center gap-6 mb-12">
-                <div class="h-[3px] w-20 bg-divine-gold rounded-full"></div>
+                <div class="h-[3px] w-16 bg-gradient-to-r from-royal-maroon to-divine-gold"></div>
                 <h2 class="font-yatra text-4xl text-royal-maroon uppercase tracking-widest">The Sisodiya Legacy</h2>
             </div>
-            <div class="space-y-8 text-slate-800 text-xl md:text-2xl leading-relaxed font-light">
-                <p class="first-letter:text-7xl first-letter:font-yatra first-letter:text-royal-maroon first-letter:mr-3 first-letter:float-left">
-                    I am <strong class="text-royal-maroon font-bold">Bhargavsinh Sisodiya</strong>, a 16th-generation descendant of <strong>Veer Shiromani Maharana Pratap Singhji</strong>. My journey is one of duality: upholding the timeless values of the Mewar lineage while mastering the digital languages of the future.
+            <div class="space-y-8 text-slate-800 text-xl md:text-2xl leading-relaxed font-light text-justify">
+                <p>
+                    I am <strong class="text-royal-maroon font-bold underline decoration-divine-gold underline-offset-8">Bhargavsinh Sisodiya</strong>, a 16th-generation descendant of <strong>Veer Shiromani Maharana Pratap Singhji</strong>. My journey is one of duality: upholding the timeless values of the Mewar lineage while mastering the digital languages of the future.
                 </p>
-                <blockquote class="border-l-8 border-divine-gold pl-10 py-6 italic bg-parchment/50 rounded-xl shadow-inner text-slate-700">
+                <blockquote class="relative border-l-8 border-divine-gold pl-8 py-6 italic bg-parchment rounded-r-3xl shadow-inner group overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-9xl text-divine-gold/10 font-serif group-hover:scale-110 transition duration-700">"</div>
                     "As a BCA student and developer, I view code as the modern sword—a tool to build, protect, and archive knowledge for generations to come."
                 </blockquote>
             </div>
@@ -159,54 +159,85 @@
     </section>
 
     <section class="py-32 bg-parchment">
-        <div class="max-w-7xl mx-auto px-8 text-center">
-            <h2 class="font-yatra text-5xl text-royal-maroon mb-20 tracking-wider" data-aos="fade-down">Technical Arsenal</h2>
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="font-yatra text-5xl text-royal-maroon mb-20" data-aos="fade-down">Technical Arsenal</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-                <div class="skill-card group p-10 bg-white/70 backdrop-blur-sm rounded-[2.5rem] shadow-sm flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-5xl mb-6 transform group-hover:rotate-12 transition duration-500">💻</div>
-                    <h3 class="font-bold text-royal-maroon text-xl uppercase tracking-widest mb-4">Frontend</h3>
-                    <p class="text-md text-slate-500 font-light">HTML5, Tailwind CSS, Modern JavaScript</p>
+                
+                <div class="group p-10 bg-white rounded-[2.5rem] shadow-sm border border-divine-gold/10 hover:border-royal-maroon transition-all duration-700 hover:shadow-2xl" data-aos="flip-left" data-aos-delay="100">
+                    <div class="text-6xl mb-6 group-hover:rotate-12 transition duration-500">💻</div>
+                    <h3 class="font-bold text-royal-maroon text-2xl uppercase tracking-tighter mb-3">Frontend</h3>
+                    <p class="text-sm text-slate-500 font-medium">HTML5, Tailwind CSS, Modern JavaScript</p>
                 </div>
-                <div class="skill-card group p-10 bg-white/70 backdrop-blur-sm rounded-[2.5rem] shadow-sm flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-5xl mb-6 transform group-hover:rotate-12 transition duration-500">⚙️</div>
-                    <h3 class="font-bold text-royal-maroon text-xl uppercase tracking-widest mb-4">Backend</h3>
-                    <p class="text-md text-slate-500 font-light">System Logic & Database Architecture</p>
+
+                <div class="group p-10 bg-white rounded-[2.5rem] shadow-sm border border-divine-gold/10 hover:border-royal-maroon transition-all duration-700 hover:shadow-2xl" data-aos="flip-left" data-aos-delay="200">
+                    <div class="text-6xl mb-6 group-hover:rotate-12 transition duration-500">⚙️</div>
+                    <h3 class="font-bold text-royal-maroon text-2xl uppercase tracking-tighter mb-3">Backend</h3>
+                    <p class="text-sm text-slate-500 font-medium">System Logic & Database Architecture</p>
                 </div>
-                <div class="skill-card group p-10 bg-white/70 backdrop-blur-sm rounded-[2.5rem] shadow-sm flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-5xl mb-6 transform group-hover:rotate-12 transition duration-500">🏛️</div>
-                    <h3 class="font-bold text-royal-maroon text-xl uppercase tracking-widest mb-4">Archiving</h3>
-                    <p class="text-md text-slate-500 font-light">Digital Preservation & Documentation</p>
+
+                <div class="group p-10 bg-white rounded-[2.5rem] shadow-sm border border-divine-gold/10 hover:border-royal-maroon transition-all duration-700 hover:shadow-2xl" data-aos="flip-left" data-aos-delay="300">
+                    <div class="text-6xl mb-6 group-hover:rotate-12 transition duration-500">🏛️</div>
+                    <h3 class="font-bold text-royal-maroon text-2xl uppercase tracking-tighter mb-3">Archiving</h3>
+                    <p class="text-sm text-slate-500 font-medium">Digital Preservation & Documentation</p>
                 </div>
-                <div class="skill-card group p-10 bg-white/70 backdrop-blur-sm rounded-[2.5rem] shadow-sm flex flex-col items-center" data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-5xl mb-6 transform group-hover:rotate-12 transition duration-500">⚖️</div>
-                    <h3 class="font-bold text-royal-maroon text-xl uppercase tracking-widest mb-4">Principles</h3>
-                    <p class="text-md text-slate-500 font-light">User Experience & Digital Integrity</p>
+
+                <div class="group p-10 bg-white rounded-[2.5rem] shadow-sm border border-divine-gold/10 hover:border-royal-maroon transition-all duration-700 hover:shadow-2xl" data-aos="flip-left" data-aos-delay="400">
+                    <div class="text-6xl mb-6 group-hover:rotate-12 transition duration-500">⚖️</div>
+                    <h3 class="font-bold text-royal-maroon text-2xl uppercase tracking-tighter mb-3">Principles</h3>
+                    <p class="text-sm text-slate-500 font-medium">User Experience & Digital Integrity</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="footer-placeholder"></div>
+    <footer class="bg-royal-maroon text-white pt-32 pb-16 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
+        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
+            <div class="flex flex-wrap justify-center gap-10 mb-16 font-playfair text-xs uppercase tracking-[0.4em] text-divine-gold/80">
+                <a href="disclaimer.html" class="hover:text-white transition-all underline-offset-8 hover:underline">Legal Disclaimer</a>
+                <a href="sitemap.xml" class="hover:text-white transition-all underline-offset-8 hover:underline">Sitemap</a>
+                <a href="robots.txt" class="hover:text-white transition-all underline-offset-8 hover:underline">Robots Index</a>
+            </div>
+
+            <div class="border-y border-white/10 py-12 mb-16 bg-white/5 backdrop-blur-xl rounded-[3rem] border-x border-divine-gold/10 shadow-2xl">
+                <h2 class="font-yatra text-3xl md:text-5xl text-divine-gold tracking-widest mb-4">
+                    Sisodiya Bhargavsinh Mahendrasinh
+                </h2>
+                <p class="text-[10px] md:text-sm uppercase tracking-[0.6em] text-white/40 font-inter font-bold">
+                    16th Generation Descendant of Maharana Pratap ✦ Digital Archivist
+                </p>
+            </div>
+
+            <div class="inline-block p-8 bg-black/40 rounded-[2rem] border border-divine-gold/20 shadow-2xl transition-all hover:scale-110 duration-700">
+                <p class="text-[10px] uppercase tracking-[0.4em] text-divine-gold/60 mb-4 font-black italic">Secure Visitor Registry</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" 
+                     alt="Visitor Counter" 
+                     class="opacity-100 h-6 mx-auto filter brightness-125 contrast-150">
+            </div>
+
+            <div class="mt-20 pt-10 border-t border-white/5 text-[10px] text-white/20 uppercase tracking-[0.3em] font-inter">
+                &copy; 2026 Sisodiya Digital Estate. All Rights Reserved. 
+                <span class="block mt-4 font-black text-divine-gold/30 italic text-xs tracking-widest">"Heritage in Every Pixel, Honor in Every Line"</span>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ 
-            duration: 1200, 
-            once: true,
-            easing: 'ease-in-out-cubic'
-        });
+        AOS.init({ duration: 1200, once: true });
 
-        // ULTRA SECURITY: Multi-Layer Protection
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // ULTRA SECURITY: Anti-Copy & Anti-Inspect
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.onkeydown = function(e) {
-            // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
-            if(e.keyCode == 123 || 
-               (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || 
-               (e.ctrlKey && e.keyCode == 85)) {
-                return false;
-            }
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
+            if(e.ctrlKey && e.keyCode == 85) return false;
         };
     </script>
-    <script src="main.js"></script>
 </body>
 </html>
