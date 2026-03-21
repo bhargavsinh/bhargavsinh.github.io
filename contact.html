@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index, follow, noimageai, noarchive">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta name="robots" content="index, follow, noimageai, noarchive">
     <meta name="copyright" content="© 2026 Sisodiya Bhargavsinh">
+    <meta name="author" content="Bhargavsinh Sisodiya">
 
     <title>Contact & Appointment | Sisodiya Bhargavsinh</title>
-
-    <meta name="description" content="Contact Sisodiya Bhargavsinh for technical projects, history research, or Pushtimarg related discussions.">
-    <meta name="author" content="Sisodiya Bhargavsinh">
+    
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@700&family=Noto+Sans:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <script>
@@ -26,7 +26,6 @@
                         'divine-gold': '#d4af37',
                         'saffron-glow': '#ff9933',
                         'parchment': '#fdfaf0',
-                        'night-void': '#0a0012',
                     },
                     fontFamily: {
                         yatra: ['Yatra One', 'cursive'],
@@ -40,22 +39,24 @@
     </script>
 
     <style>
+        /* Pro-Level Transitions */
+        .fade-in { animation: fadeIn 1.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Security: Disable Selection */
         body {
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;
             background-color: #fdfaf0;
-            color: #1a1a1a;
-            overflow-x: hidden;
         }
 
-        /* Royal Glassmorphism */
         .glass-card {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 10px 40px -10px rgba(107, 15, 26, 0.08);
+            box-shadow: 0 10px 40px -10px rgba(107, 15, 26, 0.1);
         }
 
         .nav-link-ltr { position: relative; }
@@ -66,14 +67,10 @@
         }
         .nav-link-ltr:hover::after { width: 100%; left: 0; }
 
-        .bg-pattern {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            opacity: 0.04;
-            background-image: radial-gradient(#d4af37 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fdfaf0; }
+        ::-webkit-scrollbar-thumb { background: #6b0f1a; border-radius: 10px; }
 
         #notif-box { display: none; }
         #notif-box.show { display: block; animation: slideIn 0.3s ease-out; }
@@ -82,24 +79,18 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #fdfaf0; }
-        ::-webkit-scrollbar-thumb { background: #6b0f1a; border-radius: 10px; }
-
         @media print { body { display: none !important; } }
     </style>
 </head>
-
-<body class="font-inter selection:bg-divine-gold selection:text-royal-maroon">
-    <div class="bg-pattern"></div>
+<body class="font-inter text-slate-900 overflow-x-hidden fade-in">
 
     <header class="fixed top-0 w-full z-[100] bg-white/80 backdrop-blur-xl border-b border-divine-gold/20">
         <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <img src="logo.png" alt="Logo" class="h-12 hover:scale-110 transition duration-500">
                 <div class="flex flex-col">
-                    <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none">Sisodiya Bhargavsinh</span>
-                    <span class="text-[9px] uppercase tracking-[0.3em] text-divine-gold font-bold">Heritage & Technology</span>
+                    <span class="font-yatra text-royal-maroon text-xl leading-none">Sisodiya Bhargavsinh</span>
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-divine-gold font-bold">Heritage & Tech Professional</span>
                 </div>
             </div>
 
@@ -110,7 +101,6 @@
                 <li><a href="projects.html" class="nav-link-ltr hover:text-royal-maroon transition">Projects</a></li>
                 <li><a href="resume.html" class="nav-link-ltr hover:text-royal-maroon transition">Resume</a></li>
                 <li><a href="contact.html" class="nav-link-ltr text-royal-maroon border-b border-divine-gold pb-1">Contact</a></li>
-                <li><div id="google_translate_element" class="scale-90"></div></li>
             </ul>
 
             <div class="flex items-center gap-4">
@@ -121,123 +111,130 @@
                 <button onclick="toggleMobileMenu()" class="lg:hidden text-royal-maroon text-2xl">☰</button>
             </div>
         </nav>
-        
+
         <div id="mobile-menu" class="hidden lg:hidden bg-parchment border-b border-divine-gold/20 p-6 space-y-4 shadow-xl">
-            <a href="index.html" class="block font-medium">Home</a>
-            <a href="about.html" class="block font-medium">About</a>
-            <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
-            <a href="projects.html" class="block font-medium">Projects</a>
+            <a href="index.html" class="block font-yatra text-royal-maroon">Home</a>
             <a href="resume.html" class="block font-medium">Resume</a>
-            <a href="blog.html" class="block font-medium">Articles</a>
-            <a href="contact.html" class="block font-yatra text-royal-maroon">Contact</a>
+            <a href="otherlinks.html" class="block font-medium">Other Links</a>
+            <a href="contact.html" class="block font-medium font-bold text-royal-maroon">Contact</a>
         </div>
     </header>
 
-    <main class="pt-40 pb-20 px-4">
-
-        <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-down">
-            <div class="inline-block relative">
-                <h1 class="font-yatra text-5xl md:text-7xl text-royal-maroon mb-4 relative z-10 drop-shadow-md tracking-tight">સંપર્ક કરો</h1>
-                <div class="absolute -bottom-3 left-0 w-full h-4 bg-divine-gold/20 -z-10 skew-x-12"></div>
-            </div>
-            <p class="max-w-2xl mx-auto text-xl text-slate-600 font-noto mt-8 leading-relaxed italic">
-                ટેકનિકલ પ્રોજેક્ટ, ઇતિહાસ સંશોધન અથવા પુષ્ટિમાર્ગ અંગે ચર્ચા કરવા માટે આપ મારો સંપર્ક કરી શકો છો.
-            </p>
-        </div>
-
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-
-            <div class="glass-card p-8 md:p-14 rounded-[3rem] border-l-8 border-divine-gold relative overflow-hidden" data-aos="fade-right">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-divine-gold/5 rounded-bl-full"></div>
-
-                <h3 class="font-yatra text-3xl text-royal-maroon mb-12 flex items-center gap-4">
-                    <span class="text-4xl">📍</span> સંપર્ક માહિતી
-                </h3>
-
-                <div class="space-y-10">
-                    <div class="flex items-start gap-6 group">
-                        <div class="w-14 h-14 rounded-2xl bg-royal-maroon/5 flex items-center justify-center text-3xl group-hover:bg-royal-maroon group-hover:text-white transition-all duration-500 shadow-sm">🏠</div>
-                        <div>
-                            <span class="block font-bold text-royal-maroon text-xl mb-2">સરનામું:</span>
-                            <p class="text-slate-700 leading-relaxed font-noto text-lg">
-                                ચુંથાના મુવાડા, તાલુકો: ગોધર,<br>
-                                જીલ્લો: મહીસાગર, ગુજરાત - ૩૮૯૨૩૦
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-6 group">
-                        <div class="w-14 h-14 rounded-2xl bg-royal-maroon/5 flex items-center justify-center text-3xl group-hover:bg-royal-maroon group-hover:text-white transition-all duration-500 shadow-sm">📧</div>
-                        <div>
-                            <span class="block font-bold text-royal-maroon text-xl mb-2">ઈમેલ:</span>
-                            <a href="mailto:bhargavsinh.bca@gmail.com" class="text-slate-700 font-bold hover:text-divine-gold transition-colors text-lg border-b border-divine-gold/20">
-                                bhargavsinh.bca@gmail.com
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="pt-12 border-t border-divine-gold/20">
-                        <span class="block font-bold text-royal-maroon mb-8 text-xl uppercase tracking-wider">સોશિયલ મીડિયા:</span>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-divine-gold/10 hover:bg-green-600 hover:text-white transition-all duration-500 shadow-sm transform hover:-translate-y-1">
-                                <span class="text-3xl">💬</span> <span class="font-bold">WhatsApp</span>
-                            </a>
-                            <a href="https://instagram.com/bs_pushtisoul" target="_blank" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-divine-gold/10 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white transition-all duration-500 shadow-sm transform hover:-translate-y-1">
-                                <span class="text-3xl">📸</span> <span class="font-bold">Instagram</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card p-6 md:p-10 rounded-[3rem] border-t-8 border-royal-maroon" data-aos="fade-left">
-                <h3 class="font-yatra text-3xl text-royal-maroon text-center mb-10 flex items-center justify-center gap-4">
-                    <span>📅</span> Appointment Request
-                </h3>
-                <div class="rounded-3xl overflow-hidden border-2 border-divine-gold/10 shadow-2xl bg-white h-[700px]">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1zE0D-SbtdWlD0wT6TEwJ4hxw7RinkhbxNPOBX2vygD4x3A/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <footer class="bg-royal-maroon text-white pt-24 pb-12 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
-        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
-        
-        <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
-            <a href="disclaimer.html" class="text-divine-gold font-playfair font-bold hover:underline mb-12 block tracking-widest text-sm">LEGAL DISCLAIMER</a>
-            <div class="border-y border-white/10 py-10 mb-12 bg-white/5 backdrop-blur-sm rounded-[2rem]">
-                <p class="text-divine-gold font-playfair text-xl md:text-2xl tracking-widest">Designed by Sisodiya Bhargavsinh ✦ © 2026</p>
-                <p class="text-[10px] uppercase tracking-[0.5em] mt-4 opacity-40 font-inter">Maintaining Heritage with Technology</p>
-            </div>
-            <div class="bg-black/40 inline-block p-6 rounded-3xl border border-divine-gold/20 shadow-2xl transition-transform hover:scale-110 duration-500">
-                <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3 font-bold italic">Secure Visitor Registry</p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 h-5 mx-auto filter brightness-110 contrast-125">
-            </div>
-        </div>
-    </footer>
-
     <div id="notif-box" class="fixed right-4 top-24 w-80 bg-white rounded-2xl shadow-2xl border border-divine-gold/30 z-[110] overflow-hidden">
         <div class="bg-royal-maroon text-divine-gold p-4 font-yatra flex justify-between items-center">
-            <span class="tracking-widest">Updates</span>
-            <button onclick="toggleNotif()" class="text-2xl leading-none">&times;</button>
+            <span>Updates</span>
+            <button onclick="toggleNotif()" class="text-2xl">&times;</button>
         </div>
         <ul id="notif-list" class="max-h-60 overflow-y-auto divide-y divide-gray-100">
             <li class="p-4 text-center text-slate-400">Loading...</li>
         </ul>
     </div>
 
+    <main class="pt-40 pb-24 px-4">
+        <div class="max-w-4xl mx-auto text-center mb-20" data-aos="fade-down">
+            <div class="inline-block relative">
+                <h1 class="font-yatra text-5xl md:text-8xl text-royal-maroon mb-6 relative z-10 drop-shadow-xl">સંપર્ક કરો</h1>
+                <div class="absolute -bottom-2 left-0 w-full h-6 bg-divine-gold/20 -z-10 skew-x-12"></div>
+            </div>
+            <p class="max-w-3xl mx-auto text-xl md:text-2xl text-slate-600 font-noto mt-10 leading-relaxed italic">
+                ટેકનિકલ પ્રોજેક્ટ, ઇતિહાસ સંશોધન અથવા પુષ્ટિમાર્ગ અંગે ચર્ચા કરવા માટે આપ મારો સંપર્ક કરી શકો છો.
+            </p>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+            
+            <div class="glass-card p-10 md:p-16 rounded-[3.5rem] border-l-[12px] border-divine-gold relative overflow-hidden" data-aos="fade-right">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-divine-gold/5 rounded-bl-full"></div>
+
+                <h3 class="font-yatra text-4xl text-royal-maroon mb-16 flex items-center gap-6">
+                    <span class="bg-royal-maroon/5 p-4 rounded-2xl">📍</span> સંપર્ક માહિતી
+                </h3>
+
+                <div class="space-y-12">
+                    <div class="flex items-start gap-8 group">
+                        <div class="w-16 h-16 rounded-3xl bg-royal-maroon/5 flex items-center justify-center text-4xl group-hover:bg-royal-maroon group-hover:text-white transition-all duration-700 shadow-inner">🏠</div>
+                        <div>
+                            <span class="block font-bold text-royal-maroon text-2xl mb-3 tracking-tight">સરનામું:</span>
+                            <p class="text-slate-700 leading-relaxed font-noto text-xl">
+                                ચુંથાના મુવાડા, તાલુકો: ગોધર,<br>
+                                જીલ્લો: મહીસાગર, ગુજરાત - ૩૮૯૨૩૦
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-8 group">
+                        <div class="w-16 h-16 rounded-3xl bg-royal-maroon/5 flex items-center justify-center text-4xl group-hover:bg-royal-maroon group-hover:text-white transition-all duration-700 shadow-inner">📧</div>
+                        <div>
+                            <span class="block font-bold text-royal-maroon text-2xl mb-3 tracking-tight">ઈમેલ:</span>
+                            <a href="mailto:bhargavsinh.bca@gmail.com" class="text-slate-800 font-bold hover:text-divine-gold transition-all text-xl border-b-2 border-divine-gold/20 pb-1">
+                                bhargavsinh.bca@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="pt-16 border-t border-divine-gold/20">
+                        <span class="block font-bold text-royal-maroon mb-10 text-2xl uppercase tracking-widest">સોશિયલ મીડિયા:</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="flex items-center gap-5 p-6 bg-white rounded-3xl border border-divine-gold/10 hover:bg-green-600 hover:text-white transition-all duration-700 shadow-xl transform hover:-translate-y-2">
+                                <span class="text-4xl">💬</span> <span class="font-bold text-lg">WhatsApp</span>
+                            </a>
+                            <a href="https://instagram.com/bs_pushtisoul" target="_blank" class="flex items-center gap-5 p-6 bg-white rounded-3xl border border-divine-gold/10 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 hover:text-white transition-all duration-700 shadow-xl transform hover:-translate-y-2">
+                                <span class="text-4xl">📸</span> <span class="font-bold text-lg">Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card p-2 rounded-[3.5rem] border-t-[12px] border-royal-maroon shadow-2xl" data-aos="fade-left">
+                <div class="bg-white rounded-[2.8rem] overflow-hidden h-[750px] relative">
+                    <div class="absolute top-0 w-full h-1 bg-gradient-to-r from-divine-gold to-royal-maroon"></div>
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1zE0D-SbtdWlD0wT6TEwJ4hxw7RinkhbxNPOBX2vygD4x3A/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" class="opacity-95">Loading…</iframe>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-royal-maroon text-white pt-32 pb-16 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
+        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
+            <div class="flex flex-wrap justify-center gap-10 mb-16 font-playfair text-xs uppercase tracking-[0.4em] text-divine-gold/80">
+                <a href="disclaimer.html" class="hover:text-white transition-all underline-offset-8 hover:underline">Legal Disclaimer</a>
+                <a href="sitemap.xml" class="hover:text-white transition-all underline-offset-8 hover:underline">Sitemap</a>
+                <a href="robots.txt" class="hover:text-white transition-all underline-offset-8 hover:underline">Robots Index</a>
+            </div>
+
+            <div class="border-y border-white/10 py-12 mb-16 bg-white/5 backdrop-blur-xl rounded-[3rem] border-x border-divine-gold/10 shadow-2xl">
+                <h2 class="font-yatra text-3xl md:text-5xl text-divine-gold tracking-widest mb-4">
+                    Sisodiya Bhargavsinh Mahendrasinh
+                </h2>
+                <p class="text-[10px] md:text-sm uppercase tracking-[0.6em] text-white/40 font-inter font-bold">
+                    16th Generation Descendant of Maharana Pratap ✦ Digital Archivist
+                </p>
+            </div>
+
+            <div class="inline-block p-8 bg-black/40 rounded-[2rem] border border-divine-gold/20 shadow-2xl transition-all hover:scale-110 duration-700">
+                <p class="text-[10px] uppercase tracking-[0.4em] text-divine-gold/60 mb-4 font-black italic">Secure Visitor Registry</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" 
+                     alt="Visitor Counter" 
+                     class="opacity-100 h-6 mx-auto filter brightness-125 contrast-150">
+            </div>
+        </div>
+    </footer>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1200, once: true, offset: 50 });
+        AOS.init({ duration: 1200, once: true });
 
-        // Logic repeated from index.html
+        // HEADER LOGIC (Repeated from index)
         function toggleMobileMenu() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
+        // NOTIFICATION LOGIC
         function toggleNotif() { 
             const box = document.getElementById('notif-box');
             box.classList.toggle('show');
@@ -250,20 +247,21 @@
                 const res = await fetch('notifications.json?t=' + Date.now());
                 const data = await res.json();
                 list.innerHTML = data.map(item => `
-                    <li class="p-4 hover:bg-divine-gold/5 transition border-l-2 border-transparent hover:border-royal-maroon">
-                        <small class="text-slate-400 block mb-1 text-xs">${item.date}</small>
-                        <a href="${item.link}" class="text-royal-maroon font-bold text-sm block">
+                    <li class="p-5 hover:bg-divine-gold/5 transition border-l-4 border-transparent hover:border-royal-maroon">
+                        <small class="text-slate-400 block mb-2 text-xs font-bold uppercase tracking-wider">${item.date}</small>
+                        <a href="${item.link}" class="text-royal-maroon font-bold text-base block leading-tight">
                             ${item.new ? '<span class="bg-red-600 text-white px-2 py-0.5 rounded text-[10px] mr-2">NEW</span>' : ''}${item.text}
                         </a>
                     </li>
                 `).join('');
-            } catch (e) { list.innerHTML = '<li class="p-4 text-center">No updates.</li>'; }
+            } catch (e) { list.innerHTML = '<li class="p-6 text-center text-slate-500 italic">No recent updates.</li>'; }
         }
 
-        // ULTRA SECURITY: Anti-Copy & Anti-Inspect
+        // ULTRA SECURITY
         document.addEventListener('contextmenu', e => e.preventDefault());
-        document.onkeydown = e => { 
-            if(e.keyCode == 123 || (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 67 || e.keyCode == 73 || e.keyCode == 74))) return false; 
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
+            if(e.ctrlKey && e.keyCode == 85) return false;
         };
 
         function googleTranslateElementInit() {
