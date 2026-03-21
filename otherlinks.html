@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, noimageai, noarchive">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
+    <title>Other Links | Digital Treasury of Sisodiya</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'royal-maroon': '#6b0f1a',
+                        'divine-gold': '#d4af37',
+                        'parchment': '#fdfaf0',
+                    },
+                    fontFamily: {
+                        yatra: ['Yatra One', 'cursive'],
+                        playfair: ['Playfair Display', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fdfaf0;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .link-card {
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            background: white;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .link-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #6b0f1a;
+            box-shadow: 0 20px 40px rgba(107, 15, 26, 0.1);
+        }
+
+        .icon-circle {
+            transition: all 0.5s ease;
+            background: #fdfaf0;
+        }
+
+        .link-card:hover .icon-circle {
+            background: #6b0f1a;
+            color: #d4af37;
+        }
+
+        /* Anti-Scraping Overlay */
+        @media print { body { display: none !important; } }
+    </style>
+</head>
+<body class="font-inter text-slate-900">
+
+    <div id="navbar-placeholder"></div>
+
+    <header class="pt-40 pb-16 px-6 text-center">
+        <div class="max-w-4xl mx-auto" data-aos="fade-down">
+            <h1 class="font-yatra text-4xl md:text-6xl text-royal-maroon mb-4">Other Links</h1>
+            <div class="h-1 w-24 bg-divine-gold mx-auto mb-6"></div>
+            <p class="font-playfair italic text-lg text-slate-600 tracking-widest">
+                External Resources & Digital Archives
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 pb-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <a href="pushtimarg-ma-gruh-seva.html" class="link-card p-8 rounded-[2rem] flex items-center gap-6 group" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon-circle w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shrink-0 border border-divine-gold/20">
+                    🙏
+                </div>
+                <div>
+                    <h3 class="font-yatra text-xl text-royal-maroon group-hover:text-divine-gold transition-colors">Pushtimarg Ma Gruh Seva</h3>
+                    <p class="text-sm text-slate-500 mt-1 uppercase tracking-tighter">Devotional Guidelines & Practices</p>
+                </div>
+            </a>
+
+            <a href="pushtimarg.html" class="link-card p-8 rounded-[2rem] flex items-center gap-6 group" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-circle w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shrink-0 border border-divine-gold/20">
+                    🕉️
+                </div>
+                <div>
+                    <h3 class="font-yatra text-xl text-royal-maroon group-hover:text-divine-gold transition-colors">Pushtimarg</h3>
+                    <p class="text-sm text-slate-500 mt-1 uppercase tracking-tighter">The Path of Grace - Archives</p>
+                </div>
+            </a>
+
+            <a href="blog.html" class="link-card p-8 rounded-[2rem] flex items-center gap-6 group" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-circle w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shrink-0 border border-divine-gold/20">
+                    ✍️
+                </div>
+                <div>
+                    <h3 class="font-yatra text-xl text-royal-maroon group-hover:text-divine-gold transition-colors">Blog</h3>
+                    <p class="text-sm text-slate-500 mt-1 uppercase tracking-tighter">Modern Perspectives & Tech Articles</p>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="mt-16 p-12 border-2 border-dashed border-divine-gold/30 rounded-[3rem] text-center" data-aos="zoom-in">
+            <span class="font-playfair italic text-slate-400">Additional archives are being digitized. More links coming soon.</span>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // SECURITY: Anti-Copy & Anti-Inspect
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
+            if(e.ctrlKey && e.keyCode == 85) return false;
+        };
+    </script>
+    <script src="main.js"></script>
+    <footer class="bg-royal-maroon text-white pt-24 pb-12 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
+    
+    <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
+        
+        <div class="flex flex-wrap justify-center gap-8 mb-12 font-playfair text-xs uppercase tracking-[0.3em] text-divine-gold/80">
+            <a href="disclaimer.html" class="hover:text-white transition-colors duration-300">Legal Disclaimer</a>
+            <a href="sitemap.xml" class="hover:text-white transition-colors duration-300">Sitemap</a>
+            <a href="robots.txt" class="hover:text-white transition-colors duration-300">Robots Index</a>
+        </div>
+
+        <div class="border-y border-white/10 py-10 mb-12 bg-white/5 backdrop-blur-md rounded-[2.5rem] border-x border-divine-gold/10">
+            <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-widest mb-2">
+                Sisodiya Bhargavsinh Mahendrasinh
+            </h2>
+            <p class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-white/50 font-inter">
+                16th Generation Descendant of Maharana Pratap ✦ Digital Archivist
+            </p>
+        </div>
+
+        <div class="inline-block p-6 bg-black/30 rounded-3xl border border-divine-gold/20 shadow-2xl transition-transform hover:scale-105 duration-500">
+            <p class="text-[9px] uppercase tracking-[0.4em] text-divine-gold/60 mb-3 font-bold">Secure Visitor Registry</p>
+            <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" 
+                 alt="Visitor Counter" 
+                 class="opacity-90 h-6 mx-auto filter brightness-110 contrast-125">
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-white/5 text-[10px] text-white/30 uppercase tracking-[0.2em] font-inter">
+            &copy; 2026 Sisodiya Digital Estate. All Rights Reserved. 
+            <span class="block mt-2 font-bold text-divine-gold/40 italic">"Heritage in Every Pixel, Honor in Every Line"</span>
+        </div>
+
+    </div>
+</footer>
+
+
+</body>
+</html>
