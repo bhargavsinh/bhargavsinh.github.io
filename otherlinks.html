@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow, noimageai, noarchive">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    
+    <meta name="copyright" content="© 2026 Sisodiya Bhargavsinh">
+
     <title>Other Links | Digital Treasury of Sisodiya</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <script>
@@ -20,6 +20,7 @@
                     colors: {
                         'royal-maroon': '#6b0f1a',
                         'divine-gold': '#d4af37',
+                        'saffron-glow': '#ff9933',
                         'parchment': '#fdfaf0',
                     },
                     fontFamily: {
@@ -36,7 +37,9 @@
         body {
             background-color: #fdfaf0;
             -webkit-user-select: none;
+            -ms-user-select: none;
             user-select: none;
+            overflow-x: hidden;
         }
 
         .link-card {
@@ -61,115 +64,153 @@
             color: #d4af37;
         }
 
-        /* Anti-Scraping Overlay */
+        .nav-link-ltr { position: relative; }
+        .nav-link-ltr::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            display: block; margin-top: 2px; right: 0; background: #d4af37;
+            transition: width .4s ease;
+        }
+        .nav-link-ltr:hover::after { width: 100%; left: 0; }
+
         @media print { body { display: none !important; } }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fdfaf0; }
+        ::-webkit-scrollbar-thumb { background: #6b0f1a; border-radius: 10px; }
     </style>
 </head>
 <body class="font-inter text-slate-900">
 
-    <div id="navbar-placeholder"></div>
+    <header class="fixed top-0 w-full z-[100] bg-white/80 backdrop-blur-xl border-b border-divine-gold/20">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo" class="h-12 hover:scale-110 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none">Sisodiya Bhargavsinh</span>
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-divine-gold font-bold">Heritage & Tech Professional</span>
+                </div>
+            </div>
 
-    <header class="pt-40 pb-16 px-6 text-center">
+            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-[10px] uppercase tracking-[0.2em] text-slate-700">
+                <li><a href="index.html" class="nav-link-ltr hover:text-royal-maroon transition">Home</a></li>
+                <li><a href="about.html" class="nav-link-ltr hover:text-royal-maroon transition">About</a></li>
+                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-royal-maroon transition">Pushtimarg</a></li>
+                <li><a href="projects.html" class="nav-link-ltr hover:text-royal-maroon transition">Projects</a></li>
+                <li><a href="resume.html" class="nav-link-ltr hover:text-royal-maroon transition">Resume</a></li>
+                <li><a href="otherlinks.html" class="nav-link-ltr text-royal-maroon border-b border-divine-gold pb-1">Other Links</a></li>
+                <li><a href="contact.html" class="nav-link-ltr hover:text-royal-maroon transition">Contact</a></li>
+            </ul>
+
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-royal-maroon text-2xl">☰</button>
+        </nav>
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-parchment border-b border-divine-gold/20 p-6 space-y-4 shadow-xl">
+            <a href="index.html" class="block font-yatra text-royal-maroon">Home</a>
+            <a href="resume.html" class="block font-medium">Resume</a>
+            <a href="otherlinks.html" class="block font-medium text-royal-maroon font-bold">Other Links</a>
+            <a href="contact.html" class="block font-medium">Contact</a>
+        </div>
+    </header>
+
+    <header class="pt-48 pb-16 px-6 text-center">
         <div class="max-w-4xl mx-auto" data-aos="fade-down">
-            <h1 class="font-yatra text-4xl md:text-6xl text-royal-maroon mb-4">Other Links</h1>
-            <div class="h-1 w-24 bg-divine-gold mx-auto mb-6"></div>
-            <p class="font-playfair italic text-lg text-slate-600 tracking-widest">
+            <h1 class="font-yatra text-4xl md:text-7xl text-royal-maroon mb-6">Other Links</h1>
+            <div class="h-1.5 w-32 bg-gradient-to-r from-royal-maroon to-divine-gold mx-auto mb-8"></div>
+            <p class="font-playfair italic text-xl text-slate-600 tracking-widest">
                 External Resources & Digital Archives
             </p>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-6 pb-32">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            <a href="pushtimarg-ma-gruh-seva.html" class="link-card p-8 rounded-[2rem] flex items-center gap-6 group" data-aos="fade-up" data-aos-delay="100">
-                <div class="icon-circle w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shrink-0 border border-divine-gold/20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+            <a href="pushtimarg-ma-gruh-seva.html" class="link-card p-10 rounded-[2.5rem] flex items-center gap-8 group" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon-circle w-20 h-20 rounded-3xl flex items-center justify-center text-3xl shrink-0 border border-divine-gold/20 shadow-inner">
                     🙏
                 </div>
                 <div>
-                    <h3 class="font-yatra text-xl text-royal-maroon group-hover:text-divine-gold transition-colors">Pushtimarg Ma Gruh Seva</h3>
-                    <p class="text-sm text-slate-500 mt-1 uppercase tracking-tighter">Artical</p>
+                    <h3 class="font-yatra text-2xl text-royal-maroon group-hover:text-divine-gold transition-colors">Pushtimarg Ma Gruh Seva</h3>
+                    <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-[0.2em] font-bold">Article & Guidance</p>
                 </div>
             </a>
 
-            <a href="pushtimarg.html" class="link-card p-8 rounded-[2rem] flex items-center gap-6 group" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon-circle w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shrink-0 border border-divine-gold/20">
+            <a href="pushtimarg.html" class="link-card p-10 rounded-[2.5rem] flex items-center gap-8 group" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-circle w-20 h-20 rounded-3xl flex items-center justify-center text-3xl shrink-0 border border-divine-gold/20 shadow-inner">
                     🕉️
                 </div>
                 <div>
-                    <h3 class="font-yatra text-xl text-royal-maroon group-hover:text-divine-gold transition-colors">Pushtimarg</h3>
-                    <p class="text-sm text-slate-500 mt-1 uppercase tracking-tighter">The Path of Grace - Archives</p>
+                    <h3 class="font-yatra text-2xl text-royal-maroon group-hover:text-divine-gold transition-colors">Pushtimarg</h3>
+                    <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-[0.2em] font-bold">The Path of Grace - Archives</p>
                 </div>
             </a>
 
-            <a href="blog.html" class="link-card p-8 rounded-[2rem] flex items-center gap-6 group" data-aos="fade-up" data-aos-delay="400">
-                <div class="icon-circle w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shrink-0 border border-divine-gold/20">
+            <a href="blog.html" class="link-card p-10 rounded-[2.5rem] flex items-center gap-8 group" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-circle w-20 h-20 rounded-3xl flex items-center justify-center text-3xl shrink-0 border border-divine-gold/20 shadow-inner">
                     ✍️
                 </div>
                 <div>
-                    <h3 class="font-yatra text-xl text-royal-maroon group-hover:text-divine-gold transition-colors">Blog</h3>
-                    <p class="text-sm text-slate-500 mt-1 uppercase tracking-tighter">Modern Perspectives & Tech Articles</p>
+                    <h3 class="font-yatra text-2xl text-royal-maroon group-hover:text-divine-gold transition-colors">Blog</h3>
+                    <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-[0.2em] font-bold">Modern Perspectives & Tech Articles</p>
                 </div>
             </a>
 
         </div>
 
-        <div class="mt-16 p-12 border-2 border-dashed border-divine-gold/30 rounded-[3rem] text-center" data-aos="zoom-in">
-            <span class="font-playfair italic text-slate-400">Additional archives are being digitized. More links coming soon.</span>
+        <div class="mt-20 p-16 border-2 border-dashed border-divine-gold/30 rounded-[3.5rem] text-center bg-white/30 backdrop-blur-sm" data-aos="zoom-in">
+            <span class="font-playfair italic text-slate-400 text-lg">Additional archives are being digitized. More links coming soon.</span>
         </div>
     </main>
 
-    <div id="footer-placeholder"></div>
+    <footer class="bg-royal-maroon text-white pt-24 pb-12 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
+        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
+            <div class="flex flex-wrap justify-center gap-8 mb-12 font-playfair text-xs uppercase tracking-[0.4em] text-divine-gold/80">
+                <a href="disclaimer.html" class="hover:text-white transition-colors duration-300">Legal Disclaimer</a>
+                <a href="sitemap.xml" class="hover:text-white transition-colors duration-300">Sitemap</a>
+                <a href="robots.txt" class="hover:text-white transition-colors duration-300">Robots Index</a>
+            </div>
+
+            <div class="border-y border-white/10 py-12 mb-12 bg-white/5 backdrop-blur-md rounded-[2.5rem] border-x border-divine-gold/10">
+                <h2 class="font-yatra text-3xl md:text-4xl text-divine-gold tracking-widest mb-3">
+                    Sisodiya Bhargavsinh Mahendrasinh
+                </h2>
+                <p class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-white/50 font-inter font-bold">
+                    Digital Archivist ✦ Heritage Conservator
+                </p>
+            </div>
+
+            <div class="inline-block p-8 bg-black/30 rounded-[2rem] border border-divine-gold/20 shadow-2xl transition-transform hover:scale-105 duration-500">
+                <p class="text-[9px] uppercase tracking-[0.4em] text-divine-gold/60 mb-4 font-black">Secure Visitor Registry</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" 
+                     alt="Visitor Counter" 
+                     class="opacity-90 h-6 mx-auto filter brightness-125 contrast-125">
+            </div>
+
+            <div class="mt-16 pt-10 border-t border-white/5 text-[10px] text-white/30 uppercase tracking-[0.3em] font-inter">
+                &copy; 2026 Sisodiya Digital Estate. All Rights Reserved. 
+                <span class="block mt-4 font-black text-divine-gold/40 italic">"Heritage in Every Pixel, Honor in Every Line"</span>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1200, once: true });
 
-        // SECURITY: Anti-Copy & Anti-Inspect
+        // ULTRA SECURITY: Anti-Copy & Anti-Inspect
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.onkeydown = function(e) {
             if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
             if(e.ctrlKey && e.keyCode == 85) return false;
         };
+
+        // Header Logic Repeat
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
     </script>
-    <script src="main.js"></script>
-    <footer class="bg-royal-maroon text-white pt-24 pb-12 relative overflow-hidden">
-    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
-    
-    <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
-
-    <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
-        
-        <div class="flex flex-wrap justify-center gap-8 mb-12 font-playfair text-xs uppercase tracking-[0.3em] text-divine-gold/80">
-            <a href="disclaimer.html" class="hover:text-white transition-colors duration-300">Legal Disclaimer</a>
-            <a href="sitemap.xml" class="hover:text-white transition-colors duration-300">Sitemap</a>
-            <a href="robots.txt" class="hover:text-white transition-colors duration-300">Robots Index</a>
-        </div>
-
-        <div class="border-y border-white/10 py-10 mb-12 bg-white/5 backdrop-blur-md rounded-[2.5rem] border-x border-divine-gold/10">
-            <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-widest mb-2">
-                Sisodiya Bhargavsinh Mahendrasinh
-            </h2>
-            <p class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-white/50 font-inter">
-                Digital Archivist
-            </p>
-        </div>
-
-        <div class="inline-block p-6 bg-black/30 rounded-3xl border border-divine-gold/20 shadow-2xl transition-transform hover:scale-105 duration-500">
-            <p class="text-[9px] uppercase tracking-[0.4em] text-divine-gold/60 mb-3 font-bold">Secure Visitor Registry</p>
-            <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" 
-                 alt="Visitor Counter" 
-                 class="opacity-90 h-6 mx-auto filter brightness-110 contrast-125">
-        </div>
-
-        <div class="mt-16 pt-8 border-t border-white/5 text-[10px] text-white/30 uppercase tracking-[0.2em] font-inter">
-            &copy; 2026 Sisodiya Digital Estate. All Rights Reserved. 
-            <span class="block mt-2 font-bold text-divine-gold/40 italic">"Heritage in Every Pixel, Honor in Every Line"</span>
-        </div>
-
-    </div>
-</footer>
-
-
 </body>
 </html>
