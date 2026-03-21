@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, noimageai, noarchive">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="copyright" content="© 2026 Sisodiya Bhargavsinh">
+
     <title>Contact & Appointment | Sisodiya Bhargavsinh</title>
 
     <meta name="description" content="Contact Sisodiya Bhargavsinh for technical projects, history research, or Pushtimarg related discussions.">
@@ -45,7 +49,7 @@
             overflow-x: hidden;
         }
 
-        /* 2050 Glassmorphism */
+        /* Royal Glassmorphism */
         .glass-card {
             background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(24px);
@@ -58,7 +62,7 @@
         .nav-link-ltr::after {
             content: ''; position: absolute; width: 0; height: 2px;
             display: block; margin-top: 2px; right: 0; background: #d4af37;
-            transition: width .3s ease;
+            transition: width .4s ease;
         }
         .nav-link-ltr:hover::after { width: 100%; left: 0; }
 
@@ -81,30 +85,31 @@
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #fdfaf0; }
         ::-webkit-scrollbar-thumb { background: #6b0f1a; border-radius: 10px; }
+
+        @media print { body { display: none !important; } }
     </style>
 </head>
 
 <body class="font-inter selection:bg-divine-gold selection:text-royal-maroon">
     <div class="bg-pattern"></div>
 
-    <header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-divine-gold/20">
-        <nav class="max-w-7xl mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
+    <header class="fixed top-0 w-full z-[100] bg-white/80 backdrop-blur-xl border-b border-divine-gold/20">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" class="h-10 md:h-14 hover:scale-105 transition duration-500">
+                <img src="logo.png" alt="Logo" class="h-12 hover:scale-110 transition duration-500">
                 <div class="flex flex-col">
                     <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none">Sisodiya Bhargavsinh</span>
                     <span class="text-[9px] uppercase tracking-[0.3em] text-divine-gold font-bold">Heritage & Technology</span>
                 </div>
             </div>
 
-            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-xs uppercase tracking-widest text-slate-700">
+            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-[10px] uppercase tracking-[0.2em] text-slate-700">
                 <li><a href="index.html" class="nav-link-ltr hover:text-royal-maroon transition">Home</a></li>
                 <li><a href="about.html" class="nav-link-ltr hover:text-royal-maroon transition">About</a></li>
                 <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-royal-maroon transition">Pushtimarg</a></li>
                 <li><a href="projects.html" class="nav-link-ltr hover:text-royal-maroon transition">Projects</a></li>
                 <li><a href="resume.html" class="nav-link-ltr hover:text-royal-maroon transition">Resume</a></li>
-                <li><a href="blog.html" class="nav-link-ltr hover:text-royal-maroon transition">Articles</a></li>
-                <li><a href="contact.html" class="nav-link-ltr text-royal-maroon">Contact</a></li>
+                <li><a href="contact.html" class="nav-link-ltr text-royal-maroon border-b border-divine-gold pb-1">Contact</a></li>
                 <li><div id="google_translate_element" class="scale-90"></div></li>
             </ul>
 
@@ -113,11 +118,11 @@
                     <span class="text-xl">🔔</span>
                     <span id="notif-badge" class="absolute top-2 right-2 w-2 h-2 bg-red-600 rounded-full hidden animate-ping"></span>
                 </button>
-                <button onclick="toggleMenu()" class="lg:hidden text-royal-maroon text-2xl">☰</button>
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-royal-maroon text-2xl">☰</button>
             </div>
         </nav>
-
-        <div id="navLinks" class="hidden lg:hidden bg-parchment/95 backdrop-blur-md border-t border-divine-gold/20 p-6 space-y-4 shadow-2xl absolute w-full">
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-parchment border-b border-divine-gold/20 p-6 space-y-4 shadow-xl">
             <a href="index.html" class="block font-medium">Home</a>
             <a href="about.html" class="block font-medium">About</a>
             <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
@@ -128,14 +133,14 @@
         </div>
     </header>
 
-    <main class="pt-32 pb-20 px-4">
+    <main class="pt-40 pb-20 px-4">
 
         <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-down">
             <div class="inline-block relative">
-                <h1 class="font-yatra text-5xl md:text-7xl text-royal-maroon mb-4 relative z-10 drop-shadow-md">સંપર્ક કરો</h1>
+                <h1 class="font-yatra text-5xl md:text-7xl text-royal-maroon mb-4 relative z-10 drop-shadow-md tracking-tight">સંપર્ક કરો</h1>
                 <div class="absolute -bottom-3 left-0 w-full h-4 bg-divine-gold/20 -z-10 skew-x-12"></div>
             </div>
-            <p class="max-w-2xl mx-auto text-xl text-slate-600 font-noto mt-8 leading-relaxed">
+            <p class="max-w-2xl mx-auto text-xl text-slate-600 font-noto mt-8 leading-relaxed italic">
                 ટેકનિકલ પ્રોજેક્ટ, ઇતિહાસ સંશોધન અથવા પુષ્ટિમાર્ગ અંગે ચર્ચા કરવા માટે આપ મારો સંપર્ક કરી શકો છો.
             </p>
         </div>
@@ -151,7 +156,7 @@
 
                 <div class="space-y-10">
                     <div class="flex items-start gap-6 group">
-                        <div class="w-14 h-14 rounded-2xl bg-royal-maroon/5 flex items-center justify-center text-3xl group-hover:bg-royal-maroon group-hover:text-white transition-all duration-500">🏠</div>
+                        <div class="w-14 h-14 rounded-2xl bg-royal-maroon/5 flex items-center justify-center text-3xl group-hover:bg-royal-maroon group-hover:text-white transition-all duration-500 shadow-sm">🏠</div>
                         <div>
                             <span class="block font-bold text-royal-maroon text-xl mb-2">સરનામું:</span>
                             <p class="text-slate-700 leading-relaxed font-noto text-lg">
@@ -162,7 +167,7 @@
                     </div>
 
                     <div class="flex items-start gap-6 group">
-                        <div class="w-14 h-14 rounded-2xl bg-royal-maroon/5 flex items-center justify-center text-3xl group-hover:bg-royal-maroon group-hover:text-white transition-all duration-500">📧</div>
+                        <div class="w-14 h-14 rounded-2xl bg-royal-maroon/5 flex items-center justify-center text-3xl group-hover:bg-royal-maroon group-hover:text-white transition-all duration-500 shadow-sm">📧</div>
                         <div>
                             <span class="block font-bold text-royal-maroon text-xl mb-2">ઈમેલ:</span>
                             <a href="mailto:bhargavsinh.bca@gmail.com" class="text-slate-700 font-bold hover:text-divine-gold transition-colors text-lg border-b border-divine-gold/20">
@@ -172,7 +177,7 @@
                     </div>
 
                     <div class="pt-12 border-t border-divine-gold/20">
-                        <span class="block font-bold text-royal-maroon mb-8 text-xl">સોશિયલ મીડિયા:</span>
+                        <span class="block font-bold text-royal-maroon mb-8 text-xl uppercase tracking-wider">સોશિયલ મીડિયા:</span>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-divine-gold/10 hover:bg-green-600 hover:text-white transition-all duration-500 shadow-sm transform hover:-translate-y-1">
                                 <span class="text-3xl">💬</span> <span class="font-bold">WhatsApp</span>
@@ -198,24 +203,26 @@
     </main>
 
     <footer class="bg-royal-maroon text-white pt-24 pb-12 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
+        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
+        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+        
         <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
             <a href="disclaimer.html" class="text-divine-gold font-playfair font-bold hover:underline mb-12 block tracking-widest text-sm">LEGAL DISCLAIMER</a>
-            <div class="border-y border-white/10 py-8 mb-12 bg-white/5 backdrop-blur-sm">
-                <p class="text-divine-gold font-playfair text-xl">Designed by Sisodiya Bhargavsinh ✦ © 2026</p>
-                <p class="text-[10px] uppercase tracking-[0.5em] mt-3 opacity-40">Maintaining Heritage with Technology</p>
+            <div class="border-y border-white/10 py-10 mb-12 bg-white/5 backdrop-blur-sm rounded-[2rem]">
+                <p class="text-divine-gold font-playfair text-xl md:text-2xl tracking-widest">Designed by Sisodiya Bhargavsinh ✦ © 2026</p>
+                <p class="text-[10px] uppercase tracking-[0.5em] mt-4 opacity-40 font-inter">Maintaining Heritage with Technology</p>
             </div>
-            <div class="bg-black/20 inline-block p-6 rounded-3xl border border-divine-gold/20">
-                <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Visitor Count</p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-80 h-5">
+            <div class="bg-black/40 inline-block p-6 rounded-3xl border border-divine-gold/20 shadow-2xl transition-transform hover:scale-110 duration-500">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3 font-bold italic">Secure Visitor Registry</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-90 h-5 mx-auto filter brightness-110 contrast-125">
             </div>
         </div>
     </footer>
 
-    <div id="notif-box" class="fixed right-4 top-20 w-80 bg-white rounded-2xl shadow-2xl border border-divine-gold/30 z-50 overflow-hidden">
-        <div class="bg-royal-maroon text-divine-gold p-4 font-yatra flex justify-between">
-            <span>Updates</span>
-            <button onclick="toggleNotif()">&times;</button>
+    <div id="notif-box" class="fixed right-4 top-24 w-80 bg-white rounded-2xl shadow-2xl border border-divine-gold/30 z-[110] overflow-hidden">
+        <div class="bg-royal-maroon text-divine-gold p-4 font-yatra flex justify-between items-center">
+            <span class="tracking-widest">Updates</span>
+            <button onclick="toggleNotif()" class="text-2xl leading-none">&times;</button>
         </div>
         <ul id="notif-list" class="max-h-60 overflow-y-auto divide-y divide-gray-100">
             <li class="p-4 text-center text-slate-400">Loading...</li>
@@ -226,7 +233,11 @@
     <script>
         AOS.init({ duration: 1200, once: true, offset: 50 });
 
-        function toggleMenu() { document.getElementById('navLinks').classList.toggle('hidden'); }
+        // Logic repeated from index.html
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
         function toggleNotif() { 
             const box = document.getElementById('notif-box');
             box.classList.toggle('show');
@@ -249,8 +260,11 @@
             } catch (e) { list.innerHTML = '<li class="p-4 text-center">No updates.</li>'; }
         }
 
+        // ULTRA SECURITY: Anti-Copy & Anti-Inspect
         document.addEventListener('contextmenu', e => e.preventDefault());
-        document.onkeydown = e => { if(e.keyCode == 123 || (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 67))) return false; };
+        document.onkeydown = e => { 
+            if(e.keyCode == 123 || (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 67 || e.keyCode == 73 || e.keyCode == 74))) return false; 
+        };
 
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'gu', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
