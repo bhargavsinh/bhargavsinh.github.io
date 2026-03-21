@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="gu" class="scroll-smooth">
 <head>
-<meta name="robots" content="index, follow, noai, noimageai, noarchive">
-<meta name="copyright" content="© 2026 Sisodiya Bhargavsinh Mahendrasinh">
-<meta name="author" content="Sisodiya Bhargavsinh Mahendrasinh">
-
-<meta name="legal-jurisdiction" content="India, Gujarat">
-<meta name="ip-protection" content="Copyright Act 1957 + Berne Convention">
-
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, noai, noimageai, noarchive">
+    <meta name="copyright" content="© 2026 Sisodiya Bhargavsinh Mahendrasinh">
+    <meta name="author" content="Sisodiya Bhargavsinh Mahendrasinh">
+    <meta name="legal-jurisdiction" content="India, Gujarat">
+    <meta name="ip-protection" content="Copyright Act 1957 + Berne Convention">
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+    
     <title>Resume | Sisodiya Bhargavsinh</title>
     
     <meta name="description" content="Resume of Sisodiya Bhargavsinh Mahendrasinh - BCA Student. Skills in Computer Accounting, Logo Design, and Chat Support.">
-    <meta name="robots" content="index,follow">
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -53,7 +51,7 @@
             overflow-x: hidden;
         }
 
-        /* 2050 Glassmorphism */
+        /* Royal Glassmorphism */
         .glass-card {
             background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(24px);
@@ -70,7 +68,7 @@
         .nav-link-ltr::after {
             content: ''; position: absolute; width: 0; height: 2px;
             display: block; margin-top: 2px; right: 0; background: #d4af37;
-            transition: width .3s ease;
+            transition: width .4s ease;
         }
         .nav-link-ltr:hover::after { width: 100%; left: 0; }
         
@@ -83,7 +81,7 @@
             background-size: 40px 40px;
         }
 
-        @media print { html, body { display: none !important; } }
+        @media print { body { display: none !important; } }
 
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #fdfaf0; }
@@ -94,54 +92,50 @@
 <body class="font-inter selection:bg-divine-gold selection:text-royal-maroon">
     <div class="bg-pattern"></div>
 
-    <header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-divine-gold/20">
-        <nav class="max-w-7xl mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
+    <header class="fixed top-0 w-full z-[100] bg-white/80 backdrop-blur-xl border-b border-divine-gold/20">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" class="h-10 md:h-14 hover:scale-105 transition duration-500">
+                <img src="logo.png" alt="Logo" class="h-12 hover:scale-110 transition duration-500">
                 <div class="flex flex-col">
                     <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none">Sisodiya Bhargavsinh</span>
                     <span class="text-[9px] uppercase tracking-[0.3em] text-divine-gold font-bold">Heritage & Tech Professional</span>
                 </div>
             </div>
 
-            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-xs uppercase tracking-widest text-slate-700">
+            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-[10px] uppercase tracking-[0.2em] text-slate-700">
                 <li><a href="index.html" class="nav-link-ltr hover:text-royal-maroon transition">Home</a></li>
                 <li><a href="about.html" class="nav-link-ltr hover:text-royal-maroon transition">About</a></li>
                 <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-royal-maroon transition">Pushtimarg</a></li>
                 <li><a href="projects.html" class="nav-link-ltr hover:text-royal-maroon transition">Projects</a></li>
                 <li><a href="resume.html" class="nav-link-ltr text-royal-maroon">Resume</a></li>
-                <li><a href="blog.html" class="nav-link-ltr hover:text-royal-maroon transition">Articles</a></li>
                 <li><a href="contact.html" class="nav-link-ltr hover:text-royal-maroon transition">Contact</a></li>
             </ul>
 
-            <button onclick="toggleMenu()" class="lg:hidden text-royal-maroon text-2xl">☰</button>
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-royal-maroon text-2xl">☰</button>
         </nav>
-
-        <div id="navLinks" class="hidden lg:hidden bg-parchment/95 backdrop-blur-md border-t border-divine-gold/20 p-6 space-y-4 shadow-xl absolute w-full">
-            <a href="index.html" class="block font-medium">Home</a>
-            <a href="about.html" class="block font-medium">About</a>
-            <a href="pushtimarg.html" class="block font-medium">Pushtimarg</a>
-            <a href="projects.html" class="block font-medium">Projects</a>
-            <a href="resume.html" class="block font-yatra text-royal-maroon">Resume</a>
-            <a href="blog.html" class="block font-medium">Articles</a>
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-parchment border-b border-divine-gold/20 p-6 space-y-4 shadow-xl">
+            <a href="index.html" class="block font-yatra text-royal-maroon">Home</a>
+            <a href="resume.html" class="block font-medium">Resume</a>
+            <a href="otherlinks.html" class="block font-medium">Other Links</a>
             <a href="contact.html" class="block font-medium">Contact</a>
         </div>
     </header>
 
     <main class="pt-32 pb-20 px-4">
         <div class="max-w-5xl mx-auto glass-card rounded-[3rem] overflow-hidden shadow-2xl" data-aos="fade-up">
-            
+
             <div class="bg-royal-maroon p-10 md:p-16 text-center text-white relative">
                 <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#d4af37 1px, transparent 1px); background-size: 20px 20px;"></div>
-                
+
                 <div class="relative z-10">
                     <img src="bhargavsinh.webp" alt="Sisodiya Bhargavsinh" class="w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-divine-gold mx-auto mb-8 object-cover profile-glow transition-transform duration-700 hover:scale-105">
-                    
+
                     <h1 class="font-yatra text-4xl md:text-6xl text-divine-gold mb-4 uppercase tracking-wider drop-shadow-lg">
                         Sisodiya Bhargavsinh Mahendrasinh
                     </h1>
                     <p class="font-playfair text-xl md:text-3xl text-parchment/80 italic tracking-widest">BCA Student | Computer Applications</p>
-                    
+
                     <div class="mt-10 flex flex-col md:flex-row justify-center gap-6">
                         <div class="flex items-center justify-center gap-3 bg-white/10 px-6 py-3 rounded-2xl border border-divine-gold/30 backdrop-blur-md text-sm md:text-base">
                             <span class="text-divine-gold">📧</span> bhargavsinh.bca@gmail.com
@@ -154,7 +148,7 @@
             </div>
 
             <div class="p-8 md:p-16 space-y-16">
-                
+
                 <section data-aos="fade-up">
                     <div class="flex items-center gap-6 mb-8">
                         <h2 class="font-yatra text-3xl text-royal-maroon shrink-0">Resume Summary</h2>
@@ -251,11 +245,11 @@
                             <h2 class="font-yatra text-3xl text-royal-maroon mb-8 flex items-center gap-4">
                                 <span class="text-4xl">📜</span> Social Leadership & Civic Engagement
                             </h2>
-                            
+
                             <div class="md:flex items-center justify-between gap-12">
                                 <div class="flex-1">
                                     <h3 class="font-bold text-slate-800 text-xl mb-4">Representation to the President of India:</h3>
-                                    <p class="text-slate-600 mb-6 leading-relaxed text-lg">
+                                    <p class="text-slate-600 mb-6 leading-relaxed text-lg text-justify">
                                         Authored and submitted a formal representation regarding <i>"Nationwide Ban on Cow Slaughter & Animal Welfare Laws"</i>. 
                                         The petition is officially recorded by the <b>President's Secretariat</b>.
                                     </p>
@@ -277,20 +271,20 @@
                     <section data-aos="fade-up">
                         <h2 class="font-yatra text-2xl text-royal-maroon mb-8 border-b-2 border-divine-gold/20 pb-3 inline-block">Languages Known</h2>
                         <div class="grid grid-cols-2 gap-6 text-center">
-                            <div class="p-6 bg-white border border-divine-gold/10 rounded-2xl shadow-sm hover:border-royal-maroon transition-all">
-                                <p class="font-bold text-royal-maroon text-xl font-yatra">Gujarati</p>
+                            <div class="p-6 bg-white border border-divine-gold/10 rounded-2xl shadow-sm hover:border-royal-maroon transition-all group">
+                                <p class="font-bold text-royal-maroon text-xl font-yatra group-hover:scale-110 transition">Gujarati</p>
                                 <p class="text-[9px] text-slate-400 uppercase tracking-widest font-bold mt-2">Native</p>
                             </div>
-                            <div class="p-6 bg-white border border-divine-gold/10 rounded-2xl shadow-sm hover:border-royal-maroon transition-all">
-                                <p class="font-bold text-royal-maroon text-xl font-yatra">Hindi</p>
+                            <div class="p-6 bg-white border border-divine-gold/10 rounded-2xl shadow-sm hover:border-royal-maroon transition-all group">
+                                <p class="font-bold text-royal-maroon text-xl font-yatra group-hover:scale-110 transition">Hindi</p>
                                 <p class="text-[9px] text-slate-400 uppercase tracking-widest font-bold mt-2">Read/Write/Speak</p>
                             </div>
-                            <div class="p-6 bg-white border border-divine-gold/10 rounded-2xl shadow-sm hover:border-royal-maroon transition-all">
-                                <p class="font-bold text-royal-maroon text-xl font-yatra">English</p>
+                            <div class="p-6 bg-white border border-divine-gold/10 rounded-2xl shadow-sm hover:border-royal-maroon transition-all group">
+                                <p class="font-bold text-royal-maroon text-xl font-yatra group-hover:scale-110 transition">English</p>
                                 <p class="text-[9px] text-slate-400 uppercase tracking-widest font-bold mt-2">Read/Write/Speak</p>
                             </div>
-                            <div class="p-6 bg-white border border-divine-gold/10 rounded-2xl shadow-sm hover:border-royal-maroon transition-all">
-                                <p class="font-bold text-royal-maroon text-xl font-yatra">Sanskrit</p>
+                            <div class="p-6 bg-white border border-divine-gold/10 rounded-2xl shadow-sm hover:border-royal-maroon transition-all group">
+                                <p class="font-bold text-royal-maroon text-xl font-yatra group-hover:scale-110 transition">Sanskrit</p>
                                 <p class="text-[9px] text-slate-400 uppercase tracking-widest font-bold mt-2">Read/Write</p>
                             </div>
                         </div>
@@ -304,9 +298,9 @@
                                 <span class="text-royal-maroon font-bold bg-divine-gold/10 px-3 py-1 rounded-lg text-sm">21st Dec, 2006</span>
                             </div>
                             <div class="flex justify-between items-center border-b border-dashed border-slate-100 pb-4">
-                                <span class="text-slate-400 font-medium text-sm">Gender</span>
+                              <span class="text-slate-400 font-medium text-sm">Gender</span>
                                 <span class="text-slate-800 font-bold">Male</span>
-   </div>
+                            </div>
                             <div class="flex justify-between items-center border-b border-dashed border-slate-100 pb-4">
                                 <span class="text-slate-400 font-medium text-sm">Nationality</span>
                                 <span class="text-slate-800 font-bold">Indian</span>
@@ -324,16 +318,20 @@
     </main>
 
     <footer class="bg-royal-maroon text-white pt-24 pb-12 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
+        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
+        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+
         <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
             <a href="disclaimer.html" class="text-divine-gold font-playfair font-bold hover:underline mb-12 block tracking-widest text-sm">LEGAL DISCLAIMER</a>
-            <div class="border-y border-white/10 py-8 mb-12 bg-white/5 backdrop-blur-sm">
-                <p class="text-divine-gold font-playfair text-xl">Designed by Sisodiya Bhargavsinh ✦ © 2026</p>
+            
+            <div class="border-y border-white/10 py-8 mb-12 bg-white/5 backdrop-blur-sm rounded-[2.5rem] border-x border-divine-gold/10">
+                <p class="text-divine-gold font-playfair text-xl md:text-2xl">Designed by Sisodiya Bhargavsinh ✦ © 2026</p>
                 <p class="text-[10px] uppercase tracking-[0.5em] mt-3 opacity-40">Maintaining Heritage with Technology</p>
             </div>
-            <div class="bg-black/20 inline-block p-6 rounded-3xl border border-divine-gold/20">
-                <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Visitor Count</p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-80 h-5">
+
+            <div class="bg-black/20 inline-block p-6 rounded-3xl border border-divine-gold/20 shadow-2xl transition-all hover:scale-105 duration-500">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3 font-bold">Secure Visitor Registry</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" alt="Counter" class="opacity-80 h-5 mx-auto filter brightness-125">
             </div>
         </div>
     </footer>
@@ -341,9 +339,17 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1200, once: true, offset: 50 });
-        function toggleMenu() { document.getElementById('navLinks').classList.toggle('hidden'); }
+
+        // Logic repeated from index.html
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // Security Features
         document.addEventListener('contextmenu', e => e.preventDefault());
-        document.onkeydown = e => { if(e.keyCode == 123 || (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 67))) return false; };
+        document.onkeydown = e => { 
+            if(e.keyCode == 123 || (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 67 || e.keyCode == 73 || e.keyCode == 74))) return false; 
+        };
     </script>
 </body>
 </html>
