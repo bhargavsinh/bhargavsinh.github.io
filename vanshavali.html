@@ -1,366 +1,436 @@
 <!DOCTYPE html>
-<html lang="gu" class="scroll-smooth">
+<html lang="hi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>वंशावली | Sisodiya Bhargavsinh</title>
-    
+    <meta name="robots" content="index, follow, noimageai, noarchive">
+    <meta name="copyright" content="© 2026 सिसोदिया भार्गवसिंह महेंद्रसिंह">
+    <meta name="author" content="सिसोदिया भार्गवसिंह">
+
+    <title>ऐतिहासिक वंशावली | सिसोदिया राजवंश</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        maroon: { DEFAULT: '#7b1c1c', dark: '#4a0404' },
-                        gold: { DEFAULT: '#daa520', dark: '#b8860b' },
-                        cream: '#fff8ec',
-                    },
-                    fontFamily: {
-                        yatra: ['Yatra One', 'cursive'],
-                        playfair: ['Playfair Display', 'serif'],
-                        noto: ['Noto Sans', 'sans-serif'],
-                    }
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'royal-maroon': '#6b0f1a',
+                    'divine-gold': '#d4af37',
+                    'parchment': '#fdfaf0',
+                },
+                fontFamily: {
+                    yatra: ['Yatra One',
+                        'cursive'],
+                    hindi: ['Noto Serif Devanagari',
+                        'serif'],
                 }
             }
         }
-    </script>
+    }
+</script>
 
-    <style>
-        body { background-color: #fff8ec; user-select: none; }
-        .royal-bg {
-            background-image: radial-gradient(at 0% 0%, hsla(27,96%,90%,1) 0, transparent 50%), 
-                              radial-gradient(at 100% 0%, hsla(27,96%,90%,1) 0, transparent 50%);
-            background-attachment: fixed;
+<style>
+    body {
+        background-color: #fdfaf0;
+        color: #1a1a1a;
+        -webkit-user-select: none;
+        user-select: none;
+        overflow-x: hidden;
+    }
+
+    /* शाही पृष्ठभूमि पैटर्न */
+    .royal-bg {
+        background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');
+        opacity: 0.03;
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    .table-container {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        box-shadow: 0 10px 40px rgba(107, 15, 26, 0.1);
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(212, 175, 55, 0.05);
+    }
+    tr:hover {
+        background-color: rgba(107, 15, 26, 0.08);
+        transition: 0.3s;
+    }
+
+    .sticky-header {
+        position: sticky;
+        top: 0;
+        background: #6b0f1a;
+        color: #d4af37;
+        z-index: 50;
+    }
+
+    .highlight-row {
+        border-left: 5px solid #d4af37;
+        background-color: rgba(107, 15, 26, 0.05) !important;
+    }
+
+    /* स्क्रॉलबार डिजाइन */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #fdfaf0;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #6b0f1a;
+        border-radius: 10px;
+    }
+
+    @media print {
+        body {
+            display: none !important;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            box-shadow: 0 8px 32px 0 rgba(123, 28, 28, 0.1);
-        }
-        .custom-table thead {
-            background: linear-gradient(135deg, #7b1c1c 0%, #4a0404 100%);
-        }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-thumb { background: #7b1c1c; border-radius: 10px; }
-        
-        tr:nth-child(even) { background-color: rgba(218, 165, 32, 0.03); }
-        .under-research { color: #94a3b8; font-style: italic; font-size: 0.875rem; }
-    </style>
+    }
+</style>
 </head>
+<body class="font-hindi selection:bg-divine-gold selection:text-royal-maroon">
 
-<body class="font-noto royal-bg min-h-screen">
+<div class="royal-bg"></div>
 
-    <header class="py-12 text-center border-b-4 border-gold bg-white/50 backdrop-blur-sm">
-        <h1 class="font-yatra text-4xl md:text-6xl text-maroon drop-shadow-md">॥ श्री हरि ॥</h1>
-        <h2 class="font-playfair text-xl md:text-3xl font-bold text-gold-dark mt-2 tracking-widest uppercase px-4">सूर्यवंश — गुहिल — सिसोदिया वंशावली</h2>
-        <p class="text-maroon font-bold mt-3 opacity-80 tracking-widest">Under research, not for public use.</p>
-    </header>
+<header class="relative pt-20 pb-12 text-center px-4" data-aos="fade-down">
+<h1 class="font-hindi text-2xl md:text-5xl font-bold text-royal-maroon leading-tight mb-6">
+सूर्यवंशावतंस रघुवंशी मैत्रक कुलीय गुहिलोत कुल (मेवाड़) <br class="hidden md:block">
+शिशोद / सिसोदिया वंशीय नरेशों का ऐतिहासिक वंश-वृक्ष
+</h1>
+<div class="h-1 w-32 bg-divine-gold mx-auto mb-8 rounded-full shadow-lg"></div>
 
-    <main class="max-w-6xl mx-auto px-4 py-12">
-        <div class="glass-card rounded-3xl overflow-hidden shadow-2xl" data-aos="fade-up">
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse custom-table">
-                    <thead>
-                        <tr class="text-gold uppercase tracking-widest text-sm md:text-base">
-                            <th class="p-5 border-b border-gold/30">क्रमांक</th>
-                            <th class="p-5 border-b border-gold/30">नाम</th>
-                            <th class="p-5 border-b border-gold/30">विशेष टिप्पणी</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-slate-800 divide-y divide-gold/10">
-                        <tr><td class="p-4 font-bold text-maroon">1</td><td class="p-4 font-semibold">श्री परब्रह्म — भगवान श्री कृष्ण</td><td class="p-4 italic text-sm">सृष्टि के आदिकारण</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">2</td><td class="p-4 font-semibold">श्री ब्रह्मा जी</td><td class="p-4 italic text-sm">सृष्टिकर्ता</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">3</td><td class="p-4 font-semibold">श्री मरीचि</td><td class="p-4 italic text-sm">ब्रह्माजी के पुत्र</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">4</td><td class="p-4 font-semibold">श्री कश्यप</td><td class="p-4 italic text-sm">सप्तर्षि</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">5</td><td class="p-4 font-semibold">श्री सूर्य (विवस्वान)</td><td class="p-4 italic text-sm">सूर्यदेव — वंश संस्थापक</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">6</td><td class="p-4 font-semibold">श्री वैवस्वत मनु</td><td class="p-4 italic text-sm">मानव जाति के आदि पिता</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">7</td><td class="p-4 font-semibold">श्री इक्स्वाकु</td><td class="p-4 italic text-sm">इक्स्वाकु वंश संस्थापक</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">8</td><td class="p-4 font-semibold">श्री विकुक्षि</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">9</td><td class="p-4 font-semibold">श्री ककुत्स्थ</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">10</td><td class="p-4 font-semibold">श्री अनेना</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">11</td><td class="p-4 font-semibold">श्री पृथु</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">12</td><td class="p-4 font-semibold">श्री विष्टराश्व</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">13</td><td class="p-4 font-semibold">श्री आर्द्र</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">14</td><td class="p-4 font-semibold">श्री युवनाश्व (प्रथम)</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">15</td><td class="p-4 font-semibold">श्री श्रावस्त</td><td class="p-4 italic text-sm">श्रावस्ती नगर संस्थापक</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">16</td><td class="p-4 font-semibold">श्री बृहदश्व</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">17</td><td class="p-4 font-semibold">श्री कुवलयाश्व</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">18</td><td class="p-4 font-semibold">श्री दृढाश्व</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">19</td><td class="p-4 font-semibold">श्री प्रमोद</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">20</td><td class="p-4 font-semibold">श्री हर्यश्व</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">21</td><td class="p-4 font-semibold">श्री निकुम्भ</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">22</td><td class="p-4 font-semibold">श्री संहताश्व</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">23</td><td class="p-4 font-semibold">श्री कृशाश्व</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">24</td><td class="p-4 font-semibold">श्री प्रसेनजित</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">25</td><td class="p-4 font-semibold">श्री युवनाश्व (द्वितीय)</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">26</td><td class="p-4 font-semibold">श्री मान्धाता</td><td class="p-4 italic text-sm">त्रिलोक विजेता</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">27</td><td class="p-4 font-semibold">श्री पुरुकुत्स</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">28</td><td class="p-4 font-semibold">श्री त्रसदस्यु</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">29</td><td class="p-4 font-semibold">श्री अनरण्य</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">30</td><td class="p-4 font-semibold">श्री हर्यश्व (द्वितीय)</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">31</td><td class="p-4 font-semibold">श्री अरुण</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">32</td><td class="p-4 font-semibold">श्री त्रिबन्धन</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">33</td><td class="p-4 font-semibold">श्री सत्यव्रत (त्रिशंकु)</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">34</td><td class="p-4 font-semibold">श्री हरिश्चन्द्र</td><td class="p-4 italic text-sm">सत्यव्रत महाराजा</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">35</td><td class="p-4 font-semibold">श्री रोहित</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">36</td><td class="p-4 font-semibold">श्री हरित</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">37</td><td class="p-4 font-semibold">श्री चंचु</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">38</td><td class="p-4 font-semibold">श्री विजय</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">39</td><td class="p-4 font-semibold">श्री रुक</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">40</td><td class="p-4 font-semibold">श्री वृक</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">41</td><td class="p-4 font-semibold">श्री बाहु</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">42</td><td class="p-4 font-semibold">श्री सगर</td><td class="p-4 italic text-sm">साठ सहस्र पुत्रों के पिता</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">43</td><td class="p-4 font-semibold">श्री असमंजस</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">44</td><td class="p-4 font-semibold">श्री अंशुमान</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">45</td><td class="p-4 font-semibold">श्री दिलीप</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">46</td><td class="p-4 font-semibold">श्री भगीरथ</td><td class="p-4 italic text-sm">गंगावतरण कर्ता</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">47</td><td class="p-4 font-semibold">श्री श्रुत</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">48</td><td class="p-4 font-semibold">श्री नाभाग</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">49</td><td class="p-4 font-semibold">श्री अम्बरीष</td><td class="p-4 italic text-sm">परम विष्णुभक्त</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">50</td><td class="p-4 font-semibold">श्री सिन्धुद्वीप</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">51</td><td class="p-4 font-semibold">श्री अयुतायु</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">52</td><td class="p-4 font-semibold">श्री ऋतुपर्ण</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">53</td><td class="p-4 font-semibold">श्री सर्वकाम</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">54</td><td class="p-4 font-semibold">श्री सुदास</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">55</td><td class="p-4 font-semibold">श्री मित्रसह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">56</td><td class="p-4 font-semibold">श्री अश्मक</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">57</td><td class="p-4 font-semibold">श्री मूलक</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">58</td><td class="p-4 font-semibold">श्री खट्वांग</td><td class="p-4 italic text-sm">महातपस्वी</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">59</td><td class="p-4 font-semibold">श्री दीर्घबाहु</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">60</td><td class="p-4 font-semibold">श्री रघु</td><td class="p-4 italic text-sm">रघुकुल शिरोमणि</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">61</td><td class="p-4 font-semibold">श्री अज</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">62</td><td class="p-4 font-semibold">श्री दशरथ</td><td class="p-4 italic text-sm">अयोध्याधिपति</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">63</td><td class="p-4 font-bold text-maroon text-lg">भगवान श्री रामचन्द्र जी</td><td class="p-4 font-bold italic text-sm">मर्यादा पुरुषोत्तम, विष्णु अवतार</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">64</td><td class="p-4 font-semibold">श्री कुश</td><td class="p-4 italic text-sm">भगवान राम के पुत्र</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">65</td><td class="p-4 font-semibold">श्री अतिथि</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">66</td><td class="p-4 font-semibold">श्री निषध</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">67</td><td class="p-4 font-semibold">श्री नभ</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">68</td><td class="p-4 font-semibold">श्री पुण्डरीक</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">69</td><td class="p-4 font-semibold">श्री क्षेमधन्वा</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">70</td><td class="p-4 font-semibold">श्री देवानीक</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">71</td><td class="p-4 font-semibold">श्री अहीनगु</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">72</td><td class="p-4 font-semibold">श्री रूरू</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">73</td><td class="p-4 font-semibold">श्री पारियात्र</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">74</td><td class="p-4 font-semibold">श्री दल</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">75</td><td class="p-4 font-semibold">श्री छल</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">76</td><td class="p-4 font-semibold">श्री उकथ</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">77</td><td class="p-4 font-semibold">श्री वज्रनाभ</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">78</td><td class="p-4 font-semibold">श्री शंखण</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">79</td><td class="p-4 font-semibold">श्री व्युषिताश्व</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">80</td><td class="p-4 font-semibold">श्री विश्वसह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">81</td><td class="p-4 font-semibold">श्री हिरण्यनाभ</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">82</td><td class="p-4 font-semibold">श्री पुष्य</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">83</td><td class="p-4 font-semibold">श्री ध्रुवसन्धि</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">84</td><td class="p-4 font-semibold">श्री सुदर्शन</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">85</td><td class="p-4 font-semibold">श्री अग्निवर्ण</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">86</td><td class="p-4 font-semibold">श्री शीघ्र</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">87</td><td class="p-4 font-semibold">श्री मरु</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">88</td><td class="p-4 font-semibold">श्री प्रसुश्रुत</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">89</td><td class="p-4 font-semibold">श्री सुसन्धि</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">90</td><td class="p-4 font-semibold">श्री अमर्ष</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">91</td><td class="p-4 font-semibold">श्री विश्रुतवान</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">92</td><td class="p-4 font-semibold">श्री बृहद्वल</td><td class="p-4 italic text-sm text-red-600 font-bold">महाभारत काल</td></tr>
+<div class="flex flex-wrap justify-center gap-6 text-sm md:text-base font-bold">
+<span class="bg-royal-maroon text-divine-gold px-6 py-2 rounded-lg shadow-md border border-divine-gold/30">संग्रह कर्ता: (226) भार्गवसिंह सिसोदिया</span>
+<span class="bg-white text-royal-maroon px-6 py-2 rounded-lg shadow-md border border-divine-gold/30">प्रथम ड्राफ्ट: विक्रम संवत 2082, चैत्र सुद त्रिज</span>
+</div>
+</header>
 
-                        <tr><td class="p-4 font-bold text-maroon">93</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">94</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">95</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">96</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">97</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">98</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">99</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">100</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">101</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">102</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">103</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">104</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">105</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">106</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">107</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">108</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">109</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">110</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">111</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">112</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">113</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">114</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">115</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">116</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">117</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">118</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">119</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">120</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">121</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">122</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">123</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">124</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">125</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">126</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">127</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">128</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">129</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">130</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">131</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">132</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">133</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">134</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">135</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">136</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">137</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">138</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">139</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">140</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">141</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">142</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">143</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">144</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">145</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">146</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">147</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">148</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">149</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">150</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">151</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">152</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">153</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">154</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">155</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">156</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">157</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">158</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">159</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">160</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">161</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">162</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">163</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">164</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">165</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">166</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">167</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">168</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">169</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">170</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">171</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">172</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">173</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">174</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">175</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">176</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">177</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">178</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">179</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">180</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">181</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">182</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">183</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">184</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">185</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">186</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">187</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">188</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">189</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">190</td><td class="p-4 under-research text-slate-400">Under Research</td><td class="p-4 italic text-xs text-slate-300">ऐतिहासिक प्रमाण प्रतीक्षित</td></tr>
+<main class="max-w-7xl mx-auto px-4 pb-32" data-aos="fade-up">
+<div class="table-container rounded-[2.5rem] overflow-hidden border border-divine-gold/20">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[700px]">
+<thead class="sticky-header">
+<tr>
+<th class="p-6 md:p-8 text-lg font-yatra tracking-widest border-b border-divine-gold/20">क्रमांक</th>
+<th class="p-6 md:p-8 text-lg font-yatra tracking-widest border-b border-divine-gold/20">नरेश का नाम एवं ऐतिहासिक विवरण</th>
+</tr>
+</thead>
+<tbody class="text-slate-800 text-sm md:text-base leading-relaxed">
 
-                        <tr><td class="p-4 font-bold text-maroon">191</td><td class="p-4 font-semibold">श्री गुहादित्य (गुहिल)</td><td class="p-4 italic text-sm">मेवाड़ राज्य संस्थापक</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">192</td><td class="p-4 font-semibold">श्री भोज</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">193</td><td class="p-4 font-semibold">श्री महेन्द्र</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">194</td><td class="p-4 font-semibold">श्री नागादित्य</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">195</td><td class="p-4 font-semibold">श्री शिलादित्य</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">196</td><td class="p-4 font-semibold">श्री अपराजित</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">197</td><td class="p-4 font-semibold">श्री महेन्द्र (द्वितीय)</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">198</td><td class="p-4 font-semibold">श्री बप्पा रावल</td><td class="p-4 italic text-sm">मेवाड़ के महान राजा, शिवभक्त</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">199</td><td class="p-4 font-semibold">श्री खुमाण (प्रथम)</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">200</td><td class="p-4 font-semibold">श्री मत्तट</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">201</td><td class="p-4 font-semibold">श्री भतृभट्ट</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">202</td><td class="p-4 font-semibold">श्री सिंह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">203</td><td class="p-4 font-semibold">श्री खुमाण (द्वितीय)</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">204</td><td class="p-4 font-semibold">श्री महायक</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">205</td><td class="p-4 font-semibold">श्री खुमाण (तृतीय)</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">206</td><td class="p-4 font-semibold">श्री भतृभट्ट (द्वितीय)</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">207</td><td class="p-4 font-semibold">श्री अल्लट</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">208</td><td class="p-4 font-semibold">श्री नरवाहन</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">209</td><td class="p-4 font-semibold">श्री शालिवाहन</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">210</td><td class="p-4 font-semibold">श्री शक्ति कुमार</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">211</td><td class="p-4 font-semibold">श्री अम्बाप्रसाद</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">212</td><td class="p-4 font-semibold">श्री शुचिवर्मा</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">213</td><td class="p-4 font-semibold">श्री नरवर्मा</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">214</td><td class="p-4 font-semibold">श्री कीर्तिवर्मा</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">215</td><td class="p-4 font-semibold">श्री योगराज</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">216</td><td class="p-4 font-semibold">श्री वैरत</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">217</td><td class="p-4 font-semibold">श्री हंसपाल</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">218</td><td class="p-4 font-semibold">श्री वैरसिंह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">219</td><td class="p-4 font-semibold">श्री विजयसिंह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">220</td><td class="p-4 font-semibold">श्री अरिसिंह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">221</td><td class="p-4 font-semibold">श्री चोडसिंह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">222</td><td class="p-4 font-semibold">श्री विक्रमसिंह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">223</td><td class="p-4 font-semibold">श्री रणसिंह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">224</td><td class="p-4 font-semibold">श्री माहप</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">225</td><td class="p-4 font-semibold">श्री राहप</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">226</td><td class="p-4 font-semibold">श्री नरपति</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">227</td><td class="p-4 font-semibold">श्री दिनकरण</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">228</td><td class="p-4 font-semibold">श्री जसकरण</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">229</td><td class="p-4 font-semibold">श्री नागपाल</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">230</td><td class="p-4 font-semibold">श्री पुण्यपाल</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">231</td><td class="p-4 font-semibold">श्री पृथ्वीपाल</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">232</td><td class="p-4 font-semibold">श्री सुवनपाल</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">233</td><td class="p-4 font-semibold">श्री अर्जुन</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">234</td><td class="p-4 font-semibold">श्री लक्ष्मणसिंह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">235</td><td class="p-4 font-semibold">श्री अजयसिंह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">236</td><td class="p-4 font-semibold">श्री हम्मीरसिंह</td><td class="p-4 italic text-sm text-maroon font-bold">चित्तौड़ पुनरुद्धार</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">237</td><td class="p-4 font-semibold">श्री क्षेत्रसिंह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">238</td><td class="p-4 font-semibold">श्री लखासिंह</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">239</td><td class="p-4 font-semibold">श्री मोकल</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">240</td><td class="p-4 font-semibold">श्री कुम्भा</td><td class="p-4 italic text-sm font-bold">महाराणा कुम्भा, कीर्तिस्तम्भ निर्माता</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">241</td><td class="p-4 font-semibold">श्री रायमल</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">242</td><td class="p-4 font-semibold">श्री सांगा</td><td class="p-4 italic text-sm font-bold">महाराणा सांगा, खानवा युद्ध</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">243</td><td class="p-4 font-semibold">श्री उदयसिंह जी</td><td class="p-4 italic text-sm">उदयपुर नगर संस्थापक</td></tr>
-                        <tr class="bg-maroon/5 border-l-4 border-maroon">
-                            <td class="p-4 font-bold text-maroon">244</td>
-                            <td class="p-4 font-bold text-maroon text-xl">वीर शिरोमणि महाराणा प्रतापसिंह जी</td>
-                            <td class="p-4 font-bold italic text-sm">हल्दीघाटी के वीर, स्वाधीनता के प्रतीक</td>
-                        </tr>
+<tr class="highlight-row font-bold"><td class="p-4">1</td><td class="p-4">आदि नारायण (अव्यक्त)<br><span class="text-xs font-normal text-slate-500 italic">(सृष्टि के प्रारम्भ में विश्व जलमय था। वहाँ नारायण विद्यमान थे। उनकी नाभि से कमल और कमल से ब्रह्मा प्रकट हुए। इस कारण ब्रह्मा को अयोनिज कहते हैं)</span></td></tr>
+<tr><td class="p-4">2</td><td class="p-4">ब्रह्मा (अयोनिज)</td></tr>
+<tr><td class="p-4">3</td><td class="p-4">मरीचि</td></tr>
+<tr><td class="p-4">4</td><td class="p-4">कश्यप</td></tr>
+<tr class="font-bold"><td class="p-4">5</td><td class="p-4 text-royal-maroon">विवस्वान् (वैवस्वत-सूर्य) (सूर्यवंश का आरम्भ)</td></tr>
+<tr><td class="p-4">6</td><td class="p-4">मनु</td></tr>
+<tr class="font-bold"><td class="p-4">7</td><td class="p-4">इक्ष्वाकु (इनसे यह वंश इक्ष्वाकु वंश कहलाया)</td></tr>
+<tr><td class="p-4">8</td><td class="p-4">विकुक्षि (शशाद)</td></tr>
+<tr><td class="p-4">9</td><td class="p-4">पुरंजय (ककुत्स्थ)</td></tr>
+<tr><td class="p-4">10</td><td class="p-4">अनेना</td></tr>
+<tr><td class="p-4">11</td><td class="p-4">पृथु</td></tr>
+<tr><td class="p-4">12</td><td class="p-4">विश्वरंधि (विश्वगश्व/विश्ववसु/विष्टराश्व)</td></tr>
+<tr><td class="p-4">13</td><td class="p-4">चन्द्र (अदि/आई:)</td></tr>
+<tr><td class="p-4">14</td><td class="p-4">युवनाश्व (प्रथम)</td></tr>
+<tr><td class="p-4">15</td><td class="p-4">शावस्त (आवस्त)</td></tr>
+<tr><td class="p-4">16</td><td class="p-4">बृहदश्व</td></tr>
+<tr><td class="p-4">17</td><td class="p-4">कुवल्याश्व (धुंधुमार/कुबलाश्व मधुर्केटम के पुत्र धुंधु को मारने के कारण धुंधुमार भी कहलाये)</td></tr>
+<tr><td class="p-4">18</td><td class="p-4">दृढाश्व</td></tr>
+<tr><td class="p-4">19</td><td class="p-4">हर्यश्व</td></tr>
+<tr><td class="p-4">20</td><td class="p-4">निकुंभ</td></tr>
+<tr><td class="p-4">21</td><td class="p-4">बर्हणाश्व (वर्हणाश्य/संहताश्व)</td></tr>
+<tr><td class="p-4">22</td><td class="p-4">कृशाश्व</td></tr>
+<tr><td class="p-4">23</td><td class="p-4">सेनजित (सुदयुम्न/प्रसेनजित)</td></tr>
+<tr><td class="p-4">24</td><td class="p-4">युवनाश्व-द्वितीय</td></tr>
+<tr><td class="p-4">25</td><td class="p-4">मान्धाता (त्रसदस्यु)</td></tr>
+<tr><td class="p-4">26</td><td class="p-4">पुरुकुत्स</td></tr>
+<tr><td class="p-4">27</td><td class="p-4">त्रसदस्यु-द्वितीय</td></tr>
+<tr><td class="p-4">28</td><td class="p-4">अनरण्य (सभूत)</td></tr>
+<tr><td class="p-4">29</td><td class="p-4">हर्यश्व (सुधन्वा)</td></tr>
+<tr><td class="p-4">30</td><td class="p-4">अरुण (त्रिधन्वा)</td></tr>
+<tr><td class="p-4">31</td><td class="p-4">त्रिबंधन (त्र्यारुण)</td></tr>
+<tr class="font-bold"><td class="p-4">32</td><td class="p-4">सत्यव्रत (त्रिशंकु)</td></tr>
+<tr class="highlight-row font-bold"><td class="p-4">33</td><td class="p-4 text-royal-maroon">हरिश्चन्द्र</td></tr>
+<tr><td class="p-4">34</td><td class="p-4">रोहित</td></tr>
+<tr><td class="p-4">35</td><td class="p-4">हरित</td></tr>
+<tr><td class="p-4">36</td><td class="p-4">चम्प (चंप)</td></tr>
+<tr><td class="p-4">37</td><td class="p-4">सुदेव</td></tr>
+<tr><td class="p-4">38</td><td class="p-4">विजय</td></tr>
+<tr><td class="p-4">39</td><td class="p-4">भरुक (रुरूक)</td></tr>
+<tr><td class="p-4">40</td><td class="p-4">वृक</td></tr>
+<tr><td class="p-4">41</td><td class="p-4">बाहुक (बाहु)</td></tr>
+<tr class="font-bold"><td class="p-4">42</td><td class="p-4">सगर</td></tr>
+<tr><td class="p-4">43</td><td class="p-4">असमंजस (पञ्चजन)</td></tr>
+<tr><td class="p-4">44</td><td class="p-4">अशुमान</td></tr>
+<tr><td class="p-4">45</td><td class="p-4">दिलीप</td></tr>
+<tr class="highlight-row font-bold"><td class="p-4">46</td><td class="p-4 text-royal-maroon font-yatra">भगीरथ</td></tr>
+<tr><td class="p-4">47</td><td class="p-4">श्रुत</td></tr>
+<tr><td class="p-4">48</td><td class="p-4">नाभ (नाभाग/अम्बरीष)</td></tr>
+<tr><td class="p-4">49</td><td class="p-4">सिंधुद्वीप</td></tr>
+<tr><td class="p-4">50</td><td class="p-4">अयुतायु (अयुतायुत/अयुताजित)</td></tr>
+<tr><td class="p-4">51</td><td class="p-4">ऋतुपर्ण</td></tr>
+<tr><td class="p-4">52</td><td class="p-4">सर्वकाम (सर्वकर्म/आर्तुपर्णि)</td></tr>
+<tr><td class="p-4">53</td><td class="p-4">सुदास</td></tr>
+<tr><td class="p-4">54</td><td class="p-4">मित्रसह (कल्माषपाद/सौदास)</td></tr>
+<tr><td class="p-4">55</td><td class="p-4">अश्मक (सर्वकर्मा/अनरण्य)</td></tr>
+<tr><td class="p-4">56</td><td class="p-4">मूलक (निघ्न)</td></tr>
+<tr><td class="p-4">57</td><td class="p-4">दशरथ-प्रथम (अनमित्र)</td></tr>
+<tr><td class="p-4">58</td><td class="p-4">एडविड (दुलिदुङ/एलवित)</td></tr>
+<tr><td class="p-4">59</td><td class="p-4">विश्वसह</td></tr>
+<tr class="font-bold"><td class="p-4">60</td><td class="p-4 text-royal-maroon">खट्वांग</td></tr>
+<tr><td class="p-4">61</td><td class="p-4">दीर्घबाहु (दिलीप)</td></tr>
+<tr class="highlight-row font-bold"><td class="p-4">62</td><td class="p-4 text-royal-maroon">रघु (रघुवंश आरंभ)</td></tr>
+<tr><td class="p-4">63</td><td class="p-4">अज</td></tr>
+<tr><td class="p-4">64</td><td class="p-4">दशरथ द्वितीय</td></tr>
+<tr class="bg-royal-maroon text-divine-gold font-bold text-2xl"><td class="p-8">65</td><td class="p-8 font-yatra">“श्रीराम”-लक्ष्मण-भरत-शत्रुघ्न</td></tr>
+<tr class="font-bold"><td class="p-4">66</td><td class="p-4">“कुश”-लव <span class="text-xs font-normal opacity-60">(राजद्रशस्तिः महाकाव्यम् द्वितीयः सर्गः तीसरी शिला...)</span></td></tr>
+<tr><td class="p-4">67</td><td class="p-4">अतिथि</td></tr>
+<tr><td class="p-4">68</td><td class="p-4">निषध</td></tr>
+<tr><td class="p-4">69</td><td class="p-4">नल</td></tr>
+<tr><td class="p-4">70</td><td class="p-4">पुण्डरीक</td></tr>
+<tr><td class="p-4">71</td><td class="p-4">क्षेमधन्वा</td></tr>
+<tr><td class="p-4">72</td><td class="p-4">देवानीक</td></tr>
+<tr><td class="p-4">73</td><td class="p-4">अहीन (अहिनमू)</td></tr>
+<tr><td class="p-4">74</td><td class="p-4">पारियात्र (सुमन्या)</td></tr>
+<tr><td class="p-4">75</td><td class="p-4">बल (बलस्थल/अनल)</td></tr>
+<tr><td class="p-4">76</td><td class="p-4">स्थल (उक्थ)</td></tr>
+<tr><td class="p-4">77</td><td class="p-4">वज्रनाम प्रथम</td></tr>
+<tr><td class="p-4">78</td><td class="p-4">संगण (क्षमण/शंख)</td></tr>
+<tr><td class="p-4">79</td><td class="p-4">विघृति</td></tr>
+<tr><td class="p-4">80</td><td class="p-4">हिरण्यनाभ</td></tr>
+<tr><td class="p-4">81</td><td class="p-4">पुष्य</td></tr>
+<tr><td class="p-4">82</td><td class="p-4">ध्रुवसिद्धि (अर्थसिद्धि)</td></tr>
+<tr><td class="p-4">83</td><td class="p-4">सुदर्शन</td></tr>
+<tr><td class="p-4">84</td><td class="p-4">अग्निवर्ण</td></tr>
+<tr><td class="p-4">85</td><td class="p-4">शीघ्र</td></tr>
+<tr><td class="p-4">86</td><td class="p-4 font-bold">मरुत (मरु)</td></tr>
+<tr><td class="p-4">87</td><td class="p-4">प्रसुश्रुत</td></tr>
+<tr><td class="p-4">88</td><td class="p-4">संधि</td></tr>
+<tr><td class="p-4">89</td><td class="p-4">मर्षण (अमर्षण)</td></tr>
+<tr><td class="p-4">90</td><td class="p-4">महस्वान</td></tr>
+<tr><td class="p-4">91</td><td class="p-4">विश्वसाह्व</td></tr>
+<tr><td class="p-4">92</td><td class="p-4">प्रसेनजित-प्रथम</td></tr>
+<tr><td class="p-4">93</td><td class="p-4">तक्षक</td></tr>
+<tr class="highlight-row font-bold"><td class="p-4">94</td><td class="p-4 text-royal-maroon">बृहद्-बल <br><span class="text-xs font-normal text-slate-500">(महाभारत संग्राम में काम आये।)</span></td></tr>
+<tr><td class="p-4">95</td><td class="p-4">बृहद्रण (बृहदण)</td></tr>
+<tr><td class="p-4">96</td><td class="p-4">उरुक्रिय</td></tr>
+<tr><td class="p-4">97</td><td class="p-4">वत्सवृद्ध</td></tr>
+<tr><td class="p-4">98</td><td class="p-4">प्रतिव्योम</td></tr>
+<tr><td class="p-4">99</td><td class="p-4">भानु</td></tr>
+<tr class="font-bold"><td class="p-4">100</td><td class="p-4">दिवाक (पदवी "वाहिनी पति")</td></tr>
+<tr><td class="p-4">101</td><td class="p-4">सहदेव</td></tr>
+<tr><td class="p-4">102</td><td class="p-4">बृहदश्व</td></tr>
+<tr><td class="p-4">103</td><td class="p-4">भानुमान</td></tr>
+<tr><td class="p-4">104</td><td class="p-4">प्रतीकाश्व</td></tr>
+<tr><td class="p-4">105</td><td class="p-4">सुप्रतीक</td></tr>
+<tr><td class="p-4">106</td><td class="p-4">मरुदेव</td></tr>
+<tr><td class="p-4">107</td><td class="p-4">सुनक्षत्र</td></tr>
+<tr><td class="p-4">108</td><td class="p-4">पुष्कर</td></tr>
+<tr><td class="p-4">109</td><td class="p-4">अंतरिक्ष</td></tr>
+<tr><td class="p-4">110</td><td class="p-4">सुतपा</td></tr>
+<tr><td class="p-4">111</td><td class="p-4">मित्रजित (अमित्रजित)</td></tr>
+<tr><td class="p-4">112</td><td class="p-4">बृहदभ्राज (बृहद्राज)</td></tr>
+<tr><td class="p-4">113</td><td class="p-4">बर्हि</td></tr>
+<tr><td class="p-4">114</td><td class="p-4">कृतंजय</td></tr>
+<tr><td class="p-4">115</td><td class="p-4">रणंजय</td></tr>
+<tr class="font-bold"><td class="p-4">116</td><td class="p-4">संजय</td></tr>
+<tr><td class="p-4">117</td><td class="p-4">शाक्य</td></tr>
+<tr class="font-bold"><td class="p-4">118</td><td class="p-4 text-royal-maroon">शुद्धोद (शुद्धोदन)</td></tr>
+<tr><td class="p-4">119</td><td class="p-4">लांगल</td></tr>
+<tr><td class="p-4">120</td><td class="p-4">प्रसेनजित-द्वितीय</td></tr>
+<tr><td class="p-4">121</td><td class="p-4">शुद्धक</td></tr>
+<tr><td class="p-4">122</td><td class="p-4">रुणक (रणक)</td></tr>
+<tr><td class="p-4">123</td><td class="p-4">सुरथ</td></tr>
+<tr class="highlight-row font-bold"><td class="p-4">124</td><td class="p-4 text-royal-maroon">सुमित्र <br><span class="text-xs font-normal text-slate-500">(भागवत के नवम स्कन्ध में उल्लेख। सुमित्र पर्यन्त इक्ष्वाकु का वंश चला।)</span></td></tr>
+<tr><td class="p-4">125</td><td class="p-4">बज्रनाभ-द्वितीय (वीर्यनाभ)</td></tr>
+<tr><td class="p-4">126</td><td class="p-4">महारथी (जीतशत्रु सेन)</td></tr>
+<tr><td class="p-4">127</td><td class="p-4">महासेन-प्रथम</td></tr>
+<tr><td class="p-4">128</td><td class="p-4">हंससेन</td></tr>
+<tr><td class="p-4">129</td><td class="p-4">बन्द्रसेन</td></tr>
+<tr><td class="p-4">130</td><td class="p-4">सुधमसेन</td></tr>
+<tr><td class="p-4">131</td><td class="p-4">सुहिलसेन</td></tr>
+<tr><td class="p-4">132</td><td class="p-4">विक्रमसेन</td></tr>
+<tr><td class="p-4">133</td><td class="p-4">महारथी</td></tr>
+<tr><td class="p-4">134</td><td class="p-4">अतिरथी</td></tr>
+<tr><td class="p-4">135</td><td class="p-4">अवलसेन</td></tr>
+<tr class="font-bold"><td class="p-4">136</td><td class="p-4">कनकसेन</td></tr>
+<tr><td class="p-4">137</td><td class="p-4">सौमिल</td></tr>
+<tr><td class="p-4">138</td><td class="p-4">महासेन द्वितीय</td></tr>
+<tr class="font-bold"><td class="p-4">139</td><td class="p-4">विजयसेन (दिग्विजयसेन)</td></tr>
+<tr><td class="p-4">140</td><td class="p-4">अजयसेन</td></tr>
+<tr><td class="p-4">141</td><td class="p-4">अभंगसेन</td></tr>
+<tr><td class="p-4">142</td><td class="p-4">महाभयसेन (मदनसेन / महामदनसेन)</td></tr>
+<tr class="font-bold"><td class="p-4">143</td><td class="p-4 text-royal-maroon">सिंहस्थ (सिंहराय) <br><span class="text-xs font-normal text-slate-500">(अयोध्या से दक्षिण विजय हेतु प्रस्थान किया।)</span></td></tr>
+<tr><td class="p-4">144</td><td class="p-4">सिद्धरथ</td></tr>
+<tr><td class="p-4">145</td><td class="p-4">सुजादित्य (सुजसादित्य / सुयशादित्य)</td></tr>
+<tr><td class="p-4">146</td><td class="p-4">सुमुखादित्य</td></tr>
+<tr><td class="p-4">147</td><td class="p-4">घरपतसेन</td></tr>
+<tr><td class="p-4">148</td><td class="p-4">सुदन्तसेन</td></tr>
+<tr><td class="p-4">149</td><td class="p-4 text-royal-maroon font-bold">विजयभूप (विजयादित्य)</td></tr>
+<tr><td class="p-4">150</td><td class="p-4">सोमदत्त (सोमादित्य/शिवासेन)</td></tr>
+<tr class="font-bold"><td class="p-4">151</td><td class="p-4 text-royal-maroon font-bold">विजयसेन (मैत्रकवंश)</td></tr>
+<tr><td class="p-4">152</td><td class="p-4">घरसेन</td></tr>
+<tr><td class="p-4">153</td><td class="p-4">द्रोणसेन</td></tr>
+<tr><td class="p-4">154</td><td class="p-4">ध्रुवसेन</td></tr>
+<tr><td class="p-4">155</td> <td class="p-4">घरपत</td></tr>
+<tr class="highlight-row font-bold"><td class="p-4">156</td><td class="p-4 text-royal-maroon">गृहसेन <br><span class="text-xs font-normal text-slate-500">(वल्लभी के अंतिम राजा।)</span></td></tr>
 
-                        <tr><td class="p-4 font-bold text-maroon">245</td><td class="p-4 font-semibold">श्री पुरणमलजी (पूराजी)</td><td class="p-4 italic text-sm font-bold">(244) महाराणा प्रतापसिंहजी के 11वें पुत्र से प्रथम पुरावत</td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">246</td><td class="p-4 font-semibold">श्री सांवलदास जी (सबलसिंह जी)</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">247</td><td class="p-4 font-semibold">श्री लालसिंहजी</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">248</td><td class="p-4 font-semibold">श्री केसरसिंहजी</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">249</td><td class="p-4 font-semibold">श्री गुमानसिंहजी</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">250</td><td class="p-4 font-semibold">श्री जगरूपसिंह जी</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">251</td><td class="p-4 font-semibold">श्री वधार सिंह जी</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">252</td><td class="p-4 font-semibold">श्री प्रतापसिंह जी</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">253</td><td class="p-4 font-semibold">श्री दलेलसिंहजी</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">254</td><td class="p-4 font-semibold">श्री मोकमसिंहजी</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">255</td><td class="p-4 font-semibold">श्री जोरावरसिंहजी</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">256</td><td class="p-4 font-semibold">श्री रणजीतसिंहजी</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">257</td><td class="p-4 font-semibold">श्री चंदनसिंहजी</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr><td class="p-4 font-bold text-maroon">258</td><td class="p-4 font-semibold">श्री महेन्द्रसिंहजी</td><td class="p-4 italic text-sm"></td></tr>
-                        <tr class="bg-gold/10 ring-2 ring-inset ring-gold/50 shadow-inner">
-                            <td class="p-4 font-bold text-maroon">259</td>
-                            <td class="p-4 font-bold text-maroon text-2xl italic font-yatra tracking-wider">श्री भार्गवसिंहजी</td>
-                            <td class="p-4 font-bold italic text-sm">निजगृह के संस्थापक — प्रथम निजसेवक (श्री देवदमन प्रभु के)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </main>
+<tr class="bg-royal-maroon text-divine-gold text-center font-bold tracking-widest"><td colspan="2" class="p-4">गुहिलोत कुल (मेवाड़)</td></tr>
+<tr class="font-bold"><td class="p-4">157</td><td class="p-4">(1) गुहिल (गुहादित्य/मुहदत्त)</td></tr>
+<tr><td class="p-4">158</td><td class="p-4">(2) भोज (गोजादित्य)</td></tr>
+<tr><td class="p-4">159</td><td class="p-4">(3) महेन्द्र प्रथम</td></tr>
+<tr><td class="p-4">160</td><td class="p-4">(4) नाग (नागादित्व)</td></tr>
+<tr><td class="p-4">161</td><td class="p-4">(5) शिलादित्य</td></tr>
+<tr><td class="p-4">162</td><td class="p-4">(6) अपराजित</td></tr>
+<tr><td class="p-4">163</td><td class="p-4">(7) महेन्द्र द्वितीय</td></tr>
+<tr class="highlight-row font-bold text-lg"><td class="p-8">164</td><td class="p-8 text-royal-maroon font-yatra">(8) कालभोज (बापा रावल) <br><span class="text-xs font-normal text-slate-500">(रावल की पदवी धारण की)</span></td></tr>
+<tr><td class="p-4">165</td><td class="p-4">(9) खुमान प्रथम</td></tr>
+<tr><td class="p-4">166</td><td class="p-4">(10) मत्तट</td></tr>
+<tr><td class="p-4">167</td><td class="p-4">(11) भर्तृभट्ट -प्रथम</td></tr>
+<tr><td class="p-4">168</td><td class="p-4">(12) सिंह</td></tr>
+<tr><td class="p-4">169</td><td class="p-4">(13) खुमान-द्वितीय</td></tr>
+<tr><td class="p-4">170</td><td class="p-4">(14) महायक</td></tr>
+<tr><td class="p-4">171</td><td class="p-4">(15) खुमान-तृतीय</td></tr>
+<tr class="font-bold"><td class="p-4">172</td><td class="p-4">(16) भर्तृभट्ट द्वितीय</td></tr>
+<tr class="font-bold"><td class="p-4">173</td><td class="p-4 text-royal-maroon">(17) अल्लट</td></tr>
+<tr><td class="p-4">174</td><td class="p-4">(18) नरवाहन</td></tr>
+<tr><td class="p-4">175</td><td class="p-4">(19) शालिवाहन</td></tr>
+<tr><td class="p-4">176</td><td class="p-4">(20) शक्तिकुमार</td></tr>
+<tr><td class="p-4">177</td><td class="p-4">(21) अम्बाप्रसाद</td></tr>
+<tr><td class="p-4">178</td><td class="p-4">(22) सुविवर्मा</td></tr>
+<tr><td class="p-4">179</td><td class="p-4">(23) नरवर्मा</td></tr>
+<tr><td class="p-4">180</td><td class="p-4">(24) कीर्ति वर्मा</td></tr>
+<tr><td class="p-4">181</td><td class="p-4">(25) योगराज</td></tr>
+<tr><td class="p-4">182</td><td class="p-4">(26) वैरठ (बैरठ)</td></tr>
+<tr><td class="p-4">183</td><td class="p-4">(27) हँसपाल (हंसराज)</td></tr>
+<tr><td class="p-4">184</td><td class="p-4">(28) वैरसिंह (वैरिसિિંહ)</td></tr>
+<tr class="font-bold"><td class="p-4">185</td><td class="p-4">(29) विजयसिंह</td></tr>
+<tr><td class="p-4">186</td><td class="p-4">(30) अरिसिंह प्रथम</td></tr>
+<tr><td class="p-4">187</td><td class="p-4">(31) चौड़सिंह / (बौडसिंह)</td></tr>
+<tr><td class="p-4">188</td><td class="p-4">(32) विक्रमसिंह</td></tr>
+<tr><td class="p-4">189</td><td class="p-4">(33) रणसिंह</td></tr>
 
-    <footer class="bg-maroon-dark text-white py-12 text-center relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold via-yellow-200 to-gold"></div>
-        <p class="font-yatra tracking-[0.2em] text-gold text-lg">|| कृष्ण सेवा सदा कार्या ||</p>
-        <p class="text-sm mt-4 opacity-70 font-playfair uppercase tracking-widest">Sisodiya Bhargavsinh Genealogy Archive</p>
-        <p class="text-[10px] mt-6 opacity-40 italic">© 2026 | All historical records documented as per Purawat Vansh history.</p>
-    </footer>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            easing: 'ease-in-out'
-        });
-    </script>
-</body>
+<tr class="bg-royal-maroon text-divine-gold text-center font-bold tracking-widest"><td colspan="2" class="p-4">शिशोद / सिसोदिया वंश</td></tr>
+<tr class="font-bold"><td class="p-4">190</td><td class="p-4 text-royal-maroon">(34) क्षेमसिंह (शिशोदवंश / सिसोदिया वंश)</td></tr>
+<tr><td class="p-4">191</td><td class="p-4">(35) सामन्तसिंह</td></tr>
+<tr><td class="p-4">192</td><td class="p-4">(36) कुमारसिंह</td></tr>
+<tr><td class="p-4">193</td><td class="p-4">(37) मथनसिंह / (मंथनसिंह)</td></tr>
+<tr><td class="p-4">194</td><td class="p-4">(38) पदमसिंह</td></tr>
+<tr><td class="p-4">195</td><td class="p-4">(39) जैत्रसिंह</td></tr>
+<tr><td class="p-4">196</td><td class="p-4">(40) तेजसिंह</td></tr>
+<tr><td class="p-4">197</td><td class="p-4">(41) समरसिंह</td></tr>
+<tr class="highlight-row font-bold"><td class="p-4">198</td><td class="p-4 text-royal-maroon font-bold">(42) रतनसिंह (रत्नसिंह)</td></tr>
+<tr class="font-bold"><td class="p-4">199</td><td class="p-4 text-royal-maroon">(43) हम्मीरसिंह</td></tr>
+<tr><td class="p-4">200</td><td class="p-4">(44) खेता (क्षेत्रसिंह)</td></tr>
+<tr class="font-bold"><td class="p-4">201</td><td class="p-4">(45) लाखा (लक्षसिंह)</td></tr>
+<tr><td class="p-4">202</td><td class="p-4" > (46) मोकल</td></tr>< <tr class="font-bold-text-royal-maroon"><td class="p-4">203</td><td class="p-4">(47 ) कुम्भा</td></tr><
+
+<tr><td class="p-4">204</td><td class="p-4" > (48) ऊदा (उदय-प्रथम)</td></tr><
+
+<tr><td class="p-4">205</td><td class="p-4" >(49) रायमल</td></tr>
+
+<tr class="highlight-row-font-bold-text -royal-maroon"><td class="p-4">206</td ><td class="p-4"> (50) संग्रामसिंह-प्रथम (सांगा)</td></tr>-<tr><td class="p-4">207</td><td class="p-4" > (51) रतनसिंह द्वितीय</td></tr>-<tr><td class="p-4">208</td><td class="p-4" > (52) विक्रमादित्य (विक्रमसिंह) </td ></tr>
+
+<tr class="font-bold"><td class="p-4">209 </td><td class="p-4-text-royal-maroon-font-bold">(53) उदयसिंह द्वितीय</td ></tr>
+
+<tr class="bg-royal-maroon text-divine-gold-shadow-2x1-font-bold text-2x1"><td class="p-8">210</td><td class="p-8-font -yatra"> (54) प्रतापसिंह प्रथम (महाराणा प्रताप) </td></tr>
+
+<tr class="font-bold"><td class="p-4">211 </td><td class="p-4-text-royal-maroon" > पूरणमल (पूरा जी) <br><span class="text -xs-font-normal text-slate-500" > (महाराणा प्रतापसिंहजी के 11वें पुत्र )</span></td></tr>
+
+<tr><td class="p-4">212</td><td class="p-4" > सावंलदास (सबलसिंह) </td></tr>
+
+<tr><td class="p-4">213</td><td class="p-4" > लालसिंह</td></tr><
+
+<tr><td class="p-4">214</td><td class="p-4" > केसरसिंह</td></tr>< <tr><td class="p-4">215</td><td class="p-4" > गुमानसिंह</td></tr>
+<tr><td class="p-4">216</td><td class="p-4" > जगरूपसिंह</td></tr>< <tr class="italic text-slate-400"><td class ="p-4">217</td><td class="p-4"> नाम-अज्ञात (वंशावली अभिलेख लुप्त) </td></tr>< <tr><td class="p-4">218</td><td class="p-4"
+
+>वधार सिंह</td></tr>-<tr><td class="p-4">219</td><td class="p-4" > श्री प्रतापसिंह </td></tr>< <tr><td class="p-4">220</td><td class="p-4" > श्री दलेलसिंह</td></tr>< <tr><td class="p-4">221</td><td class="p-4"
+
+> श्री मोकमसिंह</td></tr><
+
+<tr><td class="p-4">222</td><td class="p-4" > श्री जोरावरसिंह</td></tr><
+
+<tr><td class="p-4">223</td><td class="p-4" > श्री रणजीतसिंह</td></tr>-
+
+<tr><td class="p-4">224</td><td class="p-4" > श्री चंदनसिंह</td></tr>-
+
+font-bold-text-royal-maroon"> श्री महेन्द्रसिंह</td></tr>-<tr><td class="p-4">225</td><td class="p-4-
+
+<tr class="bg-royal-maroon text-divine-gold shadow-2x1 font-bold-text-2x1"><td class="p-8">226</td><td class="p-8-font - yatra"> श्री भार्गवसिंह सिसोदिया </td ></tr><
+
+</tbody><
+
+</table>-
+
+</div><
+
+</div><
+
+<section class="mt-20-p-8-border-2-border -divine-gold rounded-[3rem] bg-white shadow-2x1" data-aos="zoom-in">-
+
+<h2 class="font-yatra text-3xl-text-royal
+
+-maroon-mb-8-border-b-2-border-divine
+
+-gold/30-pb-4"> नोट एवं संदर्भ</h2>-<div class="text-slate-700 leading-loose space-y-6">
+<p>-
+
+LCA
+
+भगवान विवस्वान (सूर्य) से लेकर राजा सुमित्र तक के नरेशों की पौराणिक वंशावली का विस्तृत उल्लेख वाल्मीकीय रामायण, श्रीमद् भागवत पुराण, हरिवंश, एकलिंग माहात्म्यम् एवं राजप्रशस्ति महाकाव्यम् जैसे प्रमाणित ग्रंथों से संकलित है।-
+
+</p><
+
+<p>-
+
+उपर्युक्त तालिका में क्रमांक 157 से आगे कोष्टक में दर्शायी गई क्रम संख्या मेवाड़ के नरेशों की है। 157 से 189 तक गुहिलोत कुल एवं 190 से 226 तक सिसोदिया वंशीय नरेशों के नाम हैं।
+
+</p>-
+
+<p class="font-bold-text-royal-maroon italic text-center text-lg-mt-8">< "विरासत का सम्मान, आधुनिक तकनीक का साथ।"-
+
+</p>
+
+</div><
+
+</section>-
+
+</main>-
+
+- <footer class="bg-royal-maroon text-white-pt-24-pb-12-relative overflow-hidden-text-center">-<div class="absolute top-0-left-0-w-full-h -1.5-bg-gradient-to-r-from-divine-gold-via-saffron-glow-to-divine-gold"></div>-<div class="max-w-4x1 mx-auto px-6 relative
+
+z-10">
+
+<h4 class="font-yatra text-3x1 text-divine -gold-tracking-widest mb-4">मेवाड़ राजवंश डिजिटल पुरालेख</h4>-- <p class="text-[10px] uppercase tracking-[0 .5em] mt-4-opacity-50 italic">¬ © 2026 सिसोदिया डिजिटल एस्टेट | विरासत एवं तकनीक-
+
+</p>
+
+</div>
+
+</footer>
+<script src="https://unpkg.com/aos@next /dist/aos.js"></script>
+
+<script>-
+
+AOS.init({ duration: 1200, once: true-}); // सुरक्षा व्यवस्था-document.addEventListener('contextmenu', e => e.preventDefault());¬
+
+document.onkeydown = function(e){-
+
+if (e.keyCode = 123 || (e.ctrlKey && e .shiftkey && (e.keyCode == 73 || e .keyCode=67))) return false;-if (e.ctrlKey && e.keyCode == 85) return false;-
+
+};-
+
+</script><
+
+</body>-
+
 </html>
