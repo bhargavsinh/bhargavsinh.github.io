@@ -79,6 +79,52 @@
     </style>
 </head>
 <body class="font-hindi selection:bg-divine-gold selection:text-royal-maroon">
+<header class="fixed top-0 w-full z-[100] bg-white/80 backdrop-blur-xl border-b border-divine-gold/20 h-20">
+    <nav class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="p-1 border border-divine-gold/30 rounded-lg">
+                <img src="logo.png" alt="Logo" class="h-10 md:h-12 hover:rotate-12 transition duration-500">
+            </div>
+            <div class="flex flex-col">
+                <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none">सिसोदिया भार्गवसिंह</span>
+                <span class="text-[9px] uppercase tracking-[0.3em] text-divine-gold font-bold">विरासत एवं आधुनिक तकनीक</span>
+            </div>
+        </div>
+
+        <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-[10px] uppercase tracking-[0.2em] text-slate-700">
+            <li><a href="index.html" class="hover:text-royal-maroon transition-all">मुख्य पृष्ठ</a></li>
+            <li><a href="vansavali.html" class="text-royal-maroon border-b-2 border-divine-gold pb-1">वंशावली</a></li>
+            <li><a href="resume.html" class="hover:text-royal-maroon transition-all">बायो-डेटा</a></li>
+            <li><a href="otherlinks.html" class="hover:text-royal-maroon transition-all">अन्य कड़ियाँ</a></li>
+            <li><a href="contact.html" class="hover:text-royal-maroon transition-all">संपर्क</a></li>
+        </ul>
+
+        <button onclick="toggleMobileMenu()" class="lg:hidden text-royal-maroon p-2 focus:outline-none" aria-label="Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </nav>
+    
+    <div id="mobile-menu" class="hidden lg:hidden bg-parchment/95 backdrop-blur-xl absolute w-full p-8 space-y-6 shadow-2xl border-b border-divine-gold/20 transition-all duration-500">
+        <a href="index.html" class="block font-yatra text-royal-maroon text-xl">मुख्य पृष्ठ</a>
+        <a href="vansavali.html" class="block font-medium text-lg text-royal-maroon font-bold underline">वंशावली</a>
+        <a href="resume.html" class="block font-medium text-lg">बायो-डेटा</a>
+        <a href="otherlinks.html" class="block font-medium text-lg">अन्य कड़ियाँ</a>
+        <a href="contact.html" class="block font-medium text-lg">संपर्क</a>
+    </div>
+</header>
+
+<div class="h-20"></div>
+
+<script>
+    // मोबाइल मेनू को टॉगल करने का फंक्शन (Index.html की तरह)
+    function toggleMobileMenu() { 
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    }
+</script>
+
 
     <div class="royal-bg"></div>
 
@@ -91,7 +137,7 @@
         
         <div class="flex flex-wrap justify-center gap-6 text-sm md:text-base font-bold">
             <span class="bg-royal-maroon text-divine-gold px-6 py-2 rounded-lg shadow-md border border-divine-gold/30">संग्रह कर्ता: (226) भार्गवसिंह सिसोदिया</span>
-            <span class="bg-white text-royal-maroon px-6 py-2 rounded-lg shadow-md border border-divine-gold/30">प्रथम ड्राफ्ट: विक्रम संवत 2082, चैत्र सुद त्रिज</span>
+            <span class="bg-white text-royal-maroon px-6 py-2 rounded-lg shadow-md border border-divine-gold/30">प्रथम ड्राफ्ट: विक्रम संवत 2082, चैत्र सुद 3</span>
         </div>
     </header>
 
