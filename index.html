@@ -1,34 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="gu" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhargavsinh Sisodiya | Digital Archivist & Architect</title>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta name="robots" content="index, follow, noimageai, noarchive">
     
-    <meta name="description" content="Portfolio of Bhargavsinh Sisodiya - Bridging the Sisodiya Legacy with Modern Digital Architecture.">
-    <meta name="robots" content="index, follow">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Bhargavsinh Sisodiya | Digital Heir of Mewar</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            cream: '#FAF9F6',
-                            ink: '#121212',
-                            gold: '#B45309',
-                            crimson: '#7F1D1D'
-                        }
+                        'royal-maroon': '#6b0f1a',
+                        'divine-gold': '#d4af37',
+                        'parchment': '#fdfaf0',
                     },
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        yatra: ['Yatra One', 'cursive'],
+                        playfair: ['Playfair Display', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'floating 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        floating: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
                     }
                 }
             }
@@ -36,176 +43,249 @@
     </script>
 
     <style>
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .glass-effect { background: rgba(250, 249, 246, 0.8); backdrop-filter: blur(12px); }
-        .dark .glass-effect { background: rgba(18, 18, 18, 0.8); }
+        body { 
+            -webkit-user-select: none; 
+            user-select: none; 
+            background-color: #fdfaf0; 
+            cursor: none; /* Hide default cursor to use custom one */
+        }
+
+        /* Custom Cursor Style */
+        #cursor-dot { width: 8px; height: 8px; background: #d4af37; position: fixed; border-radius: 50%; pointer-events: none; z-index: 999; }
+        #cursor-outline { width: 35px; height: 35px; border: 1.5px solid #d4af37; position: fixed; border-radius: 50%; pointer-events: none; z-index: 998; transition: 0.15s ease-out; }
+
+        .glass-nav { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px); }
+        
+        .btn-premium {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .btn-premium::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn-premium:hover::before { left: 100%; }
+
+        .timeline-line::before {
+            content: ''; position: absolute; left: 50%; width: 1px; height: 100%;
+            background: linear-gradient(to bottom, transparent, #d4af37, transparent);
+            transform: translateX(-50%);
+        }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #fdfaf0; }
+        ::-webkit-scrollbar-thumb { background: #6b0f1a; border-radius: 5px; }
     </style>
 </head>
+<body class="font-inter text-slate-900 overflow-x-hidden">
 
-<body class="bg-brand-cream dark:bg-brand-ink text-brand-ink dark:text-brand-cream font-sans transition-colors duration-300">
+    <div id="cursor-dot" class="hidden md:block"></div>
+    <div id="cursor-outline" class="hidden md:block"></div>
 
-    <nav class="fixed top-0 w-full z-50 glass-effect border-b border-brand-ink/5 dark:border-brand-cream/5">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="group">
-                <span class="font-serif italic text-xl tracking-tight group-hover:text-brand-gold transition-colors">B. Sisodiya</span>
-            </a>
+    <header class="fixed top-0 w-full z-[100] glass-nav border-b border-divine-gold/10">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="p-1 border border-divine-gold/30 rounded-lg">
+                    <img src="logo.png" alt="Logo" class="h-10 hover:rotate-12 transition duration-500">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none tracking-tight">Sisodiya Bhargavsinh</span>
+                    <span class="text-[8px] uppercase tracking-[0.4em] text-divine-gold font-bold">The Digital Estate</span>
+                </div>
+            </div>
             
-            <div class="hidden md:flex items-center gap-10 text-[10px] uppercase tracking-[0.2em] font-semibold">
-                <a href="#about" class="hover:text-brand-gold transition-colors">Origins</a>
-                <a href="#projects" class="hover:text-brand-gold transition-colors">Digital Works</a>
-                <a href="vanshavali.html" class="hover:text-brand-gold transition-colors">Vanshavali</a>
-                <a href="contact.html" class="hover:text-brand-gold transition-colors">Inquiry</a>
-                <button id="theme-toggle" class="p-2 bg-brand-ink/5 dark:bg-brand-cream/5 rounded-full">
-                    <svg id="theme-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"></svg>
-                </button>
-            </div>
+            <ul class="hidden lg:flex items-center gap-10 font-playfair font-bold text-[10px] uppercase tracking-[0.2em] text-slate-600">
+                <li class="hover:text-royal-maroon transition-all"><a href="index.html">Home</a></li>
+                <li class="hover:text-royal-maroon transition-all"><a href="resume.html">Resume</a></li>
+                <li class="hover:text-royal-maroon transition-all"><a href="otherlinks.html">Archives</a></li>
+                <li class="hover:text-royal-maroon transition-all"><a href="contact.html">Contact</a></li>
+            </ul>
 
-            <button class="md:hidden p-2" onclick="toggleMenu()">
-                <div class="w-6 h-0.5 bg-current mb-1.5"></div>
-                <div class="w-6 h-0.5 bg-current"></div>
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-royal-maroon p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
-        </div>
-    </nav>
-
-    <header class="relative min-h-screen flex items-center px-6 pt-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-7 reveal">
-                <span class="inline-block py-1 px-3 border border-brand-gold/30 text-brand-gold text-[10px] uppercase tracking-widest rounded-full mb-6">
-                    16th Gen. Heir • Software Architect
-                </span>
-                <h1 class="font-serif text-6xl md:text-8xl leading-[1.1] mb-8">
-                    Preserving <span class="italic text-brand-crimson">History</span> <br>
-                    Through <span class="text-brand-gold">Modern Code</span>.
-                </h1>
-                <p class="text-lg md:text-xl text-brand-ink/60 dark:text-brand-cream/60 max-w-xl mb-10 leading-relaxed">
-                    Digital Archivist specialized in transforming ancient genealogy into secure, high-performance digital estates.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#projects" class="bg-brand-ink dark:bg-brand-cream text-brand-cream dark:text-brand-ink px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:scale-105 transition-transform">
-                        Explore Archives
-                    </a>
-                </div>
-            </div>
-            <div class="lg:col-span-5 relative reveal" style="transition-delay: 200ms;">
-                <div class="aspect-[4/5] bg-gray-200 dark:bg-zinc-800 rounded-2xl overflow-hidden relative group">
-                    <img src="bhargavsinh.webp" alt="Bhargavsinh Sisodiya" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                    <div class="absolute inset-0 border-[20px] border-brand-cream/10 pointer-events-none"></div>
-                </div>
-            </div>
+        </nav>
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-parchment/95 backdrop-blur-xl absolute w-full p-8 space-y-6 shadow-2xl border-b border-divine-gold/20">
+            <a href="index.html" class="block font-yatra text-royal-maroon text-2xl">Home</a>
+            <a href="resume.html" class="block font-medium text-lg">Resume</a>
+            <a href="otherlinks.html" class="block font-medium text-lg">Archives</a>
+            <a href="contact.html" class="block font-medium text-lg">Contact</a>
         </div>
     </header>
 
-    <section id="about" class="py-32 bg-white dark:bg-black/20">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
-                <div class="reveal">
-                    <h2 class="text-xs uppercase tracking-[0.3em] text-brand-gold font-bold mb-6 italic">The Identity</h2>
-                    <p class="font-serif text-3xl leading-relaxed">
-                        Rooted in the soil of <span class="text-brand-crimson">Mewar</span>, 
-                        thriving in the clouds of the <span class="text-brand-gold">Digital Era</span>.
-                    </p>
+    <section class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 md:pt-20 text-center overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+        
+        <div class="relative z-10" data-aos="zoom-in" data-aos-duration="1800">
+            <div class="mb-4 animate-float">
+                <span class="font-yatra text-divine-gold text-2xl md:text-4xl tracking-widest drop-shadow-sm">જય શ્રી કૃષ્ણ 🙏</span>
+            </div>
+
+            <div class="relative inline-block mb-10 group">
+                <div class="absolute inset-0 bg-divine-gold rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
+                <div class="relative p-1 border-2 border-divine-gold/30 rounded-full">
+                    <img src="bhargavsinh.webp" alt="Bhargavsinh" 
+                         class="w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-divine-gold shadow-2xl object-cover transition-all duration-1000 group-hover:scale-[1.03]">
                 </div>
-                <div class="reveal" style="transition-delay: 200ms;">
-                    <p class="text-brand-ink/70 dark:text-brand-cream/70 leading-loose mb-6">
-                        I am Sisodiya Bhargavsinh Mahendrasinh. My work exists at the intersection of historical preservation and scalable technology. I specialize in building digital infrastructure that safeguards the legacy of generations past while utilizing the cutting-edge tech of the future.
+            </div>
+
+            <h1 class="font-yatra text-5xl md:text-9xl text-royal-maroon mb-6 leading-tight tracking-tight">Digital Heir <br class="hidden md:block"> of Mewar</h1>
+            
+            <p class="font-playfair text-xl md:text-3xl text-slate-500 italic mb-16 max-w-2xl mx-auto">
+                "Where Heritage Meets <span class="text-divine-gold font-bold">Code</span>"
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="resume.html" class="btn-premium bg-white border border-divine-gold/20 px-12 py-4 rounded-full uppercase tracking-widest text-[11px] font-bold shadow-lg hover:shadow-divine-gold/10 w-64 sm:w-auto">
+                    View Portfolio
+                </a>
+                <a href="contact.html" class="btn-premium bg-royal-maroon text-divine-gold px-12 py-4 rounded-full uppercase tracking-widest text-[11px] font-bold shadow-2xl w-64 sm:w-auto">
+                    Establish Contact
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-24">
+                <h2 class="font-yatra text-4xl md:text-6xl text-royal-maroon mb-4">The Legacy Path</h2>
+                <div class="h-1 w-24 bg-divine-gold mx-auto rounded-full"></div>
+            </div>
+
+            <div class="relative timeline-line space-y-24">
+                <div class="flex flex-col md:flex-row justify-between items-center w-full" data-aos="fade-right">
+                    <div class="md:w-5/12 text-center md:text-right">
+                        <span class="text-divine-gold font-playfair text-xl font-bold">16th Generation</span>
+                        <h3 class="font-yatra text-2xl text-royal-maroon mt-2">Veer Shiromani Maharana Pratapsinhji</h3>
+                        <p class="text-slate-500 text-sm mt-3 leading-relaxed">The roots of valor and honor that define our identity today.</p>
+                    </div>
+                    <div class="z-20 w-3 h-3 bg-divine-gold rounded-full shadow-[0_0_15px_rgba(212,175,55,0.8)] my-6 md:my-0"></div>
+                    <div class="md:w-5/12"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row-reverse justify-between items-center w-full" data-aos="fade-left">
+                    <div class="md:w-5/12 text-center md:text-left">
+                        <span class="text-divine-gold font-playfair text-xl font-bold">Present Era</span>
+                        <h3 class="font-yatra text-2xl text-royal-maroon mt-2">The Digital Archivist</h3>
+                        <p class="text-slate-500 text-sm mt-3 leading-relaxed">Bridging ancient heritage with modern technology through code.</p>
+                    </div>
+                    <div class="z-20 w-3 h-3 bg-royal-maroon rounded-full shadow-[0_0_15px_rgba(107,15,26,0.8)] my-6 md:my-0"></div>
+                    <div class="md:w-5/12"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative py-40 bg-royal-maroon text-white text-center px-6 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('bhargavsinh.webp')] bg-cover bg-fixed bg-center grayscale"></div>
+        <div class="relative z-10 max-w-4xl mx-auto" data-aos="zoom-in">
+            <span class="text-divine-gold text-5xl font-serif">"</span>
+            <h2 class="text-3xl md:text-5xl font-playfair italic leading-snug mb-10">
+                The sword protected our past; the code will preserve our future.
+            </h2>
+            <div class="h-[1px] w-20 bg-divine-gold/30 mx-auto mb-6"></div>
+            <p class="font-yatra text-divine-gold tracking-[0.4em] uppercase text-sm">BHARGAVSINH SISODIYA</p>
+        </div>
+    </section>
+
+    <section class="py-32 bg-parchment">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="font-yatra text-4xl md:text-6xl text-royal-maroon mb-6 leading-tight">Securing Our <br>Digital Treasury</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-10">
+                        આધુનિક ટેકનોલોજી દ્વારા અમે વંશાવલી અને ઇતિહાસને એવી રીતે સુરક્ષિત કરી રહ્યા છીએ જે આવનારી પેઢીઓ માટે માર્ગદર્શન પૂરું પાડશે.
                     </p>
-                    <a href="vanshavali.html" class="inline-flex items-center gap-3 text-sm font-bold border-b border-brand-gold pb-1 hover:gap-5 transition-all">
-                        View Digital Vanshavali
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    <a href="otherlinks.html" class="inline-flex items-center gap-4 text-royal-maroon font-bold group">
+                        Explore Archives 
+                        <span class="w-10 h-[1px] bg-royal-maroon transition-all group-hover:w-16"></span>
                     </a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-32">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-20 reveal">
-                <h2 class="font-serif text-5xl mb-4">Digital Archives</h2>
-                <div class="h-1 w-20 bg-brand-gold"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="group cursor-pointer reveal">
-                    <div class="aspect-video bg-zinc-100 dark:bg-zinc-900 rounded-3xl overflow-hidden mb-6 relative">
-                        <div class="absolute inset-0 flex items-center justify-center text-brand-ink/20 font-bold uppercase tracking-widest">Project Preview</div>
+                
+                <div class="grid grid-cols-1 gap-6" data-aos="fade-left">
+                    <div class="p-8 bg-white/60 backdrop-blur-md rounded-3xl border border-divine-gold/10 shadow-xl transition-all hover:border-divine-gold/40">
+                        <div class="text-3xl mb-4 text-divine-gold">🏛️</div>
+                        <h3 class="font-bold text-royal-maroon text-xl mb-2">Digital Vansh-Vruksh</h3>
+                        <p class="text-sm text-slate-500 italic">Digitizing the Sisodiya Genealogy.</p>
+                        <span class="mt-4 inline-block text-[9px] bg-royal-maroon/5 text-royal-maroon px-3 py-1 rounded-full uppercase font-bold tracking-widest">In Development</span>
                     </div>
-                    <h3 class="text-2xl font-serif mb-2 group-hover:text-brand-gold transition-colors">Vanshavali Engine</h3>
-                    <p class="text-brand-ink/50 dark:text-brand-cream/50 text-sm">A secure, searchable genealogical database for historical lineages.</p>
-                </div>
-
-                <div class="group cursor-pointer reveal" style="transition-delay: 200ms;">
-                    <div class="aspect-video border-2 border-dashed border-brand-ink/10 dark:border-brand-cream/10 rounded-3xl flex items-center justify-center mb-6">
-                        <span class="text-[10px] uppercase tracking-widest font-bold">New Archive Coming 2026</span>
-                    </div>
-                    <h3 class="text-2xl font-serif mb-2 opacity-50">Legal Archivist Suite</h3>
-                    <p class="text-brand-ink/30 dark:text-brand-cream/30 text-sm">Workflow optimization for historical legal documentation.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-32 px-6">
-        <div class="max-w-4xl mx-auto bg-brand-ink text-brand-cream dark:bg-brand-cream dark:text-brand-ink rounded-[3rem] p-12 md:p-20 text-center reveal">
-            <h2 class="font-serif text-4xl md:text-6xl mb-8 italic">Let’s discuss the <br>next digital legacy.</h2>
-            <a href="mailto:contact@sisodiya.me" class="inline-block text-brand-gold text-lg border-b-2 border-brand-gold pb-2 hover:scale-110 transition-transform">
-                Establish Contact
-            </a>
-        </div>
-    </section>
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="backToTop" class="fixed bottom-10 right-10 bg-white text-royal-maroon border border-divine-gold/30 w-14 h-14 rounded-full shadow-2xl hidden z-50 transition-all hover:-translate-y-2 flex items-center justify-center font-bold">
+        ↑
+    </button>
 
-    <footer class="py-20 border-t border-brand-ink/5 dark:border-brand-cream/5">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
-            <div class="text-center md:text-left">
-                <p class="font-serif text-xl mb-2">Sisodiya Digital Estate</p>
-                <p class="text-[10px] uppercase tracking-widest opacity-50">© 2026 ALL RIGHTS RESERVED.</p>
+    <footer class="bg-royal-maroon text-white pt-24 pb-12 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
+        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
+            <div class="flex flex-wrap justify-center gap-8 mb-12 font-playfair text-xs uppercase tracking-[0.4em] text-divine-gold/80">
+                <a href="disclaimer.html" class="hover:text-white transition-colors duration-300">Legal Disclaimer</a>
+                <a href="sitemap.xml" class="hover:text-white transition-colors duration-300">Sitemap</a>
+                <a href="robots.txt" class="hover:text-white transition-colors duration-300">Robots Index</a>
             </div>
-            
-            <div class="flex gap-8 text-[10px] uppercase tracking-widest font-bold">
-                <a href="disclaimer.html" class="hover:text-brand-gold transition-colors">Legal</a>
-                <a href="sitemap.xml" class="hover:text-brand-gold transition-colors">Sitemap</a>
-                <a href="#" class="hover:text-brand-gold transition-colors">Back To Top ↑</a>
+
+            <div class="border-y border-white/10 py-12 mb-12 bg-white/5 backdrop-blur-md rounded-[2.5rem] border-x border-divine-gold/10">
+                <h2 class="font-yatra text-3xl md:text-4xl text-divine-gold tracking-widest mb-3">
+                    Sisodiya Bhargavsinh Mahendrasinh
+                </h2>
+                <p class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-white/50 font-inter font-bold">
+                    Digital Archivist ✦ Heritage Conservator
+                </p>
+            </div>
+
+            <div class="inline-block p-8 bg-black/30 rounded-[2rem] border border-divine-gold/20 shadow-2xl transition-transform hover:scale-105 duration-500">
+                <p class="text-[9px] uppercase tracking-[0.4em] text-divine-gold/60 mb-4 font-black">Secure Visitor Registry</p>
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" 
+                     alt="Visitor Counter" 
+                     class="opacity-90 h-6 mx-auto filter brightness-125 contrast-125">
+            </div>
+
+            <div class="mt-16 pt-10 border-t border-white/5 text-[10px] text-white/30 uppercase tracking-[0.3em] font-inter">
+                &copy; 2026 Sisodiya Digital Estate. All Rights Reserved. 
+                <span class="block mt-4 font-black text-divine-gold/40 italic">"Heritage in Every Pixel, Honor in Every Line"</span>
             </div>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Theme Toggle Logic
-        const html = document.documentElement;
-        const themeBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
+        AOS.init({ duration: 1500, once: true });
 
-        const updateIcon = () => {
-            const isDark = html.classList.contains('dark');
-            themeIcon.innerHTML = isDark 
-                ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />'
-                : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />';
-        };
+        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
 
-        themeBtn.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-            updateIcon();
+        // Modern Custom Cursor
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            outline.style.transform = `translate(${e.clientX - 14}px, ${e.clientY - 14}px)`;
         });
 
-        // Initialize Theme
-        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
+        // Hide cursor on touch devices
+        if ('ontouchstart' in window) {
+            dot.style.display = 'none';
+            outline.style.display = 'none';
+            document.body.style.cursor = 'auto';
         }
-        updateIcon();
 
-        // Reveal Animation Observer
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
+        // Show/Hide BackToTop
+        window.onscroll = () => {
+            const btn = document.getElementById('backToTop');
+            btn.style.display = (window.scrollY > 800) ? 'flex' : 'none';
+        };
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        // Anti-Copy Logic
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = (e) => { if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73)) return false; };
     </script>
 </body>
 </html>
