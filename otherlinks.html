@@ -9,8 +9,10 @@
 
     <title>Other Links | Digital Treasury of Sisodiya</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <script>
@@ -22,11 +24,27 @@
                         'divine-gold': '#d4af37',
                         'saffron-glow': '#ff9933',
                         'parchment': '#fdfaf0',
+                        'obsidian': '#1a1a1a'
                     },
                     fontFamily: {
                         yatra: ['Yatra One', 'cursive'],
                         playfair: ['Playfair Display', 'serif'],
                         inter: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'floating 4s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slideDown': 'slideDown 0.3s ease-out',
+                    },
+                    keyframes: {
+                        floating: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        slideDown: {
+                            '0%': { opacity: 0, transform: 'translateY(-10px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' }
+                        }
                     }
                 }
             }
@@ -34,182 +52,303 @@
     </script>
 
     <style>
+        :root {
+            --cursor-size: 8px;
+            --cursor-outline-size: 40px;
+        }
+
         body {
             background-color: #fdfaf0;
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;
             overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Fluid Custom Cursor */
+        #cursor-dot { width: var(--cursor-size); height: var(--cursor-size); background: #d4af37; position: fixed; border-radius: 50%; pointer-events: none; z-index: 999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; }
+        #cursor-outline { width: var(--cursor-outline-size); height: var(--cursor-outline-size); border: 1.5px solid rgba(212, 175, 55, 0.6); position: fixed; border-radius: 50%; pointer-events: none; z-index: 998; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, border-color 0.2s; transition-timing-function: ease-out; }
+        
+        a:hover ~ #cursor-outline, button:hover ~ #cursor-outline {
+            width: 60px; height: 60px; border-color: rgba(107, 15, 26, 0.8); background-color: rgba(212, 175, 55, 0.05);
+        }
+
+        /* Premium Glassmorphism */
+        .glass-nav { 
+            background: rgba(253, 250, 240, 0.75); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.04;
+            mix-blend-multiply: multiply;
+            background-image: radial-gradient(#d4af37 1.5px, transparent 1.5px);
+            background-size: 40px 40px;
         }
 
         .link-card {
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            background: white;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
+        .link-card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+            transition: 0.6s ease;
+        }
+
+        .link-card:hover::before { left: 100%; }
+
         .link-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: #6b0f1a;
-            box-shadow: 0 20px 40px rgba(107, 15, 26, 0.1);
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 25px 50px -12px rgba(107, 15, 26, 0.15);
         }
 
         .icon-circle {
             transition: all 0.5s ease;
-            background: #fdfaf0;
+            background: linear-gradient(135deg, #ffffff, #fdfaf0);
         }
 
         .link-card:hover .icon-circle {
-            background: #6b0f1a;
+            background: linear-gradient(135deg, #6b0f1a, #8a1422);
             color: #d4af37;
+            transform: scale(1.05) rotate(-5deg);
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(107, 15, 26, 0.2);
         }
-
-        .nav-link-ltr { position: relative; }
-        .nav-link-ltr::after {
-            content: ''; position: absolute; width: 0; height: 2px;
-            display: block; margin-top: 2px; right: 0; background: #d4af37;
-            transition: width .4s ease;
-        }
-        .nav-link-ltr:hover::after { width: 100%; left: 0; }
 
         @media print { body { display: none !important; } }
         
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #fdfaf0; }
-        ::-webkit-scrollbar-thumb { background: #6b0f1a; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6b0f1a; }
     </style>
 </head>
-<body class="font-inter text-slate-900">
+<body class="font-inter text-slate-900 selection:bg-divine-gold/30 selection:text-royal-maroon cursor-none">
 
-    <header class="fixed top-0 w-full z-[100] bg-white/80 backdrop-blur-xl border-b border-divine-gold/20">
+    <div id="cursor-dot" class="hidden md:block"></div>
+    <div id="cursor-outline" class="hidden md:block"></div>
+    <div class="bg-pattern"></div>
+
+    <header class="fixed top-0 w-full z-[100] glass-nav border-b border-divine-gold/15 transition-all duration-300" id="main-nav">
         <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" class="h-12 hover:scale-110 transition duration-500">
-                <div class="flex flex-col">
-                    <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none">Sisodiya Bhargavsinh</span>
-                    <span class="text-[9px] uppercase tracking-[0.3em] text-divine-gold font-bold">Heritage & Tech Professional</span>
+            <a href="index.html" class="flex items-center gap-4 group cursor-none">
+                <div class="p-1 border border-divine-gold/30 rounded-xl bg-white/50 group-hover:border-divine-gold transition duration-500">
+                    <img src="logo.png" alt="Logo" class="h-10 transform group-hover:rotate-6 transition duration-500">
                 </div>
-            </div>
+                <div class="flex flex-col">
+                    <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none tracking-tight">Sisodiya Bhargavsinh</span>
+                    <span class="text-[8.5px] uppercase tracking-[0.3em] text-divine-gold font-bold mt-1">Heritage & Tech Professional</span>
+                </div>
+            </a>
 
-            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-[10px] uppercase tracking-[0.2em] text-slate-700">
-                <li><a href="index.html" class="nav-link-ltr hover:text-royal-maroon transition">Home</a></li>
-                <li><a href="about.html" class="nav-link-ltr hover:text-royal-maroon transition">About</a></li>
-                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-royal-maroon transition">Pushtimarg</a></li>
-                <li><a href="projects.html" class="nav-link-ltr hover:text-royal-maroon transition">Projects</a></li>
-                <li><a href="resume.html" class="nav-link-ltr hover:text-royal-maroon transition">Resume</a></li>
-                <li><a href="otherlinks.html" class="nav-link-ltr text-royal-maroon border-b border-divine-gold pb-1">Other Links</a></li>
-                <li><a href="contact.html" class="nav-link-ltr hover:text-royal-maroon transition">Contact</a></li>
+            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-[11px] uppercase tracking-[0.2em] text-slate-700">
+                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
+                    <a href="index.html">Home</a>
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
+                    <a href="about.html">About</a>
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
+                    <a href="pushtimarg.html">Pushtimarg</a>
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
+                    <a href="projects.html">Projects</a>
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
+                    <a href="resume.html">Resume</a>
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li class="text-royal-maroon transition-all relative group cursor-none">
+                    <a href="otherlinks.html">Other Links</a>
+                    <span class="absolute -bottom-2 left-0 w-full h-0.5 bg-royal-maroon opacity-30"></span>
+                </li>
+                <li class="cursor-none">
+                    <a href="contact.html" class="px-5 py-2.5 border border-divine-gold/40 rounded-full text-royal-maroon hover:bg-royal-maroon hover:text-white transition-all duration-300">Contact</a>
+                </li>
             </ul>
 
-            <button onclick="toggleMobileMenu()" class="lg:hidden text-royal-maroon text-2xl">☰</button>
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-royal-maroon p-2 focus:outline-none" aria-label="Toggle Menu">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </nav>
         
-        <div id="mobile-menu" class="hidden lg:hidden bg-parchment border-b border-divine-gold/20 p-6 space-y-4 shadow-xl">
-            <a href="index.html" class="block font-yatra text-royal-maroon">Home</a>
-            <a href="resume.html" class="block font-medium">Resume</a>
-            <a href="otherlinks.html" class="block font-medium text-royal-maroon font-bold">Other Links</a>
-            <a href="contact.html" class="block font-medium">Contact</a>
+        <div id="mobile-menu" class="hidden lg:hidden bg-parchment/98 backdrop-blur-2xl absolute w-full p-8 space-y-6 shadow-2xl border-b border-divine-gold/20 origin-top animate-[slideDown_0.3s_ease-out]">
+            <a href="index.html" class="block font-yatra text-slate-800 text-2xl hover:text-royal-maroon transition-colors">Home</a>
+            <a href="resume.html" class="block font-medium text-lg text-slate-600 hover:text-royal-maroon transition-colors">Resume</a>
+            <a href="otherlinks.html" class="block font-yatra text-royal-maroon text-2xl flex items-center gap-2">Other Links <span class="text-[10px] bg-divine-gold/20 text-divine-gold px-2 py-1 rounded-full font-inter font-bold tracking-widest uppercase">Active</span></a>
+            <a href="contact.html" class="block font-medium text-lg text-slate-600 hover:text-royal-maroon transition-colors">Contact</a>
         </div>
     </header>
 
-    <header class="pt-48 pb-16 px-6 text-center">
-        <div class="max-w-4xl mx-auto" data-aos="fade-down">
-            <h1 class="font-yatra text-4xl md:text-7xl text-royal-maroon mb-6">Other Links</h1>
-            <div class="h-1.5 w-32 bg-gradient-to-r from-royal-maroon to-divine-gold mx-auto mb-8"></div>
-            <p class="font-playfair italic text-xl text-slate-600 tracking-widest">
+    <header class="pt-48 pb-20 px-6 text-center relative z-10">
+        <div class="absolute inset-0 opacity-[0.03] mix-blend-multiply pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+        <div class="max-w-4xl mx-auto" data-aos="fade-down" data-aos-duration="1200">
+            <h1 class="font-yatra text-5xl md:text-7xl text-royal-maroon mb-6 drop-shadow-sm">Other Links</h1>
+            <div class="h-1.5 w-32 bg-gradient-to-r from-transparent via-divine-gold to-transparent mx-auto mb-8 rounded-full"></div>
+            <p class="font-playfair italic text-xl md:text-2xl text-slate-600 tracking-widest font-medium animate-float">
                 External Resources & Digital Archives
             </p>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 pb-32">
+    <main class="max-w-6xl mx-auto px-6 pb-32 relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-            <a href="pushtimarg-ma-gruh-seva.html" class="link-card p-10 rounded-[2.5rem] flex items-center gap-8 group" data-aos="fade-up" data-aos-delay="100">
-                <div class="icon-circle w-20 h-20 rounded-3xl flex items-center justify-center text-3xl shrink-0 border border-divine-gold/20 shadow-inner">
-                    🙏
+            <a href="pushtimarg-ma-gruh-seva.html" class="link-card p-10 rounded-[2.5rem] flex items-center gap-8 group cursor-none" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon-circle w-20 h-20 rounded-3xl flex items-center justify-center text-3xl shrink-0 border border-divine-gold/30 shadow-inner z-10">
+                    <span class="filter drop-shadow-md">🙏</span>
                 </div>
-                <div>
-                    <h3 class="font-yatra text-2xl text-royal-maroon group-hover:text-divine-gold transition-colors">Pushtimarg Ma Gruh Seva</h3>
-                    <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-[0.2em] font-bold">Article & Guidance</p>
-                </div>
-            </a>
-
-            <a href="pushtimarg.html" class="link-card p-10 rounded-[2.5rem] flex items-center gap-8 group" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon-circle w-20 h-20 rounded-3xl flex items-center justify-center text-3xl shrink-0 border border-divine-gold/20 shadow-inner">
-                    🕉️
-                </div>
-                <div>
-                    <h3 class="font-yatra text-2xl text-royal-maroon group-hover:text-divine-gold transition-colors">Pushtimarg</h3>
-                    <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-[0.2em] font-bold">The Path of Grace - Archives</p>
+                <div class="z-10">
+                    <h3 class="font-yatra text-2xl md:text-3xl text-royal-maroon group-hover:text-divine-gold transition-colors duration-300">Pushtimarg Ma Gruh Seva</h3>
+                    <p class="text-[10px] text-slate-500 mt-3 uppercase tracking-[0.2em] font-bold">Article & Guidance</p>
                 </div>
             </a>
 
-            <a href="blog.html" class="link-card p-10 rounded-[2.5rem] flex items-center gap-8 group" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon-circle w-20 h-20 rounded-3xl flex items-center justify-center text-3xl shrink-0 border border-divine-gold/20 shadow-inner">
-                    ✍️
+            <a href="pushtimarg.html" class="link-card p-10 rounded-[2.5rem] flex items-center gap-8 group cursor-none" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-circle w-20 h-20 rounded-3xl flex items-center justify-center text-3xl shrink-0 border border-divine-gold/30 shadow-inner z-10">
+                    <span class="filter drop-shadow-md">🕉️</span>
                 </div>
-                <div>
-                    <h3 class="font-yatra text-2xl text-royal-maroon group-hover:text-divine-gold transition-colors">Blog</h3>
-                    <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-[0.2em] font-bold">Modern Perspectives & Tech Articles</p>
+                <div class="z-10">
+                    <h3 class="font-yatra text-2xl md:text-3xl text-royal-maroon group-hover:text-divine-gold transition-colors duration-300">Pushtimarg</h3>
+                    <p class="text-[10px] text-slate-500 mt-3 uppercase tracking-[0.2em] font-bold">The Path of Grace - Archives</p>
+                </div>
+            </a>
+
+            <a href="blog.html" class="link-card p-10 rounded-[2.5rem] flex items-center gap-8 group cursor-none" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-circle w-20 h-20 rounded-3xl flex items-center justify-center text-3xl shrink-0 border border-divine-gold/30 shadow-inner z-10">
+                    <span class="filter drop-shadow-md">✍️</span>
+                </div>
+                <div class="z-10">
+                    <h3 class="font-yatra text-2xl md:text-3xl text-royal-maroon group-hover:text-divine-gold transition-colors duration-300">Blog</h3>
+                    <p class="text-[10px] text-slate-500 mt-3 uppercase tracking-[0.2em] font-bold">Modern Perspectives & Tech Articles</p>
                 </div>
             </a>
 
         </div>
 
-        <div class="mt-20 p-16 border-2 border-dashed border-divine-gold/30 rounded-[3.5rem] text-center bg-white/30 backdrop-blur-sm" data-aos="zoom-in">
-            <span class="font-playfair italic text-slate-400 text-lg">Additional archives are being digitized. More links coming soon.</span>
+        <div class="mt-24 p-16 border border-dashed border-divine-gold/40 rounded-[3.5rem] text-center bg-white/40 backdrop-blur-md shadow-sm transition-all hover:bg-white/60 hover:shadow-md hover:border-divine-gold/60 cursor-none" data-aos="zoom-in" data-aos-duration="1000">
+            <span class="font-playfair italic text-slate-500 text-lg md:text-xl font-medium tracking-wide">Additional archives are being digitized. More links coming soon.</span>
         </div>
     </main>
 
-    <footer class="bg-royal-maroon text-white pt-24 pb-12 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
-        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+    <footer class="bg-obsidian text-white pt-24 pb-12 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-royal-maroon via-divine-gold to-royal-maroon"></div>
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
 
         <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
-            <div class="flex flex-wrap justify-center gap-8 mb-12 font-playfair text-xs uppercase tracking-[0.4em] text-divine-gold/80">
-                <a href="disclaimer.html" class="hover:text-white transition-colors duration-300">Legal Disclaimer</a>
-                <a href="sitemap.xml" class="hover:text-white transition-colors duration-300">Sitemap</a>
-                <a href="robots.txt" class="hover:text-white transition-colors duration-300">Robots Index</a>
+            <div class="flex flex-wrap justify-center gap-10 mb-14 font-playfair text-xs uppercase tracking-[0.3em] text-slate-400">
+                <a href="disclaimer.html" class="hover:text-divine-gold transition-colors duration-300 cursor-none">Legal Disclaimer</a>
+                <a href="sitemap.xml" class="hover:text-divine-gold transition-colors duration-300 cursor-none">Sitemap</a>
+                <a href="robots.txt" class="hover:text-divine-gold transition-colors duration-300 cursor-none">Robots Index</a>
             </div>
 
-            <div class="border-y border-white/10 py-12 mb-12 bg-white/5 backdrop-blur-md rounded-[2.5rem] border-x border-divine-gold/10">
-                <h2 class="font-yatra text-3xl md:text-4xl text-divine-gold tracking-widest mb-3">
+            <div class="py-14 mb-14 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm rounded-[2.5rem] border border-white/10 relative overflow-hidden">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-divine-gold/50"></div>
+                <h2 class="font-yatra text-3xl md:text-5xl text-divine-gold tracking-widest mb-4 drop-shadow-lg">
                     Sisodiya Bhargavsinh Mahendrasinh
                 </h2>
-                <p class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-white/50 font-inter font-bold">
-                    Digital Archivist ✦ Heritage Conservator
+                <p class="text-[10px] md:text-xs uppercase tracking-[0.6em] text-slate-300 font-inter font-bold">
+                    Digital Archivist <span class="text-royal-maroon mx-2">✦</span> Heritage Conservator
                 </p>
             </div>
 
-            <div class="inline-block p-8 bg-black/30 rounded-[2rem] border border-divine-gold/20 shadow-2xl transition-transform hover:scale-105 duration-500">
-                <p class="text-[9px] uppercase tracking-[0.4em] text-divine-gold/60 mb-4 font-black">Secure Visitor Registry</p>
+            <div class="inline-block p-8 bg-black/40 rounded-[2rem] border border-white/5 shadow-2xl transition-transform hover:scale-105 duration-500 backdrop-blur-md cursor-none">
+                <p class="text-[10px] uppercase tracking-[0.4em] text-slate-400 mb-5 font-black flex items-center justify-center gap-3">
+                    <span class="w-4 h-[1px] bg-slate-600"></span> Secure Visitor Registry <span class="w-4 h-[1px] bg-slate-600"></span>
+                </p>
                 <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" 
                      alt="Visitor Counter" 
-                     class="opacity-90 h-6 mx-auto filter brightness-125 contrast-125">
+                     class="opacity-80 h-7 mx-auto filter brightness-150 contrast-125 hover:opacity-100 transition-opacity">
             </div>
 
-            <div class="mt-16 pt-10 border-t border-white/5 text-[10px] text-white/30 uppercase tracking-[0.3em] font-inter">
+            <div class="mt-20 pt-10 border-t border-white/10 text-[10px] text-slate-500 uppercase tracking-[0.3em] font-inter">
                 &copy; 2026 Sisodiya Digital Estate. All Rights Reserved. 
-                <span class="block mt-4 font-black text-divine-gold/40 italic">"Heritage in Every Pixel, Honor in Every Line"</span>
+                <span class="block mt-5 font-black text-divine-gold/40 italic tracking-widest">"Heritage in Every Pixel, Honor in Every Line"</span>
             </div>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1200, once: true });
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ duration: 1200, once: true, offset: 50, easing: 'ease-out-cubic' });
 
-        // ULTRA SECURITY: Anti-Copy & Anti-Inspect
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
-            if(e.ctrlKey && e.keyCode == 85) return false;
-        };
+            // Modern Custom Cursor Logic
+            const dot = document.getElementById('cursor-dot');
+            const outline = document.getElementById('cursor-outline');
+            
+            if (window.matchMedia("(pointer: coarse)").matches || 'ontouchstart' in window) {
+                dot.style.display = 'none';
+                outline.style.display = 'none';
+                document.body.style.cursor = 'auto';
+                
+                const noCursorElements = document.querySelectorAll('.cursor-none');
+                noCursorElements.forEach(el => el.classList.remove('cursor-none'));
+            } else {
+                let mouseX = window.innerWidth / 2;
+                let mouseY = window.innerHeight / 2;
+                let outlineX = mouseX;
+                let outlineY = mouseY;
+                
+                window.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    dot.style.left = `${mouseX}px`;
+                    dot.style.top = `${mouseY}px`;
+                });
+
+                const animateCursor = () => {
+                    const diffX = mouseX - outlineX;
+                    const diffY = mouseY - outlineY;
+                    outlineX += diffX * 0.15;
+                    outlineY += diffY * 0.15;
+                    
+                    outline.style.left = `${outlineX}px`;
+                    outline.style.top = `${outlineY}px`;
+                    requestAnimationFrame(animateCursor);
+                };
+                animateCursor();
+            }
+
+            // Scroll dynamics for Navigation
+            const nav = document.getElementById('main-nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('shadow-lg', 'bg-white/90');
+                    nav.classList.remove('border-divine-gold/15');
+                } else {
+                    nav.classList.remove('shadow-lg', 'bg-white/90');
+                    nav.classList.add('border-divine-gold/15');
+                }
+            });
+
+            // ULTRA SECURITY: Anti-Copy & Anti-Inspect
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.onkeydown = function(e) {
+                if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
+                if(e.ctrlKey && e.keyCode == 85) return false;
+            };
+        });
 
         // Header Logic Repeat
         function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+document.getElementById('mobile-menu').classList.toggle('hidden');
         }
     </script>
 </body>
