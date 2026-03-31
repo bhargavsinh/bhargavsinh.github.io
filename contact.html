@@ -13,8 +13,10 @@
     
     <link rel="icon" type="image/webp" href="bhargavsinh.webp">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:wght@700&family=Noto+Sans:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Noto+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <script>
@@ -26,12 +28,33 @@
                         'divine-gold': '#d4af37',
                         'saffron-glow': '#ff9933',
                         'parchment': '#fdfaf0',
+                        'obsidian': '#1a1a1a'
                     },
                     fontFamily: {
                         yatra: ['Yatra One', 'cursive'],
                         noto: ['Noto Sans', 'sans-serif'],
                         playfair: ['Playfair Display', 'serif'],
                         inter: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'floating 4s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slideDown': 'slideDown 0.3s ease-out',
+                        'slideIn': 'slideIn 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        floating: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        slideDown: {
+                            '0%': { opacity: 0, transform: 'translateY(-10px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' }
+                        },
+                        slideIn: {
+                            '0%': { opacity: 0, transform: 'translateY(-10px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' }
+                        }
                     }
                 }
             }
@@ -39,16 +62,33 @@
     </script>
 
     <style>
-        /* Pro-Level Transitions */
-        .fade-in { animation: fadeIn 1.5s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        :root {
+            --cursor-size: 8px;
+            --cursor-outline-size: 40px;
+        }
 
-        /* Security: Disable Selection */
         body {
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;
             background-color: #fdfaf0;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Fluid Custom Cursor */
+        #cursor-dot { width: var(--cursor-size); height: var(--cursor-size); background: #d4af37; position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; }
+        #cursor-outline { width: var(--cursor-outline-size); height: var(--cursor-outline-size); border: 1.5px solid rgba(212, 175, 55, 0.6); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, border-color 0.2s; transition-timing-function: ease-out; }
+        
+        a:hover ~ #cursor-outline, button:hover ~ #cursor-outline, .cursor-pointer:hover ~ #cursor-outline {
+            width: 60px; height: 60px; border-color: rgba(107, 15, 26, 0.8); background-color: rgba(212, 175, 55, 0.05);
+        }
+
+        /* Premium Glassmorphism */
+        .glass-nav { 
+            background: rgba(253, 250, 240, 0.75); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
         }
 
         .glass-card {
@@ -56,180 +96,282 @@
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 10px 40px -10px rgba(107, 15, 26, 0.1);
+            box-shadow: 0 20px 50px -10px rgba(107, 15, 26, 0.08);
+            transition: all 0.5s ease;
         }
 
-        .nav-link-ltr { position: relative; }
-        .nav-link-ltr::after {
-            content: ''; position: absolute; width: 0; height: 2px;
-            display: block; margin-top: 2px; right: 0; background: #d4af37;
-            transition: width .4s ease;
+        .glass-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.15);
         }
-        .nav-link-ltr:hover::after { width: 100%; left: 0; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #fdfaf0; }
-        ::-webkit-scrollbar-thumb { background: #6b0f1a; border-radius: 10px; }
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.04;
+            mix-blend-multiply: multiply;
+            background-image: radial-gradient(#d4af37 1.5px, transparent 1.5px);
+            background-size: 40px 40px;
+        }
 
+        /* Notification Box Logic */
         #notif-box { display: none; }
-        #notif-box.show { display: block; animation: slideIn 0.3s ease-out; }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        #notif-box.show { display: block; animation: slideIn 0.3s ease-out forwards; }
 
         @media print { body { display: none !important; } }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fdfaf0; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6b0f1a; }
     </style>
 </head>
-<body class="font-inter text-slate-900 overflow-x-hidden fade-in">
+<body class="font-inter text-slate-900 selection:bg-divine-gold/30 selection:text-royal-maroon cursor-none">
 
-    <header class="fixed top-0 w-full z-[100] bg-white/80 backdrop-blur-xl border-b border-divine-gold/20">
+    <div id="cursor-dot" class="hidden md:block"></div>
+    <div id="cursor-outline" class="hidden md:block"></div>
+    <div class="bg-pattern"></div>
+
+    <header class="fixed top-0 w-full z-[100] glass-nav border-b border-divine-gold/15 transition-all duration-300" id="main-nav">
         <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" class="h-12 hover:scale-110 transition duration-500">
-                <div class="flex flex-col">
-                    <span class="font-yatra text-royal-maroon text-xl leading-none">Sisodiya Bhargavsinh</span>
-                    <span class="text-[9px] uppercase tracking-[0.3em] text-divine-gold font-bold">Heritage & Tech Professional</span>
+            <a href="index.html" class="flex items-center gap-4 group cursor-none">
+                <div class="p-1 border border-divine-gold/30 rounded-xl bg-white/50 group-hover:border-divine-gold transition duration-500">
+                    <img src="logo.png" alt="Logo" class="h-10 transform group-hover:rotate-6 transition duration-500">
                 </div>
-            </div>
+                <div class="flex flex-col">
+                    <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none tracking-tight">Sisodiya Bhargavsinh</span>
+                    <span class="text-[8.5px] uppercase tracking-[0.3em] text-divine-gold font-bold mt-1">Heritage & Tech Professional</span>
+                </div>
+            </a>
 
-            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-[10px] uppercase tracking-[0.2em] text-slate-700">
-                <li><a href="index.html" class="nav-link-ltr hover:text-royal-maroon transition">Home</a></li>
-                <li><a href="about.html" class="nav-link-ltr hover:text-royal-maroon transition">About</a></li>
-                <li><a href="pushtimarg.html" class="nav-link-ltr hover:text-royal-maroon transition">Pushtimarg</a></li>
-                <li><a href="projects.html" class="nav-link-ltr hover:text-royal-maroon transition">Projects</a></li>
-                <li><a href="resume.html" class="nav-link-ltr hover:text-royal-maroon transition">Resume</a></li>
-                <li><a href="contact.html" class="nav-link-ltr text-royal-maroon border-b border-divine-gold pb-1">Contact</a></li>
+            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-[11px] uppercase tracking-[0.2em] text-slate-700">
+                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
+                    <a href="index.html">Home</a>
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
+                    <a href="about.html">About</a>
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
+                    <a href="pushtimarg.html">Pushtimarg</a>
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
+                    <a href="projects.html">Projects</a>
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
+                    <a href="resume.html">Resume</a>
+                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li class="text-royal-maroon transition-all relative group cursor-none">
+                    <a href="contact.html">Contact</a>
+                    <span class="absolute -bottom-2 left-0 w-full h-0.5 bg-royal-maroon opacity-30"></span>
+                </li>
             </ul>
 
             <div class="flex items-center gap-4">
-                <button onclick="toggleNotif()" class="p-2 hover:bg-divine-gold/10 rounded-full transition relative group">
-                    <span class="text-xl">🔔</span>
-                    <span id="notif-badge" class="absolute top-2 right-2 w-2 h-2 bg-red-600 rounded-full hidden animate-ping"></span>
+                <button onclick="toggleNotif()" class="p-2.5 bg-white/50 border border-divine-gold/30 hover:bg-divine-gold/10 hover:border-divine-gold/60 rounded-full transition-all duration-300 relative group cursor-none focus:outline-none" aria-label="Notifications">
+                    <span class="text-lg filter drop-shadow-sm group-hover:scale-110 transition-transform">🔔</span>
+                    <span id="notif-badge" class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white hidden animate-pulse"></span>
                 </button>
-                <button onclick="toggleMobileMenu()" class="lg:hidden text-royal-maroon text-2xl">☰</button>
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-royal-maroon p-2 focus:outline-none cursor-none" aria-label="Toggle Menu">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
             </div>
         </nav>
 
-        <div id="mobile-menu" class="hidden lg:hidden bg-parchment border-b border-divine-gold/20 p-6 space-y-4 shadow-xl">
-            <a href="index.html" class="block font-yatra text-royal-maroon">Home</a>
-            <a href="resume.html" class="block font-medium">Resume</a>
-            <a href="otherlinks.html" class="block font-medium">Other Links</a>
-            <a href="contact.html" class="block font-medium font-bold text-royal-maroon">Contact</a>
+        <div id="mobile-menu" class="hidden lg:hidden bg-parchment/98 backdrop-blur-2xl absolute w-full p-8 space-y-6 shadow-2xl border-b border-divine-gold/20 origin-top animate-[slideDown_0.3s_ease-out]">
+            <a href="index.html" class="block font-yatra text-slate-800 text-2xl hover:text-royal-maroon transition-colors">Home</a>
+            <a href="resume.html" class="block font-medium text-lg text-slate-600 hover:text-royal-maroon transition-colors">Resume</a>
+            <a href="otherlinks.html" class="block font-medium text-lg text-slate-600 hover:text-royal-maroon transition-colors">Other Links</a>
+            <a href="contact.html" class="block font-yatra text-royal-maroon text-2xl flex items-center gap-2">Contact <span class="text-[10px] bg-divine-gold/20 text-divine-gold px-2 py-1 rounded-full font-inter font-bold tracking-widest uppercase">Active</span></a>
         </div>
     </header>
 
-    <div id="notif-box" class="fixed right-4 top-24 w-80 bg-white rounded-2xl shadow-2xl border border-divine-gold/30 z-[110] overflow-hidden">
-        <div class="bg-royal-maroon text-divine-gold p-4 font-yatra flex justify-between items-center">
-            <span>Updates</span>
-            <button onclick="toggleNotif()" class="text-2xl">&times;</button>
+    <div id="notif-box" class="fixed right-6 top-24 w-80 bg-white/95 backdrop-blur-xl rounded-[1.5rem] shadow-2xl shadow-divine-gold/10 border border-divine-gold/30 z-[110] overflow-hidden">
+        <div class="bg-gradient-to-r from-royal-maroon to-[#8a1422] text-divine-gold p-4 font-yatra flex justify-between items-center shadow-md">
+            <span class="tracking-widest text-lg">Updates</span>
+            <button onclick="toggleNotif()" class="text-2xl hover:text-white transition-colors cursor-none focus:outline-none">&times;</button>
         </div>
-        <ul id="notif-list" class="max-h-60 overflow-y-auto divide-y divide-gray-100">
-            <li class="p-4 text-center text-slate-400">Loading...</li>
+        <ul id="notif-list" class="max-h-72 overflow-y-auto divide-y divide-slate-100 font-inter">
+            <li class="p-6 text-center text-slate-400 font-medium">Loading updates...</li>
         </ul>
     </div>
 
-    <main class="pt-40 pb-24 px-4">
-        <div class="max-w-4xl mx-auto text-center mb-20" data-aos="fade-down">
-            <div class="inline-block relative">
-                <h1 class="font-yatra text-5xl md:text-8xl text-royal-maroon mb-6 relative z-10 drop-shadow-xl">સંપર્ક કરો</h1>
-                <div class="absolute -bottom-2 left-0 w-full h-6 bg-divine-gold/20 -z-10 skew-x-12"></div>
+    <main class="pt-48 pb-24 px-6 relative z-10">
+        <div class="absolute inset-0 opacity-[0.03] mix-blend-multiply pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+        
+        <div class="max-w-4xl mx-auto text-center mb-24 relative z-10" data-aos="fade-down" data-aos-duration="1200">
+            <div class="inline-block relative animate-float">
+                <h1 class="font-yatra text-5xl md:text-7xl lg:text-8xl text-royal-maroon mb-6 relative z-10 drop-shadow-sm">સંપર્ક કરો</h1>
+                <div class="absolute -bottom-2 left-0 w-full h-4 md:h-6 bg-gradient-to-r from-transparent via-divine-gold/30 to-transparent -z-10 blur-sm"></div>
             </div>
-            <p class="max-w-3xl mx-auto text-xl md:text-2xl text-slate-600 font-noto mt-10 leading-relaxed italic">
+            <p class="max-w-3xl mx-auto text-lg md:text-2xl text-slate-600 font-noto mt-10 leading-relaxed italic font-medium tracking-wide">
                 ટેકનિકલ પ્રોજેક્ટ, ઇતિહાસ સંશોધન અથવા પુષ્ટિમાર્ગ અંગે ચર્ચા કરવા માટે આપ મારો સંપર્ક કરી શકો છો.
             </p>
         </div>
 
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             
-            <div class="glass-card p-10 md:p-16 rounded-[3.5rem] border-l-[12px] border-divine-gold relative overflow-hidden" data-aos="fade-right">
-                <div class="absolute top-0 right-0 w-40 h-40 bg-divine-gold/5 rounded-bl-full"></div>
+            <div class="glass-card p-10 md:p-14 rounded-[3rem] border-l-[8px] border-divine-gold relative overflow-hidden group" data-aos="fade-right" data-aos-offset="100">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-divine-gold/10 to-transparent rounded-bl-full transition-transform duration-700 group-hover:scale-110"></div>
 
-                <h3 class="font-yatra text-4xl text-royal-maroon mb-16 flex items-center gap-6">
-                    <span class="bg-royal-maroon/5 p-4 rounded-2xl">📍</span> સંપર્ક માહિતી
+                <h3 class="font-yatra text-3xl md:text-4xl text-royal-maroon mb-14 flex items-center gap-5 relative z-10">
+                    <span class="bg-gradient-to-br from-royal-maroon/10 to-transparent p-3.5 rounded-2xl border border-royal-maroon/10 shadow-sm filter drop-shadow-md">📍</span> સંપર્ક માહિતી
                 </h3>
 
-                <div class="space-y-12">
-                    <div class="flex items-start gap-8 group">
-                        <div class="w-16 h-16 rounded-3xl bg-royal-maroon/5 flex items-center justify-center text-4xl group-hover:bg-royal-maroon group-hover:text-white transition-all duration-700 shadow-inner">🏠</div>
-                        <div>
-                            <span class="block font-bold text-royal-maroon text-2xl mb-3 tracking-tight">સરનામું:</span>
-                            <p class="text-slate-700 leading-relaxed font-noto text-xl">
+                <div class="space-y-10 relative z-10">
+                    <div class="flex items-start gap-6 group/item cursor-none">
+                        <div class="w-14 h-14 md:w-16 md:h-16 rounded-[1.2rem] bg-white border border-divine-gold/20 flex items-center justify-center text-3xl md:text-4xl group-hover/item:bg-royal-maroon group-hover/item:text-white group-hover/item:border-royal-maroon transition-all duration-500 shadow-sm group-hover/item:shadow-lg transform group-hover/item:-translate-y-1">🏠</div>
+                        <div class="pt-1">
+                            <span class="block font-bold text-royal-maroon text-xl md:text-2xl mb-2 tracking-wide font-noto">સરનામું:</span>
+                            <p class="text-slate-600 leading-relaxed font-noto text-lg font-medium">
                                 ચુંથાના મુવાડા, તાલુકો: ગોધર,<br>
                                 જીલ્લો: મહીસાગર, ગુજરાત - ૩૮૯૨૩૦
                             </p>
                         </div>
                     </div>
 
-                    <div class="flex items-start gap-8 group">
-                        <div class="w-16 h-16 rounded-3xl bg-royal-maroon/5 flex items-center justify-center text-4xl group-hover:bg-royal-maroon group-hover:text-white transition-all duration-700 shadow-inner">📧</div>
-                        <div>
-                            <span class="block font-bold text-royal-maroon text-2xl mb-3 tracking-tight">ઈમેલ:</span>
-                            <a href="mailto:bhargavsinh.bca@gmail.com" class="text-slate-800 font-bold hover:text-divine-gold transition-all text-xl border-b-2 border-divine-gold/20 pb-1">
+                    <div class="flex items-start gap-6 group/item cursor-none">
+                        <div class="w-14 h-14 md:w-16 md:h-16 rounded-[1.2rem] bg-white border border-divine-gold/20 flex items-center justify-center text-3xl md:text-4xl group-hover/item:bg-royal-maroon group-hover/item:text-white group-hover/item:border-royal-maroon transition-all duration-500 shadow-sm group-hover/item:shadow-lg transform group-hover/item:-translate-y-1">📧</div>
+                        <div class="pt-1">
+                            <span class="block font-bold text-royal-maroon text-xl md:text-2xl mb-2 tracking-wide font-noto">ઈમેલ:</span>
+                            <a href="mailto:bhargavsinh.bca@gmail.com" class="text-slate-700 font-bold hover:text-divine-gold transition-colors text-lg md:text-xl border-b border-divine-gold/30 pb-1 cursor-none inline-block">
                                 bhargavsinh.bca@gmail.com
                             </a>
                         </div>
                     </div>
 
-                    <div class="pt-16 border-t border-divine-gold/20">
-                        <span class="block font-bold text-royal-maroon mb-10 text-2xl uppercase tracking-widest">સોશિયલ મીડિયા:</span>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="flex items-center gap-5 p-6 bg-white rounded-3xl border border-divine-gold/10 hover:bg-green-600 hover:text-white transition-all duration-700 shadow-xl transform hover:-translate-y-2">
-                                <span class="text-4xl">💬</span> <span class="font-bold text-lg">WhatsApp</span>
+                    <div class="pt-12 mt-12 border-t border-dashed border-divine-gold/30">
+                        <span class="block font-bold text-slate-400 mb-8 text-sm uppercase tracking-[0.3em] font-inter">સોશિયલ મીડિયા:</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="flex items-center gap-4 p-5 bg-white/80 backdrop-blur-sm rounded-[1.5rem] border border-divine-gold/20 hover:border-green-500 hover:bg-green-500 hover:text-white transition-all duration-500 shadow-sm hover:shadow-xl transform hover:-translate-y-1.5 cursor-none group/social">
+                                <span class="text-3xl filter drop-shadow-sm group-hover/social:scale-110 transition-transform">💬</span> 
+                                <span class="font-bold text-base tracking-wide font-inter">WhatsApp</span>
                             </a>
-                            <a href="https://instagram.com/bs_pushtisoul" target="_blank" class="flex items-center gap-5 p-6 bg-white rounded-3xl border border-divine-gold/10 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 hover:text-white transition-all duration-700 shadow-xl transform hover:-translate-y-2">
-                                <span class="text-4xl">📸</span> <span class="font-bold text-lg">Instagram</span>
+                            <a href="https://instagram.com/bs_pushtisoul" target="_blank" class="flex items-center gap-4 p-5 bg-white/80 backdrop-blur-sm rounded-[1.5rem] border border-divine-gold/20 hover:border-transparent hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-500 hover:to-orange-500 hover:text-white transition-all duration-500 shadow-sm hover:shadow-xl transform hover:-translate-y-1.5 cursor-none group/social">
+                                <span class="text-3xl filter drop-shadow-sm group-hover/social:scale-110 transition-transform">📸</span> 
+                                <span class="font-bold text-base tracking-wide font-inter">Instagram</span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="glass-card p-2 rounded-[3.5rem] border-t-[12px] border-royal-maroon shadow-2xl" data-aos="fade-left">
-                <div class="bg-white rounded-[2.8rem] overflow-hidden h-[750px] relative">
-                    <div class="absolute top-0 w-full h-1 bg-gradient-to-r from-divine-gold to-royal-maroon"></div>
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1zE0D-SbtdWlD0wT6TEwJ4hxw7RinkhbxNPOBX2vygD4x3A/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" class="opacity-95">Loading…</iframe>
+            <div class="glass-card p-2 rounded-[3.5rem] border-t-[8px] border-royal-maroon shadow-2xl shadow-royal-maroon/10" data-aos="fade-left" data-aos-offset="100">
+                <div class="bg-white/90 backdrop-blur-md rounded-[3rem] overflow-hidden h-[750px] relative border border-slate-100">
+                    <div class="absolute top-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-royal-maroon"></div>
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1zE0D-SbtdWlD0wT6TEwJ4hxw7RinkhbxNPOBX2vygD4x3A/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" class="w-full h-full">Loading…</iframe>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <footer class="bg-royal-maroon text-white pt-32 pb-16 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-divine-gold"></div>
-        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+    <footer class="bg-obsidian text-white pt-28 pb-12 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-royal-maroon via-divine-gold to-royal-maroon"></div>
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
 
         <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
-            <div class="flex flex-wrap justify-center gap-10 mb-16 font-playfair text-xs uppercase tracking-[0.4em] text-divine-gold/80">
-                <a href="disclaimer.html" class="hover:text-white transition-all underline-offset-8 hover:underline">Legal Disclaimer</a>
-                <a href="sitemap.xml" class="hover:text-white transition-all underline-offset-8 hover:underline">Sitemap</a>
-                <a href="robots.txt" class="hover:text-white transition-all underline-offset-8 hover:underline">Robots Index</a>
+            <div class="flex flex-wrap justify-center gap-10 mb-14 font-playfair text-xs uppercase tracking-[0.3em] text-slate-400">
+                <a href="disclaimer.html" class="hover:text-divine-gold transition-colors duration-300 cursor-none">Legal Disclaimer</a>
+                <a href="sitemap.xml" class="hover:text-divine-gold transition-colors duration-300 cursor-none">Sitemap</a>
+                <a href="robots.txt" class="hover:text-divine-gold transition-colors duration-300 cursor-none">Robots Index</a>
             </div>
 
-            <div class="border-y border-white/10 py-12 mb-16 bg-white/5 backdrop-blur-xl rounded-[3rem] border-x border-divine-gold/10 shadow-2xl">
-                <h2 class="font-yatra text-3xl md:text-5xl text-divine-gold tracking-widest mb-4">
+            <div class="py-14 mb-14 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm rounded-[2.5rem] border border-white/10 relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-divine-gold/50"></div>
+                <h2 class="font-yatra text-3xl md:text-5xl text-divine-gold tracking-widest mb-4 drop-shadow-lg">
                     Sisodiya Bhargavsinh Mahendrasinh
                 </h2>
-                <p class="text-[10px] md:text-sm uppercase tracking-[0.6em] text-white/40 font-inter font-bold">
-                    16th Generation Descendant of Maharana Pratap ✦ Digital Archivist
+                <p class="text-[10px] md:text-xs uppercase tracking-[0.6em] text-slate-300 font-inter font-bold">
+                    16th Generation Descendant <span class="text-royal-maroon mx-2">✦</span> Digital Archivist
                 </p>
+                
+                <div id="google_translate_element" class="mt-8 inline-block overflow-hidden rounded-lg border border-white/20 filter drop-shadow-md"></div>
             </div>
 
-            <div class="inline-block p-8 bg-black/40 rounded-[2rem] border border-divine-gold/20 shadow-2xl transition-all hover:scale-110 duration-700">
-                <p class="text-[10px] uppercase tracking-[0.4em] text-divine-gold/60 mb-4 font-black italic">Secure Visitor Registry</p>
+            <div class="inline-block p-8 bg-black/40 rounded-[2rem] border border-white/5 shadow-2xl transition-transform hover:scale-105 duration-500 backdrop-blur-md cursor-none">
+                <p class="text-[10px] uppercase tracking-[0.4em] text-slate-400 mb-5 font-black flex items-center justify-center gap-3">
+                    <span class="w-4 h-[1px] bg-slate-600"></span> Secure Visitor Registry <span class="w-4 h-[1px] bg-slate-600"></span>
+                </p>
                 <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" 
                      alt="Visitor Counter" 
-                     class="opacity-100 h-6 mx-auto filter brightness-125 contrast-150">
+                     class="opacity-80 h-7 mx-auto filter brightness-150 contrast-125 hover:opacity-100 transition-opacity">
+            </div>
+
+            <div class="mt-20 pt-10 border-t border-white/10 text-[10px] text-slate-500 uppercase tracking-[0.3em] font-inter">
+                &copy; 2026 Sisodiya Digital Estate. All Rights Reserved. 
+                <span class="block mt-5 font-black text-divine-gold/40 italic tracking-widest">"Heritage in Every Pixel, Honor in Every Line"</span>
             </div>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1200, once: true });
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ duration: 1200, once: true, offset: 50, easing: 'ease-out-cubic' });
 
-        // HEADER LOGIC (Repeated from index)
+            // Modern Custom Cursor Logic
+            const dot = document.getElementById('cursor-dot');
+            const outline = document.getElementById('cursor-outline');
+            
+            if (window.matchMedia("(pointer: coarse)").matches || 'ontouchstart' in window) {
+                dot.style.display = 'none';
+                outline.style.display = 'none';
+                document.body.style.cursor = 'auto';
+                
+                const noCursorElements = document.querySelectorAll('.cursor-none');
+                noCursorElements.forEach(el => el.classList.remove('cursor-none'));
+            } else {
+                let mouseX = window.innerWidth / 2;
+                let mouseY = window.innerHeight / 2;
+                let outlineX = mouseX;
+                let outlineY = mouseY;
+                
+                window.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    dot.style.left = `${mouseX}px`;
+                    dot.style.top = `${mouseY}px`;
+                });
+
+                const animateCursor = () => {
+                    const diffX = mouseX - outlineX;
+                    const diffY = mouseY - outlineY;
+                    outlineX += diffX * 0.15;
+                    outlineY += diffY * 0.15;
+                    
+                    outline.style.left = `${outlineX}px`;
+                    outline.style.top = `${outlineY}px`;
+                    requestAnimationFrame(animateCursor);
+                };
+                animateCursor();
+            }
+
+            // Scroll dynamics for Navigation
+            const nav = document.getElementById('main-nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('shadow-lg', 'bg-white/90');
+                    nav.classList.remove('border-divine-gold/15');
+                } else {
+                    nav.classList.remove('shadow-lg', 'bg-white/90');
+                    nav.classList.add('border-divine-gold/15');
+                }
+            });
+
+            // ULTRA SECURITY: Anti-Copy & Anti-Inspect
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.onkeydown = function(e) {
+                if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
+                if(e.ctrlKey && e.keyCode == 85) return false;
+            };
+        });
+
+        // HEADER LOGIC
         function toggleMobileMenu() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
@@ -247,27 +389,21 @@
                 const res = await fetch('notifications.json?t=' + Date.now());
                 const data = await res.json();
                 list.innerHTML = data.map(item => `
-                    <li class="p-5 hover:bg-divine-gold/5 transition border-l-4 border-transparent hover:border-royal-maroon">
-                        <small class="text-slate-400 block mb-2 text-xs font-bold uppercase tracking-wider">${item.date}</small>
-                        <a href="${item.link}" class="text-royal-maroon font-bold text-base block leading-tight">
-                            ${item.new ? '<span class="bg-red-600 text-white px-2 py-0.5 rounded text-[10px] mr-2">NEW</span>' : ''}${item.text}
+                    <li class="p-5 hover:bg-divine-gold/10 transition-colors border-l-4 border-transparent hover:border-royal-maroon cursor-none group">
+                        <small class="text-slate-400 block mb-2 text-[10px] font-bold uppercase tracking-widest">${item.date}</small>
+                        <a href="${item.link}" class="text-royal-maroon font-bold text-base block leading-snug group-hover:text-divine-gold transition-colors cursor-none">
+                            ${item.new ? '<span class="bg-gradient-to-r from-red-600 to-red-500 text-white px-2 py-0.5 rounded text-[9px] mr-2 tracking-widest shadow-sm">NEW</span>' : ''}${item.text}
                         </a>
                     </li>
                 `).join('');
-            } catch (e) { list.innerHTML = '<li class="p-6 text-center text-slate-500 italic">No recent updates.</li>'; }
+            } catch (e) { list.innerHTML = '<li class="p-6 text-center text-slate-500 italic font-medium">No recent updates.</li>'; }
         }
 
-        // ULTRA SECURITY
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
-            if(e.ctrlKey && e.keyCode == 85) return false;
-        };
-
+        // GOOGLE TRANSLATE INIT
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'gu', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
         }
     </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 </body>
 </html>
