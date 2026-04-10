@@ -1,244 +1,190 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhargavsinh Sisodiya | Digital Heir</title>
 
-<title>Bhargavsinh Sisodiya | Digital Heir</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ffc300', // Royal Gold
+                        accent: '#ff5733',
+                        deep: '#c70039',
+                        royal: '#900c3e',
+                        dark: '#0a0a0a',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
-<script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#ffc300',
-        accent: '#ff5733',
-        deep: '#c70039',
-        royal: '#900c3e',
-        dark: '#571845',
-      },
-      fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
-      }
-    }
-  }
-}
-</script>
+    <style>
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #ffc300; border-radius: 10px; }
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+        body {
+            user-select: none;
+            -webkit-user-drag: none;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+        
+        img { pointer-events: none; }
 
-<style>
-body {
-  user-select: none;
-  -webkit-user-drag: none;
-}
-img {
-  pointer-events: none;
-}
-body {
-  background: #0f0f0f;
-}
-</style>
+        /* Smooth reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
-<body class="text-white font-sans">
+<body class="text-white font-sans antialiased">
 
-<!-- NAV -->
-<header class="fixed w-full z-50 backdrop-blur-lg bg-black/30 border-b border-white/10">
-  <nav class="max-w-7xl mx-auto flex justify-between items-center px-6 h-20">
-    
-    <div class="flex items-center gap-3">
-      <img src="logo.png" class="h-10">
-      <h1 class="text-lg font-serif tracking-wide">Bhargavsinh</h1>
-    </div>
+    <header class="fixed w-full z-[100] backdrop-blur-md bg-black/40 border-b border-white/5">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center px-8 h-24">
+            <div class="flex items-center gap-4 group cursor-pointer">
+                <img src="Logo.png" alt="Logo" class="h-12 w-auto transition-transform duration-500 group-hover:rotate-[360deg]">
+                <div class="flex flex-col">
+                    <span class="text-xl font-serif tracking-tighter leading-none">Bhargavsinh</span>
+                    <span class="text-[10px] uppercase tracking-[0.3em] text-primary">Sisodiya</span>
+                </div>
+            </div>
 
-    <div class="hidden md:flex gap-10 text-sm tracking-widest uppercase">
-      <a href="index.html" class="hover:text-primary">Home</a>
-      <a href="vanshavali.html" class="hover:text-primary">Vanshavali</a>
-      <a href="resume.html" class="hover:text-primary">Resume</a>
-      <a href="otherlinks.html" class="hover:text-primary">Archives</a>
-    </div>
+            <div class="hidden md:flex gap-12 text-[11px] font-medium tracking-[0.2em] uppercase">
+                <a href="index.html" class="text-primary border-b border-primary pb-1">Home</a>
+                <a href="vanshavali.html" class="hover:text-primary transition-colors duration-300">Vanshavali</a>
+                <a href="resume.html" class="hover:text-primary transition-colors duration-300">Resume</a>
+                <a href="otherlinks.html" class="hover:text-primary transition-colors duration-300">Archives</a>
+            </div>
 
-    <button class="bg-primary text-black px-5 py-2 rounded-full text-xs font-bold tracking-widest">
-      Contact
-    </button>
-  </nav>
-</header>
+            <button class="hidden sm:block border border-primary/50 text-primary hover:bg-primary hover:text-black px-7 py-2.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-500">
+                Contact
+            </button>
+        </nav>
+    </header>
 
-<!-- HERO -->
-<section class="min-h-screen flex items-center justify-center text-center px-6 relative">
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="bhargavsinh.webp" alt="Background" class="w-full h-full object-cover scale-110 animate-[pulse_8s_infinite]">
+            <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/90 to-dark"></div>
+        </div>
 
-  <!-- Background Image -->
-  <div class="absolute inset-0">
-    <img src="bhargavsinh.webp" class="w-full h-full object-cover opacity-30">
-  </div>
+        <div class="relative z-10 text-center px-6 max-w-5xl">
+            <span class="inline-block py-1 px-3 border border-primary/30 rounded-full text-primary tracking-[0.5em] uppercase text-[10px] mb-8 animate-bounce">
+                The Digital Estate
+            </span>
+            
+            <h1 class="text-6xl md:text-9xl font-serif italic mb-8 leading-[0.9]">
+                Digital Heir <br>
+                <span class="not-italic text-primary drop-shadow-[0_0_15px_rgba(255,195,0,0.3)]">of Mewar</span>
+            </h1>
 
-  <div class="absolute inset-0 bg-gradient-to-br from-dark via-black to-royal opacity-90"></div>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+                Merging ancient legacy with <span class="text-white font-medium">modern architecture</span>. Preserving history through sovereign code.
+            </p>
 
-  <div class="relative z-10 max-w-4xl">
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="#about" class="bg-primary text-black px-10 py-5 rounded-full font-bold tracking-widest text-xs uppercase hover:shadow-[0_0_30px_rgba(255,195,0,0.4)] transition-all duration-300">
+                    Explore Legacy
+                </a>
+                <button class="group flex items-center gap-3 text-white tracking-widest text-xs uppercase font-bold">
+                    <span class="w-12 h-[1px] bg-white/30 group-hover:w-16 transition-all"></span>
+                    Scroll Down
+                </button>
+            </div>
+        </div>
+    </section>
 
-    <p class="text-primary tracking-[0.4em] uppercase text-xs mb-6">
-      Digital Estate
-    </p>
+    <section id="about" class="py-32 px-8 bg-dark relative">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+            
+            <div class="reveal">
+                <h2 class="text-primary text-sm font-bold tracking-[0.3em] uppercase mb-4">Foundation</h2>
+                <h3 class="text-5xl md:text-6xl font-serif mb-8">The Eternal <br>Lineage</h3>
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    Rooted in the soil of Mewar, our history is a testament to valor. In the 21st century, the sword is replaced by the keyboard, and the fort by the firewall.
+                </p>
+                <div class="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
+                    <div>
+                        <h4 class="text-white font-bold text-2xl">1500+</h4>
+                        <p class="text-gray-500 text-xs uppercase tracking-widest">Years of History</p>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-2xl">0101</h4>
+                        <p class="text-gray-500 text-xs uppercase tracking-widest">Digital Future</p>
+                    </div>
+                </div>
+            </div>
 
-    <h1 class="text-5xl md:text-8xl font-serif leading-tight mb-6">
-      Digital Heir <br>
-      <span class="text-primary">of Mewar</span>
-    </h1>
+            <div class="reveal relative group">
+                <div class="absolute -inset-4 bg-primary/10 rounded-[2rem] blur-2xl group-hover:bg-primary/20 transition duration-1000"></div>
+                <div class="relative overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl">
+                    <img src="bhargavsinh1.jpg" alt="Bhargavsinh" class="w-full grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105">
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <p class="text-gray-300 max-w-xl mx-auto mb-10">
-      Where heritage meets code — preserving legacy through structured digital systems.
-    </p>
+    <footer class="py-20 bg-black border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col items-center">
+            <img src="Logo.png" alt="Logo" class="h-16 mb-8 opacity-50">
+            <h3 class="text-2xl font-serif italic mb-2 text-primary">Bhargavsinh Sisodiya</h3>
+            <p class="text-gray-500 tracking-[0.4em] uppercase text-[10px] mb-12">Heritage • Code • Legacy</p>
+            
+            <div class="flex gap-10 text-[10px] uppercase tracking-widest text-gray-400 mb-12">
+                <a href="#" class="hover:text-primary transition">Privacy</a>
+                <a href="#" class="hover:text-primary transition">Terms</a>
+                <a href="#" class="hover:text-primary transition">Contact</a>
+            </div>
 
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <button class="bg-primary text-black px-8 py-4 rounded-full font-bold tracking-widest text-sm hover:scale-105 transition">
-        View Work
-      </button>
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8"></div>
+            <p class="text-gray-600 text-[10px] tracking-widest">© 2026 DIGITAL HEIR. CRAFTED FOR THE SOVEREIGN.</p>
+        </div>
+    </footer>
 
-      <button class="border border-white/20 px-8 py-4 rounded-full font-bold tracking-widest text-sm hover:bg-white/10 transition">
-        Contact
-      </button>
-    </div>
+    <script>
+        // Reveal on Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
 
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="py-24 px-6 bg-black">
-
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-
-    <!-- TEXT -->
-    <div>
-      <h2 class="text-4xl md:text-5xl font-serif mb-6">
-        The Legacy
-      </h2>
-
-      <p class="text-gray-400 leading-relaxed">
-        A lineage rooted in valor, discipline, and dharma. From Maharana Pratap Singhji to the digital era, this platform preserves structured heritage.
-      </p>
-    </div>
-
-    <!-- IMAGE -->
-    <div class="relative">
-      <img src="bhargavsinh1.jpg" class="rounded-3xl shadow-2xl">
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-3xl"></div>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- CTA -->
-<section class="py-32 text-center bg-black">
-
-  <h2 class="text-4xl md:text-6xl font-serif mb-6">
-    Preserve the Future
-  </h2>
-
-  <p class="text-gray-400 mb-10">
-    Code is the new fort. Build wisely.
-  </p>
-
-  <button class="bg-gradient-to-r from-primary to-accent text-black px-10 py-4 rounded-full font-bold tracking-widest hover:scale-105 transition">
-    Explore Archives
-  </button>
-
-</section>
-
-<!-- FOOTER -->
-<footer class="py-16 text-center bg-dark border-t border-white/10">
-
-  <h3 class="text-lg font-serif mb-4">
-    Bhargavsinh Sisodiya
-  </h3>
-
-  <p class="text-gray-400 text-sm mb-6">
-    Heritage • Code • Legacy
-  </p>
-
-  <!-- LEGAL LINKS -->
-  <div class="flex justify-center gap-8 text-xs uppercase tracking-widest text-gray-400 mb-6">
-    <a href="privacy-policy.html" class="hover:text-primary">Privacy Policy</a>
-    <a href="disclaimer.html" class="hover:text-primary">Disclaimer</a>
-  </div>
-
-  <p class="text-gray-600 text-xs">
-    © 2026 All Rights Reserved
-  </p>
-
-</footer>
-<script>
-(function () {
-
-  // Disable Right Click
-  document.addEventListener('contextmenu', e => e.preventDefault());
-
-  // Disable Text Selection
-  document.addEventListener('selectstart', e => e.preventDefault());
-
-  // Disable Dragging (images etc.)
-  document.addEventListener('dragstart', e => e.preventDefault());
-
-  // Block Keyboard Shortcuts
-  document.addEventListener('keydown', function (e) {
-
-    // F12
-    if (e.key === "F12") {
-      e.preventDefault();
-    }
-
-    // Ctrl+Shift+I / J / C
-    if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) {
-      e.preventDefault();
-    }
-
-    // Ctrl+U (View Source)
-    if (e.ctrlKey && e.key.toUpperCase() === 'U') {
-      e.preventDefault();
-    }
-
-    // Ctrl+S (Save Page)
-    if (e.ctrlKey && e.key.toUpperCase() === 'S') {
-      e.preventDefault();
-    }
-
-    // Ctrl+A (Select All)
-    if (e.ctrlKey && e.key.toUpperCase() === 'A') {
-      e.preventDefault();
-    }
-
-    // Ctrl+C (Copy)
-    if (e.ctrlKey && e.key.toUpperCase() === 'C') {
-      e.preventDefault();
-    }
-
-    // Ctrl+P (Print)
-    if (e.ctrlKey && e.key.toUpperCase() === 'P') {
-      e.preventDefault();
-    }
-
-  });
-
-  // DevTools Detection (basic)
-  setInterval(function () {
-    const widthThreshold = window.outerWidth - window.innerWidth > 160;
-    const heightThreshold = window.outerHeight - window.innerHeight > 160;
-
-    if (widthThreshold || heightThreshold) {
-      document.body.innerHTML = "";
-      window.location.href = "about:blank";
-    }
-  }, 1000);
-
-  // Console Trap
-  console.log("%cStop!", "color:red; font-size:40px; font-weight:bold;");
-  console.log("%cThis is a protected environment.", "font-size:16px;");
-
-})();
-</script>
+        // Protection Script
+        (function () {
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('selectstart', e => e.preventDefault());
+            document.addEventListener('keydown', function (e) {
+                if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === 'U')) {
+                    e.preventDefault();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
