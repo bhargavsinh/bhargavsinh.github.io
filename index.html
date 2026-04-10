@@ -164,6 +164,74 @@ body {
   </p>
 
 </footer>
+<script>
+(function () {
 
+  // Disable Right Click
+  document.addEventListener('contextmenu', e => e.preventDefault());
+
+  // Disable Text Selection
+  document.addEventListener('selectstart', e => e.preventDefault());
+
+  // Disable Dragging (images etc.)
+  document.addEventListener('dragstart', e => e.preventDefault());
+
+  // Block Keyboard Shortcuts
+  document.addEventListener('keydown', function (e) {
+
+    // F12
+    if (e.key === "F12") {
+      e.preventDefault();
+    }
+
+    // Ctrl+Shift+I / J / C
+    if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) {
+      e.preventDefault();
+    }
+
+    // Ctrl+U (View Source)
+    if (e.ctrlKey && e.key.toUpperCase() === 'U') {
+      e.preventDefault();
+    }
+
+    // Ctrl+S (Save Page)
+    if (e.ctrlKey && e.key.toUpperCase() === 'S') {
+      e.preventDefault();
+    }
+
+    // Ctrl+A (Select All)
+    if (e.ctrlKey && e.key.toUpperCase() === 'A') {
+      e.preventDefault();
+    }
+
+    // Ctrl+C (Copy)
+    if (e.ctrlKey && e.key.toUpperCase() === 'C') {
+      e.preventDefault();
+    }
+
+    // Ctrl+P (Print)
+    if (e.ctrlKey && e.key.toUpperCase() === 'P') {
+      e.preventDefault();
+    }
+
+  });
+
+  // DevTools Detection (basic)
+  setInterval(function () {
+    const widthThreshold = window.outerWidth - window.innerWidth > 160;
+    const heightThreshold = window.outerHeight - window.innerHeight > 160;
+
+    if (widthThreshold || heightThreshold) {
+      document.body.innerHTML = "";
+      window.location.href = "about:blank";
+    }
+  }, 1000);
+
+  // Console Trap
+  console.log("%cStop!", "color:red; font-size:40px; font-weight:bold;");
+  console.log("%cThis is a protected environment.", "font-size:16px;");
+
+})();
+</script>
 </body>
 </html>
