@@ -11,7 +11,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#ffc300', // Royal Gold
+                        primary: '#ffc300',
                         accent: '#ff5733',
                         deep: '#c70039',
                         royal: '#900c3e',
@@ -29,10 +29,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        /* Modern Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #ffc300; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #ffc300; }
 
         body {
             user-select: none;
@@ -43,151 +42,186 @@
         
         img { pointer-events: none; }
 
-        /* Smooth reveal animation */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
             transition: all 0.8s ease-out;
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
     </style>
 </head>
 
 <body class="text-white font-sans antialiased">
 
-    <header class="fixed w-full z-[100] backdrop-blur-md bg-black/40 border-b border-white/5">
-        <nav class="max-w-7xl mx-auto flex justify-between items-center px-8 h-24">
-            <div class="flex items-center gap-4 group cursor-pointer">
-                <img src="logo.png" alt="Logo" class="h-12 w-auto transition-transform duration-500 group-hover:rotate-[360deg]">
+    <header class="fixed w-full z-[100] backdrop-blur-md bg-black/60 border-b border-white/5">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-8 h-20 md:h-24">
+            
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <img src="logo.png" alt="Logo" class="h-10 md:h-12 w-auto transition-transform duration-700 group-hover:rotate-[360deg]">
                 <div class="flex flex-col">
-                    <span class="text-xl font-serif tracking-tighter leading-none">Bhargavsinh</span>
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-primary">Sisodiya</span>
+                    <span class="text-lg md:text-xl font-serif tracking-tighter leading-none">Bhargavsinh</span>
+                    <span class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary">Sisodiya</span>
                 </div>
             </div>
 
-            <div class="hidden md:flex gap-12 text-[11px] font-medium tracking-[0.2em] uppercase">
-                <a href="index.html" class="text-primary border-b border-primary pb-1">Home</a>
-                <a href="vanshavali.html" class="hover:text-primary transition-colors duration-300">Vanshavali</a>
-                <a href="resume.html" class="hover:text-primary transition-colors duration-300">Resume</a>
-                <a href="otherlinks.html" class="hover:text-primary transition-colors duration-300">Archives</a>
+            <div class="hidden md:flex gap-10 text-[11px] font-medium tracking-[0.2em] uppercase">
+                <a href="index.html" class="text-primary border-b border-primary/50 pb-1">Home</a>
+                <a href="vanshavali.html" class="hover:text-primary transition-all">Vanshavali</a>
+                <a href="resume.html" class="hover:text-primary transition-all">Resume</a>
+                <a href="otherlinks.html" class="hover:text-primary transition-all">Archives</a>
             </div>
 
-            <button class="hidden sm:block border border-primary/50 text-primary hover:bg-primary hover:text-black px-7 py-2.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-500">
+            <button id="menu-btn" class="md:hidden text-primary focus:outline-none p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+                </svg>
+            </button>
+
+            <button class="hidden lg:block border border-primary/40 text-primary hover:bg-primary hover:text-black px-6 py-2 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase transition-all">
                 Contact
             </button>
         </nav>
+
+        <div id="mobile-menu" class="fixed inset-0 bg-black z-[110] translate-x-full md:hidden flex flex-col justify-center items-center gap-8 text-center">
+            <button id="close-btn" class="absolute top-8 right-8 text-primary text-4xl">&times;</button>
+            <a href="index.html" class="text-2xl font-serif text-primary">Home</a>
+            <a href="vanshavali.html" class="text-2xl font-serif">Vanshavali</a>
+            <a href="resume.html" class="text-2xl font-serif">Resume</a>
+            <a href="otherlinks.html" class="text-2xl font-serif">Archives</a>
+            <a href="contect.html" class="mt-4 bg-primary text-black px-8 py-3 rounded-full font-bold uppercase text-xs tracking-widest">Contact Me</a>
+        </div>
     </header>
 
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20">
         <div class="absolute inset-0 z-0">
-            <img src="bhargavsinh.webp" alt="Background" class="w-full h-full object-cover scale-110 animate-[pulse_8s_infinite]">
-            <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/90 to-dark"></div>
+            <img src="bhargavsinh.webp" alt="Background" class="w-full h-full object-cover scale-110">
+            <div class="absolute inset-0 bg-gradient-to-b from-dark/70 via-dark/90 to-dark"></div>
         </div>
 
-        <div class="relative z-10 text-center px-6 max-w-5xl">
-            <span class="inline-block py-1 px-3 border border-primary/30 rounded-full text-primary tracking-[0.5em] uppercase text-[10px] mb-8 animate-bounce">
+        <div class="relative z-10 text-center px-6 w-full max-w-5xl">
+            <span class="inline-block py-1 px-4 border border-primary/20 rounded-full text-primary tracking-[0.4em] uppercase text-[9px] mb-6 animate-pulse">
                 The Digital Estate
             </span>
-            
-            <h1 class="text-6xl md:text-9xl font-serif italic mb-8 leading-[0.9]">
+
+            <h1 class="text-5xl sm:text-7xl md:text-9xl font-serif italic mb-6 leading-[1.1] md:leading-[0.9]">
                 Digital Heir <br>
-                <span class="not-italic text-primary drop-shadow-[0_0_15px_rgba(255,195,0,0.3)]">of Mewar</span>
+                <span class="not-italic text-primary block sm:inline drop-shadow-2xl">of Mewar</span>
             </h1>
 
-            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-                Merging ancient legacy with <span class="text-white font-medium">modern architecture</span>. Preserving history through sovereign code.
+            <p class="text-gray-400 text-sm md:text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed">
+                Preserving <span class="text-white">ancient legacy</span> through the lens of modern digital architecture.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="#about" class="bg-primary text-black px-10 py-5 rounded-full font-bold tracking-widest text-xs uppercase hover:shadow-[0_0_30px_rgba(255,195,0,0.4)] transition-all duration-300">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#about" class="w-full sm:w-auto bg-primary text-black px-10 py-4 rounded-full font-bold tracking-widest text-[11px] uppercase transition-transform active:scale-95">
                     Explore Legacy
                 </a>
-                <button class="group flex items-center gap-3 text-white tracking-widest text-xs uppercase font-bold">
-                    <span class="w-12 h-[1px] bg-white/30 group-hover:w-16 transition-all"></span>
-                    Scroll Down
-                </button>
+                <a href="contect.html" class="w-full sm:w-auto border border-white/20 px-10 py-4 rounded-full font-bold tracking-widest text-[11px] uppercase hover:bg-white/5 transition-all">
+                    Get in Touch
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-32 px-8 bg-dark relative">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
-            
-            <div class="reveal">
-                <h2 class="text-primary text-sm font-bold tracking-[0.3em] uppercase mb-4">Foundation</h2>
-                <h3 class="text-5xl md:text-6xl font-serif mb-8">The Eternal <br>Lineage</h3>
-                <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                    Rooted in the soil of Mewar, our history is a testament to valor. In the 21st century, the sword is replaced by the keyboard, and the fort by the firewall.
+    <section id="about" class="py-20 md:py-32 px-6 bg-dark">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-24 items-center">
+
+            <div class="reveal order-2 lg:order-1">
+                <h2 class="text-primary text-[10px] font-bold tracking-[0.4em] uppercase mb-4">Foundation</h2>
+                <h3 class="text-4xl md:text-6xl font-serif mb-6 md:mb-8">The Eternal Lineage</h3>
+                <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-8">
+                    Rooted in the soil of Mewar, our history is a testament to valor. In the digital era, we translate dharma into clean, structured systems.
                 </p>
-                <div class="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
-                    <div>
-                        <h4 class="text-white font-bold text-2xl">1500+</h4>
-                        <p class="text-gray-500 text-xs uppercase tracking-widest">Years of History</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-white/10 pt-8">
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                        <h4 class="text-primary font-bold text-3xl">1500+</h4>
+                        <p class="text-gray-500 text-[10px] uppercase tracking-widest">Years of History</p>
                     </div>
-                    <div>
-                        <h4 class="text-white font-bold text-2xl">0101</h4>
-                        <p class="text-gray-500 text-xs uppercase tracking-widest">Digital Future</p>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                        <h4 class="text-primary font-bold text-3xl">0101</h4>
+                        <p class="text-gray-500 text-[10px] uppercase tracking-widest">Digital Future</p>
                     </div>
                 </div>
             </div>
 
-            <div class="reveal relative group">
-                <div class="absolute -inset-4 bg-primary/10 rounded-[2rem] blur-2xl group-hover:bg-primary/20 transition duration-1000"></div>
-                <div class="relative overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl">
-                    <img src="bhargavsinh1.jpg" alt="Bhargavsinh" class="w-full grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105">
+            <div class="reveal order-1 lg:order-2 relative group">
+                <div class="absolute -inset-2 bg-primary/10 rounded-[2rem] blur-xl"></div>
+                <div class="relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] border border-white/10">
+                    <img src="bhargavsinh1.jpg" alt="Bhargavsinh" class="w-full grayscale hover:grayscale-0 transition-all duration-1000">
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 bg-black border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-8 flex flex-col items-center">
-            <img src="logo.png" alt="Logo" class="h-16 mb-8 opacity-50">
-            <h3 class="text-2xl font-serif italic mb-2 text-primary">Bhargavsinh Sisodiya</h3>
-            <p class="text-gray-500 tracking-[0.4em] uppercase text-[10px] mb-12">Heritage • Code • Legacy</p>
-            
-            <div class="flex gap-10 text-[10px] uppercase tracking-widest text-gray-400 mb-12">
+    <footer class="py-16 bg-black border-t border-white/5 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col items-center">
+            <img src="logo.png" alt="Logo" class="h-12 mb-6 opacity-40">
+            <h3 class="text-xl font-serif italic mb-1 text-primary">Bhargavsinh Sisodiya</h3>
+            <p class="text-gray-500 tracking-[0.3em] uppercase text-[9px] mb-10">Heritage • Code • Legacy</p>
+
+            <div class="flex flex-wrap justify-center gap-6 md:gap-10 text-[9px] uppercase tracking-[0.2em] text-gray-400 mb-10">
                 <a href="privacy-policy.html" class="hover:text-primary transition">Privacy</a>
                 <a href="disclaimer.html" class="hover:text-primary transition">Terms</a>
                 <a href="contect.html" class="hover:text-primary transition">Contact</a>
             </div>
 
             <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8"></div>
-            <p class="text-gray-600 text-[10px] tracking-widest">© 2026 DIGITAL HEIR. CRAFTED FOR THE SOVEREIGN.</p>
+            
+            <div class="mb-6 opacity-70 grayscale hover:grayscale-0 transition">
+                <img src="https://hitwebcounter.com/counter/counter.php?page=21488489&style=0010&nbdigits=9&type=page&initCount=4000" title="Visit Counter" alt="Counter" border="0" />
+            </div>
+
+            <p class="text-gray-600 text-[9px] tracking-[0.2em] text-center">© 2026 DIGITAL HEIR. CRAFTED FOR THE SOVEREIGN.</p>
         </div>
-<!-- hitwebcounter Code START -->
-<a href="https://www.hitwebcounter.com/convert-pdf-to-word" target="_blank">
-<img src="https://hitwebcounter.com/counter/counter.php?page=21488489&style=0010&nbdigits=9&type=page&initCount=4000" title="MS Word" Alt="MS Word"   border="0" /></>                                    
-                                    
-                                        
-                                          
-                            
     </footer>
 
     <script>
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.style.transform = 'translateX(0)';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.style.transform = 'translateX(100%)';
+        });
+
+        // Close menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.style.transform = 'translateX(100%)';
+            });
+        });
+
         // Reveal on Scroll
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
+                if (elementTop < windowHeight - 100) {
                     reveals[i].classList.add("active");
                 }
             }
         }
         window.addEventListener("scroll", reveal);
 
-        // Protection Script
+        // Basic Security
         (function () {
             document.addEventListener('contextmenu', e => e.preventDefault());
-            document.addEventListener('selectstart', e => e.preventDefault());
             document.addEventListener('keydown', function (e) {
-                if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === 'U')) {
+                if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase()))) {
                     e.preventDefault();
                 }
             });
