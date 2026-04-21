@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhargavsinh Sisodiya | Digital Heir</title>
+    <title>Bhargavsinh Sisodiya | Digital Heir 3D</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -28,6 +28,9 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
     <style>
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #0a0a0a; }
@@ -38,8 +41,19 @@
             -webkit-user-drag: none;
             background: #0a0a0a;
             overflow-x: hidden;
+            color: white;
         }
-        
+
+        /* 3D Canvas Background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Keeps 3D background behind everything */
+        }
+
         img { pointer-events: none; }
 
         .reveal {
@@ -52,18 +66,18 @@
             transform: translateY(0);
         }
 
-        /* Mobile Menu Transition */
         #mobile-menu {
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
 </head>
 
-<body class="text-white font-sans antialiased">
+<body class="font-sans antialiased relative">
+
+    <canvas id="bg-canvas"></canvas>
 
     <header class="fixed w-full z-[100] backdrop-blur-md bg-black/60 border-b border-white/5">
         <nav class="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-8 h-20 md:h-24">
-            
             <div class="flex items-center gap-3 group cursor-pointer">
                 <img src="logo.png" alt="Logo" class="h-10 md:h-12 w-auto transition-transform duration-700 group-hover:rotate-[360deg]">
                 <div class="flex flex-col">
@@ -100,40 +114,31 @@
         </div>
     </header>
 
-    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20">
-        <div class="absolute inset-0 z-0">
-            <img src="bhargavsinh.webp" alt="Background" class="w-full h-full object-cover scale-110">
-            <div class="absolute inset-0 bg-gradient-to-b from-dark/70 via-dark/90 to-dark"></div>
-        </div>
-
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-b from-transparent via-dark/50 to-dark">
         <div class="relative z-10 text-center px-6 w-full max-w-5xl">
-            <span class="inline-block py-1 px-4 border border-primary/20 rounded-full text-primary tracking-[0.4em] uppercase text-[9px] mb-6 animate-pulse">
+            <span class="inline-block py-1 px-4 border border-primary/20 rounded-full text-primary tracking-[0.4em] uppercase text-[9px] mb-6 animate-pulse bg-black/50 backdrop-blur-sm">
                 The Digital Estate
             </span>
 
-            <h1 class="text-5xl sm:text-7xl md:text-9xl font-serif italic mb-6 leading-[1.1] md:leading-[0.9]">
+            <h1 class="text-5xl sm:text-7xl md:text-9xl font-serif italic mb-6 leading-[1.1] md:leading-[0.9]" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 Digital Heir <br>
                 <span class="not-italic text-primary block sm:inline drop-shadow-2xl">of Mewar</span>
             </h1>
 
-            <p class="text-gray-400 text-sm md:text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed">
-                Preserving <span class="text-white">ancient legacy</span> through the lens of modern digital architecture.
+            <p class="text-gray-300 text-sm md:text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed bg-black/30 backdrop-blur-sm p-4 rounded-xl">
+                Preserving <span class="text-white font-semibold">ancient legacy</span> through the lens of modern 3D digital architecture.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#about" class="w-full sm:w-auto bg-primary text-black px-10 py-4 rounded-full font-bold tracking-widest text-[11px] uppercase transition-transform active:scale-95">
+                <a href="#about" class="w-full sm:w-auto bg-primary text-black px-10 py-4 rounded-full font-bold tracking-widest text-[11px] uppercase transition-transform active:scale-95 hover:bg-white">
                     Explore Legacy
-                </a>
-                <a href="contect.html" class="w-full sm:w-auto border border-white/20 px-10 py-4 rounded-full font-bold tracking-widest text-[11px] uppercase hover:bg-white/5 transition-all">
-                    Get in Touch
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-20 md:py-32 px-6 bg-dark">
+    <section id="about" class="py-20 md:py-32 px-6 bg-dark/90 backdrop-blur-md">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-24 items-center">
-
             <div class="reveal order-2 lg:order-1">
                 <h2 class="text-primary text-[10px] font-bold tracking-[0.4em] uppercase mb-4">Foundation</h2>
                 <h3 class="text-4xl md:text-6xl font-serif mb-6 md:mb-8">The Eternal Lineage</h3>
@@ -141,22 +146,36 @@
                     Rooted in the soil of Mewar, our history is a testament to valor. In the digital era, we translate dharma into clean, structured systems.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-white/10 pt-8">
-                    <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/5 shadow-xl" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
                         <h4 class="text-primary font-bold text-3xl">1500+</h4>
                         <p class="text-gray-500 text-[10px] uppercase tracking-widest">Years of History</p>
                     </div>
-                    <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/5 shadow-xl" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
                         <h4 class="text-primary font-bold text-3xl">0101</h4>
                         <p class="text-gray-500 text-[10px] uppercase tracking-widest">Digital Future</p>
                     </div>
                 </div>
             </div>
-
-            <div class="reveal order-1 lg:order-2 relative group">
-                <div class="absolute -inset-2 bg-primary/10 rounded-[2rem] blur-xl"></div>
-                <div class="relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] border border-white/10">
-                    <img src="bhargavsinh1.jpg" alt="Bhargavsinh" class="w-full grayscale hover:grayscale-0 transition-all duration-1000">
+            
+            <div class="reveal order-1 lg:order-2 relative group" data-tilt data-tilt-scale="1.05">
+                <div class="absolute -inset-2 bg-primary/20 rounded-[2rem] blur-xl transition-all duration-500 group-hover:bg-primary/40"></div>
+                <div class="relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] border border-white/20 transform-gpu">
+                    <img src="bhargavsinh1.jpg" alt="Bhargavsinh" class="w-full grayscale hover:grayscale-0 transition-all duration-1000 object-cover min-h-[400px]">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-black relative border-t border-white/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-primary text-[10px] font-bold tracking-[0.4em] uppercase mb-4">Live API Data</h2>
+                <h3 class="text-3xl md:text-4xl font-serif">Open Source Contributions</h3>
+                <p class="text-gray-400 text-sm mt-4">Data fetched live from GitHub API</p>
+            </div>
+            
+            <div id="github-repos" class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+                <div class="text-center text-gray-500 w-full col-span-full">Loading repositories via API...</div>
             </div>
         </div>
     </section>
@@ -166,45 +185,23 @@
             <img src="logo.png" alt="Logo" class="h-12 mb-6 opacity-40">
             <h3 class="text-xl font-serif italic mb-1 text-primary">Bhargavsinh Sisodiya</h3>
             <p class="text-gray-500 tracking-[0.3em] uppercase text-[9px] mb-10">Heritage • Code • Legacy</p>
-
-            <div class="flex flex-wrap justify-center gap-6 md:gap-10 text-[9px] uppercase tracking-[0.2em] text-gray-400 mb-10">
-                <a href="privacy-policy.html" class="hover:text-primary transition">Privacy</a>
-                <a href="disclaimer.html" class="hover:text-primary transition">Terms</a>
-                <a href="contect.html" class="hover:text-primary transition">Contact</a>
-            </div>
-
-            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8"></div>
-            
-            <div class="mb-6 opacity-70 grayscale hover:grayscale-0 transition">
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21488489&style=0010&nbdigits=9&type=page&initCount=4000" title="Visit Counter" alt="Counter" border="0" />
-            </div>
-
             <p class="text-gray-600 text-[9px] tracking-[0.2em] text-center">© 2026 DIGITAL HEIR. CRAFTED FOR THE SOVEREIGN.</p>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Logic
+        // --- 1. Mobile Menu Logic ---
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.style.transform = 'translateX(0)';
-        });
-
-        closeBtn.addEventListener('click', () => {
-            mobileMenu.style.transform = 'translateX(100%)';
-        });
-
-        // Close menu on link click
+        menuBtn.addEventListener('click', () => { mobileMenu.style.transform = 'translateX(0)'; });
+        closeBtn.addEventListener('click', () => { mobileMenu.style.transform = 'translateX(100%)'; });
         mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.style.transform = 'translateX(100%)';
-            });
+            link.addEventListener('click', () => { mobileMenu.style.transform = 'translateX(100%)'; });
         });
 
-        // Reveal on Scroll
+        // --- 2. Reveal on Scroll ---
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -216,6 +213,109 @@
             }
         }
         window.addEventListener("scroll", reveal);
+        reveal(); // Call once on load
+
+        // --- 3. GitHub API Integration ---
+        // Fetching your actual GitHub Repositories dynamically
+        async function fetchGitHubData() {
+            const container = document.getElementById('github-repos');
+            try {
+                // Change 'bhargavsinh' to your exact Github username if different
+                const response = await fetch('https://api.github.com/users/bhargavsinh/repos?sort=updated&per_page=3');
+                const repos = await response.json();
+                
+                container.innerHTML = ''; // Clear loading text
+                
+                if(repos.length > 0) {
+                    repos.forEach(repo => {
+                        const card = document.createElement('div');
+                        card.className = 'bg-white/5 p-6 rounded-xl border border-white/10 hover:border-primary/50 transition-all';
+                        card.setAttribute('data-tilt', '');
+                        card.innerHTML = `
+                            <h4 class="text-primary font-bold text-lg mb-2">${repo.name}</h4>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">${repo.description || 'No description provided.'}</p>
+                            <div class="flex justify-between items-center text-xs text-gray-500 uppercase tracking-wider">
+                                <span>⭐ ${repo.stargazers_count}</span>
+                                <a href="${repo.html_url}" target="_blank" class="text-white hover:text-primary">View Code &rarr;</a>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    });
+                    // Re-initialize VanillaTilt for new API cards
+                    VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+                } else {
+                    container.innerHTML = '<p class="text-gray-500 text-center col-span-full">No public repositories found.</p>';
+                }
+            } catch (error) {
+                container.innerHTML = '<p class="text-red-500 text-center col-span-full">Failed to load API data.</p>';
+                console.error("API Error:", error);
+            }
+        }
+        fetchGitHubData();
+
+        // --- 4. Three.js 3D Background Setup ---
+        const canvas = document.getElementById('bg-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        // Create 3D Particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 1500; // Number of stars/nodes
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10; // Spread out particles
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.015,
+            color: '#ffc300', // Matches your primary color
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
+        });
+
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+        camera.position.z = 3;
+
+        // Mouse Interactivity
+        let mouseX = 0;
+        let mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX / window.innerWidth - 0.5;
+            mouseY = event.clientY / window.innerHeight - 0.5;
+        });
+
+        // Animation Loop
+        const clock = new THREE.Clock();
+        function animate() {
+            requestAnimationFrame(animate);
+            const elapsedTime = clock.getElapsedTime();
+
+            // Rotate particles slowly
+            particlesMesh.rotation.y = elapsedTime * 0.05;
+            particlesMesh.rotation.x = elapsedTime * 0.02;
+
+            // Move slightly based on mouse
+            particlesMesh.position.x += (mouseX * 0.5 - particlesMesh.position.x) * 0.05;
+            particlesMesh.position.y += (-mouseY * 0.5 - particlesMesh.position.y) * 0.05;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle Window Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
 
         // Basic Security
         (function () {
