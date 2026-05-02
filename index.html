@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BHARGAVSINH SISODIYA</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com https://api.github.com https://hitwebcounter.com;">
+    
+    <title>Bhargavsinh Sisodiya | Digital Heir 3D</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -32,9 +34,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 
     <style>
+        /* Custom Cursor Variables */
+        :root {
+            --cursor-size: 8px;
+            --cursor-outline-size: 40px;
+        }
+
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #ffc300; }
+        ::-webkit-scrollbar-thumb { background: #ffc300; border-radius: 10px; }
 
         body {
             user-select: none;
@@ -42,6 +50,15 @@
             background: #0a0a0a;
             overflow-x: hidden;
             color: white;
+            cursor: none; /* Hide default cursor for modern UI */
+        }
+
+        /* Fluid Custom Cursor */
+        #cursor-dot { width: var(--cursor-size); height: var(--cursor-size); background: #ffc300; position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; }
+        #cursor-outline { width: var(--cursor-outline-size); height: var(--cursor-outline-size); border: 1.5px solid rgba(255, 195, 0, 0.6); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, border-color 0.2s; transition-timing-function: ease-out; }
+        
+        a:hover ~ #cursor-outline, button:hover ~ #cursor-outline {
+            width: 60px; height: 60px; border-color: rgba(255, 195, 0, 1); background-color: rgba(255, 195, 0, 0.05);
         }
 
         /* 3D Canvas Background */
@@ -51,15 +68,15 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1; /* Keeps 3D background behind everything */
+            z-index: -1; 
         }
 
         img { pointer-events: none; }
 
         .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease-out;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
         }
         .reveal.active {
             opacity: 1;
@@ -67,138 +84,174 @@
         }
 
         #mobile-menu {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 
-<body class="font-sans antialiased relative">
+<body class="font-sans antialiased relative cursor-none">
+
+    <div id="cursor-dot" class="hidden md:block"></div>
+    <div id="cursor-outline" class="hidden md:block"></div>
 
     <canvas id="bg-canvas"></canvas>
 
-    <header class="fixed w-full z-[100] backdrop-blur-md bg-black/60 border-b border-white/5">
+    <header class="fixed w-full z-[100] glass-panel border-b border-white/10 transition-all duration-300">
         <nav class="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-8 h-20 md:h-24">
-            <div class="flex items-center gap-3 group cursor-pointer">
+            <div class="flex items-center gap-3 group cursor-none">
                 <img src="logo.png" alt="Logo" class="h-10 md:h-12 w-auto transition-transform duration-700 group-hover:rotate-[360deg]">
                 <div class="flex flex-col">
                     <span class="text-lg md:text-xl font-serif tracking-tighter leading-none">Bhargavsinh</span>
-                    <span class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary">Sisodiya</span>
+                    <span class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary drop-shadow-[0_0_8px_rgba(255,195,0,0.8)]">Sisodiya</span>
                 </div>
             </div>
 
             <div class="hidden md:flex gap-10 text-[11px] font-medium tracking-[0.2em] uppercase">
-                <a href="index.html" class="text-primary border-b border-primary/50 pb-1">Home</a>
-                <a href="vanshavali.html" class="hover:text-primary transition-all">Vanshavali</a>
-                <a href="resume.html" class="hover:text-primary transition-all">Resume</a>
-                <a href="otherlinks.html" class="hover:text-primary transition-all">Archives</a>
+                <a href="index.html" class="text-primary border-b border-primary/50 pb-1 cursor-none hover:drop-shadow-[0_0_8px_rgba(255,195,0,0.8)] transition-all">Home</a>
+                <a href="vanshavali.html" class="hover:text-primary transition-all cursor-none">Vanshavali</a>
+                <a href="resume.html" class="hover:text-primary transition-all cursor-none">Resume</a>
+                <a href="otherlinks.html" class="hover:text-primary transition-all cursor-none">Archives</a>
             </div>
 
-            <button id="menu-btn" class="md:hidden text-primary focus:outline-none p-2">
+            <button id="menu-btn" class="md:hidden text-primary focus:outline-none p-2 cursor-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
                 </svg>
             </button>
 
-            <button class="hidden lg:block border border-primary/40 text-primary hover:bg-primary hover:text-black px-6 py-2 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase transition-all">
+            <button class="hidden lg:block border border-primary/40 text-primary hover:bg-primary hover:text-black hover:shadow-[0_0_20px_rgba(255,195,0,0.4)] px-6 py-2 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase transition-all cursor-none">
                 Contact
             </button>
         </nav>
 
-        <div id="mobile-menu" class="fixed inset-0 bg-black z-[110] translate-x-full md:hidden flex flex-col justify-center items-center gap-8 text-center">
-            <button id="close-btn" class="absolute top-8 right-8 text-primary text-4xl">&times;</button>
-            <a href="index.html" class="text-2xl font-serif text-primary">Home</a>
-            <a href="vanshavali.html" class="text-2xl font-serif">Vanshavali</a>
-            <a href="resume.html" class="text-2xl font-serif">Resume</a>
-            <a href="otherlinks.html" class="text-2xl font-serif">Archives</a>
-            <a href="contact.html" class="mt-4 bg-primary text-black px-8 py-3 rounded-full font-bold uppercase text-xs tracking-widest">Contact Me</a>
+        <div id="mobile-menu" class="fixed inset-0 glass-panel z-[110] translate-x-full md:hidden flex flex-col justify-center items-center gap-8 text-center bg-black/90">
+            <button id="close-btn" class="absolute top-8 right-8 text-primary text-4xl cursor-none">&times;</button>
+            <a href="index.html" class="text-2xl font-serif text-primary cursor-none">Home</a>
+            <a href="vanshavali.html" class="text-2xl font-serif cursor-none">Vanshavali</a>
+            <a href="resume.html" class="text-2xl font-serif cursor-none">Resume</a>
+            <a href="otherlinks.html" class="text-2xl font-serif cursor-none">Archives</a>
+            <a href="contact.html" class="mt-4 bg-primary text-black px-8 py-3 rounded-full font-bold uppercase text-xs tracking-widest cursor-none">Contact Me</a>
         </div>
     </header>
 
     <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-b from-transparent via-dark/50 to-dark">
-        <div class="relative z-10 text-center px-6 w-full max-w-5xl">
-            <span class="inline-block py-1 px-4 border border-primary/20 rounded-full text-primary tracking-[0.4em] uppercase text-[9px] mb-6 animate-pulse bg-black/50 backdrop-blur-sm">
+        <div class="relative z-10 text-center px-6 w-full max-w-5xl reveal">
+            <span class="inline-block py-1.5 px-5 border border-primary/30 rounded-full text-primary tracking-[0.4em] uppercase text-[9px] mb-6 animate-pulse glass-panel">
                 The Digital Estate
             </span>
 
-            <h1 class="text-5xl sm:text-7xl md:text-9xl font-serif italic mb-6 leading-[1.1] md:leading-[0.9]" data-tilt data-tilt-max="10" data-tilt-speed="400">
+            <h1 class="text-5xl sm:text-7xl md:text-9xl font-serif italic mb-6 leading-[1.1] md:leading-[0.9] drop-shadow-2xl" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-perspective="1000">
                 Digital Heir <br>
-                <span class="not-italic text-primary block sm:inline drop-shadow-2xl">of Mewar</span>
+                <span class="not-italic text-primary block sm:inline drop-shadow-[0_0_15px_rgba(255,195,0,0.5)]">of Mewar</span>
             </h1>
 
-            <p class="text-gray-300 text-sm md:text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed bg-black/30 backdrop-blur-sm p-4 rounded-xl">
+            <p class="text-gray-300 text-sm md:text-lg max-w-xl mx-auto mb-10 font-light leading-relaxed glass-panel p-5 rounded-2xl border border-white/5">
                 Preserving <span class="text-white font-semibold">ancient legacy</span> through the lens of modern 3D digital architecture.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#about" class="w-full sm:w-auto bg-primary text-black px-10 py-4 rounded-full font-bold tracking-widest text-[11px] uppercase transition-transform active:scale-95 hover:bg-white">
+                <a href="#about" class="cursor-none w-full sm:w-auto bg-primary text-black px-10 py-4 rounded-full font-bold tracking-widest text-[11px] uppercase transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,195,0,0.6)] active:scale-95 hover:bg-white">
                     Explore Legacy
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-20 md:py-32 px-6 bg-dark/90 backdrop-blur-md">
+    <section id="about" class="py-20 md:py-32 px-6 glass-panel relative z-10 border-t border-white/5">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-24 items-center">
             <div class="reveal order-2 lg:order-1">
-                <h2 class="text-primary text-[10px] font-bold tracking-[0.4em] uppercase mb-4">Foundation</h2>
+                <h2 class="text-primary text-[10px] font-bold tracking-[0.4em] uppercase mb-4 drop-shadow-[0_0_8px_rgba(255,195,0,0.5)]">Foundation</h2>
                 <h3 class="text-4xl md:text-6xl font-serif mb-6 md:mb-8">The Eternal Lineage</h3>
                 <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-8">
                     Rooted in the soil of Mewar, our history is a testament to valor. In the digital era, we translate dharma into clean, structured systems.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-white/10 pt-8">
-                    <div class="bg-white/5 p-4 rounded-xl border border-white/5 shadow-xl" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
-                        <h4 class="text-primary font-bold text-3xl">1500+</h4>
+                    <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-colors duration-300" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
+                        <h4 class="text-primary font-bold text-4xl mb-1">1500+</h4>
                         <p class="text-gray-500 text-[10px] uppercase tracking-widest">Years of History</p>
                     </div>
-                    <div class="bg-white/5 p-4 rounded-xl border border-white/5 shadow-xl" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
-                        <h4 class="text-primary font-bold text-3xl">0101</h4>
+                    <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-colors duration-300" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
+                        <h4 class="text-primary font-bold text-4xl mb-1">0101</h4>
                         <p class="text-gray-500 text-[10px] uppercase tracking-widest">Digital Future</p>
                     </div>
                 </div>
             </div>
             
-            <div class="reveal order-1 lg:order-2 relative group" data-tilt data-tilt-scale="1.05">
-                <div class="absolute -inset-2 bg-primary/20 rounded-[2rem] blur-xl transition-all duration-500 group-hover:bg-primary/40"></div>
-                <div class="relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] border border-white/20 transform-gpu">
-                    <img src="bhargavsinh1.jpg" alt="Bhargavsinh" class="w-full grayscale hover:grayscale-0 transition-all duration-1000 object-cover min-h-[400px]">
+            <div class="reveal order-1 lg:order-2 relative group cursor-none" data-tilt data-tilt-scale="1.02" data-tilt-perspective="1000">
+                <div class="absolute -inset-2 bg-primary/20 rounded-[2.5rem] blur-2xl transition-all duration-700 group-hover:bg-primary/50 group-hover:blur-3xl"></div>
+                <div class="relative overflow-hidden rounded-[2rem] border border-white/20 transform-gpu shadow-2xl">
+                    <img src="bhargavsinh1.jpg" alt="Bhargavsinh" class="w-full grayscale hover:grayscale-0 transition-all duration-1000 object-cover min-h-[400px] scale-105 group-hover:scale-100">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 px-6 bg-black relative border-t border-white/10">
+    <section class="py-24 px-6 bg-black relative border-t border-white/5 z-10">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12 reveal">
-                <h2 class="text-primary text-[10px] font-bold tracking-[0.4em] uppercase mb-4">Live API Data</h2>
-                <h3 class="text-3xl md:text-4xl font-serif">Open Source Contributions</h3>
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-primary text-[10px] font-bold tracking-[0.4em] uppercase mb-4 drop-shadow-[0_0_8px_rgba(255,195,0,0.5)]">Live API Data</h2>
+                <h3 class="text-4xl md:text-5xl font-serif">Open Source Contributions</h3>
                 <p class="text-gray-400 text-sm mt-4">Data fetched live from GitHub API</p>
             </div>
             
-            <div id="github-repos" class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
-                <div class="text-center text-gray-500 w-full col-span-full">Loading repositories via API...</div>
+            <div id="github-repos" class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+                <div class="text-center text-gray-500 w-full col-span-full animate-pulse">Loading repositories via Secure API...</div>
             </div>
         </div>
     </section>
 
-    <footer class="py-16 bg-black border-t border-white/5 px-6">
+    <footer class="py-16 bg-[#050505] border-t border-white/5 px-6 relative z-10">
         <div class="max-w-7xl mx-auto flex flex-col items-center">
-            <img src="logo.png" alt="Logo" class="h-12 mb-6 opacity-40">
+            <img src="logo.png" alt="Logo" class="h-12 mb-6 opacity-40 hover:opacity-100 transition-opacity duration-500">
             <h3 class="text-xl font-serif italic mb-1 text-primary">Bhargavsinh Sisodiya</h3>
             <p class="text-gray-500 tracking-[0.3em] uppercase text-[9px] mb-10">Heritage • Code • Legacy</p>
 
-<div class="flex flex-wrap justify-center gap-6 md:gap-10 text-[9px] uppercase tracking-[0.2em] text-gray-400 mb-8">
-                <a href="disclaimer.html" class="hover:text-primary transition-all">Disclaimer</a>
-                <a href="privacy-policy.html" class="hover:text-primary transition-all">Privacy Policy</a>
-                <a href="grievance.html" class="hover:text-primary transition-all">Grievance</a>
+            <div class="flex flex-wrap justify-center gap-6 md:gap-10 text-[9px] uppercase tracking-[0.2em] text-gray-400 mb-8">
+                <a href="disclaimer.html" class="hover:text-primary transition-all cursor-none">Disclaimer</a>
+                <a href="privacy-policy.html" class="hover:text-primary transition-all cursor-none">Privacy Policy</a>
+                <a href="grievance.html" class="hover:text-primary transition-all cursor-none">Grievance</a>
             </div>
 
-            <p class="text-gray-600 text-[9px] tracking-[0.2em] text-center">© 2026 DIGITAL HEIR. CRAFTED FOR THE SOVEREIGN.</p>
+            <p class="text-gray-600 text-[9px] tracking-[0.2em] text-center bg-white/5 px-6 py-2 rounded-full border border-white/5">© 2026 DIGITAL HEIR. CRAFTED FOR THE SOVEREIGN.</p>
         </div>
-
     </footer>
 
     <script>
-        // --- 1. Mobile Menu Logic ---
+        // --- Custom Cursor Logic ---
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
+        
+        if (window.matchMedia("(pointer: coarse)").matches || 'ontouchstart' in window) {
+            dot.style.display = 'none'; outline.style.display = 'none'; document.body.style.cursor = 'auto';
+            document.querySelectorAll('.cursor-none').forEach(el => el.classList.remove('cursor-none'));
+        } else {
+            let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+            let outlineX = mouseX, outlineY = mouseY;
+            
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX; mouseY = e.clientY;
+                dot.style.left = `${mouseX}px`; dot.style.top = `${mouseY}px`;
+            });
+
+            const animateCursor = () => {
+                let diffX = mouseX - outlineX; let diffY = mouseY - outlineY;
+                outlineX += diffX * 0.15; outlineY += diffY * 0.15;
+                outline.style.left = `${outlineX}px`; outline.style.top = `${outlineY}px`;
+                requestAnimationFrame(animateCursor);
+            };
+            animateCursor();
+        }
+
+        // --- Mobile Menu Logic ---
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -209,7 +262,7 @@
             link.addEventListener('click', () => { mobileMenu.style.transform = 'translateX(100%)'; });
         });
 
-        // --- 2. Reveal on Scroll ---
+        // --- Reveal on Scroll ---
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -221,83 +274,99 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // Call once on load
+        reveal(); 
 
-        // --- 3. GitHub API Integration ---
-        // Fetching your actual GitHub Repositories dynamically
+        // --- GitHub API Integration ---
         async function fetchGitHubData() {
             const container = document.getElementById('github-repos');
             try {
-                // Change 'bhargavsinh' to your exact Github username if different
                 const response = await fetch('https://api.github.com/users/bhargavsinh/repos?sort=updated&per_page=3');
                 const repos = await response.json();
                 
-                container.innerHTML = ''; // Clear loading text
+                container.innerHTML = ''; 
                 
                 if(repos.length > 0) {
                     repos.forEach(repo => {
                         const card = document.createElement('div');
-                        card.className = 'bg-white/5 p-6 rounded-xl border border-white/10 hover:border-primary/50 transition-all';
+                        card.className = 'glass-panel p-8 rounded-[1.5rem] hover:border-primary/60 transition-all duration-500 hover:-translate-y-2 cursor-none group';
                         card.setAttribute('data-tilt', '');
+                        card.setAttribute('data-tilt-perspective', '1000');
                         card.innerHTML = `
-                            <h4 class="text-primary font-bold text-lg mb-2">${repo.name}</h4>
-                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">${repo.description || 'No description provided.'}</p>
-                            <div class="flex justify-between items-center text-xs text-gray-500 uppercase tracking-wider">
-                                <span>⭐ ${repo.stargazers_count}</span>
-                                <a href="${repo.html_url}" target="_blank" class="text-white hover:text-primary">View Code &rarr;</a>
+                            <h4 class="text-primary font-bold text-xl mb-3 group-hover:text-white transition-colors">${repo.name}</h4>
+                            <p class="text-gray-400 text-sm mb-6 line-clamp-3 leading-relaxed">${repo.description || 'No description provided.'}</p>
+                            <div class="flex justify-between items-center text-[10px] text-gray-500 uppercase tracking-widest border-t border-white/10 pt-4">
+                                <span class="bg-white/5 px-3 py-1 rounded-full border border-white/5">⭐ ${repo.stargazers_count}</span>
+                                <a href="${repo.html_url}" target="_blank" class="text-primary hover:text-white transition-colors cursor-none font-bold">View Code &rarr;</a>
                             </div>
                         `;
                         container.appendChild(card);
                     });
-                    // Re-initialize VanillaTilt for new API cards
                     VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
                 } else {
-                    container.innerHTML = '<p class="text-gray-500 text-center col-span-full">No public repositories found.</p>';
+                    container.innerHTML = '<p class="text-gray-500 text-center col-span-full glass-panel py-8 rounded-xl">No public repositories found.</p>';
                 }
             } catch (error) {
-                container.innerHTML = '<p class="text-red-500 text-center col-span-full">Failed to load API data.</p>';
+                container.innerHTML = '<p class="text-red-500 text-center col-span-full glass-panel py-8 rounded-xl">Failed to securely load API data.</p>';
                 console.error("API Error:", error);
             }
         }
         fetchGitHubData();
 
-        // --- 4. Three.js 3D Background Setup ---
+        // --- Full 3D Three.js Upgraded Setup ---
         const canvas = document.getElementById('bg-canvas');
         const scene = new THREE.Scene();
+        // Add subtle fog to blend into the background
+        scene.fog = new THREE.FogExp2(0x0a0a0a, 0.05);
+
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
         
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        // Create 3D Particles
+        // 1. Particle System
         const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 1500; // Number of stars/nodes
+        const particlesCount = 2000;
         const posArray = new Float32Array(particlesCount * 3);
 
         for(let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 10; // Spread out particles
+            posArray[i] = (Math.random() - 0.5) * 15; 
         }
 
         particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
         const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.015,
-            color: '#ffc300', // Matches your primary color
+            size: 0.02,
+            color: '#ffc300', 
             transparent: true,
-            opacity: 0.8,
+            opacity: 0.6,
             blending: THREE.AdditiveBlending
         });
 
         const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
         scene.add(particlesMesh);
-        camera.position.z = 3;
+
+        // 2. Central 3D Interactive Geometry (Icosahedron representing digital architecture)
+        const shapeGeometry = new THREE.IcosahedronGeometry(3, 1);
+        const shapeMaterial = new THREE.MeshBasicMaterial({ 
+            color: 0xffc300, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.15 
+        });
+        const shapeMesh = new THREE.Mesh(shapeGeometry, shapeMaterial);
+        scene.add(shapeMesh);
+
+        camera.position.z = 5;
 
         // Mouse Interactivity
-        let mouseX = 0;
-        let mouseY = 0;
+        let mouseX3D = 0;
+        let mouseY3D = 0;
+        let targetX = 0;
+        let targetY = 0;
+
         document.addEventListener('mousemove', (event) => {
-            mouseX = event.clientX / window.innerWidth - 0.5;
-            mouseY = event.clientY / window.innerHeight - 0.5;
+            mouseX3D = (event.clientX / window.innerWidth) - 0.5;
+            mouseY3D = (event.clientY / window.innerHeight) - 0.5;
         });
 
         // Animation Loop
@@ -306,13 +375,22 @@
             requestAnimationFrame(animate);
             const elapsedTime = clock.getElapsedTime();
 
+            // Smoothly move towards target for parallax
+            targetX = mouseX3D * 1.5;
+            targetY = mouseY3D * 1.5;
+
             // Rotate particles slowly
             particlesMesh.rotation.y = elapsedTime * 0.05;
             particlesMesh.rotation.x = elapsedTime * 0.02;
 
-            // Move slightly based on mouse
-            particlesMesh.position.x += (mouseX * 0.5 - particlesMesh.position.x) * 0.05;
-            particlesMesh.position.y += (-mouseY * 0.5 - particlesMesh.position.y) * 0.05;
+            // Rotate Central Shape
+            shapeMesh.rotation.y = elapsedTime * 0.1;
+            shapeMesh.rotation.z = elapsedTime * 0.05;
+
+            // Parallax effect based on mouse
+            camera.position.x += (targetX - camera.position.x) * 0.05;
+            camera.position.y += (-targetY - camera.position.y) * 0.05;
+            camera.lookAt(scene.position);
 
             renderer.render(scene, camera);
         }
@@ -325,11 +403,13 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // Basic Security
+        // Ultra-Secure: Anti-Inspect & Anti-Copy
         (function () {
             document.addEventListener('contextmenu', e => e.preventDefault());
             document.addEventListener('keydown', function (e) {
-                if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase()))) {
+                if (e.key === "F12" || 
+                   (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) ||
+                   (e.ctrlKey && e.key.toUpperCase() === 'U')) {
                     e.preventDefault();
                 }
             });
