@@ -9,6 +9,12 @@
     
     <title>Bhargavsinh Sisodiya | Digital Heir 3D</title>
 
+    <link rel="manifest" href="manifest.json">
+    
+    <meta name="theme-color" content="#6b0f1a">
+    
+    <link rel="apple-touch-icon" href="newlogo-192.jpg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -417,5 +423,19 @@
             });
         })();
     </script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(error => {
+              console.log('ServiceWorker registration failed: ', error);
+            });
+        });
+      }
+    </script>
+
 </body>
 </html>
