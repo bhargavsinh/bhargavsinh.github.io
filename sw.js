@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bhargavsinh-pwa-v2'; // અહીં v1 નું v2 કર્યું છે
+const CACHE_NAME = 'bhargavsinh-pwa-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -8,10 +8,10 @@ const urlsToCache = [
   '/pushtimarg.html',
   '/resume.html',
   '/newlogo-192.jpg',
-  '/newlogo-512.jpg',
-  '/logo.png'
+  '/newlogo-512.jpg'
 ];
-// Install Service Worker
+
+// 1. Install Service Worker & Cache Files
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -22,18 +22,18 @@ self.addEventListener('install', event => {
   );
 });
 
-// Fetch Requests
+// 2. Fetch Requests (Serve from cache if available)
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // જો ડેટા કેશમાં હોય તો તે આપો, નહીંતર નેટવર્કમાંથી લાવો
+        // જો ડેટા કેશમાં હોય તો તે આપો, નહીંતર ઇન્ટરનેટ પરથી લાવો
         return response || fetch(event.request);
       })
   );
 });
 
-// Update Service Worker
+// 3. Update Service Worker (Clear old caches)
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
