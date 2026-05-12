@@ -263,7 +263,161 @@
             <div class="glass-card p-2 rounded-[3.5rem] border-t-[8px] border-royal-maroon shadow-2xl shadow-royal-maroon/10" data-aos="fade-left" data-aos-offset="100">
                 <div class="bg-white/90 backdrop-blur-md rounded-[3rem] overflow-hidden h-[750px] relative border border-slate-100">
                     <div class="absolute top-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-royal-maroon"></div>
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1zE0D-SbtdWlD0wT6TEwJ4hxw7RinkhbxNPOBX2vygD4x3A/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" class="w-full h-full">Loading…</iframe>
+                    <div class="max-w-3xl mx-auto p-8 bg-white shadow-lg rounded-xl border border-gray-200 my-10">
+  <!-- Header & Description -->
+  <div class="mb-8 border-b pb-6">
+    <h2 class="text-3xl font-bold text-gray-800 mb-4">Book Appointment - Sisodiya Bhargavsinh</h2>
+    <div class="text-gray-600 space-y-3">
+      <p>Welcome! Thank you for your interest in connecting.</p>
+      <p>Please fill out this form to schedule an appointment regarding Technical Projects (BCA), Pushtimarg Inquiries, Historical Research, or General Discussions. I will review your request and get back to you within <strong>24-48 hours</strong> via Email or WhatsApp to confirm the final timing.</p>
+      
+      <div class="bg-blue-50 p-4 rounded-md mt-4 text-sm text-blue-900 space-y-2">
+        <p><strong>Note:</strong> Appointments are currently available only between 3:00 PM to 5:00 PM.</p>
+        <p><strong>Note:</strong> Offline meetings will strictly be held at <strong>Anand Vihar Bhavan, Lunawada</strong>.</p>
+        <p><strong>Note:</strong> By submitting, you agree to our <a href="https://bhargavsinh.github.io/disclaimer.html" target="_blank" class="text-blue-600 underline font-semibold">Legal Center (incl. Privacy Notice)</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <form action="https://formspree.io/f/meenngke" method="POST" class="space-y-6">
+    
+    <input type="hidden" name="_subject" value="New Appointment Request!">
+
+    <!-- Personal Information -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="flex flex-col">
+        <label class="font-semibold text-gray-700 mb-1">Your Name *</label>
+        <input type="text" name="name" required class="p-2.5 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none">
+      </div>
+      
+      <div class="flex flex-col">
+        <label class="font-semibold text-gray-700 mb-1">Email *</label>
+        <input type="email" name="email" required class="p-2.5 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none">
+      </div>
+
+      <div class="flex flex-col">
+        <label class="font-semibold text-gray-700 mb-1">Contact Number *</label>
+        <input type="tel" name="phone" required class="p-2.5 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none" placeholder="+91">
+        <!-- WhatsApp Checkbox -->
+        <label class="flex items-center gap-2 mt-2 cursor-pointer">
+          <input type="checkbox" name="is_whatsapp" value="Yes" class="w-4 h-4 text-blue-600 rounded">
+          <span class="text-sm text-gray-600">This is my WhatsApp number</span>
+        </label>
+      </div>
+
+      <div class="flex flex-col">
+        <label class="font-semibold text-gray-700 mb-1">Preferred Date *</label>
+        <input type="date" name="preferred_date" required class="p-2.5 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none">
+      </div>
+    </div>
+
+    <!-- Preferences -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="flex flex-col">
+        <label class="font-semibold text-gray-700 mb-2">Preferred Time *</label>
+        <div class="flex gap-4">
+          <label class="flex items-center gap-2"><input type="radio" name="preferred_time" value="3:00 PM" required class="w-4 h-4 text-blue-600"> 3:00 PM</label>
+          <label class="flex items-center gap-2"><input type="radio" name="preferred_time" value="4:00 PM" required class="w-4 h-4 text-blue-600"> 4:00 PM</label>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <label class="font-semibold text-gray-700 mb-2">Preferred Mode *</label>
+        <div class="flex gap-4">
+          <label class="flex items-center gap-2"><input type="radio" name="preferred_mode" value="Online" required class="w-4 h-4 text-blue-600"> Online</label>
+          <label class="flex items-center gap-2"><input type="radio" name="preferred_mode" value="Offline" required class="w-4 h-4 text-blue-600"> Offline</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Purpose & Duration -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="flex flex-col">
+        <label class="font-semibold text-gray-700 mb-1">Purpose of Meeting *</label>
+        <select name="meeting_purpose" id="purpose-select" required onchange="toggleOtherPurpose()" class="p-2.5 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none bg-white">
+          <option value="" disabled selected>Select an option</option>
+          <option value="Technical/Project Discussion">1. Technical/Project Discussion</option>
+          <option value="Pushtimarg/Spiritual Inquiry">2. Pushtimarg/Spiritual Inquiry</option>
+          <option value="History/Genealogy Research">3. History/Genealogy Research</option>
+          <option value="General Meet-up">4. General Meet-up</option>
+          <option value="Other">5. Other</option>
+        </select>
+      </div>
+
+      <div class="flex flex-col">
+        <label class="font-semibold text-gray-700 mb-1">Duration of Meeting *</label>
+        <select name="meeting_duration" required class="p-2.5 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none bg-white">
+          <option value="" disabled selected>Select duration</option>
+          <option value="15 Minutes">15 Minutes</option>
+          <option value="30 Minutes">30 Minutes</option>
+          <option value="1 Hour">1 Hour</option>
+          <option value="More than 1 Hour">More than 1 Hour</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Conditional Text Box (Hidden by default) -->
+    <div id="other-purpose-div" class="hidden flex-col">
+      <label class="font-semibold text-gray-700 mb-1">Please specify the purpose *</label>
+      <input type="text" name="specific_purpose" id="specific-purpose-input" class="p-2.5 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none" placeholder="Enter details here...">
+    </div>
+
+    <!-- Message -->
+    <div class="flex flex-col">
+      <label class="font-semibold text-gray-700 mb-1">Any specific message or topic?</label>
+      <textarea name="message" rows="3" class="p-2.5 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none" placeholder="Briefly describe what you would like to discuss..."></textarea>
+    </div>
+
+    <!-- Terms and Conditions -->
+    <div class="bg-gray-50 p-4 rounded-md border border-gray-200 space-y-3 mt-6">
+      <p class="font-semibold text-gray-800">Terms & Conditions *</p>
+      
+      <label class="flex items-start gap-3 cursor-pointer">
+        <input type="checkbox" name="terms_time" required class="mt-1 w-4 h-4 text-blue-600 rounded">
+        <span class="text-sm text-gray-700">I understand that the appointment time is strictly between 3:00 PM to 5:00 PM.</span>
+      </label>
+
+      <label class="flex items-start gap-3 cursor-pointer">
+        <input type="checkbox" name="terms_expense" required class="mt-1 w-4 h-4 text-blue-600 rounded">
+        <span class="text-sm text-gray-700">I agree that for offline meetings, I am responsible for my own travel, food, and stay expenses.</span>
+      </label>
+    </div>
+
+    <!-- Honeypot -->
+    <input type="text" name="_gotcha" class="hidden" />
+
+    <!-- Submit Button -->
+    <div class="mt-8">
+      <button type="submit" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-md transition shadow-md">
+        Request Appointment
+      </button>
+    </div>
+
+  </form>
+</div>
+
+<!-- JavaScript for Conditional Dropdown -->
+<script>
+  function toggleOtherPurpose() {
+    const purposeSelect = document.getElementById('purpose-select');
+    const otherDiv = document.getElementById('other-purpose-div');
+    const specificInput = document.getElementById('specific-purpose-input');
+    
+    // Check if selected option is 'General Meet-up' or 'Other'
+    if (purposeSelect.value === 'General Meet-up' || purposeSelect.value === 'Other') {
+      otherDiv.classList.remove('hidden');
+      otherDiv.classList.add('flex');
+      specificInput.setAttribute('required', 'true');
+    } else {
+      otherDiv.classList.add('hidden');
+      otherDiv.classList.remove('flex');
+      specificInput.removeAttribute('required');
+      specificInput.value = ''; // Clear value when hidden
+    }
+  }
+</script>
+
                 </div>
             </div>
 
