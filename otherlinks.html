@@ -139,110 +139,87 @@
         </div>
         
         <style>
-            .custom-golden-table {
-                width: 100%;
-                border-collapse: collapse;
-                border: 2px solid #FFD700;
-                font-family: 'Inter', sans-serif;
-                background: rgba(255, 255, 255, 0.02);
-                backdrop-filter: blur(10px);
-            }
-            .custom-golden-table th {
-                border: 1px solid rgba(255, 215, 0, 0.4);
-                padding: 20px;
-                text-align: left;
-                background-color: rgba(255, 215, 0, 0.1);
-                color: #FFD700;
-                font-weight: 700;
-                font-family: 'Yatra One', cursive;
-                letter-spacing: 0.1em;
-            }
-            .custom-golden-table td {
-                border: 1px solid rgba(255, 215, 0, 0.2);
-                padding: 20px;
-                text-align: left;
-                vertical-align: top;
-                color: rgba(255, 255, 255, 0.85);
-word-wrap: break-word; /* આ લખાણને ટૂટીને નીચે લાવશે */
-        max-width: 150px;  
-            }
-            .custom-golden-table tr:hover td {
-                background-color: rgba(255, 215, 0, 0.05);
-                transition: 0.3s ease;
-            }
-            @media (max-width: 768px) {
-                .custom-golden-table th, .custom-golden-table td {
-                    padding: 18px;
-                    font-size: 0.85rem;
-                }
-            }
-        </style>
+    .custom-golden-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #FFD700;
+        font-family: 'Inter', sans-serif;
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(10px);
+    }
+    .custom-golden-table th {
+        border: 1px solid rgba(255, 215, 0, 0.4);
+        padding: 20px;
+        text-align: left;
+        background-color: rgba(255, 215, 0, 0.1);
+        color: #FFD700;
+        font-weight: 700;
+        font-family: 'Yatra One', cursive;
+        letter-spacing: 0.1em;
+    }
+    .custom-golden-table td {
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        padding: 20px;
+        text-align: left;
+        vertical-align: top;
+        color: rgba(255, 255, 255, 0.85);
+        /* સુધારો: max-width કાઢી નાખ્યું છે, જેથી લખાણ કપાય નહીં */
+    }
+    .custom-golden-table tr:hover td {
+        background-color: rgba(255, 215, 0, 0.05);
+        transition: 0.3s ease;
+    }
+</style>
 
-        <section class="w-full overflow-x-auto rounded-2xl border border-divine-gold/30 shadow-[0_0_20px_rgba(255,215,0,0.1)] reveal mb-20">
-            <table class="custom-golden-table min-w-[890px]">
-                <thead>
-    <tr class="bg-white/5 border-b border-divine-gold/30">
-        <th class="p-5 text-center whitespace-nowrap">ક્રમ</th>
-        <th class="p-5 text-left">પ્રકાશન / પુસ્તકનું નામ અને વિગત</th>
-        <th class="p-5 text-center whitespace-nowrap">શ્રેણી</th>
-        <th class="p-5 text-center whitespace-nowrap">સ્થિતિ</th>
-        <th class="p-5 text-center whitespace-nowrap">લિંક / એક્સેસ</th>
-    </tr>
-</thead>
+<section class="w-full overflow-x-auto rounded-2xl border border-divine-gold/30 shadow-[0_0_20px_rgba(255,215,0,0.1)] reveal mb-20">
+    <table class="custom-golden-table min-w-[800px]">
+        <thead>
+            <tr class="bg-white/5 border-b border-divine-gold/30">
+                <th class="p-5 text-center whitespace-nowrap w-16">ક્રમ</th>
+                <th class="p-5 text-left min-w-[300px]">પ્રકાશન / પુસ્તકનું નામ અને વિગત</th>
+                <th class="p-5 text-center whitespace-nowrap">શ્રેણી</th>
+                <th class="p-5 text-center whitespace-nowrap">સ્થિતિ</th>
+                <th class="p-5 text-center whitespace-nowrap">લિંક / એક્સેસ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center text-divine-gold font-bold text-lg">1</td>
+                <td>
+                    <strong class="text-white text-base block mb-1">सूर्यवंशावतंस रघुवंशी मैत्रक कुलीय गुहिलोत कुल (मेवाड़) शिशोद / सिसोदिया वंशीय नरेशों एवं उपशाखा का ऐतिहासिक वंश-वृक्ष</strong>
+                    <span class="text-white/60 font-light text-sm">વીર શિરોમણી શ્રી મહારાણા પ્રતાપસિંહજીથી શરૂ કરીને પૂરનમલજીના વંશજો સુધીના ઐતિહાસિક પ્રમાણો અને વંશ-વૃક્ષનું ડિજિટલ દસ્તાવેજીકરણ.</span>
+                </td>
+                <td class="text-center">
+                    <span class="bg-white/10 text-white/80 px-3 py-1 rounded-full text-[10px] font-medium tracking-widest border border-white/20 whitespace-nowrap">Historical document</span>
+                </td>
+                <td class="text-center">
+                    <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border border-emerald-500/30 uppercase whitespace-nowrap">Published</span>
+                </td>
+                <td class="text-center">
+                    <a href="vanshavali.html" class="inline-block bg-divine-gold text-black text-[10px] font-bold px-4 py-2 rounded-full uppercase tracking-wider cursor-none shadow-[0_0_15px_rgba(255,215,0,0.3)] hover:scale-105 transition-transform whitespace-nowrap">વાંચો →</a>
+                </td>
+            </tr>
 
-                <tbody>
-                    <tr>
-                        <td class="text-center text-divine-gold font-bold text-lg">1</td>
-                        <td>
-                            <strong class="text-white text-base md:text-lg block mb-1">सूर्यवंशावतंस रघुवंशी मैत्रक कुलीय गुहिलोत कुल (मेवाड़) शिशोद / सिसोदिया वंशीय नरेशों एवं उपशाखा का ऐतिहासिक वंश-वृक्ष</strong>
-                            <span class="text-white/60 font-light text-sm">વીર શિરોમણી શ્રી મહારાણા પ્રતાપસિંહજીથી શરૂ કરીને પૂરનમલજીના વંશજો સુધીના ઐતિહાસિક પ્રમાણો અને વંશ-વૃક્ષનું ડિજિટલ દસ્તાવેજીકરણ.</span>
-                        </td>
-                        <td class="text-center">
-                            <span class="bg-white/10 text-white/80 px-3 py-1 rounded-full text-[10px] font-medium tracking-widest border border-white/20">Historical document</span>
-                        </td>
-                        <td class="text-center">
-                            <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border border-emerald-500/30 uppercase">Published</span>
-                        </td>
-                        <td class="text-center">
-                            <a href="vanshavali.html" class="inline-block bg-divine-gold text-black text-[10px] font-bold px-4 py-2 rounded-full uppercase tracking-wider cursor-none shadow-[0_0_15px_rgba(255,215,0,0.3)] hover:scale-105 transition-transform">વાંચો →</a>
-                        </td>
-                    </tr>
+            <tr>
+                <td class="text-center text-divine-gold font-bold text-lg">2</td>
+                <td>
+                    <strong class="text-white text-base block mb-1">ABSS की परिकल्पना: एक सनातन विधान</strong>
+                    <span class="text-white/60 font-light text-sm">न्यायमूलं धर्मः धर्ममूलं राष्ट्रम्।</span>
+                </td>
+                <td class="text-center">
+                    <span class="bg-white/10 text-white/80 px-3 py-1 rounded-full text-[10px] font-medium tracking-widest border border-white/20 whitespace-nowrap">Legal-Philosophical</span>
+                </td>
+                <td class="text-center">
+                    <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border border-emerald-500/30 uppercase whitespace-nowrap">Private</span>
+                </td>
+                <td class="text-center">
+                    <span class="inline-block text-white/40 text-[10px] font-bold uppercase tracking-widest italic whitespace-nowrap">Unavailable</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
-                    <tr>
-                        <td class="text-center text-divine-gold font-bold text-lg">2</td>
-                        <td>
-                            <strong class="text-white text-base md:text-lg block mb-1">ABSS की परिकल्पना: एक सनातन विधान</strong>
-                            <span class="text-white/60 font-light text-sm">सनातन परंपरा, भारतीय संवैधानिक मूल्यों एवं ऐतिहासिक दस्तावेजों के संदर्भ में एक विधिक-दार्शनिक विमर्श</span>
-                        </td>
-                        <td class="text-center">
-                            <span class="bg-white/10 text-white/80 px-3 py-1 rounded-full text-[10px] font-medium tracking-widest border border-white/20">Legal-Philosophical Discourse</span> </td>
-                        <td class="text-center">
-                            <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border border-emerald-500/30 uppercase">Private Publication</span>
-                        </td>
-
-                        <td class="text-center">
-                            <a href="otherlinks.html" class="inline-block bg-divine-gold text-black text-[10px] font-bold px-4 py-2 rounded-full uppercase tracking-wider cursor-none shadow-[0_0_15px_rgba(255,215,0,0.3)] hover:scale-105 transition-transform">Restricted Access</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center text-divine-gold font-bold text-lg">3</td>
-                        <td>
-                            <strong class="text-white text-base md:text-lg block mb-1">Upcoming</strong>
-                            <span class="text-white/60 font-light text-sm">
- ---
-</span>
-                        </td>
-                        <td class="text-center">
-                            <span class="bg-white/10 text-white/80 px-3 py-1 rounded-full text-[10px] font-medium tracking-widest border border-white/20">----</span> </td>
-                        <td class="text-center">
-                            <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border border-emerald-500/30 uppercase">---- </span>
-                        </td>
-                        <td class="text-center">
-                            <a href="otherlinks.html" class="inline-block bg-divine-gold text-black text-[10px] font-bold px-4 py-2 rounded-full uppercase tracking-wider cursor-none shadow-[0_0_15px_rgba(255,215,0,0.3)] hover:scale-105 transition-transform">---- </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </section>
 
 
