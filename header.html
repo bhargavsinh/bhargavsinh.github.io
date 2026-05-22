@@ -1,22 +1,21 @@
-<header class="fixed top-0 left-0 w-full z-[1000] bg-[#09000f]/80 backdrop-blur-md border-b border-white/08 h-20 md:h-24 flex items-center px-[10%]">
-    
+<header class="fixed top-0 left-0 w-full z-[1000] bg-[#09000f]/80 backdrop-blur-md border-b border-white/10 h-20 md:h-24 flex items-center px-[10%]">
+
     <nav class="w-full flex justify-between items-center">
-        
+
         <div class="flex items-center gap-3 group cursor-none">
-            <img src="logo.png" alt="Logo" class="h-16 md:h-16 w-auto transition-transform duration-700 group-hover:rotate-[360deg]">
+            <img src="logo.png" alt="Logo" class="h-16 w-auto transition-transform duration-700 group-hover:rotate-[360deg]">
             <div class="flex flex-col">
                 <span class="text-lg md:text-xl font-serif tracking-tighter leading-none text-white">Bhargavsinh</span>
                 <span class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-[#ffd700] drop-shadow-[0_0_8px_rgba(255,195,0,0.8)]">Sisodiya</span>
             </div>
         </div>
 
-        <div class="hidden md:flex gap-10 text-[11px] font-medium tracking-[0.2em] uppercase">
+        <div class="hidden md:flex gap-10 text-[11px] font-medium tracking-[0.2em] uppercase items-center">
             <a href="index.html" class="text-[#ffd700] border-b border-[#ffd700]/50 pb-1 cursor-none hover:drop-shadow-[0_0_8px_rgba(255,195,0,0.8)] transition-all">Home</a>
             <a href="about.html" class="hover:text-[#ffd700] transition-all cursor-none text-white">About Me</a>
-<a href="vanshavali.html" class="hover:text-[#ffd700] transition-all cursor-none text-white">Vanshavali</a>
+            <a href="vanshavali.html" class="hover:text-[#ffd700] transition-all cursor-none text-white">Vanshavali</a>
             <a href="resume.html" class="hover:text-[#ffd700] transition-all cursor-none text-white">Resume</a>
             <a href="otherlinks.html" class="hover:text-[#ffd700] transition-all cursor-none text-white">Archives</a>
-
         </div>
 
         <button id="menu-btn" class="md:hidden text-[#ffd700] focus:outline-none p-2 cursor-none">
@@ -25,23 +24,23 @@
             </svg>
         </button>
 
-        <button class="hidden lg:block btn gold-btn !text-[10px] !py-2 !px-6 rounded-full tracking-[0.2em] uppercase transition-all cursor-none">
+        <a href="contact.html" class="hidden lg:flex items-center justify-center btn gold-btn !text-[10px] !py-2 !px-6 rounded-full tracking-[0.2em] uppercase transition-all cursor-none">
             Contact
-        </button>
-        
+        </a>
+
     </nav>
 
     <div id="mobile-menu" class="fixed inset-0 w-full h-screen z-[9999] translate-x-full transition-transform duration-500 md:hidden flex flex-col justify-center items-center gap-8 text-center bg-[#09000f]/98 backdrop-blur-2xl px-6">
-        
+
         <button id="close-btn" class="absolute top-6 right-8 text-[#ffd700] text-5xl cursor-none focus:outline-none">&times;</button>
-        
+
         <a href="index.html" class="text-2xl font-serif text-[#ffd700] cursor-none">Home</a>
         <a href="about.html" class="text-2xl font-serif text-white hover:text-[#ffd700] cursor-none">About Me</a>
-<a href="vanshavali.html" class="text-2xl font-serif text-white hover:text-[#ffd700] cursor-none">Vanshavali</a>
+        <a href="vanshavali.html" class="text-2xl font-serif text-white hover:text-[#ffd700] cursor-none">Vanshavali</a>
         <a href="resume.html" class="text-2xl font-serif text-white hover:text-[#ffd700] cursor-none">Resume</a>
         <a href="otherlinks.html" class="text-2xl font-serif text-white hover:text-[#ffd700] cursor-none">Archives</a>
-        
+
         <a href="contact.html" class="mt-4 btn gold-btn text-xs tracking-widest px-16 py-4 rounded-full uppercase cursor-none shadow-[0_0_20px_rgba(255,215,0,0.3)]">Contact Me</a>
     </div>
-    
+
 </header>
