@@ -30,17 +30,24 @@
 
     </nav>
 
-    <div id="mobile-menu" class="fixed inset-0 w-full h-screen z-[9999] translate-x-full transition-transform duration-500 md:hidden flex flex-col justify-center items-center gap-8 text-center bg-[#09000f]/98 backdrop-blur-2xl px-6">
+        <div id="mobile-menu" class="fixed inset-0 w-full h-screen z-[9999] translate-x-full transition-transform duration-500 md:hidden flex flex-col justify-center items-center gap-8 text-center bg-[#09000f]/95 backdrop-blur-3xl px-6 overflow-hidden">
 
-        <button id="close-btn" class="absolute top-6 right-8 text-[#ffd700] text-5xl cursor-none focus:outline-none">&times;</button>
+        <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+        
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-[#ffd700] rounded-full blur-[100px] opacity-10 pointer-events-none"></div>
 
-        <a href="index.html" class="text-2xl font-serif text-[#ffd700] cursor-none">Home</a>
-        <a href="about.html" class="text-2xl font-serif text-white hover:text-[#ffd700] cursor-none">About Me</a>
-        <a href="vanshavali.html" class="text-2xl font-serif text-white hover:text-[#ffd700] cursor-none">Vanshavali</a>
-        <a href="resume.html" class="text-2xl font-serif text-white hover:text-[#ffd700] cursor-none">Resume</a>
-        <a href="otherlinks.html" class="text-2xl font-serif text-white hover:text-[#ffd700] cursor-none">Archives</a>
+        <button id="close-btn" class="absolute top-6 right-8 text-[#ffd700] text-5xl cursor-none focus:outline-none z-10">&times;</button>
 
-        <a href="contact.html" class="mt-4 btn gold-btn text-xs tracking-widest px-16 py-4 rounded-full uppercase cursor-none shadow-[0_0_20px_rgba(255,215,0,0.3)]">Contact Me</a>
+        <a href="index.html" class="relative z-10 text-3xl font-serif text-[#ffd700] drop-shadow-[0_0_10px_rgba(255,215,0,0.5)] cursor-none">Home</a>
+        <a href="about.html" class="relative z-10 text-2xl font-serif text-white/80 hover:text-[#ffd700] transition-colors cursor-none">About Me</a>
+        <a href="vanshavali.html" class="relative z-10 text-2xl font-serif text-white/80 hover:text-[#ffd700] transition-colors cursor-none">Vanshavali</a>
+        <a href="resume.html" class="relative z-10 text-2xl font-serif text-white/80 hover:text-[#ffd700] transition-colors cursor-none">Resume</a>
+        <a href="otherlinks.html" class="relative z-10 text-2xl font-serif text-white/80 hover:text-[#ffd700] transition-colors cursor-none">Archives</a>
+
+        <a href="contact.html" class="relative z-10 mt-6 btn gold-btn text-xs tracking-widest px-16 py-4 rounded-full uppercase cursor-none shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:scale-105 transition-transform">Contact Me</a>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-gradient-to-r from-transparent via-[#ffd700]/50 to-transparent pointer-events-none"></div>
     </div>
+
 
 </header>
