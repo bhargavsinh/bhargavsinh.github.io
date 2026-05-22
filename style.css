@@ -385,3 +385,14 @@ footer{
 
 }
 
+/* ઇનપુટ ફિલ્ડમાં લખેલું લખાણ દેખાય તે માટે */
+    input, textarea, select {
+        color: #1e293b !important; /* ડાર્ક ગ્રે કલર */
+        background-color: white !important;
+    }
+    
+    /* પ્લેસહોલ્ડર ટેક્સ્ટ માટે */
+    ::placeholder {
+        color: #94a3b8 !important;
+    }
+
