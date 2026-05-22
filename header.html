@@ -1,48 +1,55 @@
-<header class="fixed top-0 left-0 w-full z-[1000] bg-[#09000f]/80 backdrop-blur-lg border-b border-white/10 h-20 md:h-24 flex items-center px-6 md:px-[8%] lg:px-[10%] transition-all duration-300">
+<header class="fixed top-0 left-0 w-full z-[1000] bg-[#09000f]/85 backdrop-blur-xl border-b border-[#ffd700]/20 h-20 md:h-24 flex items-center px-[6%] md:px-[10%] transition-all duration-500">
 
     <nav class="w-full flex justify-between items-center">
 
-        <a href="index.html" class="flex items-center gap-4 group cursor-none">
-            <div class="relative p-1.5 rounded-full bg-white/5 border border-[#ffd700]/30 shadow-[0_0_15px_rgba(255,215,0,0.1)] group-hover:border-[#ffd700] transition-colors duration-500">
-                <img src="logo.png" alt="Logo" class="h-10 md:h-14 w-auto transition-transform duration-700 group-hover:rotate-[360deg]">
+        <div class="flex items-center gap-3 group cursor-none">
+            <div class="relative p-1 rounded-full border border-transparent group-hover:border-[#ffd700]/30 transition-all duration-500">
+                <img src="logo.png" alt="Logo" class="h-14 md:h-16 w-auto transition-transform duration-700 group-hover:rotate-[360deg] drop-shadow-[0_0_5px_rgba(255,215,0,0.3)]">
             </div>
-            <div class="flex flex-col">
-                <span class="text-xl md:text-2xl font-serif tracking-wider leading-none text-white drop-shadow-md">Bhargavsinh</span>
-                <span class="text-[8px] md:text-[9px] uppercase tracking-[0.4em] text-[#ffd700] font-bold mt-1">Sisodiya</span>
+            <div class="flex flex-col transform group-hover:translate-x-1 transition-transform duration-500">
+                <span class="text-lg md:text-xl font-serif tracking-[0.1em] leading-none text-white drop-shadow-md">Bhargavsinh</span>
+                <span class="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-[#ffd700] font-bold mt-1">Sisodiya</span>
             </div>
-        </a>
+        </div>
 
-        <ul class="hidden lg:flex gap-8 xl:gap-10 text-[11px] font-medium tracking-[0.2em] uppercase items-center">
-            <li class="relative group cursor-none">
-                <a href="index.html" class="text-[#ffd700] transition-all">Home</a>
-                <span class="absolute -bottom-2 left-0 w-full h-[2px] bg-[#ffd700] shadow-[0_0_8px_rgba(255,215,0,0.8)]"></span>
-            </li>
-            <li class="relative group cursor-none">
-                <a href="about.html" class="text-white/80 hover:text-[#ffd700] transition-all">About Me</a>
-                <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#ffd700] transition-all duration-300 group-hover:w-full"></span>
-            </li>
-            <li class="relative group cursor-none">
-                <a href="vanshavali.html" class="text-white/80 hover:text-[#ffd700] transition-all">Vanshavali</a>
-                <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#ffd700] transition-all duration-300 group-hover:w-full"></span>
-            </li>
-            <li class="relative group cursor-none">
-                <a href="resume.html" class="text-white/80 hover:text-[#ffd700] transition-all">Resume</a>
-                <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#ffd700] transition-all duration-300 group-hover:w-full"></span>
-            </li>
-            <li class="relative group cursor-none">
-                <a href="otherlinks.html" class="text-white/80 hover:text-[#ffd700] transition-all">Archives</a>
-                <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#ffd700] transition-all duration-300 group-hover:w-full"></span>
-            </li>
-        </ul>
+        <div class="hidden md:flex gap-8 lg:gap-12 text-[10px] font-bold tracking-[0.25em] uppercase items-center">
+            
+            <a href="index.html" class="relative group text-[#ffd700] cursor-none transition-colors duration-300">
+                <span class="relative z-10 drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">Home</span>
+                <span class="absolute -bottom-2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#ffd700] to-transparent"></span>
+            </a>
 
-        <button id="menu-btn" class="lg:hidden text-[#ffd700] focus:outline-none p-2 cursor-none hover:scale-110 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 drop-shadow-[0_0_5px_rgba(255,215,0,0.5)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16m-7 5h7" />
+            <a href="about.html" class="relative group text-white/70 hover:text-[#ffd700] cursor-none transition-colors duration-300">
+                <span class="relative z-10">About Me</span>
+                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-[#ffd700] transition-all duration-500 group-hover:w-full group-hover:shadow-[0_0_10px_rgba(255,215,0,0.8)]"></span>
+            </a>
+
+            <a href="vanshavali.html" class="relative group text-white/70 hover:text-[#ffd700] cursor-none transition-colors duration-300">
+                <span class="relative z-10">Vanshavali</span>
+                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-[#ffd700] transition-all duration-500 group-hover:w-full group-hover:shadow-[0_0_10px_rgba(255,215,0,0.8)]"></span>
+            </a>
+
+            <a href="resume.html" class="relative group text-white/70 hover:text-[#ffd700] cursor-none transition-colors duration-300">
+                <span class="relative z-10">Resume</span>
+                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-[#ffd700] transition-all duration-500 group-hover:w-full group-hover:shadow-[0_0_10px_rgba(255,215,0,0.8)]"></span>
+            </a>
+
+            <a href="otherlinks.html" class="relative group text-white/70 hover:text-[#ffd700] cursor-none transition-colors duration-300">
+                <span class="relative z-10">Archives</span>
+                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-[#ffd700] transition-all duration-500 group-hover:w-full group-hover:shadow-[0_0_10px_rgba(255,215,0,0.8)]"></span>
+            </a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden relative group text-[#ffd700] focus:outline-none p-2 cursor-none">
+            <span class="absolute inset-0 bg-[#ffd700]/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 relative z-10 transform group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
 
-        <a href="contact.html" class="hidden lg:flex items-center justify-center border border-[#ffd700]/50 text-[#ffd700] hover:bg-[#ffd700] hover:text-black hover:shadow-[0_0_20px_rgba(255,215,0,0.5)] text-[10px] py-2.5 px-8 rounded-full tracking-[0.2em] uppercase transition-all duration-500 cursor-none font-bold">
-            Contact
+        <a href="contact.html" class="hidden lg:flex items-center justify-center relative overflow-hidden group border border-[#ffd700]/50 px-8 py-2.5 rounded-full cursor-none transition-all duration-500 hover:border-[#ffd700] hover:shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:-translate-y-1 bg-[#09000f]">
+            <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-[#ffd700]/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+            <span class="relative text-[#ffd700] text-[10px] uppercase tracking-[0.3em] font-bold group-hover:text-white transition-colors duration-300">Contact</span>
         </a>
 
     </nav>
@@ -50,10 +57,9 @@
     <div id="mobile-menu" class="fixed inset-0 w-full h-screen z-[9999] translate-x-full transition-transform duration-500 md:hidden flex flex-col justify-center items-center gap-8 text-center bg-[#09000f]/95 backdrop-blur-3xl px-6 overflow-hidden">
 
         <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
-        
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-[#ffd700] rounded-full blur-[100px] opacity-10 pointer-events-none"></div>
 
-        <button id="close-btn" class="absolute top-6 right-8 text-[#ffd700] text-5xl cursor-none focus:outline-none z-10">&times;</button>
+        <button id="close-btn" class="absolute top-6 right-8 text-[#ffd700] text-5xl cursor-none focus:outline-none z-10 transition-transform hover:rotate-90 hover:scale-110 duration-300">&times;</button>
 
         <a href="index.html" class="relative z-10 text-3xl font-serif text-[#ffd700] drop-shadow-[0_0_10px_rgba(255,215,0,0.5)] cursor-none">Home</a>
         <a href="about.html" class="relative z-10 text-2xl font-serif text-white/80 hover:text-[#ffd700] transition-colors cursor-none">About Me</a>
@@ -61,7 +67,7 @@
         <a href="resume.html" class="relative z-10 text-2xl font-serif text-white/80 hover:text-[#ffd700] transition-colors cursor-none">Resume</a>
         <a href="otherlinks.html" class="relative z-10 text-2xl font-serif text-white/80 hover:text-[#ffd700] transition-colors cursor-none">Archives</a>
 
-        <a href="contact.html" class="relative z-10 mt-6 border border-[#ffd700] bg-[#ffd700]/10 text-[#ffd700] text-xs tracking-widest px-12 py-4 rounded-full uppercase cursor-none shadow-[0_0_20px_rgba(255,215,0,0.2)] hover:bg-[#ffd700] hover:text-black transition-all duration-300 font-bold">Contact Me</a>
+        <a href="contact.html" class="relative z-10 mt-6 border border-[#ffd700]/50 text-[#ffd700] text-xs tracking-widest px-16 py-4 rounded-full uppercase cursor-none shadow-[0_0_20px_rgba(255,215,0,0.1)] hover:shadow-[0_0_20px_rgba(255,215,0,0.4)] hover:bg-[#ffd700] hover:text-black transition-all duration-500 font-bold">Contact Me</a>
         
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-gradient-to-r from-transparent via-[#ffd700]/50 to-transparent pointer-events-none"></div>
     </div>
