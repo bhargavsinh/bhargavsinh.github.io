@@ -1,208 +1,61 @@
 <!DOCTYPE html>
-<html lang="gu" class="scroll-smooth">
+<html lang="gu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta name="robots" content="index, follow, noimageai, noarchive">
-    <meta name="copyright" content="© 2026 Sisodiya Bhargavsinh">
+    <title>Bhargavsinh Sisodiya | Contect</title>
+    <meta name="description" content="Official portfolio of Bhargavsinh Sisodiya — BCA student, author, Pushtimargiya Vaishnav, web developer, and 16th generation descendant of Maharana Pratap Singhji.">
+    <meta name="keywords" content="Bhargavsinh Sisodiya, Maharana Pratap descendant, Pushtimarg, web developer, Gujarat, portfolio">
     <meta name="author" content="Bhargavsinh Sisodiya">
-
-    <title>Contact & Appointment | Sisodiya Bhargavsinh</title>
     
-    <link rel="icon" type="image/webp" href="bhargavsinh.webp">
-
+    <meta property="og:title" content="Bhargavsinh Sisodiya | Portfolio">
+    <meta property="og:description" content="Official portfolio blending the legacy of Mewar with modern web technology and Pushtimargiya philosophy.">
+    <meta property="og:image" content="logo.png">
+    
+    <meta name="theme-color" content="#09000f">
+    <link rel="manifest" href="manifest.json">
+    
+    <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600&family=Noto+Serif+Gujarati:wght@400;700;800&family=Cinzel:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Noto+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'royal-maroon': '#6b0f1a',
-                        'divine-gold': '#d4af37',
-                        'saffron-glow': '#ff9933',
-                        'parchment': '#fdfaf0',
-                        'obsidian': '#1a1a1a'
-                    },
-                    fontFamily: {
-                        yatra: ['Yatra One', 'cursive'],
-                        noto: ['Noto Sans', 'sans-serif'],
-                        playfair: ['Playfair Display', 'serif'],
-                        inter: ['Inter', 'sans-serif'],
+                        'divine-gold': '#FFD700',
+                        'royal-purple': '#4B006E',
                     },
                     animation: {
-                        'float': 'floating 4s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'slideDown': 'slideDown 0.3s ease-out',
-                        'slideIn': 'slideIn 0.3s ease-out forwards',
-                    },
-                    keyframes: {
-                        floating: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
-                        slideDown: {
-                            '0%': { opacity: 0, transform: 'translateY(-10px)' },
-                            '100%': { opacity: 1, transform: 'translateY(0)' }
-                        },
-                        slideIn: {
-                            '0%': { opacity: 0, transform: 'translateY(-10px)' },
-                            '100%': { opacity: 1, transform: 'translateY(0)' }
-                        }
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
         }
     </script>
-
-    <style>
-        :root {
-            --cursor-size: 8px;
-            --cursor-outline-size: 40px;
-        }
-
-        body {
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            background-color: #fdfaf0;
-            overflow-x: hidden;
-            cursor: none;
-        }
-
-        /* Fluid Custom Cursor */
-        #cursor-dot { width: var(--cursor-size); height: var(--cursor-size); background: #d4af37; position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; }
-        #cursor-outline { width: var(--cursor-outline-size); height: var(--cursor-outline-size); border: 1.5px solid rgba(212, 175, 55, 0.6); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, border-color 0.2s; transition-timing-function: ease-out; }
-        
-        a:hover ~ #cursor-outline, button:hover ~ #cursor-outline, .cursor-pointer:hover ~ #cursor-outline {
-            width: 60px; height: 60px; border-color: rgba(107, 15, 26, 0.8); background-color: rgba(212, 175, 55, 0.05);
-        }
-
-        /* Premium Glassmorphism */
-        .glass-nav { 
-            background: rgba(253, 250, 240, 0.75); 
-            backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 20px 50px -10px rgba(107, 15, 26, 0.08);
-            transition: all 0.5s ease;
-        }
-
-        .glass-card:hover {
-            box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.15);
-        }
-
-        .bg-pattern {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            opacity: 0.04;
-            mix-blend-multiply: multiply;
-            background-image: radial-gradient(#d4af37 1.5px, transparent 1.5px);
-            background-size: 40px 40px;
-        }
-
-        /* Notification Box Logic */
-        #notif-box { display: none; }
-        #notif-box.show { display: block; animation: slideIn 0.3s ease-out forwards; }
-
-        @media print { body { display: none !important; } }
-        
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #fdfaf0; }
-        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #6b0f1a; }
-    </style>
 </head>
-<body class="font-inter text-slate-900 selection:bg-divine-gold/30 selection:text-royal-maroon cursor-none">
 
-    <div id="cursor-dot" class="hidden md:block"></div>
-    <div id="cursor-outline" class="hidden md:block"></div>
-    <div class="bg-pattern"></div>
-
-    <header class="fixed top-0 w-full z-[100] glass-nav border-b border-divine-gold/15 transition-all duration-300" id="main-nav">
-        <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-4 group cursor-none">
-                <div class="p-1 border border-divine-gold/30 rounded-xl bg-white/50 group-hover:border-divine-gold transition duration-500">
-                    <img src="logo.png" alt="Logo" class="h-10 transform group-hover:rotate-6 transition duration-500">
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-yatra text-royal-maroon text-xl md:text-2xl leading-none tracking-tight">Sisodiya Bhargavsinh</span>
-                    <span class="text-[8.5px] uppercase tracking-[0.3em] text-divine-gold font-bold mt-1">Heritage & Tech Professional</span>
-                </div>
-            </a>
-
-            <ul class="hidden lg:flex items-center gap-8 font-playfair font-bold text-[11px] uppercase tracking-[0.2em] text-slate-700">
-                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
-                    <a href="index.html">Home</a>
-                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
-                </li>
-                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
-                    <a href="about.html">About</a>
-                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
-                </li>
-                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
-                    <a href="pushtimarg.html">Pushtimarg</a>
-                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
-                </li>
-                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
-                    <a href="projects.html">Projects</a>
-                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
-                </li>
-                <li class="hover:text-royal-maroon transition-all relative group cursor-none">
-                    <a href="resume.html">Resume</a>
-                    <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-royal-maroon transition-all duration-300 group-hover:w-full"></span>
-                </li>
-                <li class="text-royal-maroon transition-all relative group cursor-none">
-                    <a href="contact.html">Contact</a>
-                    <span class="absolute -bottom-2 left-0 w-full h-0.5 bg-royal-maroon opacity-30"></span>
-                </li>
-            </ul>
-
-            <div class="flex items-center gap-4">
-                <button onclick="toggleNotif()" class="p-2.5 bg-white/50 border border-divine-gold/30 hover:bg-divine-gold/10 hover:border-divine-gold/60 rounded-full transition-all duration-300 relative group cursor-none focus:outline-none" aria-label="Notifications">
-                    <span class="text-lg filter drop-shadow-sm group-hover:scale-110 transition-transform">🔔</span>
-                    <span id="notif-badge" class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white hidden animate-pulse"></span>
-                </button>
-                <button onclick="toggleMobileMenu()" class="lg:hidden text-royal-maroon p-2 focus:outline-none cursor-none" aria-label="Toggle Menu">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </nav>
-
-        <div id="mobile-menu" class="hidden lg:hidden bg-parchment/98 backdrop-blur-2xl absolute w-full p-8 space-y-6 shadow-2xl border-b border-divine-gold/20 origin-top animate-[slideDown_0.3s_ease-out]">
-            <a href="index.html" class="block font-yatra text-slate-800 text-2xl hover:text-royal-maroon transition-colors">Home</a>
-            <a href="resume.html" class="block font-medium text-lg text-slate-600 hover:text-royal-maroon transition-colors">Resume</a>
-            <a href="otherlinks.html" class="block font-medium text-lg text-slate-600 hover:text-royal-maroon transition-colors">Other Links</a>
-            <a href="contact.html" class="block font-yatra text-royal-maroon text-2xl flex items-center gap-2">Contact <span class="text-[10px] bg-divine-gold/20 text-divine-gold px-2 py-1 rounded-full font-inter font-bold tracking-widest uppercase">Active</span></a>
+<body class="antialiased overflow-x-hidden">
+    <div class="bg-grid"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+        <div id="splash-screen" class="fixed inset-0 z-[10000] bg-[#09000f] flex flex-col items-center justify-center transition-opacity duration-700">
+        <div class="relative flex items-center justify-center group">
+            <div class="absolute inset-0 bg-[#FFD700] rounded-full blur-[60px] opacity-40 animate-pulse"></div>
+            <img src="logo.png" alt="Bhargavsinh Sisodiya Logo" class="relative z-10 w-80 h-80 md:w-[30rem] md:h-[30rem] object-contain drop-shadow-[0_0_15px_rgba(255,215,0,0.8)]">
         </div>
-    </header>
-
-    <div id="notif-box" class="fixed right-6 top-24 w-80 bg-white/95 backdrop-blur-xl rounded-[1.5rem] shadow-2xl shadow-divine-gold/10 border border-divine-gold/30 z-[110] overflow-hidden">
-        <div class="bg-gradient-to-r from-royal-maroon to-[#8a1422] text-divine-gold p-4 font-yatra flex justify-between items-center shadow-md">
-            <span class="tracking-widest text-lg">Updates</span>
-            <button onclick="toggleNotif()" class="text-2xl hover:text-white transition-colors cursor-none focus:outline-none">&times;</button>
-        </div>
-        <ul id="notif-list" class="max-h-72 overflow-y-auto divide-y divide-slate-100 font-inter">
-            <li class="p-6 text-center text-slate-400 font-medium">Loading updates...</li>
-        </ul>
     </div>
 
-    <main class="pt-48 pb-24 px-6 relative z-10">
+    <div id="cursor-dot" class="cursor-dot"></div>
+    <div id="cursor-outline" class="cursor-outline"></div>
+
+    <div id="header-container"></div>
+     <main class="pt-48 pb-24 px-6 relative z-10">
         <div class="absolute inset-0 opacity-[0.03] mix-blend-multiply pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
-        
+
         <div class="max-w-4xl mx-auto text-center mb-24 relative z-10" data-aos="fade-down" data-aos-duration="1200">
             <div class="inline-block relative animate-float">
                 <h1 class="font-yatra text-5xl md:text-7xl lg:text-8xl text-royal-maroon mb-6 relative z-10 drop-shadow-sm">સંપર્ક કરો</h1>
@@ -214,10 +67,9 @@
         </div>
 
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            
+
             <div class="glass-card p-10 md:p-14 rounded-[3rem] border-l-[8px] border-divine-gold relative overflow-hidden group" data-aos="fade-right" data-aos-offset="100">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-divine-gold/10 to-transparent rounded-bl-full transition-transform duration-700 group-hover:scale-110"></div>
-
                 <h3 class="font-yatra text-3xl md:text-4xl text-royal-maroon mb-14 flex items-center gap-5 relative z-10">
                     <span class="bg-gradient-to-br from-royal-maroon/10 to-transparent p-3.5 rounded-2xl border border-royal-maroon/10 shadow-sm filter drop-shadow-md">📍</span> સંપર્ક માહિતી
                 </h3>
@@ -243,7 +95,6 @@
                             </a>
                         </div>
                     </div>
-
                     <div class="pt-12 mt-12 border-t border-dashed border-divine-gold/30">
                         <span class="block font-bold text-slate-400 mb-8 text-sm uppercase tracking-[0.3em] font-inter">સોશિયલ મીડિયા:</span>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -260,7 +111,7 @@
                 </div>
             </div>
 
-            
+
                 <div class="bg-white/90 backdrop-blur-md rounded-[3rem] overflow-hidden h-auto relative border border-slate-100 pb-4">
 
                     <div class="absolute top-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-royal-maroon"></div>
@@ -271,14 +122,13 @@
     <div class="text-gray-600 space-y-3">
       <p>Welcome! Thank you for your interest in connecting.</p>
       <p>Please fill out this form to schedule an appointment regarding Technical Projects (BCA), Pushtimarg Inquiries, Historical Research, or General Discussions. I will review your request and get back to you within <strong>24-48 hours</strong> via Email or WhatsApp to confirm the final timing.</p>
-      
+
       <div class="bg-blue-50 p-4 rounded-md mt-4 text-sm text-blue-900 space-y-2">
         <p><strong>Note:</strong> Appointments are currently available only between 3:00 PM to 5:00 PM.</p>
         <p><strong>Note:</strong> Offline meetings will strictly be held at <strong>Anand Vihar Bhavan, Lunawada</strong>.</p>
         <p><strong>Note:</strong> By submitting, you agree to our <a href="https://bhargavsinh.github.io/disclaimer.html" target="_blank" class="text-blue-600 underline font-semibold">Legal Center (incl. Privacy Notice)</a>.</p>
     </div>
   </div>
-
   <!-- Form -->
 <div id="success-message" class="hidden flex-col items-center justify-center p-10 text-center animate-[slideIn_0.5s_ease-out]">
     <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6 border-2 border-green-500">
@@ -302,7 +152,7 @@
         <label class="font-semibold text-gray-700 mb-1">Your Name *</label>
         <input type="text" name="name" required class="p-2.5 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none">
       </div>
-      
+
       <div class="flex flex-col">
         <label class="font-semibold text-gray-700 mb-1">Email *</label>
         <input type="email" name="email" required class="p-2.5 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none">
@@ -370,7 +220,7 @@
     </div>
 
     <!-- Conditional Text Box (Hidden by default) -->
-    <div id="other-purpose-div" class="hidden flex-col">
+        <div id="other-purpose-div" class="hidden flex-col">
       <label class="font-semibold text-gray-700 mb-1">Please specify the purpose *</label>
       <input type="text" name="specific_purpose" id="specific-purpose-input" class="p-2.5 border border-gray-300 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none" placeholder="Enter details here...">
     </div>
@@ -384,7 +234,7 @@
     <!-- Terms and Conditions -->
     <div class="bg-gray-50 p-4 rounded-md border border-gray-200 space-y-3 mt-6">
       <p class="font-semibold text-gray-800">Terms & Conditions *</p>
-      
+
       <label class="flex items-start gap-3 cursor-pointer">
         <input type="checkbox" name="terms_time" required class="mt-1 w-4 h-4 text-blue-600 rounded">
         <span class="text-sm text-gray-700">I understand that the appointment time is strictly between 3:00 PM to 5:00 PM.</span>
@@ -416,7 +266,7 @@
     const purposeSelect = document.getElementById('purpose-select');
     const otherDiv = document.getElementById('other-purpose-div');
     const specificInput = document.getElementById('specific-purpose-input');
-    
+
     // Check if selected option is 'General Meet-up' or 'Other'
     if (purposeSelect.value === 'General Meet-up' || purposeSelect.value === 'Other') {
       otherDiv.classList.remove('hidden');
@@ -435,143 +285,141 @@
             </div>
 
         </div>
-    </main>
+ </main>
+     <div id="footer-container"></div>
 
-    <footer class="bg-obsidian text-white pt-28 pb-12 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-royal-maroon via-divine-gold to-royal-maroon"></div>
-        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/royal-feather.png');"></div>
+    <script>  
+    // 1. Custom Cursor Logic    
+    const cursorDot = document.getElementById('cursor-dot');    
+    const cursorOutline = document.getElementById('cursor-outline');    
 
-        <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
-            <div class="flex flex-wrap justify-center gap-10 mb-14 font-playfair text-xs uppercase tracking-[0.3em] text-slate-400">
-                <a href="disclaimer.html" class="hover:text-divine-gold transition-colors duration-300 cursor-none">Legal Disclaimer</a>
-                <a href="sitemap.xml" class="hover:text-divine-gold transition-colors duration-300 cursor-none">Sitemap</a>
-                <a href="robots.txt" class="hover:text-divine-gold transition-colors duration-300 cursor-none">Robots Index</a>
-            </div>
+    window.addEventListener('mousemove', (e) => {    
+        const posX = e.clientX;    
+        const posY = e.clientY;    
 
-            <div class="py-14 mb-14 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm rounded-[2.5rem] border border-white/10 relative overflow-hidden shadow-2xl">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-divine-gold/50"></div>
-                <h2 class="font-yatra text-3xl md:text-5xl text-divine-gold tracking-widest mb-4 drop-shadow-lg">
-                    Sisodiya Bhargavsinh Mahendrasinh
-                </h2>
-                <p class="text-[10px] md:text-xs uppercase tracking-[0.6em] text-slate-300 font-inter font-bold">
-                    16th Generation Descendant <span class="text-royal-maroon mx-2">✦</span> Digital Archivist
-                </p>
-                
-                <div id="google_translate_element" class="mt-8 inline-block overflow-hidden rounded-lg border border-white/20 filter drop-shadow-md"></div>
-            </div>
+        cursorDot.style.left = `${posX}px`;    
+        cursorDot.style.top = `${posY}px`;    
 
-            <div class="inline-block p-8 bg-black/40 rounded-[2rem] border border-white/5 shadow-2xl transition-transform hover:scale-105 duration-500 backdrop-blur-md cursor-none">
-                <p class="text-[10px] uppercase tracking-[0.4em] text-slate-400 mb-5 font-black flex items-center justify-center gap-3">
-                    <span class="w-4 h-[1px] bg-slate-600"></span> Secure Visitor Registry <span class="w-4 h-[1px] bg-slate-600"></span>
-                </p>
-                <img src="https://hitwebcounter.com/counter/counter.php?page=21466700&style=0005&nbdigits=5&type=page&initCount=0" 
-                     alt="Visitor Counter" 
-                     class="opacity-80 h-7 mx-auto filter brightness-150 contrast-125 hover:opacity-100 transition-opacity">
-            </div>
+        setTimeout(() => {    
+            cursorOutline.style.left = `${posX}px`;    
+            cursorOutline.style.top = `${posY}px`;    
+        }, 50);    
+    });    
 
-            <div class="mt-20 pt-10 border-t border-white/10 text-[10px] text-slate-500 uppercase tracking-[0.3em] font-inter">
-                &copy; 2026 Sisodiya Digital Estate. All Rights Reserved. 
-                <span class="block mt-5 font-black text-divine-gold/40 italic tracking-widest">"Heritage in Every Pixel, Honor in Every Line"</span>
-            </div>
-        </div>
-    </footer>
+    // 2. Scroll Reveal Logic    
+    function reveal() {    
+        var reveals = document.querySelectorAll(".reveal");    
+        for (var i = 0; i < reveals.length; i++) {    
+            var windowHeight = window.innerHeight;    
+            var elementTop = reveals[i].getBoundingClientRect().top;    
+            var elementVisible = 100;    
+            if (elementTop < windowHeight - elementVisible) {    
+                reveals[i].classList.add("active");    
+            }    
+        }    
+    }    
+    window.addEventListener("scroll", reveal);    
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
-    <script defer>
-        document.addEventListener('DOMContentLoaded', () => {
-            AOS.init({ duration: 1200, once: true, offset: 50, easing: 'ease-out-cubic' });
+    // 3. માસ્ટર લોડર: હેડર/ફૂટર લોડ થાય અને ટાઈમર પૂરું થાય પછી જ લોગો હટશે
+    document.addEventListener("DOMContentLoaded", async () => {    
+        document.body.style.overflow = 'hidden';    
+        const splashScreen = document.getElementById('splash-screen');    
 
-            // Modern Custom Cursor Logic
-            const dot = document.getElementById('cursor-dot');
-            const outline = document.getElementById('cursor-outline');
-            
-            if (window.matchMedia("(pointer: coarse)").matches || 'ontouchstart' in window) {
-                dot.style.display = 'none';
-                outline.style.display = 'none';
-                document.body.style.cursor = 'auto';
-                
-                const noCursorElements = document.querySelectorAll('.cursor-none');
-                noCursorElements.forEach(el => el.classList.remove('cursor-none'));
-            } else {
-                let mouseX = window.innerWidth / 2;
-                let mouseY = window.innerHeight / 2;
-                let outlineX = mouseX;
-                let outlineY = mouseY;
-                
-                window.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    dot.style.left = `${mouseX}px`;
-                    dot.style.top = `${mouseY}px`;
-                });
+        // ઓછામાં ઓછી ૨.૨૫ સેકન્ડની રાહ જોવી
+        const timer = new Promise(resolve => setTimeout(resolve, 2250));
 
-                const animateCursor = () => {
-                    const diffX = mouseX - outlineX;
-                    const diffY = mouseY - outlineY;
-                    outlineX += diffX * 0.15;
-                    outlineY += diffY * 0.15;
-                    
-                    outline.style.left = `${outlineX}px`;
-                    outline.style.top = `${outlineY}px`;
-                    requestAnimationFrame(animateCursor);
-                };
-                animateCursor();
-            }
-
-            // Scroll dynamics for Navigation
-            const nav = document.getElementById('main-nav');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    nav.classList.add('shadow-lg', 'bg-white/90');
-                    nav.classList.remove('border-divine-gold/15');
-                } else {
-                    nav.classList.remove('shadow-lg', 'bg-white/90');
-                    nav.classList.add('border-divine-gold/15');
-                }
-            });
-
-            // ULTRA SECURITY: Anti-Copy & Anti-Inspect
-            document.addEventListener('contextmenu', e => e.preventDefault());
-            document.onkeydown = function(e) {
-                if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
-                if(e.ctrlKey && e.keyCode == 85) return false;
-            };
-        });
-
-        // HEADER LOGIC
-        function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        }
-
-        // NOTIFICATION LOGIC
-        function toggleNotif() { 
-            const box = document.getElementById('notif-box');
-            box.classList.toggle('show');
-            if(box.classList.contains('show')) fetchNotifications();
-        }
-
-        async function fetchNotifications() {
-            const list = document.getElementById('notif-list');
+        // હેડર અને ફૂટર ખેંચવાનું લોજિક
+const loadComponents = async () => {
             try {
-                const res = await fetch('notifications.json?t=' + Date.now());
-                const data = await res.json();
-                list.innerHTML = data.map(item => `
-                    <li class="p-5 hover:bg-divine-gold/10 transition-colors border-l-4 border-transparent hover:border-royal-maroon cursor-none group">
-                        <small class="text-slate-400 block mb-2 text-[10px] font-bold uppercase tracking-widest">${item.date}</small>
-                        <a href="${item.link}" class="text-royal-maroon font-bold text-base block leading-snug group-hover:text-divine-gold transition-colors cursor-none">
-                            ${item.new ? '<span class="bg-gradient-to-r from-red-600 to-red-500 text-white px-2 py-0.5 rounded text-[9px] mr-2 tracking-widest shadow-sm">NEW</span>' : ''}${item.text}
-                        </a>
-                    </li>
-                `).join('');
-            } catch (e) { list.innerHTML = '<li class="p-6 text-center text-slate-500 italic font-medium">No recent updates.</li>'; }
-        }
+                const noCache = new Date().getTime();
+                const [headerRes, footerRes] = await Promise.all([
+                    fetch(`header.html?v=${noCache}`).then(r => r.text()),
+                    fetch(`footer.html?v=${noCache}`).then(r => r.text())
+                ]);
+                document.getElementById('header-container').innerHTML = headerRes;
+                document.getElementById('footer-container').innerHTML = footerRes;
+                setupMobileMenu();
+            } catch (err) {
+                console.error("Loading error:", err);
+            }
+        };
 
-        // GOOGLE TRANSLATE INIT
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({ pageLanguage: 'gu', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+        // બંને શરતો પૂરી થાય તેની રાહ જોવી
+        await Promise.all([timer, loadComponents()]);
+
+        // સ્પ્લેશ સ્ક્રીન હટાવવી
+        if (splashScreen) {
+            splashScreen.style.opacity = '0';    
+            setTimeout(() => {    
+                splashScreen.style.display = 'none';    
+                document.body.style.overflow = '';     
+                reveal(); // એનિમેશન એક્ટિવેટ કરવા
+            }, 700);    
         }
+    });
+
+    function setupMobileMenu() {    
+        const menuBtn = document.getElementById('menu-btn');    
+        const closeBtn = document.getElementById('close-btn');    
+        const mobileMenu = document.getElementById('mobile-menu');    
+        if(menuBtn && mobileMenu) {    
+            menuBtn.addEventListener('click', () => mobileMenu.classList.remove('translate-x-full'));    
+        }    
+        if(closeBtn && mobileMenu) {    
+            closeBtn.addEventListener('click', () => mobileMenu.classList.add('translate-x-full'));    
+        }    
+    }
     </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+    <script>
+    // 1. Right Click બ્લોક કરવા માટે
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // 2. કીબોર્ડ શોર્ટકટ્સ બ્લોક કરવા (Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S, F12)
+    document.onkeydown = function(e) {
+        // F12 (Developer Tools) રોકવા
+        if (e.keyCode == 123) {
+            return false;
+        }
+        // Ctrl+Shift+I (Inspect) રોકવા
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+            return false;
+        }
+        // Ctrl+Shift+J (Console) રોકવા
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+            return false;
+        }
+        // Ctrl+U (View Source) રોકવા
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            return false;
+        }
+        // Ctrl+C (Copy) રોકવા
+        if (e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) {
+            return false;
+        }
+        // Ctrl+V (Paste) રોકવા
+        if (e.ctrlKey && e.keyCode == 'V'.charCodeAt(0)) {
+            return false;
+        }
+        // Ctrl+S (Save Page) રોકવા
+        if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+            return false;
+        }
+    };
+
+    // 3. ઈમેજને પકડીને ખેંચી (Drag) ન શકાય તે માટે
+    document.addEventListener('dragstart', function(e) {
+        if (e.target.nodeName === 'IMG') {
+            e.preventDefault();
+        }
+    });
+
+    // 4. જો કોઈ DevTools ખોલવાનો પ્રયત્ન કરે તો કન્સોલ સાફ રાખવા
+    setInterval(function() {
+        console.clear();
+    }, 1000);
+</script>
 <script>
     const form = document.getElementById('appointment-form');
     const successMessage = document.getElementById('success-message');
@@ -586,7 +434,7 @@
         submitButton.innerHTML = 'Sending... <span class="animate-pulse">⏳</span>';
         submitButton.disabled = true;
         submitButton.classList.add('opacity-70', 'cursor-not-allowed');
-        
+
         errorMessage.classList.add('hidden'); // જૂની કોઈ એરર હોય તો છુપાવો
 
         const data = new FormData(event.target);
@@ -629,6 +477,6 @@
         }
     });
 </script>
-
 </body>
 </html>
+        
