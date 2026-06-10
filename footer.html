@@ -1,43 +1,63 @@
-<footer style="background: #3B2F2F; color: white; text-align: center; padding: 20px;" class="w-full relative mt-auto z-10">
-    <div class="max-w-7xl mx-auto flex flex-col items-center">
-        <!-- Logo -->
-        <img src="logo.png" alt="Logo" class="h-24 mb-6 opacity-40 hover:opacity-100 transition-opacity duration-500">
+<footer class="relative w-full mt-auto z-10 bg-[#120F0F] border-t border-amber-900/30 text-white/80 py-12">
+    <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
         
-        <!-- Name & Tagline -->
-        <h3 class="text- black -xl font-serif italic mb-1 text-primary">Bhargavsinh Sisodiya</h3>
-        <p class="text-gray-500 tracking-[0.3em] uppercase text-[9px] mb-10">Heritage • Code • Legacy</p>
-
-        <!-- Links -->
-        <div class="flex flex-wrap justify-center gap-6 md:gap-10 text-[9px] uppercase tracking-[0.2em] text-white/80 mb-8">
-            <a href="disclaimer.html" class="hover:text-primary transition-all cursor-none">Disclaimer</a>
-            <a href="privacy-policy.html" class="hover:text-primary transition-all cursor-none">Privacy Policy</a>
-            <a href="grievance.html" class="hover:text-primary transition-all cursor-none">Grievance</a>
+        <div class="flex flex-col items-center md:items-start">
+            <img src="logo.png" alt="Logo" class="h-16 mb-4 opacity-50 hover:opacity-100 transition-opacity duration-500">
+            <h3 class="text-2xl font-serif italic text-amber-500 mb-1">Bhargavsinh Sisodiya</h3>
+            <p class="text-white/40 tracking-[0.3em] uppercase text-[10px]">Heritage • Code • Legacy</p>
         </div>
 
-        <!-- Copyright (Fixed text size from 1px to 10px so it is readable) -->
-        <p class="text-black/60 text-[10px] tracking-[0.2em] text-center bg-white/5 px-6 py-2 rounded-full border border-white/5">© 2026 DIGITAL HEIR. CRAFTED FOR THE SOVEREIGN.</p>
-    </div>
-<div id="cookie-banner" class="fixed bottom-0 left-0 w-full z-[1000] p-6 bg-[#09000f]/95 backdrop-blur-xl border-t border-divine-gold/30 transform translate-y-full transition-transform duration-500">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <p class="text-white/80 text-sm font-inter text-center md:text-left">
-            We use cookies to enhance your browsing experience and ensure compliance with the <strong>DPDP Act, 2023</strong>. By continuing, you agree to our use of cookies.
-        </p>
-        <div class="flex gap-4">
-            <button id="accept-cookies" class="bg-divine-gold text-black px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest cursor-none hover:shadow-[0_0_20px_rgba(255,215,0,0.3)] transition-all">Accept</button>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-6 text-[10px] uppercase tracking-[0.2em] text-white/60">
+            <a href="disclaimer.html" class="hover:text-amber-500 transition-colors duration-300 cursor-pointer">Disclaimer</a>
+            <a href="privacy-policy.html" class="hover:text-amber-500 transition-colors duration-300 cursor-pointer">Privacy Policy</a>
+            <a href="grievance.html" class="hover:text-amber-500 transition-colors duration-300 cursor-pointer">Grievance</a>
+        </div>
+
+        <div class="flex justify-center md:justify-end">
+            <div class="text-white/50 text-[10px] tracking-[0.2em] text-right bg-white/5 px-5 py-3 rounded-lg border border-white/10 shadow-inner">
+                <p>© 2026 DIGITAL HEIR.</p>
+                <p class="text-amber-500/80 mt-1">CRAFTED FOR THE SOVEREIGN.</p>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        if (!localStorage.getItem("cookiesAccepted")) {
-            setTimeout(() => document.getElementById("cookie-banner").classList.remove("translate-y-full"), 2000);
-        }
-        document.getElementById("accept-cookies").addEventListener("click", () => {
-            localStorage.setItem("cookiesAccepted", "true");
-            document.getElementById("cookie-banner").classList.add("translate-y-full");
+    <div id="cookie-banner" class="fixed bottom-6 right-6 max-w-sm z-[1000] p-6 bg-[#1A1616]/95 backdrop-blur-xl border border-amber-600/20 rounded-2xl shadow-2xl transform translate-y-[120%] opacity-0 transition-all duration-700 ease-out">
+        <div class="flex flex-col gap-4">
+            <p class="text-white/80 text-xs font-sans leading-relaxed">
+                We use cookies to elevate your browsing experience and ensure compliance with the <strong class="text-amber-500">DPDP Act, 2023</strong>.
+            </p>
+            <div class="flex justify-end gap-3 mt-2">
+                <button id="decline-cookies" class="text-[10px] uppercase tracking-widest text-white/50 hover:text-white transition-colors px-4 py-2 cursor-pointer">Decline</button>
+                <button id="accept-cookies" class="bg-amber-600 hover:bg-amber-500 text-black px-6 py-2 rounded-lg font-bold text-[10px] uppercase tracking-widest cursor-pointer shadow-[0_0_15px_rgba(217,119,6,0.3)] transition-all">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const banner = document.getElementById("cookie-banner");
+            const acceptBtn = document.getElementById("accept-cookies");
+            const declineBtn = document.getElementById("decline-cookies");
+
+            // Check if user has already made a choice
+            if (!localStorage.getItem("cookiesHandled")) {
+                // Show banner after 1.5 seconds
+                setTimeout(() => {
+                    banner.classList.remove("translate-y-[120%]", "opacity-0");
+                }, 1500);
+            }
+
+            // Handle Accept
+            acceptBtn.addEventListener("click", () => {
+                localStorage.setItem("cookiesHandled", "accepted");
+                banner.classList.add("translate-y-[120%]", "opacity-0");
+            });
+
+            // Handle Decline
+            declineBtn.addEventListener("click", () => {
+                localStorage.setItem("cookiesHandled", "declined");
+                banner.classList.add("translate-y-[120%]", "opacity-0");
+            });
         });
-    });
-</script>
-
+    </script>
 </footer>
