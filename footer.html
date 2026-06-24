@@ -1,14 +1,45 @@
 <footer class="relative w-full mt-auto z-10 bg-[#0F0C0C] border-t border-amber-700/50 py-16">
-    <div class="max-w-7xl mx-auto px-6 md:px-8 flex flex-col items-center justify-center gap-12">
+    
+    <!-- NEWS SCROLLING NOTIFICATION BAR START -->
+    <div class="absolute top-0 left-0 w-full bg-[#120F0F] border-b border-amber-900/60 overflow-hidden flex items-center py-2 z-20 shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
+        <style>
+            @keyframes news-scroll {
+                0% { transform: translateX(100vw); }
+                100% { transform: translateX(-100%); }
+            }
+            .animate-news-scroll {
+                display: inline-block;
+                white-space: nowrap;
+                animation: news-scroll 35s linear infinite;
+            }
+            .animate-news-scroll:hover {
+                animation-play-state: paused;
+            }
+        </style>
+        <div class="animate-news-scroll text-amber-500 text-[11px] font-semibold tracking-[0.2em] uppercase">
+            <span class="mx-8 text-white">🔔 LATEST UPDATES:</span>
+            <span class="mx-8">🚀 PORTFOLIO VERSION 3.0 IS NOW LIVE</span>
+            <span class="text-amber-700/50 mx-2">|</span>
+            <span class="mx-8">⚖️ PREPARING FOR GPSC & LEGAL CONSULTANCY</span>
+            <span class="text-amber-700/50 mx-2">|</span>
+            <span class="mx-8">🏛️ ANAND VIHAR BHAVAN PROJECT INITIATED</span>
+            <span class="text-amber-700/50 mx-2">|</span>
+            <span class="mx-8">📰 VOICE OF BHARGAV UPDATES COMING SOON</span>
+        </div>
+    </div>
+    <!-- NEWS SCROLLING NOTIFICATION BAR END -->
 
+    <div class="max-w-7xl mx-auto px-6 md:px-8 flex flex-col items-center justify-center gap-12 mt-4">
+        <div> 
+        </div>
         <div class="flex flex-col items-center text-center">
             <img src="logo.png" alt="Bhargavsinh Sisodiya Logo"
-                 class="h-50 mb-5 opacity-100 drop-shadow-[0_0_12px_rgba(245,158,11,0.4)] hover:drop-shadow-[0_0_20px_rgba(245,158,11,0.6)] transition-all duration-500">
+                 class="h-42 mb-5 opacity-100 drop-shadow-[0_0_12px_rgba(245,158,11,0.4)] hover:drop-shadow-[0_0_20px_rgba(245,158,11,0.6)] transition-all duration-500">
             <h3 class="text-3xl font-serif italic text-amber-500 mb-2 font-bold tracking-wide">
-                Bhargavsinh Sisodiya
+                BHARGAVSINH SISODIYA
             </h3>
             <p class="text-gray-300 tracking-[0.3em] uppercase text-[11px] font-semibold">
-                Heritage • Code • Legacy
+                HERITAGE • CODE • LEGACY
             </p>
         </div>
 
@@ -35,7 +66,7 @@
     <div class="flex flex-col gap-4">
         <p class="text-gray-200 text-xs font-inter leading-relaxed">
             We use cookies to elevate your browsing experience and ensure compliance with the
-            <strong class="text-amber-400">DP Act, 2023</strong>.
+            <strong class="text-amber-400">Digital Personal Data Protection (DPDP) Act, 2023 </strong>.
         </p>
         <div class="flex justify-end gap-3">
             <button type="button" id="decline-cookies"
@@ -80,4 +111,5 @@ document.addEventListener("DOMContentLoaded", () => {
         window['ga-disable-GA_MEASUREMENT_ID'] = true; // Google Analytics
     });
 });
-</script>
+    </script>
+    
