@@ -7,18 +7,18 @@
     <meta name="description" content="Official portfolio of Bhargavsinh Sisodiya — BCA student, author, Pushtimargiya Vaishnav, web developer, and 16th generation descendant of Maharana Pratap Singhji.">
     <meta name="keywords" content="Bhargavsinh Sisodiya, Maharana Pratap descendant, Pushtimarg, web developer, Gujarat, portfolio">
     <meta name="author" content="Bhargavsinh Sisodiya">
-    
+
     <meta property="og:title" content="Bhargavsinh Sisodiya | Portfolio">
     <meta property="og:description" content="Official portfolio blending the legacy of Mewar with modern web technology and Pushtimargiya philosophy.">
     <meta property="og:image" content="logo.png">
-    
+
     <meta name="theme-color" content="#09000f">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" type="text/css" href="https://bhargavsinh.github.io/style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600&family=Noto+Serif+Gujarati:wght@400;700;800&family=Cinzel:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -41,7 +41,7 @@
     <div class="bg-grid"></div>
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
-    
+
     <div id="splash-screen" class="fixed inset-0 z-[10000] bg-[#09000f] flex flex-col items-center justify-center transition-opacity duration-700">
         <div class="relative flex items-center justify-center group">
             <div class="absolute inset-0 bg-[#FFD700] rounded-full blur-[60px] opacity-40 animate-pulse"></div>
@@ -53,7 +53,7 @@
     <div id="cursor-outline" class="cursor-outline"></div>
 
     <div id="header-container"></div>
-    
+
     <main>
         <section id="hero" class="hero reveal">
             <div class="hero-content">
@@ -143,13 +143,13 @@
         </section>
 
         <section class="section text-center reveal">
-            <center>
-            <h2 class="section-title">Journey & Connect</h2>
-            <div class="hero-buttons">
-                <a href="resume.html" class="btn gold-btn">Download Resume</a>
-                <a href="contact.html" class="btn glass-btn">Get in Touch</a>
+            <div class="flex flex-col items-center justify-center w-full">
+                <h2 class="section-title">Journey & Connect</h2>
+                <div class="hero-buttons">
+                    <a href="resume.html" class="btn gold-btn">Download Resume</a>
+                    <a href="contact.html" class="btn glass-btn">Get in Touch</a>
+                </div>
             </div>
-            </center>
         </section>
 
     </main>
@@ -164,10 +164,10 @@
     window.addEventListener('mousemove', (e) => {    
         const posX = e.clientX;    
         const posY = e.clientY;    
-            
+
         cursorDot.style.left = `${posX}px`;    
         cursorDot.style.top = `${posY}px`;    
-            
+
         setTimeout(() => {    
             cursorOutline.style.left = `${posX}px`;    
             cursorOutline.style.top = `${posY}px`;    
@@ -176,11 +176,11 @@
 
     // 2. Scroll Reveal Logic    
     function reveal() {    
-        var reveals = document.querySelectorAll(".reveal");    
-        for (var i = 0; i < reveals.length; i++) {    
-            var windowHeight = window.innerHeight;    
-            var elementTop = reveals[i].getBoundingClientRect().top;    
-            var elementVisible = 100;    
+        const reveals = document.querySelectorAll(".reveal");    
+        for (let i = 0; i < reveals.length; i++) {    
+            const windowHeight = window.innerHeight;    
+            const elementTop = reveals[i].getBoundingClientRect().top;    
+            const elementVisible = 100;    
             if (elementTop < windowHeight - elementVisible) {    
                 reveals[i].classList.add("active");    
             }    
@@ -192,7 +192,7 @@
     document.addEventListener("DOMContentLoaded", async () => {    
         document.body.style.overflow = 'hidden';    
         const splashScreen = document.getElementById('splash-screen');    
-        
+
         // ઓછામાં ઓછી ૨.૨૫ સેકન્ડની રાહ જોવી
         const timer = new Promise(resolve => setTimeout(resolve, 2250));
 
@@ -237,57 +237,56 @@
             closeBtn.addEventListener('click', () => mobileMenu.classList.add('translate-x-full'));    
         }    
     }
-    </script>
-    <script>
-    // 1. Right Click બ્લોક કરવા માટે
+
+    // 4. Right Click બ્લોક કરવા માટે
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
     });
 
-    // 2. કીબોર્ડ શોર્ટકટ્સ બ્લોક કરવા (Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S, F12)
+    // 5. કીબોર્ડ શોર્ટકટ્સ બ્લોક કરવા (Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S, F12)
     document.onkeydown = function(e) {
         // F12 (Developer Tools) રોકવા
-        if (e.keyCode == 123) {
+        if (e.keyCode === 123) {
             return false;
         }
         // Ctrl+Shift+I (Inspect) રોકવા
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 'I'.charCodeAt(0)) {
             return false;
         }
         // Ctrl+Shift+J (Console) રોકવા
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 'J'.charCodeAt(0)) {
             return false;
         }
         // Ctrl+U (View Source) રોકવા
-        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        if (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0)) {
             return false;
         }
         // Ctrl+C (Copy) રોકવા
-        if (e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) {
+        if (e.ctrlKey && e.keyCode === 'C'.charCodeAt(0)) {
             return false;
         }
         // Ctrl+V (Paste) રોકવા
-        if (e.ctrlKey && e.keyCode == 'V'.charCodeAt(0)) {
+        if (e.ctrlKey && e.keyCode === 'V'.charCodeAt(0)) {
             return false;
         }
         // Ctrl+S (Save Page) રોકવા
-        if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+        if (e.ctrlKey && e.keyCode === 'S'.charCodeAt(0)) {
             return false;
         }
     };
 
-    // 3. ઈમેજને પકડીને ખેંચી (Drag) ન શકાય તે માટે
+    // 6. ઈમેજને પકડીને ખેંચી (Drag) ન શકાય તે માટે
     document.addEventListener('dragstart', function(e) {
         if (e.target.nodeName === 'IMG') {
             e.preventDefault();
         }
     });
 
-    // 4. જો કોઈ DevTools ખોલવાનો પ્રયત્ન કરે તો કન્સોલ સાફ રાખવા
+    // 7. જો કોઈ DevTools ખોલવાનો પ્રયત્ન કરે તો કન્સોલ સાફ રાખવા
     setInterval(function() {
         console.clear();
     }, 1000);
-</script>
+    </script>
 
 </body>
 </html>
