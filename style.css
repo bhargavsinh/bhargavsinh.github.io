@@ -396,3 +396,11 @@ footer{
         color: #94a3b8 !important;
     }
 
+/* Google Font Import (આને ફાઇલમાં સૌથી ઉપર રાખવું) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;600;700&display=swap');
+
+/* Gujarati Font Class */
+.font-gujarati {
+    font-family: 'Noto Sans Gujarati', sans-serif !important;
+}
+
