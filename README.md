@@ -10,7 +10,7 @@ This README.md is designed to be the comprehensive "Master Document" for your re
  7. Legal & Compliance
  8. Author Information
 ## 🏛️ Introduction
-The **Official Research & Heritage Portal (V2.1)** is a high-performance digital repository meticulously crafted to bridge the gap between 16th-generation Rajput lineage documentation and modern web-based academic dissemination.
+The **Official Research & Heritage Portal (V10.0)** is a high-performance digital repository meticulously crafted to bridge the gap between 16th-generation Rajput lineage documentation and modern web-based academic dissemination.
 This platform serves as the central hub for **Sisodiya Bhargavsinh Mahendrasinh**, acting simultaneously as a scholarly research repository, a professional BCA-level programming portfolio, and a historical archive of the *Purawat Sisodiya* lineage.
 ## 💎 Heritage & Philosophy
 This portal is built upon three core pillars:
