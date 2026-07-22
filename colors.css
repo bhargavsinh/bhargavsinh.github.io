@@ -1,0 +1,9 @@
+/* વેબસાઇટના તમામ મુખ્ય કલર્સ */
+:root {
+    --primary-color: #1a365d;    /* મુખ્ય કલર (હેડર અને બટન માટે - Dark Blue) */
+    --accent-color: #e53e3e;     /* હાઇલાઇટ કલર (બટન હોવર કે સ્પેશિયલ લિંક માટે) */
+    --bg-color: #f7fafc;         /* આખા પેજનું બેકગ્રાઉન્ડ કલર (Light Grayish Blue) */
+    --card-bg: #ffffff;          /* લખાણ રહે તે બોક્સનું બેકગ્રાઉન્ડ (Pure White) */
+    --text-color: #2d3748;       /* લખાણનો કલર (Dark Charcoal - વાંચવામાં સરળ) */
+    --border-color: #e2e8f0;     /* બોર્ડર માટે આછો કલર */
+}

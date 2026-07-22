@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="gu" class="overflow-x-hidden">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Bhargavsinh Sisodiya</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS ફાઇલ્સ લિંક -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="colors.css">
+    <link rel="stylesheet" href="responsive.css">
+    
+    <!-- કસ્ટમ કલર્સ -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'royal-maroon': '#800000',
+                        'divine-gold': '#FFD700',
+                        'saffron-glow': '#FF9933'
+                    },
+                    fontFamily: {
+                        'yatra': ['"Yatra One"', 'cursive'],
+                        'noto': ['"Noto Sans Gujarati"', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'playfair': ['"Playfair Display"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0d0a0a] text-amber-100 min-h-screen font-sans w-full max-w-full overflow-x-hidden flex flex-col justify-between">
+
+    <!-- ૧. હેડર અહીં ઓટોમેટિક લોડ થશે -->
+    <div id="header-container" class="w-full"></div>
+
+    <!-- ૨. મુખ્ય કન્ટેન્ટ એરિયા -->
+    <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-20 my-auto space-y-8 overflow-hidden">
+        <br>
+        
+        <!-- કન્ટેન્ટ કન્ટેનર (Dark Royal Theme) -->
+        <div class="bg-[#120F0F] rounded-[2rem] sm:rounded-[2.5rem] p-8 sm:p-12 md:p-16 shadow-[0_0_40px_rgba(245,158,11,0.15)] relative border border-amber-900/50 text-center space-y-6">
+            
+            <!-- ગ્લોઇંગ બેજ -->
+            <div class="inline-flex justify-center">
+                <span class="text-xs text-amber-300 bg-amber-950/80 border border-amber-800/60 px-4 py-1.5 rounded-full flex items-center gap-2 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Under Active Development
+                </span>
+            </div>
+
+            <!-- મુખ્ય હેડિંગ -->
+            <div class="space-y-3">
+                <h1 class="font-yatra text-4xl sm:text-6xl md:text-7xl text-divine-gold drop-shadow-lg tracking-wide">Coming Soon</h1>
+                <p class="text-white/80 font-playfair italic text-lg md:text-2xl font-medium">
+                    Innovative Projects & Digital Tools
+                </p>
+            </div>
+
+            <!-- વિગતવાર લખાણ -->
+            <p class="text-amber-100/80 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-light">
+                Full-stack web applications, interactive software solutions, and specialized digital archiving tools (including web development projects and custom systems) are currently being crafted with precision and dedication. Stay tuned for the official release!
+            </p>
+
+            <!-- હોમપેજ પર પાછા જવા માટેનું બટન -->
+            <div class="pt-6">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-400 text-black font-bold text-sm px-8 py-3 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:shadow-[0_0_30px_rgba(245,158,11,0.7)] hover:scale-105 transition-all duration-300">
+                    <span>←</span> Back to Home
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ૩. ફૂટર અહીં ઓટોમેટિક લોડ થશે -->
+    <div id="footer-container" class="w-full"></div>
+
+    <!-- ૪. જાવાસ્ક્રિપ્ટ ફાઇલ્સ -->
+    <script src="script.js"></script>
+
+</body>
+</html>

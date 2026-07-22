@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Bhargavsinh Sisodiya</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS ફાઇલ્સ લિંક -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="colors.css">
+    <link rel="stylesheet" href="responsive.css">
+    
+    <!-- કસ્ટમ કલર્સ -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'royal-maroon': '#800000',
+                        'divine-gold': '#FFD700',
+                        'saffron-glow': '#FF9933'
+                    },
+                    fontFamily: {
+                        'yatra': ['"Yatra One"', 'cursive'],
+                        'noto': ['"Noto Sans Gujarati"', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0d0a0a] text-amber-100 min-h-screen font-sans w-full max-w-full overflow-x-hidden">
+
+    <!-- ૧. હેડર અહીં ઓટોમેટિક લોડ થશે -->
+    <div id="header-container" class="w-full"></div>
+
+    <!-- ૨. મુખ્ય કન્ટેન્ટ એરિયા -->
+    <main class="w-full max-w-4xl mx-auto px-3 sm:px-6 py-6 md:py-10 space-y-8 overflow-hidden">
+        <br>
+        
+        <!-- મુખ્ય કન્ટેન્ટ કન્ટેનર -->
+        <div class="bg-[#fdfbf7] w-full max-w-full rounded-[2rem] sm:rounded-[2.5rem] p-5 sm:p-8 md:p-10 shadow-[0_0_30px_rgba(245,158,11,0.15)] relative overflow-hidden border border-amber-900/30">
+            
+            <!-- સંપર્ક માહિતી વિભાગ -->
+            <div class="max-w-3xl mx-auto mb-8 sm:mb-10 w-full">
+                <h1 class="font-yatra text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-royal-maroon mb-4 md:mb-5 relative z-10 drop-shadow-sm text-center sm:text-left">સંપર્ક કરો</h1>
+                <p class="text-slate-600 text-sm sm:text-base md:text-lg font-noto mb-6 md:mb-8 relative z-10 leading-relaxed text-center sm:text-left">
+                    ટેકનિકલ પ્રોજેક્ટ, ઇતિહાસ સંશોધન અથવા પુષ્ટિમાર્ગ અંગે ચર્ચા કરવા માટે આપ મારો સંપર્ક કરી શકો છો.
+                </p>
+
+                <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-royal-maroon mb-5 md:mb-6 flex items-center justify-center sm:justify-start gap-3 relative z-10">
+                    <span class="bg-gradient-to-br from-royal-maroon/10 to-transparent p-2.5 sm:p-3 rounded-2xl border border-royal-maroon/10 shadow-sm filter drop-shadow-md">📍</span> સંપર્ક માહિતી
+                </h3>
+
+                <div class="space-y-6 md:space-y-8 relative z-10 pl-1 sm:pl-4 w-full">
+                    <!-- સરનામું -->
+                    <div class="flex items-start gap-4 sm:gap-5 group/item cursor-pointer w-full">
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white border border-divine-gold/40 flex items-center justify-center text-2xl md:text-3xl group-hover/item:bg-royal-maroon group-hover/item:text-white group-hover/item:border-royal-maroon transition-all duration-500 shadow-sm group-hover/item:shadow-lg transform group-hover/item:-translate-y-1 shrink-0">🏠</div>
+                        <div class="pt-1 flex-1 min-w-0">
+                            <span class="block font-bold text-royal-maroon text-base sm:text-lg md:text-xl mb-1 md:mb-1.5 tracking-wide font-noto">સરનામું:</span>
+                            <p class="text-slate-600 leading-relaxed font-noto text-sm sm:text-base font-medium break-words">
+                                ચુંથાના મુવાડા, તાલુકો: ગોધરા,<br>
+                                જીલ્લો: પંચમહાલ, ગુજરાત - ૩૮૯૨૩૦
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ઈમેલ -->
+                    <div class="flex items-start gap-4 sm:gap-5 group/item cursor-pointer w-full">
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white border border-divine-gold/40 flex items-center justify-center text-2xl md:text-3xl group-hover/item:bg-royal-maroon group-hover/item:text-white group-hover/item:border-royal-maroon transition-all duration-500 shadow-sm group-hover/item:shadow-lg transform group-hover/item:-translate-y-1 shrink-0">📧</div>
+                        <div class="pt-1 flex-1 min-w-0">
+                            <span class="block font-bold text-royal-maroon text-base sm:text-lg md:text-xl mb-1 md:mb-1.5 tracking-wide font-noto">ઈમેલ:</span>
+                            <a href="mailto:bhargavsinh.bca@gmail.com" class="text-slate-700 font-bold hover:text-divine-gold transition-colors text-sm sm:text-base md:text-lg border-b border-divine-gold/30 pb-0.5 inline-block break-words whitespace-normal w-full">
+                                bhargavsinh.bca@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- સોશિયલ મીડિયા -->
+                    <div class="pt-6 mt-6 md:pt-8 md:mt-8 border-t border-dashed border-divine-gold/50 w-full">
+                        <span class="block font-bold text-slate-400 mb-4 text-xs uppercase tracking-[0.2em] font-inter text-center sm:text-left">સોશિયલ મીડિયા:</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                            <a href="https://wa.me/message/2Q3XY4RZ22IJK1" target="_blank" class="flex items-center gap-3 p-3.5 md:p-4 bg-white/80 backdrop-blur-sm rounded-2xl border border-divine-gold/30 hover:border-green-500 hover:bg-green-500 hover:text-white transition-all duration-500 shadow-sm hover:shadow-xl transform hover:-translate-y-1 group/social w-full">
+                                <span class="text-2xl filter drop-shadow-sm group-hover/social:scale-110 transition-transform">💬</span> 
+                                <span class="font-bold text-sm tracking-wide font-inter text-slate-700 group-hover/social:text-white">WhatsApp</span>
+                            </a>
+                            <a href="https://instagram.com/bs_pushtisoul" target="_blank" class="flex items-center gap-3 p-3.5 md:p-4 bg-white/80 backdrop-blur-sm rounded-2xl border border-divine-gold/30 hover:border-transparent hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-500 hover:to-orange-500 hover:text-white transition-all duration-500 shadow-sm hover:shadow-xl transform hover:-translate-y-1 group/social w-full">
+                                <span class="text-2xl filter drop-shadow-sm group-hover/social:scale-110 transition-transform">📸</span> 
+                                <span class="font-bold text-sm tracking-wide font-inter text-slate-700 group-hover/social:text-white">Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- એપોઈન્ટમેન્ટ ફોર્મ વિભાગ -->
+            <div class="bg-white/90 backdrop-blur-md rounded-2xl md:rounded-3xl overflow-hidden h-auto relative border border-slate-200 shadow-lg mt-6 md:mt-8 max-w-3xl mx-auto w-full">
+                <div class="absolute top-0 w-full h-1.5 bg-gradient-to-r from-divine-gold via-saffron-glow to-royal-maroon"></div>
+                <div class="p-4 sm:p-6 md:p-8 w-full">
+                    
+                    <!-- Header & Description -->
+                    <div class="mb-5 md:mb-6 border-b pb-4 md:pb-5">
+                        <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 md:mb-3">Book Appointment - Sisodiya Bhargavsinh</h2>
+                        <div class="text-gray-600 space-y-2 font-medium text-xs sm:text-sm md:text-base">
+                            <p>Welcome! Thank you for your interest in connecting.</p>
+                            <p>Please fill out this form to schedule an appointment regarding Technical Projects (BCA), Pushtimarg Inquiries, Historical Research, or General Discussions. I will review your request and get back to you within <strong>24-48 hours</strong> via Email or WhatsApp to confirm the final timing.</p>
+
+                            <div class="bg-blue-50/80 p-3 md:p-4 rounded-lg mt-3 md:mt-4 border border-blue-100 text-xs sm:text-sm text-blue-900 space-y-1.5 md:space-y-2">
+                                <p class="flex items-start md:items-center gap-2"><span class="text-base md:text-lg mt-0.5 md:mt-0">⏰</span> <strong>Note:</strong> Appointments are currently available only between 3:00 PM to 5:00 PM.</p>
+                                <p class="flex items-start md:items-center gap-2"><span class="text-base md:text-lg mt-0.5 md:mt-0">🏛️</span> <strong>Note:</strong> Offline meetings will strictly be held at <strong>Anand Vihar Bhavan, Lunawada</strong>.</p>
+                                <p class="flex items-start md:items-center gap-2"><span class="text-base md:text-lg mt-0.5 md:mt-0">⚖️</span> <strong>Note:</strong> By submitting, you agree to our <a href="https://bhargavsinh.github.io/disclaimer.html" target="_blank" class="text-blue-600 underline hover:text-blue-800 transition-colors font-semibold break-all">Legal Center</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success / Error Messages -->
+                    <div id="success-message" class="hidden flex-col items-center justify-center p-5 md:p-6 bg-green-50 border border-green-200 rounded-xl text-center animate-[slideIn_0.5s_ease-out] mb-5">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-green-100 rounded-full flex items-center justify-center mb-3 border-2 border-green-500">
+                            <svg class="w-6 h-6 md:w-7 md:h-7 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold text-slate-800 mb-1">આભાર!</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm md:text-base">તમારી એપોઇન્ટમેન્ટ રિક્વેસ્ટ સફળતાપૂર્વક મોકલાઈ ગઈ છે. હું ટૂંક સમયમાં તમારો સંપર્ક કરીશ.</p>
+                    </div>
+
+                    <div id="error-message" class="hidden p-3 mb-5 bg-red-50 border border-red-200 text-red-600 rounded-lg text-center font-medium text-xs sm:text-sm">
+                        માફ કરશો, ફોર્મ સબમિટ કરવામાં કોઈ ભૂલ થઈ છે. કૃપા કરીને ફરી પ્રયાસ કરો.
+                    </div>
+
+                    <!-- Form -->
+                    <form id="appointment-form" action="https://formspree.io/f/meenngke" method="POST" class="space-y-4 md:space-y-5 text-sm md:text-base w-full">
+                        <input type="hidden" name="_subject" value="New Appointment Request!">
+
+                        <!-- Personal Information -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 w-full">
+                            <div class="flex flex-col w-full">
+                                <label class="font-semibold text-gray-700 mb-1">Your Name *</label>
+                                <input type="text" name="name" required class="w-full p-2.5 border border-gray-300 rounded-lg focus:border-royal-maroon focus:ring-1 focus:ring-royal-maroon outline-none transition-colors text-slate-800">
+                            </div>
+
+                            <div class="flex flex-col w-full">
+                                <label class="font-semibold text-gray-700 mb-1">Email *</label>
+                                <input type="email" name="email" required class="w-full p-2.5 border border-gray-300 rounded-lg focus:border-royal-maroon focus:ring-1 focus:ring-royal-maroon outline-none transition-colors text-slate-800">
+                            </div>
+
+                            <div class="flex flex-col w-full">
+                                <label class="font-semibold text-gray-700 mb-1">Contact Number *</label>
+                                <input type="tel" name="phone" required class="w-full p-2.5 border border-gray-300 rounded-lg focus:border-royal-maroon focus:ring-1 focus:ring-royal-maroon outline-none transition-colors text-slate-800" placeholder="+91">
+                                <label class="flex items-center gap-2 mt-2 cursor-pointer">
+                                    <input type="checkbox" name="is_whatsapp" value="Yes" class="w-4 h-4 text-green-600 rounded border-gray-300 focus:ring-green-500 shrink-0">
+                                    <span class="text-xs sm:text-sm text-gray-600 font-medium">This is my WhatsApp number</span>
+                                </label>
+                            </div>
+
+                            <div class="flex flex-col w-full">
+                                <label class="font-semibold text-gray-700 mb-1">Preferred Date *</label>
+                                <input type="date" name="preferred_date" required class="w-full p-2.5 border border-gray-300 rounded-lg focus:border-royal-maroon focus:ring-1 focus:ring-royal-maroon outline-none transition-colors text-slate-800">
+                            </div>
+                        </div>
+
+                        <!-- Preferences -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 w-full">
+                            <div class="flex flex-col w-full">
+                                <label class="font-semibold text-gray-800 mb-1.5">Preferred Time *</label>
+                                <div class="flex flex-wrap gap-3 md:gap-4 p-2 border border-gray-200 rounded-lg bg-gray-50/50">
+                                    <label class="flex items-center gap-2 text-slate-900 font-medium cursor-pointer">
+                                        <input type="radio" name="preferred_time" value="3:00 PM" required class="w-4 h-4 text-royal-maroon focus:ring-royal-maroon shrink-0"> 3:00 PM
+                                    </label>
+                                    <label class="flex items-center gap-2 text-slate-900 font-medium cursor-pointer">
+                                        <input type="radio" name="preferred_time" value="4:00 PM" required class="w-4 h-4 text-royal-maroon focus:ring-royal-maroon shrink-0"> 4:00 PM
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col w-full">
+                                <label class="font-semibold text-gray-800 mb-1.5">Preferred Mode *</label>
+                                <div class="flex flex-wrap gap-3 md:gap-4 p-2 border border-gray-200 rounded-lg bg-gray-50/50">
+                                    <label class="flex items-center gap-2 text-slate-900 font-medium cursor-pointer">
+                                        <input type="radio" name="preferred_mode" value="Online" required class="w-4 h-4 text-royal-maroon focus:ring-royal-maroon shrink-0"> Online
+                                    </label>
+                                    <label class="flex items-center gap-2 text-slate-900 font-medium cursor-pointer">
+                                        <input type="radio" name="preferred_mode" value="Offline" required class="w-4 h-4 text-royal-maroon focus:ring-royal-maroon shrink-0"> Offline
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Purpose & Duration -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 w-full">
+                            <div class="flex flex-col w-full">
+                                <label class="font-semibold text-gray-700 mb-1">Purpose of Meeting *</label>
+                                <select name="meeting_purpose" id="purpose-select" required onchange="toggleOtherPurpose()" class="w-full p-2.5 border border-gray-300 rounded-lg focus:border-royal-maroon focus:ring-1 focus:ring-royal-maroon outline-none bg-white text-slate-800 cursor-pointer">
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Technical/Project Discussion">1. Technical/Project Discussion</option>
+                                    <option value="Pushtimarg/Spiritual Inquiry">2. Pushtimarg/Spiritual Inquiry</option>
+                                    <option value="History/Genealogy Research">3. History/Genealogy Research</option>
+                                    <option value="General Meet-up">4. General Meet-up</option>
+                                    <option value="Other">5. Other</option>
+                                </select>
+                            </div>
+
+                            <div class="flex flex-col w-full">
+                                <label class="font-semibold text-gray-700 mb-1">Duration of Meeting *</label>
+                                <select name="meeting_duration" required class="w-full p-2.5 border border-gray-300 rounded-lg focus:border-royal-maroon focus:ring-1 focus:ring-royal-maroon outline-none bg-white text-slate-800 cursor-pointer">
+                                    <option value="" disabled selected>Select duration</option>
+                                    <option value="15 Minutes">15 Minutes</option>
+                                    <option value="30 Minutes">30 Minutes</option>
+                                    <option value="1 Hour">1 Hour</option>
+                                    <option value="More than 1 Hour">More than 1 Hour</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Conditional Text Box -->
+                        <div id="other-purpose-div" class="hidden flex-col animate-[fadeIn_0.3s_ease-in-out] w-full">
+                            <label class="font-semibold text-gray-700 mb-1">Please specify the purpose *</label>
+                            <input type="text" name="specific_purpose" id="specific-purpose-input" class="w-full p-2.5 border border-gray-300 rounded-lg focus:border-royal-maroon focus:ring-1 focus:ring-royal-maroon outline-none text-slate-800" placeholder="Enter details here...">
+                        </div>
+
+                        <!-- Message -->
+                        <div class="flex flex-col w-full">
+                            <label class="font-semibold text-gray-700 mb-1">Any specific message or topic?</label>
+                            <textarea name="message" rows="3" class="w-full p-2.5 border border-gray-300 rounded-lg focus:border-royal-maroon focus:ring-1 focus:ring-royal-maroon outline-none resize-none text-slate-800" placeholder="Briefly describe what you would like to discuss..."></textarea>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="bg-gray-50 p-3 md:p-4 rounded-xl border border-gray-200 space-y-2.5 md:space-y-3 mt-4 md:mt-5 w-full">
+                            <p class="font-bold text-gray-800 border-b border-gray-200 pb-1.5 text-xs md:text-sm">Terms & Conditions *</p>
+
+                            <label class="flex items-start gap-2.5 cursor-pointer group">
+                                <input type="checkbox" name="terms_time" required class="mt-1 w-4 h-4 text-royal-maroon rounded border-gray-300 focus:ring-royal-maroon shrink-0">
+                                <span class="text-xs md:text-sm text-gray-700 group-hover:text-black transition-colors">I understand that the appointment time is strictly between 3:00 PM to 5:00 PM.</span>
+                            </label>
+
+                            <label class="flex items-start gap-2.5 cursor-pointer group">
+                                <input type="checkbox" name="terms_expense" required class="mt-1 w-4 h-4 text-royal-maroon rounded border-gray-300 focus:ring-royal-maroon shrink-0">
+                                <span class="text-xs md:text-sm text-gray-700 group-hover:text-black transition-colors">I agree that for offline meetings, I am responsible for my own travel, food, and stay expenses.</span>
+                            </label>
+                        </div>
+
+                        <!-- Honeypot -->
+                        <input type="text" name="_gotcha" class="hidden" />
+
+                        <!-- Submit Button -->
+                        <div class="mt-5 md:mt-6 pt-2 w-full">
+                            <button id="submit-button" type="submit" class="w-full sm:w-auto bg-gradient-to-r from-royal-maroon to-red-800 hover:from-red-800 hover:to-royal-maroon text-white font-bold py-2.5 md:py-3 px-6 md:px-8 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-0.5 text-sm md:text-base">
+                                Request Appointment 
+                                <span class="ml-1.5">→</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ૩. ફૂટર અહીં ઓટોમેટિક લોડ થશે -->
+    <div id="footer-container" class="w-full"></div>
+
+    <!-- ૪. જાવાસ્ક્રિપ્ટ ફાઇલ્સ -->
+    <script src="script.js"></script>
+
+    <!-- ફોર્મ માટે કસ્ટમ સ્ક્રિપ્ટ (Dropdown & AJAX Submit) -->
+    <script>
+        function toggleOtherPurpose() {
+            const purposeSelect = document.getElementById('purpose-select');
+            const otherDiv = document.getElementById('other-purpose-div');
+            const specificInput = document.getElementById('specific-purpose-input');
+
+            if (purposeSelect.value === 'General Meet-up' || purposeSelect.value === 'Other') {
+                otherDiv.classList.remove('hidden');
+                otherDiv.classList.add('flex');
+                specificInput.setAttribute('required', 'true');
+            } else {
+                otherDiv.classList.add('hidden');
+                otherDiv.classList.remove('flex');
+                specificInput.removeAttribute('required');
+                specificInput.value = ''; 
+            }
+        }
+
+        const form = document.getElementById('appointment-form');
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            
+            const btn = document.getElementById('submit-button');
+            const originalBtnText = btn.innerHTML;
+            btn.innerHTML = 'Submitting...';
+            btn.disabled = true;
+
+            const status = document.getElementById('success-message');
+            const errorMsg = document.getElementById('error-message');
+            const data = new FormData(event.target);
+            
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    status.classList.remove('hidden');
+                    status.classList.add('flex');
+                    errorMsg.classList.add('hidden');
+                    form.reset();
+                    toggleOtherPurpose(); 
+                    form.style.display = 'none'; 
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            errorMsg.textContent = data["errors"].map(error => error["message"]).join(", ");
+                        }
+                        errorMsg.classList.remove('hidden');
+                    });
+                }
+            }).catch(error => {
+                errorMsg.classList.remove('hidden');
+            }).finally(() => {
+                btn.innerHTML = originalBtnText;
+                btn.disabled = false;
+            });
+        });
+    </script>
+
+</body>
+</html>

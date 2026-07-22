@@ -1,0 +1,105 @@
+/* ==========================================
+   મોબાઇલ અને ટેબ્લેટ માટે Responsive CSS
+   ========================================== */
+
+/* ૧. ટેબ્લેટ અને મોટા મોબાઇલ માટે (768px કે તેથી નાની સ્ક્રીન) */
+@media screen and (max-width: 768px) {
+
+    /* --- હેડર અને નેવિગેશન મેનુ --- */
+    header {
+        flex-direction: column; /* લોગો અને મેનુને એકબીજાની નીચે લાવશે */
+        text-align: center;
+        padding: 15px 20px;
+        gap: 15px;
+    }
+
+    .navbar ul {
+        justify-content: center; /* મેનુ લિંક્સને વચોવચ ગોઠવશે */
+        gap: 8px;
+    }
+
+    .navbar ul li a {
+        padding: 8px 12px;
+        font-size: 14px; /* અક્ષરો થોડા નાના કરશે જેથી સરળતાથી સેટ થાય */
+    }
+
+    /* --- ફૂટર ડિઝાઇન --- */
+    .footer-container {
+        flex-direction: column; /* ફૂટરના ત્રણેય વિભાગોને એકબીજાની નીચે ગોઠવશે */
+        text-align: center;
+        gap: 25px;
+    }
+
+    .footer-section h3, 
+    .footer-section h4 {
+        display: inline-block;
+    }
+
+    .footer-section ul li a:hover {
+        padding-left: 0; /* મોબાઇલમાં ખસવાની ઇફેક્ટ બંધ કરી સ્પષ્ટ લુક આપશે */
+    }
+}
+
+
+/* ૨. નાના મોબાઇલ માટે (480px કે તેથી નાની સ્ક્રીન) */
+@media screen and (max-width: 480px) {
+
+    /* મેનુ લિંક્સને ઊભી (Vertical) લિસ્ટમાં બદલશે */
+    .navbar ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar ul li {
+        width: 100%;
+    }
+
+    .navbar ul li a {
+        display: block; /* આખી લાઇન પર ક્લિક થઈ શકે તેવું સુંદર બટન બનાવશે */
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.1); /* હળવો બોક્સ લુક */
+        border-radius: 5px;
+    }
+
+    .site-footer {
+        padding-top: 30px;
+    }
+}
+/* ==========================================
+   મોબાઇલ હમ્બર્ગર મેનુ (Responsive CSS)
+   ========================================== */
+@media screen and (max-width: 768px) {
+    
+    .header-container {
+        flex-wrap: wrap; /* મેનુ નીચે લાવવા માટે */
+    }
+
+    /* મોબાઇલમાં Toggle બટન દેખાશે */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* મેનુ શરૂઆતમાં છુપાયેલું રહેશે */
+    .navbar {
+        display: none;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    /* જ્યારે ક્લિક કરીને 'active' ક્લાસ ઉમેરાશે ત્યારે મેનુ દેખાશે */
+    .navbar.active {
+        display: block;
+    }
+
+    .navbar ul {
+        flex-direction: column; /* લિંક્સ ઊભી ગોઠવાશે */
+        gap: 6px;
+    }
+
+    .navbar ul li a {
+        display: block;
+        padding: 12px 15px;
+        background-color: rgba(255, 255, 255, 0.08);
+        border-radius: 5px;
+    }
+}
