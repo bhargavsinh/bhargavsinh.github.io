@@ -1,84 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+    <!-- Home Page -->
+    <url>
+        <loc>https://bhargavsinh.github.io/</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
 
-  <!-- Root URL: Primary Entry Point -->
-  <url>
-    <loc>https://bhargavsinh.github.io/</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>1.00</priority>
-  </url>
+    <!-- About Page -->
+    <url>
+        <loc>https://bhargavsinh.github.io/about.html</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-  <!-- Core Content Pages -->
-  <url>
-    <loc>https://bhargavsinh.github.io/vanshavali.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://bhargavsinh.github.io/resume.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://bhargavsinh.github.io/projects.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://bhargavsinh.github.io/about.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
+    <!-- Mewar History Blog -->
+    <url>
+        <loc>https://bhargavsinh.github.io/Mewad_history_blog.html</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
 
-  <!-- Specialized Content -->
-  <url>
-    <loc>https://bhargavsinh.github.io/pushtimarg.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://bhargavsinh.github.io/pushtimarg-ma-gruh-seva.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://bhargavsinh.github.io/Mewad_history_blog.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://bhargavsinh.github.io/blog.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.70</priority>
-  </url>
+    <!-- Pushtimarg Culture -->
+    <url>
+        <loc>https://bhargavsinh.github.io/pushtimarg.html</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-  <!-- Support and Utility Pages -->
-  <url>
-    <loc>https://bhargavsinh.github.io/contact.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://bhargavsinh.github.io/otherlinks.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://bhargavsinh.github.io/disclaimer.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.40</priority>
-  </url>
-  <url>
-    <loc>https://bhargavsinh.github.io/privacy-policy.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.40</priority>
-  </url>
-  <url>
-    <loc>https://bhargavsinh.github.io/grievance.html</loc>
-    <lastmod>2026-05-12T11:04:44+00:00</lastmod>
-    <priority>0.40</priority>
-  </url>
+    <!-- Genealogy / Vanshavali -->
+    <url>
+        <loc>https://bhargavsinh.github.io/vanshavali.html</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Blogs & Voice of Bhargav -->
+    <url>
+        <loc>https://bhargavsinh.github.io/blog.html</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Resume -->
+    <url>
+        <loc>https://bhargavsinh.github.io/resume.html</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Publications & Other Links -->
+    <url>
+        <loc>https://bhargavsinh.github.io/otherlinks.html</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Contact & Appointments -->
+    <url>
+        <loc>https://bhargavsinh.github.io/contact.html</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
 </urlset>
