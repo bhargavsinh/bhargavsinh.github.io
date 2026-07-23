@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="gu" class="overflow-x-hidden scroll-smooth">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghostwriting Services & Rate Card | Bhargavsinh Sisodiya (BMS)</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS ફાઇલ્સ લિંક -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="colors.css">
+    <link rel="stylesheet" href="responsive.css">
+    
+    <!-- કસ્ટમ કલર્સ અને ફોન્ટ્સ -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'royal-maroon': '#800000',
+                        'divine-gold': '#FFD700',
+                        'saffron-glow': '#FF9933'
+                    },
+                    fontFamily: {
+                        'yatra': ['"Yatra One"', 'cursive'],
+                        'noto': ['"Noto Sans Gujarati"', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'playfair': ['"Playfair Display"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0d0a0a] text-amber-100 min-h-screen font-sans w-full max-w-full overflow-x-hidden">
+
+    <!-- ૧. હેડર અહીં ઓટોમેટિક લોડ થશે -->
+    <div id="header-container" class="w-full"></div>
+
+    <!-- ૨. મુખ્ય કન્ટેન્ટ એરિયા -->
+    <main class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-10 overflow-hidden">
+        <br>
+        
+        <!-- હીરો સેક્શન -->
+        <div class="bg-[#120F0F] rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 md:p-12 shadow-[0_0_30px_rgba(245,158,11,0.15)] relative border border-amber-900/40 text-center space-y-6">
+            <span class="bg-amber-500/20 text-amber-300 px-4 py-1.5 rounded-full border border-amber-500/30 uppercase font-semibold text-xs tracking-wider inline-block">
+                ✍️ BMS — Professional Ghostwriting Services
+            </span>
+            <h1 class="font-yatra text-3xl sm:text-5xl md:text-6xl text-divine-gold drop-shadow-lg">
+                Ghostwriting Rate Card & Terms
+            </h1>
+            <p class="text-amber-100/80 font-playfair italic text-base sm:text-xl max-w-2xl mx-auto leading-relaxed">
+                "Transforming your thoughts, experiences, and legacy into masterfully crafted e-books, articles, and impactful speeches."
+            </p>
+
+            <!-- ભાષા બદલવા માટેના ટેબ્સ (Language Switcher Buttons) -->
+            <div class="flex flex-wrap justify-center gap-3 pt-4">
+                <button onclick="switchLang('en')" id="btn-en" class="lang-tab px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-divine-gold text-black shadow-md">
+                    English
+                </button>
+                <button onclick="switchLang('hi')" id="btn-hi" class="lang-tab px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-black/50 text-amber-200 border border-amber-800/60 hover:bg-amber-950">
+                    हिन्दी
+                </button>
+                <button onclick="switchLang('gu')" id="btn-gu" class="lang-tab px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-black/50 text-amber-200 border border-amber-800/60 hover:bg-amber-950">
+                    ગુજરાતી
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= LANGUAGE SECTIONS ================= -->
+
+        <!-- 1. ENGLISH SECTION -->
+        <div id="content-en" class="lang-content space-y-10">
+            <!-- Rate Card Table -->
+            <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-6">
+                <h2 class="text-2xl font-bold text-divine-gold border-b border-amber-900/50 pb-3 flex items-center gap-2">
+                    <span>📊</span> Services & Pricing Structure
+                </h2>
+                <div class="overflow-x-auto w-full rounded-2xl border border-divine-gold/20 bg-black/40">
+                    <table class="w-full min-w-[600px] text-left border-collapse">
+                        <thead>
+                            <tr class="bg-white/5 border-b border-divine-gold/30 text-divine-gold text-sm">
+                                <th class="p-4">Service Type</th>
+                                <th class="p-4 text-center">5,000 Words</th>
+                                <th class="p-4 text-center">10,000 Words</th>
+                                <th class="p-4 text-center">15,000 Words</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-divine-gold/10 text-sm">
+                            <tr class="hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">Blog Post / Article</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹1,500</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹2,800</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹4,000</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">Books / E-books</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹1,500</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹2,900</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹4,200</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">Speeches</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹1,300*</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹2,500*</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹4,000*</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-xs text-amber-200/70 italic">*Note: For speeches, the complexity, tone, and impact value are taken into account.</p>
+            </div>
+
+            <!-- Additional Services & Terms -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-4">
+                    <h3 class="text-xl font-bold text-amber-300 border-b border-amber-900/50 pb-2">🛠️ Additional Services</h3>
+                    <p class="text-sm text-amber-100/90 leading-relaxed">
+                        <strong>Professional Formatting:</strong> Expert formatting services (e-book layout, blog structure, print-ready PDFs) to ensure your content is visually appealing and professional. Fees are determined based on project complexity.
+                    </p>
+                </div>
+                <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-4">
+                    <h3 class="text-xl font-bold text-amber-300 border-b border-amber-900/50 pb-2">✨ Professional Guarantees</h3>
+                    <ul class="text-sm text-amber-100/90 space-y-2 list-disc pl-5">
+                        <li><strong>100% Originality:</strong> Guaranteed plagiarism-free content.</li>
+                        <li><strong>Strict Confidentiality:</strong> Absolute privacy protection for your identity and work.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-4">
+                <h3 class="text-xl font-bold text-divine-gold border-b border-amber-900/50 pb-3">📜 Comprehensive Terms & Conditions</h3>
+                <ul class="space-y-3 text-sm text-amber-100/90 list-disc pl-5 leading-relaxed">
+                    <li><strong>Project Initiation:</strong> A 50% non-refundable advance payment is mandatory to commence any project. The remaining 50% must be paid upon submission of the first draft.</li>
+                    <li><strong>Revision Policy:</strong> The quoted price includes 2 rounds of minor revisions (e.g., tone adjustments, minor phrasing). Any major structural changes or additional rounds will be charged at a rate of ₹200 per hour.</li>
+                    <li><strong>Timeline & Delivery:</strong> Estimated delivery times will be defined in a formal project agreement based on word count and research requirements.</li>
+                    <li><strong>Intellectual Property:</strong> Upon receipt of full payment, all copyrights, authorship rights, and intellectual property associated with the content are transferred exclusively to the client.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2. HINDI SECTION -->
+        <div id="content-hi" class="lang-content space-y-10 hidden">
+            <!-- Rate Card Table -->
+            <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-6">
+                <h2 class="text-2xl font-bold text-divine-gold border-b border-amber-900/50 pb-3 flex items-center gap-2">
+                    <span>📊</span> सेवा और मूल्य निर्धारण संरचना
+                </h2>
+                <div class="overflow-x-auto w-full rounded-2xl border border-divine-gold/20 bg-black/40">
+                    <table class="w-full min-w-[600px] text-left border-collapse">
+                        <thead>
+                            <tr class="bg-white/5 border-b border-divine-gold/30 text-divine-gold text-sm">
+                                <th class="p-4">सेवा का प्रकार</th>
+                                <th class="p-4 text-center">5,000 शब्द</th>
+                                <th class="p-4 text-center">10,000 शब्द</th>
+                                <th class="p-4 text-center">15,000 शब्द</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-divine-gold/10 text-sm">
+                            <tr class="hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">ब्लॉग पोस्ट/लेख</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹1,500</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹2,800</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹4,000</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">पुस्तकें/ई-बुक्स</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹1,500</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹2,900</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹4,200</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">भाषण (Speeches)</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹1,300*</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹2,500*</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹4,000*</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-xs text-amber-200/70 italic">*नोट: भाषणों के लिए, विषय की जटिलता, टोन और प्रभाव के महत्व को ध्यान में रखा जाता है।</p>
+            </div>
+
+            <!-- Additional Services & Terms -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-4">
+                    <h3 class="text-xl font-bold text-amber-300 border-b border-amber-900/50 pb-2">🛠️ अतिरिक्त पेशेवर सेवाएँ</h3>
+                    <p class="text-sm text-amber-100/90 leading-relaxed">
+                        <strong>प्रोफेशनल फॉर्मेटिंग:</strong> हम एक्सपर्ट फॉर्मेटिंग सेवाएँ (ई-बुक लेआउट, ब्लॉग स्ट्रक्चर, प्रिंट-रेडी पीडीएफ) प्रदान करते हैं ताकि आपका कंटेंट देखने में आकर्षक और पेशेवर लगे। फॉर्मेटिंग का शुल्क प्रोजेक्ट की जटिलता के आधार पर तय किया जाएगा।
+                    </p>
+                </div>
+                <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-4">
+                    <h3 class="text-xl font-bold text-amber-300 border-b border-amber-900/50 pb-2">✨ पेशेवर गारंटी</h3>
+                    <ul class="text-sm text-amber-100/90 space-y-2 list-disc pl-5">
+                        <li><strong>100% मौलिकता:</strong> सारा कंटेंट 100% मौलिक और साहित्यिक चोरी (Plagiarism) मुक्त।</li>
+                        <li><strong>गोपनीयता:</strong> आपकी पहचान और प्रोजेक्ट की पूर्ण सुरक्षा।</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-4">
+                <h3 class="text-xl font-bold text-divine-gold border-b border-amber-900/50 pb-3">📜 विस्तृत नियम और शर्तें</h3>
+                <ul class="space-y-3 text-sm text-amber-100/90 list-disc pl-5 leading-relaxed">
+                    <li><strong>प्रोजेक्ट की शुरुआत:</strong> किसी भी प्रोजेक्ट को शुरू करने के लिए 50% अग्रिम भुगतान (Advance Payment) अनिवार्य है। शेष 50% भुगतान पहला ड्राफ्ट जमा करने पर करना होगा।</li>
+                    <li><strong>संशोधन नीति (Revision Policy):</strong> बताई गई कीमत में 2 बार छोटे सुधार (जैसे टोन में बदलाव, वाक्यों में सुधार) शामिल हैं। किसी भी बड़े बदलाव या अतिरिक्त संशोधनों के लिए ₹200 प्रति घंटे की दर से शुल्क लिया जाएगा।</li>
+                    <li><strong>समय सीमा और डिलीवरी:</strong> प्रोजेक्ट की समय सीमा शब्द गणना और शोध की आवश्यकताओं के आधार पर औपचारिक समझौते में तय की जाएगी।</li>
+                    <li><strong>बौद्धिक संपदा (Intellectual Property):</strong> पूरा भुगतान प्राप्त होने के बाद, कंटेंट के सभी कॉपीराइट और मालिकाना हक पूरी तरह से क्लाइंट को हस्तांतरित कर दिए जाएंगे।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. GUJARATI SECTION -->
+        <div id="content-gu" class="lang-content space-y-10 hidden">
+            <!-- Rate Card Table -->
+            <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-6">
+                <h2 class="text-2xl font-bold text-divine-gold border-b border-amber-900/50 pb-3 flex items-center gap-2">
+                    <span>📊</span> સેવા અને કિંમતનું માળખું
+                </h2>
+                <div class="overflow-x-auto w-full rounded-2xl border border-divine-gold/20 bg-black/40">
+                    <table class="w-full min-w-[600px] text-left border-collapse">
+                        <thead>
+                            <tr class="bg-white/5 border-b border-divine-gold/30 text-divine-gold text-sm font-noto">
+                                <th class="p-4">સેવાનો પ્રકાર</th>
+                                <th class="p-4 text-center">૫,૦૦૦ શબ્દો</th>
+                                <th class="p-4 text-center">૧૦,૦૦૦ શબ્દો</th>
+                                <th class="p-4 text-center">૧૫,૦૦૦ શબ્દો</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-divine-gold/10 text-sm font-noto">
+                            <tr class="hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">બ્લોગ પોસ્ટ/આર્ટિકલ</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹૧,૫૦૦</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹૨,૮૦૦</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹૪,૦૦૦</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">પુસ્તકો/ઈ-બુક્સ</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹૧,૫૦૦</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹૨,૯૦૦</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹૪,૨૦૦</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="p-4 font-bold text-white">ભાષણ (Speeches)</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹૧,૩૦૦*</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹૨,૫૦૦*</td>
+                                <td class="p-4 text-center text-emerald-400 font-semibold">₹૪,૦૦૦*</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-xs text-amber-200/70 italic font-noto">*નોંધ: ભાષણ માટે, વિષયની જટિલતા, ભાષાની શૈલી અને પ્રભાવના આધારે દર નક્કી કરવામાં આવે છે.</p>
+            </div>
+
+            <!-- Additional Services & Terms -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-noto">
+                <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-4">
+                    <h3 class="text-xl font-bold text-amber-300 border-b border-amber-900/50 pb-2">🛠️ વધારાની પ્રોફેશનલ સેવાઓ</h3>
+                    <p class="text-sm text-amber-100/90 leading-relaxed">
+                        <strong>પ્રોફેશનલ ફોર્મેટિંગ:</strong> અમે નિષ્ણાત ફોર્મેટિંગ સેવાઓ (ઈ-બુક લેઆઉટ, બ્લોગ સ્ટ્રક્ચર, પ્રિન્ટ-રેડી પીડીએફ) પૂરી પાડીએ છીએ, જેથી તમારું કન્ટેન્ટ વાંચવામાં આકર્ષક અને વ્યવસ્થિત લાગે. ફોર્મેટિંગનો ચાર્જ પ્રોજેક્ટની જટિલતા મુજબ નક્કી કરવામાં આવશે.
+                    </p>
+                </div>
+                <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-4">
+                    <h3 class="text-xl font-bold text-amber-300 border-b border-amber-900/50 pb-2">✨ પ્રોફેશનલ ખાતરી</h3>
+                    <ul class="text-sm text-amber-100/90 space-y-2 list-disc pl-5">
+                        <li><strong>૧૦૦% મૌલિકતા:</strong> તમામ કામ સાહિત્યિક ચોરી (Plagiarism) થી મુક્ત.</li>
+                        <li><strong>સંપૂર્ણ ગોપનીયતા:</strong> ક્લાયન્ટની ઓળખ અને પ્રોજેક્ટની સખત ગુપ્તતા.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-4 font-noto">
+                <h3 class="text-xl font-bold text-divine-gold border-b border-amber-900/50 pb-3">📜 વિસ્તૃત નિયમો અને શરતો</h3>
+                <ul class="space-y-3 text-sm text-amber-100/90 list-disc pl-5 leading-relaxed">
+                    <li><strong>૧. પ્રોજેક્ટની શરૂઆત:</strong> કોઈપણ પ્રોજેક્ટ શરૂ કરવા માટે ૫૦% એડવાન્સ પેમેન્ટ અનિવાર્ય છે. બાકીની ૫૦% રકમ પ્રથમ ડ્રાફ્ટ સબમિટ કર્યા પછી ચૂકવવાની રહેશે.</li>
+                    <li><strong>૨. સુધારાની નીતિ (Revision Policy):</strong> નિર્ધારિત કિંમતમાં ૨ વાર સામાન્ય સુધારા (જેમ કે શબ્દોમાં ફેરફાર કે શૈલીમાં સુધારો) સામેલ છે. કોઈ મોટા માળખાકીય ફેરફાર કે વધારાના સુધારા માટે ₹૨૦૦ પ્રતિ કલાકના દરે ચાર્જ લેવામાં આવશે.</li>
+                   <li><strong>૩. સમય મર્યાદા અને ડિલિવરી:</strong> પ્રોજેક્ટ પૂર્ણ કરવાનો સમય, શબ્દોની સંખ્યા અને રિસર્ચની જરૂરિયાતના આધારે લેખિત સમજૂતી (Agreement) દ્વારા નક્કી કરવામાં આવશે.</li>
+                    <li><strong>૪. કોપીરાઈટ અને માલિકી:</strong> સંપૂર્ણ પેમેન્ટ પ્રાપ્ત થયા પછી, લેખિત સામગ્રીના તમામ કોપીરાઈટ અને માલિકી હક સંપૂર્ણપણે ક્લાયન્ટને ટ્રાન્સફર કરી દેવામાં આવશે.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= WORKFLOW & CONTACT CTA ================= -->
+        <div class="bg-[#120F0F] rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-lg space-y-6 text-center">
+            <h3 class="text-2xl font-bold text-divine-gold">🚀 Our Working Process</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-left">
+                <div class="bg-black/40 p-4 rounded-xl border border-amber-900/30">
+                    <span class="text-amber-400 font-bold block mb-1">Step 1</span>
+                    <p class="text-xs text-amber-100/80">Consultation & project brief discussion.</p>
+                </div>
+                <div class="bg-black/40 p-4 rounded-xl border border-amber-900/30">
+                    <span class="text-amber-400 font-bold block mb-1">Step 2</span>
+                    <p class="text-xs text-amber-100/80">Outline finalization & 50% advance.</p>
+                </div>
+                <div class="bg-black/40 p-4 rounded-xl border border-amber-900/30">
+                    <span class="text-amber-400 font-bold block mb-1">Step 3</span>
+                    <p class="text-xs text-amber-100/80">First draft delivery & feedback.</p>
+                </div>
+                <div class="bg-black/40 p-4 rounded-xl border border-amber-900/30">
+                    <span class="text-amber-400 font-bold block mb-1">Step 4</span>
+                    <p class="text-xs text-amber-100/80">Final polish, IP transfer & balance payment.</p>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-amber-900/50 space-y-4">
+                <h4 class="text-xl font-bold text-amber-300">Ready to start your writing project?</h4>
+                <p class="text-sm text-amber-100/80">Contact directly via email for custom packages and inquiries.</p>
+                <a href="mailto:bhargavsinh.bca@gmail.com" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-400 text-black font-bold text-sm px-8 py-3 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all duration-300">
+                    <span>✉️</span> bhargavsinh.bca@gmail.com
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ૩. ફૂટર અહીં ઓટોમેટિક લોડ થશે -->
+    <div id="footer-container" class="w-full"></div>
+
+    <!-- ૪. જાવાસ્ક્રિપ્ટ ફાઇલ્સ -->
+    <script src="script.js"></script>
+
+    <!-- ભાષા બદલવા માટેનું જાવાસ્ક્રિપ્ટ ફંક્શન -->
+    <script>
+        function switchLang(lang) {
+            // તમામ કન્ટેન્ટ છુપાવો
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.add('hidden'));
+            // પસંદ કરેલ ભાષા બતાવો
+            document.getElementById('content-' + lang).classList.remove('hidden');
+
+            // બટનની સ્ટાઇલ અપડેટ કરો
+            document.querySelectorAll('.lang-tab').forEach(btn => {
+                btn.classList.remove('bg-divine-gold', 'text-black', 'shadow-md');
+                btn.classList.add('bg-black/50', 'text-amber-200', 'border', 'border-amber-800/60');
+            });
+            const activeBtn = document.getElementById('btn-' + lang);
+            activeBtn.classList.remove('bg-black/50', 'text-amber-200', 'border', 'border-amber-800/60');
+            activeBtn.classList.add('bg-divine-gold', 'text-black', 'shadow-md');
+        }
+    </script>
+
+</body>
+</html>
