@@ -1,10 +1,10 @@
-# 🛡️ Bhargavsinh Sisodiya — Official Portfolio & Digital Archives (v11.1)
+# 🛡️ Bhargavsinh Sisodiya — Official Portfolio & Digital Archives (v11.2)
 
 Welcome to the official source code and digital repository of **Bhargavsinh Sisodiya**’s personal portfolio website. This repository hosts a comprehensive digital space dedicated to historical research, cultural documentation, personal projects, professional milestones, and intellectual expressions.
 
 ---
 
-## 🚀 What's New in v11.1
+## 🚀 What's New in v11.2
 
 * **Structural Stabilization:** Permanent resolution of component loading issues by optimizing direct HTML structuring for headers and footers.
 * **Refined UI/UX Layout:** Enhanced responsive design grids and refined Tailwind CSS configurations for seamless cross-device compatibility.
