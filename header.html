@@ -1,29 +1,34 @@
-<header class="fixed top-0 left-0 w-full z-[1000] bg-[#1a365d]/90 backdrop-blur-2xl border-b border-white/10 flex flex-col transition-all duration-500 shadow-xl" id="site-header">
-   <!-- ૧. મુખ્ય હેડર બાર -->
-    <div class="header-container grid grid-cols-3 items-center w-full px-4 md:px-8 py-3">
-        
-        <!-- (A) ડાબી બાજુ: લોગો -->
-        <div class="flex items-center justify-start">
-            <a href="index.html" class="block p-1 rounded-full border border-white/10 bg-white/5 hover:border-[#ffd700]/40 transition-all duration-300">
-                <img src="newlogo.png" alt="Logo" class="h-10 w-auto md:h-16 lg:h-20 transition-all duration-300">
-            </a>
-        </div>
+<header class="fixed top-0 left-0 w-full z-[1000] bg-gradient-to-b from-[#152945] via-[#1a365d] to-[#0f223d] backdrop-blur-2xl border-b-2 border-amber-500/50 flex flex-col transition-all duration-500 shadow-[0_10px_40px_rgba(0,0,0,0.7)]" id="site-header">
+   <!-- ૧. મુખ્ય હેડર બાર (Vertical Centered Logo & Name Layout) -->
+    <div class="header-container flex items-center justify-between w-full px-4 md:px-8 py-2.5">
 
-        <!-- (B) વચ્ચે: વેબસાઇટનું લખાણ -->
-        <div class="text-center">
-            <a href="index.html" class="no-underline">
-                <h2 class="text-white text-base md:text-xl font-bold m-0 whitespace-nowrap tracking-wide">Bhargavsinh Sisodiya</h2>
-            </a>
-        </div>
-
-        <!-- (C) જમણી બાજુ: સર્ચ બટન અને મેનુ બટન -->
-        <div class="flex items-center justify-end gap-4 md:gap-6">
-            <!-- Search Icon -->
-            <button id="search-btn" class="text-white text-xl md:text-2xl hover:text-[#ffd700] transition-colors focus:outline-none" aria-label="Search">
+        <!-- (A) ડાબી બાજુ: માત્ર ખાલી સ્પેસ અથવા બેલેન્સિંગ એરિયા માટે -->
+        <div class="flex items-center justify-start w-12 md:w-16">
+            <!-- Search Icon (Moved to left or balanced) -->
+            <button id="search-btn" class="w-9 h-9 md:w-11 md:h-11 rounded-full bg-black/30 border border-amber-500/30 flex items-center justify-center text-amber-300 text-base md:text-xl hover:bg-amber-500 hover:text-black transition-all duration-300 shadow-sm focus:outline-none cursor-pointer" aria-label="Search">
                 🔍
             </button>
+        </div>
+
+        <!-- (B) મધ્યમાં: લોગો અને નામ (Stacked Centered) -->
+        <div class="flex flex-col items-center justify-center text-center cursor-pointer">
+            <a href="index.html" class="flex flex-col items-center no-repeat group">
+                <!-- Logo Centered Above -->
+                <div class="p-1 rounded-full border-2 border-amber-400/60 bg-black/40 shadow-[0_0_15px_rgba(245,158,11,0.3)] group-hover:border-amber-300 group-hover:scale-105 transition-all duration-300 mb-1">
+                    <img src="newlogo.png" alt="Logo" class="h-10 w-10 md:h-14 md:w-14 rounded-full object-cover transition-all duration-300">
+                </div>
+                <!-- Name in Jaini Font -->
+                <h2 class="text-[#FFD700] text-lg sm:text-2xl md:text-3xl font-normal m-0 tracking-wide font-['jaini'] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] group-hover:text-amber-200 transition-colors">
+                    Bhargavsinh Sisodiya
+                </h2>
+            </a>
+            <span class="text-[9px] md:text-[10px] text-amber-300/80 tracking-[0.25em] uppercase font-semibold">Suryavanshi • Legacy</span>
+        </div>
+
+        <!-- (C) જમણી બાજુ: મેનુ બટન -->
+        <div class="flex items-center justify-end w-12 md:w-16">
             <!-- Menu Toggle -->
-            <button class="menu-toggle text-2xl md:text-3xl text-white focus:outline-none cursor-pointer" id="menu-toggle" aria-label="Toggle Navigation">
+            <button class="menu-toggle w-9 h-9 md:w-11 md:h-11 rounded-full bg-black/30 border border-amber-500/30 flex items-center justify-center text-xl md:text-2xl text-amber-300 hover:bg-amber-500 hover:text-black transition-all duration-300 shadow-sm focus:outline-none cursor-pointer" id="menu-toggle" aria-label="Toggle Navigation">
                 ☰
             </button>
         </div>
@@ -45,7 +50,7 @@
     </nav>
 
     <!-- ૨. ન્યૂઝ સ્ક્રોલિંગ નોટિફિકેશન બાર -->
-    <div class="w-full bg-[#120F0F] border-t border-amber-900/60 overflow-hidden flex items-center py-1.5 relative z-20 shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
+    <div class="w-full bg-[#120F0F] border-t border-amber-900/80 overflow-hidden flex items-center py-2 relative z-20 shadow-[0_4px_15px_rgba(0,0,0,0.6)]">
         <style>
             @keyframes news-scroll {
                 0% { transform: translateX(100vw); }
@@ -60,37 +65,37 @@
                 animation-play-state: paused;
             }
         </style>
-        <div class="animate-news-scroll text-amber-500 text-[11px] font-semibold tracking-[0.2em] uppercase">
+        <div class="animate-news-scroll text-amber-400 text-[11px] font-semibold tracking-[0.2em] uppercase">
             <span class="mx-8 text-white font-gujarati tracking-normal">🙏 જય શ્રી કૃષ્ણ, આપનું હાર્દિક સ્વાગત છે.</span>
-            <span class="text-amber-700/50 mx-2">|</span>
+            <span class="text-amber-600/60 mx-2">|</span>
 
-            <span class="mx-8 text-white">🔔 LATEST UPDATES:</span>
+            <span class="mx-8 text-amber-300">🔔 LATEST UPDATES:</span>
             <span class="mx-8">🚀 PORTFOLIO VERSION 11.2 IS NOW LIVE</span>
-            <span class="text-amber-700/50 mx-2">|</span>
+            <span class="text-amber-600/60 mx-2">|</span>
             <span class="mx-8"> BCA SEM 3</span>
-            <span class="text-amber-700/50 mx-2">|</span>
+            <span class="text-amber-600/60 mx-2">|</span>
             <span class="mx-8">🏛️ ANAND VIHAR BHAVAN PROJECT INITIATED</span>
-            <span class="text-amber-700/50 mx-2">|</span>
+            <span class="text-amber-600/60 mx-2">|</span>
             <span class="mx-8">📰 VOICE OF BHARGAV UPDATES COMING SOON</span>
         </div>
     </div>
 </header>
 
 <!-- Search Modal (Popup) -->
-<div id="search-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[2000] hidden flex-col items-center pt-24 px-4 transition-opacity duration-300 opacity-0">
-    <div class="w-full max-w-2xl bg-[#120F0F] border border-amber-900/60 rounded-2xl shadow-2xl overflow-hidden flex flex-col transform transition-transform scale-95" id="search-box-container">
-        
+<div id="search-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-[2000] hidden flex-col items-center pt-24 px-4 transition-opacity duration-300 opacity-0">
+    <div class="w-full max-w-2xl bg-[#120F0F] border border-amber-500/50 rounded-3xl shadow-[0_0_50px_rgba(245,158,11,0.25)] overflow-hidden flex flex-col transform transition-transform scale-95" id="search-box-container">
+
         <!-- Search Input Area -->
         <div class="flex items-center border-b border-amber-900/40 p-4 md:p-5 relative bg-[#1a1515]">
             <span class="text-2xl text-amber-500 mr-3">🔍</span>
-            <input type="text" id="search-input" placeholder="પોર્ટફોલિયોમાં શોધો... (દા.ત. Resume, Contact, History)" class="w-full bg-transparent text-amber-100 text-lg md:text-xl outline-none placeholder-amber-700/50 font-noto">
+            <input type="text" id="search-input" placeholder="પોર્ટફોલિયોમાં શોધો... (દા.ત. Resume, Contact, History)" class="w-full bg-transparent text-amber-100 text-lg md:text-xl outline-none placeholder-amber-700/60 font-noto">
             <button id="close-search" class="text-amber-500 hover:text-red-500 text-2xl ml-3 transition-colors focus:outline-none">✖</button>
         </div>
-        
+
         <!-- Search Results Area -->
         <div id="search-results" class="max-h-[60vh] overflow-y-auto p-2 hidden bg-[#120F0F]">
             <!-- Results will be injected here via JavaScript -->
         </div>
-        
+
     </div>
 </div>
