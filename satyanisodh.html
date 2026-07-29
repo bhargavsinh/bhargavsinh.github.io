@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>સત્યની શોધ | Bhargavsinh Sisodiya</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -17,50 +17,76 @@
 <body class="bg-[#0d0a0a] text-amber-100 min-h-screen font-sans w-full max-w-full overflow-x-hidden">
 
     <!-- ========================================== -->
-    <!-- MANDATORY CONSENT MODAL ALERT BOX -->
+    <!-- STRICT DUAL-VERIFICATION LEGAL CONSENT MODAL -->
     <!-- ========================================== -->
     <div id="consent-modal" class="fixed inset-0 z-[99999] flex items-center justify-center bg-black/95 backdrop-blur-md p-3 sm:p-4 overflow-y-auto">
-        <div class="bg-[#120F0F] border border-amber-500/50 rounded-3xl p-5 sm:p-8 max-w-md w-full shadow-[0_0_50px_rgba(245,158,11,0.3)] space-y-4 my-auto text-center">
+        <div class="bg-[#1a365d] border border-amber-500/50 rounded-3xl p-5 sm:p-8 max-w-md w-full shadow-[0_0_60px_rgba(245,158,11,0.35)] space-y-4 my-auto text-center">
             
-            <div class="text-3xl">📜</div>
-            
+            <div class="flex justify-between items-center text-[10px] uppercase tracking-widest text-amber-400/80 border-b border-amber-900/40 pb-2">
+                <span>Step 1 of 2 : Dual-Verification</span>
+                <span>Version 1.2 • July 2026</span>
+            </div>
+
+            <div class="text-3xl pt-1">📜</div>
+
             <h2 class="text-lg sm:text-2xl font-bold text-[#FFD700] tracking-wide font-noto">
-                Terms & Reading Agreement
+                Publication Access Agreement
             </h2>
-            
-            <p class="text-amber-100/90 text-xs sm:text-sm leading-relaxed font-noto text-left bg-black/60 p-3 sm:p-4 rounded-2xl border border-amber-900/40">
-                Before accessing this publication, you must read and agree to our 
-                <a href="disclaimer.html" target="_blank" class="text-amber-400 underline font-semibold hover:text-amber-300">Legal Disclaimer</a> 
-                and 
-                <a href="bookreadingpolicy.html" target="_blank" class="text-amber-400 underline font-semibold hover:text-amber-300">Book Reading Policy</a>. 
-                By proceeding, you fully agree without any objection.
+
+            <p class="text-amber-100/90 text-xs sm:text-sm leading-relaxed font-noto text-left bg-black/60 p-3.5 sm:p-4 rounded-2xl border border-amber-900/40">
+                Before proceeding to read this publication, you are legally required to review and verify <strong>both</strong> governance documents below:
             </p>
 
-            <!-- Checkbox Option -->
-            <div class="flex items-start gap-3 text-left pt-1">
-                <input type="checkbox" id="agree-checkbox" onchange="toggleReadButton()" 
+            <!-- Separate Dedicated Buttons for Both Policies -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                <a href="disclaimer.html" target="_blank" onclick="markDisclaimerRead()" id="btn-disclaimer"
+                   class="bg-zinc-900 hover:bg-zinc-800 border border-amber-900/60 text-amber-300 font-semibold py-2.5 px-3 rounded-xl text-xs transition-all text-center flex items-center justify-center gap-2 shadow-sm">
+                    <span>⚖️</span> 1. Legal Disclaimer <span id="status-disclaimer" class="text-zinc-500">❌</span>
+                </a>
+                
+                <a href="bookreadingpolicy.html" target="_blank" onclick="markPolicyRead()" id="btn-policy"
+                   class="bg-zinc-900 hover:bg-zinc-800 border border-amber-900/60 text-amber-300 font-semibold py-2.5 px-3 rounded-xl text-xs transition-all text-center flex items-center justify-center gap-2 shadow-sm">
+                    <span>📖</span> 2. Reading Policy <span id="status-policy" class="text-zinc-500">❌</span>
+                </a>
+            </div>
+
+            <!-- Mandatory Warning Note -->
+            <div id="read-warning" class="text-[11px] text-amber-400 bg-amber-950/60 border border-amber-800/50 p-2.5 rounded-xl text-center">
+                ⚠️ Please click and open <strong>both</strong> buttons above to enable the agreement checkbox.
+            </div>
+
+            <!-- Checkbox Option (Disabled until BOTH links clicked) -->
+            <div class="flex items-start gap-3 text-left pt-1 opacity-50 cursor-not-allowed" id="checkbox-container">
+                <input type="checkbox" id="agree-checkbox" onchange="toggleReadButton()" disabled
                        class="mt-1 w-5 h-5 accent-amber-500 rounded cursor-pointer bg-black border-amber-800 shrink-0">
                 <label for="agree-checkbox" class="text-xs sm:text-sm text-amber-200 cursor-pointer font-noto leading-snug">
-                    I have read and completely agree with the Legal Disclaimer and Book Reading Policy.
+                    I confirm that I have carefully read, understood, and voluntarily accepted both the Legal Disclaimer and Book Reading Policy. (Required)
                 </label>
             </div>
-<div>
-    <p>By checking this box, I confirm that I have read both documents in full and accept all terms.</p>
-</div>
 
-<div class="text-center text-xs text-amber-300/70 pt-2 font-noto">
-    📖 For an optimal reading experience,<br>
-    please enable <strong>"Desktop Site"</strong><br>
-    in your browser.
-</div>
+            <div class="text-[11px] text-amber-300/80 text-left pl-8 font-noto">
+                • I confirm that I am at least 18 years of age, or have obtained parental/guardian consent.<br>
+                • I understand that continued access constitutes informed acceptance of all terms.
+            </div>
+
+            <!-- Copyright Notice Note -->
+            <div class="text-[10px] text-amber-300/60 pt-1 border-t border-amber-900/30">
+                © All intellectual property rights remain reserved by the author. Unauthorized reproduction or commercial use is strictly prohibited.
+            </div>
+
+            <!-- Desktop Mode Suggestion -->
+            <div class="text-center text-xs text-amber-300/80 bg-zinc-900/60 p-2.5 rounded-xl border border-zinc-800 font-noto">
+                📖 For the best reading experience on large screens, we recommend enabling your browser's <strong>"Desktop Site"</strong> mode.
+            </div>
+
             <!-- Action Buttons -->
             <div class="flex flex-col sm:flex-row gap-3 pt-2">
                 <button id="proceed-btn" onclick="unlockBook()" disabled
-                        class="flex-1 bg-zinc-800 text-zinc-500 font-bold py-3 px-4 rounded-xl text-xs sm:text-sm transition-all cursor-not-allowed border border-zinc-700/50">
-                    Proceed to Read &rarr;
+                        class="flex-1 bg-zinc-800 text-zinc-500 font-bold py-3.5 px-4 rounded-xl text-xs sm:text-sm transition-all cursor-not-allowed border border-zinc-700/50">
+                    Proceed to Publication &rarr;
                 </button>
                 <a href="index.html" 
-                   class="flex-1 bg-red-950/90 hover:bg-red-900 text-red-200 font-bold py-3 px-4 rounded-xl text-xs sm:text-sm border border-red-800/60 transition-all text-center flex items-center justify-center">
+                   class="flex-1 bg-red-950/90 hover:bg-red-900 text-red-200 font-bold py-3.5 px-4 rounded-xl text-xs sm:text-sm border border-red-800/60 transition-all text-center flex items-center justify-center">
                     Decline & Exit
                 </a>
             </div>
@@ -68,17 +94,54 @@
         </div>
     </div>
 
-    <!-- Script to Handle Modal Logic -->
+    <!-- Script to Handle Strict Dual-Verification Logic -->
     <script>
+        let disclaimerChecked = false;
+        let policyChecked = false;
+
+        function markDisclaimerRead() {
+            disclaimerChecked = true;
+            document.getElementById('status-disclaimer').innerHTML = "✅";
+            document.getElementById('status-disclaimer').className = "text-emerald-400 font-bold";
+            checkBothVerified();
+        }
+
+        function markPolicyRead() {
+            policyChecked = true;
+            document.getElementById('status-policy').innerHTML = "✅";
+            document.getElementById('status-policy').className = "text-emerald-400 font-bold";
+            checkBothVerified();
+        }
+
+        function checkBothVerified() {
+            const warning = document.getElementById('read-warning');
+            const container = document.getElementById('checkbox-container');
+            const checkbox = document.getElementById('agree-checkbox');
+
+            if (disclaimerChecked && policyChecked) {
+                // Enable Checkbox
+                container.classList.remove('opacity-50', 'cursor-not-allowed');
+                checkbox.disabled = false;
+                
+                warning.innerHTML = "✅ Both documents verified successfully! You may now check the agreement box.";
+                warning.className = "text-[11px] text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 p-2.5 rounded-xl text-center";
+            } else {
+                let remaining = [];
+                if (!disclaimerChecked) remaining.push("Legal Disclaimer");
+                if (!policyChecked) remaining.push("Reading Policy");
+                warning.innerHTML = `⚠️ Please also click and open: <strong>${remaining.join(' and ')}</strong>`;
+            }
+        }
+
         function toggleReadButton() {
             const checkbox = document.getElementById('agree-checkbox');
             const btn = document.getElementById('proceed-btn');
-            if (checkbox.checked) {
+            if (checkbox.checked && disclaimerChecked && policyChecked) {
                 btn.disabled = false;
-                btn.className = "flex-1 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-400 text-black font-bold py-3 px-4 rounded-xl text-xs sm:text-sm transition-all cursor-pointer shadow-[0_0_15px_rgba(245,158,11,0.4)] border border-amber-400";
+                btn.className = "flex-1 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-400 text-black font-bold py-3.5 px-4 rounded-xl text-xs sm:text-sm transition-all cursor-pointer shadow-[0_0_20px_rgba(245,158,11,0.5)] border border-amber-400 scale-[1.02]";
             } else {
                 btn.disabled = true;
-                btn.className = "flex-1 bg-zinc-800 text-zinc-500 font-bold py-3 px-4 rounded-xl text-xs sm:text-sm transition-all cursor-not-allowed border border-zinc-700/50";
+                btn.className = "flex-1 bg-zinc-800 text-zinc-500 font-bold py-3.5 px-4 rounded-xl text-xs sm:text-sm transition-all cursor-not-allowed border border-zinc-700/50 scale-100";
             }
         }
 
@@ -138,7 +201,8 @@
         <!-- PDF & Book Reader Box Wrapper (LOCKED & SECURE) -->
         <section id="reader-box" 
                  class="bg-[#120F0F] border border-amber-900/50 rounded-3xl p-4 sm:p-8 shadow-[0_0_35px_rgba(245,158,11,0.1)] space-y-6 select-none"
-                 oncontextmenu="return false">
+                 oncontextmenu="return false"
+                 oncopy="return false">
             
             <!-- Reader Action Bar -->
             <div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-black/60 p-4 rounded-2xl border border-amber-900/40">
@@ -171,25 +235,26 @@
 
         </section>
 
-<div style="margin-top: 50px; padding: 25px; border-top: 2px solid #8B0000; background-color: #fffaf0; border-radius: 8px;">
-  <h3 style="color: #8B0000; margin-top: 0; font-size: 20px;">પ્રતિસાદ આપો</h3>
-  
-  <p style="font-size: 16px; line-height: 1.7; color: #333333;">
-    આ કૃતિ વાંચ્યા બાદ જો તમને કોઈ વિચાર, સૂચન કે અનુભવ લખવો હોય,  
-    તો મને આ ઈમેઈલ પર મોકલી શકો છો:
-  </p>
-  
-  <p style="font-size: 18px; font-weight: bold; margin: 15px 0;">
-    <a href="mailto:bhargavsinh.bca@gmail.com" style="color: #8B0000; text-decoration: none;">
-      bhargavsinh.bca@gmail.com
-    </a>
-  </p>
-  
-  <p style="font-size: 15px; color: #444444; margin-bottom: 0; line-height: 1.6;">
-    તમારો પ્રતિસાદ મને પ્રેરણા આપશે.  
-    કૃપા કરીને આદરપૂર્વક અને વિચારપૂર્વક લખજો.
-  </p>
-</div>
+        <!-- Feedback Section -->
+        <div style="margin-top: 50px; padding: 25px; border-top: 2px solid #8B0000; background-color: #fffaf0; border-radius: 8px;">
+          <h3 style="color: #8B0000; margin-top: 0; font-size: 20px;">પ્રતિસાદ આપો</h3>
+
+          <p style="font-size: 16px; line-height: 1.7; color: #333333;">
+            આ કૃતિ વાંચ્યા બાદ જો તમને કોઈ વિચાર, સૂચન કે અનુભવ લખવો હોય,  
+            તો મને આ ઈમેઈલ પર મોકલી શકો છો:
+          </p>
+
+          <p style="font-size: 18px; font-weight: bold; margin: 15px 0;">
+            <a href="mailto:bhargavsinh.bca@gmail.com" style="color: #8B0000; text-decoration: none;">
+              bhargavsinh.bca@gmail.com
+            </a>
+          </p>
+
+          <p style="font-size: 15px; color: #444444; margin-bottom: 0; line-height: 1.6;">
+            તમારો પ્રતિસાદ મને પ્રેરણા આપશે.  
+            કૃપા કરીને આદરપૂર્વક અને વિચારપૂર્વક લખજો.
+          </p>
+        </div>
 
     </main>
 
