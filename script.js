@@ -292,3 +292,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 500); // 500ms ડીલે જેથી Header સંપૂર્ણપણે લોડ થઈ જાય
 });
+// Google reCAPTCHA સ્ક્રિપ્ટ ડાયનેમિકલી લોડ કરવા માટેનો કોડ
+let recaptchaScript = document.createElement('script');
+recaptchaScript.src = "https://www.google.com/recaptcha/api.js";
+recaptchaScript.async = true;
+recaptchaScript.defer = true;
+document.head.appendChild(recaptchaScript);
+
