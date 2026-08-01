@@ -8,8 +8,7 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!-- CSS ફાઇલ્સ લિંક -->
     <link rel="stylesheet" href="style.css">
@@ -23,7 +22,7 @@
     <!-- ========================================== -->
     <div id="consent-modal" class="fixed inset-0 z-[99999] flex items-center justify-center bg-black/95 backdrop-blur-md p-3 sm:p-4 overflow-y-auto">
         <div class="bg-[#1a365d] border border-amber-500/50 rounded-3xl p-5 sm:p-8 max-w-md w-full shadow-[0_0_60px_rgba(245,158,11,0.35)] space-y-4 my-auto text-center">
-            
+
             <div class="flex justify-between items-center text-[10px] uppercase tracking-widest text-amber-400/80 border-b border-amber-900/40 pb-2">
                 <span>Step 1 of 2 : Dual-Verification</span>
                 <span>Version 1.2 • July 2026</span>
@@ -45,7 +44,7 @@
                    class="bg-zinc-900 hover:bg-zinc-800 border border-amber-900/60 text-amber-300 font-semibold py-2.5 px-3 rounded-xl text-xs transition-all text-center flex items-center justify-center gap-2 shadow-sm">
                     <span>⚖️</span> 1. Legal Disclaimer <span id="status-disclaimer" class="text-zinc-500">👈</span>
                 </a>
-                
+
                 <a href="bookreadingpolicy.html" target="_blank" onclick="markPolicyRead()" id="btn-policy"
                    class="bg-zinc-900 hover:bg-zinc-800 border border-amber-900/60 text-amber-300 font-semibold py-2.5 px-3 rounded-xl text-xs transition-all text-center flex items-center justify-center gap-2 shadow-sm">
                     <span>📖</span> 2. Reading Policy <span id="status-policy" class="text-zinc-500">👈</span>
@@ -71,6 +70,11 @@
                 • I understand that continued access constitutes informed acceptance of all terms.
             </div>
 
+            <!-- Google reCAPTCHA Integration -->
+            <div class="flex justify-center pt-2">
+                <div class="g-recaptcha" data-sitekey="6Lcc5m8tAAAAAN9u6A8F-rvuMIq2mq2LPz9K8Pxb" data-callback="enableProceedButton"></div>
+            </div>
+
             <!-- Copyright Notice Note -->
             <div class="text-[10px] text-amber-300/60 pt-1 border-t border-amber-900/30">
                 © All intellectual property rights remain reserved by the author. Unauthorized reproduction or commercial use is strictly prohibited.
@@ -80,9 +84,6 @@
             <div class="text-center text-xs text-amber-300/80 bg-zinc-900/60 p-2.5 rounded-xl border border-zinc-800 font-noto">
                 📖 For the best reading experience on large screens, we recommend enabling your browser's <strong>"Desktop Site"</strong> mode.
             </div>
-
-<div class="g-recaptcha" data-sitekey="6Lcc5m8tAAAAAN9u6A8F-rvuMIq2mq2LPz9K8Pxb"></div>
-
 
             <!-- Action Buttons -->
             <div class="flex flex-col sm:flex-row gap-3 pt-2">
@@ -99,36 +100,36 @@
         </div>
     </div>
 
-    <!-- Script to Handle Strict Dual-Verification Logic -->
+    <!-- Script to Handle Strict Dual-Verification & reCAPTCHA Logic -->
     <script>
         let disclaimerChecked = false;
         let policyChecked = false;
+        let recaptchaVerified = false;
 
         function markDisclaimerRead() {
             disclaimerChecked = true;
             document.getElementById('status-disclaimer').innerHTML = "✅";
             document.getElementById('status-disclaimer').className = "text-emerald-400 font-bold";
-            checkBothVerified();
+            checkAllVerified();
         }
 
         function markPolicyRead() {
             policyChecked = true;
             document.getElementById('status-policy').innerHTML = "✅";
             document.getElementById('status-policy').className = "text-emerald-400 font-bold";
-            checkBothVerified();
+            checkAllVerified();
         }
 
-        function checkBothVerified() {
+        function checkAllVerified() {
             const warning = document.getElementById('read-warning');
             const container = document.getElementById('checkbox-container');
             const checkbox = document.getElementById('agree-checkbox');
 
             if (disclaimerChecked && policyChecked) {
-                // Enable Checkbox
                 container.classList.remove('opacity-50', 'cursor-not-allowed');
                 checkbox.disabled = false;
-                
-                warning.innerHTML = "✅ Both documents verified successfully! You may now check the agreement box.";
+
+                warning.innerHTML = "✅ Both documents verified! Please check the agreement box and complete reCAPTCHA.";
                 warning.className = "text-[11px] text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 p-2.5 rounded-xl text-center";
             } else {
                 let remaining = [];
@@ -138,10 +139,18 @@
             }
         }
 
+        // આ ફંક્શન ત્યારે જ રન થશે જ્યારે યુઝર કેપ્ચા વેરિફાઈ કરી લેશે
+        function enableProceedButton() {
+            recaptchaVerified = true;
+            toggleReadButton();
+        }
+
         function toggleReadButton() {
             const checkbox = document.getElementById('agree-checkbox');
             const btn = document.getElementById('proceed-btn');
-            if (checkbox.checked && disclaimerChecked && policyChecked) {
+            
+            // પ્રોસીડ બટન ત્યારે જ ચાલુ થશે જ્યારે: ચેકબોક્સ ઓકે હોય, બંને ડોક્યુમેન્ટ વેરિફાઈ થયા હોય અને કેપ્ચા પણ પૂર્ણ થયો હોય
+            if (checkbox.checked && disclaimerChecked && policyChecked && recaptchaVerified) {
                 btn.disabled = false;
                 btn.className = "flex-1 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-400 text-black font-bold py-3.5 px-4 rounded-xl text-xs sm:text-sm transition-all cursor-pointer shadow-[0_0_20px_rgba(245,158,11,0.5)] border border-amber-400 scale-[1.02]";
             } else {
@@ -151,6 +160,13 @@
         }
 
         function unlockBook() {
+            // વધારાની સુરક્ષા માટે પ્રોસીડ કરતી વખતે પણ ચેક કરો કે કેપ્ચા વેરિફાઈ થયેલ છે કે નહીં
+            let recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                alert("કૃપા કરીને પહેલા I'm not a robot (reCAPTCHA) વેરિફાઈ કરો.");
+                return;
+            }
+
             const modal = document.getElementById('consent-modal');
             modal.style.opacity = '0';
             modal.style.transition = 'opacity 0.4s ease';
@@ -177,7 +193,7 @@
 
     <!-- ૨. મુખ્ય કન્ટેન્ટ એરિયા (Main Area) -->
     <main class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-8 overflow-hidden">
-        
+
         <!-- Top Navigation / Breadcrumb & Update Badge -->
         <div class="flex flex-col sm:flex-row justify-between items-center gap-4 border-b border-amber-900/40 pb-4">
             <a href="otherlinks.html" class="text-amber-400 hover:text-amber-300 text-sm font-semibold flex items-center gap-2 transition-all">
@@ -208,21 +224,21 @@
                  class="bg-[#120F0F] border border-amber-900/50 rounded-3xl p-4 sm:p-8 shadow-[0_0_35px_rgba(245,158,11,0.1)] space-y-6 select-none"
                  oncontextmenu="return false"
                  oncopy="return false">
-            
+
             <!-- Reader Action Bar -->
             <div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-black/60 p-4 rounded-2xl border border-amber-900/40">
                 <div class="flex items-center gap-2 text-amber-300 text-sm font-semibold">
                     <span>🛡️</span>
                     <span>Secure In-Site Reading Only (Protected Mode)</span>
                 </div>
-                
+
                 <button onclick="toggleFullscreenReader()" 
                         class="bg-amber-600 hover:bg-amber-500 text-black font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all shadow-md flex items-center gap-2 cursor-pointer">
                     <span>🔍</span> Toggle Immersive Fullscreen
                 </button>
             </div>
 
-            <!-- Google Docs Preview Section (Locked with rm=minimal & sandbox) -->
+            <!-- Google Docs Preview Section -->
             <div class="relative w-full h-[75vh] sm:h-[82vh] md:h-[88vh] rounded-2xl overflow-hidden border border-amber-900/40 bg-white shadow-inner" style="-webkit-overflow-scrolling: touch;">
                 <iframe 
                     src="https://docs.google.com/document/d/1_MLa1Gs3Uo9dftRqCiO9y5_KRxH23_rTViD2Kb3SDC0/preview?rm=minimal" 
