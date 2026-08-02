@@ -97,11 +97,35 @@
         <p class="font-['jaini'] text-3xl md:text-4xl text-[#ffd700] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">श्रीकृष्णार्पणमस्तु</p>
     </div>
 
-<!-- Real-time અને સુરક્ષિત વિઝિટર કાઉન્ટર -->
+
+<!-- જાવાસ્ક્રિપ્ટ આધારિત કસ્ટમ વિઝિટર કાઉન્ટર (Base: 4000) -->
 <div class="flex justify-center items-center my-6">
-    <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fbhargavsinh.github.io&label=VISITORS&labelColor=%23120f0f&countColor=%23f59e0b&style=flat-square" alt="Real-time Visitor Counter" />
+    <div class="bg-[#120f0f] border border-amber-500 rounded flex items-center shadow-[0_0_10px_rgba(245,158,11,0.2)] overflow-hidden cursor-default select-none">
+        <div class="bg-[#120f0f] text-amber-500 text-[11px] font-bold px-3 py-1.5 tracking-widest uppercase">
+            Visitors
+        </div>
+        <div id="visitor-count" class="bg-amber-500 text-[#120f0f] text-[11px] font-bold px-3 py-1.5">
+            4000
+        </div>
+    </div>
 </div>
 
+<script>
+    // ફ્રી કાઉન્ટર API દ્વારા નવા મુલાકાતીઓની ગણતરી અને જૂના 4000 નો ઉમેરો
+    // નોંધ: આ API સુરક્ષિત છે અને કોઈ એડ-બ્લોકર તેને નડશે નહીં.
+    fetch('https://api.counterapi.dev/v1/bhargavsinh_portfolio_v11/visitors/up')
+        .then(response => response.json())
+        .then(data => {
+            // અગાઉના 4000 મુલાકાતીઓ + નવા મુલાકાતીઓ
+            let totalVisitors = 4000 + data.count;
+            document.getElementById('visitor-count').innerText = totalVisitors;
+        })
+        .catch(error => {
+            console.error('Error fetching visitor count:', error);
+            // જો કોઈ ટેકનિકલ એરર આવે તો ઓછામાં ઓછા 4000 તો બતાવશે જ
+            document.getElementById('visitor-count').innerText = "4000+";
+        });
+</script>
 
 
     <!-- કોપીરાઇટ વિભાગ -->
