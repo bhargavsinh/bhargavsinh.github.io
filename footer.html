@@ -97,7 +97,6 @@
         <p class="font-['jaini'] text-3xl md:text-4xl text-[#ffd700] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">श्रीकृष्णार्पणमस्तु</p>
     </div>
 
-
 <!-- જાવાસ્ક્રિપ્ટ આધારિત કસ્ટમ વિઝિટર કાઉન્ટર (Base: 4000) -->
 <div class="flex justify-center items-center my-6">
     <div class="bg-[#120f0f] border border-amber-500 rounded flex items-center shadow-[0_0_10px_rgba(245,158,11,0.2)] overflow-hidden cursor-default select-none">
@@ -111,21 +110,22 @@
 </div>
 
 <script>
-    // ફ્રી કાઉન્ટર API દ્વારા નવા મુલાકાતીઓની ગણતરી અને જૂના 4000 નો ઉમેરો
-    // નોંધ: આ API સુરક્ષિત છે અને કોઈ એડ-બ્લોકર તેને નડશે નહીં.
-    fetch('https://api.counterapi.dev/v1/bhargavsinh_portfolio_v11/visitors/up')
+    // કેશિંગ રોકવા અને નવો આંકડો લાવવા માટેનો સુધારેલો કોડ
+    const noCache = new Date().getTime();
+    fetch(`https://api.counterapi.dev/v1/bhargavsinh_portfolio/visitors/up?time=${noCache}`)
         .then(response => response.json())
         .then(data => {
-            // અગાઉના 4000 મુલાકાતીઓ + નવા મુલાકાતીઓ
-            let totalVisitors = 4000 + data.count;
-            document.getElementById('visitor-count').innerText = totalVisitors;
+            // અગાઉના 4000 મુલાકાતીઓ + ડેટાબેઝનો નવો આંકડો
+            let currentCount = data.count || 1;
+            document.getElementById('visitor-count').innerText = 4000 + currentCount;
         })
         .catch(error => {
-            console.error('Error fetching visitor count:', error);
-            // જો કોઈ ટેકનિકલ એરર આવે તો ઓછામાં ઓછા 4000 તો બતાવશે જ
-            document.getElementById('visitor-count').innerText = "4000+";
+            console.error('Counter Error:', error);
+            // જો ઇન્ટરનેટ ધીમું હોય તો પણ 4001 તો બતાવશે જ
+            document.getElementById('visitor-count').innerText = "4001+";
         });
 </script>
+
 
 
     <!-- કોપીરાઇટ વિભાગ -->
