@@ -28,6 +28,9 @@
             box-shadow: 0 25px 50px -12px rgb(245 158 11 / 0.3);
         }
     </style>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+
 </head>
 <body class="bg-slate-950 text-slate-200">
 
@@ -155,5 +158,19 @@
     <div id="footer-container"></div>
 
     <script src="script.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(registration => {
+          console.log('ServiceWorker registration successful');
+        })
+        .catch(err => {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+  }
+</script>
+
 </body>
 </html>
