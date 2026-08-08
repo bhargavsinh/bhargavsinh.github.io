@@ -24,7 +24,7 @@ This portfolio is built as a fully functional **Progressive Web App (PWA)**, des
 You can install this portfolio directly to your mobile home screen or desktop application menu[span_17](start_span)[span_17](end_span). Because of the V12.1 Service Worker update, **every single page, image, and asset is cached for 100% offline availability.**[span_18](start_span)[span_18](end_span)
 
 ## 📬 Contact & Links
-* **Native Place:** Chunthana Muvada, Taluka Godhra, Gujarat[span_19](start_span)[span_19](end_span)
+* **Native Place:** Chunthana Muvada, Taluka Godhar, Gujarat[span_19](start_span)[span_19](end_span)
 * **Current Residence:** Lunawada, District Mahisagar, Gujarat[span_20](start_span)[span_20](end_span)
 * **GitHub:** [bhargavsinh.github.io](https://bhargavsinh.github.io)[span_21](start_span)[span_21](end_span)
 
