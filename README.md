@@ -21,7 +21,7 @@ This portfolio is built as a fully functional **Progressive Web App (PWA)**, des
 * **Structured Policies:** Includes a dedicated `bookreadingpolicy.html` and `grievance.html` reflecting my principles of deep work and structured management[span_16](start_span)[span_16](end_span).
 
 ## 📥 Installation (PWA)
-You can install this portfolio directly to your mobile home screen or desktop application menu[span_17](start_span)[span_17](end_span). Because of the V12.1 Service Worker update, **every single page, image, and asset is cached for 100% offline availability.**[span_18](start_span)[span_18](end_span)
+You can install this portfolio directly to your mobile home screen or desktop application menu[span_17](start_span)[span_17](end_span). Because of the V12.2 Service Worker update, **every single page, image, and asset is cached for 100% offline availability.**[span_18](start_span)[span_18](end_span)
 
 ## 📬 Contact & Links
 * **Native Place:** Chunthana Muvada, Taluka Godhar, Gujarat[span_19](start_span)[span_19](end_span)
