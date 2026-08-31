@@ -19,105 +19,128 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@300;400;500;600;700&family=Noto+Serif+Gujarati:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-    body { font-family: 'Noto Sans Gujarati', system-ui, sans-serif; }
+    body { 
+        font-family: 'Noto Sans Gujarati', system-ui, sans-serif !important;
+        background-color: #fafaf9 !important;
+        color: #1c1917 !important;
+    }
     .gujarati-serif { font-family: 'Noto Serif Gujarati', serif; }
-    .sanskrit-box { background: rgba(245, 158, 11, 0.08); border-left: 4px solid #f59e0b; }
-    .key-point { background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(245, 158, 11, 0.05)); border: 1px solid rgba(245, 158, 11, 0.3); }
-    .article-content p { margin-bottom: 1.25rem; line-height: 1.9; text-align: justify; }
+    .sanskrit-box { 
+        background: #fff7ed !important; 
+        border-left: 4px solid #d97706 !important; 
+    }
+    .key-point { 
+        background: linear-gradient(135deg, #fff7ed, #ffedd5) !important; 
+        border: 1px solid #fdba74 !important; 
+        color: #1c1917 !important;
+    }
+    .article-content p { 
+        margin-bottom: 1.25rem; 
+        line-height: 1.9; 
+        text-align: justify;
+        color: #1c1917 !important;
+    }
+    .article-content h2 {
+        color: #9a3412 !important;
+    }
+    /* Force dark text everywhere in content */
+    main, article, section, p, h1, h2, h3, span, div, strong {
+        color: inherit;
+    }
 </style>
 
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#1c1917">
 </head>
-<body class="bg-white text-black">
+<body class="bg-stone-50 text-stone-900">
 
 <div id="header-container"></div>
 
 <main>
     <!-- Hero -->
-    <section class="relative py-16 sm:py-24 px-5 border-b border-amber-900/30">
+    <section class="relative py-14 sm:py-20 px-5 border-b border-amber-200 bg-white">
         <div class="max-w-4xl mx-auto text-center">
-            <p class="text-amber-400 text-sm sm:text-base mb-4 tracking-wide">પુષ્ટિમાર્ગ • બૌદ્ધિક વિચાર</p>
-            <h1 class="gujarati-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6 text-white">
+            <p class="text-amber-700 text-sm sm:text-base mb-4 tracking-wide font-medium">પુષ્ટિમાર્ગ • બૌદ્ધિક વિચાર</p>
+            <h1 class="gujarati-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6 text-stone-900">
                 પુષ્ટિમાર્ગને ‘ડોક્ટર’ની નહિ,<br class="hidden sm:block">
                 દ્રઢતાની જરૂર છે!
             </h1>
-            <p class="text-lg sm:text-xl text-amber-200/90 max-w-2xl mx-auto mb-8">
+            <p class="text-lg sm:text-xl text-stone-600 max-w-2xl mx-auto mb-6">
                 જ્યારે અડધું જ્ઞાન સંપૂર્ણ પુષ્ટિમાર્ગ બનીને YouTube પર આવે…
             </p>
-            <p class="text-amber-400/80 text-base">જય શ્રીકૃષ્ણ 🙏</p>
+            <p class="text-amber-700 text-base font-medium">જય શ્રીકૃષ્ણ 🙏</p>
         </div>
     </section>
 
     <!-- Article -->
-    <article class="py-12 sm:py-16 px-5">
-        <div class="max-w-3xl mx-auto article-content">
+    <article class="py-12 sm:py-16 px-5 bg-stone-50">
+        <div class="max-w-3xl mx-auto article-content text-stone-900">
 
-            <p class="text-lg text-slate-300">
-                આજે હું તમારી સાથે એક એવી વાત કરવા માંગુ છું જે માત્ર હાસ્ય માટે નથી, માત્ર કટાક્ષ માટે નથી, અને માત્ર કોઈને નીચું બતાવવા માટે પણ નથી. આ વાત છે <span class="text-amber-400 font-medium">પુષ્ટિમાર્ગ</span>ની… અને તેને સમજાવવાની એક નવી જાતની વૃત્તિની.
+            <p class="text-lg text-stone-800">
+                આજે હું તમારી સાથે એક એવી વાત કરવા માંગુ છું જે માત્ર હાસ્ય માટે નથી, માત્ર કટાક્ષ માટે નથી, અને માત્ર કોઈને નીચું બતાવવા માટે પણ નથી. આ વાત છે <span class="text-amber-700 font-semibold">પુષ્ટિમાર્ગ</span>ની… અને તેને સમજાવવાની એક નવી જાતની વૃત્તિની.
             </p>
 
-            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-400 mt-14 mb-6">૧. પુષ્ટિમાર્ગ ખરેખર બીમાર છે?</h2>
+            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-800 mt-14 mb-6">૧. પુષ્ટિમાર્ગ ખરેખર બીમાર છે?</h2>
 
             <p>પહેલો પ્રશ્ન સીધો છે — પુષ્ટિમાર્ગ ખરેખર બીમાર થઈ ગયો છે કે શું?</p>
             <p>કારણ કે આજકાલ કોઈ-કોઈ વ્યક્તિ પોતાના ચેનલના નામ સાથે “Doctor” જોડીને પુષ્ટિમાર્ગ સમજાવવા બેઠા છે. વાહ! હવે પુષ્ટિમાર્ગનું પણ medical department આવી ગયું છે!</p>
             <p>વિચારો તો… એક તરફ શ્રીમહાપ્રભુજીનો માર્ગ — જેમાં કૃપા છે, પુષ્ટિ છે, સેવા છે, રસ છે, ગુપ્તતા છે. બીજી તરફ “Doctor” શબ્દ. આ બે વચ્ચે શું સંબંધ છે?</p>
             <p>પુષ્ટિમાર્ગને ખરેખર ડોક્ટરની જરૂર પડી છે? તે બીમાર છે? તેનું diagnosis કોણ કરશે? તેનું prescription શું હશે?</p>
 
-            <div class="key-point rounded-2xl p-5 my-8 text-amber-100">
+            <div class="key-point rounded-2xl p-5 my-8 text-stone-800">
                 “એક ચમચી બ્રહ્મસંબંધ… દિવસમાં બે વાર”?<br>
                 “સેવા પહેલાં dental check-up ફરજિયાત”?<br>
                 “જો ભાવ ઓછો લાગે તો antibiotic કોર્સ”?
             </div>
 
             <p>આ મજાક લાગે છે… પરંતુ આ મજાકની પાછળ એક ગંભીર વાત છે. કોઈ વ્યક્તિ વ્યવસાયથી ડોક્ટર છે — તેમાં કોઈ વાંધો નથી. વ્યવસાય એ વ્યવસાય છે. પરંતુ જ્યારે medical titleના પ્રભાવ હેઠળ કોઈ વ્યક્તિ પુષ્ટિમાર્ગીય અધિકાર અથવા શાસ્ત્રીય પ્રામાણિકતાનો ભાસ ઊભો કરે… ત્યારે વાત અલગ થઈ જાય છે.</p>
-            <p class="text-amber-300 font-medium">Roast વ્યક્તિ પર નથી. Roast નામકરણની વિસંગતિ પર છે. Roast એ વૃત્તિ પર છે જે અડધા જ્ઞાનને સંપૂર્ણ સત્ય તરીકે રજૂ કરે છે. કારણ કે પુષ્ટિમાર્ગને “doctor”ની જરૂર નથી. તેને <strong class="text-white">દ્રઢતા</strong>ની જરૂર છે.</p>
+            <p class="text-amber-800 font-medium">Roast વ્યક્તિ પર નથી. Roast નામકરણની વિસંગતિ પર છે. Roast એ વૃત્તિ પર છે જે અડધા જ્ઞાનને સંપૂર્ણ સત્ય તરીકે રજૂ કરે છે. કારણ કે પુષ્ટિમાર્ગને “doctor”ની જરૂર નથી. તેને <strong class="text-stone-900">દ્રઢતા</strong>ની જરૂર છે.</p>
 
-            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-400 mt-14 mb-6">૨. “Pushtimarg Doctor” નામનો સંદેશ</h2>
+            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-800 mt-14 mb-6">૨. “Pushtimarg Doctor” નામનો સંદેશ</h2>
 
             <p>જ્યારે કોઈ વ્યક્તિ પોતાને “Pushtimarg Doctor” કહે છે… ત્યારે શું સંદેશ જાય છે? સંદેશ એ જાય છે કે આ માર્ગમાં કંઈક ખોટું છે… અને તેને સુધારવા માટે medical intervention જોઈએ છે.</p>
             <p>પરંતુ પુષ્ટિમાર્ગ કોઈ રોગ નથી. પુષ્ટિમાર્ગ કોઈ symptom નથી. પુષ્ટિમાર્ગ કોઈ deficiency નથી જેને tabletથી ભરી શકાય.</p>
-            <p>પુષ્ટિમાર્ગ એ <span class="text-amber-400 font-medium">કૃપાપ્રધાન માર્ગ</span> છે. જેમાં અધિકાર છે, સંબંધ છે, સેવા છે, અને સૌથી અગત્યનું — <span class="text-amber-400 font-medium">ગુપ્તતા</span> છે.</p>
+            <p>પુષ્ટિમાર્ગ એ <span class="text-amber-700 font-semibold">કૃપાપ્રધાન માર્ગ</span> છે. જેમાં અધિકાર છે, સંબંધ છે, સેવા છે, અને સૌથી અગત્યનું — <span class="text-amber-700 font-semibold">ગુપ્તતા</span> છે.</p>
             <p>જો આ માર્ગને “doctor”ની જરૂર હોત… તો શ્રીમહાપ્રભુજીએ જ કહી દીધું હોત. પરંતુ તેમણે કહ્યું નથી. તેમણે કહ્યું છે — પુષ્ટિ. તેમણે કહ્યું છે — સેવા. તેમણે કહ્યું છે — ભાવ.</p>
             <p>“Doctor” શબ્દ આધુનિક છે. પુષ્ટિમાર્ગ પરંપરાગત છે. બંનેને જોડવું એ conceptual mismatch છે.</p>
             <p>આગળ કદાચ “Pushtimarg ICU” પણ શરૂ થઈ જાય! કારણ કે જો “Doctor” આવી ગયું… તો intensive care પણ આવી જશે. પછી “Pushtimarg Emergency”… પછી “Pushtimarg Pharmacy”… અને અંતે “Pushtimarg Health Insurance” પણ આવી જશે!</p>
             <p>આ હાસ્ય છે… પરંતુ આ હાસ્યની પાછળ એક વાસ્તવિકતા છે. જ્યારે કોઈ વ્યક્તિ medical titleનો ઉપયોગ કરીને ધાર્મિક માર્ગ સમજાવે… ત્યારે લોકોને એવું લાગે છે કે આ વ્યક્તિ પાસે કોઈ વિશેષ અધિકાર છે. પરંતુ અધિકાર medical degreeથી મળતો નથી. અધિકાર પરંપરાથી મળે છે. અધિકાર કૃપાથી મળે છે. અધિકાર વિનયથી મળે છે.</p>
 
-            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-400 mt-14 mb-6">૩. અડધું જ્ઞાન અને પુષ્ટિમાર્ગ</h2>
+            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-800 mt-14 mb-6">૩. અડધું જ્ઞાન અને પુષ્ટિમાર્ગ</h2>
 
             <p>Google પર ચાર શબ્દો શોધી લેવા… અને પુષ્ટિમાર્ગ સમજાઈ જવો — આ બે અલગ બાબતો છે.</p>
             <p>આજકાલ એક નવી સંસ્કૃતિ ઊભી થઈ છે. થોડા screenshots. થોડા reels. થોડા quotes. અને પછી… “હું પુષ્ટિમાર્ગ સમજાવું છું.”</p>
             <p>પરંતુ પુષ્ટિમાર્ગ માત્ર quotes, reels, screenshots અને બે-ચાર શ્લોકોથી સમજાતો માર્ગ નથી. શ્રીમહાપ્રભુજીના સિદ્ધાંતો, શ્રીગોપીનાથજી પ્રભુચરણની પરંપરા, શ્રીગુસાંઈજી પ્રભુચરણની સેવા-વ્યવસ્થા, પુષ્ટિભાવ, બ્રહ્મસંબંધ, સેવા, સ્વરૂપ, અધિકાર, મર્યાદા, રસ અને ગુપ્તતા… આ બધું એક સાથે જોડાયેલું છે.</p>
             <p>જ્યારે આમાંથી કોઈ એક વાક્યને સંદર્ભ વગર અલગ કાઢીને રજૂ કરવામાં આવે… ત્યારે અર્થ વિકૃત થઈ શકે છે.</p>
 
-            <h3 class="text-xl font-semibold text-amber-300 mt-10 mb-4">ઉદાહરણ ૧ — સેવા</h3>
-            <p>કોઈ વ્યક્તિ કહે — “પુષ્ટિમાર્ગમાં સેવા જ મુખ્ય છે.” આ વાત સાચી છે… પરંતુ અધૂરી છે. સેવા કોને? કેવી રીતે? કયા અધિકારથી? કયા ભાવથી? કયા સ્વરૂપની? આ બધું વગરની સેવા માત્ર કર્મ બની જાય છે. પુષ્ટિમાર્ગમાં સેવા કર્મ નથી… <strong class="text-amber-300">સેવા ભાવ છે</strong>.</p>
+            <h3 class="text-xl font-semibold text-amber-800 mt-10 mb-4">ઉદાહરણ ૧ — સેવા</h3>
+            <p>કોઈ વ્યક્તિ કહે — “પુષ્ટિમાર્ગમાં સેવા જ મુખ્ય છે.” આ વાત સાચી છે… પરંતુ અધૂરી છે. સેવા કોને? કેવી રીતે? કયા અધિકારથી? કયા ભાવથી? કયા સ્વરૂપની? આ બધું વગરની સેવા માત્ર કર્મ બની જાય છે. પુષ્ટિમાર્ગમાં સેવા કર્મ નથી… <strong class="text-amber-800">સેવા ભાવ છે</strong>.</p>
 
-            <h3 class="text-xl font-semibold text-amber-300 mt-8 mb-4">ઉદાહરણ ૨ — બ્રહ્મસંબંધ</h3>
+            <h3 class="text-xl font-semibold text-amber-800 mt-8 mb-4">ઉદાહરણ ૨ — બ્રહ્મસંબંધ</h3>
             <p>કોઈ વ્યક્તિ કહે — “બ્રહ્મસંબંધ લેવો જોઈએ.” આ પણ સાચું છે… પરંતુ અધૂરું છે. બ્રહ્મસંબંધ એ માત્ર એક વિધિ નથી. તે સંબંધ છે. તે અધિકાર છે. તે જવાબદારી છે. તે ગુપ્ત છે. તેને public content બનાવી દેવું… એ તેના મૂળ સ્વરૂપને નબળું પાડે છે.</p>
 
-            <div class="key-point rounded-2xl p-5 my-8 text-amber-100">
+            <div class="key-point rounded-2xl p-5 my-8 text-stone-800">
                 શાસ્ત્રમાંથી એક વાક્ય ઉપાડવું સરળ છે.<br>
                 પરંતુ એ વાક્યની પાછળ ઊભી આખી પરંપરા ઉપાડવી — એ જ સાચો અભ્યાસ છે.
             </div>
 
-            <p class="text-slate-300">શું બે quotes વાંચવાથી પરંપરા સમજાઈ જાય?<br>
+            <p class="text-stone-700">શું બે quotes વાંચવાથી પરંપરા સમજાઈ જાય?<br>
             શું thumbnail પર “પુષ્ટિમાર્ગ” લખી દેવાથી વાત પુષ્ટિમાર્ગીય બની જાય?<br>
             શું confidence જ knowledgeનો પુરાવો છે?<br>
             શું camera આગળ બેસીને બોલવાથી અધિકાર મળી જાય છે?</p>
-            <p class="text-amber-300 font-medium text-lg mt-4">નહિ. અને આ “નહિ” સમજવું જરૂરી છે.</p>
+            <p class="text-amber-800 font-medium text-lg mt-4">નહિ. અને આ “નહિ” સમજવું જરૂરી છે.</p>
 
-            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-400 mt-14 mb-6">૪. શાસ્ત્રીય આધાર — ગુપ્તતા અને અધિકાર</h2>
+            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-800 mt-14 mb-6">૪. શાસ્ત્રીય આધાર — ગુપ્તતા અને અધિકાર</h2>
 
             <p>હવે શાસ્ત્રીય વાત કરીએ. ધીમે ધીમે. સ્પષ્ટ રીતે.</p>
 
             <!-- Ref 1 -->
             <div class="sanskrit-box rounded-r-2xl p-6 my-8">
-                <p class="gujarati-serif text-xl text-amber-300 mb-2">स्वीयान् भक्तान् प्रदर्शयेत्।</p>
-                <p class="text-sm text-slate-400 mb-4">(साधनदीपिका. १०८)</p>
-                <p class="text-slate-300">
-                    <strong class="text-amber-200">અર્થ:</strong> જેઓ પોતાના સ્વજન હોય અને ભક્ત હોય તેઓનેજ શ્રીઠાકોરજીના દર્શન કરાવવા જોઈએ.<br><br>
-                    આ વાક્યનો પરંપરાગત અર્થ એ છે કે, શ્રીઠાકોરજીના દર્શન અને સેવામાં અધિકાર, સંબંધ અને આંતરિક ભાવ જેવા સૂક્ષ્મ તત્ત્વોને અવગણીને બધું જ જાહેર પ્રદર્શન બનાવી દેવું યોગ્ય નથી. આ તો પુષ્ટિમાર્ગીય ગુપ્તતા અને અધિકારના સિદ્ધાંતને સમજાવવા માટે છે.
+                <p class="gujarati-serif text-xl text-amber-900 mb-2 font-medium">स्वीयान् भक्तान् प्रदर्शयेत्।</p>
+                <p class="text-sm text-stone-500 mb-4">(साधनदीपिका. १०८)</p>
+                <p class="text-stone-800">
+                    <strong class="text-amber-800">અર્થ:</strong> જેઓ પોતાના સ્વજન હોય અને ભક્ત હોય તેઓનેજ શ્રીઠાકોરજીના દર્શન કરાવવા જોઈએ.<br><br>
+                    આ વાક્યનો પરંપરાગત અર્થ એ છે કે શ્રીઠાકોરજીના દર્શન અને સેવામાં અધિકાર, સંબંધ અને આંતરિક ભાવ જેવા સૂક્ષ્મ તત્ત્વોને અવગણીને બધું જ જાહેર પ્રદર્શન બનાવી દેવું યોગ્ય નથી. આ તો પુષ્ટિમાર્ગીય ગુપ્તતા અને અધિકારના સિદ્ધાંતને સમજાવવા માટે છે.
                 </p>
             </div>
 
@@ -125,48 +148,49 @@
 
             <!-- Ref 2 -->
             <div class="sanskrit-box rounded-r-2xl p-6 my-8">
-                <p class="gujarati-serif text-xl text-amber-300 mb-2">
+                <p class="gujarati-serif text-xl text-amber-900 mb-2 font-medium">
                     गुप्तो हि रसः रसत्वमापद्यते।<br>
                     अगुप्तो रसः रसाभासः स्यात्।
                 </p>
-                <p class="text-sm text-slate-400 mb-4">(सुबो. १०।१८।५ = १०।५६।४४)</p>
-                <p class="text-slate-300">
-                    <strong class="text-amber-200">અર્થ:</strong> ગુપ્ત રાખવાથી જ રસ રસ રહી શકે છે = પ્રકટ થતાં તે જ રસ રસાભાસ બની જાય છે.<br><br>
+                <p class="text-sm text-stone-500 mb-4">(सुबो. १०।१८।५ = १०।५६।४४)</p>
+                <p class="text-stone-800">
+                    <strong class="text-amber-800">અર્થ:</strong> ગુપ્ત રાખવાથી જ રસ રસ રહી શકે છે = પ્રકટ થતાં તે જ રસ રસાભાસ બની જાય છે.<br><br>
                     રસ ગુપ્ત રહે ત્યારે જ રસત્વ જાળવી શકે છે. અતિપ્રકટતા તેને રસાભાસ તરફ લઈ જઈ શકે છે.
                 </p>
             </div>
 
             <!-- Ref 3 -->
             <div class="sanskrit-box rounded-r-2xl p-6 my-8">
-                <p class="gujarati-serif text-lg text-amber-300 mb-2 leading-relaxed">
-                   भगवद्भावस्य रसात्मकत्वेन गुप्तस्यैव अभिवृद्धिस्वभावकत्वाद् आश्रमधर्मैरेव लोके स्वं भगवद्भावम् अनाविष्कुर्वन् भजेत् इत्येतदाशयेन ते धर्मा उक्ताः. गोपने मुख्यं हेतुम् आह 'अन्वयाद्' इति. यतो भगवता समम् अन्वयं = सम्बन्धं प्राप्य वर्तते, अतो हेतोः तथा. अत्र "ल्यब्लोपे पञ्चमी" एतेन यावद् अन्तःकरणे साक्षात् प्रभो प्राकट्यं नास्ति, तावदेव बहिराविष्करणं भवति, प्राकट्ये तु न तथा सम्भवति इति ज्ञापितम्  </p>
-                <p class="text-sm text-slate-400 mb-4">(अणुभाष्य. ३।४।४९)</p>
-                <p class="text-slate-300">
-                    <strong class="text-amber-200">અર્થ:</strong> ભાવ ગુપ્ત રહે તો જ વૃદ્ધિગત થઈ શકે છે. તેથી જગતમાં પોતાના આશ્રમધર્મોની આડમાં પોતાના ભગવદ્ભાવને ગુપ્ત રાખીને ભગવદ્ભજન કરવું જોઈએ. આ હેતુસર જ ભગવદ્ભાવની સાથોસાથ આશ્રમધર્મોનું પણ નિરૂપણ કરવામાં આવ્યું છે. જેના હૃદયમાં પ્રભુ પ્રકટ નથી બીરાજતા તેજ પોતાના ભાવોને ખુલ્લેઆમ પ્રદર્શિત કરતો હોય છે. જો પ્રભુ હૃદયમાં બિરાજતા હોય તો ભાવનું ઉઘાડેછોગ પ્રદર્શન સંભવ નથી.
+                <p class="gujarati-serif text-lg text-amber-900 mb-2 leading-relaxed font-medium">
+                    भगवद्भावस्य रसात्मकत्वेन गुप्तस्यैव अभिवृद्धिस्वभावकत्वाद् आश्रमधर्मैरेव लोके स्वं भगवद्भावम् अनाविष्कुर्वन् भजेत् इत्येतदाशयेन ते धर्मा उक्ताः।
+                </p>
+                <p class="text-sm text-stone-500 mb-4">(अणुभाष्य. ३।४।४९)</p>
+                <p class="text-stone-800">
+                    <strong class="text-amber-800">અર્થ:</strong> ભાવ ગુપ્ત રહે તો જ વૃદ્ધિગત થઈ શકે છે. તેથી જગતમાં પોતાના આશ્રમધર્મોની આડમાં પોતાના ભગવદ્ભાવને ગુપ્ત રાખીને ભગવદ્ભજન કરવું જોઈએ. આ હેતુસર જ ભગવદ્ભાવની સાથોસાથ આશ્રમધર્મોનું પણ નિરૂપણ કરવામાં આવ્યું છે. જેના હૃદયમાં પ્રભુ પ્રકટ નથી બીરાજતા તેજ પોતાના ભાવોને ખુલ્લેઆમ પ્રદર્શિત કરતો હોય છે. જો પ્રભુ હૃદયમાં બિરાજતા હોય તો ભાવનું ઉઘાડેછોગ પ્રદર્શન સંભવ નથી.
                 </p>
             </div>
 
             <p>આજકાલ બધું content છે — સેવા પણ content, ભાવ પણ content, દર્શન પણ content… અને અંતે રહસ્ય પણ thumbnail!</p>
             <p>પુષ્ટિમાર્ગમાં દરેક આધ્યાત્મિક અનુભવ camera-facing content નથી. જે વસ્તુ આંતરિક ભાવ માટે છે તેને algorithm માટે જાહેર કરવી — આ વૃત્તિ પર વિચાર કરવાની જરૂર છે.</p>
 
-            <div class="key-point rounded-2xl p-5 my-8 text-amber-100">
+            <div class="key-point rounded-2xl p-5 my-8 text-stone-800">
                 Algorithmને engagement જોઈએ.<br>
                 પુષ્ટિમાર્ગને ભાવ જોઈએ.<br>
                 બંનેની જરૂરિયાતો એકસરખી નથી.
             </div>
 
-            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-400 mt-14 mb-6">૫. સોશિયલ મીડિયા કલ્ચર અને પુષ્ટિમાર્ગ</h2>
+            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-800 mt-14 mb-6">૫. સોશિયલ મીડિયા કલ્ચર અને પુષ્ટિમાર્ગ</h2>
 
             <p>Thumbnail → Reel → Shorts → Algorithm → Religious content. આ એક નવી ચેઈન છે. અને આ ચેઈનમાં પુષ્ટિમાર્ગને પણ ખેંચી લેવામાં આવી રહ્યો છે.</p>
             <p>થમ્બનેલ પર મોટા મોટા અક્ષરો. “પુષ્ટિમાર્ગનું રહસ્ય!” “જે કોઈને ખબર નથી!” “ડોક્ટર સમજાવે છે!” પરંતુ પુષ્ટિમાર્ગનું રહસ્ય thumbnail માટે નથી. પુષ્ટિમાર્ગનું રહસ્ય આંતરિક ભાવ માટે છે.</p>
             <p>આ બે વિશ્વોને મિક્સ કરવું એ જોખમી છે. કારણ કે જ્યારે રસને content બનાવી દેવામાં આવે… ત્યારે રસ રસાભાસ બની જાય છે. જ્યારે ગુપ્તતાને public બનાવી દેવામાં આવે… ત્યારે અધિકારનું મહત્વ ઘટી જાય છે. જ્યારે સેવાને performance બનાવી દેવામાં આવે… ત્યારે ભાવ નબળો પડી જાય છે.</p>
 
-            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-400 mt-14 mb-6">૬. અધિકાર, Platform અને Expertise</h2>
+            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-800 mt-14 mb-6">૬. અધિકાર, Platform અને Expertise</h2>
 
             <p>કેટલાક લોકો એવું વિચારે છે કે જો હું camera આગળ બેસીને બોલું… તો હું અધિકારી બની જઉં. પરંતુ camera અધિકાર આપતું નથી. Camera માત્ર platform આપે છે. Platform અને અધિકાર અલગ વસ્તુઓ છે.</p>
             <p>કેટલાક લોકો એવું વિચારે છે કે જો હું શાસ્ત્રના શબ્દો બોલું… તો હું શાસ્ત્રીય બની જઉં. પરંતુ શબ્દો બોલવા અને શબ્દોને જીવવા અલગ વસ્તુઓ છે. શબ્દો copy કરી શકાય… પરંતુ અધિકાર copy-paste થતો નથી.</p>
 
-            <div class="key-point rounded-2xl p-5 my-8 text-amber-100">
+            <div class="key-point rounded-2xl p-5 my-8 text-stone-800">
                 પુષ્ટિમાર્ગને “doctor”ની જરૂર નથી.<br>
                 પુષ્ટિમાર્ગને દ્રઢતાની જરૂર છે.<br>
                 પુષ્ટિમાર્ગને વિનયની જરૂર છે.<br>
@@ -174,12 +198,12 @@
                 પુષ્ટિમાર્ગને ગુપ્તતાની જરૂર છે.
             </div>
 
-            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-400 mt-14 mb-6">૭. સાચી પદ્ધતિ શું છે?</h2>
+            <h2 class="gujarati-serif text-2xl sm:text-3xl font-bold text-amber-800 mt-14 mb-6">૭. સાચી પદ્ધતિ શું છે?</h2>
 
-            <p>માત્ર ટીકા કરવી સરળ છે. સાચી પદ્ધતિ શું છે? (મારા વ્યક્તિગત મતાનુસાર)</p>
+            <p>માત્ર ટીકા કરવી સરળ છે. સાચી પદ્ધતિ શું છે?</p>
 
-            <div class="text-center my-10 py-6 px-4 rounded-2xl bg-slate-900 border border-amber-900/50">
-                <p class="text-amber-300 text-lg sm:text-xl font-medium leading-relaxed">
+            <div class="text-center my-10 py-6 px-4 rounded-2xl bg-amber-50 border border-amber-200">
+                <p class="text-amber-900 text-lg sm:text-xl font-medium leading-relaxed">
                     અભ્યાસ → પરંપરા → અધિકાર → સંદર્ભ → વિનય → સેવા → ગુપ્તતા
                 </p>
             </div>
@@ -187,35 +211,35 @@
             <p>જે વ્યક્તિ ખરેખર પુષ્ટિમાર્ગ સમજવા માંગે છે… તે પહેલા વિનયથી બેસે. પછી પરંપરાના વાહકો પાસેથી સાંભળે. સંદર્ભ સાથે વાંચે. અને સૌથી અગત્યનું — અધિકાર અને મર્યાદાને માને.</p>
             <p>શાસ્ત્રના શબ્દોને પોતાના વિચારની સેવામાં ન લગાડે… પરંતુ પોતાને શાસ્ત્રની સેવામાં લગાડે.</p>
             <p>જે વ્યક્તિ ખરેખર સમજે છે… તે જાણે છે કે બધું public નથી. જે વ્યક્તિ ખરેખર સમજે છે… તે જાણે છે કે બધું content નથી. જે વ્યક્તિ ખરેખર સમજે છે… તે જાણે છે કે બધું thumbnail નથી.</p>
-            <p class="text-amber-300 font-medium">રસ ગુપ્ત રહે ત્યારે જ રસત્વ જાળવી શકે છે. આ સિદ્ધાંત ભૂલવો ન જોઈએ.</p>
+            <p class="text-amber-800 font-medium">રસ ગુપ્ત રહે ત્યારે જ રસત્વ જાળવી શકે છે. આ સિદ્ધાંત ભૂલવો ન જોઈએ.</p>
 
             <!-- Final -->
-            <div class="mt-16 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-amber-900/40 via-slate-900 to-slate-950 border border-amber-700/40 text-center">
-                <p class="text-xl sm:text-2xl text-amber-200 font-medium mb-6 leading-relaxed">
+            <div class="mt-16 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 text-center">
+                <p class="text-xl sm:text-2xl text-amber-900 font-medium mb-6 leading-relaxed">
                     પુષ્ટિમાર્ગને કોઈ “doctor”ની જરૂર નથી.<br>
                     તેને સાચા અર્થમાં સમજવા માટે દ્રઢતા, વિનય, અધિકાર, પરંપરા અને શ્રીપ્રભુચરણની કૃપાની જરૂર છે.
                 </p>
-                <p class="text-slate-300 mb-6">
+                <p class="text-stone-700 mb-6">
                     જ્યારે અડધું જ્ઞાન સંપૂર્ણ પુષ્ટિમાર્ગ બનીને આવે… ત્યારે શ્રોતાને પણ વિચારવાની જરૂર છે.<br>
                     કારણ કે આ માર્ગ hashtagનો નથી. આ માર્ગ હૃદયનો છે. આ માર્ગ કૃપાનો છે. આ માર્ગ ગુપ્ત રસનો છે.
                 </p>
-                <p class="text-amber-300 text-lg mb-4">
+                <p class="text-amber-800 text-lg mb-4">
                     જેને ખરેખર સમજવું હોય… તે “doctor” શોધતો નથી.<br>
                     તે દ્રઢતા શોધે છે. તે વિનય શોધે છે. તે અધિકાર શોધે છે.<br>
                     તે પરંપરા શોધે છે. તે કૃપા શોધે છે.
                 </p>
-                <p class="text-white text-xl font-medium mt-8 mb-2">
+                <p class="text-stone-900 text-xl font-medium mt-8 mb-2">
                     પુષ્ટિમાર્ગ content નથી.<br>
                     પુષ્ટિમાર્ગ કૃપા છે. પુષ્ટિમાર્ગ સેવા છે.<br>
                     પુષ્ટિમાર્ગ ભાવ છે. પુષ્ટિમાર્ગ ગુપ્ત રસ છે.
                 </p>
-                <p class="text-amber-400 text-lg mt-8">આ વાત યાદ રાખો. આ વાત વિચારો. આ વાત જીવો.</p>
-                <p class="text-2xl mt-6 text-amber-300">જય શ્રીકૃષ્ણ 🙏</p>
+                <p class="text-amber-700 text-lg mt-8 font-medium">આ વાત યાદ રાખો. આ વાત વિચારો. આ વાત જીવો.</p>
+                <p class="text-2xl mt-6 text-amber-800">જય શ્રીકૃષ્ણ 🙏</p>
             </div>
 
             <!-- Disclaimer -->
-            <div class="mt-12 p-6 rounded-2xl bg-slate-900/80 border border-slate-700 text-sm text-slate-400">
-                <p class="font-medium text-slate-300 mb-2">કાનૂની સૂચના</p>
+            <div class="mt-12 p-6 rounded-2xl bg-stone-100 border border-stone-200 text-sm text-stone-600">
+                <p class="font-medium text-stone-800 mb-2">કાનૂની સૂચના</p>
                 <p>આ લેખ માત્ર વિચારધારા અને રજૂઆતની શૈલી પર કેન્દ્રિત છે. કોઈપણ વ્યક્તિ, વ્યવસાય, જાતિ, ધર્મ કે સંસ્થા સામે વ્યક્તિગત હુમલાનો ઇરાદો નથી. શાસ્ત્રીય સંદર્ભો માત્ર પરંપરાગત સમજૂતી માટે રજૂ કરવામાં આવ્યા છે.</p>
             </div>
 
@@ -223,8 +247,8 @@
     </article>
 
     <!-- Back -->
-    <section class="py-10 text-center border-t border-amber-900/30">
-        <a href="pushtimarg.html" class="inline-block px-8 py-3 border border-amber-500/50 hover:bg-amber-500/10 text-amber-400 rounded-2xl transition">
+    <section class="py-10 text-center border-t border-amber-200 bg-white">
+        <a href="pushtimarg.html" class="inline-block px-8 py-3 border border-amber-600 text-amber-800 hover:bg-amber-50 rounded-2xl transition font-medium">
             ← પુષ્ટિમાર્ગ પેજ પર પાછા જાઓ
         </a>
     </section>
@@ -234,7 +258,6 @@
 
 <script src="script.js"></script>
 <script>
-    // Fallback if script.js does not load header/footer
     if (!document.getElementById('header-container').innerHTML.trim()) {
         fetch('header.html').then(r => r.ok ? r.text() : '').then(html => {
             if (html) document.getElementById('header-container').innerHTML = html;
