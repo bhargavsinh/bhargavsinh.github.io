@@ -70,30 +70,3 @@ The design follows a **Dark Royal Theme** inspired by traditional heritage combi
 ├── assets/
 │   └── (images, icons, fonts)
 └── README.md
-
-Publications
-
-Books
-સત્યની શોધ — Published
-અસ્તિત્વ: ધ ગરિમા પ્રોજેક્ટ ભાગ - ૧ — Published (Legal Thriller + Social Drama)
-महाभारतकालीन राजधर्म और आधुनिक लोकतंत्र: एक सनातन विमर्श — Forthcoming
-Other Publications
-Sisodiya Vanshavali (Historical Genealogy Document)
-
-Author
-Bhargavsinh Sisodiya
-📍 Lunawada, Gujarat, India
-📧 bhargavsinh.bca@gmail.com
-🌐 bhargavsinh.github.io
-📝 Pratilipi Profile
-
-License
-All content, writings, and designs are © Bhargavsinh Sisodiya.
-Unauthorized use is prohibited under the Copyright Act, 1957.
-
-Contact
-For any inquiries related to collaboration, writing, technology projects, or research:
-Email: bhargavsinh.bca@gmail.com
-Website: https://bhargavsinh.github.io
-
-“Technology with purpose. Writing with depth. Heritage with responsibility.”
