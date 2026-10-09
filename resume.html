@@ -1,519 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bhargavsinh Sisodia — BCA Student, Technology Enthusiast and Writer">
+    <title>Bhargavsinh Sisodia — Resume</title>
 
-  <meta name="description"
-        content="Bhargavsinh Sisodia — BCA Student, Technology Enthusiast and Writer">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <title>Bhargavsinh Sisodia — Resume</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="colors.css">
+    <link rel="stylesheet" href="responsive.css">
 
-  <link rel="stylesheet" href="colors.css">
-  <link rel="stylesheet" href="style.css">
+    <!-- Custom Colors & Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'royal-maroon': '#800000',
+                        'divine-gold': '#FFD700',
+                        'saffron-glow': '#FF9933'
+                    },
+                    fontFamily: {
+                        'yatra': ['"Yatra One"', 'cursive'],
+                        'noto': ['"Noto Sans Gujarati"', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'playfair': ['"Playfair Display"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-
-<body>
-
-  <!-- HEADER -->
-  <div id="header"></div>
-
-  <!-- RESUME -->
-  <main class="resume-container">
-
-    <!-- HERO -->
-    <header class="resume-hero">
-
-      <h1>BHARGAVSINH SISODIA</h1>
-
-      <p class="tagline">
-        BCA Student | Technology Enthusiast | Writer |
-        Aspiring Technology &amp; Management Professional
-      </p>
-
-      <div class="contact">
-
-        <span>📍 Lunawada, Gujarat, India</span>
-
-        <a href="mailto:bhargavsinh.bca@gmail.com">
-          📧 bhargavsinh.bca@gmail.com
-        </a>
-
-        <a href="tel:+919328923709">
-          📱 9328923709
-        </a>
-
-        <a href="https://bhargavsinh.github.io"
-           target="_blank"
-           rel="noopener">
-          🌐 Website
-        </a>
-
-        <a href="https://www.pushtisahitya.org"
-           target="_blank"
-           rel="noopener">
-          🔗 Pushti Sahitya
-        </a>
-
-        <a href="https://pratilipi.app.link/KzxCu1QGv6b"
-           target="_blank"
-           rel="noopener">
-          📝 Pratilipi
-        </a>
-
-      </div>
-
-    </header>
-
-
-    <!-- PROFESSIONAL SUMMARY -->
-    <section>
-
-      <h2>Professional Summary</h2>
-
-      <p>
-        BCA student with a strong interest in
-        <strong>
-          Technology, Digital Systems, Business Management,
-          Law, Research, and Writing
-        </strong>.
-        Experienced in developing and maintaining web-based projects,
-        digital repositories, PWAs, and structured information systems.
-      </p>
-
-      <p>
-        Alongside technology, I have developed a demonstrated writing
-        portfolio including a published work,
-        <strong>
-          3 published articles on my website, and 5 short stories
-          published on Pratilipi
-        </strong>.
-        I am currently writing a legal thriller novella,
-        <em>“અસ્તિત્વ: ધ ગરિમા પ્રોજેક્ટ”</em>,
-        combining law, corporate systems, social issues, and storytelling.
-      </p>
-
-      <p>
-        My long-term goal is to build a
-        <strong>
-          technology-focused career with strong foundations in
-          management, law, governance, research, and communication
-        </strong>,
-        with an interest in Technology Management, Product Development,
-        Digital Transformation, and Technology Entrepreneurship.
-      </p>
-
-    </section>
-
-
-    <!-- EDUCATION -->
-    <section>
-
-      <h2>Education</h2>
-
-      <h3>Bachelor of Computer Applications (BCA)</h3>
-
-      <p>
-        <strong>Shri Govind Guru University, Gujarat</strong><br>
-        Currently pursuing — Semester 3<br>
-        NEP-2020 Curriculum
-      </p>
-
-      <h4>Relevant Areas</h4>
-
-      <ul>
-
-        <li>Object-Oriented Programming using C++</li>
-        <li>Relational Database Management Systems</li>
-        <li>Computer Networking</li>
-        <li>Statistical Computing</li>
-        <li>E-Commerce</li>
-        <li>English &amp; Communication</li>
-        <li>Indian Knowledge Systems</li>
-
-      </ul>
-
-    </section>
-
-
-    <!-- TECHNICAL SKILLS -->
-    <section>
-
-      <h2>Technical Skills</h2>
-
-      <ul class="skill-list">
-
-        <li>HTML5</li>
-        <li>CSS3</li>
-        <li>JavaScript</li>
-        <li>C++</li>
-        <li>Object-Oriented Programming</li>
-        <li>SQL &amp; Database Fundamentals</li>
-        <li>RDBMS Concepts</li>
-        <li>Computer Networking Fundamentals</li>
-        <li>Progressive Web Apps (PWA)</li>
-        <li>Git &amp; GitHub</li>
-        <li>JSON</li>
-        <li>Responsive Web Development</li>
-        <li>Website Architecture</li>
-        <li>Digital Repository Development</li>
-        <li>Basic Debugging &amp; Code Auditing</li>
-        <li>AI-assisted Development &amp; Prompt Engineering</li>
-
-      </ul>
-
-    </section>
-
-
-    <!-- PROJECTS -->
-    <section>
-
-      <h2>Projects &amp; Digital Work</h2>
-
-
-      <article class="project">
-
-        <h3>
-          Pushti Sahitya — Digital Repository &amp; PWA
-        </h3>
-
-        <p>
-          <strong>Founder / Developer</strong>
-        </p>
-
-        <p>
-          A digital repository focused on preserving and providing
-          access to Pushtimargiya literature and granthas.
-        </p>
-
-        <ul>
-
-          <li>
-            Designed and developed a web-based digital repository.
-          </li>
-
-          <li>
-            Worked with HTML, CSS, JavaScript, JSON and PWA technologies.
-          </li>
-
-          <li>
-            Structured large collections of digital literature and metadata.
-          </li>
-
-          <li>
-            Worked on responsive navigation for mobile, desktop and
-            PWA environments.
-          </li>
-
-          <li>
-            Implemented structured content, ebook links and repository data.
-          </li>
-
-          <li>
-            Used GitHub-based version control and development workflows.
-          </li>
-
-          <li>
-            Worked on information architecture, auditing, debugging
-            and preservation of existing content.
-          </li>
-
-        </ul>
-
-        <p>
-          <strong>Website:</strong>
-          <a href="https://www.pushtisahitya.org"
-             target="_blank"
-             rel="noopener">
-            pushtisahitya.org
-          </a>
-        </p>
-
-      </article>
-
-
-      <article class="project">
-
-        <h3>Bhargavsinh Personal Website</h3>
-
-        <p>
-          <strong>Designer / Developer / Content Creator</strong>
-        </p>
-
-        <p>
-          Personal digital platform containing technology, writing,
-          heritage, research and personal projects.
-        </p>
-
-        <p>
-          <strong>Website:</strong>
-          <a href="https://bhargavsinh.github.io"
-             target="_blank"
-             rel="noopener">
-            bhargavsinh.github.io
-          </a>
-        </p>
-
-      </article>
-
-
-      <article class="project">
-
-        <h3>Sisodiya Genealogy Digital Archive</h3>
-
-        <p>
-          <strong>Research &amp; Digital Documentation Project</strong>
-        </p>
-
-        <p>
-          A structured digital archive documenting family genealogy
-          and historical/cultural information with emphasis on
-          organization, source preservation and transparent documentation.
-        </p>
-
-      </article>
-
-    </section>
-
-
-    <!-- WRITING -->
-    <section>
-
-      <h2>Writing &amp; Publications</h2>
-
-
-      <div class="publication">
-
-        <h3>Published Work</h3>
-
-        <p>
-          <strong>“સત્યની શોધ”</strong><br>
-          Published literary work.
-        </p>
-
-      </div>
-
-
-      <div class="publication">
-
-        <h3>Published Articles</h3>
-
-        <p>
-          <strong>
-            3 Articles published on personal website
-          </strong>
-        </p>
-
-        <p>
-          Topics include research, cultural/philosophical subjects
-          and analytical writing.
-        </p>
-
-      </div>
-
-
-      <div class="publication">
-
-        <h3>Short Stories</h3>
-
-        <p>
-          <strong>
-            5 Short Stories published on Pratilipi
-          </strong>
-        </p>
-
-      </div>
-
-
-      <div class="publication">
-
-        <h3>Current Writing Project</h3>
-
-        <p>
-          <strong>
-            “અસ્તિત્વ: ‘ધ ગરિમા પ્રોજેક્ટ’”
-          </strong>
-        </p>
-
-        <p>
-          Genre:
-          <strong>
-            Legal Thriller + Rom-Com + Social Drama
-          </strong>
-        </p>
-
-        <p>
-          A fictional work set around the corporate world and
-          Delhi High Court, exploring discrimination, corporate power,
-          dignity, legal conflict and human relationships.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- AREAS OF INTEREST -->
-    <section>
-
-      <h2>Areas of Interest</h2>
-
-      <ul>
-
-        <li>Technology &amp; Software Development</li>
-        <li>Technology Management</li>
-        <li>Product Management</li>
-        <li>Digital Transformation</li>
-        <li>Entrepreneurship</li>
-        <li>Law &amp; Technology Law</li>
-        <li>Cyber Law</li>
-        <li>Data Privacy &amp; Governance</li>
-        <li>LegalTech</li>
-        <li>Research &amp; Digital Archives</li>
-        <li>Creative Writing</li>
-        <li>Storytelling</li>
-        <li>Information Architecture</li>
-        <li>Digital Preservation</li>
-
-      </ul>
-
-    </section>
-
-
-    <!-- CORE STRENGTHS -->
-    <section>
-
-      <h2>Core Strengths</h2>
-
-      <ul>
-
-        <li>Systems Thinking</li>
-        <li>Research &amp; Information Organization</li>
-        <li>Technical Problem Solving</li>
-        <li>Digital Documentation</li>
-        <li>Creative &amp; Analytical Writing</li>
-        <li>Cross-disciplinary Thinking</li>
-        <li>Attention to Detail</li>
-        <li>Project Structuring</li>
-        <li>Self-directed Learning</li>
-        <li>Communication &amp; Documentation</li>
-
-      </ul>
-
-    </section>
-
-
-    <!-- CAREER OBJECTIVE -->
-    <section>
-
-      <h2>Career Objective</h2>
-
-      <p>
-        To build a technology-driven professional career by combining
-        <strong>
-          technical expertise with management, law, research,
-          and communication skills
-        </strong>,
-        with the long-term objective of working in areas such as
-        <strong>
-          Technology Management, Product Development,
-          Digital Transformation, LegalTech, Technology Governance,
-          or Technology Entrepreneurship
-        </strong>.
-      </p>
-
-    </section>
-
-
-    <!-- LANGUAGES -->
-    <section>
-
-      <h2>Languages</h2>
-
-      <ul>
-
-        <li>Gujarati</li>
-        <li>Hindi</li>
-        <li>English</li>
-
-      </ul>
-
-    </section>
-
-
-    <!-- PROFESSIONAL LINKS -->
-    <section>
-
-      <h2>Professional Links</h2>
-
-      <ul class="links">
-
-        <li>
-          <strong>GitHub:</strong>
-          <a href="https://github.com/bhargavsinh"
-             target="_blank"
-             rel="noopener">
-            github.com/bhargavsinh
-          </a>
-        </li>
-
-        <li>
-          <strong>Personal Website:</strong>
-          <a href="https://bhargavsinh.github.io"
-             target="_blank"
-             rel="noopener">
-            bhargavsinh.github.io
-          </a>
-        </li>
-
-        <li>
-          <strong>Pushti Sahitya:</strong>
-          <a href="https://www.pushtisahitya.org"
-             target="_blank"
-             rel="noopener">
-            pushtisahitya.org
-          </a>
-        </li>
-
-        <li>
-          <strong>Pratilipi:</strong>
-          <a href="https://pratilipi.app.link/KzxCu1QGv6b"
-             target="_blank"
-             rel="noopener">
-            Pratilipi Profile
-          </a>
-        </li>
-
-      </ul>
-
-    </section>
-
-
-    <!-- DECLARATION -->
-    <section>
-
-      <h2>Declaration</h2>
-
-      <p>
-        I hereby declare that the information provided above is
-        true and accurate to the best of my knowledge.
-      </p>
-
-      <p>
-        <strong>Bhargavsinh Sisodia</strong>
-      </p>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-  <div id="footer"></div>
-
-
-  <!-- SCRIPT -->
-  <script src="script.js"></script>
+<body class="bg-[#0d0a0a] text-amber-100 min-h-screen font-sans w-full max-w-full overflow-x-hidden">
+
+    <!-- Header (auto-loaded) -->
+    <div id="header-container" class="w-full"></div>
+
+    <!-- Main Content -->
+    <main class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8 overflow-hidden">
+        <br>
+
+        <!-- Resume Container -->
+        <div class="bg-[#120F0F] rounded-[2rem] sm:rounded-[2.5rem] p-5 sm:p-8 md:p-12 shadow-[0_0_30px_rgba(245,158,11,0.15)] relative border border-amber-900/40">
+
+            <!-- Hero Section -->
+            <div class="text-center mb-12">
+                <h1 class="font-yatra text-4xl md:text-6xl text-divine-gold drop-shadow-lg tracking-wide">
+                    BHARGAVSINH SISODIA
+                </h1>
+                <p class="text-white/70 font-medium mt-4 tracking-wide text-sm md:text-base">
+                    BCA Student | Technology Enthusiast | Writer | Aspiring Technology & Management Professional
+                </p>
+
+                <!-- Contact Info -->
+                <div class="mt-6 flex flex-wrap justify-center gap-3 md:gap-5 text-sm text-white/80">
+                    <span class="flex items-center gap-1.5">📍 Lunawada, Gujarat, India</span>
+                    <a href="mailto:bhargavsinh.bca@gmail.com" class="hover:text-divine-gold transition-colors flex items-center gap-1.5">
+                        📧 bhargavsinh.bca@gmail.com
+                    </a>
+                    <a href="tel:+919328923709" class="hover:text-divine-gold transition-colors flex items-center gap-1.5">
+                        📱 9328923709
+                    </a>
+                    <a href="https://bhargavsinh.github.io" target="_blank" rel="noopener" class="hover:text-divine-gold transition-colors flex items-center gap-1.5">
+                        🌐 Website
+                    </a>
+                    <a href="https://pratilipi.app.link/KzxCu1QGv6b" target="_blank" rel="noopener" class="hover:text-divine-gold transition-colors flex items-center gap-1.5">
+                        📝 Pratilipi
+                    </a>
+                </div>
+            </div>
+
+            <!-- Professional Summary -->
+            <section class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                    <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Professional Summary</h2>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                </div>
+                <div class="space-y-4 text-white/80 leading-relaxed text-sm md:text-base">
+                    <p>
+                        BCA student with a strong interest in
+                        <strong class="text-white">Technology, Digital Systems, Business Management, Law, Research, and Writing</strong>.
+                        Experienced in developing and maintaining web-based projects, digital repositories, PWAs, and structured information systems.
+                    </p>
+                    <p>
+                        Alongside technology, I have developed a demonstrated writing portfolio including published literary work,
+                        <strong class="text-white">3 published articles on my website, and 5 short stories published on Pratilipi</strong>.
+                        I have also published a legal thriller novella,
+                        <em class="text-divine-gold">“અસ્તિત્વ: ધ ગરિમા પ્રોજેક્ટ ભાગ - ૧”</em>,
+                        combining law, corporate systems, social issues, and storytelling.
+                    </p>
+                    <p>
+                        My long-term goal is to build a
+                        <strong class="text-white">technology-focused career with strong foundations in management, law, governance, research, and communication</strong>,
+                        with an interest in Technology Management, Product Development, Digital Transformation, and Technology Entrepreneurship.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                    <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Education</h2>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                </div>
+                <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5 md:p-6">
+                    <h3 class="text-white font-semibold text-lg mb-1">Bachelor of Computer Applications (BCA)</h3>
+                    <p class="text-white/70 text-sm mb-3">
+                        <strong class="text-white">Shri Govind Guru University, Gujarat</strong><br>
+                        Currently pursuing — Semester 3<br>
+                        NEP-2020 Curriculum
+                    </p>
+                    <h4 class="text-divine-gold text-sm font-medium mb-2 tracking-wide uppercase">Relevant Areas</h4>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-white/80">
+                        <li class="flex items-start gap-2"><span class="text-divine-gold mt-1">•</span> Object-Oriented Programming using C++</li>
+                        <li class="flex items-start gap-2"><span class="text-divine-gold mt-1">•</span> Relational Database Management Systems</li>
+                        <li class="flex items-start gap-2"><span class="text-divine-gold mt-1">•</span> Computer Networking</li>
+                        <li class="flex items-start gap-2"><span class="text-divine-gold mt-1">•</span> Statistical Computing</li>
+                        <li class="flex items-start gap-2"><span class="text-divine-gold mt-1">•</span> E-Commerce</li>
+                        <li class="flex items-start gap-2"><span class="text-divine-gold mt-1">•</span> English & Communication</li>
+                        <li class="flex items-start gap-2"><span class="text-divine-gold mt-1">•</span> Indian Knowledge Systems</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Technical Skills -->
+            <section class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                    <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Technical Skills</h2>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                </div>
+                <div class="flex flex-wrap gap-2.5">
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">HTML5</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">CSS3</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">JavaScript</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">C++</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Object-Oriented Programming</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">SQL & Database Fundamentals</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">RDBMS Concepts</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Computer Networking Fundamentals</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Progressive Web Apps (PWA)</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Git & GitHub</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">JSON</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Responsive Web Development</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Website Architecture</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Digital Repository Development</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Basic Debugging & Code Auditing</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">AI-assisted Development & Prompt Engineering</span>
+                </div>
+            </section>
+
+            <!-- Projects & Digital Work -->
+            <section class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                    <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Projects & Digital Work</h2>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Project 1 -->
+                    <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5 md:p-6 hover:bg-black/50 transition-colors">
+                        <h3 class="text-white font-semibold text-lg mb-1">Bhargavsinh Personal Website</h3>
+                        <p class="text-divine-gold text-sm font-medium mb-3">Designer / Developer / Content Creator</p>
+                        <p class="text-white/70 text-sm mb-4">
+                            Personal digital platform containing technology, writing, heritage, research and personal projects.
+                        </p>
+                        <p class="text-sm">
+                            <strong class="text-white">Website:</strong>
+                            <a href="https://bhargavsinh.github.io" target="_blank" rel="noopener" class="text-divine-gold hover:underline ml-1">
+                                bhargavsinh.github.io
+                            </a>
+                        </p>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5 md:p-6 hover:bg-black/50 transition-colors">
+                        <h3 class="text-white font-semibold text-lg mb-1">Sisodiya Genealogy Digital Archive</h3>
+                        <p class="text-divine-gold text-sm font-medium mb-3">Research & Digital Documentation Project</p>
+                        <p class="text-white/70 text-sm">
+                            A structured digital archive documenting family genealogy and historical/cultural information with emphasis on organization, source preservation and transparent documentation.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Writing & Publications -->
+            <section class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                    <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Writing & Publications</h2>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5">
+                        <h3 class="text-divine-gold font-medium text-sm uppercase tracking-wider mb-2">Published Work</h3>
+                        <p class="text-white font-semibold">“સત્યની શોધ”</p>
+                        <p class="text-white/60 text-sm mt-1">Published literary work.</p>
+                    </div>
+
+                    <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5">
+                        <h3 class="text-divine-gold font-medium text-sm uppercase tracking-wider mb-2">Published Novella</h3>
+                        <p class="text-white font-semibold">“અસ્તિત્વ: ધ ગરિમા પ્રોજેક્ટ ભાગ - ૧”</p>
+                        <p class="text-white/70 text-sm mt-1">
+                            <strong class="text-white">Genre:</strong> Legal Thriller + Rom-Com + Social Drama
+                        </p>
+                        <p class="text-white/60 text-sm mt-2">
+                            A fictional work set around the corporate world and Delhi High Court, exploring discrimination, corporate power, dignity, legal conflict and human relationships.
+                        </p>
+                    </div>
+
+                    <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5">
+                        <h3 class="text-divine-gold font-medium text-sm uppercase tracking-wider mb-2">Published Articles</h3>
+                        <p class="text-white font-semibold">3 Articles published on personal website</p>
+                        <p class="text-white/60 text-sm mt-1">Topics include research, cultural/philosophical subjects and analytical writing.</p>
+                    </div>
+
+                    <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5">
+                        <h3 class="text-divine-gold font-medium text-sm uppercase tracking-wider mb-2">Short Stories</h3>
+                        <p class="text-white font-semibold">5 Short Stories published on Pratilipi</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Areas of Interest -->
+            <section class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                    <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Areas of Interest</h2>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                </div>
+                <div class="flex flex-wrap gap-2.5">
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Technology & Software Development</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Technology Management</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Product Management</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Digital Transformation</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Entrepreneurship</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Law & Technology Law</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Cyber Law</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Data Privacy & Governance</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">LegalTech</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Research & Digital Archives</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Creative Writing</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Storytelling</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Information Architecture</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Digital Preservation</span>
+                </div>
+            </section>
+
+            <!-- Core Strengths -->
+            <section class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                    <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Core Strengths</h2>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                </div>
+                <div class="flex flex-wrap gap-2.5">
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Systems Thinking</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Research & Information Organization</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Technical Problem Solving</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Digital Documentation</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Creative & Analytical Writing</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Cross-disciplinary Thinking</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Attention to Detail</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Project Structuring</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Self-directed Learning</span>
+                    <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Communication & Documentation</span>
+                </div>
+            </section>
+
+            <!-- Career Objective -->
+            <section class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                    <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Career Objective</h2>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                </div>
+                <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5 md:p-6 text-white/80 text-sm md:text-base leading-relaxed">
+                    <p>
+                        To build a technology-driven professional career by combining
+                        <strong class="text-white">technical expertise with management, law, research, and communication skills</strong>,
+                        with the long-term objective of working in areas such as
+                        <strong class="text-white">Technology Management, Product Development, Digital Transformation, LegalTech, Technology Governance, or Technology Entrepreneurship</strong>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Languages -->
+            <section class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                    <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Languages</h2>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="bg-white/10 text-white/90 px-4 py-2 rounded-full text-sm font-medium border border-white/20">Gujarati</span>
+                    <span class="bg-white/10 text-white/90 px-4 py-2 rounded-full text-sm font-medium border border-white/20">Hindi</span>
+                    <span class="bg-white/10 text-white/90 px-4 py-2 rounded-full text-sm font-medium border border-white/20">English</span>
+                </div>
+            </section>
+
+            <!-- Professional Links -->
+            <section class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                    <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Professional Links</h2>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                </div>
+                <ul class="space-y-3 text-sm md:text-base">
+                    <li class="flex flex-wrap items-center gap-2">
+                        <strong class="text-white min-w-[140px]">GitHub:</strong>
+                        <a href="https://github.com/bhargavsinh" target="_blank" rel="noopener" class="text-divine-gold hover:underline">
+                            github.com/bhargavsinh
+                        </a>
+                    </li>
+                    <li class="flex flex-wrap items-center gap-2">
+                        <strong class="text-white min-w-[140px]">Personal Website:</strong>
+                        <a href="https://bhargavsinh.github.io" target="_blank" rel="noopener" class="text-divine-gold hover:underline">
+                            bhargavsinh.github.io
+                        </a>
+                    </li>
+                    <li class="flex flex-wrap items-center gap-2">
+                        <strong class="text-white min-w-[140px]">Pratilipi:</strong>
+                        <a href="https://pratilipi.app.link/KzxCu1QGv6b" target="_blank" rel="noopener" class="text-divine-gold hover:underline">
+                            Pratilipi Profile
+                        </a>
+                    </li>
+                </ul>
+            </section>
+<!-- Declaration -->
+            <section>
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                    <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Declaration</h2>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div>
+                </div>
+                <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5 md:p-6 text-center">
+                    <p class="text-white/80 text-sm md:text-base leading-relaxed mb-4">
+                        I hereby declare that the information provided above is true and accurate to the best of my knowledge.
+                    </p>
+                    <p class="text-divine-gold font-semibold text-lg">
+                        Bhargavsinh Sisodia
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer (auto-loaded) -->
+    <div id="footer-container" class="w-full"></div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
 
 </body>
 </html>
