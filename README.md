@@ -1,32 +1,99 @@
-# Bhargavsinh Sisodiya | Personal Portfolio & Digital Archive[span_0](start_span)[span_0](end_span)
+# Bhargavsinh Sisodiya — Personal Website
 
-Welcome to my personal portfolio repository (Progressive Web App)[span_1](start_span)[span_1](end_span). This platform serves as a digital archive of my professional journey, intellectual pursuits, and ancestral legacy[span_2](start_span)[span_2](end_span).
+Official personal website of **Bhargavsinh Sisodiya** — BCA Student, Technology Enthusiast, Writer, and Aspiring Technology & Management Professional.
 
-## About Me
-I am **Bhargavsinh Sisodiya**, a BCA student at Mahisagar BCA College, Lunawada, with a long-term vision of serving as a high-level Legal Consultant[span_3](start_span)[span_3](end_span). 
-
-I carry my heritage with profound humility and responsibility[span_4](start_span)[span_4](end_span). I am the 16th-generation descendant of Veer Shiromani Maharana Pratap Singhji, through his 11th son, Shri Puranmal ji[span_5](start_span)[span_5](end_span). My historical lineage is documented in *Puravaton Ka Itihas*[span_6](start_span)[span_6](end_span). My life and work are guided by the values of courage, dharma, and self-respect that my ancestors embodied[span_7](start_span)[span_7](end_span).
-
-## 🚀 Technical Architecture (V12.2)
-This portfolio is built as a fully functional **Progressive Web App (PWA)**, designed for speed, reliability, and an app-like native experience[span_8](start_span)[span_8](end_span).
-* **Frontend Stack:** HTML5, CSS3, JavaScript (ES6+), Tailwind CSS[span_9](start_span)[span_9](end_span)
-* **PWA Features:** Fully installable (`manifest.json`), Comprehensive offline support (`sw.js`)[span_10](start_span)[span_10](end_span)
-* **Design Language:** Themed around a 'Deep Autumn' palette, reflecting a structured and professional aesthetic[span_11](start_span)[span_11](end_span).
-
-## 📂 Key Projects & Sections
-* **Voice of Bhargav:** A dedicated section for my intellectual expressions, current affairs analysis, and channel manifesto[span_12](start_span)[span_12](end_span).
-* **Ancestral Lineage & Mewar History:** Digital preservation of historical documentation (`Mewad_history_blog.html`, `vanshavali.html`)[span_13](start_span)[span_13](end_span).
-* **Anand Vihar Bhavan:** Documentation and architectural vision for my personal residence project[span_14](start_span)[span_14](end_span).
-* **BharBlock:** A custom browser-based game developed and hosted on this domain[span_15](start_span)[span_15](end_span).
-* **Structured Policies:** Includes a dedicated `bookreadingpolicy.html` and `grievance.html` reflecting my principles of deep work and structured management[span_16](start_span)[span_16](end_span).
-
-## 📥 Installation (PWA)
-You can install this portfolio directly to your mobile home screen or desktop application menu[span_17](start_span)[span_17](end_span). Because of the V12.2 Service Worker update, **every single page, image, and asset is cached for 100% offline availability.**[span_18](start_span)[span_18](end_span)
-
-## 📬 Contact & Links
-* **Native Place:** Chunthana Muvada, Taluka Godhar, Gujarat[span_19](start_span)[span_19](end_span)
-* **Current Residence:** Lunawada, District Mahisagar, Gujarat[span_20](start_span)[span_20](end_span)
-* **GitHub:** [bhargavsinh.github.io](https://bhargavsinh.github.io)[span_21](start_span)[span_21](end_span)
+🌐 Live Website: [https://bhargavsinh.github.io](https://bhargavsinh.github.io)
 
 ---
-*Built with dedication, structured reasoning, and respect for legacy.*[span_22](start_span)[span_22](end_span)
+
+## Overview
+
+This repository contains the source code of Bhargavsinh Sisodiya’s personal digital platform. The website showcases:
+
+- Personal profile and professional resume
+- Published books and writings
+- Research and digital documentation projects
+- Technology-related work and interests
+- Creative writing and publications
+
+The design follows a **Dark Royal Theme** inspired by traditional heritage combined with modern web aesthetics.
+
+---
+
+## Features
+
+- Fully responsive design (Mobile + Desktop)
+- Dark Royal Theme with gold accents
+- Separate sections for Books and Other Publications
+- Clean and professional Resume page
+- Modular structure with reusable header and footer
+- Lightweight and fast loading
+- SEO-friendly meta tags
+
+---
+
+## Pages
+
+| Page | Description |
+|------|-------------|
+| `index.html` | Home / Landing page |
+| `resume.html` | Professional Resume |
+| `publications.html` / `otherlinks.html` | Books & Other Publications |
+| `vanshavali.html` | Sisodiya Genealogy Digital Archive |
+| `satyanisodh.html` | Published Book – સત્યની શોધ |
+| Other pages | Additional content pages |
+
+---
+
+## Tech Stack
+
+- **HTML5**
+- **CSS3** + Tailwind CSS
+- **JavaScript**
+- Custom CSS files (`style.css`, `colors.css`, `responsive.css`)
+- GitHub Pages for hosting
+
+---
+
+## Project Structure
+
+```text
+├── index.html
+├── resume.html
+├── publications.html / otherlinks.html
+├── vanshavali.html
+├── satyanisodh.html
+├── style.css
+├── colors.css
+├── responsive.css
+├── script.js
+├── assets/
+│   └── (images, icons, fonts)
+└── README.md
+
+Publications
+
+Books
+સત્યની શોધ — Published
+અસ્તિત્વ: ધ ગરિમા પ્રોજેક્ટ ભાગ - ૧ — Published (Legal Thriller + Social Drama)
+महाभारतकालीन राजधर्म और आधुनिक लोकतंत्र: एक सनातन विमर्श — Forthcoming
+Other Publications
+Sisodiya Vanshavali (Historical Genealogy Document)
+
+Author
+Bhargavsinh Sisodiya
+📍 Lunawada, Gujarat, India
+📧 bhargavsinh.bca@gmail.com
+🌐 bhargavsinh.github.io
+📝 Pratilipi Profile
+
+License
+All content, writings, and designs are © Bhargavsinh Sisodiya.
+Unauthorized use is prohibited under the Copyright Act, 1957.
+
+Contact
+For any inquiries related to collaboration, writing, technology projects, or research:
+Email: bhargavsinh.bca@gmail.com
+Website: https://bhargavsinh.github.io
+
+“Technology with purpose. Writing with depth. Heritage with responsibility.”
