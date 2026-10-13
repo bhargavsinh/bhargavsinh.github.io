@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="HR Recruiter">
+  <rect width="200" height="200" rx="8" fill="#E50914"/>
+  <g transform="translate(50,55)">
+    <rect x="10" y="35" width="80" height="60" rx="4" fill="#1A1A1A"/>
+    <rect x="10" y="35" width="80" height="12" rx="2" fill="#0D0D0D"/>
+    <path d="M35 35 L35 25 Q35 18 42 18 L58 18 Q65 18 65 25 L65 35" fill="none" stroke="#1A1A1A" stroke-width="6" stroke-linecap="round"/>
+    <rect x="42" y="55" width="16" height="10" rx="2" fill="#E50914"/>
+    <circle cx="50" cy="8" r="12" fill="#FFFFFF"/>
+    <path d="M28 40 Q28 22 50 22 Q72 22 72 40" fill="#FFFFFF"/>
+  </g>
+</svg>
