@@ -17,6 +17,74 @@
   <link rel="stylesheet" href="../assets/css/portal-common.css?v=16.5">
   <link rel="stylesheet" href="../assets/css/cinematic.css?v=16.5">
   <link rel="stylesheet" href="../assets/css/theme-overrides.css?v=16.5">
+<style>
+      /* Book availability section */
+    .book-platform-card {
+      background: linear-gradient(145deg, #18181f, #101015);
+      border: 1px solid #303038;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      transition: transform 0.25s ease, border-color 0.25s ease,
+                  box-shadow 0.25s ease;
+    }
+
+    .book-platform-card:hover {
+      transform: translateY(-4px);
+      border-color: #E50914;
+      box-shadow: 0 12px 30px rgba(229, 9, 20, 0.12);
+    }
+
+    .book-platform-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      width: 100%;
+      min-height: 50px;
+      padding: 0.85rem 1rem;
+      border-radius: 0.85rem;
+      background: #E50914;
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.2s ease,
+                  transform 0.2s ease;
+    }
+
+    .book-platform-button:hover {
+      background: #b80710;
+      transform: translateY(-1px);
+    }
+
+    .book-platform-button:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 4px;
+    }
+
+    .book-platform-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 1rem;
+      background: rgba(229, 9, 20, 0.12);
+      font-size: 1.75rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .book-platform-card,
+      .book-platform-button {
+        transition: none;
+      }
+
+      .book-platform-card:hover,
+      .book-platform-button:hover {
+        transform: none;
+      }
+    }
+  </style>
 </head>
 <body class="portal-books bg-[#0B0B0F] text-white min-h-screen">
   <!-- Portal header: Book-Publications-Reader/partials/header.html -->
@@ -55,7 +123,134 @@
         reading channels announced by the author.
       </p>
     </div>
+      <!-- Book Availability: Google Play Store and Google Play Books -->
+      <section
+        id="book-availability"
+        class="mt-8 sm:mt-10 bg-[#120F0F] border border-amber-900/40 rounded-3xl p-5 sm:p-8 space-y-6"
+        aria-labelledby="availability-title"
+      >
 
+        <div class="text-center space-y-3">
+          <span class="text-4xl inline-block" aria-hidden="true">📚</span>
+
+          <h2
+            id="availability-title"
+            class="text-xl sm:text-3xl font-bold text-white font-noto leading-relaxed"
+          >
+            Available on GOOGLE PLAY STORE &amp; GOOGLE PLAY BOOKS
+          </h2>
+
+          <p class="text-sm sm:text-base text-gray-400 font-noto leading-relaxed max-w-2xl mx-auto">
+            આપનું પુસ્તક વાંચવા માટે નીચે આપેલા સત્તાવાર પ્લેટફોર્મમાંથી
+            કોઈ એક પસંદ કરો.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+
+          <!-- Google Play Store -->
+          <article class="book-platform-card flex flex-col gap-4">
+
+            <div class="flex items-center gap-4">
+              <div class="book-platform-icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path d="M7 5.5C5.8 6.2 5 7.6 5 9.5V38.5C5 40.4 5.8 41.8 7 42.5L25 24L7 5.5Z" fill="#34A853"/>
+                  <path d="M7 5.5L29 18.5L24 24L7 5.5Z" fill="#4285F4"/>
+                  <path d="M7 42.5L29 29.5L24 24L7 42.5Z" fill="#EA4335"/>
+                  <path d="M29 18.5L40 25C42 26.2 42 28.1 40 29.3L29 35.5L24 30L29 24L24 18.5L29 18.5Z" fill="#FBBC04"/>
+                  <path d="M29 18.5L24 24L29 29.5L40 29.3C42 28.1 42 26.2 40 25L29 18.5Z" fill="#FF6D00"/>
+                </svg>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-bold text-white">
+                  Google Play Store
+                </h3>
+                <p class="text-sm text-gray-400">
+                  Open the book listing
+                </p>
+              </div>
+            </div>
+
+            <p class="text-sm text-gray-300 leading-relaxed font-noto flex-grow">
+              પુસ્તકના Google Play પરના પેજની મુલાકાત લેવા માટે નીચેનું બટન દબાવો.
+            </p>
+
+            <a
+              href="https://play.google.com/store/books/details/Bhargavsinh_Sisodiya_%E0%AA%85%E0%AA%B8_%E0%AA%A4_%E0%AA%A4_%E0%AA%B5?id=hmEQEgAAQBAJ"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="book-platform-button"
+              aria-label= "અસ્તિત્વ: ધ ગરિમા પ્રોજેક્ટ - ભાગ ૧ Google play store પર ખોલો"
+            >
+              <span aria-hidden="true">↗</span>
+              <span>OPEN GOOGLE PLAY STORE</span>
+            </a>
+
+          </article>
+
+          <!-- Google Play Books -->
+          <article class="book-platform-card flex flex-col gap-4">
+
+            <div class="flex items-center gap-4">
+              <div class="book-platform-icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path d="M5 9C12 7 18 8 24 12V40C18 36 12 35 5 37V9Z" fill="#4285F4"/>
+                  <path d="M43 9C36 7 30 8 24 12V40C30 36 36 35 43 37V9Z" fill="#34A853"/>
+                  <path d="M10 13C15 12 19 14 21 16V34C18 32 14 31 10 32V13Z" fill="#E8F0FE"/>
+                  <path d="M38 13C33 12 29 14 27 16V34C30 32 34 31 38 32V13Z" fill="#E6F4EA"/>
+                  <path d="M24 12V40" stroke="#FFFFFF" stroke-width="2"/>
+                </svg>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-bold text-white">
+                  Google Play Books
+                </h3>
+                <p class="text-sm text-gray-400">
+                  Explore the book edition
+                </p>
+              </div>
+            </div>
+
+            <p class="text-sm text-gray-300 leading-relaxed font-noto flex-grow">
+              Google Books પર પુસ્તકની માહિતી અને ઉપલબ્ધ વાંચન વિકલ્પો જોવા માટે અહીં ક્લિક કરો.
+            </p>
+
+            <a
+              href="https://books.google.co.in/books/about?id=hmEQEgAAQBAJ&redir_esc=y"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="book-platform-button"
+              aria-label="અસ્તિત્વધ ગરિમા પ્રોજેક્ટ - ભાગ ૧ Google Play Books પર ખોલો"
+            >
+              <span aria-hidden="true">↗</span>
+              <span>OPEN GOOGLE PLAY BOOKS</span>
+            </a>
+
+          </article>
+
+        </div>
+
+        <p class="text-xs text-white text-center leading-relaxed font-noto">
+          નોંધ: પુસ્તકની ઉપલબ્ધતા અને વાંચનના વિકલ્પો સંબંધિત પ્લેટફોર્મના નિયમો અનુસાર હોઈ શકે છે.
+        </p>
+
+      </section>
     <div class="portal-actions" style="margin-top:1.5rem;">
       <a href="otherlinks.html" class="btn btn-primary">← Back to Catalogue</a>
       <a href="satyanisodh.html" class="btn btn-ghost">સત્યની શોધ</a>
