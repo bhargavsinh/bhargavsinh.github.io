@@ -1,14 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Book and Publications">
   <rect width="200" height="200" rx="8" fill="#7B2D8E"/>
+  <!-- Open book -->
   <g transform="translate(40,55)">
     <path d="M60 10 Q60 5 55 5 L10 5 Q0 5 0 15 L0 110 Q0 120 10 120 L55 120 Q60 120 60 115 Z" fill="#F5E6FF"/>
     <path d="M60 10 Q60 5 65 5 L110 5 Q120 5 120 15 L120 110 Q120 120 110 120 L65 120 Q60 120 60 115 Z" fill="#E8D4F8"/>
     <line x1="60" y1="8" x2="60" y2="118" stroke="#5A1A6E" stroke-width="3"/>
+    <!-- Lines on left page -->
     <line x1="15" y1="30" x2="50" y2="30" stroke="#9B6BB0" stroke-width="2.5" stroke-linecap="round"/>
     <line x1="15" y1="45" x2="48" y2="45" stroke="#9B6BB0" stroke-width="2.5" stroke-linecap="round"/>
     <line x1="15" y1="60" x2="50" y2="60" stroke="#9B6BB0" stroke-width="2.5" stroke-linecap="round"/>
     <line x1="15" y1="75" x2="45" y2="75" stroke="#9B6BB0" stroke-width="2.5" stroke-linecap="round"/>
     <line x1="15" y1="90" x2="48" y2="90" stroke="#9B6BB0" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Lines on right page -->
     <line x1="70" y1="30" x2="105" y2="30" stroke="#9B6BB0" stroke-width="2.5" stroke-linecap="round"/>
     <line x1="70" y1="45" x2="102" y2="45" stroke="#9B6BB0" stroke-width="2.5" stroke-linecap="round"/>
     <line x1="70" y1="60" x2="105" y2="60" stroke="#9B6BB0" stroke-width="2.5" stroke-linecap="round"/>

@@ -1,11 +1,42 @@
-/* V17.0 theme overrides — gold/amber → cinematic red/white */
-h1,h1.font-yatra,.font-yatra.text-divine-gold,.text-divine-gold,
-h1[class*=text-amber],h1[class*=text-divine]{color:#fff!important}
-.text-amber-300,.text-amber-400,.text-divine-gold,
-[class*=text-amber-3],[class*=text-amber-4],[class*=text-divine]{color:#E50914!important}
-h1.text-amber-400,h1.text-divine-gold{color:#fff!important}
-body{background:#0B0B0F!important;color:#fff}
-[class*=border-amber]{border-color:#303038!important}
-a.bg-gradient-to-r,.bg-gradient-to-r{background:#E50914!important;background-image:none!important;color:#fff!important}
-.text-slate-200,.text-slate-300{color:#B3B3B3!important}
-.bg-slate-900,.bg-slate-950{background:#14141a!important}
+/* V16.1 — Force cinematic palette over legacy Tailwind gold/amber — load LAST */
+html, body { background: #0B0B0F !important; color: #FFFFFF !important; }
+
+/* All amber / divine-gold text → accent or white for headings */
+.text-amber-200, .text-amber-300, .text-amber-400, .text-amber-500,
+.text-divine-gold,
+[class*="text-amber-2"], [class*="text-amber-3"], [class*="text-amber-4"], [class*="text-amber-5"],
+[class*="text-divine"] {
+  color: #E50914 !important;
+}
+
+h1, h1.text-amber-300, h1.text-amber-400, h1.text-divine-gold,
+h1[class*="text-amber"], h1[class*="text-divine"],
+h1.font-yatra, .font-yatra.text-divine-gold, .font-yatra.text-amber-400,
+h2.text-amber-300, h2.text-amber-400, h2.text-divine-gold,
+h2[class*="text-amber"], h2[class*="text-divine"] {
+  color: #FFFFFF !important;
+}
+
+.text-amber-100, [class*="text-amber-1"] {
+  color: #B3B3B3 !important;
+}
+
+[class*="border-amber"] {
+  border-color: #303038 !important;
+}
+
+[class*="bg-amber-950"], [class*="bg-amber-500"] {
+  background-color: rgba(229, 9, 20, 0.12) !important;
+}
+
+a.bg-gradient-to-r, .bg-gradient-to-r.from-amber-600, a[class*="from-amber"] {
+  background: #E50914 !important;
+  background-image: none !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* Card backgrounds */
+[class*="bg-[#120F0F]"], [class*="bg-[#0d0a0a]"], [class*="bg-[#161212]"] {
+  background-color: #1C1C24 !important;
+}

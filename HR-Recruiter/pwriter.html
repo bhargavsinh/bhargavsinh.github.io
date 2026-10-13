@@ -1,1 +1,272 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0;url=../pwriter.html"><title>Redirecting…</title><script>location.replace("../pwriter.html")</script></head><body style="background:#0B0B0F;color:#fff;padding:2rem"><p><a href="../pwriter.html" style="color:#E50914">continue</a></p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https:; upgrade-insecure-requests">
+  <title>pwriter | Advanced Deep AI Prompt Architect</title>
+  <meta name="description" content="pwriter | Advanced Deep AI Prompt Architect">
+  <meta name="theme-color" content="#0B0B0F">
+  <link rel="canonical" href="https://bhargavsinh.github.io/pwriter.html">
+  <meta property="og:title" content="pwriter | Advanced Deep AI Prompt Architect">
+  <meta property="og:description" content="pwriter | Advanced Deep AI Prompt Architect">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bhargavsinh.github.io/pwriter.html">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="apple-touch-icon" href="../newlogo-192.png">
+  <link rel="icon" type="image/png" href="../newlogo-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'royal-maroon': '#800000',
+            'divine-gold': '#E50914',
+            'saffron-glow': '#FF9933'
+          },
+          fontFamily: {
+            'yatra': ['"Inter"', 'sans-serif'],
+            'noto': ['"Noto Sans Gujarati"', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+            'playfair': ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Ensure cinematic dark base even when Tailwind utilities are present */
+    body { background: #0B0B0F !important; color: #fff; }
+    /* Soften old gold accents toward red accent where pure gold was used */
+    .text-divine-gold, .text-amber-300, .text-amber-400 { color: #E50914 !important; }
+    .border-amber-900\/40, .border-amber-900\/50, .border-amber-800\/50 { border-color: #303038 !important; }
+    .bg-\[\#120F0F\], .bg-\[\#0d0a0a\], .bg-\[\#161212\] { background-color: #141419 !important; }
+    .bg-amber-950\/80 { background-color: rgba(229,9,20,0.12) !important; }
+    .text-amber-100, .text-amber-100\/90 { color: #B3B3B3 !important; }
+    .shadow-\[0_0_30px_rgba\(245\,158\,11\,0\.15\)\],
+    .shadow-\[0_0_40px_rgba\(245\,158\,11\,0\.15\)\],
+    .shadow-\[0_0_25px_rgba\(245\,158\,11\,0\.08\)\],
+    .shadow-\[0_0_15px_rgba\(245\,158\,11\,0\.08\)\] { box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important; }
+  </style>
+
+  <link rel="stylesheet" href="../assets/css/cinematic.css?v=16.5">
+  <link rel="stylesheet" href="../assets/css/theme-overrides.css?v=16.5">
+  <link rel="stylesheet" href="../assets/css/portal-common.css?v=16.5">
+</head>
+<!-- Linked partials: partials/header.html · partials/footer.html · partials/security-meta.html -->
+<body>
+  <!-- Nav + Footer injected by page-shell.js -->
+  <main class="page-main" id="main-content">
+    <div class="page-container">
+<div class="page-container">
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-6">
+                <div class="p-6 rounded-3xl glass-morphism neon-border flex-1 flex flex-col gap-5">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i data-lucide="cpu" class="text-cyan-400 w-5 h-5"></i> Objective Core
+                        </h2>
+                        <button onclick="clearInput()" class="text-xs text-slate-500 hover:text-red-400 transition flex items-center gap-1">
+                            <i data-lucide="trash-2" class="w-3 h-3"></i> Clear
+                        </button>
+                    </div>
+                    
+                    <div class="flex-1 flex flex-col">
+                        <label class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2 block">Define The Objective</label>
+                        <textarea id="raw-input" class="flex-1 w-full bg-black/40 border border-white/10 rounded-2xl p-4 text-cyan-50 font-mono text-sm focus:border-cyan-500 outline-none transition resize-none custom-scrollbar" placeholder="What exactly do you want the AI to generate? Provide details, data, and context..."></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-3 rounded-xl bg-black/40 border border-white/5">
+                            <label class="text-[9px] font-bold text-slate-500 uppercase block mb-1">Target Engine</label>
+                            <select id="target" class="bg-transparent text-sm font-semibold w-full outline-none text-white cursor-pointer appearance-none">
+                                <option value="ChatGPT (GPT-4o)" class="bg-gray-900">ChatGPT (GPT-4o)</option>
+                                <option value="Claude 3.5 Sonnet" class="bg-gray-900">Claude 3.5</option>
+                                <option value="Gemini 1.5 Pro" class="bg-gray-900">Gemini 1.5 Pro</option>
+                            </select>
+                        </div>
+                        <div class="p-3 rounded-xl bg-black/40 border border-white/5">
+                            <label class="text-[9px] font-bold text-slate-500 uppercase block mb-1">Tone & Voice</label>
+                            <select id="tone" class="bg-transparent text-sm font-semibold w-full outline-none text-white cursor-pointer appearance-none">
+                                <option value="Highly Professional & Authoritative" class="bg-gray-900">Professional</option>
+                                <option value="Academic & Research-focused" class="bg-gray-900">Academic</option>
+                                <option value="Direct, Concise & Technical" class="bg-gray-900">Technical</option>
+                                <option value="Creative & Engaging" class="bg-gray-900">Creative</option>
+                            </select>
+                        </div>
+                        <div class="p-3 rounded-xl bg-black/40 border border-white/5 col-span-2">
+                            <label class="text-[9px] font-bold text-slate-500 uppercase block mb-1">Output Structure Constraint</label>
+                            <select id="format" class="bg-transparent text-sm font-semibold w-full outline-none text-white cursor-pointer appearance-none">
+                                <option value="Structured Markdown with Clear Headers and Bullet Points" class="bg-gray-900">Structured Markdown</option>
+                                <option value="Clean Code Blocks with Inline Comments" class="bg-gray-900">Code & Documentation</option>
+                                <option value="Valid JSON Object (Strictly NO extra text)" class="bg-gray-900">Strict JSON</option>
+                                <option value="Comprehensive Essay / Detailed Report" class="bg-gray-900">Detailed Report</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="generateDeepPrompt()" class="w-full py-4 mt-2 bg-gradient-to-r from-cyan-600 to-cyan-400 text-black font-black text-sm uppercase tracking-wider rounded-xl hover:shadow-[0_0_25px_rgba(0,242,255,0.4)] transition-all duration-300 flex items-center justify-center gap-2 transform hover:-translate-y-0.5">
+                        Build 7-Layer Prompt <i data-lucide="zap" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-span-12 lg:col-span-7 flex flex-col">
+                <div id="output-container" class="flex-1 p-6 rounded-3xl glass-morphism neon-border relative flex flex-col h-[600px] lg:h-auto">
+                    
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4 pb-4 border-b border-white/5">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="layer-badge bg-blue-500/10 text-blue-400 border border-blue-500/20">ROLE</span>
+                            <span class="layer-badge bg-purple-500/10 text-purple-400 border border-purple-500/20">CONTEXT</span>
+                            <span class="layer-badge bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">OBJECTIVE</span>
+                            <span class="layer-badge bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">THINKING</span>
+                            <span class="layer-badge bg-orange-500/10 text-orange-400 border border-orange-500/20">FORMAT</span>
+                            <span class="layer-badge bg-red-500/10 text-red-400 border border-red-500/20">CONSTRAINTS</span>
+                            <span class="layer-badge bg-green-500/10 text-green-400 border border-green-500/20">QUALITY</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="copyToClipboard()" class="flex items-center gap-1.5 text-[11px] font-bold bg-white/5 hover:bg-cyan-500 hover:text-black text-white px-4 py-2 rounded-lg transition border border-white/10">
+                                <i data-lucide="copy" class="w-3.5 h-3.5"></i> COPY
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto custom-scrollbar pr-2 relative">
+                        <pre id="prompt-display" class="font-mono text-[13.5px] leading-relaxed text-slate-500 whitespace-pre-wrap">Awaiting parameters to construct 7-Layer Architecture...</pre>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-white/5 flex justify-between items-center text-[10px] text-slate-500 font-mono">
+                        <span id="status-text">Status: Idle</span>
+                        <span id="word-count">Est. Length: 0 Words</span>
+                    </div>
+
+                    <div id="loader" class="hidden absolute inset-0 bg-black/90 flex flex-col items-center justify-center z-10 backdrop-blur-md rounded-3xl">
+                        <div class="relative w-16 h-16 mb-6">
+                            <div class="absolute inset-0 border-4 border-cyan-500/20 border-t-cyan-500 rounded-full animate-spin"></div>
+                            <div class="absolute inset-2 border-4 border-purple-500/20 border-b-purple-500 rounded-full animate-spin-slow"></div>
+                            <i data-lucide="cpu" class="absolute inset-0 m-auto w-6 h-6 text-cyan-400 animate-pulse"></i>
+                        </div>
+                        <p class="text-[11px] font-black tracking-[0.2em] text-cyan-400">SYNTHESIZING 7-LAYER LOGIC...</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+  </main>
+  <script src="../assets/js/content-data.js?v=16.5"></script>
+  
+<script>
+function clearInput() {
+  var el = document.getElementById('raw-input');
+  if (el) el.value = '';
+  var disp = document.getElementById('prompt-display');
+  if (disp) disp.textContent = 'Awaiting parameters to construct 7-Layer Architecture...';
+  var st = document.getElementById('status-text');
+  if (st) st.textContent = 'Status: Idle';
+  var wc = document.getElementById('word-count');
+  if (wc) wc.textContent = 'Est. Length: 0 Words';
+}
+
+function generateDeepPrompt() {
+  var raw = (document.getElementById('raw-input') || {}).value || '';
+  var target = (document.getElementById('target') || {}).value || 'General AI';
+  var tone = (document.getElementById('tone') || {}).value || 'Professional';
+  var format = (document.getElementById('format') || {}).value || 'Structured';
+  var loader = document.getElementById('loader');
+  var disp = document.getElementById('prompt-display');
+  var st = document.getElementById('status-text');
+  var wc = document.getElementById('word-count');
+
+  if (!raw.trim()) {
+    alert('Please enter your core idea or parameters first.');
+    return;
+  }
+
+  if (loader) loader.classList.remove('hidden');
+  if (st) st.textContent = 'Status: Synthesizing...';
+
+  setTimeout(function() {
+    var prompt = [
+      '=== 7-LAYER DEEP PROMPT ARCHITECTURE ===',
+      '',
+      '[1. ROLE]',
+      'You are an expert specialist optimized for: ' + target + '.',
+      '',
+      '[2. CONTEXT]',
+      raw.trim(),
+      '',
+      '[3. OBJECTIVE]',
+      'Produce a high-quality, complete response that fully addresses the context above.',
+      '',
+      '[4. TONE]',
+      'Adopt a ' + tone + ' tone throughout.',
+      '',
+      '[5. FORMAT]',
+      'Structure the output as: ' + format + '.',
+      '',
+      '[6. CONSTRAINTS]',
+      '- Be accurate and specific.',
+      '- Avoid filler and unsupported claims.',
+      '- If information is uncertain, state assumptions clearly.',
+      '',
+      '[7. QUALITY BAR]',
+      'Prioritize clarity, usefulness, and completeness. End with a brief self-check of whether the objective was met.',
+      '',
+      '=== END ARCHITECTURE ==='
+    ].join('\\n');
+
+    if (disp) {
+      disp.textContent = prompt;
+      disp.classList.remove('text-slate-500');
+      disp.classList.add('text-slate-200');
+    }
+    if (st) st.textContent = 'Status: Ready';
+    if (wc) {
+      var words = prompt.trim().split(/\\s+/).length;
+      wc.textContent = 'Est. Length: ' + words + ' Words';
+    }
+    if (loader) loader.classList.add('hidden');
+  }, 600);
+}
+
+function copyToClipboard() {
+  var disp = document.getElementById('prompt-display');
+  if (!disp) return;
+  var text = disp.textContent || '';
+  if (!text || text.indexOf('Awaiting') === 0) {
+    alert('Nothing to copy yet. Generate a prompt first.');
+    return;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      var st = document.getElementById('status-text');
+      if (st) st.textContent = 'Status: Copied to clipboard';
+    }).catch(function() {
+      fallbackCopy(text);
+    });
+  } else {
+    fallbackCopy(text);
+  }
+}
+
+function fallbackCopy(text) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+  var st = document.getElementById('status-text');
+  if (st) st.textContent = 'Status: Copied to clipboard';
+}
+</script>
+
+  <script src="../assets/js/portal-page-shell.js?v=17.0"></script>
+  <script src="../assets/js/site-utils.js?v=17.0"></script>
+</body>
+</html>

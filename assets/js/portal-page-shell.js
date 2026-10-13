@@ -5,14 +5,18 @@
  */
 (function () {
   "use strict";
+
   var path = (location.pathname || "").replace(/\\/g, "/");
   var accentClass = "portal-visitor";
+
   if (path.indexOf("/Book-Publications-Reader/") !== -1) {
     accentClass = "portal-books";
   } else if (path.indexOf("/HR-Recruiter/") !== -1) {
     accentClass = "portal-hr";
   }
+
   var partialBase = "partials/";
+
   function loadPartial(url) {
     return fetch(url, { credentials: "same-origin", cache: "no-cache" })
       .then(function (r) {
@@ -20,8 +24,10 @@
         return r.text();
       });
   }
+
   function stripLegacyChrome() {
-    ["header-container", "footer-container", "site-nav", "mobile-nav",
+    [
+      "header-container", "footer-container", "site-nav", "mobile-nav",
       "portal-header", "portal-footer", "portal-mobile-nav"
     ].forEach(function (id) {
       var el = document.getElementById(id);
@@ -31,12 +37,13 @@
       el.remove();
     });
   }
+
   function injectTheme() {
     document.body.classList.add(accentClass);
     if (!document.querySelector('link[href*="portal-common"]')) {
       var link = document.createElement("link");
       link.rel = "stylesheet";
-      link.href = "../assets/css/portal-common.css?v=17.0";
+      link.href = "../assets/css/portal-common.css?v=16.3";
       document.head.appendChild(link);
     }
     if (!document.getElementById("v16-theme-overrides")) {
@@ -56,16 +63,19 @@
       setTimeout(function () { document.head.appendChild(s); }, 400);
     }
   }
+
   function loadSecurity() {
     if (document.querySelector('script[src*="portal-security"]')) return;
     var sc = document.createElement("script");
-    sc.src = "../assets/js/portal-security.js?v=17.0";
+    sc.src = "../assets/js/portal-security.js?v=16.3";
     sc.defer = true;
     document.body.appendChild(sc);
   }
+
   function init() {
     injectTheme();
     stripLegacyChrome();
+
     Promise.all([
       loadPartial(partialBase + "header.html"),
       loadPartial(partialBase + "footer.html")
@@ -82,6 +92,7 @@
       loadSecurity();
     });
   }
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {

@@ -5,6 +5,24 @@
       <stop offset="45%" stop-color="#E50914"/>
       <stop offset="100%" stop-color="#B20710"/>
     </linearGradient>
+    <filter id="bmsGlow" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <text x="240" y="92" text-anchor="middle" font-family="Impact, Arial Black, sans-serif" font-size="96" font-weight="900" letter-spacing="12" fill="url(#bmsRed)">B.M.S.</text>
+  <!-- Cinematic wordmark: B.M.S. -->
+  <text
+    x="240"
+    y="92"
+    text-anchor="middle"
+    font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Black', sans-serif"
+    font-size="96"
+    font-weight="900"
+    letter-spacing="12"
+    fill="url(#bmsRed)"
+    filter="url(#bmsGlow)"
+  >B.M.S.</text>
 </svg>

@@ -1,1 +1,225 @@
-:root { --ps-bg: #000000; --ps-text: #ffffff; --ps-muted: #808080; --ps-muted-hover: #e5e5e5; --ps-focus: #ffffff; --ps-card-size: min(180px, 28vw); --ps-gap: clamp(1.5rem, 4vw, 2.5rem); --ps-radius: 6px; --ps-transition: 0.25s ease; --font: "Inter", "Noto Sans Gujarati", system-ui, -apple-system, sans-serif; } *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } html, body { height: 100%; background: var(--ps-bg); color: var(--ps-text); font-family: var(--font); -webkit-font-smoothing: antialiased; } body { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem 1rem; overflow-x: hidden; } .ps-brand { position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%); font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ps-text); text-decoration: none; } .ps-brand span { color: #E50914; } .ps-wrapper { width: 100%; max-width: 900px; text-align: center; } .ps-heading { font-size: clamp(1.75rem, 5vw, 3.25rem); font-weight: 500; letter-spacing: -0.02em; margin-bottom: clamp(2rem, 6vw, 3.5rem); color: var(--ps-text); } .ps-profiles { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--ps-gap); list-style: none; } .ps-profile { flex: 0 0 auto; width: min(160px, 42vw); } .ps-profile a { display: flex; flex-direction: column; align-items: center; gap: 0.85rem; text-decoration: none; color: var(--ps-muted); outline: none; transition: color var(--ps-transition); } .ps-avatar { width: 100%; aspect-ratio: 1; border-radius: var(--ps-radius); overflow: hidden; border: 3px solid transparent; transition: border-color var(--ps-transition), transform var(--ps-transition), box-shadow var(--ps-transition); background: #222; } .ps-avatar img, .ps-avatar svg { width: 100%; height: 100%; object-fit: cover; display: block; } .ps-label { font-size: clamp(0.8rem, 2vw, 1.05rem); font-weight: 500; text-align: center; line-height: 1.3; max-width: 100%; transition: color var(--ps-transition); } .ps-profile a:hover .ps-avatar, .ps-profile a:focus-visible .ps-avatar { border-color: var(--ps-focus); transform: scale(1.06); box-shadow: 0 0 0 1px rgba(255,255,255,0.15); } .ps-profile a:hover, .ps-profile a:focus-visible { color: var(--ps-muted-hover); } .ps-profile a:focus-visible .ps-avatar { outline: 2px solid #E50914; outline-offset: 4px; } .ps-footer { margin-top: clamp(2.5rem, 8vw, 4rem); font-size: 0.8rem; color: #555; letter-spacing: 0.04em; } .ps-footer a { color: #777; text-decoration: none; border: 1px solid #444; padding: 0.45rem 1.4rem; border-radius: 2px; transition: border-color 0.2s, color 0.2s; display: inline-block; margin-top: 0.5rem; } .ps-footer a:hover, .ps-footer a:focus-visible { border-color: #aaa; color: #ccc; outline: none; } @media (prefers-reduced-motion: reduce) { .ps-avatar, .ps-profile a { transition: none; } .ps-profile a:hover .ps-avatar, .ps-profile a:focus-visible .ps-avatar { transform: none; } } @media (max-width: 420px) { .ps-profiles { gap: 1.25rem; } .ps-profile { width: min(130px, 40vw); } } @media (max-width: 320px) { .ps-profile { width: 110px; } } @media (max-width: 640px) { .ps-heading { font-size: 1.65rem; margin-bottom: 1.75rem; } .ps-profiles { gap: 1.1rem; } .ps-profile { width: min(140px, 42vw); } .ps-label { font-size: 0.78rem; } .ps-brand { font-size: 0.95rem; top: 1rem; } } @media (max-width: 360px) { .ps-profiles { flex-direction: column; align-items: center; } .ps-profile { width: 140px; } } .ps-profile a:focus-visible .ps-avatar { outline: 3px solid #E50914; outline-offset: 4px; }
+/* ============================================================
+   V16.2 — Netflix-inspired Portal Selector
+   "Who's Watching?" profile selection screen
+   ============================================================ */
+
+:root {
+  --ps-bg: #000000;
+  --ps-text: #ffffff;
+  --ps-muted: #808080;
+  --ps-muted-hover: #e5e5e5;
+  --ps-focus: #ffffff;
+  --ps-card-size: min(180px, 28vw);
+  --ps-gap: clamp(1.5rem, 4vw, 2.5rem);
+  --ps-radius: 6px;
+  --ps-transition: 0.25s ease;
+  --font: "Inter", "Noto Sans Gujarati", system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: var(--ps-bg);
+  color: var(--ps-text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  overflow-x: hidden;
+}
+
+/* Brand mark top */
+.ps-brand {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ps-text);
+  text-decoration: none;
+}
+.ps-brand span { color: #E50914; }
+
+.ps-wrapper {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+.ps-heading {
+  font-size: clamp(1.75rem, 5vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(2rem, 6vw, 3.5rem);
+  color: var(--ps-text);
+}
+
+.ps-profiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--ps-gap);
+  list-style: none;
+}
+
+.ps-profile {
+  flex: 0 0 auto;
+  width: min(160px, 42vw);
+}
+
+.ps-profile a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: var(--ps-muted);
+  outline: none;
+  transition: color var(--ps-transition);
+}
+
+.ps-avatar {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--ps-radius);
+  overflow: hidden;
+  border: 3px solid transparent;
+  transition: border-color var(--ps-transition), transform var(--ps-transition), box-shadow var(--ps-transition);
+  background: #222;
+}
+
+.ps-avatar img,
+.ps-avatar svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ps-label {
+  font-size: clamp(0.8rem, 2vw, 1.05rem);
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.3;
+  max-width: 100%;
+  transition: color var(--ps-transition);
+}
+
+/* Hover / focus */
+.ps-profile a:hover .ps-avatar,
+.ps-profile a:focus-visible .ps-avatar {
+  border-color: var(--ps-focus);
+  transform: scale(1.06);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.15);
+}
+
+.ps-profile a:hover,
+.ps-profile a:focus-visible {
+  color: var(--ps-muted-hover);
+}
+
+.ps-profile a:focus-visible .ps-avatar {
+  outline: 2px solid #E50914;
+  outline-offset: 4px;
+}
+
+/* Manage / footer hint */
+.ps-footer {
+  margin-top: clamp(2.5rem, 8vw, 4rem);
+  font-size: 0.8rem;
+  color: #555;
+  letter-spacing: 0.04em;
+}
+
+.ps-footer a {
+  color: #777;
+  text-decoration: none;
+  border: 1px solid #444;
+  padding: 0.45rem 1.4rem;
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.ps-footer a:hover,
+.ps-footer a:focus-visible {
+  border-color: #aaa;
+  color: #ccc;
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-avatar,
+  .ps-profile a {
+    transition: none;
+  }
+  .ps-profile a:hover .ps-avatar,
+  .ps-profile a:focus-visible .ps-avatar {
+    transform: none;
+  }
+}
+
+/* Mobile: stack if very narrow */
+@media (max-width: 420px) {
+  .ps-profiles {
+    gap: 1.25rem;
+  }
+  .ps-profile {
+    width: min(130px, 40vw);
+  }
+}
+
+@media (max-width: 320px) {
+  .ps-profile {
+    width: 110px;
+  }
+}
+
+/* V17.0 mobile/desktop polish for selector */
+@media (max-width: 640px) {
+  .ps-heading {
+    font-size: 1.65rem;
+    margin-bottom: 1.75rem;
+  }
+  .ps-profiles {
+    gap: 1.1rem;
+  }
+  .ps-profile {
+    width: min(140px, 42vw);
+  }
+  .ps-label {
+    font-size: 0.78rem;
+  }
+  .ps-brand {
+    font-size: 0.95rem;
+    top: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .ps-profiles {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ps-profile {
+    width: 140px;
+  }
+}
+
+/* Focus ring for a11y */
+.ps-profile a:focus-visible .ps-avatar {
+  outline: 3px solid #E50914;
+  outline-offset: 4px;
+}
