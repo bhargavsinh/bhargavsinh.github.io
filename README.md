@@ -1,4 +1,4 @@
-# BHARGAVSINH SISODIYA — Portfolio V17.0
+# BHARGAVSINH SISODIYA - Portfolio V17.0
 
 Three-portal static portfolio on GitHub Pages: **Who's Visiting?** → Books · HR Recruiter · Visitor.
 
