@@ -1,72 +1,19 @@
-# Bhargavsinh Sisodiya — Personal Website
+# BHARGAVSINH SISODIYA — Portfolio V17.0
 
-Official personal website of **Bhargavsinh Sisodiya** — BCA Student, Technology Enthusiast, Writer, and Aspiring Technology & Management Professional.
+Three-portal static portfolio on GitHub Pages: **Who's Visiting?** → Books · HR Recruiter · Visitor.
 
-🌐 Live Website: [https://bhargavsinh.github.io](https://bhargavsinh.github.io)
+## Live
 
----
-
-## Overview
-
-This repository contains the source code of Bhargavsinh Sisodiya’s personal digital platform. The website showcases:
-
-- Personal profile and professional resume
-- Published books and writings
-- Research and digital documentation projects
-- Technology-related work and interests
-- Creative writing and publications
-
-The design follows a **Dark Royal Theme** inspired by traditional heritage combined with modern web aesthetics.
-
----
+https://bhargavsinh.github.io/
 
 ## Features
 
-- Fully responsive design (Mobile + Desktop)
-- Dark Royal Theme with gold accents
-- Separate sections for Books and Other Publications
-- Clean and professional Resume page
-- Modular structure with reusable header and footer
-- Lightweight and fast loading
-- SEO-friendly meta tags
+- B.M.S. cinematic intro
+- Three-portal selector
+- Policy Center (8 policy areas)
+- site-utils: back-to-top, font size, reading progress
+- Service worker v17.0 with offline.html fallback
 
----
+## Deploy
 
-## Pages
-
-| Page | Description |
-|------|-------------|
-| `index.html` | Home / Landing page |
-| `resume.html` | Professional Resume |
-| `publications.html` / `otherlinks.html` | Books & Other Publications |
-| `vanshavali.html` | Sisodiya Genealogy Digital Archive |
-| `satyanisodh.html` | Published Book – સત્યની શોધ |
-| Other pages | Additional content pages |
-
----
-
-## Tech Stack
-
-- **HTML5**
-- **CSS3** + Tailwind CSS
-- **JavaScript**
-- Custom CSS files (`style.css`, `colors.css`, `responsive.css`)
-- GitHub Pages for hosting
-
----
-
-## Project Structure
-
-```text
-├── index.html
-├── resume.html
-├── publications.html / otherlinks.html
-├── vanshavali.html
-├── satyanisodh.html
-├── style.css
-├── colors.css
-├── responsive.css
-├── script.js
-├── assets/
-│   └── (images, icons, fonts)
-└── README.md
+Push to `main` on `bhargavsinh/bhargavsinh.github.io`. Hard-refresh after deploy.
