@@ -173,6 +173,26 @@
         scroll-behavior: auto !important;
       }
     }
+
+/* Change white text to dark grey only */
+body {
+  color: #333333;
+}
+
+body :where(*) {
+  --tw-text-opacity: 1;
+}
+
+/* Explicitly recolor elements using Tailwind's white text classes */
+.text-white,
+.text-white\/90,
+.text-white\/80,
+.text-white\/70,
+.text-white\/60,
+.text-white\/50 {
+  color: #333333 !important;
+}
+
   </style>
 
   <link rel="stylesheet" href="../assets/css/cinematic.css?v=16.5">
