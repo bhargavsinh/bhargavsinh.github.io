@@ -1,176 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhargavsinh Sisodiya | Eternal Legacy</title>
-<meta name="description" content="Discover Suryavanshi Mewar history, 226-generation Sisodiya genealogy, Pushtimarg teachings, publications & heritage.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="colors.css">
-    <link rel="stylesheet" href="responsive.css">
-
-    <style>
-        .hero-bg {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.9)), 
-                             url('bhargavsinh1.jpg');
-            background-size: cover;
-            background-position: center;
-            min-height: 100vh;
-        }
-        
-        .futuristic-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .futuristic-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgb(245 158 11 / 0.3);
-        }
-    </style>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#000000">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <title>Who's Visiting? | BHARGAVSINH SISODIYA</title>
+  <meta name="description" content="Choose your portal — Books & Publications, HR Recruiter, or Visitor — to explore BHARGAVSINH SISODIYA’s digital universe.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bhargavsinh.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bhargavsinh.github.io/">
+  <meta property="og:title" content="Who's Visiting? | BHARGAVSINH SISODIYA">
+  <meta property="og:description" content="Select a portal to explore books, professional profile, or the public portfolio.">
+  <meta property="og:image" content="https://bhargavsinh.github.io/bhargavsinh.webp">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="newlogo-192.png">
+  <link rel="icon" type="image/png" href="newlogo-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/portal-selector.css?v=17.0">
+  <link rel="stylesheet" href="assets/css/intro.css?v=17.0">
 </head>
-<body class="bg-slate-950 text-slate-200">
+<body class="bs-intro-active">
 
-    <div id="header-container"></div>
+  <!-- Cinematic B.M.S. intro — Netflix-inspired (once per session; Skip / Esc / Enter) -->
+  <div id="bs-intro" class="bs-intro" role="dialog" aria-label="B.M.S. intro" aria-modal="true">
+    <div class="bs-intro-glow" aria-hidden="true"></div>
+    <div class="bs-intro-bar" aria-hidden="true"></div>
+    <div class="bs-intro-inner">
+      <!-- Original wordmark logo: B.M.S. -->
+      <div class="bs-wordmark" aria-label="B.M.S." role="img">
+        <span class="ltr">B</span><span class="dot">.</span><span class="ltr">M</span><span class="dot">.</span><span class="ltr">S</span><span class="dot">.</span>
+      </div>
+      <div class="bs-intro-tag">BHARGAVSINH SISODIYA</div>
+      <div class="bs-intro-sub">Digital Universe</div>
+    </div>
+    <button type="button" class="bs-intro-skip" id="bs-intro-skip">Skip</button>
+  </div>
 
-    <main>
-        <!-- Hero -->
-        <section class="hero-bg flex items-center justify-center relative">
-            <div class="relative z-10 text-center px-5 max-w-4xl mx-auto">
-                <div class="flex justify-center mb-8">
-                    <img src="bhargavsinh1.jpg" alt="Bhargavsinh Sisodiya" 
-                         class="w-44 h-44 sm:w-56 sm:h-56 rounded-full border-4 border-amber-400 shadow-2xl object-cover">
-                </div>
+  <a href="index.html" class="ps-brand" aria-label="BHARGAVSINH SISODIYA">BHARGAV<span>SINH</span></a>
+<div class="ps-spacer" aria-hidden="true"></div><main class="ps-wrapper">
+    <h1 class="ps-heading">Who's Visiting?</h1>
 
-                <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tighter mb-4">
-                    BHARGAVSINH SISODIYA
-                </h1>
-                <p class="text-lg sm:text-2xl text-amber-300 mb-10">
-                    Suryavanshi • Mewar • Pushtimargiya Vaishnav
-                </p>
+    <ul class="ps-profiles" role="list">
+      <li class="ps-profile">
+        <a href="Book-Publications-Reader/BPindex.html"
+           aria-label="Enter Book and Publications Reader portal">
+          <div class="ps-avatar">
+            <img src="assets/images/portal-books.svg" alt="" width="200" height="200">
+          </div>
+          <span class="ps-label">Book & Publications Reader</span>
+        </a>
+      </li>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="about.html" 
-                       class="px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold rounded-2xl text-lg transition">
-                        Learn About Me
-                    </a>
-                    <a href="vanshavali.html" 
-                       class="px-10 py-4 border border-amber-400 hover:bg-white/10 rounded-2xl text-lg transition">
-                        Explore Genealogy
-                    </a>
-                </div>
-            </div>
-        </section>
+      <li class="ps-profile">
+        <a href="HR-Recruiter/HRRindex.html"
+           aria-label="Enter HR Recruiter portal">
+          <div class="ps-avatar">
+            <img src="assets/images/portal-recruiter.svg" alt="" width="200" height="200">
+          </div>
+          <span class="ps-label">HR Recruiter</span>
+        </a>
+      </li>
 
-        <!-- Stats -->
-        <section class="py-12 sm:py-16 border-b border-amber-900/30">
-            <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center px-6">
-                <div><div class="text-4xl sm:text-5xl font-bold text-amber-400">226</div><div class="text-xs sm:text-sm text-slate-400">Generations</div></div>
-                <div><div class="text-4xl sm:text-5xl font-bold text-amber-400">16th</div><div class="text-xs sm:text-sm text-slate-400">From Shri Maharana Pratapsinhji</div></div>
-                <div><div class="text-4xl sm:text-5xl font-bold text-amber-400">6+</div><div class="text-xs sm:text-sm text-slate-400">Publications</div></div>
-                <div><div class="text-4xl sm:text-5xl font-bold text-amber-400">❤️</div><div class="text-xs sm:text-sm text-slate-400">Pushtimarg</div></div>
-            </div>
-        </section>
+      <li class="ps-profile">
+        <a href="Visitor/Visitindex.html"
+           aria-label="Enter Visitor portal">
+          <div class="ps-avatar">
+            <img src="assets/images/portal-visitor.svg" alt="" width="200" height="200">
+          </div>
+          <span class="ps-label">Visitor</span>
+        </a>
+      </li>
+    </ul>
 
-        <!-- ==================== FEATURE CARDS ==================== -->
-<section class="py-16 px-5 max-w-6xl mx-auto">
-    <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12">Discover My World</h2>
-    
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Card 1 -->
-        <div class="futuristic-card bg-slate-900 p-7 rounded-3xl border border-amber-900/50 hover:border-amber-400/50 transition">
-            <div class="text-5xl mb-6">🏰</div>
-            <h3 class="text-xl font-semibold mb-3">Mewar Glory</h3>
-            <p class="text-slate-400 text-sm mb-6">The eternal stream of Suryavansh, Mewar, and Sisodiya clan history.</p>
-            <a href="Mewad_history_blog.html" class="text-amber-400 text-sm hover:text-amber-300">Read the History →</a>
-        </div>
+    <div class="ps-footer">
+      <p>BHARGAVSINH SISODIYA · Digital Universe · V17.0</p>
+    </div>
+  </main>
 
-        <!-- Card 2 -->
-        <div class="futuristic-card bg-slate-900 p-7 rounded-3xl border border-amber-900/50 hover:border-amber-400/50 transition">
-            <div class="text-5xl mb-6">🙏</div>
-            <h3 class="text-xl font-semibold mb-3">Pushtimarg</h3>
-            <p class="text-slate-400 text-sm mb-6">Teachings of Shuddhadvaita, Gruh Seva and divine literature.</p>
-            <a href="pushtimarg.html" class="text-amber-400 text-sm hover:text-amber-300">Explore Pushtimarg →</a>
-        </div>
-
-
-        <!-- Card 3 -->
-        <div class="futuristic-card bg-slate-900 p-7 rounded-3xl border border-amber-900/50 hover:border-amber-400/50 transition">
-            <div class="text-5xl mb-6">🌳</div>
-            <h3 class="text-xl font-semibold mb-3">Genealogy</h3>
-            <p class="text-slate-400 text-sm mb-6">From Lord Narayan to the 226th generation.</p>
-            <a href="vanshavali.html" class="text-amber-400 text-sm hover:text-amber-300">View Family Tree →</a>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="futuristic-card bg-slate-900 p-7 rounded-3xl border border-amber-900/50 hover:border-amber-400/50 transition">
-            <div class="text-5xl mb-6">✍️</div>
-            <h3 class="text-xl font-semibold mb-3">Blogs & Articles</h3>
-            <p class="text-slate-400 text-sm mb-6">Thoughts on history, spirituality, and contemporary issues.</p>
-            <a href="blog.html" class="text-amber-400 text-sm hover:text-amber-300">Read Articles →</a>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="futuristic-card bg-slate-900 p-7 rounded-3xl border border-amber-900/50 hover:border-amber-400/50 transition">
-            <div class="text-5xl mb-6">📄</div>
-            <h3 class="text-xl font-semibold mb-3">Resume</h3>
-            <p class="text-slate-400 text-sm mb-6">Academic background, skills & professional profile.</p>
-            <a href="resume.html" class="text-amber-400 text-sm hover:text-amber-300">View Resume →</a>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="futuristic-card bg-slate-900 p-7 rounded-3xl border border-amber-900/50 hover:border-amber-400/50 transition">
-            <div class="text-5xl mb-6">📚</div>
-            <h3 class="text-xl font-semibold mb-3">Publications</h3>
-            <p class="text-slate-400 text-sm mb-6">Books, research papers and historical records.</p>
-            <a href="otherlinks.html" class="text-amber-400 text-sm hover:text-amber-300">Browse Publications →</a>
-        </div>
-
-        <!-- Card 7 - Ghost Writing -->
-        <div class="futuristic-card bg-slate-900 p-7 rounded-3xl border border-amber-900/50 hover:border-amber-400/50 transition">
-            <div class="text-5xl mb-6">💼</div>
-            <h3 class="text-xl font-semibold mb-3">Ghost Writing</h3>
-            <p class="text-slate-400 text-sm mb-6">Professional ghostwriting services for books, articles & speeches.</p>
-            <a href="ghostwriting.html" class="text-amber-400 text-sm hover:text-amber-300">Learn More →</a>
-        </div>
-<!-- Card 8 -->
-<div class="futuristic-card bg-slate-900 p-7 rounded-3xl border border-amber-900/50 hover:border-amber-400/50 transition">
-    <div class="text-5xl mb-6">🏛️</div>
-    <h3 class="text-xl font-semibold mb-3">Anand Vihar Bhavan</h3>
-    <p class="text-slate-400 text-sm mb-6">Official Residence & Heritage Sanctuary rooted in Sisodiya Rajput tradition and Pushtimargiya devotion.</p>
-    <a href="ananadviharbhavan.html" class="text-amber-400 text-sm hover:text-amber-300">Explore the Bhavan →</a>
-</div>
-</div>
-</section>
-        <!-- Final CTA -->
-        <section class="py-16 text-center px-5">
-            <a href="contact.html" 
-               class="inline-block w-full sm:w-auto px-12 py-6 bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 font-semibold rounded-3xl text-xl">
-                Connect Across Time
-            </a>
-        </section>
-    </main>
-
-    <div id="footer-container"></div>
-
-    <script src="script.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js')
-        .then(registration => {
-          console.log('ServiceWorker registration successful');
-        })
-        .catch(err => {
-          console.log('ServiceWorker registration failed: ', err);
-        });
+  <script>
+    // Optional: remember last portal (local only)
+    document.querySelectorAll('.ps-profile a').forEach(a => {
+      a.addEventListener('click', () => {
+        try { localStorage.setItem('bs_last_portal', a.getAttribute('href')); } catch(e) {}
+      });
     });
-  }
-</script>
-
+  </script>
+  <script src="assets/js/intro.js?v=17.0"></script>
 </body>
 </html>
