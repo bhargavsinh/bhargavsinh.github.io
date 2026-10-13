@@ -1,25 +1,34 @@
+
 <!DOCTYPE html>
 <html lang="gu">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https:; upgrade-insecure-requests">
+
   <title>સત્યની શોધ | BHARGAVSINH SISODIYA</title>
-  <meta name="description" content="સત્યની શોધ | BHARGAVSINH SISODIYA">
+  <meta name="description" content="સત્યની શોધ: વિવેક, ધૈર્ય અને આશ્રયથી આલોકિત ભક્તિ — Google Play Store અને Google Play Books પર ઉપલબ્ધ પુસ્તક.">
   <meta name="theme-color" content="#0B0B0F">
+
   <link rel="canonical" href="https://bhargavsinh.github.io/satyanisodh.html">
+
   <meta property="og:title" content="સત્યની શોધ | BHARGAVSINH SISODIYA">
-  <meta property="og:description" content="સત્યની શોધ | BHARGAVSINH SISODIYA">
+  <meta property="og:description" content="વિવેક, ધૈર્ય અને આશ્રયથી આલોકિત ભક્તિ. Google Play Store અને Google Play Books પર વાંચો.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bhargavsinh.github.io/satyanisodh.html">
+
   <link rel="manifest" href="../manifest.json">
   <link rel="apple-touch-icon" href="../newlogo-192.png">
   <link rel="icon" type="image/png" href="../newlogo-192.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -37,138 +46,340 @@
           }
         }
       }
-    }
+    };
   </script>
 
   <style>
-    /* Ensure cinematic dark base even when Tailwind utilities are present */
-    body { background: #0B0B0F !important; color: #fff; }
-    /* Soften old gold accents toward red accent where pure gold was used */
-    .text-divine-gold, .text-amber-300, .text-amber-400 { color: #E50914 !important; }
-    .border-amber-900\/40, .border-amber-900\/50, .border-amber-800\/50 { border-color: #303038 !important; }
-    .bg-\[\#120F0F\], .bg-\[\#0d0a0a\], .bg-\[\#161212\] { background-color: #141419 !important; }
-    .bg-amber-950\/80 { background-color: rgba(229,9,20,0.12) !important; }
-    .text-amber-100, .text-amber-100\/90 { color: #B3B3B3 !important; }
+    body {
+      background: #0B0B0F !important;
+      color: #fff;
+    }
+
+    .text-divine-gold,
+    .text-amber-300,
+    .text-amber-400 {
+      color: #E50914 !important;
+    }
+
+    .border-amber-900\/40,
+    .border-amber-900\/50,
+    .border-amber-800\/50 {
+      border-color: #303038 !important;
+    }
+
+    .bg-\[\#120F0F\],
+    .bg-\[\#0d0a0a\],
+    .bg-\[\#161212\] {
+      background-color: #141419 !important;
+    }
+
+    .bg-amber-950\/80 {
+      background-color: rgba(229, 9, 20, 0.12) !important;
+    }
+
+    .text-amber-100,
+    .text-amber-100\/90 {
+      color: #B3B3B3 !important;
+    }
+
     .shadow-\[0_0_30px_rgba\(245\,158\,11\,0\.15\)\],
     .shadow-\[0_0_40px_rgba\(245\,158\,11\,0\.15\)\],
     .shadow-\[0_0_25px_rgba\(245\,158\,11\,0\.08\)\],
-    .shadow-\[0_0_15px_rgba\(245\,158\,11\,0\.08\)\] { box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important; }
+    .shadow-\[0_0_15px_rgba\(245\,158\,11\,0\.08\)\] {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* Book availability section */
+    .book-platform-card {
+      background: linear-gradient(145deg, #18181f, #101015);
+      border: 1px solid #303038;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      transition: transform 0.25s ease, border-color 0.25s ease,
+                  box-shadow 0.25s ease;
+    }
+
+    .book-platform-card:hover {
+      transform: translateY(-4px);
+      border-color: #E50914;
+      box-shadow: 0 12px 30px rgba(229, 9, 20, 0.12);
+    }
+
+    .book-platform-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      width: 100%;
+      min-height: 50px;
+      padding: 0.85rem 1rem;
+      border-radius: 0.85rem;
+      background: #E50914;
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.2s ease,
+                  transform 0.2s ease;
+    }
+
+    .book-platform-button:hover {
+      background: #b80710;
+      transform: translateY(-1px);
+    }
+
+    .book-platform-button:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 4px;
+    }
+
+    .book-platform-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 1rem;
+      background: rgba(229, 9, 20, 0.12);
+      font-size: 1.75rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .book-platform-card,
+      .book-platform-button {
+        transition: none;
+      }
+
+      .book-platform-card:hover,
+      .book-platform-button:hover {
+        transform: none;
+      }
+    }
   </style>
 
   <link rel="stylesheet" href="../assets/css/cinematic.css?v=16.5">
   <link rel="stylesheet" href="../assets/css/theme-overrides.css?v=16.5">
   <link rel="stylesheet" href="../assets/css/portal-common.css?v=16.5">
 </head>
+
 <!-- Linked partials: partials/header.html · partials/footer.html · partials/security-meta.html -->
+
 <body>
-  <!-- Nav + Footer injected by page-shell.js -->
+  <!-- Navigation and footer injected by page-shell.js -->
+
   <main class="page-main" id="main-content">
     <div class="page-container">
-<div class="page-container">
-<!-- Top Navigation / Breadcrumb & Update Badge -->
-        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 border-b border-amber-900/40 pb-4">
-            <a href="otherlinks.html" class="text-amber-400 hover:text-amber-300 text-sm font-semibold flex items-center gap-2 transition-all">
-                &larr; Back to Publications
-            </a>
-            <span class="text-[11px] text-amber-300/90 bg-amber-950/80 border border-amber-800/50 px-3.5 py-1.5 rounded-full flex items-center gap-1.5 shadow-[0_0_10px_rgba(245,158,11,0.15)]">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                First Book Publication | Updated: 29 July
-            </span>
+
+      <!-- Breadcrumb and publication status -->
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 border-b border-amber-900/40 pb-4">
+
+        <a
+          href="otherlinks.html"
+          class="text-amber-400 hover:text-amber-300 text-sm font-semibold flex items-center gap-2 transition-all"
+        >
+          &larr; Back to Publications
+        </a>
+
+        <span class="text-[11px] text-amber-300/90 bg-amber-950/80 border border-amber-800/50 px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
+          First Book Publication | Updated: 13 October 2026
+        </span>
+      </div>
+
+      <!-- Book Header -->
+      <section
+        class="bg-[#120F0F] rounded-3xl p-6 sm:p-10 border border-amber-900/40 shadow-[0_0_30px_rgba(245,158,11,0.1)] text-center space-y-4"
+        aria-labelledby="book-title"
+      >
+        <span class="text-4xl inline-block" aria-hidden="true">📖</span>
+
+        <h1
+          id="book-title"
+          class="text-2xl sm:text-4xl font-bold text-[#FFD700] tracking-wide leading-tight font-noto"
+        >
+          સત્યની શોધ
+        </h1>
+
+        <h2 class="text-lg sm:text-xl font-medium text-amber-200/90 tracking-wide font-noto">
+          વિવેક, ધૈર્ય અને આશ્રયથી આલોકિત ભક્તિ
+        </h2>
+
+        <p class="text-amber-100/70 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed pt-2 font-noto">
+          આ પુસ્તક જીવના પરમકલ્યાણ, સાધનામાર્ગના વિવેક, ધૈર્ય અને
+          શ્રી ઠાકોરજીના શરણાગતિભાવનું એક દિવ્ય સંકલન છે.
+        </p>
+      </section>
+
+      <!-- Book Availability: Google Play Store and Google Play Books -->
+      <section
+        id="book-availability"
+        class="mt-8 sm:mt-10 bg-[#120F0F] border border-amber-900/40 rounded-3xl p-5 sm:p-8 space-y-6"
+        aria-labelledby="availability-title"
+      >
+
+        <div class="text-center space-y-3">
+          <span class="text-4xl inline-block" aria-hidden="true">📚</span>
+
+          <h2
+            id="availability-title"
+            class="text-xl sm:text-3xl font-bold text-white font-noto leading-relaxed"
+          >
+            Available on GOOGLE PLAY STORE &amp; GOOGLE PLAY BOOKS
+          </h2>
+
+          <p class="text-sm sm:text-base text-gray-400 font-noto leading-relaxed max-w-2xl mx-auto">
+            આપનું પુસ્તક વાંચવા માટે નીચે આપેલા સત્તાવાર પ્લેટફોર્મમાંથી
+            કોઈ એક પસંદ કરો.
+          </p>
         </div>
 
-        <!-- Book Header Card -->
-        <section class="bg-[#120F0F] rounded-3xl p-6 sm:p-10 border border-amber-900/40 shadow-[0_0_30px_rgba(245,158,11,0.1)] text-center space-y-4">
-            <span class="text-4xl inline-block">📖</span>
-            <h1 class="text-2xl sm:text-4xl font-bold text-[#FFD700] tracking-wide leading-tight font-noto">
-                સત્યની શોધ
-            </h1>
-            <h2 class="text-lg sm:text-xl font-medium text-amber-200/90 tracking-wide font-noto">
-                વિવેક, ધૈર્ય અને આશ્રયથી આલોકિત ભક્તિ
-            </h2>
-            <p class="text-amber-100/70 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed pt-2 font-noto">
-                આ પુસ્તક જીવ ના પરમકલ્યાણ, સાધના માર્ગના વિવેક, ધૈર્ય અને શ્રીઠાકોરજીના શરણાગતિ ભાવનું એક દિવ્ય સંકલન છે. સુરક્ષિત ઇન-સાઇટ રીડિંગ મોડ દ્વારા અહીંથી જ વાંચનનો લાભ લો.
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+
+          <!-- Google Play Store -->
+          <article class="book-platform-card flex flex-col gap-4">
+
+            <div class="flex items-center gap-4">
+              <div class="book-platform-icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path d="M7 5.5C5.8 6.2 5 7.6 5 9.5V38.5C5 40.4 5.8 41.8 7 42.5L25 24L7 5.5Z" fill="#34A853"/>
+                  <path d="M7 5.5L29 18.5L24 24L7 5.5Z" fill="#4285F4"/>
+                  <path d="M7 42.5L29 29.5L24 24L7 42.5Z" fill="#EA4335"/>
+                  <path d="M29 18.5L40 25C42 26.2 42 28.1 40 29.3L29 35.5L24 30L29 24L24 18.5L29 18.5Z" fill="#FBBC04"/>
+                  <path d="M29 18.5L24 24L29 29.5L40 29.3C42 28.1 42 26.2 40 25L29 18.5Z" fill="#FF6D00"/>
+                </svg>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-bold text-white">
+                  Google Play Store
+                </h3>
+                <p class="text-sm text-gray-400">
+                  Open the book listing
+                </p>
+              </div>
+            </div>
+
+            <p class="text-sm text-gray-300 leading-relaxed font-noto flex-grow">
+              પુસ્તકના Google Play પરના પેજની મુલાકાત લેવા માટે નીચેનું બટન દબાવો.
             </p>
-        </section>
 
-        <!-- PDF & Book Reader Box Wrapper (LOCKED & SECURE) -->
-        <section id="reader-box" 
-                 class="bg-[#120F0F] border border-amber-900/50 rounded-3xl p-4 sm:p-8 shadow-[0_0_35px_rgba(245,158,11,0.1)] space-y-6 select-none"
-                 oncontextmenu="return false"
-                 oncopy="return false">
-
-            <!-- Reader Action Bar -->
-            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-black/60 p-4 rounded-2xl border border-amber-900/40">
-                <div class="flex items-center gap-2 text-amber-300 text-sm font-semibold">
-                    <span>🛡️</span>
-                    <span>Secure In-Site Reading Only (Protected Mode)</span>
-                </div>
-
-                <button onclick="toggleFullscreenReader()" 
-                        class="bg-amber-600 hover:bg-amber-500 text-black font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all shadow-md flex items-center gap-2 cursor-pointer">
-                    <span>🔍</span> Toggle Immersive Fullscreen
-                </button>
-            </div>
-
-            <!-- Google Docs Preview Section -->
-            <div class="relative w-full h-[75vh] sm:h-[82vh] md:h-[88vh] rounded-2xl overflow-hidden border border-amber-900/40 bg-white shadow-inner" style="-webkit-overflow-scrolling: touch;">
-                <iframe 
-                    src="https://docs.google.com/document/d/1_MLa1Gs3Uo9dftRqCiO9y5_KRxH23_rTViD2Kb3SDC0/preview?rm=minimal" 
-                    sandbox="allow-scripts allow-same-origin"
-                    class="w-full h-full border-0 rounded-2xl"
-                    allow="autoplay"
-                    loading="lazy"
-                    title="Satya ni Shodh - Book Reader">
-                </iframe>
-            </div>
-
-            <div class="text-center text-xs text-amber-300/70 pt-2 font-noto">
-                ✨ Tip: આરામદાયક વાચન માટે ઉપરના <strong>'Toggle Immersive Fullscreen'</strong> બટનનો ઉપયોગ કરો.
-            </div>
-
-        </section>
-
-        <!-- Feedback Section -->
-        <div style="margin-top: 50px; padding: 25px; border-top: 2px solid #8B0000; background-color: #fffaf0; border-radius: 8px;">
-          <h3 style="color: #8B0000; margin-top: 0; font-size: 20px;">પ્રતિસાદ આપો</h3>
-
-          <p style="font-size: 16px; line-height: 1.7; color: #333333;">
-            આ કૃતિ વાંચ્યા બાદ જો તમને કોઈ વિચાર, સૂચન કે અનુભવ લખવો હોય,  
-            તો મને આ ઈમેઈલ પર મોકલી શકો છો:
-          </p>
-
-          <p style="font-size: 18px; font-weight: bold; margin: 15px 0;">
-            <a href="mailto:bhargavsinh.bca@gmail.com" style="color: #8B0000; text-decoration: none;">
-              bhargavsinh.bca@gmail.com
+            <a
+              href="https://play.google.com/store/books/details/Bhargavsinh_Sisodiya_%E0%AA%B8%E0%AA%A4_%E0%AA%AF%E0%AA%A8_%E0%AA%B6_%E0%AA%A7?id=I2kOEgAAQBAJ"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="book-platform-button"
+              aria-label="સત્યની શોધ Google Play Store પર ખોલો"
+            >
+              <span aria-hidden="true">↗</span>
+              <span>OPEN GOOGLE PLAY STORE</span>
             </a>
-          </p>
 
-          <p style="font-size: 15px; color: #444444; margin-bottom: 0; line-height: 1.6;">
-            તમારો પ્રતિસાદ મને પ્રેરણા આપશે.  
-            કૃપા કરીને જરૂરથી લખજો.
-          </p>
+          </article>
+
+          <!-- Google Play Books -->
+          <article class="book-platform-card flex flex-col gap-4">
+
+            <div class="flex items-center gap-4">
+              <div class="book-platform-icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path d="M5 9C12 7 18 8 24 12V40C18 36 12 35 5 37V9Z" fill="#4285F4"/>
+                  <path d="M43 9C36 7 30 8 24 12V40C30 36 36 35 43 37V9Z" fill="#34A853"/>
+                  <path d="M10 13C15 12 19 14 21 16V34C18 32 14 31 10 32V13Z" fill="#E8F0FE"/>
+                  <path d="M38 13C33 12 29 14 27 16V34C30 32 34 31 38 32V13Z" fill="#E6F4EA"/>
+                  <path d="M24 12V40" stroke="#FFFFFF" stroke-width="2"/>
+                </svg>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-bold text-white">
+                  Google Play Books
+                </h3>
+                <p class="text-sm text-gray-400">
+                  Explore the book edition
+                </p>
+              </div>
+            </div>
+
+            <p class="text-sm text-gray-300 leading-relaxed font-noto flex-grow">
+              Google Books પર પુસ્તકની માહિતી અને ઉપલબ્ધ વાંચન વિકલ્પો જોવા માટે અહીં ક્લિક કરો.
+            </p>
+
+            <a
+              href="https://books.google.co.in/books/about?id=I2kOEgAAQBAJ&amp;redir_esc=y"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="book-platform-button"
+              aria-label="સત્યની શોધ Google Play Books પર ખોલો"
+            >
+              <span aria-hidden="true">↗</span>
+              <span>OPEN GOOGLE PLAY BOOKS</span>
+            </a>
+
+          </article>
+
         </div>
-    </div>
+
+        <p class="text-xs text-white text-center leading-relaxed font-noto">
+          નોંધ: પુસ્તકની ઉપલબ્ધતા અને વાંચનના વિકલ્પો સંબંધિત પ્લેટફોર્મના નિયમો અનુસાર હોઈ શકે છે.
+        </p>
+
+      </section>
+
+      <!-- Feedback Section -->
+      <section
+        id="feedback"
+        class="mt-10 sm:mt-12 p-5 sm:p-7 border-t-2 border-red-900 bg-[#fffaf0] rounded-xl"
+        aria-labelledby="feedback-title"
+      >
+
+        <h2
+          id="feedback-title"
+          class="text-xl font-bold mb-4"
+          style="color: #8B0000;"
+        >
+          પ્રતિસાદ આપો
+        </h2>
+
+        <p class="text-base leading-7" style="color: #ffffff;">
+          આ કૃતિ વાંચ્યા બાદ જો તમને કોઈ વિચાર, સૂચન કે અનુભવ લખવો હોય,
+          તો મને આ ઈમેઈલ પર મોકલી શકો છો:
+        </p>
+
+        <p class="text-lg font-bold my-4">
+          <a
+            href="mailto:bhargavsinh.bca@gmail.com"
+            style="color: #8B0000; text-decoration: none;"
+          >
+            bhargavsinh.bca@gmail.com
+          </a>
+        </p>
+
+        <p class="text-sm leading-6" style="color: #ffffff;">
+          તમારો પ્રતિસાદ મને પ્રેરણા આપશે.
+          કૃપા કરીને જરૂરથી લખજો.
+        </p>
+
+      </section>
     </div>
   </main>
-  <script src="../assets/js/content-data.js?v=16.5"></script>
-  
-<script>
-function toggleFullscreenReader() {
-  var el = document.querySelector('iframe') || document.getElementById('book-reader') || document.querySelector('.reader-frame');
-  if (!el) {
-    // try parent container
-    el = document.querySelector('[class*="rounded-2xl"] iframe') || document.querySelector('main');
-  }
-  if (!el) return;
-  if (!document.fullscreenElement) {
-    (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen || function(){}).call(el);
-  } else {
-    (document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen || function(){}).call(document);
-  }
-}
-</script>
 
+  <script src="../assets/js/content-data.js?v=16.5"></script>
   <script src="../assets/js/portal-page-shell.js?v=17.0"></script>
   <script src="../assets/js/site-utils.js?v=17.0"></script>
+
 </body>
 </html>
