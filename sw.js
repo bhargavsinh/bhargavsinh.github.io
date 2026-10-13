@@ -1,63 +1,38 @@
-const CACHE_NAME = "bhargavsinh-portfolio-v12.1";
-const urlsToCache = [
-  "/",
-  "/index.html",
-  "/Mewad_history_blog.html",
-  "/README.md",
-  "/allogo.png",
-  "/about.html",
-  "/ananadviharbhavan.html",
-  "/bhargavsinh.webp",
-  "/bhargavsinh1.jpg",
-  "/blog.html",
-  "/bookreadingpolicy.html",
-  "/colors.css",
-  "/contact.html",
-  "/disclaimer.html",
-  "/footer.html",
-  "/ghostwriting.html",
-  "/grievance.html",
-  "/header.html",
-  "/lion.mp3",
-  "/logo.png",
-  "/manifest.json",
-  "/newlogo-192.png",
-  "/newlogo-512.png",
-  "/newlogo.png",
-  "/notifications.json",
-  "/otherlinks.html",
-  "/privacy-policy.html",
-  "/projects.html",
-  "/pushtimarg-ma-gruh-seva.html",
-  "/pushtimarg.html",
-  "/pwriter.html",
-  "/responsive.css",
-  "/resume.html",
-  "/robots.txt",
-  "/satyanisodh.html",
-  "/script.js",
-  "/sitemap.xml",
-  "/style.css",
-  "/sw.js",
-  "/vanshavali.html"
-];
-
-self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log("Opened cache");
-        return cache.addAll(urlsToCache);
-      })
-  );
+const CACHE_NAME = "bhargavsinh-portfolio-v17.0";
+const OFFLINE_URL = "/offline.html";
+const PRECACHE = ["/", "/index.html", "/offline.html", "/404.html", "/assets/css/portal-selector.css", "/assets/css/portal-common.css", "/assets/js/portal-page-shell.js", "/assets/js/portal-security.js", "/assets/images/portal-books.svg", "/assets/images/portal-recruiter.svg", "/assets/images/portal-visitor.svg", "/Book-Publications-Reader/BPindex.html", "/HR-Recruiter/HRRindex.html", "/Visitor/Visitindex.html", "/Visitor/policy-center.html", "/manifest.json", "/newlogo-192.png"];
+self.addEventListener("install", (event) => {
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE).catch(() => {})).then(() => self.skipWaiting()));
 });
-
-self.addEventListener("fetch", event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // જો ફાઈલ કેશમાં હોય તો ત્યાંથી આપશે, નહીંતર નેટવર્કમાંથી લાવશે
-        return response || fetch(event.request);
-      })
-  );
+self.addEventListener("activate", (event) => {
+  event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
+});
+function isHTMLRequest(request) {
+  if (request.mode === "navigate") return true;
+  const accept = request.headers.get("accept") || "";
+  return accept.includes("text/html");
+}
+self.addEventListener("fetch", (event) => {
+  const { request } = event;
+  if (request.method !== "GET") return;
+  if (isHTMLRequest(request)) {
+    event.respondWith(fetch(request).then((response) => {
+      if (response && response.ok) {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(request, copy)).catch(() => {});
+      }
+      return response;
+    }).catch(() => caches.match(request).then((cached) => cached || caches.match(OFFLINE_URL))));
+    return;
+  }
+  event.respondWith(caches.match(request).then((cached) => {
+    if (cached) return cached;
+    return fetch(request).then((response) => {
+      if (response && response.ok && request.url.startsWith(self.location.origin)) {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(request, copy)).catch(() => {});
+      }
+      return response;
+    }).catch(() => cached);
+  }));
 });
