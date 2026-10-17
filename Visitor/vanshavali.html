@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="gu">
 <head>
   <meta charset="UTF-8">
@@ -41,7 +41,9 @@
   </script>
 
   <style>
-    body { background: #0B0B0F !important; color: #ffffff; }
+    /* Ensure cinematic dark base even when Tailwind utilities are present */
+    body { background: #0B0B0F !important; color: #fff; }
+    /* Soften old gold accents toward red accent where pure gold was used */
     .text-divine-gold, .text-amber-300, .text-amber-400 { color: #E50914 !important; }
     .border-amber-900\/40, .border-amber-900\/50, .border-amber-800\/50 { border-color: #303038 !important; }
     .bg-\[\#120F0F\], .bg-\[\#0d0a0a\], .bg-\[\#161212\] { background-color: #141419 !important; }
@@ -51,42 +53,15 @@
     .shadow-\[0_0_40px_rgba\(245\,158\,11\,0\.15\)\],
     .shadow-\[0_0_25px_rgba\(245\,158\,11\,0\.08\)\],
     .shadow-\[0_0_15px_rgba\(245\,158\,11\,0\.08\)\] { box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important; }
-    
-    .vanshavali-content {
-      color: #ffffff;
-      line-height: 1.8;
-      font-size: 1rem;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-    .vanshavali-content h1,
-    .vanshavali-content h2,
-    .vanshavali-content h3,
-    .vanshavali-content .heading {
-      color: #E50914 !important;
-      font-weight: 700;
-    }
-    .vanshavali-content .main-title {
-      color: #E50914 !important;
-      font-size: 1.25rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-    .vanshavali-content .section-title {
-      color: #E50914 !important;
-      font-weight: 700;
-      margin-top: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .vanshavali-content p, 
-    .vanshavali-content div {
-      color: #ffffff;
-    }
   </style>
+
+  <link rel="stylesheet" href="../assets/css/cinematic.css?v=16.5">
+  <link rel="stylesheet" href="../assets/css/theme-overrides.css?v=16.5">
+  <link rel="stylesheet" href="../assets/css/portal-common.css?v=16.5">
 </head>
+<!-- Linked partials: partials/header.html · partials/footer.html · partials/security-meta.html -->
 <body>
+  <!-- Nav + Footer injected by page-shell.js -->
   <main class="page-main" id="main-content">
     <div class="page-container wide" style="max-width: 900px; margin: 0 auto; padding: 1rem;">
       
@@ -399,5 +374,9 @@ Last updated: 9 0ct, 2026
       </div>
     </div>
   </main>
+<script src="../assets/js/content-data.js?v=16.5"></script>
+  <script src="../assets/js/portal-page-shell.js?v=17.0"></script>
+  <script src="../assets/js/site-utils.js?v=17.0"></script>
+
 </body>
 </html>
