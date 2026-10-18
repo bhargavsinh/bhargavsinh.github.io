@@ -1,10 +1,11 @@
 /**
- * V17.0 — Client-side hardening helpers (static site)
+ * V17.2 — Client-side hardening helpers (static site)
  *
  * LIMITATIONS (read carefully):
  * - Meta CSP is defence-in-depth only; frame-ancestors is NOT enforced via <meta>.
  * - True clickjacking protection needs HTTP response headers (not available on plain GitHub Pages).
  * - Frame-guard, honeypot, and sessionStorage rate-limits are UX friction — not server security.
+ * - Content protection (copy/right-click) is client-side deterrence only.
  * - Do not market this layer as "ultra-high security".
  */
 
@@ -29,9 +30,7 @@
     document.querySelectorAll("form").forEach(function (form) {
       form.setAttribute("autocomplete", form.getAttribute("autocomplete") || "on");
       form.querySelectorAll("input, textarea").forEach(function (el) {
-        // Block common injection patterns on submit
         el.addEventListener("input", function () {
-          // Strip null bytes and control chars except newlines/tabs in textarea
           if (el.value) {
             el.value = el.value.replace(/\0/g, "");
           }
@@ -39,14 +38,12 @@
       });
 
       form.addEventListener("submit", function (e) {
-        // Honeypot field (if present)
         var hp = form.querySelector('[name="website_url"], [name="company_fax"], .js-honeypot');
         if (hp && hp.value) {
           e.preventDefault();
           return false;
         }
 
-        // Simple rate limit: max 1 submit / 8 seconds
         var key = "bs_form_ts";
         try {
           var last = parseInt(sessionStorage.getItem(key) || "0", 10);
@@ -59,7 +56,6 @@
           sessionStorage.setItem(key, String(now));
         } catch (err) { /* storage blocked */ }
 
-        // Length caps
         form.querySelectorAll("input[type=text], input[type=email], textarea").forEach(function (el) {
           var max = el.getAttribute("maxlength") || (el.tagName === "TEXTAREA" ? 5000 : 300);
           if (el.value && el.value.length > max) {
@@ -87,11 +83,9 @@
   function frameGuard() {
     try {
       if (window.top !== window.self) {
-        // Soft breakout attempt for clickjacking
         window.top.location = window.self.location;
       }
     } catch (e) {
-      // Cross-origin frame — hide content as fallback
       document.body.style.display = "none";
     }
   }
@@ -186,6 +180,35 @@
     });
   }
 
+  // ---- 9. Content misuse deterrence (copy / right-click)
+  // NOTE: Client-side only. Does not prevent screenshots, DevTools, or determined scraping.
+  // Accessibility: keyboard navigation and screen readers remain unaffected.
+  function contentProtection() {
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      return false;
+    }, { capture: true });
+
+    document.addEventListener("copy", function (e) {
+      e.preventDefault();
+      return false;
+    }, { capture: true });
+
+    document.addEventListener("cut", function (e) {
+      e.preventDefault();
+      return false;
+    }, { capture: true });
+
+    document.addEventListener("selectstart", function (e) {
+      var t = e.target;
+      if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) {
+        return;
+      }
+      e.preventDefault();
+      return false;
+    }, { capture: true });
+  }
+
   // ---- Init ----
   function init() {
     frameGuard();
@@ -196,6 +219,7 @@
     markActiveNav();
     initDrawer();
     fillYears();
+    contentProtection();
   }
 
   if (document.readyState === "loading") {
