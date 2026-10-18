@@ -17,6 +17,18 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, body * {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+input, textarea, select, [contenteditable="true"] {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
 
 html, body {
   height: 100%;
@@ -197,29 +209,19 @@ body {
     gap: 1.1rem;
   }
   .ps-profile {
-    width: min(140px, 42vw);
+    width: min(140px, 40vw);
   }
-  .ps-label {
-    font-size: 0.78rem;
-  }
+}
+
+@media (min-width: 900px) {
   .ps-brand {
-    font-size: 0.95rem;
-    top: 1rem;
+    left: 2rem;
+    transform: none;
   }
 }
 
-@media (max-width: 360px) {
-  .ps-profiles {
-    flex-direction: column;
-    align-items: center;
-  }
-  .ps-profile {
-    width: 140px;
-  }
-}
-
-/* Focus ring for a11y */
-.ps-profile a:focus-visible .ps-avatar {
+.ps-profile a:focus-visible {
   outline: 3px solid #E50914;
   outline-offset: 4px;
+  border-radius: 4px;
 }
