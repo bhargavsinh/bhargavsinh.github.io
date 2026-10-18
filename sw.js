@@ -1,11 +1,11 @@
 /**
- * V17.2 Service Worker
- * - Network-first for HTML navigations (avoid stale pages)
- * - Cache-first for versioned static assets
- * - Failed navigation → offline.html (NOT index.html)
- * - Explicit V17.2 cache namespace with deterministic cleanup of prior versions
+ * V17.3 Service Worker
+ * - Network-first for HTML navigations
+ * - Cache-first for static assets
+ * - Offline fallback → offline.html
+ * - SKIP_WAITING message support for update toast
  */
-const CACHE_NAME = "bhargavsinh-portfolio-v17.2";
+const CACHE_NAME = "bhargavsinh-portfolio-v17.3";
 const OFFLINE_URL = "/offline.html";
 
 const PRECACHE = [
@@ -13,18 +13,25 @@ const PRECACHE = [
   "/index.html",
   "/offline.html",
   "/404.html",
+  "/manifest.json",
+  "/newlogo.png",
+  "/newlogo-192.png",
+  "/newlogo-512.png",
   "/assets/css/portal-selector.css",
   "/assets/css/portal-common.css",
+  "/assets/css/v17.3-enhancements.css",
+  "/assets/css/intro.css",
   "/assets/js/portal-page-shell.js",
   "/assets/js/portal-security.js",
+  "/assets/js/v17.3-ux.js",
+  "/assets/js/intro.js",
   "/assets/images/portal-books.svg",
   "/assets/images/portal-recruiter.svg",
   "/assets/images/portal-visitor.svg",
   "/Book-Publications-Reader/BPindex.html",
   "/HR-Recruiter/HRRindex.html",
-  "/Visitor/Visitindex.html", "/Visitor/policy-center.html",
-  "/manifest.json",
-  "/newlogo-192.png"
+  "/Visitor/Visitindex.html",
+  "/Visitor/policy-center.html"
 ];
 
 self.addEventListener("install", (event) => {
@@ -45,6 +52,12 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+});
+
 function isHTMLRequest(request) {
   if (request.mode === "navigate") return true;
   const accept = request.headers.get("accept") || "";
@@ -55,7 +68,6 @@ self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (request.method !== "GET") return;
 
-  // HTML: network-first, offline page on total failure (never silent home redirect)
   if (isHTMLRequest(request)) {
     event.respondWith(
       fetch(request)
@@ -73,7 +85,6 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Static assets: cache-first, then network
   event.respondWith(
     caches.match(request).then((cached) => {
       if (cached) return cached;
