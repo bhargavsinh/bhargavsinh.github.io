@@ -1,14 +1,7 @@
-/* V16.1 — Force cinematic palette over legacy Tailwind gold/amber — load LAST */
-html, body { background: #0B0B0F !important; color: #FFFFFF !important; }
+/* V17.2 — Netflix-inspired palette: Black bg, White text, Red CTA/Name, Gray secondary */
+html, body { background: #000000 !important; color: #FFFFFF !important; }
 
-/* All amber / divine-gold text → accent or white for headings */
-.text-amber-200, .text-amber-300, .text-amber-400, .text-amber-500,
-.text-divine-gold,
-[class*="text-amber-2"], [class*="text-amber-3"], [class*="text-amber-4"], [class*="text-amber-5"],
-[class*="text-divine"] {
-  color: #E50914 !important;
-}
-
+/* Headings and primary text stay pure white */
 h1, h1.text-amber-300, h1.text-amber-400, h1.text-divine-gold,
 h1[class*="text-amber"], h1[class*="text-divine"],
 h1.font-yatra, .font-yatra.text-divine-gold, .font-yatra.text-amber-400,
@@ -17,12 +10,22 @@ h2[class*="text-amber"], h2[class*="text-divine"] {
   color: #FFFFFF !important;
 }
 
-.text-amber-100, [class*="text-amber-1"] {
+/* Secondary / muted text → Netflix Gray */
+.text-amber-100, [class*="text-amber-1"],
+.text-amber-200, [class*="text-amber-2"] {
   color: #B3B3B3 !important;
 }
 
+/* Accent / CTA / name highlights → Netflix Red */
+.text-amber-300, .text-amber-400, .text-amber-500,
+.text-divine-gold,
+[class*="text-amber-3"], [class*="text-amber-4"], [class*="text-amber-5"],
+[class*="text-divine"] {
+  color: #E50914 !important;
+}
+
 [class*="border-amber"] {
-  border-color: #303038 !important;
+  border-color: #E50914 !important;
 }
 
 [class*="bg-amber-950"], [class*="bg-amber-500"] {
@@ -32,11 +35,11 @@ h2[class*="text-amber"], h2[class*="text-divine"] {
 a.bg-gradient-to-r, .bg-gradient-to-r.from-amber-600, a[class*="from-amber"] {
   background: #E50914 !important;
   background-image: none !important;
-  color: #fff !important;
+  color: #FFFFFF !important;
   box-shadow: none !important;
 }
 
 /* Card backgrounds */
 [class*="bg-[#120F0F]"], [class*="bg-[#0d0a0a]"], [class*="bg-[#161212]"] {
-  background-color: #1C1C24 !important;
+  background-color: #111111 !important;
 }
