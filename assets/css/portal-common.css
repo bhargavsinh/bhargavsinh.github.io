@@ -1,19 +1,19 @@
 /* ============================================================
-   V16.2 — Shared styles for portal interior pages
+   V17.2 — Shared styles for portal interior pages
    ============================================================ */
 
 :root {
-  --bg: #0B0B0F;
-  --bg-2: #141419;
-  --card: #1C1C24;
+  --bg: #000000;
+  --bg-2: #0a0a0a;
+  --card: #111111;
   --accent: #E50914;
-  --accent-books: #9B4DCA;
+  --accent-books: #E50914;
   --accent-hr: #E50914;
-  --accent-visitor: #3B82F6;
+  --accent-visitor: #E50914;
   --text: #FFFFFF;
   --text-2: #B3B3B3;
   --text-3: #808080;
-  --border: #303038;
+  --border: #333333;
   --radius: 8px;
   --nav-h: 64px;
   --font: "Inter", "Noto Sans Gujarati", system-ui, sans-serif;
@@ -21,6 +21,18 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, body * {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+input, textarea, select, [contenteditable="true"] {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
 
 html { scroll-behavior: smooth; }
 
@@ -55,7 +67,7 @@ ul { list-style: none; }
   top: 0;
   z-index: 100;
   height: var(--nav-h);
-  background: rgba(11,11,15,0.92);
+  background: rgba(0,0,0,0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   display: flex;
@@ -169,7 +181,7 @@ ul { list-style: none; }
 }
 .btn-ghost:hover { background: rgba(255,255,255,0.18); }
 
-/* Portal accent variants */
+/* Portal accent variants (unified to Netflix Red for V17.2) */
 .portal-books .btn-primary,
 .portal-books .portal-badge { background: var(--accent-books); }
 .portal-books .portal-badge { color: #fff; }
@@ -454,10 +466,10 @@ ul { list-style: none; }
   color: var(--text-3);
 }
 
-/* Portal bar accent borders */
-.portal-bar--books { border-bottom-color: rgba(155,77,202,0.35); }
+/* Portal bar accent borders — unified white/red for V17.2 */
+.portal-bar--books { border-bottom-color: rgba(229,9,20,0.35); }
 .portal-bar--hr { border-bottom-color: rgba(229,9,20,0.35); }
-.portal-bar--visitor { border-bottom-color: rgba(59,130,246,0.35); }
+.portal-bar--visitor { border-bottom-color: rgba(229,9,20,0.35); }
 
 .portal-nav a.active {
   color: var(--text) !important;
