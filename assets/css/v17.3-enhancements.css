@@ -1,0 +1,263 @@
+/* ============================================================
+   V17.3 — Visual polish, logo brand mark, reading comfort,
+   content protection, accessibility helpers
+   Load after portal-common / cinematic
+   ============================================================ */
+
+:root {
+  --brand-red: #E50914;
+  --brand-white: #FFFFFF;
+  --brand-gray: #B3B3B3;
+  --brand-black: #000000;
+  --brand-card: #111111;
+  --brand-border: #333333;
+}
+
+/* ---- Logo as real brand mark in portal bars ---- */
+.portal-brand {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: var(--brand-white);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.portal-brand .brand-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: block;
+  background: transparent;
+}
+.portal-brand span {
+  color: var(--brand-red) !important;
+}
+@media (max-width: 480px) {
+  .portal-brand .brand-logo {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Index / portal selector brand logo */
+.ps-brand {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ps-brand .brand-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 3px;
+}
+
+/* ---- Reading experience (literary / long-form) ---- */
+.reading-content,
+.literary-body,
+.book-content,
+article.prose,
+.portal-section article,
+main.reading {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.75;
+  font-size: 1.05rem;
+  color: var(--brand-white);
+}
+.reading-content p,
+.literary-body p,
+.book-content p,
+article.prose p {
+  margin-bottom: 1.15em;
+  color: var(--brand-white);
+}
+.reading-content h1,
+.reading-content h2,
+.reading-content h3,
+.literary-body h1,
+.literary-body h2,
+.literary-body h3 {
+  color: var(--brand-white);
+  line-height: 1.3;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+}
+.reading-content .muted,
+.literary-body .muted {
+  color: var(--brand-gray);
+}
+
+/* ---- Content protection (honest deterrence) ---- */
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+}
+.protected-literary {
+  position: relative;
+}
+.protected-literary::after {
+  content: "BHARGAVSINH SISODIYA · Personal reading only";
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+  z-index: 50;
+  user-select: none;
+}
+
+/* Print: clear attribution */
+@media print {
+  body::before {
+    content: "© BHARGAVSINH SISODIYA — For personal reading only. Not for redistribution.";
+    display: block;
+    text-align: center;
+    font-size: 10pt;
+    color: #333;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
+  }
+  .portal-bar,
+  .portal-drawer,
+  .portal-menu-toggle,
+  .portal-switch,
+  .back-to-top,
+  .reading-progress,
+  .sw-update-toast {
+    display: none !important;
+  }
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+}
+
+/* ---- Back to top + reading progress ---- */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--brand-red);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+.back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--brand-red);
+  color: #fff;
+  border: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
+  z-index: 900;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background: #F40612;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ---- Skip link ---- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--brand-red);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  z-index: 10000;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---- SW update toast ---- */
+.sw-update-toast {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: #111;
+  color: #fff;
+  border: 1px solid var(--brand-border);
+  border-radius: 8px;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10001;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+  max-width: 94vw;
+  font-size: 0.9rem;
+}
+.sw-update-toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+.sw-update-toast button {
+  background: var(--brand-red);
+  color: #fff;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.sw-update-toast button:hover {
+  background: #F40612;
+}
+
+/* ---- Consistent focus in Netflix palette ---- */
+:focus-visible {
+  outline: 2px solid var(--brand-red) !important;
+  outline-offset: 3px;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--brand-red) !important;
+  outline-offset: 3px;
+}
+
+/* Version badge */
+.version-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--brand-gray);
+  opacity: 0.9;
+}
