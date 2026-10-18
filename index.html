@@ -14,24 +14,41 @@
   <meta property="og:url" content="https://bhargavsinh.github.io/">
   <meta property="og:title" content="Who's Visiting? | BHARGAVSINH SISODIYA">
   <meta property="og:description" content="Select a portal to explore books, professional profile, or the public portfolio.">
-  <meta property="og:image" content="https://bhargavsinh.github.io/bhargavsinh.webp">
+  <meta property="og:image" content="https://bhargavsinh.github.io/newlogo-512.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Who's Visiting? | BHARGAVSINH SISODIYA">
+  <meta name="twitter:image" content="https://bhargavsinh.github.io/newlogo-512.png">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="newlogo-192.png">
   <link rel="icon" type="image/png" href="newlogo-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/portal-selector.css?v=16.5">
-  <link rel="stylesheet" href="assets/css/intro.css?v=16.6">
+  <link rel="stylesheet" href="assets/css/portal-selector.css?v=17.3">
+  <link rel="stylesheet" href="assets/css/intro.css?v=17.3">
+  <link rel="stylesheet" href="assets/css/v17.3-enhancements.css?v=17.3">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "BHARGAVSINH SISODIYA — Digital Universe",
+    "url": "https://bhargavsinh.github.io/",
+    "description": "Three-portal portfolio: Books & Publications, HR Recruiter, and Visitor.",
+    "publisher": {
+      "@type": "Person",
+      "name": "BHARGAVSINH SISODIYA",
+      "url": "https://bhargavsinh.github.io/"
+    }
+  }
+  </script>
 </head>
 <body class="bs-intro-active">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <!-- Cinematic B.M.S. intro — Netflix-inspired (once per session; Skip / Esc / Enter) -->
   <div id="bs-intro" class="bs-intro" role="dialog" aria-label="B.M.S. intro" aria-modal="true">
     <div class="bs-intro-glow" aria-hidden="true"></div>
     <div class="bs-intro-bar" aria-hidden="true"></div>
     <div class="bs-intro-inner">
-      <!-- Original wordmark logo: B.M.S. -->
       <div class="bs-wordmark" aria-label="B.M.S." role="img">
         <span class="ltr">B</span><span class="dot">.</span><span class="ltr">M</span><span class="dot">.</span><span class="ltr">S</span><span class="dot">.</span>
       </div>
@@ -41,9 +58,12 @@
     <button type="button" class="bs-intro-skip" id="bs-intro-skip">Skip</button>
   </div>
 
-  <a href="index.html" class="ps-brand" aria-label="BHARGAVSINH SISODIYA">BHARGAV<span>SINH</span></a>
+  <a href="index.html" class="ps-brand" aria-label="BHARGAVSINH SISODIYA">
+    <img src="newlogo.png" alt="" class="brand-logo" width="28" height="28" decoding="async">
+    BHARGAV<span>SINH</span>
+  </a>
   <div class="ps-spacer" aria-hidden="true"></div>
-  <main class="ps-wrapper">
+  <main class="ps-wrapper" id="main-content">
     <h1 class="ps-heading">Who's Visiting?</h1>
 
     <ul class="ps-profiles" role="list">
@@ -79,18 +99,18 @@
     </ul>
 
     <div class="ps-footer">
-      <p>BHARGAVSINH SISODIYA · Digital Universe · V17.2</p>
+      <p>BHARGAVSINH SISODIYA · Digital Universe · <span class="version-badge">V17.3</span></p>
     </div>
   </main>
 
   <script>
-    // Optional: remember last portal (local only)
     document.querySelectorAll('.ps-profile a').forEach(a => {
       a.addEventListener('click', () => {
         try { localStorage.setItem('bs_last_portal', a.getAttribute('href')); } catch(e) {}
       });
     });
   </script>
-  <script src="assets/js/intro.js?v=16.6"></script>
+  <script src="assets/js/intro.js?v=17.3"></script>
+  <script src="assets/js/v17.3-ux.js?v=17.3"></script>
 </body>
 </html>
