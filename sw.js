@@ -1,10 +1,11 @@
 /**
- * V17.0 Service Worker
+ * V17.2 Service Worker
  * - Network-first for HTML navigations (avoid stale pages)
  * - Cache-first for versioned static assets
  * - Failed navigation → offline.html (NOT index.html)
+ * - Explicit V17.2 cache namespace with deterministic cleanup of prior versions
  */
-const CACHE_NAME = "bhargavsinh-portfolio-v17.0";
+const CACHE_NAME = "bhargavsinh-portfolio-v17.2";
 const OFFLINE_URL = "/offline.html";
 
 const PRECACHE = [
