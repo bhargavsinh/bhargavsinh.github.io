@@ -1,5 +1,5 @@
 /**
- * V17.0 — Portal page shell
+ * V17.3 — Portal page shell
  * Loads portal-specific header.html + footer.html partials,
  * then activates security + mobile drawer.
  */
@@ -38,12 +38,34 @@
     });
   }
 
+  function injectV173() {
+    if (!document.querySelector('link[href*="v17.3-enhancements"]')) {
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "../assets/css/v17.3-enhancements.css?v=17.3";
+      document.head.appendChild(link);
+    }
+    if (!document.querySelector('script[src*="v17.3-ux"]')) {
+      var s = document.createElement("script");
+      s.src = "../assets/js/v17.3-ux.js?v=17.3";
+      s.defer = true;
+      document.body.appendChild(s);
+    }
+    if (!document.querySelector(".skip-link")) {
+      var a = document.createElement("a");
+      a.className = "skip-link";
+      a.href = "#main-content";
+      a.textContent = "Skip to content";
+      document.body.insertBefore(a, document.body.firstChild);
+    }
+  }
+
   function injectTheme() {
     document.body.classList.add(accentClass);
     if (!document.querySelector('link[href*="portal-common"]')) {
       var link = document.createElement("link");
       link.rel = "stylesheet";
-      link.href = "../assets/css/portal-common.css?v=16.3";
+      link.href = "../assets/css/portal-common.css?v=17.3";
       document.head.appendChild(link);
     }
     if (!document.getElementById("v16-theme-overrides")) {
@@ -55,7 +77,7 @@
         ".text-amber-300,.text-amber-400,.text-divine-gold,",
         "[class*=text-amber-3],[class*=text-amber-4],[class*=text-divine]{color:#E50914!important}",
         "h1.text-amber-400,h1.text-divine-gold{color:#fff!important}",
-        "body{background:#0B0B0F!important;color:#fff}",
+        "body{background:#000000!important;color:#fff}",
         "[class*=border-amber]{border-color:#303038!important}",
         "a.bg-gradient-to-r,.bg-gradient-to-r{background:#E50914!important;background-image:none!important;color:#fff!important}"
       ].join("");
@@ -67,13 +89,14 @@
   function loadSecurity() {
     if (document.querySelector('script[src*="portal-security"]')) return;
     var sc = document.createElement("script");
-    sc.src = "../assets/js/portal-security.js?v=16.3";
+    sc.src = "../assets/js/portal-security.js?v=17.3";
     sc.defer = true;
     document.body.appendChild(sc);
   }
 
   function init() {
     injectTheme();
+    injectV173();
     stripLegacyChrome();
 
     Promise.all([
