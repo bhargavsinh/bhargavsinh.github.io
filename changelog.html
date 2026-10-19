@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="index, follow">
+  <title>Changelog | BHARGAVSINH SISODIYA</title>
+  <link rel="canonical" href="https://bhargavsinh.github.io/changelog.html">
+  <link rel="icon" type="image/png" href="newlogo-192.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#000; --card:#111; --text:#fff; --muted:#B3B3B3; --red:#E50914; --border:#333; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Inter,system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; min-height:100vh; }
+    a { color:var(--red); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    a:focus-visible { outline:2px solid var(--red); outline-offset:3px; }
+    .top { border-bottom:1px solid var(--border); padding:0.9rem 4%; }
+    .top-inner { max-width:720px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+    .brand { font-weight:800; color:#fff; }
+    .brand span { color:var(--red); }
+    main { max-width:720px; margin:0 auto; padding:2rem 4% 3rem; }
+    h1 { font-size:1.75rem; margin-bottom:0.35rem; }
+    .lead { color:var(--muted); margin-bottom:2rem; }
+    article { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:1.25rem; margin-bottom:1rem; }
+    article h2 { font-size:1.05rem; margin-bottom:0.5rem; }
+    article ul { padding-left:1.2rem; color:var(--muted); }
+    article li { margin:0.25rem 0; }
+    footer { text-align:center; color:var(--muted); font-size:0.8rem; padding:1.5rem; border-top:1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a href="index.html" class="brand">BHARGAV<span>SINH</span></a>
+      <a href="sitemap.html">Sitemap</a>
+    </div>
+  </header>
+  <main id="main-content">
+    <h1>Changelog</h1>
+    <p class="lead">Technical release notes for this static portfolio. Editorial content is not altered by version bumps.</p>
+    <article>
+      <h2>V17.4 — 2026-10-19</h2>
+      <ul>
+        <li>Client-side site search (titles / portals)</li>
+        <li>PWA: v17.4 cache, broader precache, install hint, update toast</li>
+        <li>HR visual polish (cards, chips, primary CTAs) — no file downloads</li>
+        <li>Accessibility: skip targets, contrast helpers, 44px controls</li>
+        <li>Performance: lazy-load non-header images, cache-bust ?v=17.4</li>
+        <li>Maintenance: changelog page, sitemap links in footers</li>
+      </ul>
+    </article>
+    <article>
+      <h2>V17.3</h2>
+      <ul>
+        <li>Logo as brand mark, Netflix palette, progress bar, back-to-top, print attribution</li>
+      </ul>
+    </article>
+    <article>
+      <h2>V17.2</h2>
+      <ul>
+        <li>Netflix Red text accents, copy / right-click deterrence</li>
+      </ul>
+    </article>
+    <article>
+      <h2>V17.1</h2>
+      <ul>
+        <li>Monochrome pass, SW cache upgrade, audit documentation</li>
+      </ul>
+    </article>
+  </main>
+  <footer>
+    <p>© <span id="y"></span> BHARGAVSINH SISODIYA · V17.4</p>
+    <p><a href="index.html">Home</a> · <a href="sitemap.html">Sitemap</a></p>
+  </footer>
+  <script>document.getElementById("y").textContent=String(new Date().getFullYear());</script>
+  <script src="assets/js/v17.4-ux.js?v=17.4" defer></script>
+</body>
+</html>
