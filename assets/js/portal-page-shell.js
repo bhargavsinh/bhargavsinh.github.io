@@ -1,7 +1,7 @@
 /**
- * V17.3 — Portal page shell
+ * V17.4 — Portal page shell
  * Loads portal-specific header.html + footer.html partials,
- * then activates security + mobile drawer.
+ * then activates security + mobile drawer + V17.4 UX.
  */
 (function () {
   "use strict";
@@ -38,16 +38,22 @@
     });
   }
 
-  function injectV173() {
+  function injectV174() {
     if (!document.querySelector('link[href*="v17.3-enhancements"]')) {
       var link = document.createElement("link");
       link.rel = "stylesheet";
-      link.href = "../assets/css/v17.3-enhancements.css?v=17.3";
+      link.href = "../assets/css/v17.3-enhancements.css?v=17.4";
       document.head.appendChild(link);
     }
-    if (!document.querySelector('script[src*="v17.3-ux"]')) {
+    if (!document.querySelector('link[href*="v17.4-enhancements"]')) {
+      var link2 = document.createElement("link");
+      link2.rel = "stylesheet";
+      link2.href = "../assets/css/v17.4-enhancements.css?v=17.4";
+      document.head.appendChild(link2);
+    }
+    if (!document.querySelector('script[src*="v17.4-ux"]')) {
       var s = document.createElement("script");
-      s.src = "../assets/js/v17.3-ux.js?v=17.3";
+      s.src = "../assets/js/v17.4-ux.js?v=17.4";
       s.defer = true;
       document.body.appendChild(s);
     }
@@ -65,7 +71,7 @@
     if (!document.querySelector('link[href*="portal-common"]')) {
       var link = document.createElement("link");
       link.rel = "stylesheet";
-      link.href = "../assets/css/portal-common.css?v=17.3";
+      link.href = "../assets/css/portal-common.css?v=17.4";
       document.head.appendChild(link);
     }
     if (!document.getElementById("v16-theme-overrides")) {
@@ -89,14 +95,14 @@
   function loadSecurity() {
     if (document.querySelector('script[src*="portal-security"]')) return;
     var sc = document.createElement("script");
-    sc.src = "../assets/js/portal-security.js?v=17.3";
+    sc.src = "../assets/js/portal-security.js?v=17.4";
     sc.defer = true;
     document.body.appendChild(sc);
   }
 
   function init() {
     injectTheme();
-    injectV173();
+    injectV174();
     stripLegacyChrome();
 
     Promise.all([
