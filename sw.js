@@ -1,11 +1,10 @@
 /**
- * V17.3 Service Worker
- * - Network-first for HTML navigations
- * - Cache-first for static assets
- * - Offline fallback → offline.html
- * - SKIP_WAITING message support for update toast
+ * V17.4 Service Worker
+ * - Network-first HTML, cache-first static
+ * - Expanded precache for portal entry + search assets
+ * - SKIP_WAITING for update toast
  */
-const CACHE_NAME = "bhargavsinh-portfolio-v17.3";
+const CACHE_NAME = "bhargavsinh-portfolio-v17.4";
 const OFFLINE_URL = "/offline.html";
 
 const PRECACHE = [
@@ -13,6 +12,7 @@ const PRECACHE = [
   "/index.html",
   "/offline.html",
   "/404.html",
+  "/sitemap.html",
   "/manifest.json",
   "/newlogo.png",
   "/newlogo-192.png",
@@ -20,18 +20,26 @@ const PRECACHE = [
   "/assets/css/portal-selector.css",
   "/assets/css/portal-common.css",
   "/assets/css/v17.3-enhancements.css",
+  "/assets/css/v17.4-enhancements.css",
   "/assets/css/intro.css",
   "/assets/js/portal-page-shell.js",
   "/assets/js/portal-security.js",
   "/assets/js/v17.3-ux.js",
+  "/assets/js/v17.4-ux.js",
+  "/assets/js/site-search.js",
+  "/assets/js/search-index.json",
   "/assets/js/intro.js",
   "/assets/images/portal-books.svg",
   "/assets/images/portal-recruiter.svg",
   "/assets/images/portal-visitor.svg",
   "/Book-Publications-Reader/BPindex.html",
   "/HR-Recruiter/HRRindex.html",
+  "/HR-Recruiter/projects.html",
+  "/HR-Recruiter/resume.html",
   "/Visitor/Visitindex.html",
-  "/Visitor/policy-center.html"
+  "/Visitor/policy-center.html",
+  "/Visitor/contact.html",
+  "/changelog.html"
 ];
 
 self.addEventListener("install", (event) => {
@@ -53,9 +61,7 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-  }
+  if (event.data && event.data.type === "SKIP_WAITING") self.skipWaiting();
 });
 
 function isHTMLRequest(request) {

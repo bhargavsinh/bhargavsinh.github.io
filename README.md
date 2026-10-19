@@ -1,31 +1,12 @@
-# BHARGAVSINH SISODIYA - Portfolio V17.3
+# BHARGAVSINH SISODIYA - Portfolio V17.4
 
-Three-portal static portfolio on GitHub Pages: **Who's Visiting?** → Books · HR Recruiter · Visitor.
+Three-portal static portfolio on GitHub Pages.
 
-## V17.3 focus
+## V17.4 focus
+- Client-side search (titles)
+- PWA v17.4 cache + install hint + update toast
+- HR visual polish (no file downloads)
+- Accessibility & performance helpers
+- Changelog + sitemap linked from footers
 
-| Area | Delivered |
-|------|-----------|
-| **Visual system** | Consistent Netflix Red (`#E50914`) + White + Gray on pure Black |
-| **Logo** | `newlogo.png` as real brand mark in all portal headers + selector |
-| **Content protection** | Selection/copy/right-click deterrence, image drag block, print attribution |
-| **PWA** | V17.3 cache, richer precache, update toast (“New version available”) |
-| **Reading UX** | Progress bar, back-to-top, improved long-form typography helpers |
-| **Accessibility** | Skip-to-content, visible red focus rings, reduced-motion respected |
-| **SEO** | OG/Twitter cards, WebSite JSON-LD on home |
-
-## Structure
-
-```
-index.html                    Who's Visiting? + B.M.S. intro
-Book-Publications-Reader/     Literary portal
-HR-Recruiter/                 Professional portal
-Visitor/                      Public portfolio + Policy Center
-assets/css/v17.3-enhancements.css
-assets/js/v17.3-ux.js
-sw.js                         Service worker (v17.3)
-```
-
-## Deploy
-
-Push to `bhargavsinh.github.io` `main` → hard-refresh (SW **v17.3**).
+Hard-refresh after deploy (SW **v17.4**).
