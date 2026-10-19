@@ -1,0 +1,104 @@
+/* V17.4 — Search, PWA install hint, HR polish, a11y, performance */
+:root {
+  --brand-red: #E50914;
+  --brand-white: #FFFFFF;
+  --brand-gray: #B3B3B3;
+  --brand-black: #000000;
+  --brand-card: #111111;
+  --brand-border: #333333;
+}
+#bs-search-root { position: relative; z-index: 10050; }
+.bs-search-toggle {
+  position: fixed; top: 0.85rem; right: 0.85rem;
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--brand-border);
+  background: rgba(0,0,0,0.85); color: var(--brand-white);
+  font-size: 1.25rem; cursor: pointer; z-index: 10051;
+  display: flex; align-items: center; justify-content: center;
+}
+.bs-search-toggle:hover, .bs-search-toggle:focus-visible {
+  border-color: var(--brand-red);
+  outline: 2px solid var(--brand-red); outline-offset: 2px;
+}
+.bs-search-panel {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.72);
+  z-index: 10052; display: flex; flex-direction: column;
+  align-items: center; padding: 4rem 1rem 2rem;
+}
+.bs-search-panel[hidden] { display: none !important; }
+.bs-search-box {
+  width: min(560px, 100%); display: grid; grid-template-columns: 1fr auto;
+  gap: 0.5rem; align-items: center; background: var(--brand-card);
+  border: 1px solid var(--brand-border); border-radius: 10px; padding: 0.75rem;
+}
+.bs-search-label {
+  grid-column: 1 / -1; font-size: 0.75rem; color: var(--brand-gray);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.bs-search-input {
+  width: 100%; background: #0a0a0a; border: 1px solid var(--brand-border);
+  border-radius: 6px; color: var(--brand-white); padding: 0.7rem 0.85rem;
+  font-size: 1rem; font-family: inherit;
+}
+.bs-search-input:focus {
+  outline: 2px solid var(--brand-red); outline-offset: 1px; border-color: var(--brand-red);
+}
+.bs-search-close {
+  background: transparent; border: 1px solid var(--brand-border);
+  color: var(--brand-white); width: 40px; height: 40px; border-radius: 6px; cursor: pointer;
+}
+.bs-search-results {
+  list-style: none; width: min(560px, 100%); margin-top: 0.75rem;
+  background: var(--brand-card); border: 1px solid var(--brand-border);
+  border-radius: 10px; max-height: min(50vh, 360px); overflow: auto; padding: 0.35rem;
+}
+.bs-search-results a {
+  display: block; padding: 0.65rem 0.75rem; border-radius: 6px;
+  color: var(--brand-white); text-decoration: none;
+}
+.bs-search-results a:hover, .bs-search-results a:focus-visible {
+  background: rgba(229, 9, 20, 0.12); outline: none;
+}
+.bs-search-portal {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--brand-red); margin-right: 0.4rem;
+}
+.bs-search-empty { padding: 0.85rem; color: var(--brand-gray); font-size: 0.9rem; }
+.bs-search-hint {
+  width: min(560px, 100%); margin-top: 0.5rem; font-size: 0.75rem;
+  color: var(--brand-gray); text-align: center;
+}
+.pwa-install-hint {
+  position: fixed; bottom: 1.25rem; left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: #111; color: #fff; border: 1px solid var(--brand-border);
+  border-radius: 8px; padding: 0.75rem 1rem; display: flex; align-items: center;
+  gap: 0.75rem; z-index: 10040; box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease; max-width: 94vw; font-size: 0.85rem;
+}
+.pwa-install-hint.show { transform: translateX(-50%) translateY(0); }
+.pwa-install-hint button {
+  background: var(--brand-red); color: #fff; border: none;
+  padding: 0.4rem 0.75rem; border-radius: 4px; font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+.pwa-install-hint .pwa-dismiss {
+  background: transparent; border: 1px solid var(--brand-border); color: var(--brand-gray);
+}
+.portal-hr .content-card:hover, .portal-hr .project-card:hover {
+  border-color: rgba(229, 9, 20, 0.45);
+}
+.portal-hr .btn-primary, .portal-hr a.btn-primary {
+  background: var(--brand-red) !important; color: #fff !important;
+}
+form .field-error { color: #ff6b6b; font-size: 0.85rem; margin-top: 0.25rem; }
+form .form-success {
+  border: 1px solid rgba(229, 9, 20, 0.4); background: rgba(229, 9, 20, 0.08);
+  color: var(--brand-white); padding: 0.85rem 1rem; border-radius: 6px; margin-bottom: 1rem;
+}
+.portal-footer, .portal-footer a, .ps-footer { color: var(--brand-gray); }
+.portal-footer a:hover { color: var(--brand-white); }
+img[loading="lazy"] { background: #111; }
+.portal-switch, .portal-nav a, .bs-search-toggle { min-height: 44px; min-width: 44px; }
+@media (prefers-reduced-motion: reduce) {
+  .bs-search-panel, .pwa-install-hint, .sw-update-toast, .back-to-top { transition: none !important; }
+}
