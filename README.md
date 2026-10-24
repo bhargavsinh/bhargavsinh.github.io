@@ -1,12 +1,13 @@
-# BHARGAVSINH SISODIYA - Portfolio V17.5
+# BHARGAVSINH SISODIYA - Portfolio V17.5.1
 
-Three-portal static portfolio on GitHub Pages.
+Stable hotfix over V17.5.
 
-## V17.5
-- Full image set under `assets/images/`
-- Skeleton search (all pages except index)
-- Stronger client-side content/image deterrence
-- PWA cache `bhargavsinh-portfolio-v17.5`
-- Portal indexes + footers updated
+## V17.5.1 fixes
+- Fixed critical SyntaxError in site-search.js (escapeHtml) — search works again
+- Version badge / cache-bust ?v=17.5.1 across portal pages
+- Footer partials → V17.5.1
+- Header brand mark path → assets/images/brand/brand-mark.webp
+- Offline / 404 pages use UI illustrations
+- Service worker cache bhargavsinh-portfolio-v17.5.1
 
 Hard-refresh after deploy.
