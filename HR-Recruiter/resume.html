@@ -15,39 +15,17 @@
   <link rel="manifest" href="../manifest.json">
   <link rel="apple-touch-icon" href="../assets/images/brand/brand-mark-192.png">
   <link rel="icon" type="image/png" href="../assets/images/brand/brand-mark-192.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'royal-maroon': '#800000',
-            'divine-gold': '#E50914',
-            'saffron-glow': '#FF9933'
-          },
-          fontFamily: {
-            'yatra': ['"Inter"', 'sans-serif'],
-            'noto': ['"Noto Sans Gujarati"', 'sans-serif'],
-            'inter': ['Inter', 'sans-serif'],
-            'playfair': ['Inter', 'sans-serif']
-          }
-        }
-      }
-    }
+    tailwind.config = { theme: { extend: { colors: { 'divine-gold': '#E50914' }, fontFamily: { 'yatra': ['Inter','sans-serif'], 'noto': ['Noto Sans Gujarati','sans-serif'], 'inter': ['Inter','sans-serif'] } } } };
   </script>
   <style>
     body { background: #0B0B0F !important; color: #fff; }
     .text-divine-gold, .text-amber-300, .text-amber-400 { color: #E50914 !important; }
-    .border-amber-900\/40, .border-amber-900\/50, .border-amber-800\/50 { border-color: #303038 !important; }
-    .bg-\[\#120F0F\], .bg-\[\#0d0a0a\], .bg-\[\#161212\] { background-color: #141419 !important; }
-    .bg-amber-950\/80 { background-color: rgba(229,9,20,0.12) !important; }
-    .text-amber-100, .text-amber-100\/90 { color: #B3B3B3 !important; }
+    .border-amber-900\/40 { border-color: #303038 !important; }
+    .bg-\[\#120F0F\] { background-color: #141419 !important; }
   </style>
-  <link rel="stylesheet" href="../assets/css/cinematic.css?v=17.5.2">
-  <link rel="stylesheet" href="../assets/css/theme-overrides.css?v=17.5.2">
   <link rel="stylesheet" href="../assets/css/portal-common.css?v=17.5.2">
 </head>
 <body>
@@ -56,8 +34,7 @@
       <div class="bg-[#120F0F] rounded-[2rem] sm:rounded-[2.5rem] p-5 sm:p-8 md:p-12 relative border border-amber-900/40">
         <div class="text-center mb-12">
           <div style="text-align:center;margin:0 auto 1.25rem;">
-            <img src="../assets/images/hr/hr-portrait-square.webp" alt="" width="160" height="160" decoding="async" draggable="false"
-                 style="width:160px;height:160px;border-radius:50%;object-fit:cover;border:2px solid #333;box-shadow:0 8px 24px rgba(0,0,0,.4);">
+            <img src="../assets/images/hr/hr-portrait-square.webp" alt="" width="160" height="160" decoding="async" draggable="false" style="width:160px;height:160px;border-radius:50%;object-fit:cover;border:2px solid #333;box-shadow:0 8px 24px rgba(0,0,0,.4);">
           </div>
           <h1 class="font-yatra text-4xl md:text-6xl text-divine-gold drop-shadow-lg tracking-wide">BHARGAVSINH SISODIYA</h1>
           <p class="text-white/70 font-medium mt-4 tracking-wide text-sm md:text-base">BCA Student | Technology Enthusiast | Writer | Aspiring Technology & Management Professional</p>
@@ -72,7 +49,7 @@
         </div>
 
         <section class="mb-10">
-          <div class="flex items-center gap-3 mb-5"><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div><h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Professional Summary</h2><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div></div>
+          <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide text-center mb-5">Professional Summary</h2>
           <div class="space-y-4 text-white/80 leading-relaxed text-sm md:text-base">
             <p>BCA student with a strong interest in <strong class="text-white">Technology, Digital Systems, Business Management, Law, Research, and Writing</strong>. Experienced in developing and maintaining web-based projects, digital repositories, PWAs, and structured information systems.</p>
             <p>Alongside technology, I have developed a demonstrated writing portfolio including published literary work, <strong class="text-white">3 published articles on my website, and 5 short stories published on Pratilipi</strong>. I have also published a legal thriller novella, <em class="text-divine-gold">“અસ્તિત્વ: ધ ગરિમા પ્રોજેક્ટ ભાગ - ૧”</em>, combining law, corporate systems, social issues, and storytelling.</p>
@@ -81,7 +58,7 @@
         </section>
 
         <section class="mb-10">
-          <div class="flex items-center gap-3 mb-5"><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div><h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Education</h2><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div></div>
+          <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide text-center mb-5">Education</h2>
           <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5 md:p-6">
             <h3 class="text-white font-semibold text-lg mb-1">Bachelor of Computer Applications (BCA)</h3>
             <p class="text-white/70 text-sm mb-3"><strong class="text-white">Shri Govind Guru University, Gujarat</strong><br>Currently pursuing — Semester 3<br>NEP-2020 Curriculum</p>
@@ -99,12 +76,12 @@
         </section>
 
         <section class="mb-10">
-          <div class="flex items-center gap-3 mb-5"><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div><h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Technical Skills</h2><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div></div>
+          <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide text-center mb-5">Technical Skills</h2>
           <div class="flex flex-wrap gap-2.5">
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">HTML5</span>
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">CSS3</span>
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">JavaScript</span>
-            <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">C++</span>
+            <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">C++</</span>
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Object-Oriented Programming</span>
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">SQL & Database Fundamentals</span>
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">RDBMS Concepts</span>
@@ -121,7 +98,7 @@
         </section>
 
         <section class="mb-10">
-          <div class="flex items-center gap-3 mb-5"><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div><h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Projects & Digital Work</h2><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div></div>
+          <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide text-center mb-5">Projects & Digital Work</h2>
           <div class="space-y-6">
             <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5 md:p-6">
               <h3 class="text-white font-semibold text-lg mb-1">BHARGAVSINH Personal Website</h3>
@@ -138,22 +115,22 @@
         </section>
 
         <section class="mb-10">
-          <div class="flex items-center gap-3 mb-5"><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div><h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Writing & Publications</h2><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div></div>
+          <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide text-center mb-5">Writing & Publications</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5"><h3 class="text-divine-gold font-medium text-sm uppercase tracking-wider mb-2">Published Work</h3><p class="text-white font-semibold">“સત્યની શોધ”</p><p class="text-white/60 text-sm mt-1">Published literary work.</p></div>
             <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5"><h3 class="text-divine-gold font-medium text-sm uppercase tracking-wider mb-2">Published Novella</h3><p class="text-white font-semibold">“અસ્તિત્વ: ધ ગરિમા પ્રોજેક્ટ ભાગ - ૧”</p><p class="text-white/70 text-sm mt-1"><strong class="text-white">Genre:</strong> Legal Thriller + Rom-Com + Social Drama</p><p class="text-white/60 text-sm mt-2">A fictional work set around the corporate world and Delhi High Court, exploring discrimination, corporate power, dignity, legal conflict and human relationships.</p></div>
-            <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5"><h3 class="text-divine-gold font-medium text-sm uppercase tracking-wider mb-2">Published Articles</h3><p class="text-white font-semibold">3 Articles published on personal website</p><p class="text-white/60 text-sm mt-1">Topics include research, cultural/philosophical subjects and analytical writing.</p></div>
-            <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5"><h3 class="text-divine-gold font-medium text-sm uppercase tracking-wider mb-2">Short Stories</h3><p class="text-white font-semibold">5 Short Stories published published on Pratilipi</p></div>
+            <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5"><h3 class="text-divine-gold font-medium text-sm uppercase tracking-wider mb-2">Published Articles</h3><p class="text-white font-semibold">3 Articles published on personal website</p></div>
+            <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5"><h3 class="text-divine-gold font-medium text-sm uppercase tracking-wider mb-2">Short Stories</h3><p class="text-white font-semibold">5 Short Stories published on Pratilipi</p></div>
           </div>
         </section>
 
         <section class="mb-10">
-          <div class="flex items-center gap-3 mb-5"><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div><h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Areas of Interest</h2><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div></div>
+          <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide text-center mb-5">Areas of Interest</h2>
           <div class="flex flex-wrap gap-2.5">
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Technology & Software Development</span>
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Technology Management</span>
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Product Management</span>
-            <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Digital Transformation</span>
+            <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">">Digital Transformation</span>
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Entrepreneurship</span>
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Law & Technology Law</span>
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Cyber Law</span>
@@ -168,7 +145,7 @@
         </section>
 
         <section class="mb-10">
-          <div class="flex items-center gap-3 mb-5"><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div><h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Core Strengths</h2><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div></div>
+          <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide text-center mb-5">Core Strengths</h2>
           <div class="flex flex-wrap gap-2.5">
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Systems Thinking</span>
             <span class="bg-white/10 text-white/90 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20">Research & Information Organization</span>
@@ -184,14 +161,14 @@
         </section>
 
         <section class="mb-10">
-          <div class="flex items-center gap-3 mb-5"><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div><h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Career Objective</h2><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div></div>
+          <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide text-center mb-5">Career Objective</h2>
           <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5 md:p-6 text-white/80 text-sm md:text-base leading-relaxed">
             <p>To build a technology-driven professional career by combining <strong class="text-white">technical expertise with management, law, research, and communication skills</strong>, with the long-term objective of working in areas such as <strong class="text-white">Technology Management, Product Development, Digital Transformation, LegalTech, Technology Governance, or Technology Entrepreneurship</strong>.</p>
           </div>
         </section>
 
         <section class="mb-10">
-          <div class="flex items-center gap-3 mb-5"><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div><h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Languages</h2><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div></div>
+          <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide text-center mb-5">Languages</h2>
           <div class="flex flex-wrap gap-3">
             <span class="bg-white/10 text-white/90 px-4 py-2 rounded-full text-sm font-medium border border-white/20">Gujarati</span>
             <span class="bg-white/10 text-white/90 px-4 py-2 rounded-full text-sm font-medium border border-white/20">Hindi</span>
@@ -200,7 +177,7 @@
         </section>
 
         <section class="mb-10">
-          <div class="flex items-center gap-3 mb-5"><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div><h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Professional Links</h2><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div></div>
+          <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide text-center mb-5">Professional Links</h2>
           <ul class="space-y-3 text-sm md:text-base">
             <li><strong class="text-white">GitHub:</strong> <a href="https://github.com/bhargavsinh" target="_blank" rel="noopener" class="text-divine-gold hover:underline">github.com/bhargavsinh</a></li>
             <li><strong class="text-white">Personal Website:</strong> <a href="https://bhargavsinh.github.io" target="_blank" rel="noopener" class="text-divine-gold hover:underline">bhargavsinh.github.io</a></li>
@@ -210,8 +187,8 @@
         </section>
 
         <section>
-          <div class="flex items-center gap-3 mb-5"><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div><h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide">Declaration</h2><div class="h-px flex-1 bg-gradient-to-r from-transparent via-divine-gold/40 to-transparent"></div></div>
-          <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5 md:p-6 text-center">">
+          <h2 class="font-yatra text-2xl md:text-3xl text-divine-gold tracking-wide text-center mb-5">Declaration</h2>
+          <div class="bg-black/40 border border-divine-gold/20 rounded-2xl p-5 md:p-6 text-center">
             <p class="text-white/80 text-sm md:text-base leading-relaxed mb-4">I hereby declare that the information provided above is true and accurate to the best of my knowledge.</p>
             <p class="text-divine-gold font-semibold text-lg">BHARGAVSINH SISODIYA</p>
           </div>
@@ -219,7 +196,6 @@
       </div>
     </div>
   </main>
-  <script src="../assets/js/content-data.js?v=17.5.2"></script>
   <script src="../assets/js/portal-page-shell.js?v=17.5.2"></script>
   <script src="../assets/js/site-utils.js?v=17.5.2"></script>
 </body>
