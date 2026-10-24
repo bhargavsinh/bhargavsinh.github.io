@@ -1,12 +1,12 @@
-# BHARGAVSINH SISODIYA - Portfolio V17.4
+# BHARGAVSINH SISODIYA - Portfolio V17.5
 
 Three-portal static portfolio on GitHub Pages.
 
-## V17.4 focus
-- Client-side search (titles)
-- PWA v17.4 cache + install hint + update toast
-- HR visual polish (no file downloads)
-- Accessibility & performance helpers
-- Changelog + sitemap linked from footers
+## V17.5
+- Full image set under `assets/images/`
+- Skeleton search (all pages except index)
+- Stronger client-side content/image deterrence
+- PWA cache `bhargavsinh-portfolio-v17.5`
+- Portal indexes + footers updated
 
-Hard-refresh after deploy (SW **v17.4**).
+Hard-refresh after deploy.
