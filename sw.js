@@ -1,7 +1,7 @@
 /**
- * V17.5 Service Worker — network-first HTML, cache-first static, image precache
+ * V17.5.1 Service Worker — network-first HTML, cache-first static, image precache
  */
-const CACHE_NAME = "bhargavsinh-portfolio-v17.5";
+const CACHE_NAME = "bhargavsinh-portfolio-v17.5.1";
 const OFFLINE_URL = "/offline.html";
 
 const PRECACHE = [
