@@ -17,7 +17,7 @@
         path.indexOf("/Visitor/") !== -1) {
       return "../assets/js/search-index.json";
     }
-    return "assets//js/search-index.json".replace("assets/js", "assets/js");
+    return "assets/js/search-index.json";
   }
 
   function emptyImg() {
@@ -58,10 +58,10 @@
 
   function escapeHtml(s) {
     return String(s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
+      .replace(/&/g, "&")
+      .replace(/</g, "<")
+      .replace(/>/g, ">")
+      .replace(/"/g, """);
   }
 
   function ensureUI() {
