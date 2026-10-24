@@ -1,13 +1,7 @@
-# BHARGAVSINH SISODIYA - Portfolio V17.5.1
+# BHARGAVSINH SISODIYA - Portfolio V17.5.2
 
-Stable hotfix over V17.5.
-
-## V17.5.1 fixes
-- Fixed critical SyntaxError in site-search.js (escapeHtml) — search works again
-- Version badge / cache-bust ?v=17.5.1 across portal pages
-- Footer partials → V17.5.1
-- Header brand mark path → assets/images/brand/brand-mark.webp
-- Offline / 404 pages use UI illustrations
-- Service worker cache bhargavsinh-portfolio-v17.5.1
-
-Hard-refresh after deploy.
+## V17.5.2
+- Book cover images on individual book pages
+- Resume portrait (hr-portrait-square.webp)
+- Policy pages refreshed (version / scripts / last-updated stamps)
+- Headers & footers → V17.5.2
