@@ -1,4 +1,4 @@
-/** V17.5 UX — skeleton search except index; image protect; PWA */
+/** V17.5 UX — skeleton search except index; image protect; PWA; reveal + continue */
 (function () {
   "use strict";
   function isIndex() {
@@ -72,6 +72,57 @@
     }).catch(function () {});
     if (!navigator.serviceWorker.controller) navigator.serviceWorker.register("/sw.js").catch(function () {});
   }
+  function initScrollReveal() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var targets = document.querySelectorAll(".content-card, .portal-section, .info-block, .portal-hero");
+    if (!targets.length || !("IntersectionObserver" in window)) {
+      targets.forEach(function (el) { el.classList.add("is-visible"); });
+      return;
+    }
+    targets.forEach(function (el, i) {
+      el.classList.add("reveal");
+      if (i % 4 === 1) el.classList.add("reveal-delay-1");
+      else if (i % 4 === 2) el.classList.add("reveal-delay-2");
+      else if (i % 4 === 3) el.classList.add("reveal-delay-3");
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    targets.forEach(function (el) { io.observe(el); });
+  }
+  function initContinueFeature() {
+    if (!isIndex()) return;
+    var last = null;
+    try { last = localStorage.getItem("bs_last_portal"); } catch (e) {}
+    if (!last) return;
+    var labels = {
+      "Book-Publications-Reader/BPindex.html": "Book & Publications",
+      "HR-Recruiter/HRRindex.html": "HR Recruiter",
+      "Visitor/Visitindex.html": "Visitor"
+    };
+    var label = labels[last];
+    if (!label) return;
+    var wrap = document.createElement("div");
+    wrap.className = "bs-continue";
+    wrap.setAttribute("role", "navigation");
+    wrap.setAttribute("aria-label", "Continue to last portal");
+    wrap.innerHTML = '<a href="' + last + '"><span class="bs-continue-dot" aria-hidden="true"></span>Continue to ' + label + "</a>";
+    var main = document.getElementById("main-content") || document.querySelector("main");
+    var heading = main && main.querySelector(".ps-heading");
+    if (heading && heading.parentNode) {
+      heading.parentNode.insertBefore(wrap, heading.nextSibling);
+    } else if (main) {
+      main.insertBefore(wrap, main.firstChild);
+    } else {
+      return;
+    }
+    requestAnimationFrame(function () { wrap.classList.add("is-show"); });
+  }
   function init() {
     var p = assetPrefix();
     loadStyle(p + "assets/css/v17.3-enhancements.css?v=17.5");
@@ -79,6 +130,8 @@
     loadStyle(p + "assets/css/v17.5-enhancements.css?v=17.5");
     if (!isIndex()) loadScript(p + "assets/js/site-search.js?v=17.5");
     protectImages(); injectProgressAndTop(); registerSW();
+    initScrollReveal();
+    initContinueFeature();
     var main = document.querySelector("main"); if (main && !main.id) main.id = "main-content";
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
