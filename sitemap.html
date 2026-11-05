@@ -30,31 +30,33 @@
     .meta a { color:var(--red); }
     section { margin-bottom:2.25rem; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:1.35rem 1.4rem; }
     section h2 { font-size:1.05rem; font-weight:700; margin-bottom:.9rem; padding-bottom:.55rem; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:.5rem; }
-    section h2 .dot { width:8px; height:8px; border-radius:50%; background:var(--red); }
-    ul { list-style:none; display:grid; gap:.35rem; }
-    @media (min-width:640px) { ul { grid-template-columns:1fr 1fr; } }
-    li a { display:block; padding:.45rem .55rem; border-radius:4px; color:var(--muted); font-size:.95rem; }
-    li a:hover { background:rgba(255,255,255,.05); color:var(--text); }
-    li a strong { color:var(--text); font-weight:600; }
-    footer { max-width:960px; margin:0 auto; padding:1.5rem 4% 2.5rem; text-align:center; color:var(--muted); font-size:.8rem; border-top:1px solid var(--border); }
+    section h2 .dot { width:8px; height:8px; border-radius:50%; background:var(--red); flex-shrink:0; }
+    ul { list-style:none; display:grid; gap:.45rem; }
+    li a { display:block; padding:.25rem 0; color:var(--muted); font-size:.95rem; }
+    li a:hover { color:var(--red); }
+    li a strong { color:#fff; font-weight:600; }
+    footer { text-align:center; color:var(--muted); font-size:.8rem; padding:1.5rem 4%; border-top:1px solid var(--border); }
+    footer a { color:var(--muted); }
+    footer a:hover { color:var(--red); }
   </style>
 </head>
 <body>
-  <header class="top" role="banner">
+  <header class="top">
     <div class="top-inner">
-      <a href="index.html" class="brand" aria-label="BHARGAVSINH SISODIYA — Home">
+      <a href="index.html" class="brand">
         <img src="newlogo.png" alt="" width="28" height="28" decoding="async">
         BHARGAV<span>SINH</span>
       </a>
-      <a href="index.html" class="top-link">← Who's Visiting?</a>
+      <a href="index.html" class="top-link">Home</a>
     </div>
   </header>
   <main id="main-content">
     <h1>Sitemap</h1>
-    <p class="lead">Human-readable map of BHARGAVSINH SISODIYA — Digital Universe. Organized by portal.</p>
-    <p class="meta">Machine-readable: <a href="sitemap.xml">sitemap.xml</a> · <a href="changelog.html">Changelog</a> · Version V17.4</p>
-    <section aria-labelledby="sec-home">
-      <h2 id="sec-home"><span class="dot" aria-hidden="true"></span> Home</h2>
+    <p class="lead">Complete map of the BHARGAVSINH SISODIYA Digital Universe — three portals and supporting pages.</p>
+    <p class="meta">Machine-readable: <a href="sitemap.xml">sitemap.xml</a> · <a href="changelog.html">Changelog</a> · Version V17.5.2</p>
+
+    <section aria-labelledby="sec-core">
+      <h2 id="sec-core"><span class="dot" aria-hidden="true"></span> Core</h2>
       <ul>
         <li><a href="index.html"><strong>Who's Visiting?</strong> — Portal selector</a></li>
         <li><a href="offline.html">Offline fallback</a></li>
@@ -116,10 +118,10 @@
     </section>
   </main>
   <footer>
-    <p>© <span id="y"></span> BHARGAVSINH SISODIYA · Digital Universe · V17.4</p>
+    <p>© <span id="y"></span> BHARGAVSINH SISODIYA · Digital Universe · V17.5.2</p>
     <p style="margin-top:.4rem"><a href="index.html">Home</a> · <a href="sitemap.xml">XML sitemap</a> · <a href="changelog.html">Changelog</a></p>
   </footer>
   <script>document.getElementById("y").textContent=String(new Date().getFullYear());</script>
-  <script src="assets/js/v17.4-ux.js?v=17.4" defer></script>
+  <script src="assets/js/v17.5-ux.js?v=17.5" defer></script>
 </body>
 </html>
