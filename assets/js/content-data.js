@@ -67,8 +67,6 @@ window.PORTFOLIO_CONTENT = {
       rail: ["books", "featured"]
     },
     {
-      
-    {
       id: "astitva-garima",
       title: "અસ્તિત્વ: ધ ગરિમા પ્રોજેક્ટ ભાગ - ૧",
       category: "Book",
@@ -94,8 +92,8 @@ window.PORTFOLIO_CONTENT = {
       author: "BHARGAVSINH SISODIYA",
       rail: ["books"]
     },
-
-    id: "publications",
+    {
+      id: "publications",
       title: "Books & Publications",
       category: "Library",
       tags: ["Books", "Writing"],
