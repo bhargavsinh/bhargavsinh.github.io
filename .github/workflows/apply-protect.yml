@@ -1,0 +1,137 @@
+name: Apply content protection
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-protect.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Patch JS, CSS, pages
+        run: |
+          set -eux
+          python3 <<'END'
+          from pathlib import Path
+          import re
+
+          js_path = Path('assets/js/site.js')
+          js = js_path.read_text(encoding='utf-8')
+          assert 'Mobile drawer' in js
+          assert 'PLACEHOLDER' not in js
+
+          old = """  // ---- Content protection (deterrence only; see README) -------------------
+  safe(function () {
+    if (!PROTECT || !doc.body.hasAttribute('data-protect')) return;
+    function editable(t) { return t && (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) || t.isContentEditable || (t.closest && t.closest('[data-allow-copy]'))); }
+    ['copy', 'cut', 'contextmenu'].forEach(function (ev) { on(doc, ev, function (e) { if (!editable(e.target)) e.preventDefault(); }, true); });
+    on(doc, 'dragstart', function (e) { if (e.target && e.target.tagName === 'IMG') e.preventDefault(); }, true);
+    $$('img').forEach(function (i) { i.classList.add('protected'); i.draggable = false; });
+  });"""
+
+          new = """  // ---- Content protection + soft DRM deterrence (see README) --------------
+  safe(function () {
+    if (!PROTECT) return;
+    function editable(t) {
+      if (!t) return false;
+      if (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return true;
+      if (t.isContentEditable) return true;
+      if (t.closest && t.closest('[data-allow-copy], .allow-copy, #search, .search')) return true;
+      return false;
+    }
+    function isImg(t) {
+      return t && (t.tagName === 'IMG' || (t.closest && t.closest('img, picture, .portal-img, .book-cover, .card-cover, .hero-media')));
+    }
+    $$('img').forEach(function (i) {
+      i.classList.add('protected');
+      i.setAttribute('draggable', 'false');
+    });
+    on(doc, 'dragstart', function (e) { if (isImg(e.target)) e.preventDefault(); }, true);
+    if (!doc.body.hasAttribute('data-protect')) return;
+    doc.body.classList.add('is-protected');
+    ['copy', 'cut', 'contextmenu', 'selectstart'].forEach(function (ev) {
+      on(doc, ev, function (e) {
+        if (editable(e.target)) return;
+        if (ev === 'contextmenu' && e.target && e.target.closest && e.target.closest('a, button, [data-search]')) return;
+        e.preventDefault();
+      }, true);
+    });
+    on(doc, 'keydown', function (e) {
+      if (editable(e.target)) return;
+      var k = (e.key || '').toLowerCase();
+      if ((e.ctrlKey || e.metaKey) && (k === 's' || k === 'u' || k === 'p')) e.preventDefault();
+    }, true);
+  });"""
+
+          if old not in js:
+              raise SystemExit('old protection block not found')
+          js = js.replace(old, new)
+          js = js.replace(
+              "var PROTECT = true;            // deterrence on author's original long-form pages (body[data-protect]); set false to disable",
+              "var PROTECT = true;            // content protection + soft DRM deterrence; set false to disable globally",
+          )
+          js_path.write_text(js, encoding='utf-8')
+          print('js patched', len(js))
+
+          css_path = Path('assets/css/site.css')
+          css = css_path.read_text(encoding='utf-8')
+          if 'body.is-protected' not in css:
+              css += """
+
+/* ---------- Content protection / soft DRM deterrence ---------- */
+img.protected, picture img { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
+body[data-protect], body.is-protected { -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-touch-callout: none; }
+body[data-protect] input,
+body[data-protect] textarea,
+body[data-protect] select,
+body[data-protect] [contenteditable="true"],
+body[data-protect] [data-allow-copy],
+body[data-protect] .allow-copy,
+body[data-protect] #search,
+body[data-protect] .search,
+body[data-protect] .search * { -webkit-user-select: text; -moz-user-select: text; user-select: text; -webkit-touch-callout: default; }
+@media print {
+  body[data-protect]::after {
+    content: "© BHARGAVSINH SISODIYA — https://bhargavsinh.github.io — Personal / educational use only.";
+    display: block; margin-top: 2rem; font-size: 10pt; color: #444;
+  }
+}
+"""
+              css_path.write_text(css, encoding='utf-8')
+              print('css patched')
+
+          for p in [
+              'Visitor/ananadviharbhavan.html',
+              'Book-Publications-Reader/satyanisodh.html',
+              'Book-Publications-Reader/astitva-garima.html',
+              'Book-Publications-Reader/mahabharat-rajdharma.html',
+              'Book-Publications-Reader/pushtimarg.html',
+              'Book-Publications-Reader/bookreadingpolicy.html',
+              'HR-Recruiter/ghostwriting.html',
+          ]:
+              path = Path(p)
+              if not path.exists():
+                  continue
+              html = path.read_text(encoding='utf-8')
+              m = re.search(r'<body([^>]*)>', html)
+              if not m or 'data-protect' in m.group(1):
+                  continue
+              path.write_text(html[:m.start()] + '<body' + m.group(1) + ' data-protect>' + html[m.end():], encoding='utf-8')
+              print('marked', p)
+          END
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status
+          git commit -m "V18.1.1: content protection + soft DRM deterrence" || exit 0
+          git push origin HEAD:main
