@@ -460,3 +460,41 @@ body.home { background: radial-gradient(900px 400px at 50% -6%, color-mix(in srg
   .wide-only { display: block; } .narrow-only { display: none; }
   .hero-media { display: none; }
 }
+/* Content protection / soft DRM deterrence — V18.1.1
+   Loaded after site.css. Not cryptographic DRM (impossible on static HTML). */
+img.protected,
+picture img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+body[data-protect],
+body.is-protected {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+body[data-protect] input,
+body[data-protect] textarea,
+body[data-protect] select,
+body[data-protect] [contenteditable="true"],
+body[data-protect] [data-allow-copy],
+body[data-protect] .allow-copy,
+body[data-protect] #search,
+body[data-protect] .search,
+body[data-protect] .search * {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
+}
+@media print {
+  body[data-protect]::after {
+    content: "© BHARGAVSINH SISODIYA — https://bhargavsinh.github.io — Personal / educational use only.";
+    display: block;
+    margin-top: 2rem;
+    font-size: 10pt;
+    color: #444;
+  }
+}
