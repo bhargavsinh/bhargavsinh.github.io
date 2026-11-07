@@ -1,0 +1,51 @@
+name: Finalize content protection
+
+on:
+  push:
+    paths:
+      - '.github/workflows/protect-finalize.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Append CSS and mark pages
+        run: |
+          set -eux
+          if ! grep -q 'soft DRM deterrence' assets/css/site.css; then
+            cat assets/css/protect.css >> assets/css/site.css
+          fi
+          # Mark original content pages
+          for f in \
+            Visitor/ananadviharbhavan.html \
+            Book-Publications-Reader/satyanisodh.html \
+            Book-Publications-Reader/astitva-garima.html \
+            Book-Publications-Reader/mahabharat-rajdharma.html \
+            Book-Publications-Reader/pushtimarg.html \
+            Book-Publications-Reader/bookreadingpolicy.html \
+            HR-Recruiter/ghostwriting.html
+          do
+            if [ -f "$f" ] && ! grep -q 'data-protect' "$f"; then
+              sed -i 's/<body\([^>]*\)>/<body\1 data-protect>/' "$f"
+              echo marked "$f"
+            fi
+          done
+          # Verify site.js still healthy
+          wc -c assets/js/site.js
+          grep -q 'Mobile drawer' assets/js/site.js
+          ! grep -q 'PLACEHOLDER' assets/js/site.js
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/css/site.css Visitor Book-Publications-Reader HR-Recruiter || true
+          git status
+          git commit -m "V18.1.1: content protection live (CSS + data-protect on original pages)" || exit 0
+          git push origin HEAD:main
