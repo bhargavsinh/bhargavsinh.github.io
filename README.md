@@ -1,7 +1,11 @@
-# BHARGAVSINH SISODIYA - Portfolio V17.5.2
+# BHARGAVSINH SISODIYA — Digital Estate (V18.1.0)
 
-## V17.5.2
-- Book cover images on individual book pages
-- Resume portrait (hr-portrait-square.webp)
-- Policy pages refreshed (version / scripts / last-updated stamps)
-- Headers & footers → V17.5.2
+Static site for GitHub Pages. No framework, no CDN scripts. Blueprint: "V18.0 Digital Estate Transformation, Master Blueprint V1.1".
+
+## Layout
+- `site/` contents deployed at repo root (this tree).
+- `_build/` may be used locally to regenerate; not required for Pages.
+
+## Notes
+- Service worker: `sw.js` (versioned cache).
+- Rollback: restore previous release zip contents and push.
