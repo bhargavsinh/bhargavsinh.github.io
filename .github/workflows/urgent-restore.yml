@@ -1,0 +1,31 @@
+name: Urgent restore site.js
+
+on:
+  push:
+    paths:
+      - '.github/workflows/urgent-restore.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore site.js from good commit
+        run: |
+          set -eux
+          git show 61d47987971d830dc7d69305af276be1feba3a46:assets/js/site.js > assets/js/site.js
+          wc -c assets/js/site.js
+          grep -q 'Mobile drawer' assets/js/site.js
+          grep -q 'serviceWorker' assets/js/site.js
+          ! grep -q 'PLACEHOLDER' assets/js/site.js
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/js/site.js
+          git commit -m "urgent: restore full assets/js/site.js from V18.1.0"
+          git push origin HEAD:main
