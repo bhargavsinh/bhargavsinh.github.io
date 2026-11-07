@@ -5,28 +5,60 @@
    "kind": "Heritage",
    "desc": "Digital archive of the Sisodiya lineage — genealogy of the Suryavanshi Mewar tradition.",
    "date": "Updated: Oct 2026",
-   "href": "Visitor/vanshavali.html"
+   "status": "Published",
+   "source": "Visitor portal",
+   "href": "Visitor/vanshavali.html",
+   "cta": "Open →"
   },
   {
    "title": "Mewad History",
    "kind": "History",
    "desc": "A historical reflection on the unbroken stream of Mewad history and Sisodiya legacy.",
-   "date": "2026",
-   "href": "Visitor/Mewad_history_blog.html"
+   "date": "પ્રકાશિત: ૧૨ મે ૨૦૨૬",
+   "status": null,
+   "source": "Visitor portal",
+   "href": "Visitor/Mewad_history_blog.html",
+   "cta": "Read →"
+  },
+  {
+   "title": "Pushtimarg Literature",
+   "kind": "Resources",
+   "desc": "Literature and resources related to Pushtimarg and Shuddhadvaita Vedanta.",
+   "date": null,
+   "status": null,
+   "source": "Books & Publications portal",
+   "href": "Book-Publications-Reader/pushtimarg.html",
+   "cta": "Open →"
+  },
+  {
+   "title": "પુષ્ટિમાર્ગ માં ગૃહ સેવા",
+   "kind": "Article",
+   "desc": "On the principle of household seva in Pushtimarg.",
+   "date": "30 Dec 2025 • સંશોધિત: ઓગસ્ટ 2026",
+   "status": null,
+   "source": "Visitor portal",
+   "href": "Book-Publications-Reader/pushtimarg-ma-gruh-seva.html",
+   "cta": "Read →"
   },
   {
    "title": "Anand Vihar Bhavan",
    "kind": "Heritage Project",
    "desc": "Official Residence & Heritage Sanctuary rooted in Sisodiya tradition and Pushtimargiya devotion.",
-   "date": "Ongoing",
-   "href": "Visitor/ananadviharbhavan.html"
+   "date": null,
+   "status": null,
+   "source": "Visitor portal",
+   "href": "Visitor/ananadviharbhavan.html",
+   "cta": "Explore →"
   },
   {
-   "title": "Pushtimarg Literature",
-   "kind": "Research",
-   "desc": "Literature and resources related to Pushtimarg and Shuddhadvaita Vedanta.",
-   "date": "2026",
-   "href": "Book-Publications-Reader/pushtimarg.html"
+   "title": "Digital Archives & Knowledge Preservation",
+   "kind": "Digital Archives",
+   "desc": "I am interested in using digital technology to organize literature, historical information, family records and cultural resources. Digital preservation can include meaningful categorization, searchable information, readable documents, source attribution, backups and maintenance over time.",
+   "date": null,
+   "status": null,
+   "source": "About",
+   "href": "Visitor/about.html#archives",
+   "cta": "Read more"
   }
  ]
 }

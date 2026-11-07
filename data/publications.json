@@ -1,0 +1,65 @@
+{
+ "items": [
+  {
+   "group": "Books",
+   "title": "महाभारतकालीन राजधर्म और आधुनिक लोकतंत्र: एक सनातन विमर्श",
+   "subtitle": "न्यायमूलं धर्मः धर्ममूलं राष्ट्रम्। भारतीय राजधर्म और आधुनिक लोकतंत्र का तुलनात्मक अध्ययन",
+   "author": "Bhargavsinh Sisodiya",
+   "language": "हिंदी",
+   "category": "Legal-Philosophical Discourse",
+   "status": "Forthcoming",
+   "href": "Book-Publications-Reader/mahabharat-rajdharma.html",
+   "cta": "Details →",
+   "cover": "assets/images/books/book-mahabharat-rajdharma-cover.webp",
+   "platform": null,
+   "platform_href": null,
+   "date": null
+  },
+  {
+   "group": "Books",
+   "title": "સત્યની શોધ",
+   "subtitle": "વિવેક, ધૈર્ય અને આશ્રયથી આલોકિત ભક્તિ",
+   "author": "Bhargavsinh Sisodiya",
+   "language": "ગુજરાતી",
+   "category": "એક વિચારપ્રેરક કૃતિ",
+   "status": "Published",
+   "href": "Book-Publications-Reader/satyanisodh.html",
+   "cta": "Read Book →",
+   "cover": "assets/images/books/book-satyanisodh-cover.webp",
+   "platform": "Google Play Books",
+   "platform_href": "https://play.google.com/store/books/details/Bhargavsinh_Sisodiya_%E0%AA%B8%E0%AA%A4_%E0%AA%AF%E0%AA%A8_%E0%AA%B6_%E0%AA%A7?id=I2kOEgAAQBAJ",
+   "date": null
+  },
+  {
+   "group": "Books",
+   "title": "અસ્તિત્વ: ધ ગરિમા પ્રોજેક્ટ ભાગ - ૧",
+   "subtitle": "Fiction Legal Courtroom Drama",
+   "author": "Bhargavsinh Sisodiya",
+   "language": "ગુજરાતી",
+   "category": "Fiction Legal Courtroom Drama",
+   "status": "Published",
+   "href": "Book-Publications-Reader/astitva-garima.html",
+   "cta": "Read →",
+   "cover": "assets/images/books/book-astitva-garima-cover.webp",
+   "platform": "Google Play Books",
+   "platform_href": "https://play.google.com/store/books/details/Bhargavsinh_Sisodiya_%E0%AA%85%E0%AA%B8_%E0%AA%A4_%E0%AA%A4_%E0%AA%B5?id=hmEQEgAAQBAJ",
+   "date": null
+  },
+  {
+   "group": "Other Publications",
+   "title": "सूर्यवंशावतंस रघुवंशी मैत्रक कुलीय गुहिलोत कुल (मेवाड़) शिशोद / सिसोदिया वंशीय नरेशों एवं उपशाखा का ऐतिहासिक वंश-वृक्ष",
+   "subtitle": "વંશ-વૃક્ષનું ડિજિટલ દસ્તાવેજીકરણ.",
+   "author": "Bhargavsinh Sisodiya",
+   "language": "हिंदी",
+   "category": "Historical document",
+   "status": "Published",
+   "href": "Visitor/vanshavali.html",
+   "cta": "Read →",
+   "cover": null,
+   "platform": null,
+   "platform_href": null,
+   "date": null
+  }
+ ],
+ "note": "All publications are subject to the Legal Disclaimer. Unauthorized use is prohibited under the Copyright Act, 1957."
+}

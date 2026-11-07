@@ -1,0 +1,104 @@
+{
+ "_fields": "category, stack, status, live, source are null until approved content exists; the page shows only fields that are filled.",
+ "items": [
+  {
+   "name": "Personal Portfolio",
+   "description": "My main website presents my work, interests, published writing and digital projects.",
+   "category": null,
+   "stack": null,
+   "status": null,
+   "live": null,
+   "source": null,
+   "links": [
+    {
+     "label": "bhargavsinh.github.io",
+     "href": "index.html"
+    },
+    {
+     "label": "github.com/bhargavsinh",
+     "href": "https://github.com/bhargavsinh"
+    }
+   ],
+   "featured": true,
+   "more": "Visitor/about.html#creative-projects"
+  },
+  {
+   "name": "SDSP",
+   "description": "A Seva-planning project concept focused on organization, personal records and privacy-aware devotional planning.",
+   "category": null,
+   "stack": null,
+   "status": null,
+   "live": null,
+   "source": null,
+   "links": [],
+   "featured": true,
+   "more": "Visitor/about.html#creative-projects"
+  },
+  {
+   "name": "BharBlock",
+   "description": "A personal game-development experiment that forms part of my interest in interactive digital projects and learning through implementation.",
+   "category": null,
+   "stack": null,
+   "status": null,
+   "live": null,
+   "source": null,
+   "links": [],
+   "featured": true,
+   "more": "Visitor/about.html#creative-projects"
+  },
+  {
+   "name": "Digital Genealogy",
+   "description": "A structured approach to preserving family relationships and making genealogy easier to present and maintain online.",
+   "category": null,
+   "stack": null,
+   "status": null,
+   "live": null,
+   "source": null,
+   "links": [
+    {
+     "label": "Explore the genealogy page",
+     "href": "Visitor/vanshavali.html"
+    }
+   ],
+   "featured": false,
+   "more": "Visitor/about.html#creative-projects"
+  },
+  {
+   "name": "Literary Publishing",
+   "description": "Digital book preparation, publication listings, book descriptions and the presentation of independent Gujarati writing.",
+   "category": null,
+   "stack": null,
+   "status": null,
+   "live": null,
+   "source": null,
+   "links": [],
+   "featured": false,
+   "more": "Visitor/about.html#creative-projects"
+  },
+  {
+   "name": "Symbolic Script Exploration",
+   "description": "Creative experimentation around Bhargav Lipi, symbolic representation and systematic documentation.",
+   "category": null,
+   "stack": null,
+   "status": null,
+   "live": null,
+   "source": null,
+   "links": [],
+   "featured": false,
+   "more": "Visitor/about.html#creative-projects"
+  }
+ ],
+ "note": "Project descriptions include ongoing interests and development concepts. Their implementation status may change, and a project idea should not automatically be understood as a released product.",
+ "work": {
+  "kind": "Work",
+  "title": "Projects",
+  "desc": "Software and digital products under active development.",
+  "href": "HR-Recruiter/projects.html"
+ },
+ "tool": {
+  "kind": "Tool",
+  "title": "pwriter",
+  "desc": "Advanced Deep AI Prompt Architect.",
+  "href": "HR-Recruiter/pwriter.html"
+ }
+}

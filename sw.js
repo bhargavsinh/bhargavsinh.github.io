@@ -66,46 +66,33 @@ self.addEventListener('install', (e) => {
 
 self.addEventListener('activate', (e) => {
   e.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE && k !== FONTS).map((k) => caches.delete(k)))).then(() => self.clients.claim())
+    caches.keys()
+      .then((ks) => Promise.all(ks.filter((k) => k !== CACHE && k !== FONTS).map((k) => caches.delete(k))))
+      .then(() => self.clients.claim())
   );
 });
 
-self.addEventListener('message', (e) => {
-  if (e.data && e.data.type === 'SKIP_WAITING') self.skipWaiting();
-});
+self.addEventListener('message', (e) => { if (e.data && e.data.type === 'SKIP_WAITING') self.skipWaiting(); });
 
-function isNav(req) {
-  if (req.mode === 'navigate') return true;
-  const a = req.headers.get('accept') || '';
-  return a.includes('text/html');
-}
+function timeout(ms) { return new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms)); }
 
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
+  const url = new URL(req.url);
 
-  if (isNav(req)) {
+  if (req.mode === 'navigate') {
     event.respondWith(
-      Promise.race([
-        fetch(req),
-        new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 4000))
-      ])
-        .then((res) => {
-          if (res && res.ok) {
-            const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => {});
-          }
-          return res;
-        })
-        .catch(() => caches.match(req).then((c) => c || caches.match(OFFLINE)))
+      Promise.race([fetch(req), timeout(4000)])
+        .then((res) => { if (res && res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); } return res; })
+        .catch(() => caches.match(req, { ignoreSearch: true }).then((r) => r || caches.match(OFFLINE)))
     );
     return;
   }
 
-  const url = new URL(req.url);
   const sameOrigin = url.origin === self.location.origin;
-  const isFont = url.hostname.includes('fonts.g') || url.hostname.includes('gstatic');
-  if (!sameOrigin && !isFont) return;
+  const isFont = url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com';
+  if (!sameOrigin && !isFont) return;                       // e.g. Formspree: never touch
 
   const bucket = isFont ? FONTS : CACHE;
   event.respondWith(

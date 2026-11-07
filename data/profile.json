@@ -1,5 +1,84 @@
 {
  "name": "Bhargavsinh Sisodiya",
  "tagline": "Heritage in Memory. Knowledge in Creation.",
- "lead": "Explore personal projects, Gujarati writing, Sisodiya genealogy, heritage resources, and public digital work."
+ "lead": "Explore personal projects, Gujarati writing, Sisodiya genealogy, heritage resources, and public digital work by BHARGAVSINH SISODIYA.",
+ "headline": "BCA Student | Technology Enthusiast | Writer | Aspiring Technology & Management Professional",
+ "summary": "BCA student with a strong interest in Technology, Digital Systems, Business Management, Law, Research, and Writing. Experienced in developing and maintaining web-based projects, digital repositories, PWAs, and structured information systems.",
+ "links": [
+  {
+   "label": "Email",
+   "text": "bhargavsinh.bca@gmail.com",
+   "href": "mailto:bhargavsinh.bca@gmail.com"
+  },
+  {
+   "label": "GitHub",
+   "text": "github.com/bhargavsinh",
+   "href": "https://github.com/bhargavsinh"
+  },
+  {
+   "label": "LinkedIn",
+   "text": "Linkedin Profile",
+   "href": "https://www.linkedin.com/in/bhargavsinh-sisodiya-789507373"
+  },
+  {
+   "label": "Pratilipi",
+   "text": "Pratilipi Profile",
+   "href": "https://pratilipi.app.link/KzxCu1QGv6b"
+  },
+  {
+   "label": "Instagram",
+   "text": "Instagram",
+   "href": "https://instagram.com/bs_pushtisoul"
+  },
+  {
+   "label": "Pushti Sahitya",
+   "text": "pushtisahitya.org",
+   "href": "https://pushtisahitya.org/"
+  }
+ ],
+ "contact_note": "For professional enquiries, collaboration, writing projects or discussions related to my published work, please use the contact options published on my official website, where available.",
+ "about": [
+  {
+   "label": "Personal Profile",
+   "id": "identity",
+   "text": "My name is Bhargavsinh Sisodiya. I use my personal website as a central place to present my educational journey, creative projects, writing, technical experiments and interests in cultural preservation.",
+   "heading": "Personal Identity"
+  },
+  {
+   "label": "Academic Background",
+   "id": "education",
+   "text": "I am pursuing a Bachelor of Computer Applications (BCA) at Mahisagar College, Lunawada, under Shri Govind Guru University, following the NEP-2020 academic framework.",
+   "heading": "Academic Journey"
+  },
+  {
+   "label": "Technical Interests",
+   "id": "technology",
+   "text": "Web development is one of my principal technical interests. I use my portfolio and related projects to practise website structure, styling, responsive design, content organization and deployment.",
+   "heading": "Technology & Web Development"
+  },
+  {
+   "label": "Literary Contributions",
+   "id": "writing",
+   "text": "Writing is an important part of my creative work. I develop Gujarati manuscripts and literary projects that explore reflection, personal identity, social questions, values and narrative storytelling.",
+   "heading": "Gujarati Literature & Authorship"
+  },
+  {
+   "label": "Research Interests",
+   "id": "archives",
+   "text": "I am interested in using digital technology to organize literature, historical information, family records and cultural resources. Digital preservation can include meaningful categorization, searchable information, readable documents, source attribution, backups and maintenance over time.",
+   "heading": "Digital Archives & Knowledge Preservation"
+  },
+  {
+   "label": "Heritage & Institutional Context",
+   "id": "heritage",
+   "text": "My family identity and interest in historical heritage form an important part of my personal story. I have a particular interest in Mewar and the historical legacy associated with Shri Maharana Pratap Singhji.",
+   "heading": "Family Heritage & Mewar"
+  }
+ ],
+ "institution": {
+  "title": "Anand Vihar Bhavan",
+  "tag": "Official Residence & Heritage Sanctuary rooted in Sisodiya tradition and Pushtimargiya devotion.",
+  "text": "Anand Vihar Bhavan is associated with my personal, devotional and creative world. It is also the publisher name I use for my publishing-related work.",
+  "href": "Visitor/ananadviharbhavan.html"
+ }
 }
