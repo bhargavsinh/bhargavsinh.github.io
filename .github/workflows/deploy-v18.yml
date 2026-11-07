@@ -1,0 +1,63 @@
+name: Deploy V18.1.0 from release zip
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'bhargavsinh.github.io-18.1.0.zip'
+      - '.github/workflows/deploy-v18.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract site/ from zip and replace root
+        run: |
+          set -euo pipefail
+          ZIP="bhargavsinh.github.io-18.1.0.zip"
+          test -f "$ZIP"
+          rm -rf /tmp/v18-extract
+          mkdir -p /tmp/v18-extract
+          unzip -q "$ZIP" -d /tmp/v18-extract
+          SITE="/tmp/v18-extract/bhargavsinh.github.io-18.1.0/site"
+          test -d "$SITE"
+          test -f "$SITE/index.html"
+
+          # Keep the zip and this workflow; remove everything else at root
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name '.git' \
+            ! -name '.github' \
+            ! -name "$ZIP" \
+            -exec rm -rf {} +
+
+          # Copy deployable site to repo root
+          cp -a "$SITE"/. .
+
+          # Keep release zip for rollback
+          # (already at root if not removed)
+
+          ls -la
+          test -f index.html
+          test -f assets/css/site.css
+          test -f sw.js
+
+      - name: Commit and push
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "V18.1.0: deploy site/ from bhargavsinh.github.io-18.1.0.zip"
+          git push origin HEAD:main
