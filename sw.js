@@ -1,9 +1,10 @@
-/**
- * V17.5.2 Service Worker — network-first HTML, cache-first static, image precache
- */
-const CACHE_NAME = "bhargavsinh-portfolio-v17.5.2";
-const OFFLINE_URL = "/offline.html";
-
+/* Service worker — V18.1.0
+   Navigation: network-first (4 s timeout) → cache → offline page.
+   Same-origin assets + Google Fonts: stale-while-revalidate. Old caches are purged on activate. */
+const VERSION = '18.1.0';
+const CACHE = 'bs-' + VERSION;
+const FONTS = 'bs-fonts';
+const OFFLINE = '/offline.html';
 const PRECACHE = [
   "/",
   "/index.html",
@@ -12,94 +13,107 @@ const PRECACHE = [
   "/sitemap.html",
   "/changelog.html",
   "/manifest.json",
+  "/about/",
+  "/projects/",
+  "/publications/",
+  "/research/",
+  "/contact/",
+  "/assets/css/site.css?v=18.1.0",
+  "/assets/js/site.js?v=18.1.0",
+  "/assets/js/theme.js?v=18.1.0",
+  "/assets/search-index.json",
   "/assets/images/brand/brand-mark.webp",
   "/assets/images/brand/brand-mark-192.png",
-  "/assets/images/brand/brand-mark-512.png",
   "/assets/images/portals/portal-books.webp",
   "/assets/images/portals/portal-hr.webp",
   "/assets/images/portals/portal-visitor.webp",
-  "/assets/images/ui/ui-offline.svg",
-  "/assets/images/ui/ui-404.svg",
-  "/assets/images/ui/ui-search-empty.svg",
-  "/assets/images/social/og-default.webp",
-  "/assets/css/portal-selector.css",
-  "/assets/css/portal-common.css",
-  "/assets/css/v17.3-enhancements.css",
-  "/assets/css/v17.4-enhancements.css",
-  "/assets/css/v17.5-enhancements.css",
-  "/assets/css/intro.css",
-  "/assets/js/portal-page-shell.js",
-  "/assets/js/portal-security.js",
-  "/assets/js/v17.5-ux.js",
-  "/assets/js/site-search.js",
-  "/assets/js/search-index.json",
-  "/assets/js/intro.js",
-  "/Book-Publications-Reader/BPindex.html",
+  "/Visitor/Visitindex.html",
+  "/Visitor/about.html",
+  "/Visitor/blog.html",
+  "/Visitor/Mewad_history_blog.html",
+  "/Visitor/vanshavali.html",
+  "/Visitor/ananadviharbhavan.html",
+  "/Visitor/contact.html",
+  "/Visitor/policy-center.html",
+  "/Visitor/privacy-policy.html",
+  "/Visitor/termsofuse.html",
+  "/Visitor/disclaimer.html",
+  "/Visitor/grievance.html",
+  "/Visitor/cookies-policy.html",
+  "/Visitor/copyright-policy.html",
+  "/Visitor/content-editorial-policy.html",
+  "/Visitor/data-retention-policy.html",
+  "/Visitor/accessibility-statement.html",
+  "/Visitor/third-party-policy.html",
   "/HR-Recruiter/HRRindex.html",
-  "/Visitor/Visitindex.html"
+  "/HR-Recruiter/resume.html",
+  "/HR-Recruiter/projects.html",
+  "/HR-Recruiter/pwriter.html",
+  "/HR-Recruiter/ghostwriting.html",
+  "/Book-Publications-Reader/BPindex.html",
+  "/Book-Publications-Reader/otherlinks.html",
+  "/Book-Publications-Reader/satyanisodh.html",
+  "/Book-Publications-Reader/astitva-garima.html",
+  "/Book-Publications-Reader/mahabharat-rajdharma.html",
+  "/Book-Publications-Reader/pushtimarg.html",
+  "/Book-Publications-Reader/pushtimarg-ma-gruh-seva.html",
+  "/Book-Publications-Reader/bookreadingpolicy.html"
 ];
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(PRECACHE).catch(() => {}))
-      .then(() => self.skipWaiting())
+self.addEventListener('install', (e) => {
+  e.waitUntil(caches.open(CACHE).then((c) => Promise.all(PRECACHE.map((u) => c.add(u).catch(() => {})))));
+});
+
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE && k !== FONTS).map((k) => caches.delete(k)))).then(() => self.clients.claim())
   );
 });
 
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys()
-      .then((keys) =>
-        Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
-      )
-      .then(() => self.clients.claim())
-  );
+self.addEventListener('message', (e) => {
+  if (e.data && e.data.type === 'SKIP_WAITING') self.skipWaiting();
 });
 
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") self.skipWaiting();
-});
-
-function isHTMLRequest(request) {
-  if (request.mode === "navigate") return true;
-  const accept = request.headers.get("accept") || "";
-  return accept.includes("text/html");
+function isNav(req) {
+  if (req.mode === 'navigate') return true;
+  const a = req.headers.get('accept') || '';
+  return a.includes('text/html');
 }
 
-self.addEventListener("fetch", (event) => {
-  const { request } = event;
-  if (request.method !== "GET") return;
+self.addEventListener('fetch', (event) => {
+  const req = event.request;
+  if (req.method !== 'GET') return;
 
-  if (isHTMLRequest(request)) {
+  if (isNav(req)) {
     event.respondWith(
-      fetch(request)
-        .then((response) => {
-          if (response && response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy)).catch(() => {});
+      Promise.race([
+        fetch(req),
+        new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 4000))
+      ])
+        .then((res) => {
+          if (res && res.ok) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => {});
           }
-          return response;
+          return res;
         })
-        .catch(() =>
-          caches.match(request).then((cached) => cached || caches.match(OFFLINE_URL))
-        )
+        .catch(() => caches.match(req).then((c) => c || caches.match(OFFLINE)))
     );
     return;
   }
 
+  const url = new URL(req.url);
+  const sameOrigin = url.origin === self.location.origin;
+  const isFont = url.hostname.includes('fonts.g') || url.hostname.includes('gstatic');
+  if (!sameOrigin && !isFont) return;
+
+  const bucket = isFont ? FONTS : CACHE;
   event.respondWith(
-    caches.match(request).then((cached) => {
-      if (cached) return cached;
-      return fetch(request)
-        .then((response) => {
-          if (response && response.ok && request.url.startsWith(self.location.origin)) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy)).catch(() => {});
-          }
-          return response;
-        })
-        .catch(() => cached);
-    })
+    caches.open(bucket).then((cache) =>
+      cache.match(req).then((hit) => {
+        const net = fetch(req).then((res) => { if (res && (res.ok || res.type === 'opaque')) cache.put(req, res.clone()); return res; }).catch(() => hit);
+        return hit || net;
+      })
+    )
   );
 });
