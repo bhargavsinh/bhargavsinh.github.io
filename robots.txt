@@ -9,3 +9,5 @@ Disallow: /
 
 User-agent: Google-Extended
 Disallow: /
+
+Sitemap: https://bhargavsinh.github.io/sitemap.xml
