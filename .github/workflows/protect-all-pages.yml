@@ -1,0 +1,48 @@
+name: Protect all HTML pages
+
+on:
+  push:
+    paths:
+      - '.github/workflows/protect-all-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  protect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add data-protect to every HTML body
+        run: |
+          set -eux
+          count=0
+          already=0
+          while IFS= read -r -d '' f; do
+            if grep -q 'data-protect' "$f"; then
+              already=$((already+1))
+              continue
+            fi
+            # Only touch a single opening <body ...> tag
+            if grep -q '<body' "$f"; then
+              sed -i 's/<body\([^>]*\)>/<body\1 data-protect>/' "$f"
+              # Avoid double-adding if sed ran oddly
+              if grep -q 'data-protect data-protect' "$f"; then
+                sed -i 's/ data-protect data-protect/ data-protect/g' "$f"
+              fi
+              count=$((count+1))
+              echo "marked $f"
+            fi
+          done < <(find . -name '*.html' -not -path './.git/*' -print0)
+          echo "updated=$count already=$already"
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -50
+          git commit -m "V18.1.1: data-protect on all HTML pages" || exit 0
+          git push origin HEAD:main
