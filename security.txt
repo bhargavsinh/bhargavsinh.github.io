@@ -1,0 +1,3 @@
+Contact: mailto:bhargavsinhsisodiya@gmail.com
+Preferred-Languages: en, gu
+Canonical: https://bhargavsinh.github.io/.well-known/security.txt
