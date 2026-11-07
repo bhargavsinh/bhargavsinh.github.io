@@ -1,0 +1,118 @@
+name: Restore site.js urgently
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/restore-site-js.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore and patch site.js + CSS + data-protect
+        run: |
+          set -eux
+          GOOD=61d47987971d830dc7d69305af276be1feba3a46
+          git show "$GOOD:assets/js/site.js" > /tmp/site.js
+          wc -c /tmp/site.js
+          grep -q "Mobile drawer" /tmp/site.js
+
+          python3 -c "
+          from pathlib import Path
+          js = Path('/tmp/site.js').read_text(encoding='utf-8')
+          old = '''  // ---- Content protection (deterrence only; see README) -------------------
+  safe(function () {
+    if (!PROTECT || !doc.body.hasAttribute('data-protect')) return;
+    function editable(t) { return t && (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) || t.isContentEditable || (t.closest && t.closest('[data-allow-copy]'))); }
+    ['copy', 'cut', 'contextmenu'].forEach(function (ev) { on(doc, ev, function (e) { if (!editable(e.target)) e.preventDefault(); }, true); });
+    on(doc, 'dragstart', function (e) { if (e.target && e.target.tagName === 'IMG') e.preventDefault(); }, true);
+    $$('img').forEach(function (i) { i.classList.add('protected'); i.draggable = false; });
+  });'''
+          new = '''  // ---- Content protection + soft DRM deterrence (see README) --------------
+  safe(function () {
+    if (!PROTECT) return;
+    function editable(t) {
+      if (!t) return false;
+      if (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return true;
+      if (t.isContentEditable) return true;
+      if (t.closest && t.closest('[data-allow-copy], .allow-copy, #search, .search')) return true;
+      return false;
+    }
+    function isImg(t) { return t && (t.tagName === 'IMG' || (t.closest && t.closest('img, picture, .portal-img, .book-cover, .card-cover, .hero-media'))); }
+    $$('img').forEach(function (i) {
+      i.classList.add('protected');
+      i.setAttribute('draggable', 'false');
+    });
+    on(doc, 'dragstart', function (e) { if (isImg(e.target)) e.preventDefault(); }, true);
+    if (!doc.body.hasAttribute('data-protect')) return;
+    doc.body.classList.add('is-protected');
+    ['copy', 'cut', 'contextmenu', 'selectstart'].forEach(function (ev) {
+      on(doc, ev, function (e) {
+        if (editable(e.target)) return;
+        if (ev === 'contextmenu' && e.target && e.target.closest && e.target.closest('a, button, [data-search]')) return;
+        e.preventDefault();
+      }, true);
+    });
+    on(doc, 'keydown', function (e) {
+      if (editable(e.target)) return;
+      var k = (e.key || '').toLowerCase();
+      if ((e.ctrlKey || e.metaKey) && (k === 's' || k === 'u' || k === 'p')) e.preventDefault();
+    }, true);
+  });'''
+          assert old in js, 'old block missing'
+          js = js.replace(old, new)
+          js = js.replace(
+            'var PROTECT = true;            // deterrence on author\'s original long-form pages (body[data-protect]); set false to disable',
+            'var PROTECT = true;            // content protection + soft DRM deterrence; set false to disable globally')
+          Path('assets/js/site.js').write_text(js, encoding='utf-8')
+          print('js', len(js))
+          "
+
+          grep -q 'is-protected' assets/js/site.js
+          grep -q 'Mobile drawer' assets/js/site.js
+
+          # CSS
+          if ! grep -q 'body.is-protected' assets/css/site.css; then
+            printf '\n/* Content protection */\nimg.protected{ -webkit-user-drag:none; user-select:none; -webkit-touch-callout:none; }\nbody[data-protect],body.is-protected{ -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; }\nbody[data-protect] input,body[data-protect] textarea,body[data-protect] select,body[data-protect] [data-allow-copy],body[data-protect] .allow-copy,body[data-protect] #search,body[data-protect] .search,body[data-protect] .search *{ -webkit-user-select:text; user-select:text; }\n@media print{ body[data-protect]::after{ content:"© BHARGAVSINH SISODIYA — https://bhargavsinh.github.io"; display:block; margin-top:2rem; font-size:10pt; color:#444; } }\n' >> assets/css/site.css
+          fi
+
+          python3 -c "
+          from pathlib import Path
+          import re
+          for p in [
+            'Visitor/ananadviharbhavan.html',
+            'Book-Publications-Reader/satyanisodh.html',
+            'Book-Publications-Reader/astitva-garima.html',
+            'Book-Publications-Reader/mahabharat-rajdharma.html',
+            'Book-Publications-Reader/pushtimarg.html',
+            'Book-Publications-Reader/bookreadingpolicy.html',
+            'HR-Recruiter/ghostwriting.html',
+          ]:
+            path = Path(p)
+            if not path.exists():
+              continue
+            html = path.read_text(encoding='utf-8')
+            m = re.search(r'<body([^>]*)>', html)
+            if not m or 'data-protect' in m.group(1):
+              continue
+            path.write_text(html[:m.start()] + '<body' + m.group(1) + ' data-protect>' + html[m.end():], encoding='utf-8')
+            print('marked', p)
+          "
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/js/site.js assets/css/site.css Visitor Book-Publications-Reader HR-Recruiter || true
+          git status
+          git diff --cached --stat
+          git commit -m "V18.1.1: content protection + soft DRM (restored site.js)" || exit 0
+          git push origin HEAD:main
