@@ -1,0 +1,502 @@
+name: Expand Policies V2.1
+
+on:
+  push:
+    paths:
+      - '.github/workflows/expand-policies.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  expand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Expand all policy main content
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          EFF = "08 November 2026"
+          GO = "Bhargavsinh Sisodiya"
+          EM = "bhargavsinh.bca@gmail.com"
+          SITE = "https://bhargavsinh.github.io/"
+
+          def go(gu):
+            return f'''
+          <section class="box">
+          <h2 class="accent">7. Contact for Grievance Officer</h2>
+          <p>In accordance with <strong>Rule 3(2) of the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021</strong>, and for data-principal requests under the <strong>Digital Personal Data Protection Act, 2023</strong>, the following officer is designated for this digital estate:</p>
+          <ul>
+          <li><strong>Name:</strong> {GO}</li>
+          <li><strong>Designation:</strong> Grievance Officer / Data Protection Contact</li>
+          <li><strong>Email:</strong> <a href="mailto:{EM}">{EM}</a></li>
+          <li><strong>Website:</strong> <a href="{SITE}">{SITE}</a></li>
+          <li><strong>Acknowledgement:</strong> within <strong>fifteen (15) days</strong> of receipt of a complete written complaint.</li>
+          <li><strong>Resolution endeavour:</strong> within a reasonable period, ordinarily not exceeding <strong>thirty (30) days</strong>, subject to complexity and verification needs.</li>
+          </ul>
+          <p><strong>How to file:</strong> Send an email with subject line identifying the policy (e.g., “Grievance — Privacy Policy”), your full name, contact details, description of the issue, relevant URLs, and relief sought. Incomplete complaints may be returned for particulars. Frivolous, vexatious, or abusive complaints may be closed with recorded reasons and, where warranted, reported under applicable law.</p>
+          <p>This mechanism does not limit statutory remedies before competent authorities or courts under Indian law.</p>
+          </section>
+          <p class="muted" style="margin-top:1.5rem"><em>Gujarati summary:</em> {gu}</p>
+          '''
+
+          CP = '''
+          <section class="box">
+          <h2 class="accent">5. Content Protection Measures</h2>
+          <p>The Author maintains a <strong>Zero Tolerance</strong> posture toward unauthorised copying, scraping, republication, commercial exploitation, and circumvention of technical protection measures. The following layered deterrence measures (soft DRM — not cryptographic DRM) are deployed on protected pages:</p>
+          <ul>
+          <li><strong>CSS / UI controls:</strong> <code>user-select: none</code> and related rules on protected views to restrict casual text selection outside expressly permitted fields.</li>
+          <li><strong>Anti-copy / anti-cut / anti-paste:</strong> Client-side interception of copy, cut, paste, and context-menu actions on protected content (inputs, search, and <code>[data-allow-copy]</code> zones excepted).</li>
+          <li><strong>Keyboard shortcut deterrence:</strong> Blocking of common shortcuts (including Ctrl/Cmd + C, X, A, S, U, P) outside editable fields.</li>
+          <li><strong>Image protection:</strong> Drag-disable, protected image classes, and restricted touch callouts on media.</li>
+          <li><strong>Watermark / print notice:</strong> Print and certain views may carry ownership notices identifying Bhargavsinh Sisodiya and the canonical site URL.</li>
+          <li><strong>Soft DRM deterrence:</strong> Layered client-side controls intended to deter casual infringement. Circumvention for the purpose of infringement is <strong>Strictly Prohibited</strong> and may attract civil and criminal consequences under the <strong>Copyright Act, 1957</strong> and the <strong>Information Technology Act, 2000</strong>, as applicable.</li>
+          </ul>
+          <p>These measures are deterrents. They do not waive any statutory right of the Author. Fair dealing under the Copyright Act, 1957 remains subject to law and does not authorise wholesale reproduction, redistribution, or commercial use.</p>
+          </section>
+          '''
+
+          def pen(extra=''):
+            return f'''
+          <section class="box">
+          <h2 class="accent">6. Penalties for Violation</h2>
+          <p><strong>Zero Tolerance</strong> applies to wilful infringement, data misuse, security circumvention, spam, and abusive conduct. Without prejudice to other remedies available in law or equity:</p>
+          <ul>
+          <li>Immediate suspension, restriction, or blocking of access where technically feasible;</li>
+          <li>Civil claims for injunction, damages, delivery-up, and account of profits under the <strong>Copyright Act, 1957</strong> and the <strong>Indian Contract Act, 1872</strong>;</li>
+          <li>Complaints and proceedings under the <strong>Information Technology Act, 2000</strong> (including provisions relating to computer-related offences, damage to computer systems, and breach of protected systems, as applicable to the facts);</li>
+          <li>Reporting to competent law-enforcement or regulatory authorities where required or appropriate under Indian law.</li>
+          </ul>
+          {extra}
+          <p>Failure by the Author to enforce any provision in a particular instance shall not constitute a waiver of rights in that or any other instance. Severability: if any clause is held unenforceable, the remainder continues in force.</p>
+          </section>
+          '''
+
+          policies = {}
+
+          # ===================== PRIVACY =====================
+          policies['Visitor/privacy-policy.html'] = f'''
+          <h2 class="kicker accent">Official Documentation · Version 2.1</h2>
+          <h1 class="accent">Revised Privacy Policy (As per IT Act &amp; DPDP Act 2023) - Version 2.1</h1>
+          <p class="muted"><strong>Effective Date:</strong> {EFF} · <strong>Controller / Data Fiduciary (limited purpose):</strong> {GO} · <strong>Prior version:</strong> 2.0</p>
+
+          <h2>1. Introduction &amp; Purpose</h2>
+          <p>This Privacy Policy explains how personal data is collected, processed, stored, shared, retained, and deleted in connection with the digital estate operated at <strong>{SITE}</strong> (the “Site”), including its portals (Visitor, HR Recruiter, Book &amp; Publications) and related forms.</p>
+          <p>It is framed to align, to the extent applicable to a personal, primarily non-commercial digital portfolio hosted on static infrastructure, with:</p>
+          <ul>
+          <li>the <strong>Digital Personal Data Protection Act, 2023</strong> (“DPDP Act”);</li>
+          <li>the <strong>Information Technology Act, 2000</strong> (“IT Act”);</li>
+          <li>the <strong>Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021</strong> (“IT Rules, 2021”); and</li>
+          <li>related principles of fair processing under Indian law.</li>
+          </ul>
+          <p>The Site is operated by <strong>{GO}</strong> (the “Author”). For the limited purposes of this Policy, the Author acts as the person determining the purpose and means of processing of personal data submitted through the Site. <strong>Strictly Prohibited:</strong> any attempt to harvest, reverse-engineer, scrape, or misuse personal or technical data beyond the purposes stated herein.</p>
+          <p>By using the Site or submitting information, you acknowledge that you have read this Policy. Where consent is the basis of processing, submission of a form or email constitutes clear affirmative action for the stated purpose.</p>
+
+          <h2>2. Scope (What is covered)</h2>
+          <p>This Policy applies to:</p>
+          <ul>
+          <li>visitors and users of the Site and its sub-portals;</li>
+          <li>persons who submit appointment/contact forms or send email to the Author;</li>
+          <li>technical and security logs generated by hosting and content-delivery infrastructure; and</li>
+          <li>grievance and correspondence records maintained for legal compliance.</li>
+          </ul>
+          <p>This Policy does <strong>not</strong> convert static historical, genealogical, literary, or archival material concerning deceased persons into “personal data” of living users merely by display. Public-domain or author-compiled historical content is governed primarily by the Copyright Policy and Content Editorial Policy.</p>
+
+          <h2>3. Detailed Clauses with current laws reference</h2>
+          <p><strong>3.1 Categories of data.</strong></p>
+          <ul>
+          <li><strong>Identity &amp; contact data</strong> you voluntarily provide (name, email address, phone number, message content, preferred appointment details) via Formspree-powered forms or direct email.</li>
+          <li><strong>Technical data</strong> that may be processed by GitHub Pages and associated CDN networks (truncated or full IP addresses, user-agent strings, device/browser metadata, access timestamps, referrer) for delivery, security, DDoS mitigation, and abuse detection.</li>
+          <li><strong>Functional client storage</strong> such as localStorage/sessionStorage for UI preferences (theme, font scale, intro state, last portal). These are not advertising trackers.</li>
+          <li><strong>Grievance records</strong> created when you lodge a complaint under the IT Rules, 2021 mechanism.</li>
+          </ul>
+          <p><strong>3.2 Purpose limitation (DPDP Act).</strong> Personal data is processed only for: responding to enquiries and appointment requests; providing information about publications and projects; security and fraud/abuse prevention; grievance redressal; and compliance with applicable law. <strong>Strictly Prohibited:</strong> sale, rental, barter, or monetisation of personal data; building advertising profiles by the Author; using submitted data for unrelated marketing lists.</p>
+          <p><strong>3.3 Lawful basis.</strong> Processing is based on (a) consent evidenced by voluntary form or email submission for a stated purpose; and/or (b) legitimate uses consistent with the DPDP Act and the Author’s security obligations under the IT Act, including prevention of unauthorised access and abuse.</p>
+          <p><strong>3.4 Processors and third parties.</strong> Formspree (form delivery) and GitHub (static hosting/CDN) act as infrastructure or processors under their respective terms and privacy notices. The Author does not control their security architectures. Users must not submit government identity numbers, passwords, financial credentials, or health data through public forms.</p>
+          <p><strong>3.5 Security.</strong> Reasonable security practices appropriate to a static personal site are maintained (HTTPS delivery via the host, access control to repositories, content-security considerations). No system is immune from risk. Unauthorised access, scanning, or intrusion attempts may attract liability under the IT Act.</p>
+          <p><strong>3.6 Children.</strong> The Site is not directed at collecting personal data from children under 18. Guardians should supervise minors’ use. If you believe a minor’s data was submitted, contact the Grievance Officer for deletion.</p>
+          <p><strong>3.7 Cross-border processing.</strong> Hosting and CDN infrastructure may process technical and form-related data on servers outside India as part of standard global delivery. By using the Site you acknowledge this operational reality for a GitHub Pages deployment.</p>
+          <p><strong>3.8 Retention.</strong> See the Data Retention Policy. In summary, personal data is kept only as long as needed for the purpose or legal hold, then deleted or access-restricted.</p>
+          <p><strong>3.9 Automated decision-making.</strong> The Author does not use personal data submitted via the Site for automated decision-making that produces legal effects on the data principal.</p>
+
+          <h2>4. User Rights &amp; Responsibilities</h2>
+          <p><strong>Rights (DPDP Act, as applicable to this Site):</strong> you may request access to personal data you have provided, correction of inaccurate data, erasure of data no longer required for the purpose, and withdrawal of consent for future processing, by emailing the Grievance Officer with sufficient identity verification.</p>
+          <p><strong>Responsibilities:</strong> provide accurate information; do not submit others’ personal data without authority; do not abuse forms; do not attempt intrusion, credential stuffing, or malware delivery. <strong>Zero Tolerance</strong> applies to spam and security abuse.</p>
+          {CP}
+          {pen()}
+          {go('આ ગોપનીયતા નીતિ DPDP Act 2023 અને IT Act મુજબ છે. અંગત ડેટાનો વેચાણ/દુરુપયોગ સખ્ત પ્રતિબંધિત છે. ફરિયાદ: '+EM+'.')}
+          '''
+
+          # ===================== TERMS =====================
+          policies['Visitor/termsofuse.html'] = f'''
+          <h2 class="kicker accent">Official Documentation · Version 2.1</h2>
+          <h1 class="accent">Revised Terms of Use (As per IT Act &amp; DPDP Act 2023) - Version 2.1</h1>
+          <p class="muted"><strong>Effective Date:</strong> {EFF} · <strong>Version:</strong> 2.1</p>
+
+          <h2>1. Introduction &amp; Purpose</h2>
+          <p>These Terms of Use (“Terms”) constitute a binding agreement under the <strong>Indian Contract Act, 1872</strong> between you (“User”) and <strong>{GO}</strong> (“Author”) governing access to and use of {SITE} and all portals, pages, publications metadata, forms, and materials made available thereon (collectively, the “Site”).</p>
+          <p>Accessing, browsing, or using the Site constitutes acceptance of these Terms, the Privacy Policy, the Copyright Policy, and related policies published in the Policy Center. If you do not agree, you must discontinue use immediately. Continued use after an update constitutes acceptance of the revised Terms.</p>
+
+          <h2>2. Scope (What is covered)</h2>
+          <p>These Terms cover the home site and all portals including Visitor, HR Recruiter, and Book &amp; Publications; offline and error pages; downloadable or viewable materials offered by the Author; and form submissions. Third-party platforms (e.g., Google Play Books, Formspree, GitHub) have their own terms which apply when you use those services.</p>
+
+          <h2>3. Detailed Clauses with current laws reference</h2>
+          <p><strong>3.1 Limited licence.</strong> Subject to these Terms, the Author grants a limited, revocable, non-exclusive, non-transferable, non-sublicensable licence to access and view content for personal, non-commercial, educational use only. No other licence is granted under the <strong>Copyright Act, 1957</strong> or any other intellectual-property law.</p>
+          <p><strong>3.2 Strictly Prohibited conduct.</strong> Without limitation, you shall not:</p>
+          <ul>
+          <li>scrape, spider, harvest, or bulk-download Site content or structure;</li>
+          <li>reproduce, republish, mirror, frame, or commercially exploit content without prior written licence;</li>
+          <li>circumvent, disable, or interfere with content-protection measures (soft DRM / Level-4 controls);</li>
+          <li>attempt unauthorised access, introduce malware, or disrupt service (IT Act);</li>
+          <li>impersonate the Author or any person, or submit false identity data;</li>
+          <li>use the Site to transmit unlawful, defamatory, obscene, or privacy-invasive material.</li>
+          </ul>
+          <p><strong>3.3 User submissions.</strong> Anything you send via forms or email must be lawful, accurate, and free of malware. You grant the Author a worldwide, royalty-free licence to process such submissions for response, record-keeping, and legal compliance (DPDP Act / Contract Act). You represent that you have authority to provide the data submitted.</p>
+          <p><strong>3.4 No professional advice.</strong> Content is for information, heritage, literary, and professional-presentation purposes. It does not constitute legal, medical, financial, or other professional advice and does not create an advocate–client or similar relationship unless a separate written engagement is signed.</p>
+          <p><strong>3.5 Availability and changes.</strong> The Site may be modified, suspended, or discontinued in whole or part without notice. No warranty of uninterrupted availability is given.</p>
+          <p><strong>3.6 Linking.</strong> You may link to public pages of the Site in a fair and non-misleading manner that does not imply endorsement. Deep-linking or framing that misrepresents source is <strong>Strictly Prohibited</strong>.</p>
+          <p><strong>3.7 Governing law and jurisdiction.</strong> These Terms are governed by the laws of India. Subject to mandatory law, exclusive jurisdiction lies with the competent courts at <strong>Vadodara, Gujarat</strong>.</p>
+          <p><strong>3.8 Entire agreement.</strong> These Terms and the policies in the Policy Center constitute the entire agreement regarding Site use, superseding prior informal understandings on the same subject.</p>
+
+          <h2>4. User Rights &amp; Responsibilities</h2>
+          <p>You may browse publicly available content and contact the Author through provided channels. You must comply with these Terms, all Site policies, and applicable Indian law. You are responsible for your network security and for keeping credentials to third-party services confidential. <strong>Zero Tolerance</strong> applies to infringement and abuse.</p>
+          {CP}
+          {pen('<p>Breach may result in immediate termination of the limited licence without notice, in addition to legal remedies.</p>')}
+          {go('સાઇટના નિયમો Indian Contract Act હેઠળ બંધનકર્તા છે. સ્ક્રેપિંગ, અનધિકૃત કૉપિ અને સુરક્ષા ભંગ સખ્ત પ્રતિબંધિત છે.')}
+          '''
+
+          # ===================== DISCLAIMER =====================
+          policies['Visitor/disclaimer.html'] = f'''
+          <h2 class="kicker accent">Official Documentation · Version 2.1</h2>
+          <h1 class="accent">Revised Disclaimer (As per IT Act &amp; DPDP Act 2023) - Version 2.1</h1>
+          <p class="muted"><strong>Effective Date:</strong> {EFF} · <strong>Version:</strong> 2.1</p>
+
+          <h2>1. Introduction &amp; Purpose</h2>
+          <p>This Disclaimer limits liability and clarifies the nature of information published on the Site, consistent with the <strong>Indian Contract Act, 1872</strong>, the <strong>IT Act, 2000</strong>, and applicable principles of Indian law. It should be read with the Terms of Use and Privacy Policy.</p>
+
+          <h2>2. Scope (What is covered)</h2>
+          <p>All text, images, audio-visual references, genealogy extracts, publication descriptions, opinions, code samples, UI text, and technical materials on the Site, whether authored by the Author or attributed to third-party public sources.</p>
+
+          <h2>3. Detailed Clauses with current laws reference</h2>
+          <p><strong>3.1 As-is / as-available.</strong> Content is provided without warranties of any kind, express or implied, including warranties of accuracy, completeness, currency, non-infringement, or fitness for a particular purpose, except where mandatory Indian law prohibits exclusion.</p>
+          <p><strong>3.2 No advice; no relationship.</strong> Historical, cultural, literary, genealogical, and technical materials are for information and education. They do not create an advocate–client, doctor–patient, or other professional relationship. Decisions you make based on Site content are at your sole risk.</p>
+          <p><strong>3.3 Genealogy and historical material.</strong> Family-history and heritage pages are compiled in good faith from sources believed reliable; they may contain errors or incomplete lines. They are not official government records.</p>
+          <p><strong>3.4 Third parties.</strong> External links and processors (Formspree, GitHub, bookstores, fonts) are outside the Author’s control. Their terms and privacy practices apply. The Author is not responsible for third-party content or outages.</p>
+          <p><strong>3.5 Limitation of liability.</strong> To the maximum extent permitted by Indian law, the Author shall not be liable for indirect, incidental, special, consequential, or punitive loss, or loss of data, profits, or goodwill, arising from use of or inability to use the Site.</p>
+          <p><strong>3.6 Indemnity.</strong> You agree to indemnify and hold harmless the Author from claims, damages, and expenses (including reasonable legal fees) arising from your unlawful use of the Site, your breach of policies, or your infringement of third-party rights (Contract Act).</p>
+          <p><strong>3.7 Force majeure.</strong> The Author is not liable for delays or failures due to events beyond reasonable control, including infrastructure outages of third-party hosts.</p>
+
+          <h2>4. User Rights &amp; Responsibilities</h2>
+          <p>You remain responsible for independently verifying information before relying on it, for lawful use of the Site, and for compliance with export, copyright, and data-protection rules applicable to you.</p>
+          {CP}
+          {pen()}
+          {go('માહિતી “યથાવત” આપવામાં આવે છે; વ્યવસાયિક સલાહ નથી. ગેરકાયદેસર ઉપયોગની જવાબદારી વપરાશકર્તાની રહેશે.')}
+          '''
+
+          # ===================== GRIEVANCE =====================
+          policies['Visitor/grievance.html'] = f'''
+          <h2 class="kicker accent">Official Documentation · Version 2.1</h2>
+          <h1 class="accent">Revised Grievance Redressal Policy (As per IT Act &amp; DPDP Act 2023) - Version 2.1</h1>
+          <p class="muted"><strong>Effective Date:</strong> {EFF} · <strong>Version:</strong> 2.1</p>
+
+          <h2>1. Introduction &amp; Purpose</h2>
+          <p>This Policy establishes the grievance redressal mechanism contemplated under <strong>Rule 3(2) of the IT Rules, 2021</strong> and supports data-principal requests under the <strong>DPDP Act, 2023</strong>. It ensures a documented channel for complaints relating to the Site.</p>
+
+          <h2>2. Scope (What is covered)</h2>
+          <p>Complaints concerning: alleged unlawful or infringing content on the Site; privacy or personal-data issues; copyright claims regarding Author content; accessibility barriers; and alleged violation of Site policies by users or by the Author’s publication practices. Employment or offline commercial disputes unrelated to the Site fall outside this mechanism unless the Author agrees in writing to include them.</p>
+
+          <h2>3. Detailed Clauses with current laws reference</h2>
+          <p><strong>3.1 Filing requirements.</strong> Send a written email to the Grievance Officer with: (a) full name and contact details; (b) clear statement of facts; (c) URLs or screenshots; (d) legal basis if claimed (e.g., copyright, privacy); (e) relief sought; (f) declaration that the information is true to the best of your knowledge.</p>
+          <p><strong>3.2 Timelines.</strong> Acknowledgement within <strong>fifteen (15) days</strong> of a complete complaint. Reasoned response ordinarily within <strong>thirty (30) days</strong>. Complex matters may require additional time; you will be informed when practicable.</p>
+          <p><strong>3.3 Process.</strong> The Officer may seek clarification, consult records, and, where appropriate, remove or restrict content, correct personal data, or decline the request with reasons.</p>
+          <p><strong>3.4 Strictly Prohibited:</strong> false, defamatory, duplicative, or harassing complaints; impersonation in grievance filings. Such conduct may be closed and reported under the IT Act or general criminal law.</p>
+          <p><strong>3.5 Escalation.</strong> This channel does not extinguish rights to approach competent authorities, the police (for cognizable offences), or civil courts as per law.</p>
+          <p><strong>3.6 Records.</strong> Grievance correspondence may be retained as required for legal compliance and defence of claims (see Data Retention Policy).</p>
+
+          <h2>4. User Rights &amp; Responsibilities</h2>
+          <p>You have the right to a fair consideration of genuine grievances filed in good faith. You must provide truthful particulars, refrain from abuse of process, and respect confidentiality of any settlement communications.</p>
+          {CP}
+          {pen()}
+          {go('ફરિયાદ લેખિતમાં '+EM+' પર મોકલો; 15 દિવસમાં સ્વીકૃતિ, સામાન્ય રીતે 30 દિવસમાં જવાબ. જૂઠી ફરિયાદ પ્રતિબંધિત છે.')}
+          '''
+
+          # ===================== COOKIES =====================
+          policies['Visitor/cookies-policy.html'] = f'''
+          <h2 class="kicker accent">Official Documentation · Version 2.1</h2>
+          <h1 class="accent">Revised Cookies Policy (As per IT Act &amp; DPDP Act 2023) - Version 2.1</h1>
+          <p class="muted"><strong>Effective Date:</strong> {EFF} · <strong>Version:</strong> 2.1</p>
+
+          <h2>1. Introduction &amp; Purpose</h2>
+          <p>This Policy explains the use of cookies, local storage, session storage, and similar technologies on the Site in light of the <strong>DPDP Act, 2023</strong> and the <strong>IT Act, 2000</strong>. It should be read with the Privacy Policy.</p>
+
+          <h2>2. Scope (What is covered)</h2>
+          <p>Technologies used in the User’s browser in connection with the Site; any cookies set by infrastructure providers in the course of delivering the Site; and similar identifiers. It does not govern cookies on third-party websites linked from the Site.</p>
+
+          <h2>3. Detailed Clauses with current laws reference</h2>
+          <p><strong>3.1 Essential / functional storage.</strong> The Site uses <strong>localStorage</strong> and/or <strong>sessionStorage</strong> to remember UI preferences such as theme (dark/light), font scale, intro dismissal, and last-visited portal. These are functional aids, not advertising identifiers, and are processed for the purpose of a coherent user interface experience.</p>
+          <p><strong>3.2 No Author-operated advertising cookies.</strong> The Author does not run third-party advertising networks or sell browsing profiles. The Author does not deploy marketing pixels for behavioural advertising.</p>
+          <p><strong>3.3 Hosting and CDN.</strong> GitHub Pages and associated content-delivery networks may process technical data and set cookies or similar artefacts necessary for security, load balancing, and delivery (IT Act security context). Their documentation governs those technologies.</p>
+          <p><strong>3.4 Form processors.</strong> When you submit a form, Formspree or similar processors may set their own cookies subject to their policies.</p>
+          <p><strong>3.5 Control and refusal.</strong> You may clear site data via browser settings. Refusing functional storage may reset preferences but should not block read-only browsing of public pages. Browser “Do Not Track” signals are respected to the extent the static architecture permits (no Author ad tracker to disable).</p>
+          <p><strong>3.6 Legal basis.</strong> Functional storage is used as a legitimate, limited purpose consistent with the DPDP Act’s purpose limitation; consent for non-essential technologies would be sought if such technologies were introduced in future.</p>
+
+          <h2>4. User Rights &amp; Responsibilities</h2>
+          <p>You may refuse or clear non-essential storage using browser controls. You should not attempt to exploit client storage to attack the Site or other users. <strong>Zero Tolerance</strong> for storage-based abuse.</p>
+          {CP}
+          {pen()}
+          {go('સાઇટ જાહેરાત કુકીઝ વાપરતી નથી; માત્ર UI પસંદગીઓ માટે local storage. બ્રાઉઝરથી ડેટા સાફ કરી શકાય.')}
+          '''
+
+          # ===================== COPYRIGHT =====================
+          policies['Visitor/copyright-policy.html'] = f'''
+          <h2 class="kicker accent">Official Documentation · Version 2.1</h2>
+          <h1 class="accent">Revised Copyright Policy (As per IT Act &amp; DPDP Act 2023) - Version 2.1</h1>
+          <p class="muted"><strong>Effective Date:</strong> {EFF} · <strong>Version:</strong> 2.1</p>
+
+          <h2>1. Introduction &amp; Purpose</h2>
+          <p>All original literary, artistic, musical (if any), dramatic (if any), and digital works on the Site are protected under the <strong>Copyright Act, 1957</strong>, as amended, and international norms as applicable in India. This Policy states ownership, permitted use, notice-and-takedown expectations, and enforcement posture. Personal-data aspects of user submissions are governed by the Privacy Policy (DPDP Act).</p>
+
+          <h2>2. Scope (What is covered)</h2>
+          <p>Text, layout, design, code presentation as published, photographs and graphics owned by the Author, brand marks, book titles and descriptions as original expression, genealogy presentation and compilation, and other original content on the Site. Third-party materials remain the property of their respective owners and are used under licence, fair dealing, or public-domain status as applicable.</p>
+
+          <h2>3. Detailed Clauses with current laws reference</h2>
+          <p><strong>3.1 Ownership.</strong> Copyright and related rights in Author-original works vest in <strong>{GO}</strong> unless a specific page states otherwise. Compilation copyright may subsist in original selections and arrangements even where underlying facts are public.</p>
+          <p><strong>3.2 Strictly Prohibited</strong> without prior written licence:</p>
+          <ul>
+          <li>reproduction, storage in any medium, adaptation, translation, or public communication of protected works;</li>
+          <li>commercial use, paywall republication, or training of commercial AI systems on Site content in a manner that infringes copyright;</li>
+          <li>removal or alteration of rights-management information, credits, or watermarks;</li>
+          <li>circumvention of technical protection measures deployed on the Site (Copyright Act; IT Act as applicable).</li>
+          </ul>
+          <p><strong>3.3 Fair dealing.</strong> Limited fair dealing for purposes such as criticism, review, or private study may apply under the Copyright Act, 1957. Fair dealing is a narrow statutory concept; it does not permit wholesale copying, systematic downloading, or republication of substantial parts.</p>
+          <p><strong>3.4 Notice of infringement.</strong> Rights holders may send a notice to the Grievance Officer identifying the work, the URL, proof of ownership or exclusive licence, and a good-faith statement. The Author will act as appropriate under law.</p>
+          <p><strong>3.5 Licence requests.</strong> Commercial or institutional reuse requires prior written permission. Contact the Author via the published email with a description of the proposed use.</p>
+          <p><strong>3.6 Moral rights.</strong> To the extent moral rights subsist and are assertable, the Author asserts the right to be identified as author and to restrain derogatory treatment, subject to the Copyright Act.</p>
+
+          <h2>4. User Rights &amp; Responsibilities</h2>
+          <p>You may view content online for personal non-commercial use under the limited licence in the Terms of Use. You must not infringe or enable infringement. <strong>Zero Tolerance</strong> for piracy and rights-management tampering.</p>
+          {CP}
+          {pen('<p>Statutory damages, injunctions, delivery-up, and criminal provisions under the Copyright Act may apply to wilful infringement.</p>')}
+          {go('કૉપિરાઇટ લેખક પાસે છે. અનધિકૃત પુનઃપ્રકાશન, સ્ક્રેપિંગ અને TPM તોડવું સખ્ત પ્રતિબંધિત છે.')}
+          '''
+
+          # ===================== CONTENT EDITORIAL =====================
+          policies['Visitor/content-editorial-policy.html'] = f'''
+          <h2 class="kicker accent">Official Documentation · Version 2.1</h2>
+          <h1 class="accent">Revised Content Editorial Policy (As per IT Act &amp; DPDP Act 2023) - Version 2.1</h1>
+          <p class="muted"><strong>Effective Date:</strong> {EFF} · <strong>Version:</strong> 2.1</p>
+
+          <h2>1. Introduction &amp; Purpose</h2>
+          <p>This Policy sets editorial standards for content published by the Author and prohibited categories of user conduct, aligned with the due-diligence spirit of the <strong>IT Rules, 2021</strong>, the <strong>IT Act, 2000</strong>, the <strong>DPDP Act, 2023</strong> (where personal data appears), and the <strong>Copyright Act, 1957</strong>.</p>
+
+          <h2>2. Scope (What is covered)</h2>
+          <p>Author-published pages across all portals; metadata and descriptions; and user submissions via forms or email that may be quoted or acted upon. It does not govern third-party websites.</p>
+
+          <h2>3. Detailed Clauses with current laws reference</h2>
+          <p><strong>3.1 Author content standards.</strong> Content is published in good faith for heritage, literature, technology, education, and professional presentation. The Author may correct, update, or withdraw material at discretion. Opinions are those of the Author unless attributed.</p>
+          <p><strong>3.2 Strictly Prohibited user content/conduct</strong> (non-exhaustive):</p>
+          <ul>
+          <li>child sexual abuse material or any sexual content involving minors;</li>
+          <li>content that is obscene as understood under Indian law;</li>
+          <li>hate speech, terrorist material, or content that threatens sovereignty and integrity as defined under applicable law;</li>
+          <li>defamation, knowing falsehoods calculated to harm;</li>
+          <li>intellectual-property infringement;</li>
+          <li>malware, phishing, or instructions primarily designed for cyber offence;</li>
+          <li>unlawful collection or dump of third-party personal data (DPDP Act / IT Act).</li>
+          </ul>
+          <p><strong>3.3 Takedown.</strong> Upon a valid grievance, court order, or government direction under applicable law, the Author will remove or restrict content as required. Voluntary corrections may also be made.</p>
+          <p><strong>3.4 Attribution and quotes.</strong> Short quotations for criticism or review should be attributed. Systematic extraction remains prohibited under the Copyright Policy.</p>
+          <p><strong>3.5 Political and religious content.</strong> Where such content appears, it is personal expression of the Author unless stated otherwise; it is not an official statement of any institution.</p>
+
+          <h2>4. User Rights &amp; Responsibilities</h2>
+          <p>Users may request correction of their own personal data and report unlawful content via the Grievance Officer. Users must not misuse reporting channels. <strong>Zero Tolerance</strong> for prohibited content categories.</p>
+          {CP}
+          {pen()}
+          {go('ગેરકાયદેસર, અભદ્ર, દ્વેષપૂર્ણ સામગ્રી અને અન્યના અંગત ડેટાનો દુરુપયોગ પ્રતિબંધિત છે. રિપોર્ટ: '+EM+'.')}
+          '''
+
+          # ===================== DATA RETENTION =====================
+          policies['Visitor/data-retention-policy.html'] = f'''
+          <h2 class="kicker accent">Official Documentation · Version 2.1</h2>
+          <h1 class="accent">Revised Data Retention Policy (As per IT Act &amp; DPDP Act 2023) - Version 2.1</h1>
+          <p class="muted"><strong>Effective Date:</strong> {EFF} · <strong>Version:</strong> 2.1</p>
+
+          <h2>1. Introduction &amp; Purpose</h2>
+          <p>This Policy describes retention, archival, and deletion of personal data consistent with purpose limitation and storage limitation under the <strong>DPDP Act, 2023</strong>, and with security and evidence needs under the <strong>IT Act, 2000</strong> and general law.</p>
+
+          <h2>2. Scope (What is covered)</h2>
+          <p>Form submissions, email correspondence, grievance files, and technical logs under the Author’s practical control. Hosting-provider logs controlled solely by GitHub/CDN are subject to those providers’ retention schedules.</p>
+
+          <h2>3. Detailed Clauses with current laws reference</h2>
+          <p><strong>3.1 Form and email data.</strong> Retained for as long as needed to respond to the request, complete an appointment discussion, maintain a record of consent or transaction context, or comply with law. Thereafter deleted or archived with restricted access.</p>
+          <p><strong>3.2 Grievance records.</strong> Retained for a period sufficient to demonstrate compliance with IT Rules timelines and to defend legal claims, typically not less than the limitation period relevant to the subject-matter, unless a longer hold is required.</p>
+          <p><strong>3.3 Hosting logs.</strong> Controlled by GitHub / CDN retention practices. The Author does not independently warehouse full traffic logs beyond what the host provides in standard tools.</p>
+          <p><strong>3.4 Client-side storage.</strong> Theme and preference keys remain until cleared by the User or by Site logic.</p>
+          <p><strong>3.5 Legal hold.</strong> Data may be retained longer where reasonably necessary for disputes, investigations, regulatory inquiries, or statutory obligations.</p>
+          <p><strong>3.6 Erasure requests.</strong> Data principals may request erasure of personal data they provided, subject to exceptions under the DPDP Act (e.g., legal claims, compliance). Public historical content that is not your personal data is not subject to personal erasure demands.</p>
+          <p><strong>3.7 Disposal.</strong> When deletion is due, the Author will use reasonable means to delete or irreversibly anonymise data under the Author’s control.</p>
+
+          <h2>4. User Rights &amp; Responsibilities</h2>
+          <p>You may request deletion of your submitted personal data via the Grievance Officer. You must not demand erasure of public historical or literary content that does not constitute your personal data. Provide enough information to locate the record.</p>
+          {CP}
+          {pen()}
+          {go('અંગત ડેટા હેતુ પૂરતો જ રાખવામાં આવે છે; કાઢી નાખવાની વિનંતી ઇમેઇલથી કરી શકાય. ઐતિહાસિક સાર્વજનિક સામગ્રી અંગત ડેટા નથી.')}
+          '''
+
+          # ===================== THIRD PARTY =====================
+          policies['Visitor/third-party-policy.html'] = f'''
+          <h2 class="kicker accent">Official Documentation · Version 2.1</h2>
+          <h1 class="accent">Revised Third-Party Policy (As per IT Act &amp; DPDP Act 2023) - Version 2.1</h1>
+          <p class="muted"><strong>Effective Date:</strong> {EFF} · <strong>Version:</strong> 2.1</p>
+
+          <h2>1. Introduction &amp; Purpose</h2>
+          <p>This Policy identifies third-party services used in connection with the Site and allocates responsibility in accordance with the <strong>IT Act, 2000</strong>, <strong>IT Rules, 2021</strong>, and <strong>DPDP Act, 2023</strong>.</p>
+
+          <h2>2. Scope (What is covered)</h2>
+          <p>GitHub Pages hosting and CDN; Formspree or similar form processing; font providers (e.g., Google Fonts) if loaded; analytics if any are added in future (none Author-operated for advertising as of this version); outbound hyperlinks; and book-commerce platforms linked from the Site.</p>
+
+          <h2>3. Detailed Clauses with current laws reference</h2>
+          <p><strong>3.1 Processors / infrastructure.</strong> Formspree and GitHub process data under their terms. The Author does not control their physical security, sub-processors, or global network routing. Users should review those providers’ privacy notices.</p>
+          <p><strong>3.2 Links.</strong> External links are provided for convenience or reference. Inclusion does not imply endorsement. The Author is not responsible for third-party content, policies, or availability.</p>
+          <p><strong>3.3 Bookstores and payment.</strong> Purchases on Google Play Books or other stores are contracts between you and that store. The Author is not the payment processor for those transactions unless expressly stated.</p>
+          <p><strong>3.4 Strictly Prohibited:</strong> using the Site to distribute third-party personal data unlawfully (DPDP Act); using links or forms to facilitate cyber offences (IT Act); misrepresenting affiliation with third parties.</p>
+          <p><strong>3.5 Changes to processors.</strong> The Author may change infrastructure providers. Material changes affecting personal-data flows will be reflected in an updated Privacy Policy or this Policy when practicable.</p>
+
+          <h2>4. User Rights &amp; Responsibilities</h2>
+          <p>Review third-party privacy policies before submitting data to them. Report suspected abuse involving the Site’s third-party integrations to the Grievance Officer.</p>
+          {CP}
+          {pen()}
+          {go('થર્ડ-પાર્ટી સેવાઓની પોતાની નીતિઓ લાગુ પડે છે. અન્યના અંગત ડેટાનો ગેરકાયદે શેર પ્રતિબંધિત છે.')}
+          '''
+
+          # ===================== ACCESSIBILITY =====================
+          policies['Visitor/accessibility-statement.html'] = f'''
+          <h2 class="kicker accent">Official Documentation · Version 2.1</h2>
+          <h1 class="accent">Revised Accessibility Statement (As per IT Act &amp; DPDP Act 2023) - Version 2.1</h1>
+          <p class="muted"><strong>Effective Date:</strong> {EFF} · <strong>Version:</strong> 2.1</p>
+
+          <h2>1. Introduction &amp; Purpose</h2>
+          <p>The Author aims to make the Site reasonably usable for a wide range of visitors, consistent with good practice and non-discrimination principles under Indian law, without reducing content-protection measures required to safeguard rights under the <strong>Copyright Act, 1957</strong>.</p>
+
+          <h2>2. Scope (What is covered)</h2>
+          <p>Public HTML pages of the Site, primary navigation, forms, and core reading views. Third-party embedded services are subject to their own accessibility characteristics.</p>
+
+          <h2>3. Detailed Clauses with current laws reference</h2>
+          <p><strong>3.1 Measures.</strong> Semantic HTML structure where implemented; keyboard-reachable controls for primary navigation where implemented; theme options; font scaling; focus consideration in interactive components; text alternatives for meaningful images where provided.</p>
+          <p><strong>3.2 Known limitations.</strong> As a personal portfolio with cinematic and highly styled views, some pages may not meet every WCAG success criterion. Continuous improvement is intended but not warranted as a contractual SLA.</p>
+          <p><strong>3.3 Protection versus access.</strong> Copy-protection and Level-4 security controls are not aimed at defeating assistive technologies. Legitimate screen readers and browser accessibility features should continue to function for perception of content. Deliberate circumvention of protection for piracy remains <strong>Strictly Prohibited</strong>.</p>
+          <p><strong>3.4 Feedback.</strong> Accessibility barriers may be reported to the Grievance Officer under the IT Rules grievance channel. Please describe the page URL, technology used, and the barrier encountered.</p>
+          <p><strong>3.5 Personal data in accessibility requests.</strong> Contact data you provide when reporting barriers is processed under the Privacy Policy (DPDP Act).</p>
+
+          <h2>4. User Rights &amp; Responsibilities</h2>
+          <p>Users may request reasonable assistance to access content. Abuse of accessibility exceptions to defeat copyright protection or to harass the Author is forbidden. <strong>Zero Tolerance</strong> for such abuse.</p>
+          {CP}
+          {pen()}
+          {go('સાઇટને વધુ સુલભ બનાવવાનો પ્રયાસ છે; કૉપિરાઇટ સુરક્ષા જાળવી રાખવામાં આવે છે. અવરોધ જણાવો: '+EM+'.')}
+          '''
+
+          # ===================== BOOK READING =====================
+          policies['Book-Publications-Reader/bookreadingpolicy.html'] = f'''
+          <h2 class="kicker accent">Official Documentation · Version 2.1</h2>
+          <h1 class="accent">Revised Book Reading Policy (As per IT Act &amp; DPDP Act 2023) - Version 2.1</h1>
+          <p class="muted"><strong>Effective Date:</strong> {EFF} · <strong>Version:</strong> 2.1</p>
+
+          <h2>1. Introduction &amp; Purpose</h2>
+          <p>This Policy governs access to book descriptions, reading-related pages, covers, and publication materials on the Site under the <strong>Copyright Act, 1957</strong>, the <strong>IT Act, 2000</strong>, the <strong>Indian Contract Act, 1872</strong>, and the <strong>DPDP Act, 2023</strong> (for personal data in queries).</p>
+
+          <h2>2. Scope (What is covered)</h2>
+          <p>All Book &amp; Publications portal pages, cover images, blurbs, sample references, policy pages in that portal, and related correspondence about books.</p>
+
+          <h2>3. Detailed Clauses with current laws reference</h2>
+          <p><strong>3.1 Licence to view.</strong> Viewing catalogue and descriptive pages is permitted for personal, non-commercial use under the Terms of Use. Full-text reading of commercially published works is provided only through authorised platforms (e.g., Google Play Books) under those platforms’ contracts.</p>
+          <p><strong>3.2 Strictly Prohibited:</strong> unauthorised reproduction of book content; OCR harvesting of pages; classroom or institutional bulk copying without licence; upload to pirate sites; circumvention of Level-4 or platform DRM (Copyright Act / IT Act).</p>
+          <p><strong>3.3 Purchases.</strong> Transactions on third-party stores are governed by those stores. Refunds and delivery are their responsibility unless mandatory law says otherwise.</p>
+          <p><strong>3.4 Queries and personal data.</strong> Email or form queries about books may process contact data under the Privacy Policy (DPDP Act).</p>
+          <p><strong>3.5 Reviews and fair dealing.</strong> Genuine criticism and review with limited quotation may fall under fair dealing; wholesale reproduction does not.</p>
+
+          <h2>4. User Rights &amp; Responsibilities</h2>
+          <p>Readers may enjoy lawfully acquired copies and statutory fair dealing. <strong>Zero Tolerance</strong> for piracy, watermark removal, and systematic scraping of the publications portal.</p>
+          {CP}
+          {pen('<p>Civil and criminal remedies under the Copyright Act and IT Act may be pursued against wilful pirates and commercial infringers.</p>')}
+          {go('પુસ્તકોની અનધિકૃત કૉપિ, OCR હાર્વેસ્ટ અને વિતરણ સખ્ત પ્રતિબંધિત છે. ફરિયાદ: '+EM+'.')}
+          '''
+
+          # ===================== POLICY CENTER =====================
+          policies['Visitor/policy-center.html'] = f'''
+          <h2 class="kicker accent">Official Documentation · Version 2.1</h2>
+          <h1 class="accent">Policy Center</h1>
+          <p class="muted"><strong>Effective Date of suite:</strong> {EFF}. All listed policies are maintained as <strong>Version 2.1</strong> (expanded legal depth), prepared for alignment with the Information Technology Act, 2000; the IT Rules, 2021; the Digital Personal Data Protection Act, 2023; the Copyright Act, 1957; and the Indian Contract Act, 1872.</p>
+          <p>These instruments are binding conditions of use of the Site. <strong>Strictly Prohibited</strong> activities include unauthorised copying, scraping, data misuse, and circumvention of content-protection measures. <strong>Zero Tolerance</strong> applies to wilful violation.</p>
+          <p>Each policy follows a uniform structure: Introduction &amp; Purpose; Scope; Detailed Clauses with statute references; User Rights &amp; Responsibilities; Content Protection Measures; Penalties; and Grievance Officer contact (Rule 3(2), IT Rules 2021).</p>
+
+          <h2>Core legal</h2>
+          <ul>
+          <li><a href="privacy-policy.html">Revised Privacy Policy — Version 2.1</a></li>
+          <li><a href="termsofuse.html">Revised Terms of Use — Version 2.1</a></li>
+          <li><a href="disclaimer.html">Revised Disclaimer — Version 2.1</a></li>
+          <li><a href="grievance.html">Revised Grievance Redressal Policy — Version 2.1</a></li>
+          </ul>
+
+          <h2>Data &amp; content</h2>
+          <ul>
+          <li><a href="cookies-policy.html">Revised Cookies Policy — Version 2.1</a></li>
+          <li><a href="copyright-policy.html">Revised Copyright Policy — Version 2.1</a></li>
+          <li><a href="content-editorial-policy.html">Revised Content Editorial Policy — Version 2.1</a></li>
+          <li><a href="data-retention-policy.html">Revised Data Retention Policy — Version 2.1</a></li>
+          <li><a href="third-party-policy.html">Revised Third-Party Policy — Version 2.1</a></li>
+          </ul>
+
+          <h2>Access &amp; reading</h2>
+          <ul>
+          <li><a href="accessibility-statement.html">Revised Accessibility Statement — Version 2.1</a></li>
+          <li><a href="../Book-Publications-Reader/bookreadingpolicy.html">Revised Book Reading Policy — Version 2.1</a></li>
+          </ul>
+
+          <section class="box">
+          <h2 class="accent">Grievance Officer (Rule 3(2), IT Rules 2021)</h2>
+          <p><strong>{GO}</strong><br>
+          Email: <a href="mailto:{EM}">{EM}</a><br>
+          Acknowledgement within 15 days; resolution endeavour within 30 days.</p>
+          <p>Content protection on this Site includes <code>user-select: none</code>, anti-copy/cut controls, image protection, print notices, and soft DRM deterrence. Circumvention for infringement is <strong>Strictly Prohibited</strong>.</p>
+          </section>
+          <p class="muted"><em>Gujarati summary:</em> તમામ નીતિઓ Version 2.1 હેઠળ વિસ્તૃત કાયદાકીય લખાણ સાથે અપડેટ થઈ છે (IT Act, DPDP, Copyright, Contract Act). અનધિકૃત કૉપિ/ડેટા દુરુપયોગ પર શૂન્ય સહિષ્ણુતા; ફરિયાદ: <strong>{EM}</strong>.</p>
+          '''
+
+          # Apply to files: replace main inner content
+          for path, inner in policies.items():
+              p = Path(path)
+              if not p.exists():
+                  print('MISSING', path)
+                  continue
+              html = p.read_text(encoding='utf-8')
+              m = re.search(r'(<main class="page" id="main">)(.*?)(</main>)', html, re.S)
+              if not m:
+                  print('NO_MAIN', path)
+                  continue
+              # strip old crumbs if any — put inner only; optional crumb
+              new_main = m.group(1) + '\n' + inner + '\n' + m.group(3)
+              html = html[:m.start()] + new_main + html[m.end():]
+              # bump title if h1 present
+              hm = re.search(r'<h1 class="accent">(.*?)</h1>', inner, re.S)
+              if hm:
+                  title_txt = re.sub(r'<[^>]+>', '', hm.group(1)).strip()
+                  html = re.sub(r'<title>.*?</title>', f'<title>{title_txt} | BHARGAVSINH SISODIYA</title>', html, count=1)
+              p.write_text(html, encoding='utf-8')
+              print('expanded', path, len(html))
+
+          print('DONE')
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Visitor/*.html Book-Publications-Reader/bookreadingpolicy.html
+          git status --short | head -30
+          git commit -m "V18.1.4: Policy Suite Version 2.1 — expanded legal text (~3x depth)" || exit 0
+          git push origin HEAD:main
