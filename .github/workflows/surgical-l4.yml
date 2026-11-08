@@ -1,0 +1,65 @@
+name: Surgical L4 fix
+
+on:
+  push:
+    paths:
+      - '.github/workflows/surgical-l4.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fix all HTML protect-l4 tags
+        run: |
+          python3 << 'P'
+          from pathlib import Path
+          import re
+
+          def pref(p):
+              d = len(p.parts) - 1
+              return '' if d <= 0 else '../' * d
+
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              t = p.read_text(encoding='utf-8', errors='replace')
+              lines = [ln for ln in t.splitlines(True) if 'protect-l4.js' not in ln]
+              t = ''.join(lines)
+              # keep one css or re-add later
+              t = t.replace('</script></script>', '</script>')
+              t = t.replace('defer>>', 'defer>')
+              pr = pref(p)
+              js = f'  <script src="{pr}assets/js/protect-l4.js?v=18.1.3" defer></script>\n'
+              css = f'  <link rel="stylesheet" href="{pr}assets/css/protect-l4.css?v=18.1.3">\n'
+              if 'protect-l4.js' not in t and '</body>' in t:
+                  t = t.replace('</body>', js + '</body>', 1)
+              if 'protect-l4.css' not in t and '</head>' in t:
+                  t = t.replace('</head>', css + '</head>', 1)
+              m = re.search(r'<body([^>]*)>', t)
+              if m and 'data-protect' not in m.group(1):
+                  t = t[:m.start()] + '<body' + m.group(1) + ' data-protect>' + t[m.end():]
+              p.write_text(t, encoding='utf-8')
+
+          for s in ['index.html', 'Visitor/about.html', 'HR-Recruiter/HRRindex.html', 'Book-Publications-Reader/BPindex.html']:
+              t = Path(s).read_text(encoding='utf-8')
+              assert 'protect-l4.js?v=18.1.3" defer></script>' in t, s
+              assert t.count('protect-l4.js') == 1, s
+              assert 'defer>>' not in t, s
+              assert '</script></script>' not in t, s
+              print('OK', s)
+          print('ALL_GOOD')
+          P
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "V18.1.3: Level-4 content security tags cleaned on all HTML" || exit 0
+          git push origin HEAD:main
