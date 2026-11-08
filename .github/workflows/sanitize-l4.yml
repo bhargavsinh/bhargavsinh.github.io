@@ -1,0 +1,73 @@
+name: Sanitize L4 script tags
+
+on:
+  push:
+    paths:
+      - '.github/workflows/sanitize-l4.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sanitize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sanitize
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          def prefix_for(path: Path) -> str:
+              depth = len(path.parts) - 1
+              return '' if depth <= 0 else '../' * depth
+
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              text = p.read_text(encoding='utf-8', errors='replace')
+              pref = prefix_for(p)
+              clean_js = f'<script src="{pref}assets/js/protect-l4.js?v=18.1.3" defer></script>'
+              clean_css = f'<link rel="stylesheet" href="{pref}assets/css/protect-l4.css?v=18.1.3">'
+
+              # Remove ANY protect-l4 script/link variants (broken or clean)
+              text = re.sub(r'<script[^>]*protect-l4\.js[^>]*>\s*</script>', '', text)
+              text = re.sub(r'<script[^>]*protect-l4\.js[^>]*>', '', text)
+              text = re.sub(r'<link[^>]*protect-l4\.css[^>]*>', '', text)
+              # leftover doubled closings
+              text = text.replace('</script></script>', '</script>')
+              text = re.sub(r'defer>></script>', 'defer></script>', text)
+
+              # body data-protect
+              m = re.search(r'<body([^>]*)>', text)
+              if m and 'data-protect' not in m.group(1):
+                  text = text[:m.start()] + '<body' + m.group(1) + ' data-protect>' + text[m.end():]
+
+              # inject clean once
+              if 'protect-l4.css' not in text and '</head>' in text:
+                  text = text.replace('</head>', f'  {clean_css}\n</head>', 1)
+              if 'protect-l4.js' not in text and '</body>' in text:
+                  text = text.replace('</body>', f'  {clean_js}\n</body>', 1)
+
+              p.write_text(text, encoding='utf-8')
+              print('ok', p)
+
+          for sample in ['index.html', 'Visitor/about.html', 'HR-Recruiter/HRRindex.html']:
+              t = Path(sample).read_text(encoding='utf-8')
+              assert 'protect-l4.js?v=18.1.3" defer></script>' in t, sample
+              assert t.count('protect-l4.js') == 1, sample
+              assert '</script></script>' not in t, sample
+              assert 'defer>>' not in t, sample
+              print('assert', sample)
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "V18.1.3: sanitize Level-4 tags — clean copy/cut protection on all pages" || exit 0
+          git push origin HEAD:main
