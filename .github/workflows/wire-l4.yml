@@ -1,0 +1,88 @@
+name: Wire Level-4 protection on all HTML
+
+on:
+  push:
+    paths:
+      - '.github/workflows/wire-l4.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  wire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inject L4 CSS/JS + data-protect on all HTML
+        run: |
+          set -eux
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          inject_css = '<link rel="stylesheet" href="{prefix}assets/css/protect-l4.css?v=18.1.3">'
+          inject_js = '<script src="{prefix}assets/js/protect-l4.js?v=18.1.3" defer></script>'
+
+          def prefix_for(path: Path) -> str:
+              # depth relative to repo root
+              parts = path.parts
+              if path.name == path.as_posix() or len(parts) == 1:
+                  return ''
+              # Visitor/x.html -> ../
+              depth = len(parts) - 1
+              return '../' * depth
+
+          n_html = 0
+          n_inject = 0
+          n_protect = 0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              text = p.read_text(encoding='utf-8', errors='replace')
+              orig = text
+
+              # data-protect on body
+              m = re.search(r'<body([^>]*)>', text)
+              if m and 'data-protect' not in m.group(1):
+                  text = text[:m.start()] + '<body' + m.group(1) + ' data-protect>' + text[m.end():]
+                  n_protect += 1
+
+              pref = prefix_for(p)
+              css = inject_css.format(prefix=pref)
+              js = inject_js.format(prefix=pref)
+
+              if 'protect-l4.css' not in text:
+                  if re.search(r'site\.css[^>]*>', text):
+                      text = re.sub(r'(site\.css[^>]*>)', r'\1\n' + css, text, count=1)
+                  elif '</head>' in text:
+                      text = text.replace('</head>', css + '\n</head>', 1)
+                  n_inject += 1
+
+              if 'protect-l4.js' not in text:
+                  if re.search(r'site\.js[^>]*>', text):
+                      text = re.sub(r'(site\.js[^>]*>)', r'\1\n' + js, text, count=1)
+                  elif '</body>' in text:
+                      text = text.replace('</body>', js + '\n</body>', 1)
+                  n_inject += 1
+
+              if text != orig:
+                  p.write_text(text, encoding='utf-8')
+                  n_html += 1
+                  print('updated', p)
+
+          print('files_changed', n_html, 'protect_attr', n_protect, 'inject_ops', n_inject)
+          # verify assets exist
+          assert Path('assets/js/protect-l4.js').exists()
+          assert Path('assets/css/protect-l4.css').exists()
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -50
+          git commit -m "V18.1.3: Level-4 content security live on all HTML (copy/cut/select blocked)" || exit 0
+          git push origin HEAD:main
