@@ -1,0 +1,80 @@
+name: Fix Level-4 injection
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-l4.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Normalize L4 tags on every HTML
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          def prefix_for(path: Path) -> str:
+              depth = len(path.parts) - 1
+              return '' if depth <= 0 else '../' * depth
+
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              text = p.read_text(encoding='utf-8', errors='replace')
+              orig = text
+              pref = prefix_for(p)
+
+              # Fix broken double script closings around protect-l4
+              text = text.replace('</script></script>', '</script>')
+              text = re.sub(r'(<script src="[^"]*protect-l4\.js[^"]*" defer>)</script>', r'\1></script>', text)
+
+              # Remove existing protect-l4 link/script to re-inject cleanly
+              text = re.sub(r'\s*<link rel="stylesheet" href="[^"]*protect-l4\.css[^"]*">\s*', '\n', text)
+              text = re.sub(r'\s*<script src="[^"]*protect-l4\.js[^"]*" defer></script>\s*', '\n', text)
+
+              # data-protect
+              m = re.search(r'<body([^>]*)>', text)
+              if m and 'data-protect' not in m.group(1):
+                  text = text[:m.start()] + '<body' + m.group(1) + ' data-protect>' + text[m.end():]
+
+              css = f'<link rel="stylesheet" href="{pref}assets/css/protect-l4.css?v=18.1.3">'
+              js = f'<script src="{pref}assets/js/protect-l4.js?v=18.1.3" defer></script>'
+
+              # CSS in head
+              if 'protect-l4.css' not in text:
+                  if '</head>' in text:
+                      text = text.replace('</head>', '  ' + css + '\n</head>', 1)
+
+              # JS before </body>
+              if 'protect-l4.js' not in text:
+                  if '</body>' in text:
+                      text = text.replace('</body>', '  ' + js + '\n</body>', 1)
+
+              if text != orig:
+                  p.write_text(text, encoding='utf-8')
+                  print('fixed', p)
+
+          # sanity on index
+          idx = Path('index.html').read_text(encoding='utf-8')
+          assert 'protect-l4.js' in idx
+          assert 'data-protect' in idx
+          assert idx.count('protect-l4.js') == 1
+          print('index ok')
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -30
+          git commit -m "V18.1.3: Level-4 content security fixed and applied on all HTML" || exit 0
+          git push origin HEAD:main
