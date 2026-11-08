@@ -1,0 +1,228 @@
+name: Level-4 content security
+
+on:
+  push:
+    paths:
+      - '.github/workflows/level4-security.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  secure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Level-4 JS + CSS + all HTML data-protect
+        run: |
+          set -eux
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          # ---- Strengthen site.js protection block ----
+          js_path = Path('assets/js/site.js')
+          js = js_path.read_text(encoding='utf-8')
+          assert 'PLACEHOLDER' not in js
+          assert 'Mobile drawer' in js or 'serviceWorker' in js
+
+          old_patterns = [
+          # current simple block
+          '''  // ---- Content protection (deterrence only; see README) -------------------
+  safe(function () {
+    if (!PROTECT || !doc.body.hasAttribute('data-protect')) return;
+    function editable(t) { return t && (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) || t.isContentEditable || (t.closest && t.closest('[data-allow-copy]'))); }
+    ['copy', 'cut', 'contextmenu'].forEach(function (ev) { on(doc, ev, function (e) { if (!editable(e.target)) e.preventDefault(); }, true); });
+    on(doc, 'dragstart', function (e) { if (e.target && e.target.tagName === 'IMG') e.preventDefault(); }, true);
+    $$('img').forEach(function (i) { i.classList.add('protected'); i.draggable = false; });
+  });''',
+          ]
+
+          new_block = '''  // ---- Level-4 content security (deterrence; not cryptographic DRM) --------
+  safe(function () {
+    if (!PROTECT) return;
+    doc.body.classList.add('is-protected', 'l4-secure');
+    if (!doc.body.hasAttribute('data-protect')) doc.body.setAttribute('data-protect', '');
+
+    function editable(t) {
+      if (!t) return false;
+      if (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return true;
+      if (t.isContentEditable) return true;
+      if (t.closest && t.closest('[data-allow-copy], .allow-copy, #search, .search, #search-input')) return true;
+      return false;
+    }
+    function isImg(t) {
+      return t && (t.tagName === 'IMG' || (t.closest && t.closest('img, picture, .portal-img, .book-cover, .card-cover, .hero-media')));
+    }
+
+    // Images: never drag
+    $$('img').forEach(function (i) {
+      i.classList.add('protected');
+      i.setAttribute('draggable', 'false');
+    });
+    on(doc, 'dragstart', function (e) { if (isImg(e.target) || !editable(e.target)) e.preventDefault(); }, true);
+
+    // Block copy / cut / paste / context menu / select start
+    ['copy', 'cut', 'paste', 'contextmenu', 'selectstart'].forEach(function (ev) {
+      on(doc, ev, function (e) {
+        if (editable(e.target)) return;
+        if (ev === 'contextmenu' && e.target && e.target.closest && e.target.closest('a, button, [data-search], .ib, .btn')) return;
+        e.preventDefault();
+        return false;
+      }, true);
+    });
+
+    // Keyboard: block Ctrl/Cmd + C/X/A/S/U/P (not in inputs)
+    on(doc, 'keydown', function (e) {
+      if (editable(e.target)) return;
+      var k = (e.key || '').toLowerCase();
+      var mod = e.ctrlKey || e.metaKey;
+      if (mod && (k === 'c' || k === 'x' || k === 'a' || k === 's' || k === 'u' || k === 'p')) {
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+
+    // Clear selection if user somehow selects outside editable zones
+    on(doc, 'mouseup', function (e) {
+      if (editable(e.target)) return;
+      try {
+        var sel = window.getSelection && window.getSelection();
+        if (sel && sel.toString() && sel.toString().length > 0) {
+          var an = sel.anchorNode && sel.anchorNode.parentElement;
+          if (!editable(an)) sel.removeAllRanges();
+        }
+      } catch (err) {}
+    }, true);
+  });'''
+
+          replaced = False
+          for old in old_patterns:
+              if old in js:
+                  js = js.replace(old, new_block)
+                  replaced = True
+                  break
+
+          if not replaced:
+              # Fallback: find by marker comment
+              m = re.search(r"  // ---- Content protection.*?  \}\);\n\n  // ---- Print button", js, re.S)
+              if m:
+                  js = js[:m.start()] + new_block + "\n\n  // ---- Print button" + js[m.end():].split("// ---- Print button", 1)[-1]
+                  replaced = True
+
+          if not replaced:
+              raise SystemExit('Could not locate protection block in site.js')
+
+          # Ensure PROTECT flag comment
+          js = js.replace(
+              'var PROTECT = true;            // deterrence on author\'s original long-form pages (body[data-protect]); set false to disable',
+              'var PROTECT = true;            // Level-4 content security site-wide; set false to disable'
+          )
+          js = re.sub(
+              r"var PROTECT = true;[^
+]*",
+              "var PROTECT = true;            // Level-4 content security site-wide; set false to disable",
+              js,
+              count=1,
+          )
+
+          js_path.write_text(js, encoding='utf-8')
+          print('site.js updated', len(js))
+
+          # ---- CSS Level-4 ----
+          css_path = Path('assets/css/site.css')
+          css = css_path.read_text(encoding='utf-8')
+          marker = '/* ---- Level-4 content security ---- */'
+          block = '''
+/* ---- Level-4 content security ---- */
+html.l4-secure, body.is-protected, body.l4-secure, body[data-protect] {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+}
+body.is-protected input,
+body.is-protected textarea,
+body.is-protected select,
+body.is-protected [contenteditable="true"],
+body.is-protected [data-allow-copy],
+body.is-protected .allow-copy,
+body.is-protected #search,
+body.is-protected .search,
+body.is-protected .search *,
+body.is-protected #search-input,
+body[data-protect] input,
+body[data-protect] textarea,
+body[data-protect] select,
+body[data-protect] [contenteditable="true"],
+body[data-protect] [data-allow-copy],
+body[data-protect] .allow-copy,
+body[data-protect] #search,
+body[data-protect] .search,
+body[data-protect] .search *,
+body[data-protect] #search-input {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  user-select: text !important;
+  -webkit-touch-callout: default !important;
+}
+img.protected, picture img {
+  -webkit-user-drag: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  pointer-events: auto;
+}
+@media print {
+  body.is-protected::after, body[data-protect]::after {
+    content: "© BHARGAVSINH SISODIYA — https://bhargavsinh.github.io — All rights reserved. Unauthorised copying prohibited.";
+    display: block;
+    margin-top: 2rem;
+    font-size: 10pt;
+    color: #444;
+  }
+}
+'''
+          if marker in css:
+              # replace from marker to end-ish or append once
+              pass
+          else:
+              css = css.rstrip() + '\n' + block
+              css_path.write_text(css, encoding='utf-8')
+              print('site.css L4 appended')
+
+          # ---- data-protect on every HTML ----
+          n = 0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts:
+                  continue
+              text = p.read_text(encoding='utf-8', errors='replace')
+              m = re.search(r'<body([^>]*)>', text)
+              if not m:
+                  continue
+              attrs = m.group(1)
+              if 'data-protect' in attrs:
+                  continue
+              text = text[:m.start()] + '<body' + attrs + ' data-protect>' + text[m.end():]
+              p.write_text(text, encoding='utf-8')
+              n += 1
+              print('marked', p)
+          print('html_marked', n)
+          PY
+
+          # Verify
+          grep -q 'Level-4 content security' assets/js/site.js
+          grep -q 'l4-secure' assets/js/site.js
+          ! grep -q 'PLACEHOLDER' assets/js/site.js
+          wc -c assets/js/site.js
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -40
+          git commit -m "V18.1.3: Level-4 content security — block copy/cut/paste/select/contextmenu site-wide" || exit 0
+          git push origin HEAD:main
