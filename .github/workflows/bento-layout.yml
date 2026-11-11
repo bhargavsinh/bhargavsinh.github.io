@@ -1,0 +1,89 @@
+name: Apply bento+editorial layout to index pages
+
+on:
+  push:
+    paths:
+      - '.github/workflows/bento-layout.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mark index pages layout-bento + link CSS (no text edits)
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          INDEXES = [
+            Path('index.html'),
+            Path('about/index.html'),
+            Path('projects/index.html'),
+            Path('publications/index.html'),
+            Path('research/index.html'),
+            Path('contact/index.html'),
+            Path('Visitor/Visitindex.html'),
+            Path('HR-Recruiter/HRRindex.html'),
+            Path('Book-Publications-Reader/BPindex.html'),
+          ]
+
+          def css_href(p: Path) -> str:
+            depth = len(p.parts) - 1
+            pref = '' if depth == 0 else '../' * depth
+            return f'{pref}assets/css/bento-editorial.css?v=18.2.0'
+
+          for p in INDEXES:
+              if not p.exists():
+                  print('MISSING', p)
+                  continue
+              text = p.read_text(encoding='utf-8')
+              orig = text
+
+              # body class: add layout-bento (do not touch other attrs/text)
+              def body_sub(m):
+                  attrs = m.group(1)
+                  if 'layout-bento' in attrs:
+                      return m.group(0)
+                  return f'<body{attrs} class="layout-bento">' if 'class=' not in attrs else None
+
+              m = re.search(r'<body([^>]*)>', text)
+              if m:
+                  attrs = m.group(1)
+                  if 'layout-bento' not in attrs:
+                      if re.search(r'class="([^"]*)"', attrs):
+                          attrs2 = re.sub(r'class="([^"]*)"', r'class="\1 layout-bento"', attrs, count=1)
+                      else:
+                          attrs2 = attrs + ' class="layout-bento"'
+                      text = text[:m.start()] + f'<body{attrs2}>' + text[m.end():]
+
+              # link CSS once in head
+              href = css_href(p)
+              link = f'<link rel="stylesheet" href="{href}">'
+              if 'bento-editorial.css' not in text:
+                  if '</head>' in text:
+                      text = text.replace('</head>', f'  {link}\n</head>', 1)
+
+              if text != orig:
+                  p.write_text(text, encoding='utf-8')
+                  print('updated', p)
+              else:
+                  print('noop', p)
+
+          assert Path('assets/css/bento-editorial.css').exists()
+          print('DONE')
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/css/bento-editorial.css index.html about/index.html projects/index.html publications/index.html research/index.html contact/index.html Visitor/Visitindex.html HR-Recruiter/HRRindex.html Book-Publications-Reader/BPindex.html
+          git status --short
+          git commit -m "V18.2.0: bento box + editorial scroll on all index pages (text unchanged)" || exit 0
+          git push origin HEAD:main
