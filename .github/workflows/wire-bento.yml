@@ -1,0 +1,63 @@
+name: Wire bento on indexes
+
+on:
+  push:
+    paths:
+      - '.github/workflows/wire-bento.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  wire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Patch index HTML only
+        run: |
+          python3 -c "
+          from pathlib import Path
+          indexes = [
+            'index.html',
+            'about/index.html',
+            'projects/index.html',
+            'publications/index.html',
+            'research/index.html',
+            'contact/index.html',
+            'Visitor/Visitindex.html',
+            'HR-Recruiter/HRRindex.html',
+            'Book-Publications-Reader/BPindex.html',
+          ]
+          for rel in indexes:
+            p = Path(rel)
+            if not p.exists():
+              print('missing', rel)
+              continue
+            t = p.read_text(encoding='utf-8')
+            depth = len(p.parts) - 1
+            pref = '' if depth == 0 else '../' * depth
+            href = pref + 'assets/css/bento-editorial.css?v=18.2.0'
+            link = '<link rel=\"stylesheet\" href=\"' + href + '\">'
+            # body class
+            if 'layout-bento' not in t:
+              t = t.replace('class=\"home\"', 'class=\"home layout-bento\"', 1)
+              t = t.replace('class=\"hub\"', 'class=\"hub layout-bento\"', 1)
+              t = t.replace('class=\"portal-visitor\"', 'class=\"portal-visitor layout-bento\"', 1)
+              t = t.replace('class=\"portal-hr\"', 'class=\"portal-hr layout-bento\"', 1)
+              t = t.replace('class=\"portal-books\"', 'class=\"portal-books layout-bento\"', 1)
+            if 'bento-editorial.css' not in t and '</head>' in t:
+              t = t.replace('</head>', '  ' + link + chr(10) + '</head>', 1)
+            p.write_text(t, encoding='utf-8')
+            print('ok', rel, 'layout-bento' in t, 'bento-editorial.css' in t)
+          "
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html about/index.html projects/index.html publications/index.html research/index.html contact/index.html Visitor/Visitindex.html HR-Recruiter/HRRindex.html Book-Publications-Reader/BPindex.html
+          git status --short
+          git commit -m "V18.2.0: enable layout-bento on all index pages" || exit 0
+          git push origin HEAD:main
