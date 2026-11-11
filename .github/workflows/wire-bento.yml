@@ -1,4 +1,4 @@
-name: Wire bento on indexes
+name: Wire bento layout on indexes
 
 on:
   push:
@@ -15,43 +15,74 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Patch index HTML only
+      - name: Add layout-bento + CSS to index pages only
         run: |
-          python3 -c "
+          python3 << 'PY'
           from pathlib import Path
-          indexes = [
-            'index.html',
-            'about/index.html',
-            'projects/index.html',
-            'publications/index.html',
-            'research/index.html',
-            'contact/index.html',
-            'Visitor/Visitindex.html',
-            'HR-Recruiter/HRRindex.html',
-            'Book-Publications-Reader/BPindex.html',
+          import re
+
+          # Only index entry pages
+          targets = [
+            Path('index.html'),
+            Path('about/index.html'),
+            Path('projects/index.html'),
+            Path('publications/index.html'),
+            Path('research/index.html'),
+            Path('contact/index.html'),
+            Path('Visitor/Visitindex.html'),
+            Path('HR-Recruiter/HRRindex.html'),
+            Path('Book-Publications-Reader/BPindex.html'),
           ]
-          for rel in indexes:
-            p = Path(rel)
-            if not p.exists():
-              print('missing', rel)
-              continue
-            t = p.read_text(encoding='utf-8')
-            depth = len(p.parts) - 1
-            pref = '' if depth == 0 else '../' * depth
-            href = pref + 'assets/css/bento-editorial.css?v=18.2.0'
-            link = '<link rel=\"stylesheet\" href=\"' + href + '\">'
-            # body class
-            if 'layout-bento' not in t:
-              t = t.replace('class=\"home\"', 'class=\"home layout-bento\"', 1)
-              t = t.replace('class=\"hub\"', 'class=\"hub layout-bento\"', 1)
-              t = t.replace('class=\"portal-visitor\"', 'class=\"portal-visitor layout-bento\"', 1)
-              t = t.replace('class=\"portal-hr\"', 'class=\"portal-hr layout-bento\"', 1)
-              t = t.replace('class=\"portal-books\"', 'class=\"portal-books layout-bento\"', 1)
-            if 'bento-editorial.css' not in t and '</head>' in t:
-              t = t.replace('</head>', '  ' + link + chr(10) + '</head>', 1)
-            p.write_text(t, encoding='utf-8')
-            print('ok', rel, 'layout-bento' in t, 'bento-editorial.css' in t)
-          "
+
+          def prefix_for(p: Path) -> str:
+              depth = len(p.parts) - 1
+              return '' if depth <= 0 else '../' * depth
+
+          for p in targets:
+              if not p.exists():
+                  print('SKIP missing', p)
+                  continue
+              text = p.read_text(encoding='utf-8', errors='replace')
+              orig = text
+              pref = prefix_for(p)
+              css_href = f'{pref}assets/css/bento-editorial.css?v=18.1.6'
+              link = f'<link rel="stylesheet" href="{css_href}">' 
+
+              # body class: add layout-bento if missing (do not touch other attrs/text)
+              m = re.search(r'<body([^>]*)>', text)
+              if m:
+                  attrs = m.group(1)
+                  if 'layout-bento' not in attrs:
+                      # insert class into existing class="..." or add class
+                      cm = re.search(r'class="([^"]*)"', attrs)
+                      if cm:
+                          new_attrs = attrs[:cm.start(1)] + cm.group(1) + ' layout-bento' + attrs[cm.end(1):]
+                      else:
+                          new_attrs = attrs + ' class="layout-bento"'
+                      text = text[:m.start()] + '<body' + new_attrs + '>' + text[m.end():]
+
+              # CSS link once
+              if 'bento-editorial.css' not in text:
+                  if re.search(r'site\.css[^>]*>', text):
+                      text = re.sub(r'(site\.css[^>]*>)', r'\1\n' + link, text, count=1)
+                  elif '</head>' in text:
+                      text = text.replace('</head>', '  ' + link + '\n</head>', 1)
+
+              if text != orig:
+                  p.write_text(text, encoding='utf-8')
+                  print('UPDATED', p)
+              else:
+                  print('NOCHANGE', p)
+
+          # Verify no accidental text body changes beyond class/link
+          for p in targets:
+              if not p.exists():
+                  continue
+              t = p.read_text(encoding='utf-8')
+              assert 'layout-bento' in t, p
+              assert 'bento-editorial.css' in t, p
+              print('OK', p)
+          PY
 
       - name: Commit
         run: |
@@ -59,5 +90,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html about/index.html projects/index.html publications/index.html research/index.html contact/index.html Visitor/Visitindex.html HR-Recruiter/HRRindex.html Book-Publications-Reader/BPindex.html
           git status --short
-          git commit -m "V18.2.0: enable layout-bento on all index pages" || exit 0
+          git commit -m "V18.1.6: bento + editorial layout on index pages only (no text edits)" || exit 0
           git push origin HEAD:main
