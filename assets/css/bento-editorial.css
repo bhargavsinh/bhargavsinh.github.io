@@ -1,235 +1,329 @@
-/* ============================================================
-   Bento box + editorial scroll layout — Index pages only
-   V18.1.6 — Layout only; does not alter content text
-   Activate via body.layout-bento
-   ============================================================ */
+/* ==========================================================================
+   V18.2 — Bento Box + Editorial Scroll Layout
+   Pure CSS. No text/content changes. Applies to existing classes site-wide.
+   ========================================================================== */
 
-body.layout-bento {
-  --bento-gap: clamp(0.75rem, 1.5vw, 1.25rem);
-  --bento-radius: clamp(0.85rem, 1.5vw, 1.25rem);
-  --editorial-pad: clamp(2.5rem, 7vw, 5.5rem);
+/* ---------- Editorial measure & vertical rhythm ---------- */
+main.page {
+  max-width: min(76rem, 100%);
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 3vw, 1.75rem) clamp(3.5rem, 8vw, 5.5rem);
 }
 
-/* Editorial vertical rhythm */
-body.layout-bento main.page,
-body.layout-bento main#main {
-  max-width: min(1120px, 100%);
-  margin-inline: auto;
-  padding-inline: clamp(1rem, 3vw, 1.75rem);
-  padding-bottom: var(--editorial-pad);
+/* Long-form / policy / prose: editorial scroll column */
+main.page > h1,
+main.page > h2.kicker,
+main.page > .kicker,
+main.page > p.muted:first-of-type {
+  max-width: 42rem;
 }
 
-body.layout-bento .band,
-body.layout-bento .sec {
-  margin-top: 0;
-  padding-top: var(--editorial-pad);
-  padding-bottom: clamp(1.5rem, 4vw, 2.75rem);
-  border-top: 1px solid color-mix(in srgb, var(--line, #2a2a2a) 80%, transparent);
-  scroll-margin-top: calc(var(--header-h, 4rem) + 0.75rem);
+main.page > h1 {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin: 0.35rem 0 1rem;
+  text-wrap: balance;
 }
 
-body.layout-bento .band:first-of-type,
-body.layout-bento .sec:first-of-type,
-body.layout-bento .hero + .band,
-body.layout-bento .hero + .sec {
-  border-top: 0;
+main.page > h2:not(.kicker),
+main.page > h3 {
+  max-width: 40rem;
+  margin-top: clamp(1.75rem, 4vw, 2.75rem);
+  scroll-margin-top: calc(var(--header-h) + 1rem);
 }
 
-body.layout-bento .hero {
-  padding-top: clamp(1.75rem, 5vw, 3rem);
-  padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
-  gap: 1.15rem;
+main.page > p,
+main.page > ul,
+main.page > ol {
+  max-width: 40rem;
+  line-height: 1.75;
 }
 
-/* Bento grid — asymmetric card mosaic */
-body.layout-bento .grid,
-body.layout-bento ul.portals {
+main.page > p + p {
+  margin-top: 0.85rem;
+}
+
+/* Editorial section rhythm */
+main.page > section.box,
+main.page > .box {
+  max-width: 48rem;
+  margin-top: clamp(1.25rem, 3vw, 2rem);
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(165deg, color-mix(in srgb, var(--surface) 92%, var(--accent) 8%), var(--bg-2));
+  padding: clamp(1.15rem, 2.8vw, 1.85rem);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Bento grid (cards / portals / pubs) ---------- */
+.grid {
   display: grid;
+  gap: clamp(0.85rem, 2vw, 1.25rem);
   grid-template-columns: repeat(12, 1fr);
-  gap: var(--bento-gap);
-  margin-top: 1.35rem;
-  list-style: none;
-  padding: 0;
+  margin-top: clamp(1rem, 2.5vw, 1.5rem);
 }
 
-/* Default card span */
-body.layout-bento .grid > .card,
-body.layout-bento .grid > article,
-body.layout-bento ul.portals > li {
-  grid-column: span 6;
+/* Default: each card spans 4 of 12 (3-up). Small screens stack. */
+.grid > .card,
+.grid > article.card,
+.grid > a.card,
+.grid > .box {
+  grid-column: span 4;
   min-width: 0;
 }
 
-/* Staggered bento sizes (nth-child pattern) */
-body.layout-bento .grid > .card:nth-child(1),
-body.layout-bento .grid > article:nth-child(1),
-body.layout-bento ul.portals > li:nth-child(1) {
-  grid-column: span 7;
+/* Bento asymmetry on comfortable widths */
+@media (min-width: 720px) {
+  .grid > .card:nth-child(6n + 1),
+  .grid > article.card:nth-child(6n + 1) {
+    grid-column: span 7;
+  }
+  .grid > .card:nth-child(6n + 2),
+  .grid > article.card:nth-child(6n + 2) {
+    grid-column: span 5;
+  }
+  .grid > .card:nth-child(6n + 3),
+  .grid > article.card:nth-child(6n + 3) {
+    grid-column: span 5;
+  }
+  .grid > .card:nth-child(6n + 4),
+  .grid > article.card:nth-child(6n + 4) {
+    grid-column: span 7;
+  }
+  .grid > .card:nth-child(6n + 5),
+  .grid > article.card:nth-child(6n + 5) {
+    grid-column: span 4;
+  }
+  .grid > .card:nth-child(6n + 6),
+  .grid > article.card:nth-child(6n + 6) {
+    grid-column: span 8;
+  }
 }
-body.layout-bento .grid > .card:nth-child(2),
-body.layout-bento .grid > article:nth-child(2),
-body.layout-bento ul.portals > li:nth-child(2) {
-  grid-column: span 5;
+
+@media (max-width: 719px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .grid > .card,
+  .grid > article.card,
+  .grid > a.card,
+  .grid > .box {
+    grid-column: 1 / -1;
+  }
 }
-body.layout-bento .grid > .card:nth-child(3),
-body.layout-bento .grid > article:nth-child(3),
-body.layout-bento ul.portals > li:nth-child(3) {
-  grid-column: span 4;
+
+/* Publication cards: keep cover + body readable in bento cells */
+.grid > .card.pub {
+  display: grid;
+  grid-template-columns: minmax(5.5rem, 7.5rem) 1fr;
+  gap: 0.9rem 1rem;
+  align-items: start;
 }
-body.layout-bento .grid > .card:nth-child(4),
-body.layout-bento .grid > article:nth-child(4),
-body.layout-bento ul.portals > li:nth-child(4) {
-  grid-column: span 8;
+.grid > .card.pub .pcover {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-md);
 }
-body.layout-bento .grid > .card:nth-child(5),
-body.layout-bento .grid > article:nth-child(5),
-body.layout-bento ul.portals > li:nth-child(5) {
-  grid-column: span 5;
+.grid > .card.pub .pub-body {
+  min-width: 0;
 }
-body.layout-bento .grid > .card:nth-child(6),
-body.layout-bento .grid > article:nth-child(6),
-body.layout-bento ul.portals > li:nth-child(6) {
-  grid-column: span 7;
-}
-body.layout-bento .grid > .card:nth-child(7),
-body.layout-bento .grid > article:nth-child(7) {
-  grid-column: span 6;
-}
-body.layout-bento .grid > .card:nth-child(8),
-body.layout-bento .grid > article:nth-child(8) {
-  grid-column: span 6;
-}
-body.layout-bento .grid > .card:nth-child(n+9),
-body.layout-bento .grid > article:nth-child(n+9) {
-  grid-column: span 4;
+
+@media (max-width: 520px) {
+  .grid > .card.pub {
+    grid-template-columns: 1fr;
+  }
+  .grid > .card.pub .pcover {
+    max-width: 10rem;
+  }
 }
 
 /* Card surface — bento tile */
-body.layout-bento .card,
-body.layout-bento ul.portals .portal {
-  border-radius: var(--bento-radius);
-  padding: clamp(1.1rem, 2.2vw, 1.55rem);
-  border: 1px solid var(--line, #2a2a2a);
+.card {
+  border-radius: var(--r-xl);
+  padding: clamp(1.1rem, 2.5vw, 1.45rem);
   background:
-    linear-gradient(165deg,
-      color-mix(in srgb, var(--surface, #141414) 92%, transparent),
-      color-mix(in srgb, var(--bg-2, #0c0c0c) 88%, transparent));
-  box-shadow: 0 1px 0 color-mix(in srgb, #fff 4%, transparent) inset;
-  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
-  height: 100%;
+    linear-gradient(160deg, var(--surface) 0%, color-mix(in srgb, var(--surface-2) 80%, transparent) 100%);
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 40px -28px rgba(0, 0, 0, 0.85);
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
 }
-
-body.layout-bento .card:hover,
-body.layout-bento ul.portals .portal:hover {
+.card:hover {
   transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--accent, #c4a574) 45%, var(--line, #2a2a2a));
-  box-shadow:
-    0 12px 28px color-mix(in srgb, #000 35%, transparent),
-    0 1px 0 color-mix(in srgb, #fff 6%, transparent) inset;
+  border-color: var(--line-strong);
+  box-shadow: 0 20px 48px -24px rgba(0, 0, 0, 0.92);
+  background: var(--surface-2);
 }
 
-/* Portal list items fill grid cell */
-body.layout-bento ul.portals > li {
-  display: flex;
+/* ---------- Band / section editorial scroll ---------- */
+.band,
+section.band,
+.sec {
+  margin-top: clamp(2rem, 5vw, 3.25rem);
+  padding-top: clamp(0.5rem, 1.5vw, 1rem);
+  border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
 }
-body.layout-bento ul.portals .portal {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-  text-decoration: none;
-  color: inherit;
+.band:first-of-type,
+section.band:first-of-type {
+  border-top: 0;
+  margin-top: 1rem;
 }
 
-/* Contact list as compact bento strip */
-body.layout-bento ul.clist {
+.sec-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 0.35rem;
+  max-width: 76rem;
+}
+.sec-head h2 {
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+  margin: 0.15rem 0 0;
+}
+.sec-head .eyebrow {
+  font: 600 0.72rem/1 var(--font-ui);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+
+/* Hero as editorial lead */
+.hero {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
-  gap: var(--bento-gap);
-  list-style: none;
-  padding: 0;
-  margin-top: 1.25rem;
+  gap: 1.1rem;
+  justify-items: center;
+  text-align: center;
+  padding: clamp(1.75rem, 5vw, 3rem) 0 clamp(1.25rem, 3vw, 2rem);
 }
-body.layout-bento ul.clist > li {
-  border: 1px solid var(--line, #2a2a2a);
-  border-radius: var(--bento-radius);
-  padding: 0.95rem 1.1rem;
-  background: var(--surface, #141414);
+.hero h1 {
+  max-width: 18ch;
+  font-size: clamp(2rem, 5.5vw, 3.35rem);
+}
+.hero .lead,
+.lead {
+  max-width: 36rem;
+  line-height: 1.7;
 }
 
-/* Editorial section heads */
-body.layout-bento .sec-head {
-  margin-bottom: 0.25rem;
-  align-items: flex-end;
+/* Portal / feature tiles row → bento */
+.portals,
+.portal-grid,
+[data-portals] {
+  display: grid;
+  gap: clamp(0.85rem, 2vw, 1.2rem);
+  grid-template-columns: repeat(12, 1fr);
 }
-body.layout-bento .sec-head h2,
-body.layout-bento .sec-title,
-body.layout-bento .sec > h2 {
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+.portals > *,
+.portal-grid > * {
+  grid-column: span 4;
 }
-body.layout-bento .eyebrow {
+@media (min-width: 900px) {
+  .portals > *:nth-child(1),
+  .portal-grid > *:nth-child(1) { grid-column: span 5; }
+  .portals > *:nth-child(2),
+  .portal-grid > *:nth-child(2) { grid-column: span 7; }
+  .portals > *:nth-child(3),
+  .portal-grid > *:nth-child(3) { grid-column: span 7; }
+  .portals > *:nth-child(4),
+  .portal-grid > *:nth-child(4) { grid-column: span 5; }
+}
+@media (max-width: 719px) {
+  .portals,
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+  .portals > *,
+  .portal-grid > * {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Sticky editorial chrome feel ---------- */
+.crumbs {
+  max-width: 48rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Facts / dl in cards — denser editorial block */
+.card .facts,
+.pub-body .facts {
+  display: grid;
+  gap: 0.35rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  margin: 0.5rem 0 0;
+}
+.card .facts dt {
+  font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 0.72rem;
-  opacity: 0.75;
+  color: var(--muted);
+}
+.card .facts dd {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 0.92rem;
 }
 
-/* Soft scroll-snap for editorial sections (optional, reduced if prefers-reduced-motion) */
+/* Callouts as bento inset */
+.callout {
+  border-radius: var(--r-lg);
+  border-left: 3px solid var(--accent);
+  background: color-mix(in srgb, var(--surface-2) 90%, var(--accent) 10%);
+  padding: 1rem 1.15rem;
+  max-width: 42rem;
+}
+
+/* ---------- Scroll-driven editorial polish ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  body.layout-bento {
-    scroll-behavior: smooth;
-  }
-  body.layout-bento .band,
-  body.layout-bento .sec {
-    scroll-snap-align: start;
+  .band,
+  .sec,
+  main.page > section.box,
+  main.page > .box,
+  .grid > .card {
+    animation: editorial-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 18%;
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  body.layout-bento .card:hover,
-  body.layout-bento ul.portals .portal:hover {
+@keyframes editorial-in {
+  from {
+    opacity: 0.35;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
     transform: none;
   }
 }
 
-/* Tablet: 2-column friendly spans */
-@media (max-width: 900px) {
-  body.layout-bento .grid,
-  body.layout-bento ul.portals {
-    grid-template-columns: repeat(6, 1fr);
-  }
-  body.layout-bento .grid > .card,
-  body.layout-bento .grid > article,
-  body.layout-bento ul.portals > li,
-  body.layout-bento .grid > .card:nth-child(n),
-  body.layout-bento .grid > article:nth-child(n),
-  body.layout-bento ul.portals > li:nth-child(n) {
-    grid-column: span 3;
-  }
-  body.layout-bento .grid > .card:nth-child(3n+1),
-  body.layout-bento .grid > article:nth-child(3n+1),
-  body.layout-bento ul.portals > li:nth-child(3n+1) {
-    grid-column: span 6;
+@media (prefers-reduced-motion: reduce) {
+  .band,
+  .sec,
+  main.page > section.box,
+  .grid > .card {
+    animation: none !important;
   }
 }
 
-/* Mobile: single column stack */
-@media (max-width: 560px) {
-  body.layout-bento .grid,
-  body.layout-bento ul.portals {
-    grid-template-columns: 1fr;
+/* Print: keep editorial readable, drop bento motion */
+@media print {
+  .grid {
+    display: block;
   }
-  body.layout-bento .grid > .card,
-  body.layout-bento .grid > article,
-  body.layout-bento ul.portals > li,
-  body.layout-bento .grid > .card:nth-child(n),
-  body.layout-bento .grid > article:nth-child(n),
-  body.layout-bento ul.portals > li:nth-child(n) {
-    grid-column: span 1;
+  .grid > .card {
+    break-inside: avoid;
+    margin-bottom: 0.75rem;
+    box-shadow: none;
   }
-  body.layout-bento .band,
-  body.layout-bento .sec {
-    padding-top: clamp(1.75rem, 6vw, 2.5rem);
+  main.page > h1,
+  main.page > p,
+  main.page > ul {
+    max-width: none;
   }
 }
