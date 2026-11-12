@@ -1,7 +1,7 @@
 /* Service worker — V19.0 Digital Kingdom
    Navigation: network-first (4 s timeout) → cache → offline page.
    Same-origin assets + Google Fonts: stale-while-revalidate. Old caches are purged on activate. */
-const VERSION = '19.0-dk';
+const VERSION = '19.0-palace';
 const CACHE = 'bs-' + VERSION;
 const FONTS = 'bs-fonts';
 const OFFLINE = '/offline.html';
@@ -21,7 +21,7 @@ const PRECACHE = [
   "/assets/css/site.css?v=18.1.0",
   "/assets/css/bento-editorial.css?v=18.2.0",
   "/assets/css/swiss.css?v=19.0.0",
-  "/assets/css/kingdom.css?v=19.0.0",
+  "/assets/css/kingdom.css?v=19.0.1",
   "/assets/css/protect-l4.css?v=18.1.3",
   "/assets/js/site.js?v=18.1.0",
   "/assets/js/theme.js?v=18.1.0",
