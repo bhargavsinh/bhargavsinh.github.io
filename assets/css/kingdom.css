@@ -1,0 +1,405 @@
+/* ==========================================================================
+   V19.0 — DIGITAL KINGDOM
+   Rajputana Fort · Three Royal Towers · Palace Interior
+   Visual architecture only. Absolute text preservation.
+   ========================================================================== */
+
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #F2EBDD;
+  --bg-2: #E8DFD0;
+  --surface: #FFFFFF;
+  --surface-2: #F7F1E6;
+  --surface-3: #EDE4D4;
+  --line: rgba(41, 37, 31, 0.18);
+  --line-strong: rgba(88, 31, 42, 0.45);
+  --text: #29251F;
+  --text-2: #4A433A;
+  --muted: #6B6358;
+  --accent: #581F2A;
+  --accent-ink: #F2EBDD;
+  --accent-2: #B08D57;
+  --sand: #C5A477;
+  --ivory: #F2EBDD;
+  --maroon: #581F2A;
+  --gold: #B08D57;
+  --charcoal: #29251F;
+  --ok: #2F5D3A;
+  --focus: #B08D57;
+  --portal: #581F2A;
+  --shadow: 0 12px 32px -18px rgba(41, 37, 31, 0.35);
+  --r-sm: 0.2rem;
+  --r-md: 0.35rem;
+  --r-lg: 0.5rem;
+  --r-xl: 0.65rem;
+  --font-ui: "Helvetica Neue", Helvetica, Arial, "Noto Sans Gujarati", "Noto Sans Devanagari", sans-serif;
+  --font-display: Georgia, "Palatino Linotype", "Book Antiqua", "Noto Sans Gujarati", "Noto Sans Devanagari", serif;
+  --font-body: var(--font-ui);
+  --header-h: 3.75rem;
+  --kingdom-max: 74rem;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #1A1612;
+  --bg-2: #241F19;
+  --surface: #2A241E;
+  --surface-2: #322B23;
+  --surface-3: #3A3229;
+  --line: rgba(197, 164, 119, 0.22);
+  --line-strong: rgba(176, 141, 87, 0.5);
+  --text: #F2EBDD;
+  --text-2: #D4CBBA;
+  --muted: #A89F90;
+  --accent: #C5A477;
+  --accent-ink: #1A1612;
+  --accent-2: #B08D57;
+  --sand: #C5A477;
+  --ivory: #F2EBDD;
+  --maroon: #8B3A4A;
+  --gold: #B08D57;
+  --charcoal: #F2EBDD;
+  --focus: #C5A477;
+  --portal: #C5A477;
+  --shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.65);
+}
+
+/* ---------- Base fort field ---------- */
+body {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--sand) 12%, var(--bg)) 0%, var(--bg) 28%, var(--bg) 100%) !important;
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+body.home {
+  background:
+    radial-gradient(ellipse 120% 50% at 50% -10%, color-mix(in srgb, var(--sand) 35%, transparent), transparent 55%),
+    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 40%) !important;
+}
+
+/* Palace rooms — portal pages */
+body.portal-visitor,
+body.portal-hr,
+body.portal-books {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--maroon) 6%, var(--bg)) 0%, var(--bg) 18%) !important;
+}
+
+.bar {
+  background: color-mix(in srgb, var(--ivory) 92%, transparent) !important;
+  border-bottom: 1px solid var(--line) !important;
+  backdrop-filter: blur(8px);
+}
+:root[data-theme="dark"] .bar {
+  background: color-mix(in srgb, var(--bg) 90%, transparent) !important;
+}
+.brand b { color: var(--maroon) !important; }
+:root[data-theme="dark"] .brand b { color: var(--gold) !important; }
+
+.nav a[aria-current="page"]::after {
+  background: var(--maroon) !important;
+}
+:root[data-theme="dark"] .nav a[aria-current="page"]::after {
+  background: var(--gold) !important;
+}
+
+main.page {
+  max-width: var(--kingdom-max);
+}
+
+/* ---------- Fort complex + Three Towers ---------- */
+.fort-complex {
+  position: relative;
+  margin-top: 1.25rem;
+  padding: clamp(1rem, 3vw, 1.75rem) clamp(0.75rem, 2vw, 1.25rem) clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--line-strong);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--sand) 22%, var(--surface)) 0%, var(--surface-2) 55%, var(--surface-3) 100%);
+  box-shadow: var(--shadow);
+}
+
+.fort-complex::before {
+  content: "";
+  display: block;
+  height: 10px;
+  margin: -0.25rem -0.5rem 1rem;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--maroon) 0 12px,
+      color-mix(in srgb, var(--sand) 70%, var(--maroon)) 12px 24px
+    );
+  opacity: 0.85;
+}
+
+.fort-skyline {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  pointer-events: none;
+  opacity: 0.9;
+}
+.fort-skyline svg {
+  width: min(100%, 42rem);
+  height: auto;
+  display: block;
+}
+
+/* Towers = existing .portals list */
+ul.portals.towers,
+.portals.towers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.75rem, 2vw, 1.35rem);
+  align-items: stretch;
+}
+
+/* Visual order: Visitor | HR | Books (HTML order is Books, HR, Visitor) */
+.portals.towers > li:nth-child(1) { order: 3; } /* Books */
+.portals.towers > li:nth-child(2) { order: 2; } /* HR */
+.portals.towers > li:nth-child(3) { order: 1; } /* Visitor */
+
+.portals.towers > li {
+  margin: 0;
+  display: flex;
+}
+
+a.portal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 0;
+  border: none;
+  background: transparent;
+  position: relative;
+  min-height: 100%;
+}
+
+/* Tower body */
+a.portal::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: clamp(4.5rem, 12vw, 7rem);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--sand) 55%, #fff) 0%, var(--sand) 40%, color-mix(in srgb, var(--maroon) 25%, var(--sand)) 100%);
+  border: 2px solid color-mix(in srgb, var(--charcoal) 35%, var(--sand));
+  border-bottom: none;
+  clip-path: polygon(8% 100%, 8% 28%, 18% 28%, 18% 12%, 50% 0, 82% 12%, 82% 28%, 92% 28%, 92% 100%);
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+/* Arch / gate opening */
+a.portal::after {
+  content: "";
+  position: absolute;
+  top: clamp(2.6rem, 7vw, 4.2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(1.8rem, 5vw, 2.6rem);
+  height: clamp(2.2rem, 6vw, 3.2rem);
+  background: color-mix(in srgb, var(--charcoal) 75%, var(--maroon));
+  border-radius: 999px 999px 4px 4px / 60% 60% 4px 4px;
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--gold) 50%, transparent);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+  pointer-events: none;
+}
+
+a.portal .portal-img {
+  position: relative;
+  z-index: 1;
+  margin-top: -1.75rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--sand) 50%, transparent);
+}
+a.portal .portal-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.92);
+}
+
+a.portal b {
+  display: block;
+  margin-top: 0.85rem;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  padding: 0 0.5rem;
+}
+a.portal > span:not(.portal-img) {
+  display: block;
+  margin-top: 0.35rem;
+  padding: 0 0.65rem 1rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text-2);
+  max-width: 18rem;
+}
+
+/* Tower pedestal */
+.portals.towers > li {
+  background:
+    linear-gradient(180deg, transparent 0 42%, color-mix(in srgb, var(--sand) 30%, var(--surface)) 42%, var(--surface-2) 100%);
+  border: 1px solid var(--line);
+  padding: 0.75rem 0.35rem 0.5rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+a.portal:hover::before,
+a.portal:focus-visible::before {
+  filter: brightness(1.06);
+  transform: translateY(-3px);
+}
+a.portal:hover::after,
+a.portal:focus-visible::after {
+  background: color-mix(in srgb, var(--maroon) 80%, #000);
+  box-shadow: inset 0 0 0 2px var(--gold), 0 0 12px color-mix(in srgb, var(--gold) 40%, transparent);
+}
+.portals.towers > li:hover,
+.portals.towers > li:focus-within {
+  border-color: var(--maroon);
+  box-shadow: var(--shadow);
+}
+
+a.portal:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Character accents per tower (by HTML order + CSS order) */
+.portals.towers > li:nth-child(3) a.portal::before {
+  /* Visitor — warmer open sandstone */
+  background: linear-gradient(180deg, #E2C9A0 0%, var(--sand) 45%, #A8845C 100%);
+}
+.portals.towers > li:nth-child(2) a.portal::before {
+  /* HR — formal, cooler stone */
+  background: linear-gradient(180deg, #D4C4A8 0%, #B89A72 50%, #8F7350 100%);
+}
+.portals.towers > li:nth-child(1) a.portal::before {
+  /* Books — scholarly deeper tone */
+  background: linear-gradient(180deg, #D9C5A4 0%, #B89568 40%, color-mix(in srgb, var(--maroon) 30%, #8A6B45) 100%);
+}
+
+/* ---------- Palace interior chrome ---------- */
+body.portal-visitor .subbar,
+body.portal-hr .subbar,
+body.portal-books .subbar {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--maroon) 12%, var(--bg-2)), var(--bg-2)) !important;
+  border-bottom: 1px solid var(--line-strong) !important;
+}
+
+body.portal-visitor main.page,
+body.portal-hr main.page,
+body.portal-books main.page {
+  border-left: 3px solid color-mix(in srgb, var(--gold) 55%, var(--sand));
+  border-right: 3px solid color-mix(in srgb, var(--gold) 55%, var(--sand));
+  padding-left: clamp(1rem, 3vw, 1.75rem);
+  padding-right: clamp(1rem, 3vw, 1.75rem);
+}
+
+.card,
+.box {
+  border: 1px solid var(--line) !important;
+  background: var(--surface) !important;
+  box-shadow: var(--shadow);
+  border-radius: var(--r-md) !important;
+}
+.card:hover {
+  border-color: color-mix(in srgb, var(--maroon) 40%, var(--line)) !important;
+}
+
+.btn {
+  border-radius: var(--r-sm) !important;
+  background: var(--maroon) !important;
+  border-color: var(--maroon) !important;
+  color: var(--ivory) !important;
+}
+.btn:hover {
+  background: color-mix(in srgb, var(--maroon) 85%, #000) !important;
+}
+.btn.ghost {
+  background: transparent !important;
+  color: var(--maroon) !important;
+  border-color: var(--maroon) !important;
+}
+.btn.ghost:hover {
+  background: var(--maroon) !important;
+  color: var(--ivory) !important;
+}
+
+.kicker,
+.eyebrow,
+.accent {
+  color: var(--maroon) !important;
+}
+:root[data-theme="dark"] .kicker,
+:root[data-theme="dark"] .eyebrow,
+:root[data-theme="dark"] .accent {
+  color: var(--gold) !important;
+}
+
+.band {
+  border-top-color: var(--line) !important;
+}
+
+.foot {
+  background: color-mix(in srgb, var(--sand) 15%, var(--bg)) !important;
+  border-top: 2px solid color-mix(in srgb, var(--maroon) 35%, var(--line)) !important;
+}
+
+/* ---------- Responsive towers ---------- */
+@media (max-width: 799px) {
+  ul.portals.towers,
+  .portals.towers {
+    grid-template-columns: 1fr;
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+  .portals.towers > li:nth-child(1),
+  .portals.towers > li:nth-child(2),
+  .portals.towers > li:nth-child(3) {
+    order: initial;
+  }
+  /* Mobile narrative order: Visitor, HR, Books */
+  .portals.towers > li:nth-child(3) { order: 1; }
+  .portals.towers > li:nth-child(2) { order: 2; }
+  .portals.towers > li:nth-child(1) { order: 3; }
+
+  a.portal::before {
+    height: 5.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.portal::before,
+  .portals.towers > li {
+    transition: none !important;
+  }
+}
+
+@media print {
+  .fort-skyline { display: none; }
+  a.portal::before,
+  a.portal::after { display: none; }
+}
