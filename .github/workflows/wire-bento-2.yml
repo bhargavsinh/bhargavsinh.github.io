@@ -1,0 +1,69 @@
+name: Wire bento remaining
+
+on:
+  push:
+    paths:
+      - '.github/workflows/wire-bento-2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  wire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inject missing bento links (head only)
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          def prefix_for(path: Path) -> str:
+              depth = len(path.parts) - 1
+              return '' if depth <= 0 else '../' * depth
+
+          missing_before = []
+          fixed = 0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              text = p.read_text(encoding='utf-8', errors='replace')
+              if 'bento-editorial.css' in text:
+                  continue
+              missing_before.append(str(p))
+              pref = prefix_for(p)
+              link = f'  <link rel="stylesheet" href="{pref}assets/css/bento-editorial.css?v=18.2.0">\n'
+
+              # Insert immediately before </head>
+              if '</head>' in text:
+                  text = text.replace('</head>', link + '</head>', 1)
+              elif re.search(r'site\.css', text):
+                  text = re.sub(r'(<link[^>]*site\.css[^>]*>)', r'\1\n' + link.rstrip(), text, count=1)
+              else:
+                  print('no inject point', p)
+                  continue
+              p.write_text(text, encoding='utf-8')
+              fixed += 1
+              print('fixed', p)
+
+          print('missing_before', len(missing_before))
+          print('fixed', fixed)
+
+          # Verify none missing
+          still = [str(p) for p in Path('.').rglob('*.html')
+                   if '.git' not in p.parts and '.github' not in p.parts
+                   and 'bento-editorial.css' not in p.read_text(encoding='utf-8', errors='replace')]
+          print('still_missing', still[:20], 'count', len(still))
+          assert len(still) == 0, still
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "V18.2.0: bento-editorial on remaining pages" || exit 0
+          git push origin HEAD:main
