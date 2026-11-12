@@ -1,0 +1,78 @@
+name: Force chrome update
+
+on:
+  push:
+    paths:
+      - '.github/workflows/force-chrome.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: sed and python force update
+        run: |
+          set -eux
+          # Version in every HTML
+          find . -name '*.html' -not -path './.git/*' -print0 | xargs -0 sed -i 's/V18\.1\.0/V18.2.1/g'
+          find . -name '*.html' -not -path './.git/*' -print0 | xargs -0 sed -i 's/V18\.2\.0/V18.2.1/g'
+
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          def pref(p):
+              d = len(p.parts) - 1
+              return '' if d <= 0 else '../' * d
+
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              t = p.read_text(encoding='utf-8', errors='replace')
+              pr = pref(p)
+              # Ensure Copyright link in footer Legal column
+              if '<h4>Legal</h4>' in t and 'copyright-policy.html' not in t.split('<h4>Legal</h4>')[1].split('<h4>')[0]:
+                  t = t.replace(
+                      f'<a href="{pr}Visitor/grievance.html">Grievance</a><a href="{pr}Visitor/policy-center.html">Policy Center</a>',
+                      f'<a href="{pr}Visitor/grievance.html">Grievance</a><a href="{pr}Visitor/copyright-policy.html">Copyright</a><a href="{pr}Visitor/policy-center.html">Policy Center</a>',
+                      1,
+                  )
+                  # alternate without pref if absolute
+                  t = t.replace(
+                      '<a href="Visitor/grievance.html">Grievance</a><a href="Visitor/policy-center.html">Policy Center</a>',
+                      '<a href="Visitor/grievance.html">Grievance</a><a href="Visitor/copyright-policy.html">Copyright</a><a href="Visitor/policy-center.html">Policy Center</a>',
+                      1,
+                  )
+                  t = t.replace(
+                      '<a href="/Visitor/grievance.html">Grievance</a><a href="/Visitor/policy-center.html">Policy Center</a>',
+                      '<a href="/Visitor/grievance.html">Grievance</a><a href="/Visitor/copyright-policy.html">Copyright</a><a href="/Visitor/policy-center.html">Policy Center</a>',
+                      1,
+                  )
+              # header/footer data-v
+              if 'class="bar"' in t and 'data-v="18.2.1"' not in t:
+                  t = t.replace('<header class="bar" id="top">', '<header class="bar" id="top" data-v="18.2.1">', 1)
+                  t = t.replace('<header class="bar">', '<header class="bar" data-v="18.2.1">', 1)
+              if 'class="foot"' in t and 'data-v="18.2.1"' not in t.split('class="foot"')[1][:40]:
+                  t = t.replace('<footer class="foot">', '<footer class="foot" data-v="18.2.1">', 1)
+              p.write_text(t, encoding='utf-8')
+          # verify
+          idx = Path('index.html').read_text(encoding='utf-8')
+          assert 'V18.2.1' in idx, idx[idx.find('foot-base'):idx.find('foot-base')+120]
+          print('index foot snippet:', re.search(r'foot-base.*?</div>', idx, re.S).group(0)[:160])
+          print('copyright in index', 'copyright-policy' in idx)
+          print('data-v header', 'data-v="18.2.1"' in idx)
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -30
+          git commit -m "V18.2.1: all headers/footers — version V18.2.1 + Copyright legal link" || exit 0
+          git push origin HEAD:main
