@@ -1,0 +1,52 @@
+name: Audit fix layout-bento CSS
+
+on:
+  push:
+    paths:
+      - '.github/workflows/audit-fix-bento-class.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Append layout-bento rules if missing
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          css_path = Path('assets/css/bento-editorial.css')
+          css = css_path.read_text(encoding='utf-8')
+          marker = '/* layout-bento body marker */'
+          block = '''
+/* layout-bento body marker */
+body.layout-bento main.page {
+  max-width: min(76rem, 100%);
+}
+body.layout-bento .grid > .card {
+  border-radius: var(--r-xl);
+}
+'''
+          if marker not in css:
+              css_path.write_text(css.rstrip() + '\n' + block, encoding='utf-8')
+              print('appended')
+          else:
+              print('exists')
+          # mirror into site.css if embedded copy lacks marker
+          site = Path('assets/css/site.css')
+          sc = site.read_text(encoding='utf-8')
+          if 'V18.2 — Bento Box' in sc and marker not in sc:
+              site.write_text(sc.rstrip() + '\n' + block, encoding='utf-8')
+              print('site.css appended')
+          print('sw version', Path('sw.js').read_text(encoding='utf-8').split('VERSION')[1][:20])
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/css/bento-editorial.css assets/css/site.css sw.js
+          git commit -m "V18.2.1: layout-bento CSS rules (audit fix)" || exit 0
+          git push origin HEAD:main

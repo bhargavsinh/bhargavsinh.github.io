@@ -1,7 +1,7 @@
-/* Service worker — V18.1.0
+/* Service worker — V18.2.1
    Navigation: network-first (4 s timeout) → cache → offline page.
    Same-origin assets + Google Fonts: stale-while-revalidate. Old caches are purged on activate. */
-const VERSION = '18.1.0';
+const VERSION = '18.2.1';
 const CACHE = 'bs-' + VERSION;
 const FONTS = 'bs-fonts';
 const OFFLINE = '/offline.html';
@@ -19,8 +19,11 @@ const PRECACHE = [
   "/research/",
   "/contact/",
   "/assets/css/site.css?v=18.1.0",
+  "/assets/css/bento-editorial.css?v=18.2.0",
+  "/assets/css/protect-l4.css?v=18.1.3",
   "/assets/js/site.js?v=18.1.0",
   "/assets/js/theme.js?v=18.1.0",
+  "/assets/js/protect-l4.js?v=18.1.3",
   "/assets/search-index.json",
   "/assets/images/brand/brand-mark.webp",
   "/assets/images/brand/brand-mark-192.png",
@@ -61,46 +64,67 @@ const PRECACHE = [
 ];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => Promise.all(PRECACHE.map((u) => c.add(u).catch(() => {})))));
+  e.waitUntil(caches.open(CACHE).then((c) => Promise.all(PRECACHE.map((u) => c.add(u).catch(() => {})))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (e) => {
   e.waitUntil(
-    caches.keys()
-      .then((ks) => Promise.all(ks.filter((k) => k !== CACHE && k !== FONTS).map((k) => caches.delete(k))))
-      .then(() => self.clients.claim())
+    caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE && k !== FONTS).map((k) => caches.delete(k)))).then(() => self.clients.claim())
   );
 });
 
-self.addEventListener('message', (e) => { if (e.data && e.data.type === 'SKIP_WAITING') self.skipWaiting(); });
+function swr(req, isFont) {
+  const bucket = isFont ? FONTS : CACHE;
+  return caches.open(bucket).then((cache) =>
+    cache.match(req).then((cached) => {
+      const fetched = fetch(req)
+        .then((res) => {
+          if (res && res.ok) {
+            const copy = res.clone();
+            cache.put(req, copy);
+          }
+          return res;
+        })
+        .catch(() => cached);
+      return cached || fetched;
+    })
+  );
+}
 
-function timeout(ms) { return new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms)); }
-
-self.addEventListener('fetch', (event) => {
-  const req = event.request;
+self.addEventListener('fetch', (e) => {
+  const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
+  const same = url.origin === self.location.origin;
+  const isFont =
+    url.hostname === 'fonts.googleapis.com' ||
+    url.hostname === 'fonts.gstatic.com' ||
+    (same && /\.(woff2?|ttf|otf)(\?|$)/i.test(url.pathname));
 
   if (req.mode === 'navigate') {
-    event.respondWith(
-      Promise.race([fetch(req), timeout(4000)])
-        .then((res) => { if (res && res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); } return res; })
-        .catch(() => caches.match(req, { ignoreSearch: true }).then((r) => r || caches.match(OFFLINE)))
+    e.respondWith(
+      (async () => {
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), 4000);
+        try {
+          const res = await fetch(req, { signal: ctrl.signal });
+          clearTimeout(t);
+          if (res && res.ok) {
+            const cache = await caches.open(CACHE);
+            cache.put(req, res.clone());
+          }
+          return res;
+        } catch (err) {
+          clearTimeout(t);
+          const cache = await caches.open(CACHE);
+          return (await cache.match(req)) || (await cache.match(OFFLINE)) || Response.error();
+        }
+      })()
     );
     return;
   }
 
-  const sameOrigin = url.origin === self.location.origin;
-  const isFont = url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com';
-  if (!sameOrigin && !isFont) return;                       // e.g. Formspree: never touch
-
-  const bucket = isFont ? FONTS : CACHE;
-  event.respondWith(
-    caches.open(bucket).then((cache) =>
-      cache.match(req).then((hit) => {
-        const net = fetch(req).then((res) => { if (res && (res.ok || res.type === 'opaque')) cache.put(req, res.clone()); return res; }).catch(() => hit);
-        return hit || net;
-      })
-    )
-  );
+  if (same || isFont) {
+    e.respondWith(swr(req, isFont));
+  }
 });
