@@ -1,0 +1,629 @@
+/* ==========================================================================
+   BHARGAVSINH SISODIYA — V19.0.0 Swiss International Style Edition
+   Visual-only redesign. Absolute text preservation. No content edits.
+   Principles: grid, typography, asymmetry, whitespace, minimal ornament.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap");
+
+/* ---------- 1. Swiss tokens (override prior themes) ---------- */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #FFFFFF;
+  --bg-2: #F5F5F5;
+  --surface: #FFFFFF;
+  --surface-2: #F5F5F5;
+  --surface-3: #EEEEEE;
+  --line: #DDDDDD;
+  --line-strong: #111111;
+  --text: #111111;
+  --text-2: #666666;
+  --muted: #666666;
+  --accent: #D71920;
+  --accent-ink: #FFFFFF;
+  --accent-2: #A01018;
+  --maroon: #F5F5F5;
+  --ok: #111111;
+  --focus: #D71920;
+  --portal: #D71920;
+  --shadow: none;
+  --r-sm: 0;
+  --r-md: 0;
+  --r-lg: 0;
+  --r-xl: 0;
+  --font-ui: "Helvetica Neue", Helvetica, Arial, "Noto Sans Gujarati", "Noto Sans Devanagari", sans-serif;
+  --font-display: "Helvetica Neue", Helvetica, Arial, "Noto Sans Gujarati", "Noto Sans Devanagari", sans-serif;
+  --font-body: var(--font-ui);
+  --font-mono: "Helvetica Neue", Helvetica, Arial, monospace;
+  --header-h: 3.5rem;
+  --swiss-max: 72rem;
+  --swiss-gutter: clamp(1rem, 3vw, 2rem);
+  --swiss-col-gap: 1.25rem;
+}
+
+/* Restrained Swiss dark (optional toggle) */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #111111;
+  --bg-2: #1A1A1A;
+  --surface: #111111;
+  --surface-2: #1A1A1A;
+  --surface-3: #242424;
+  --line: #333333;
+  --line-strong: #FFFFFF;
+  --text: #FFFFFF;
+  --text-2: #AAAAAA;
+  --muted: #999999;
+  --accent: #D71920;
+  --accent-ink: #FFFFFF;
+  --accent-2: #FF4D55;
+  --maroon: #1A1A1A;
+  --ok: #FFFFFF;
+  --focus: #D71920;
+  --portal: #D71920;
+  --shadow: none;
+}
+
+/* ---------- 2. Base — flat, typographic ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg) !important;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: calc(1rem * var(--fs, 1));
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Kill decorative gradients from prior system */
+body::before,
+body::after {
+  display: none !important;
+}
+
+a {
+  color: var(--text);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+a:hover {
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text);
+  text-wrap: balance;
+}
+
+p {
+  color: var(--text-2);
+  max-width: 40rem;
+  line-height: 1.65;
+}
+
+/* ---------- 3. Chrome — header / nav ---------- */
+.progress {
+  height: 2px;
+  background: transparent;
+}
+.progress > i {
+  background: var(--accent);
+}
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid var(--line);
+}
+.bar-in {
+  max-width: var(--swiss-max);
+  margin: 0 auto;
+  height: var(--header-h);
+  padding: 0 var(--swiss-gutter);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text) !important;
+}
+.brand b {
+  color: var(--accent) !important;
+  font-weight: 700;
+}
+.brand img {
+  border-radius: 0 !important;
+  filter: grayscale(1);
+}
+
+.nav a {
+  font: 500 0.8rem/1 var(--font-ui);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-2);
+  padding: 0.5rem 0.65rem;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.nav a:hover {
+  color: var(--text);
+  background: transparent !important;
+}
+.nav a[aria-current="page"] {
+  color: var(--text);
+}
+.nav a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0.65rem;
+  right: 0.65rem;
+  bottom: 0.15rem;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 0;
+}
+
+.ib {
+  border: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  box-shadow: none !important;
+}
+.ib:hover {
+  border-color: var(--text) !important;
+  background: var(--bg-2) !important;
+}
+
+.badge {
+  border-radius: 0 !important;
+  border: 1px solid var(--text);
+  color: var(--text);
+  font: 600 0.65rem/1 var(--font-ui);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.55rem;
+}
+
+.subbar {
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+}
+.subbar-in {
+  max-width: var(--swiss-max);
+  margin: 0 auto;
+  padding: 0.55rem var(--swiss-gutter);
+}
+.subbar a {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-2);
+}
+.subbar a:hover {
+  color: var(--accent);
+}
+
+.drawer {
+  background: rgba(17, 17, 17, 0.35);
+}
+.drawer-panel {
+  background: var(--bg) !important;
+  border-left: 1px solid var(--line);
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ---------- 4. Main layout — 12-col editorial ---------- */
+main.page {
+  flex: 1;
+  width: 100%;
+  max-width: var(--swiss-max);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem) var(--swiss-gutter) clamp(3rem, 8vw, 5rem);
+}
+
+.hero {
+  display: grid;
+  gap: 1.25rem;
+  justify-items: start;
+  text-align: left;
+  padding: clamp(2rem, 6vw, 4rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+  border-bottom: 1px solid var(--line);
+}
+.hero h1 {
+  max-width: 14ch;
+  font-size: clamp(2.4rem, 7vw, 4.25rem);
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  margin: 0;
+}
+.hero .lead,
+.lead {
+  max-width: 36rem;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.hero-media {
+  width: 100%;
+  border-radius: 0 !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: none !important;
+  filter: grayscale(0.15);
+}
+
+.kicker,
+.eyebrow {
+  font: 600 0.7rem/1 var(--font-ui) !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: var(--accent) !important;
+}
+
+.band,
+section.band,
+.sec {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  padding-top: clamp(1rem, 2.5vw, 1.75rem);
+  border-top: 1px solid var(--line);
+}
+.band:first-of-type {
+  border-top: 0;
+}
+
+.sec-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.sec-head h2 {
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  letter-spacing: -0.02em;
+  margin: 0.2rem 0 0;
+}
+.sec-head .more {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px solid var(--text);
+}
+.sec-head .more:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- 5. Grid — mathematical bento / Swiss modules ---------- */
+.grid {
+  display: grid !important;
+  gap: var(--swiss-col-gap) !important;
+  grid-template-columns: repeat(12, 1fr) !important;
+  margin-top: 1.25rem;
+}
+.grid > .card,
+.grid > article.card,
+.grid > a.card,
+.grid > .box {
+  grid-column: span 4;
+  min-width: 0;
+}
+
+@media (min-width: 720px) {
+  .grid > .card:nth-child(6n + 1),
+  .grid > article.card:nth-child(6n + 1) { grid-column: span 7; }
+  .grid > .card:nth-child(6n + 2),
+  .grid > article.card:nth-child(6n + 2) { grid-column: span 5; }
+  .grid > .card:nth-child(6n + 3),
+  .grid > article.card:nth-child(6n + 3) { grid-column: span 5; }
+  .grid > .card:nth-child(6n + 4),
+  .grid > article.card:nth-child(6n + 4) { grid-column: span 7; }
+  .grid > .card:nth-child(6n + 5),
+  .grid > article.card:nth-child(6n + 5) { grid-column: span 4; }
+  .grid > .card:nth-child(6n + 6),
+  .grid > article.card:nth-child(6n + 6) { grid-column: span 8; }
+}
+
+@media (max-width: 719px) {
+  .grid { grid-template-columns: 1fr !important; }
+  .grid > .card,
+  .grid > article.card,
+  .grid > a.card,
+  .grid > .box { grid-column: 1 / -1; }
+}
+
+/* ---------- 6. Cards / boxes — thin border, no radius, no shadow ---------- */
+.card,
+.box,
+.panel,
+.callout {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  padding: 1.25rem !important;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  transform: none !important;
+}
+.card:hover {
+  transform: none !important;
+  border-color: var(--text) !important;
+  background: var(--bg-2) !important;
+}
+.card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: -0.015em;
+}
+.card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-2);
+}
+.card-link {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font: 600 0.75rem/1 var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px solid var(--text);
+  align-self: flex-start;
+}
+.card-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.grid > .card.pub {
+  display: grid;
+  grid-template-columns: minmax(5rem, 7rem) 1fr;
+  gap: 1rem;
+}
+.grid > .card.pub .pcover {
+  border-radius: 0 !important;
+  border: 1px solid var(--line);
+  width: 100%;
+  filter: grayscale(0.05);
+}
+
+.chip,
+.chip.ok {
+  border-radius: 0 !important;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  color: var(--text);
+  font: 600 0.65rem/1 var(--font-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.45rem;
+}
+
+/* ---------- 7. Buttons ---------- */
+.btn,
+a.btn,
+button.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.15rem;
+  border: 1px solid var(--text);
+  border-radius: 0 !important;
+  background: var(--text);
+  color: var(--bg);
+  font: 600 0.75rem/1 var(--font-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+.btn:hover,
+a.btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+.btn.ghost,
+a.btn.ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--text);
+}
+.btn.ghost:hover,
+a.btn.ghost:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* ---------- 8. Forms ---------- */
+input, textarea, select {
+  border-radius: 0 !important;
+  border: 1px solid var(--line) !important;
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: var(--font-ui);
+  box-shadow: none !important;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--text) !important;
+  outline: 2px solid var(--accent);
+  outline-offset: 0;
+}
+
+/* ---------- 9. Footer ---------- */
+.foot {
+  background: var(--bg) !important;
+  border-top: 1px solid var(--line);
+  margin-top: auto;
+}
+.foot-in {
+  max-width: var(--swiss-max);
+  margin: 0 auto;
+  padding: 2rem var(--swiss-gutter);
+}
+.foot a {
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+.foot a:hover {
+  color: var(--accent);
+}
+.foot-base {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- 10. Policy / long-form editorial ---------- */
+main.page > h1 {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  max-width: 20ch;
+  margin: 0.5rem 0 1.25rem;
+  letter-spacing: -0.03em;
+}
+main.page > h2:not(.kicker) {
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  margin-top: 2.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  max-width: 40rem;
+}
+main.page > p,
+main.page > ul,
+main.page > ol {
+  max-width: 40rem;
+  color: var(--text-2);
+}
+main.page > section.box,
+main.page > .box {
+  max-width: 42rem;
+  margin-top: 1.5rem;
+  background: var(--bg-2) !important;
+}
+
+.crumbs {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  max-width: 42rem;
+}
+
+/* ---------- 11. Misc prior-theme overrides ---------- */
+.intro {
+  background: var(--bg) !important;
+}
+.intro-mark {
+  color: var(--text) !important;
+  font-family: var(--font-display);
+  letter-spacing: -0.04em;
+}
+.intro-mark span {
+  color: var(--text) !important;
+}
+.intro-mark span:nth-child(odd) {
+  color: var(--accent) !important;
+}
+
+.search,
+.toast {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+img.protected,
+picture img {
+  border-radius: 0;
+}
+
+/* Accent utility kept meaningful in Swiss red */
+.accent {
+  color: var(--accent) !important;
+}
+
+/* Soften prior motion for Swiss calm */
+@media (prefers-reduced-motion: no-preference) {
+  .band,
+  .sec,
+  .grid > .card {
+    animation: none;
+  }
+}
+
+/* ---------- 12. Responsive ---------- */
+@media (max-width: 899px) {
+  .nav { display: none; }
+}
+
+@media (max-width: 599px) {
+  .hero h1 {
+    font-size: clamp(2rem, 11vw, 2.75rem);
+  }
+  .grid > .card.pub {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 13. Print ---------- */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .bar, .drawer, .progress, .intro, .ib { display: none !important; }
+  .card, .box {
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+  }
+  a { color: #000; text-decoration: none; }
+}
