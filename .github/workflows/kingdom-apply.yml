@@ -1,0 +1,104 @@
+name: Apply Kingdom Fort
+
+on:
+  push:
+    paths:
+      - '.github/workflows/kingdom-apply.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          html = Path('index.html').read_text(encoding='utf-8')
+
+          if 'fort-complex' not in html:
+              m = re.search(r'<section class="band"[^>]*id="portals"[\s\S]*?</section>', html)
+              if not m:
+                  raise SystemExit('no portals section')
+              block = m.group(0)
+              for needle in ['Book &amp; Publications Reader', 'HR Recruiter', 'Visitor',
+                             'Published Gujarati works', 'Skills, projects', 'Personal projects']:
+                  if needle not in block:
+                      raise SystemExit('text missing: ' + needle)
+              um = re.search(r'<ul class="portals"[^>]*>[\s\S]*?</ul>', block)
+              if not um:
+                  raise SystemExit('no ul')
+              ul = um.group(0).replace('class="portals"', 'class="portals towers"', 1)
+              head_m = re.search(r'<div class="sec-head">[\s\S]*?</div>\s*</div>', block)
+              head = head_m.group(0) if head_m else ''
+              rm = re.search(r'<p class="resume-link"[\s\S]*?</p>', block)
+              resume = rm.group(0) if rm else ''
+              sky = '''<div class="fort-skyline" aria-hidden="true"><svg viewBox="0 0 800 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><path fill="#C5A477" d="M0 90 V55 H40 V35 L55 20 L70 35 V55 H120 V40 L140 18 L160 40 V55 H220 V30 L250 5 L280 30 V55 H340 V38 L360 22 L380 38 V55 H440 V28 L470 8 L500 28 V55 H560 V40 L580 24 L600 40 V55 H660 V35 L680 18 L700 35 V55 H760 V48 H800 V90 Z"/><path fill="#581F2A" opacity=".35" d="M55 20 L70 35 V55 H40 V35 Z M140 18 L160 40 V55 H120 V40 Z M250 5 L280 30 V55 H220 V30 Z M360 22 L380 38 V55 H340 V38 Z M470 8 L500 28 V55 H440 V28 Z M580 24 L600 40 V55 H560 V40 Z M680 18 L700 35 V55 H660 V35 Z"/></svg></div>'''
+              new_block = (
+                  '<section class="band kingdom-fort" id="portals" aria-labelledby="port-h">\n'
+                  f'  {head}\n'
+                  '  <div class="fort-complex">\n'
+                  f'  {sky}\n'
+                  f'  {ul}\n'
+                  '  </div>\n'
+                  f'  {resume}\n'
+                  '</section>'
+              )
+              html = html[:m.start()] + new_block + html[m.end():]
+              print('fort applied')
+          else:
+              print('fort already')
+
+          if 'kingdom.css' not in html:
+              html = html.replace('</head>', '  <link rel="stylesheet" href="assets/css/kingdom.css?v=19.0.0">\n</head>', 1)
+
+          if 'kingdom-home' not in html and '<body' in html:
+              html = re.sub(r'<body class="([^"]*)"', r'<body class="\1 kingdom-home"', html, count=1)
+
+          Path('index.html').write_text(html, encoding='utf-8')
+
+          # verify texts
+          t = Path('index.html').read_text(encoding='utf-8')
+          assert 'fort-complex' in t
+          assert 'portals towers' in t
+          assert 'Published Gujarati works, research essays and reading resources.' in t
+          assert 'Skills, projects and writing work at a glance.' in t
+          assert 'Personal projects, Gujarati writing, genealogy and heritage.' in t
+          assert 'Visitor/Visitindex.html' in t and 'HR-Recruiter/HRRindex.html' in t and 'Book-Publications-Reader/BPindex.html' in t
+
+          # link all html
+          def pref(p):
+              d=len(p.parts)-1
+              return '' if d<=0 else '../'*d
+          n=0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts: continue
+              x=p.read_text(encoding='utf-8', errors='replace')
+              if 'kingdom.css' in x: continue
+              if '</head>' not in x: continue
+              p.write_text(x.replace('</head>', f'  <link rel="stylesheet" href="{pref(p)}assets/css/kingdom.css?v=19.0.0">\n</head>', 1), encoding='utf-8')
+              n+=1
+          print('linked', n)
+
+          # sw
+          sw=Path('sw.js').read_text(encoding='utf-8')
+          sw=sw.replace("VERSION = '19.0.0'", "VERSION = '19.0-dk'")
+          sw=sw.replace('Service worker — V19.0.0', 'Service worker — V19.0 Digital Kingdom')
+          if 'kingdom.css' not in sw:
+              sw=sw.replace('"/assets/css/swiss.css?v=19.0.0",', '"/assets/css/swiss.css?v=19.0.0",\n  "/assets/css/kingdom.css?v=19.0.0",')
+          Path('sw.js').write_text(sw, encoding='utf-8')
+          print('done')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "V19.0: Implement Digital Kingdom Three-Tower Architecture" || exit 0
+          git push origin HEAD:main
