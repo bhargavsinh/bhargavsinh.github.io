@@ -460,3 +460,334 @@ body.home { background: radial-gradient(900px 400px at 50% -6%, color-mix(in srg
   .wide-only { display: block; } .narrow-only { display: none; }
   .hero-media { display: none; }
 }
+
+
+/* ==========================================================================
+   V18.2 — Bento Box + Editorial Scroll Layout
+   Pure CSS. No text/content changes. Applies to existing classes site-wide.
+   ========================================================================== */
+
+/* ---------- Editorial measure & vertical rhythm ---------- */
+main.page {
+  max-width: min(76rem, 100%);
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 3vw, 1.75rem) clamp(3.5rem, 8vw, 5.5rem);
+}
+
+/* Long-form / policy / prose: editorial scroll column */
+main.page > h1,
+main.page > h2.kicker,
+main.page > .kicker,
+main.page > p.muted:first-of-type {
+  max-width: 42rem;
+}
+
+main.page > h1 {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin: 0.35rem 0 1rem;
+  text-wrap: balance;
+}
+
+main.page > h2:not(.kicker),
+main.page > h3 {
+  max-width: 40rem;
+  margin-top: clamp(1.75rem, 4vw, 2.75rem);
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+main.page > p,
+main.page > ul,
+main.page > ol {
+  max-width: 40rem;
+  line-height: 1.75;
+}
+
+main.page > p + p {
+  margin-top: 0.85rem;
+}
+
+/* Editorial section rhythm */
+main.page > section.box,
+main.page > .box {
+  max-width: 48rem;
+  margin-top: clamp(1.25rem, 3vw, 2rem);
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(165deg, color-mix(in srgb, var(--surface) 92%, var(--accent) 8%), var(--bg-2));
+  padding: clamp(1.15rem, 2.8vw, 1.85rem);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Bento grid (cards / portals / pubs) ---------- */
+.grid {
+  display: grid;
+  gap: clamp(0.85rem, 2vw, 1.25rem);
+  grid-template-columns: repeat(12, 1fr);
+  margin-top: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+/* Default: each card spans 4 of 12 (3-up). Small screens stack. */
+.grid > .card,
+.grid > article.card,
+.grid > a.card,
+.grid > .box {
+  grid-column: span 4;
+  min-width: 0;
+}
+
+/* Bento asymmetry on comfortable widths */
+@media (min-width: 720px) {
+  .grid > .card:nth-child(6n + 1),
+  .grid > article.card:nth-child(6n + 1) {
+    grid-column: span 7;
+  }
+  .grid > .card:nth-child(6n + 2),
+  .grid > article.card:nth-child(6n + 2) {
+    grid-column: span 5;
+  }
+  .grid > .card:nth-child(6n + 3),
+  .grid > article.card:nth-child(6n + 3) {
+    grid-column: span 5;
+  }
+  .grid > .card:nth-child(6n + 4),
+  .grid > article.card:nth-child(6n + 4) {
+    grid-column: span 7;
+  }
+  .grid > .card:nth-child(6n + 5),
+  .grid > article.card:nth-child(6n + 5) {
+    grid-column: span 4;
+  }
+  .grid > .card:nth-child(6n + 6),
+  .grid > article.card:nth-child(6n + 6) {
+    grid-column: span 8;
+  }
+}
+
+@media (max-width: 719px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .grid > .card,
+  .grid > article.card,
+  .grid > a.card,
+  .grid > .box {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Publication cards: keep cover + body readable in bento cells */
+.grid > .card.pub {
+  display: grid;
+  grid-template-columns: minmax(5.5rem, 7.5rem) 1fr;
+  gap: 0.9rem 1rem;
+  align-items: start;
+}
+.grid > .card.pub .pcover {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-md);
+}
+.grid > .card.pub .pub-body {
+  min-width: 0;
+}
+
+@media (max-width: 520px) {
+  .grid > .card.pub {
+    grid-template-columns: 1fr;
+  }
+  .grid > .card.pub .pcover {
+    max-width: 10rem;
+  }
+}
+
+/* Card surface — bento tile */
+.card {
+  border-radius: var(--r-xl);
+  padding: clamp(1.1rem, 2.5vw, 1.45rem);
+  background:
+    linear-gradient(160deg, var(--surface) 0%, color-mix(in srgb, var(--surface-2) 80%, transparent) 100%);
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 40px -28px rgba(0, 0, 0, 0.85);
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+  box-shadow: 0 20px 48px -24px rgba(0, 0, 0, 0.92);
+  background: var(--surface-2);
+}
+
+/* ---------- Band / section editorial scroll ---------- */
+.band,
+section.band,
+.sec {
+  margin-top: clamp(2rem, 5vw, 3.25rem);
+  padding-top: clamp(0.5rem, 1.5vw, 1rem);
+  border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+}
+.band:first-of-type,
+section.band:first-of-type {
+  border-top: 0;
+  margin-top: 1rem;
+}
+
+.sec-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 0.35rem;
+  max-width: 76rem;
+}
+.sec-head h2 {
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+  margin: 0.15rem 0 0;
+}
+.sec-head .eyebrow {
+  font: 600 0.72rem/1 var(--font-ui);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+
+/* Hero as editorial lead */
+.hero {
+  display: grid;
+  gap: 1.1rem;
+  justify-items: center;
+  text-align: center;
+  padding: clamp(1.75rem, 5vw, 3rem) 0 clamp(1.25rem, 3vw, 2rem);
+}
+.hero h1 {
+  max-width: 18ch;
+  font-size: clamp(2rem, 5.5vw, 3.35rem);
+}
+.hero .lead,
+.lead {
+  max-width: 36rem;
+  line-height: 1.7;
+}
+
+/* Portal / feature tiles row → bento */
+.portals,
+.portal-grid,
+[data-portals] {
+  display: grid;
+  gap: clamp(0.85rem, 2vw, 1.2rem);
+  grid-template-columns: repeat(12, 1fr);
+}
+.portals > *,
+.portal-grid > * {
+  grid-column: span 4;
+}
+@media (min-width: 900px) {
+  .portals > *:nth-child(1),
+  .portal-grid > *:nth-child(1) { grid-column: span 5; }
+  .portals > *:nth-child(2),
+  .portal-grid > *:nth-child(2) { grid-column: span 7; }
+  .portals > *:nth-child(3),
+  .portal-grid > *:nth-child(3) { grid-column: span 7; }
+  .portals > *:nth-child(4),
+  .portal-grid > *:nth-child(4) { grid-column: span 5; }
+}
+@media (max-width: 719px) {
+  .portals,
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+  .portals > *,
+  .portal-grid > * {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Sticky editorial chrome feel ---------- */
+.crumbs {
+  max-width: 48rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Facts / dl in cards — denser editorial block */
+.card .facts,
+.pub-body .facts {
+  display: grid;
+  gap: 0.35rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  margin: 0.5rem 0 0;
+}
+.card .facts dt {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.card .facts dd {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 0.92rem;
+}
+
+/* Callouts as bento inset */
+.callout {
+  border-radius: var(--r-lg);
+  border-left: 3px solid var(--accent);
+  background: color-mix(in srgb, var(--surface-2) 90%, var(--accent) 10%);
+  padding: 1rem 1.15rem;
+  max-width: 42rem;
+}
+
+/* ---------- Scroll-driven editorial polish ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .band,
+  .sec,
+  main.page > section.box,
+  main.page > .box,
+  .grid > .card {
+    animation: editorial-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 18%;
+  }
+}
+@keyframes editorial-in {
+  from {
+    opacity: 0.35;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .band,
+  .sec,
+  main.page > section.box,
+  .grid > .card {
+    animation: none !important;
+  }
+}
+
+/* Print: keep editorial readable, drop bento motion */
+@media print {
+  .grid {
+    display: block;
+  }
+  .grid > .card {
+    break-inside: avoid;
+    margin-bottom: 0.75rem;
+    box-shadow: none;
+  }
+  main.page > h1,
+  main.page > p,
+  main.page > ul {
+    max-width: none;
+  }
+}
