@@ -1,19 +1,21 @@
 /* ==========================================================================
-   V19.0 — DIGITAL KINGDOM
-   Rajputana Fort · Three Royal Towers · Palace Interior
-   Visual architecture only. Absolute text preservation.
+   V19.0 — DIGITAL KINGDOM · FULL PALACE IDENTITY
+   One coherent Rajputana / Mewar palace across every page.
+   Visual only. Absolute text preservation.
+   Homepage = Main Palace · Portals = Wings · Pages = Chambers
    ========================================================================== */
 
+/* ---------- Tokens ---------- */
 :root,
 :root[data-theme="light"] {
   color-scheme: light;
   --bg: #F2EBDD;
   --bg-2: #E8DFD0;
-  --surface: #FFFFFF;
+  --surface: #FFFaf3;
   --surface-2: #F7F1E6;
   --surface-3: #EDE4D4;
-  --line: rgba(41, 37, 31, 0.18);
-  --line-strong: rgba(88, 31, 42, 0.45);
+  --line: rgba(41, 37, 31, 0.16);
+  --line-strong: rgba(88, 31, 42, 0.42);
   --text: #29251F;
   --text-2: #4A433A;
   --muted: #6B6358;
@@ -28,16 +30,18 @@
   --ok: #2F5D3A;
   --focus: #B08D57;
   --portal: #581F2A;
-  --shadow: 0 12px 32px -18px rgba(41, 37, 31, 0.35);
-  --r-sm: 0.2rem;
-  --r-md: 0.35rem;
-  --r-lg: 0.5rem;
-  --r-xl: 0.65rem;
+  --shadow: 0 14px 36px -20px rgba(41, 37, 31, 0.38);
+  --r-sm: 0.15rem;
+  --r-md: 0.3rem;
+  --r-lg: 0.45rem;
+  --r-xl: 0.55rem;
   --font-ui: "Helvetica Neue", Helvetica, Arial, "Noto Sans Gujarati", "Noto Sans Devanagari", sans-serif;
   --font-display: Georgia, "Palatino Linotype", "Book Antiqua", "Noto Sans Gujarati", "Noto Sans Devanagari", serif;
   --font-body: var(--font-ui);
   --header-h: 3.75rem;
   --kingdom-max: 74rem;
+  --wing: var(--sand);
+  --wing-deep: var(--maroon);
 }
 
 :root[data-theme="dark"] {
@@ -47,8 +51,8 @@
   --surface: #2A241E;
   --surface-2: #322B23;
   --surface-3: #3A3229;
-  --line: rgba(197, 164, 119, 0.22);
-  --line-strong: rgba(176, 141, 87, 0.5);
+  --line: rgba(197, 164, 119, 0.2);
+  --line-strong: rgba(176, 141, 87, 0.48);
   --text: #F2EBDD;
   --text-2: #D4CBBA;
   --muted: #A89F90;
@@ -62,86 +66,451 @@
   --charcoal: #F2EBDD;
   --focus: #C5A477;
   --portal: #C5A477;
-  --shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.65);
+  --shadow: 0 16px 40px -22px rgba(0, 0, 0, 0.7);
+  --wing: var(--gold);
+  --wing-deep: var(--gold);
 }
 
-/* ---------- Base fort field ---------- */
+/* Wing accents (portal atmospheres) */
+body.portal-visitor { --wing: #C5A477; --wing-deep: #8A5A3A; }
+body.portal-hr { --wing: #B08D57; --wing-deep: #581F2A; }
+body.portal-books { --wing: #A8845C; --wing-deep: #4A2030; }
+body.hub { --wing: var(--sand); --wing-deep: var(--maroon); }
+body.home { --wing: var(--sand); --wing-deep: var(--maroon); }
+
+/* ---------- Palace field (every page) ---------- */
+html { background: var(--bg); }
 body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--sand) 12%, var(--bg)) 0%, var(--bg) 28%, var(--bg) 100%) !important;
-  color: var(--text);
-  font-family: var(--font-body);
+    linear-gradient(180deg, color-mix(in srgb, var(--wing) 14%, var(--bg)) 0%, var(--bg) 22%, var(--bg) 100%) !important;
+  color: var(--text) !important;
+  font-family: var(--font-body) !important;
+  -webkit-font-smoothing: antialiased;
 }
-
 body.home {
   background:
-    radial-gradient(ellipse 120% 50% at 50% -10%, color-mix(in srgb, var(--sand) 35%, transparent), transparent 55%),
-    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 40%) !important;
+    radial-gradient(ellipse 110% 48% at 50% -8%, color-mix(in srgb, var(--sand) 40%, transparent), transparent 58%),
+    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 42%) !important;
 }
 
-/* Palace rooms — portal pages */
-body.portal-visitor,
-body.portal-hr,
-body.portal-books {
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--maroon) 6%, var(--bg)) 0%, var(--bg) 18%) !important;
+/* Kill Swiss pure-white dominance when kingdom loads after */
+body::before {
+  content: none !important;
 }
 
+a { color: var(--text); }
+a:hover { color: var(--maroon); }
+:root[data-theme="dark"] a:hover { color: var(--gold); }
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display) !important;
+  color: var(--text) !important;
+  letter-spacing: -0.015em;
+  line-height: 1.18;
+}
+p { color: var(--text-2); line-height: 1.65; }
+
+/* ---------- Header = palace corridor ---------- */
+.progress { height: 3px; }
+.progress > i {
+  background: linear-gradient(90deg, var(--maroon), var(--gold)) !important;
+}
 .bar {
-  background: color-mix(in srgb, var(--ivory) 92%, transparent) !important;
-  border-bottom: 1px solid var(--line) !important;
-  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--ivory) 94%, var(--sand)) !important;
+  border-bottom: 1px solid var(--line-strong) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--gold) 25%, transparent);
 }
 :root[data-theme="dark"] .bar {
-  background: color-mix(in srgb, var(--bg) 90%, transparent) !important;
+  background: color-mix(in srgb, var(--bg) 92%, var(--sand)) !important;
+}
+.bar-in {
+  max-width: var(--kingdom-max);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 1.75rem);
+}
+.brand {
+  font-family: var(--font-display) !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92rem !important;
+  color: var(--text) !important;
 }
 .brand b { color: var(--maroon) !important; }
 :root[data-theme="dark"] .brand b { color: var(--gold) !important; }
-
+.brand img {
+  border-radius: 0.2rem !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 50%, transparent);
+}
+.nav a {
+  font: 500 0.78rem/1 var(--font-ui) !important;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-2) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.nav a:hover { color: var(--text) !important; background: transparent !important; }
+.nav a[aria-current="page"] { color: var(--text) !important; }
 .nav a[aria-current="page"]::after {
   background: var(--maroon) !important;
+  border-radius: 0 !important;
+  height: 2px !important;
 }
-:root[data-theme="dark"] .nav a[aria-current="page"]::after {
-  background: var(--gold) !important;
+:root[data-theme="dark"] .nav a[aria-current="page"]::after { background: var(--gold) !important; }
+
+.ib {
+  border: 1px solid var(--line) !important;
+  border-radius: 0.2rem !important;
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  box-shadow: none !important;
+}
+.ib:hover {
+  border-color: var(--gold) !important;
+  background: var(--surface-2) !important;
 }
 
-main.page {
+.badge {
+  border-radius: 0.15rem !important;
+  border: 1px solid var(--maroon) !important;
+  color: var(--maroon) !important;
+  background: color-mix(in srgb, var(--sand) 20%, transparent);
+  font: 600 0.62rem/1 var(--font-ui) !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+:root[data-theme="dark"] .badge {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+}
+
+/* Subbar = wing corridor */
+.subbar {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--wing-deep) 10%, var(--bg-2)), var(--bg-2)) !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+.subbar-in {
   max-width: var(--kingdom-max);
+  margin: 0 auto;
+  padding: 0.5rem clamp(1rem, 3vw, 1.75rem);
+}
+.subbar a {
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-2);
+}
+.subbar a:hover { color: var(--maroon); }
+:root[data-theme="dark"] .subbar a:hover { color: var(--gold); }
+
+.drawer { background: rgba(41, 37, 31, 0.4); }
+.drawer-panel {
+  background: var(--surface) !important;
+  border-left: 3px solid var(--gold) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--shadow) !important;
 }
 
-/* ---------- Fort complex + Three Towers ---------- */
+/* ---------- Main chamber ---------- */
+main.page {
+  flex: 1;
+  width: 100%;
+  max-width: var(--kingdom-max);
+  margin: 0 auto;
+  padding: clamp(1.35rem, 3.5vw, 2.5rem) clamp(1rem, 3vw, 1.75rem) clamp(3rem, 7vw, 5rem);
+  position: relative;
+}
+
+/* Chamber pillars (side borders) on all non-plain pages */
+body:not(.plain) main.page {
+  border-left: 3px solid color-mix(in srgb, var(--gold) 45%, var(--sand));
+  border-right: 3px solid color-mix(in srgb, var(--gold) 45%, var(--sand));
+  background: color-mix(in srgb, var(--surface) 55%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sand) 25%, transparent);
+}
+
+.crumbs {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.crumbs a { color: var(--text-2); text-decoration: none; }
+.crumbs a:hover { color: var(--maroon); }
+
+/* ---------- Hero / darbar ---------- */
+.hero {
+  display: grid;
+  gap: 1.15rem;
+  padding: clamp(1.75rem, 5vw, 3.25rem) 0 clamp(1.25rem, 3vw, 2rem);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--maroon), var(--gold), transparent);
+  opacity: 0.55;
+}
+.hero h1 {
+  font-size: clamp(2.1rem, 6vw, 3.75rem) !important;
+  letter-spacing: -0.03em;
+  max-width: 16ch;
+}
+.hero .lead, .lead {
+  max-width: 38rem;
+  color: var(--text-2);
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  line-height: 1.65;
+}
+.hero-media {
+  border-radius: var(--r-md) !important;
+  border: 2px solid color-mix(in srgb, var(--gold) 55%, var(--sand)) !important;
+  box-shadow: var(--shadow) !important;
+  filter: saturate(0.95);
+}
+
+.kicker, .eyebrow, .accent {
+  color: var(--maroon) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-size: 0.7rem !important;
+}
+:root[data-theme="dark"] .kicker,
+:root[data-theme="dark"] .eyebrow,
+:root[data-theme="dark"] .accent {
+  color: var(--gold) !important;
+}
+
+/* ---------- Sections / galleries ---------- */
+.band, section.band, .sec {
+  margin-top: clamp(1.75rem, 4vw, 3rem);
+  padding-top: clamp(0.85rem, 2vw, 1.35rem);
+  border-top: 1px solid var(--line) !important;
+}
+.sec-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 0.85rem;
+}
+.sec-head h2 {
+  font-size: clamp(1.25rem, 2.8vw, 1.75rem) !important;
+  margin: 0.15rem 0 0;
+}
+.sec-head .more {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--maroon);
+  border-bottom: 1px solid color-mix(in srgb, var(--maroon) 40%, transparent);
+}
+:root[data-theme="dark"] .sec-head .more { color: var(--gold); }
+
+/* ---------- Grid / exhibition cards ---------- */
+.grid {
+  display: grid !important;
+  gap: clamp(0.85rem, 2vw, 1.2rem) !important;
+  grid-template-columns: repeat(12, 1fr) !important;
+}
+.grid > .card,
+.grid > article.card,
+.grid > a.card {
+  grid-column: span 4;
+  min-width: 0;
+}
+@media (min-width: 720px) {
+  .grid > .card:nth-child(6n + 1), .grid > article.card:nth-child(6n + 1) { grid-column: span 7; }
+  .grid > .card:nth-child(6n + 2), .grid > article.card:nth-child(6n + 2) { grid-column: span 5; }
+  .grid > .card:nth-child(6n + 3), .grid > article.card:nth-child(6n + 3) { grid-column: span 5; }
+  .grid > .card:nth-child(6n + 4), .grid > article.card:nth-child(6n + 4) { grid-column: span 7; }
+  .grid > .card:nth-child(6n + 5), .grid > article.card:nth-child(6n + 5) { grid-column: span 4; }
+  .grid > .card:nth-child(6n + 6), .grid > article.card:nth-child(6n + 6) { grid-column: span 8; }
+}
+@media (max-width: 719px) {
+  .grid { grid-template-columns: 1fr !important; }
+  .grid > .card, .grid > article.card { grid-column: 1 / -1; }
+}
+
+.card, .box, .panel, .callout {
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--r-md) !important;
+  box-shadow: var(--shadow) !important;
+  padding: 1.15rem 1.2rem !important;
+  position: relative;
+}
+/* Carved top edge */
+.card::before, .box::before {
+  content: "";
+  position: absolute;
+  left: 0.75rem; right: 0.75rem; top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.55;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card:hover {
+  border-color: color-mix(in srgb, var(--maroon) 35%, var(--line)) !important;
+  box-shadow: 0 16px 40px -18px rgba(88, 31, 42, 0.28) !important;
+  transform: translateY(-2px);
+}
+.card h3 { margin: 0; font-size: 1.12rem; }
+.card p { margin: 0; font-size: 0.94rem; color: var(--text-2); }
+.card-link {
+  margin-top: auto;
+  padding-top: 0.65rem;
+  font: 600 0.72rem/1 var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--maroon);
+  border-bottom: 1px solid color-mix(in srgb, var(--maroon) 35%, transparent);
+  align-self: flex-start;
+}
+:root[data-theme="dark"] .card-link { color: var(--gold); }
+
+.grid > .card.pub {
+  display: grid;
+  grid-template-columns: minmax(5rem, 7rem) 1fr;
+  gap: 0.9rem 1rem;
+}
+.grid > .card.pub .pcover {
+  border-radius: var(--r-sm) !important;
+  border: 1px solid var(--line);
+  width: 100%;
+}
+@media (max-width: 520px) {
+  .grid > .card.pub { grid-template-columns: 1fr; }
+}
+
+.chip, .chip.ok {
+  border-radius: 0.15rem !important;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--sand) 18%, var(--surface-2));
+  color: var(--text);
+  font: 600 0.62rem/1 var(--font-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.42rem;
+}
+
+.card .facts, .pub-body .facts {
+  display: grid;
+  gap: 0.3rem 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+  margin: 0.4rem 0 0;
+}
+.card .facts dt {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.card .facts dd { margin: 0; font-size: 0.9rem; color: var(--text-2); }
+
+/* ---------- Buttons = inlaid stone ---------- */
+.btn, a.btn, button.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid var(--maroon) !important;
+  border-radius: 0.2rem !important;
+  background: var(--maroon) !important;
+  color: var(--ivory) !important;
+  font: 600 0.72rem/1 var(--font-ui) !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+.btn:hover, a.btn:hover {
+  background: color-mix(in srgb, var(--maroon) 82%, #000) !important;
+  border-color: color-mix(in srgb, var(--maroon) 82%, #000) !important;
+}
+.btn.ghost, a.btn.ghost {
+  background: transparent !important;
+  color: var(--maroon) !important;
+  border-color: var(--maroon) !important;
+}
+.btn.ghost:hover, a.btn.ghost:hover {
+  background: var(--maroon) !important;
+  color: var(--ivory) !important;
+}
+
+/* ---------- Forms ---------- */
+input, textarea, select {
+  border-radius: 0.2rem !important;
+  border: 1px solid var(--line) !important;
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  font-family: var(--font-ui);
+  box-shadow: none !important;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--gold) !important;
+  outline: 2px solid color-mix(in srgb, var(--gold) 50%, transparent);
+}
+
+/* ---------- Search / toast ---------- */
+.search, .toast {
+  border-radius: var(--r-md) !important;
+  border: 1px solid var(--line-strong) !important;
+  background: var(--surface) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+/* ---------- Fort + Three Towers (homepage) ---------- */
 .fort-complex {
   position: relative;
-  margin-top: 1.25rem;
-  padding: clamp(1rem, 3vw, 1.75rem) clamp(0.75rem, 2vw, 1.25rem) clamp(1.25rem, 3vw, 2rem);
+  margin-top: 1.15rem;
+  padding: clamp(1rem, 3vw, 1.65rem) clamp(0.7rem, 2vw, 1.15rem) clamp(1.15rem, 3vw, 1.85rem);
   border: 1px solid var(--line-strong);
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--sand) 22%, var(--surface)) 0%, var(--surface-2) 55%, var(--surface-3) 100%);
+    linear-gradient(180deg, color-mix(in srgb, var(--sand) 28%, var(--surface)) 0%, var(--surface-2) 58%, var(--surface-3) 100%);
   box-shadow: var(--shadow);
 }
-
 .fort-complex::before {
   content: "";
   display: block;
-  height: 10px;
-  margin: -0.25rem -0.5rem 1rem;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      var(--maroon) 0 12px,
-      color-mix(in srgb, var(--sand) 70%, var(--maroon)) 12px 24px
-    );
-  opacity: 0.85;
+  height: 9px;
+  margin: -0.2rem -0.4rem 0.95rem;
+  background: repeating-linear-gradient(90deg, var(--maroon) 0 11px, color-mix(in srgb, var(--sand) 65%, var(--maroon)) 11px 22px);
+  opacity: 0.88;
 }
-
 .fort-skyline {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 0.35rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
   pointer-events: none;
-  opacity: 0.9;
+  opacity: 0.92;
 }
 .fort-skyline svg {
   width: min(100%, 42rem);
@@ -149,28 +518,26 @@ main.page {
   display: block;
 }
 
-/* Towers = existing .portals list */
-ul.portals.towers,
-.portals.towers {
+ul.portals.towers, .portals.towers {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid !important;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(0.75rem, 2vw, 1.35rem);
+  gap: clamp(0.7rem, 2vw, 1.25rem);
   align-items: stretch;
 }
-
-/* Visual order: Visitor | HR | Books (HTML order is Books, HR, Visitor) */
-.portals.towers > li:nth-child(1) { order: 3; } /* Books */
-.portals.towers > li:nth-child(2) { order: 2; } /* HR */
-.portals.towers > li:nth-child(3) { order: 1; } /* Visitor */
-
+.portals.towers > li:nth-child(1) { order: 3; }
+.portals.towers > li:nth-child(2) { order: 2; }
+.portals.towers > li:nth-child(3) { order: 1; }
 .portals.towers > li {
   margin: 0;
   display: flex;
+  background: linear-gradient(180deg, transparent 0 40%, color-mix(in srgb, var(--sand) 28%, var(--surface)) 40%, var(--surface-2) 100%);
+  border: 1px solid var(--line);
+  padding: 0.7rem 0.3rem 0.45rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-
 a.portal {
   flex: 1;
   display: flex;
@@ -185,221 +552,213 @@ a.portal {
   position: relative;
   min-height: 100%;
 }
-
-/* Tower body */
 a.portal::before {
   content: "";
   display: block;
   width: 100%;
-  height: clamp(4.5rem, 12vw, 7rem);
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--sand) 55%, #fff) 0%, var(--sand) 40%, color-mix(in srgb, var(--maroon) 25%, var(--sand)) 100%);
-  border: 2px solid color-mix(in srgb, var(--charcoal) 35%, var(--sand));
+  height: clamp(4.4rem, 12vw, 6.8rem);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--sand) 55%, #fff) 0%, var(--sand) 42%, color-mix(in srgb, var(--maroon) 22%, var(--sand)) 100%);
+  border: 2px solid color-mix(in srgb, var(--charcoal) 32%, var(--sand));
   border-bottom: none;
   clip-path: polygon(8% 100%, 8% 28%, 18% 28%, 18% 12%, 50% 0, 82% 12%, 82% 28%, 92% 28%, 92% 100%);
   transition: filter 0.25s ease, transform 0.25s ease;
 }
-
-/* Arch / gate opening */
 a.portal::after {
   content: "";
   position: absolute;
-  top: clamp(2.6rem, 7vw, 4.2rem);
+  top: clamp(2.5rem, 7vw, 4rem);
   left: 50%;
   transform: translateX(-50%);
-  width: clamp(1.8rem, 5vw, 2.6rem);
-  height: clamp(2.2rem, 6vw, 3.2rem);
-  background: color-mix(in srgb, var(--charcoal) 75%, var(--maroon));
-  border-radius: 999px 999px 4px 4px / 60% 60% 4px 4px;
-  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--gold) 50%, transparent);
-  transition: background 0.25s ease, box-shadow 0.25s ease;
+  width: clamp(1.7rem, 5vw, 2.5rem);
+  height: clamp(2.1rem, 6vw, 3.1rem);
+  background: color-mix(in srgb, var(--charcoal) 72%, var(--maroon));
+  border-radius: 999px 999px 3px 3px / 58% 58% 3px 3px;
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--gold) 55%, transparent);
   pointer-events: none;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
 }
-
 a.portal .portal-img {
   position: relative;
   z-index: 1;
-  margin-top: -1.75rem;
-  width: 4.5rem;
-  height: 4.5rem;
+  margin-top: -1.65rem;
+  width: 4.35rem;
+  height: 4.35rem;
   border-radius: 50%;
   border: 2px solid var(--gold);
   overflow: hidden;
   background: var(--surface);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--sand) 50%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--sand) 45%, transparent);
 }
 a.portal .portal-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(0.92);
+  width: 100%; height: 100%; object-fit: cover; display: block;
 }
-
 a.portal b {
   display: block;
-  margin-top: 0.85rem;
+  margin-top: 0.8rem;
   font-family: var(--font-display);
-  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-size: clamp(0.92rem, 2vw, 1.12rem);
   font-weight: 700;
   color: var(--text);
-  letter-spacing: 0.02em;
-  padding: 0 0.5rem;
+  padding: 0 0.45rem;
 }
 a.portal > span:not(.portal-img) {
   display: block;
-  margin-top: 0.35rem;
-  padding: 0 0.65rem 1rem;
-  font-size: 0.88rem;
+  margin-top: 0.3rem;
+  padding: 0 0.55rem 0.9rem;
+  font-size: 0.86rem;
   line-height: 1.45;
   color: var(--text-2);
-  max-width: 18rem;
+  max-width: 17.5rem;
 }
-
-/* Tower pedestal */
-.portals.towers > li {
-  background:
-    linear-gradient(180deg, transparent 0 42%, color-mix(in srgb, var(--sand) 30%, var(--surface)) 42%, var(--surface-2) 100%);
-  border: 1px solid var(--line);
-  padding: 0.75rem 0.35rem 0.5rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-a.portal:hover::before,
-a.portal:focus-visible::before {
-  filter: brightness(1.06);
+a.portal:hover::before, a.portal:focus-visible::before {
+  filter: brightness(1.05);
   transform: translateY(-3px);
 }
-a.portal:hover::after,
-a.portal:focus-visible::after {
-  background: color-mix(in srgb, var(--maroon) 80%, #000);
-  box-shadow: inset 0 0 0 2px var(--gold), 0 0 12px color-mix(in srgb, var(--gold) 40%, transparent);
+a.portal:hover::after, a.portal:focus-visible::after {
+  background: color-mix(in srgb, var(--maroon) 85%, #000);
+  box-shadow: inset 0 0 0 2px var(--gold), 0 0 12px color-mix(in srgb, var(--gold) 35%, transparent);
 }
-.portals.towers > li:hover,
-.portals.towers > li:focus-within {
+.portals.towers > li:hover, .portals.towers > li:focus-within {
   border-color: var(--maroon);
   box-shadow: var(--shadow);
 }
-
 a.portal:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
-
-/* Character accents per tower (by HTML order + CSS order) */
 .portals.towers > li:nth-child(3) a.portal::before {
-  /* Visitor — warmer open sandstone */
   background: linear-gradient(180deg, #E2C9A0 0%, var(--sand) 45%, #A8845C 100%);
 }
 .portals.towers > li:nth-child(2) a.portal::before {
-  /* HR — formal, cooler stone */
   background: linear-gradient(180deg, #D4C4A8 0%, #B89A72 50%, #8F7350 100%);
 }
 .portals.towers > li:nth-child(1) a.portal::before {
-  /* Books — scholarly deeper tone */
-  background: linear-gradient(180deg, #D9C5A4 0%, #B89568 40%, color-mix(in srgb, var(--maroon) 30%, #8A6B45) 100%);
+  background: linear-gradient(180deg, #D9C5A4 0%, #B89568 40%, color-mix(in srgb, var(--maroon) 28%, #8A6B45) 100%);
 }
 
-/* ---------- Palace interior chrome ---------- */
-body.portal-visitor .subbar,
-body.portal-hr .subbar,
-body.portal-books .subbar {
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--maroon) 12%, var(--bg-2)), var(--bg-2)) !important;
-  border-bottom: 1px solid var(--line-strong) !important;
+/* Generic portals list (non-tower) still palace-styled */
+ul.portals:not(.towers) {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
 }
-
-body.portal-visitor main.page,
-body.portal-hr main.page,
-body.portal-books main.page {
-  border-left: 3px solid color-mix(in srgb, var(--gold) 55%, var(--sand));
-  border-right: 3px solid color-mix(in srgb, var(--gold) 55%, var(--sand));
-  padding-left: clamp(1rem, 3vw, 1.75rem);
-  padding-right: clamp(1rem, 3vw, 1.75rem);
-}
-
-.card,
-.box {
-  border: 1px solid var(--line) !important;
-  background: var(--surface) !important;
+ul.portals:not(.towers) a.portal {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 1rem;
+  border-radius: var(--r-md);
   box-shadow: var(--shadow);
-  border-radius: var(--r-md) !important;
-}
-.card:hover {
-  border-color: color-mix(in srgb, var(--maroon) 40%, var(--line)) !important;
 }
 
-.btn {
-  border-radius: var(--r-sm) !important;
-  background: var(--maroon) !important;
-  border-color: var(--maroon) !important;
-  color: var(--ivory) !important;
+/* ---------- Institutional / inst block ---------- */
+.inst {
+  display: grid;
+  gap: 1.25rem;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow);
 }
-.btn:hover {
-  background: color-mix(in srgb, var(--maroon) 85%, #000) !important;
-}
-.btn.ghost {
-  background: transparent !important;
-  color: var(--maroon) !important;
-  border-color: var(--maroon) !important;
-}
-.btn.ghost:hover {
-  background: var(--maroon) !important;
-  color: var(--ivory) !important;
+@media (max-width: 599px) {
+  .inst { grid-template-columns: 1fr; justify-items: start; }
 }
 
-.kicker,
-.eyebrow,
-.accent {
-  color: var(--maroon) !important;
+/* ---------- Long-form chambers (policies, about) ---------- */
+main.page > h1 {
+  font-size: clamp(1.65rem, 3.8vw, 2.55rem) !important;
+  max-width: 22ch;
+  margin: 0.4rem 0 1.1rem;
 }
-:root[data-theme="dark"] .kicker,
-:root[data-theme="dark"] .eyebrow,
-:root[data-theme="dark"] .accent {
-  color: var(--gold) !important;
+main.page > h2:not(.kicker) {
+  font-size: 1.12rem !important;
+  margin-top: 2rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+  max-width: 42rem;
+}
+main.page > p, main.page > ul, main.page > ol {
+  max-width: 42rem;
+  color: var(--text-2);
+}
+main.page > section.box, main.page > .box {
+  max-width: 44rem;
+  margin-top: 1.35rem;
+  background: var(--surface-2) !important;
+  border-color: var(--line) !important;
 }
 
-.band {
-  border-top-color: var(--line) !important;
-}
-
+/* ---------- Footer = foundation courtyard ---------- */
 .foot {
-  background: color-mix(in srgb, var(--sand) 15%, var(--bg)) !important;
-  border-top: 2px solid color-mix(in srgb, var(--maroon) 35%, var(--line)) !important;
+  margin-top: auto;
+  background:
+    linear-gradient(180deg, var(--bg) 0%, color-mix(in srgb, var(--sand) 18%, var(--bg-2)) 100%) !important;
+  border-top: 2px solid color-mix(in srgb, var(--maroon) 40%, var(--line)) !important;
+}
+.foot-in {
+  max-width: var(--kingdom-max);
+  margin: 0 auto;
+  padding: 1.75rem clamp(1rem, 3vw, 1.75rem);
+}
+.foot a {
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 0.84rem;
+}
+.foot a:hover { color: var(--maroon); }
+:root[data-theme="dark"] .foot a:hover { color: var(--gold); }
+.foot-base {
+  border-top: 1px solid var(--line);
+  padding-top: 0.9rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Intro splash ---------- */
+.intro {
+  background: var(--bg) !important;
+}
+.intro-mark { color: var(--maroon) !important; font-family: var(--font-display) !important; }
+.intro-mark span { color: var(--text) !important; }
+.intro-mark span:nth-child(odd) { color: var(--maroon) !important; }
+
+/* ---------- Plain / error chambers ---------- */
+body.plain main.page,
+.state {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 /* ---------- Responsive towers ---------- */
 @media (max-width: 799px) {
-  ul.portals.towers,
-  .portals.towers {
+  ul.portals.towers, .portals.towers {
     grid-template-columns: 1fr;
     max-width: 22rem;
     margin-inline: auto;
   }
-  .portals.towers > li:nth-child(1),
-  .portals.towers > li:nth-child(2),
-  .portals.towers > li:nth-child(3) {
-    order: initial;
-  }
-  /* Mobile narrative order: Visitor, HR, Books */
   .portals.towers > li:nth-child(3) { order: 1; }
   .portals.towers > li:nth-child(2) { order: 2; }
   .portals.towers > li:nth-child(1) { order: 3; }
-
-  a.portal::before {
-    height: 5.5rem;
+  body:not(.plain) main.page {
+    border-left-width: 2px;
+    border-right-width: 2px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  a.portal::before,
-  .portals.towers > li {
-    transition: none !important;
-  }
+  .card, a.portal::before, .portals.towers > li { transition: none !important; }
 }
 
 @media print {
-  .fort-skyline { display: none; }
-  a.portal::before,
-  a.portal::after { display: none; }
+  .fort-skyline, a.portal::before, a.portal::after, .bar, .drawer, .progress { display: none !important; }
+  body { background: #fff !important; }
+  .card, .box { box-shadow: none !important; border: 1px solid #ccc !important; }
+  body:not(.plain) main.page { border: none !important; background: transparent !important; }
 }
