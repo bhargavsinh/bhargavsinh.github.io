@@ -1,0 +1,60 @@
+name: Palace cache bust
+
+on:
+  push:
+    paths:
+      - '.github/workflows/palace-cache.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update kingdom.css version query + ensure linked
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+          n=0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts: continue
+              t=p.read_text(encoding='utf-8', errors='replace')
+              orig=t
+              t=t.replace('kingdom.css?v=19.0.0', 'kingdom.css?v=19.0.1')
+              if 'kingdom.css' not in t and '</head>' in t:
+                  depth=len(p.parts)-1
+                  pref='' if depth<=0 else '../'*depth
+                  t=t.replace('</head>', f'  <link rel="stylesheet" href="{pref}assets/css/kingdom.css?v=19.0.1">\n</head>', 1)
+              if t!=orig:
+                  # body must be identical for pure head/query changes
+                  def body(s):
+                      m=re.search(r'<body[^>]*>(.*)</body>', s, re.S|re.I)
+                      return m.group(1) if m else None
+                  if body(orig) is not None and body(t) is not None and body(orig)!=body(t):
+                      print('abort', p); continue
+                  p.write_text(t, encoding='utf-8'); n+=1
+          print('updated', n)
+          sw=Path('sw.js').read_text(encoding='utf-8')
+          sw=sw.replace("VERSION = '19.0-dk'", "VERSION = '19.0-palace'")
+          sw=sw.replace("VERSION = '19.0.0'", "VERSION = '19.0-palace'")
+          sw=sw.replace('kingdom.css?v=19.0.0', 'kingdom.css?v=19.0.1')
+          if 'kingdom.css' not in sw:
+              sw=sw.replace('"/assets/css/swiss.css?v=19.0.0",', '"/assets/css/swiss.css?v=19.0.0",\n  "/assets/css/kingdom.css?v=19.0.1",')
+          Path('sw.js').write_text(sw, encoding='utf-8')
+          # integrity sample
+          idx=Path('index.html').read_text(encoding='utf-8')
+          assert 'Published Gujarati works, research essays and reading resources.' in idx
+          assert 'fort-complex' in idx
+          print('ok')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "V19.0: full palace identity cache refresh (19.0.1 / SW 19.0-palace)" || exit 0
+          git push origin HEAD:main
