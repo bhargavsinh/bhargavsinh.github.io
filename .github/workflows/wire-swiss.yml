@@ -1,0 +1,115 @@
+name: Wire Swiss Style V19
+
+on:
+  push:
+    paths:
+      - '.github/workflows/wire-swiss.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  wire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Link swiss.css on every HTML (head only, body text untouched)
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          def pref(p: Path) -> str:
+              d = len(p.parts) - 1
+              return '' if d <= 0 else '../' * d
+
+          n = 0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              text = p.read_text(encoding='utf-8', errors='replace')
+              orig_body = re.search(r'<body[^>]*>(.*)</body>', text, re.S | re.I)
+              body0 = orig_body.group(1) if orig_body else None
+
+              if 'swiss.css' not in text:
+                  link = f'  <link rel="stylesheet" href="{pref(p)}assets/css/swiss.css?v=19.0.0">\n'
+                  if '</head>' in text:
+                      text = text.replace('</head>', link + '</head>', 1)
+                  else:
+                      print('no head', p)
+                      continue
+
+              # theme-color toward Swiss white (not body text)
+              text = re.sub(
+                  r'<meta name="theme-color" content="[^"]*">',
+                  '<meta name="theme-color" content="#FFFFFF">',
+                  text,
+                  count=1,
+              )
+
+              # Verify body text unchanged
+              orig_body2 = re.search(r'<body[^>]*>(.*)</body>', text, re.S | re.I)
+              body1 = orig_body2.group(1) if orig_body2 else None
+              if body0 is not None and body1 is not None and body0 != body1:
+                  print('ABORT body changed', p)
+                  continue
+
+              p.write_text(text, encoding='utf-8')
+              n += 1
+              print('ok', p)
+
+          print('UPDATED', n)
+          assert Path('assets/css/swiss.css').exists()
+          # sample body text fingerprint from privacy
+          priv = Path('Visitor/privacy-policy.html').read_text(encoding='utf-8')
+          assert 'Version 2.1' in priv
+          assert 'DPDP Act' in priv
+          assert 'swiss.css' in priv
+          print('TEXT_OK')
+          PY
+
+      - name: Default theme.js toward light for first visit (Swiss)
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          p = Path('assets/js/theme.js')
+          t = p.read_text(encoding='utf-8')
+          # Only change default when no saved theme — still respect user choice
+          old = "var t = localStorage.getItem('bs_theme');\n    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);"
+          new = "var t = localStorage.getItem('bs_theme');\n    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);\n    else document.documentElement.setAttribute('data-theme', 'light');"
+          if old in t and "else document.documentElement.setAttribute('data-theme', 'light')" not in t:
+              t = t.replace(old, new)
+              p.write_text(t, encoding='utf-8')
+              print('theme default light')
+          else:
+              print('theme skip', old in t)
+          PY
+
+      - name: Bump SW to 19.0.0 and precache swiss.css
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          p = Path('sw.js')
+          t = p.read_text(encoding='utf-8')
+          t = t.replace("VERSION = '18.2.1'", "VERSION = '19.0.0'")
+          t = t.replace('Service worker — V18.2.1', 'Service worker — V19.0.0')
+          if 'swiss.css' not in t:
+              t = t.replace(
+                  '"/assets/css/bento-editorial.css?v=18.2.0",',
+                  '"/assets/css/bento-editorial.css?v=18.2.0",\n  "/assets/css/swiss.css?v=19.0.0",',
+              )
+          p.write_text(t, encoding='utf-8')
+          assert "VERSION = '19.0.0'" in p.read_text(encoding='utf-8')
+          print('sw ok')
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -40
+          git commit -m "V19.0.0: Swiss International Style live (visual only, text preserved)" || exit 0
+          git push origin HEAD:main
