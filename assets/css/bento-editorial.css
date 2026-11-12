@@ -327,3 +327,11 @@ section.band:first-of-type {
     max-width: none;
   }
 }
+
+/* layout-bento body marker */
+body.layout-bento main.page {
+  max-width: min(76rem, 100%);
+}
+body.layout-bento .grid > .card {
+  border-radius: var(--r-xl);
+}
