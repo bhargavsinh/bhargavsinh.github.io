@@ -1,0 +1,63 @@
+name: Embed bento into site.css
+
+on:
+  push:
+    paths:
+      - '.github/workflows/embed-bento.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  embed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Append bento-editorial rules into site.css if not present
+        run: |
+          set -eux
+          test -f assets/css/bento-editorial.css
+          test -f assets/css/site.css
+          if grep -q 'V18.2 — Bento Box' assets/css/site.css; then
+            echo 'already embedded'
+          else
+            printf '\n\n' >> assets/css/site.css
+            cat assets/css/bento-editorial.css >> assets/css/site.css
+            echo 'embedded'
+          fi
+          # bump cache query on HTML is optional; site.css content change is enough with hard refresh
+          wc -c assets/css/site.css
+          grep -c 'grid-template-columns: repeat(12' assets/css/site.css
+
+          # Also force-link remaining HTML missing the separate file (belt and suspenders)
+          python3 << 'PY'
+          from pathlib import Path
+          def pref(p):
+              d=len(p.parts)-1
+              return '' if d<=0 else '../'*d
+          n=0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts: continue
+              t=p.read_text(encoding='utf-8', errors='replace')
+              if 'bento-editorial.css' in t: continue
+              if '</head>' not in t: continue
+              link=f'  <link rel="stylesheet" href="{pref(p)}assets/css/bento-editorial.css?v=18.2.0">\n'
+              p.write_text(t.replace('</head>', link+'</head>', 1), encoding='utf-8')
+              n+=1
+              print('linked', p)
+          print('extra_links', n)
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/css/site.css
+          git add -u '*.html' 2>/dev/null || true
+          git add $(git ls-files -m '*.html' 2>/dev/null || true) 2>/dev/null || true
+          git add -A
+          git status --short | head -50
+          git commit -m "V18.2.0: site-wide bento-box + editorial scroll (embedded in site.css, no text changes)" || exit 0
+          git push origin HEAD:main
