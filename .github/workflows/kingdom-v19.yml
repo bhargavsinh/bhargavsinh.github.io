@@ -1,0 +1,148 @@
+name: Digital Kingdom V19.0
+
+on:
+  push:
+    paths:
+      - '.github/workflows/kingdom-v19.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  implement:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fort towers on index + wire CSS (text-preserving)
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          # --- index.html portals structural wrap (visible text identical) ---
+          idx = Path('index.html')
+          html = idx.read_text(encoding='utf-8')
+
+          old = '''<section class="band" id="portals" aria-labelledby="port-h">
+  <div class="sec-head"><div><p class="eyebrow">06</p><h2 id="port-h">Portals</h2></div></div>
+  <ul class="portals" role="list"><li><a class="portal" href="Book-Publications-Reader/BPindex.html" data-name="Book &amp; Publications Reader" aria-label="Enter Book &amp; Publications Reader portal"><span class="portal-img"><img src="assets/images/portals/portal-books.webp" alt="" width="136" height="136" loading="lazy" decoding="async"></span><b>Book &amp; Publications Reader</b><span>Published Gujarati works, research essays and reading resources.</span></a></li><li><a class="portal" href="HR-Recruiter/HRRindex.html" data-name="HR Recruiter" aria-label="Enter HR Recruiter portal"><span class="portal-img"><img src="assets/images/portals/portal-hr.webp" alt="" width="136" height="136" loading="lazy" decoding="async"></span><b>HR Recruiter</b><span>Skills, projects and writing work at a glance.</span></a></li><li><a class="portal" href="Visitor/Visitindex.html" data-name="Visitor" aria-label="Enter Visitor portal"><span class="portal-img"><img src="assets/images/portals/portal-visitor.webp" alt="" width="136" height="136" loading="lazy" decoding="async"></span><b>Visitor</b><span>Personal projects, Gujarati writing, genealogy and heritage.</span></a></li></ul>
+  <p class="resume-link" id="resume-slot" hidden></p>
+</section>'''
+
+          skyline = '''<div class="fort-skyline" aria-hidden="true"><svg viewBox="0 0 800 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><path fill="#C5A477" d="M0 90 V55 H40 V35 L55 20 L70 35 V55 H120 V40 L140 18 L160 40 V55 H220 V30 L250 5 L280 30 V55 H340 V38 L360 22 L380 38 V55 H440 V28 L470 8 L500 28 V55 H560 V40 L580 24 L600 40 V55 H660 V35 L680 18 L700 35 V55 H760 V48 H800 V90 Z"/><path fill="#581F2A" opacity=".35" d="M55 20 L70 35 V55 H40 V35 Z M140 18 L160 40 V55 H120 V40 Z M250 5 L280 30 V55 H220 V30 Z M360 22 L380 38 V55 H340 V38 Z M470 8 L500 28 V55 H440 V28 Z M580 24 L600 40 V55 H560 V40 Z M680 18 L700 35 V55 H660 V35 Z"/></svg></div>'''
+
+          new = f'''<section class="band kingdom-fort" id="portals" aria-labelledby="port-h">
+  <div class="sec-head"><div><p class="eyebrow">06</p><h2 id="port-h">Portals</h2></div></div>
+  <div class="fort-complex">
+  {skyline}
+  <ul class="portals towers" role="list"><li><a class="portal" href="Book-Publications-Reader/BPindex.html" data-name="Book &amp; Publications Reader" aria-label="Enter Book &amp; Publications Reader portal"><span class="portal-img"><img src="assets/images/portals/portal-books.webp" alt="" width="136" height="136" loading="lazy" decoding="async"></span><b>Book &amp; Publications Reader</b><span>Published Gujarati works, research essays and reading resources.</span></a></li><li><a class="portal" href="HR-Recruiter/HRRindex.html" data-name="HR Recruiter" aria-label="Enter HR Recruiter portal"><span class="portal-img"><img src="assets/images/portals/portal-hr.webp" alt="" width="136" height="136" loading="lazy" decoding="async"></span><b>HR Recruiter</b><span>Skills, projects and writing work at a glance.</span></a></li><li><a class="portal" href="Visitor/Visitindex.html" data-name="Visitor" aria-label="Enter Visitor portal"><span class="portal-img"><img src="assets/images/portals/portal-visitor.webp" alt="" width="136" height="136" loading="lazy" decoding="async"></span><b>Visitor</b><span>Personal projects, Gujarati writing, genealogy and heritage.</span></a></li></ul>
+  </div>
+  <p class="resume-link" id="resume-slot" hidden></p>
+</section>'''
+
+          if old not in html:
+              # Flexible match: find portals section
+              m = re.search(r'<section class="band" id="portals"[\s\S]*?</section>', html)
+              if not m:
+                  raise SystemExit('portals section not found')
+              # Extract and ensure portal texts present
+              block = m.group(0)
+              for needle in [
+                  'Book &amp; Publications Reader',
+                  'HR Recruiter',
+                  'Visitor',
+                  'Published Gujarati works',
+                  'Skills, projects and writing',
+                  'Personal projects, Gujarati writing',
+              ]:
+                  if needle not in block:
+                      raise SystemExit('missing text: ' + needle)
+              # Rebuild from existing ul
+              um = re.search(r'(<ul class="portals"[^>]*>)([\s\S]*?)(</ul>)', block)
+              if not um:
+                  raise SystemExit('ul.portals not found')
+              ul = um.group(1).replace('class="portals"', 'class="portals towers"') + um.group(2) + um.group(3)
+              head = re.search(r'<div class="sec-head">[\s\S]*?</div></div>', block)
+              head_html = head.group(0) if head else '<div class="sec-head"><div><p class="eyebrow">06</p><h2 id="port-h">Portals</h2></div></div>'
+              resume = ''
+              rm = re.search(r'<p class="resume-link"[\s\S]*?</p>', block)
+              if rm:
+                  resume = rm.group(0)
+              new_block = f'<section class="band kingdom-fort" id="portals" aria-labelledby="port-h">\n  {head_html}\n  <div class="fort-complex">\n  {skyline}\n  {ul}\n  </div>\n  {resume}\n</section>'
+              html = html[:m.start()] + new_block + html[m.end():]
+          else:
+              html = html.replace(old, new)
+
+          # body class marker
+          if 'kingdom-home' not in html:
+              html = html.replace('class="home layout-bento"', 'class="home layout-bento kingdom-home"', 1)
+              html = html.replace('class="home"', 'class="home kingdom-home"', 1) if 'kingdom-home' not in html else html
+
+          idx.write_text(html, encoding='utf-8')
+
+          # Text integrity: required strings still present
+          for needle in [
+              'Book &amp; Publications Reader',
+              'Published Gujarati works, research essays and reading resources.',
+              'HR Recruiter',
+              'Skills, projects and writing work at a glance.',
+              'Visitor',
+              'Personal projects, Gujarati writing, genealogy and heritage.',
+          ]:
+              assert needle in html, needle
+          assert 'Visitor/Visitindex.html' in html
+          assert 'HR-Recruiter/HRRindex.html' in html
+          assert 'Book-Publications-Reader/BPindex.html' in html
+          print('index fort OK')
+
+          # --- wire kingdom.css on all HTML ---
+          def pref(p):
+              d = len(p.parts) - 1
+              return '' if d <= 0 else '../' * d
+
+          n = 0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              t = p.read_text(encoding='utf-8', errors='replace')
+              if 'kingdom.css' in t:
+                  continue
+              link = f'  <link rel="stylesheet" href="{pref(p)}assets/css/kingdom.css?v=19.0.0">\n'
+              if '</head>' not in t:
+                  continue
+              body_m = re.search(r'<body[^>]*>(.*)</body>', t, re.S | re.I)
+              b0 = body_m.group(1) if body_m else None
+              t2 = t.replace('</head>', link + '</head>', 1)
+              body_m2 = re.search(r'<body[^>]*>(.*)</body>', t2, re.S | re.I)
+              b1 = body_m2.group(1) if body_m2 else None
+              if b0 is not None and b1 is not None and b0 != b1:
+                  print('skip body change', p)
+                  continue
+              p.write_text(t2, encoding='utf-8')
+              n += 1
+          print('kingdom linked', n)
+
+          # SW bump
+          sw = Path('sw.js')
+          s = sw.read_text(encoding='utf-8')
+          s = s.replace("VERSION = '19.0.0'", "VERSION = '19.0-kingdom'")
+          s = s.replace('Service worker — V19.0.0', 'Service worker — V19.0 Digital Kingdom')
+          if 'kingdom.css' not in s:
+              s = s.replace(
+                  '"/assets/css/swiss.css?v=19.0.0",',
+                  '"/assets/css/swiss.css?v=19.0.0",\n  "/assets/css/kingdom.css?v=19.0.0",',
+              )
+          sw.write_text(s, encoding='utf-8')
+          print('sw', 'kingdom' in sw.read_text(encoding='utf-8'))
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -40
+          git commit -m "V19.0: Implement Digital Kingdom Three-Tower Architecture" || exit 0
+          git push origin HEAD:main
