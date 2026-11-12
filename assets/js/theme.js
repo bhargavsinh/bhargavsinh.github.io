@@ -3,6 +3,7 @@
   try {
     var t = localStorage.getItem('bs_theme');
     if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    else document.documentElement.setAttribute('data-theme', 'light');
     var f = parseFloat(localStorage.getItem('bs_fs'));
     if (f >= 0.85 && f <= 1.5) document.documentElement.style.setProperty('--fs', String(f));
   } catch (e) {}
