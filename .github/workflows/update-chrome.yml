@@ -1,0 +1,134 @@
+name: Update headers and footers
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-chrome.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  chrome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Normalize header/footer chrome on all HTML
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          def depth_prefix(path: Path) -> str:
+              d = len(path.parts) - 1
+              return '' if d <= 0 else '../' * d
+
+          def abs_or_rel(pref: str, target: str) -> str:
+              # offline/404 sometimes use root-absolute; keep relative for normal pages
+              return pref + target
+
+          changed = 0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              text = p.read_text(encoding='utf-8', errors='replace')
+              orig = text
+              pref = depth_prefix(p)
+
+              # --- Footer version bump ---
+              text = re.sub(
+                  r'(<div class="foot-base">.*?<span>)V18\.[0-9.]+(</span></div>)',
+                  r'\1V18.2.1\2',
+                  text,
+                  flags=re.S,
+              )
+              # simpler fallback
+              text = re.sub(r'(foot-base[^>]*>.*?</span><span>)V18\.[0-9.]+',
+                            r'\1V18.2.1', text, count=1, flags=re.S)
+              text = text.replace('>V18.1.0</span>', '>V18.2.1</span>')
+              text = text.replace('>V18.2.0</span>', '>V18.2.1</span>')
+
+              # --- Footer Legal block: ensure standard set (path-aware) ---
+              legal_inner = (
+                  f'<h4>Legal</h4>'
+                  f'<a href="{pref}Visitor/privacy-policy.html">Privacy Policy</a>'
+                  f'<a href="{pref}Visitor/termsofuse.html">Terms of Use</a>'
+                  f'<a href="{pref}Visitor/disclaimer.html">Disclaimer</a>'
+                  f'<a href="{pref}Visitor/grievance.html">Grievance</a>'
+                  f'<a href="{pref}Visitor/copyright-policy.html">Copyright</a>'
+                  f'<a href="{pref}Visitor/policy-center.html">Policy Center</a>'
+              )
+              # Replace existing Legal column inside footer only
+              def repl_legal(m):
+                  return m.group(1) + legal_inner + m.group(3)
+              text2, n = re.subn(
+                  r'(<footer class="foot">.*?<div><h4>Legal</h4>)(.*?)(</div>\s*<div><h4>Site</h4>)',
+                  repl_legal,
+                  text,
+                  count=1,
+                  flags=re.S,
+              )
+              if n:
+                  text = text2
+
+              # --- Drawer legal nav (if present): keep compact core + policy center ---
+              drawer_legal = (
+                  f'<nav aria-label="Legal">'
+                  f'<a href="{pref}Visitor/privacy-policy.html">Privacy Policy</a>'
+                  f'<a href="{pref}Visitor/termsofuse.html">Terms of Use</a>'
+                  f'<a href="{pref}Visitor/disclaimer.html">Disclaimer</a>'
+                  f'<a href="{pref}Visitor/grievance.html">Grievance</a>'
+                  f'<a href="{pref}Visitor/policy-center.html">Policy Center</a>'
+                  f'</nav>'
+              )
+              text3, n2 = re.subn(
+                  r'<nav aria-label="Legal">.*?</nav>',
+                  drawer_legal,
+                  text,
+                  count=2,
+                  flags=re.S,
+              )
+              if n2:
+                  text = text3
+
+              # --- Header primary nav labels consistency (do not touch subbar) ---
+              # Ensure Contact link exists in primary nav if Explore pattern present
+              # Skip aggressive rewrite of full header to avoid breaking aria-current
+
+              # Tag footer with data attribute for version (harmless)
+              if '<footer class="foot">' in text and 'data-v=' not in text.split('<footer class="foot">')[1][:80]:
+                  text = text.replace('<footer class="foot">', '<footer class="foot" data-v="18.2.1">', 1)
+
+              if '<header class="bar"' in text and 'data-v=' not in text.split('<header class="bar"')[1][:60]:
+                  text = re.sub(
+                      r'<header class="bar"([^>]*)>',
+                      r'<header class="bar"\1 data-v="18.2.1">',
+                      text,
+                      count=1,
+                  )
+                  # avoid double data-v
+                  text = text.replace('data-v="18.2.1" data-v="18.2.1"', 'data-v="18.2.1"')
+
+              if text != orig:
+                  p.write_text(text, encoding='utf-8')
+                  changed += 1
+                  print('updated', p)
+
+          print('CHANGED', changed)
+          # sample verify
+          idx = Path('index.html').read_text(encoding='utf-8')
+          assert 'V18.2.1' in idx
+          assert 'Copyright' in idx or 'copyright-policy' in idx
+          print('index ok')
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -40
+          git commit -m "V18.2.1: headers & footers updated site-wide (Legal + version)" || exit 0
+          git push origin HEAD:main
