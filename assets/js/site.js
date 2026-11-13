@@ -176,11 +176,12 @@
     on(sel, 'change', function () { var o = sel.value === 'Other'; other.classList.toggle('hidden', !o); oin.required = o; if (!o) oin.value = ''; });
     var date = form.querySelector('input[type="date"]'); if (date) date.min = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
     var okBox = $('#success-message'), errBox = $('#error-message'), btn = $('#submit-button');
+    if (okBox) okBox.classList.add('hidden'); if (errBox) errBox.classList.add('hidden');
     on(form, 'submit', function (e) {
       if (!window.fetch || !window.FormData) return;           // graceful: native POST
       var hp = form.querySelector('[name="_gotcha"]'); if (hp && hp.value) { e.preventDefault(); return; }
       var last = parseInt(sess('bs_form_ts') || '0', 10);
-      if (Date.now() - last < 8000) { e.preventDefault(); return; }
+      if (Date.now() - last < 8000) { e.preventDefault(); if (errBox) { errBox.classList.remove('hidden'); errBox.textContent = errBox.textContent || 'Please wait a few seconds before submitting again.'; } return; }
       e.preventDefault(); sess('bs_form_ts', String(Date.now()));
       var label = btn.innerHTML; btn.disabled = true; btn.textContent = '…'; errBox.classList.add('hidden');
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
