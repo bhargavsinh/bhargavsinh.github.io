@@ -1,0 +1,151 @@
+name: V19.0.2 hygiene
+
+on:
+  push:
+    paths:
+      - '.github/workflows/v19-0-2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Footer version, wire fixes CSS, form feedback, SW
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          def pref(p):
+              d = len(p.parts) - 1
+              return '' if d <= 0 else '../' * d
+
+          n_ver = n_css = n_icon = 0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              t = p.read_text(encoding='utf-8', errors='replace')
+              orig = t
+
+              # Footer version badge only (not content prose)
+              t2 = re.sub(r'(<span>)V18\.[0-9.]+(</span>)', r'\1V19.0.2\2', t)
+              t2 = re.sub(r'(<span>)V19\.0(?!\.2)[0-9.a-z-]*(</span>)', r'\1V19.0.2\2', t2)
+              if t2 != t:
+                  n_ver += 1
+                  t = t2
+
+              # Ensure favicon if missing
+              if 'rel="icon"' not in t and '</head>' in t:
+                  pr = pref(p)
+                  icon = f'  <link rel="icon" type="image/png" href="{pr}assets/images/brand/brand-mark-192.png">\n  <link rel="apple-touch-icon" href="{pr}assets/images/brand/apple-touch-icon.png">\n'
+                  t = t.replace('</head>', icon + '</head>', 1)
+                  n_icon += 1
+
+              # Wire v19 fixes CSS
+              if 'v19-0-2-fixes.css' not in t and '</head>' in t:
+                  pr = pref(p)
+                  link = f'  <link rel="stylesheet" href="{pr}assets/css/v19-0-2-fixes.css?v=19.0.2">\n'
+                  t = t.replace('</head>', link + '</head>', 1)
+                  n_css += 1
+
+              # Ensure brand is an anchor (logo clickable) — only if broken pattern found
+              # Do not alter text inside brand
+
+              if t != orig:
+                  def body(s):
+                      m = re.search(r'<body[^>]*>(.*)</body>', s, re.S | re.I)
+                      return m.group(1) if m else None
+                  # Allow footer version span change in body
+                  b0, b1 = body(orig), body(t)
+                  if b0 and b1:
+                      # strip version span differences for comparison of real content
+                      def norm(b):
+                          b = re.sub(r'V1[89]\.[0-9.a-z-]+', 'VER', b)
+                          return b
+                      if norm(b0) != norm(b1):
+                          # still allow only version changes
+                          if re.sub(r'V1[89]\.[0-9.a-z-]+', '', b0) != re.sub(r'V1[89]\.[0-9.a-z-]+', '', b1):
+                              print('content risk', p)
+                              continue
+                  p.write_text(t, encoding='utf-8')
+
+          print('version_pages', n_ver, 'css_pages', n_css, 'icon_pages', n_icon)
+
+          # Harden form feedback in site.js (rate-limit shows error)
+          js = Path('assets/js/site.js')
+          s = js.read_text(encoding='utf-8')
+          old = "if (Date.now() - last < 8000) { e.preventDefault(); return; }"
+          new = "if (Date.now() - last < 8000) { e.preventDefault(); if (errBox) { errBox.classList.remove('hidden'); errBox.textContent = errBox.textContent || 'Please wait a few seconds before submitting again.'; } return; }"
+          if old in s:
+              s = s.replace(old, new)
+              js.write_text(s, encoding='utf-8')
+              print('form rate-limit message')
+          # null-safe ok/err boxes
+          if "okBox.classList.add('hidden')" not in s and 'errBox.classList.add' in s:
+              pass
+          s = js.read_text(encoding='utf-8')
+          if "var okBox = $('#success-message'), errBox = $('#error-message')" in s:
+              s = s.replace(
+                  "var okBox = $('#success-message'), errBox = $('#error-message'), btn = $('#submit-button');",
+                  "var okBox = $('#success-message'), errBox = $('#error-message'), btn = $('#submit-button');\n    if (okBox) okBox.classList.add('hidden'); if (errBox) errBox.classList.add('hidden');"
+              )
+              # avoid double-add if re-run
+              if s.count("if (okBox) okBox.classList.add('hidden')") > 1:
+                  pass
+              js.write_text(s, encoding='utf-8')
+              print('form box init')
+
+          # SW
+          sw = Path('sw.js').read_text(encoding='utf-8')
+          for oldv in ["'19.0-palace'", "'19.0-dk'", "'19.0.0'"]:
+              sw = sw.replace(f'VERSION = {oldv}', "VERSION = '19.0.2'")
+          sw = sw.replace('Service worker — V19.0 Digital Kingdom', 'Service worker — V19.0.2')
+          if 'v19-0-2-fixes.css' not in sw:
+              sw = sw.replace(
+                  '"/assets/css/kingdom.css?v=19.0.1",',
+                  '"/assets/css/kingdom.css?v=19.0.1",\n  "/assets/css/v19-0-2-fixes.css?v=19.0.2",',
+              )
+              if 'v19-0-2-fixes.css' not in sw:
+                  sw = sw.replace(
+                      '"/assets/css/swiss.css?v=19.0.0",',
+                      '"/assets/css/swiss.css?v=19.0.0",\n  "/assets/css/v19-0-2-fixes.css?v=19.0.2",',
+                  )
+          Path('sw.js').write_text(sw, encoding='utf-8')
+          print('sw', '19.0.2' in Path('sw.js').read_text(encoding='utf-8'))
+
+          # Compress large hero if tools exist
+          import shutil, subprocess
+          img = Path('assets/images/books/books-catalogue-hero.webp')
+          if img.exists() and shutil.which('cwebp'):
+              before = img.stat().st_size
+              subprocess.run(['cwebp', '-q', '78', str(img), '-o', str(img) + '.tmp'], check=False)
+              tmp = Path(str(img) + '.tmp')
+              if tmp.exists() and tmp.stat().st_size < before:
+                  tmp.replace(img)
+                  print('compressed', before, '->', img.stat().st_size)
+              elif tmp.exists():
+                  tmp.unlink()
+                  print('keep original image')
+          else:
+              print('skip compress', img.exists(), bool(shutil.which('cwebp')))
+
+          # text integrity
+          idx = Path('index.html').read_text(encoding='utf-8')
+          assert 'Personal projects, Gujarati writing, genealogy and heritage.' in idx
+          assert 'fort-complex' in idx or 'portals' in idx
+          print('integrity ok')
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -40
+          git commit -m "V19.0.2: remove horizontal scroll, footer version, form feedback, mobile hygiene" || exit 0
+          git push origin HEAD:main
