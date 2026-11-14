@@ -1,0 +1,30 @@
+name: Rollback V20 to V19.0.2
+
+on:
+  push:
+    paths:
+      - '.github/workflows/rollback-v20.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Force reset main to V19.0.2 (0ca01a30e055)
+        run: |
+          set -eux
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Safety branch keeps V20 history recoverable
+          git branch backup/v20-before-rollback || true
+          git push origin backup/v20-before-rollback || true
+          git reset --hard 0ca01a30e055
+          git log -1 --oneline
+          git push origin HEAD:main --force
