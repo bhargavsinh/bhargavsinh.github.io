@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 0.85rem;
   padding: 1.5rem;
   background:
     radial-gradient(ellipse 80% 60% at 50% 40%, rgba(88, 31, 42, 0.35), transparent 70%),
@@ -21,28 +21,39 @@
   pointer-events: none;
 }
 #darbar-gate .dg-arch {
-  width: min(88vw, 20rem);
+  width: min(88vw, 18rem);
   height: auto;
   display: block;
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55));
+  margin-bottom: 0.35rem;
 }
-#darbar-gate .dg-title {
-  font-family: Georgia, "Palatino Linotype", "Book Antiqua", serif;
-  font-size: clamp(0.95rem, 3.2vw, 1.15rem);
-  letter-spacing: 0.22em;
+#darbar-gate .dg-kicker {
+  margin: 0;
+  font: 600 0.68rem/1 system-ui, sans-serif;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #C6A15B;
   text-align: center;
+}
+#darbar-gate .dg-title {
+  font-family: Georgia, "Palatino Linotype", "Book Antiqua", serif;
+  font-size: clamp(1.05rem, 3.8vw, 1.45rem);
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  color: #F5F0E6;
+  text-align: center;
   margin: 0;
+  max-width: 22rem;
+  font-weight: 600;
 }
 #darbar-gate .dg-sub {
   margin: 0;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  color: rgba(245, 240, 230, 0.72);
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  color: rgba(245, 240, 230, 0.75);
   text-align: center;
   max-width: 22rem;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 #darbar-gate .dg-bar {
   width: min(12rem, 55vw);
@@ -50,7 +61,7 @@
   background: rgba(198, 161, 91, 0.2);
   border-radius: 1px;
   overflow: hidden;
-  margin-top: 0.35rem;
+  margin-top: 0.5rem;
 }
 #darbar-gate .dg-bar > i {
   display: block;

@@ -10,16 +10,16 @@
     if (sessionStorage.getItem(KEY) === '1') return;
   } catch (e1) {}
 
-  // Mark intro as done so legacy splash does not double-fire
+  // Avoid double splash with legacy intro
   try { sessionStorage.setItem('bs_intro', '1'); } catch (e2) {}
 
-  var ms = 1200 + Math.floor(Math.random() * 601); // 1200–1800 inclusive range
+  var ms = 1200 + Math.floor(Math.random() * 601); // 1.2s – 1.8s
 
   var gate = document.createElement('div');
   gate.id = 'darbar-gate';
   gate.setAttribute('role', 'status');
   gate.setAttribute('aria-live', 'polite');
-  gate.setAttribute('aria-label', 'Opening the Darbar Gate');
+  gate.setAttribute('aria-label', "Welcome to Bhargavsinh Sisodiya's portfolio. Loading.");
   gate.style.setProperty('--dg-ms', ms + 'ms');
   gate.innerHTML =
     '<svg class="dg-arch" viewBox="0 0 320 220" aria-hidden="true" focusable="false">' +
@@ -31,10 +31,11 @@
     '<circle cx="160" cy="175" r="3" fill="#D4AF70"/>' +
     '<path d="M40 30 L50 18 L60 30 M260 30 L270 18 L280 30" fill="none" stroke="#D4AF70" stroke-width="2"/>' +
     '</svg>' +
-    '<p class="dg-title">Darbar Gate</p>' +
-    '<p class="dg-sub">Heritage in Memory · Knowledge in Creation</p>' +
+    '<p class="dg-kicker">Darbar Gate</p>' +
+    '<p class="dg-title">Welcome to Bhargavsinh Sisodiya\'s portfolio</p>' +
+    '<p class="dg-sub">Preparing your visit — projects, publications and heritage.</p>' +
     '<div class="dg-bar" aria-hidden="true"><i></i></div>' +
-    '<button type="button" class="dg-skip">Skip</button>';
+    '<button type="button" class="dg-skip">Enter now</button>';
 
   function mount() {
     if (!document.body) return;
@@ -60,7 +61,7 @@
     if (ev.target && ev.target.classList && ev.target.classList.contains('dg-skip')) close();
   });
   document.addEventListener('keydown', function onKey(ev) {
-    if (ev.key === 'Escape') {
+    if (ev.key === 'Escape' || ev.key === 'Enter') {
       close();
       document.removeEventListener('keydown', onKey);
     }
