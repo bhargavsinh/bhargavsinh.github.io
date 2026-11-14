@@ -1,0 +1,41 @@
+name: Wire footer-chart.js
+
+on:
+  push:
+    paths:
+      - '.github/workflows/wire-footer-js.yml'
+      - 'assets/js/footer-chart.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  wire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 << 'PY'
+          from pathlib import Path
+          n=0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts: continue
+              t=p.read_text(encoding='utf-8', errors='replace')
+              if 'footer-chart.js' in t: continue
+              if '</body>' not in t: continue
+              d=len(p.parts)-1
+              pref='' if d<=0 else '../'*d
+              links=''
+              if 'footer-chart.css' not in t and '</head>' in t:
+                  links += f'  <link rel="stylesheet" href="{pref}assets/css/footer-chart.css?v=19.0.5">\n'
+                  t=t.replace('</head>', links+'</head>', 1)
+              t=t.replace('</body>', f'  <script src="{pref}assets/js/footer-chart.js?v=19.0.5" defer></script>\n</body>', 1)
+              p.write_text(t, encoding='utf-8'); n+=1
+          print('wired', n)
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Wire footer-chart.js + CSS on all HTML pages" || exit 0
+          git push origin HEAD:main
