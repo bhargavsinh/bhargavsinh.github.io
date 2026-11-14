@@ -1,0 +1,96 @@
+/* Footer as button chart */
+.foot {
+  margin-top: auto;
+}
+.foot-in.foot-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: 1.75rem clamp(1rem, 3vw, 1.75rem) 1.25rem;
+}
+.foot-chart .foot-brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+.foot-chart .foot-brand p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted, #6b6358);
+  max-width: 28rem;
+}
+.foot-chart .foot-groups {
+  display: grid;
+  gap: 1rem 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+}
+.foot-chart .foot-group h4 {
+  margin: 0 0 0.55rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--maroon, #581F2A);
+  font-weight: 700;
+}
+:root[data-theme="dark"] .foot-chart .foot-group h4 {
+  color: var(--gold, #C6A15B);
+}
+.foot-chart .foot-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.foot-chart .foot-btns a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--line, rgba(0,0,0,.14));
+  border-radius: 0.25rem;
+  background: color-mix(in srgb, var(--surface, #fff) 88%, var(--sand, #C5A477));
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  transition: border-color .15s, background .15s, transform .15s;
+}
+.foot-chart .foot-btns a:hover,
+.foot-chart .foot-btns a:focus-visible {
+  border-color: color-mix(in srgb, var(--gold, #B08D57) 55%, var(--line, #ccc));
+  background: color-mix(in srgb, var(--sand, #C5A477) 18%, var(--surface, #fff));
+  outline: none;
+}
+.foot-chart .foot-btns a:focus-visible {
+  outline: 2px solid var(--gold, #C6A15B);
+  outline-offset: 2px;
+}
+.foot-base {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: 0.85rem clamp(1rem, 3vw, 1.75rem) 1.15rem;
+  border-top: 1px solid var(--line, rgba(0,0,0,.12));
+  font-size: 0.72rem;
+  color: var(--muted, #6b6358);
+  letter-spacing: 0.04em;
+}
+@media (max-width: 599px) {
+  .foot-chart .foot-btns a {
+    min-height: 2.75rem;
+    flex: 1 1 calc(50% - 0.4rem);
+    text-align: center;
+  }
+}
