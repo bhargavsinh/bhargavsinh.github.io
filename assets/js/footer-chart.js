@@ -15,7 +15,6 @@
   function rootPrefix() {
     var path = location.pathname || '/';
     if (path.indexOf('/404') !== -1 || path.indexOf('/offline') !== -1) return '/';
-    // strip trailing file name
     var segs = path.split('/').filter(Boolean);
     if (segs.length && segs[segs.length - 1].indexOf('.') !== -1) {
       segs.pop();
@@ -30,9 +29,6 @@
       return absolute ? '/' + p : pref + p;
     }
     var home = absolute ? '/index.html' : (pref ? pref + 'index.html' : 'index.html');
-    if (!absolute && pref === '/') {
-      home = '/index.html';
-    }
     return (
       '<div class="foot-in foot-chart">' +
       '<div class="foot-brand">' +
