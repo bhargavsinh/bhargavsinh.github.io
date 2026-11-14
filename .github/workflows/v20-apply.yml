@@ -1,0 +1,102 @@
+name: V20 Apply Immersive
+
+on:
+  push:
+    paths:
+      - '.github/workflows/v20-apply.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download vendors + wire index
+        run: |
+          set -eux
+          mkdir -p assets/js/vendor
+          curl -fsSL "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" -o assets/js/vendor/three.min.js
+          curl -fsSL "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" -o assets/js/vendor/gsap.min.js
+          curl -fsSL "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" -o assets/js/vendor/ScrollTrigger.min.js
+          wc -c assets/js/vendor/*.js
+          test -s assets/js/v20-immersive.js
+          test -s assets/css/v20-immersive.css
+
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+          p = Path('index.html')
+          t = p.read_text(encoding='utf-8')
+
+          if 'v20-immersive' not in t.split('<body')[1][:200]:
+              t = re.sub(r'<body class="([^"]*)"', r'<body class="\1 v20-immersive"', t, count=1)
+
+          if 'id="v20-canvas-host"' not in t:
+              t = re.sub(
+                  r'(<body[^>]*>)',
+                  r'\1\n<div id="v20-canvas-host" aria-hidden="true"></div>\n<div id="v20-scene-label" aria-hidden="true"></div>',
+                  t, count=1)
+
+          if 'v20-immersive.css' not in t:
+              t = t.replace('</head>', '  <link rel="stylesheet" href="assets/css/v20-immersive.css?v=20.0.0">\n</head>', 1)
+
+          if 'v20-immersive.js' not in t:
+              scripts = (
+                  '  <script src="assets/js/vendor/three.min.js" defer></script>\n'
+                  '  <script src="assets/js/vendor/gsap.min.js" defer></script>\n'
+                  '  <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>\n'
+                  '  <script src="assets/js/v20-immersive.js?v=20.0.0" defer></script>\n'
+              )
+              t = t.replace('</body>', scripts + '</body>', 1)
+
+          t = re.sub(r'(<span>)V19\.[0-9.a-z-]+(</span>)', r'\1V20.0\2', t)
+          t = re.sub(r'(<span>)V18\.[0-9.]+(</span>)', r'\1V20.0\2', t)
+
+          for needle in [
+              'Published Gujarati works, research essays and reading resources.',
+              'Personal projects, Gujarati writing, genealogy and heritage.',
+              'Bhargavsinh Sisodiya',
+          ]:
+              assert needle in t, needle
+
+          p.write_text(t, encoding='utf-8')
+          print('index ok')
+
+          # other pages: cinematic css only
+          for hp in Path('.').rglob('*.html'):
+              if hp.name == 'index.html' or '.git' in hp.parts or '.github' in hp.parts:
+                  continue
+              x = hp.read_text(encoding='utf-8', errors='replace')
+              if 'v20-immersive.css' in x:
+                  continue
+              if '</head>' not in x:
+                  continue
+              depth = len(hp.parts) - 1
+              pref = '' if depth <= 0 else '../' * depth
+              x = x.replace('</head>', f'  <link rel="stylesheet" href="{pref}assets/css/v20-immersive.css?v=20.0.0">\n</head>', 1)
+              x = re.sub(r'(<span>)V19\.[0-9.a-z-]+(</span>)', r'\1V20.0\2', x)
+              hp.write_text(x, encoding='utf-8')
+
+          sw = Path('sw.js').read_text(encoding='utf-8')
+          sw = re.sub(r"VERSION = '[^']+'", "VERSION = '20.0.0'", sw, count=1)
+          if 'v20-immersive.css' not in sw:
+              sw = sw.replace(
+                  '"/assets/js/theme.js?v=18.1.0",',
+                  '"/assets/js/theme.js?v=18.1.0",\n  "/assets/css/v20-immersive.css?v=20.0.0",\n  "/assets/js/v20-immersive.js?v=20.0.0",',
+              )
+          Path('sw.js').write_text(sw, encoding='utf-8')
+          print('done')
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -25
+          git commit -m "Release V20.0 - Full Immersive 3D Portfolio" || exit 0
+          git push origin HEAD:main
