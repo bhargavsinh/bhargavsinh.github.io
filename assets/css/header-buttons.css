@@ -1,0 +1,107 @@
+/* Header + drawer menu as buttons — linear row / stacked list, NOT a chart grid */
+
+/* Desktop primary nav */
+.bar .nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+.bar .nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.35rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--line, rgba(0,0,0,.14)) 90%, transparent);
+  border-radius: 0.25rem;
+  background: color-mix(in srgb, var(--surface, #fff) 92%, var(--sand, #C5A477));
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  transition: border-color .15s, background .15s, color .15s;
+}
+.bar .nav a:hover,
+.bar .nav a:focus-visible {
+  border-color: color-mix(in srgb, var(--gold, #B08D57) 55%, var(--line, #ccc));
+  background: color-mix(in srgb, var(--sand, #C5A477) 16%, var(--surface, #fff));
+  outline: none;
+}
+.bar .nav a:focus-visible {
+  outline: 2px solid var(--gold, #C6A15B);
+  outline-offset: 2px;
+}
+.bar .nav a[aria-current="page"] {
+  border-color: color-mix(in srgb, var(--gold, #C6A15B) 70%, var(--line, #ccc));
+  background: color-mix(in srgb, var(--maroon, #581F2A) 12%, var(--surface, #fff));
+  color: var(--maroon, #581F2A);
+}
+:root[data-theme="dark"] .bar .nav a[aria-current="page"] {
+  color: var(--gold, #C6A15B);
+  background: color-mix(in srgb, var(--gold, #C6A15B) 12%, transparent);
+}
+
+/* Mobile drawer: full-width button stack (not multi-column chart) */
+.drawer-panel nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0 0 1rem;
+}
+.drawer-panel nav a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--line, rgba(0,0,0,.14)) 90%, transparent);
+  border-radius: 0.25rem;
+  background: color-mix(in srgb, var(--surface, #fff) 92%, var(--sand, #C5A477));
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: border-color .15s, background .15s;
+}
+.drawer-panel nav a:hover,
+.drawer-panel nav a:focus-visible {
+  border-color: color-mix(in srgb, var(--gold, #B08D57) 55%, var(--line, #ccc));
+  background: color-mix(in srgb, var(--sand, #C5A477) 16%, var(--surface, #fff));
+  outline: none;
+}
+.drawer-panel nav a:focus-visible {
+  outline: 2px solid var(--gold, #C6A15B);
+  outline-offset: 2px;
+}
+.drawer-panel nav a[aria-current="page"] {
+  border-color: color-mix(in srgb, var(--gold, #C6A15B) 70%, var(--line, #ccc));
+  background: color-mix(in srgb, var(--maroon, #581F2A) 12%, var(--surface, #fff));
+  color: var(--maroon, #581F2A);
+}
+:root[data-theme="dark"] .drawer-panel nav a[aria-current="page"] {
+  color: var(--gold, #C6A15B);
+  background: color-mix(in srgb, var(--gold, #C6A15B) 12%, transparent);
+}
+.drawer-panel h5 {
+  margin: 0.85rem 0 0.4rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted, #6b6358);
+}
+
+/* Keep bar tools as compact icon buttons */
+.bar-tools .ib {
+  border-radius: 0.25rem;
+}
+
+@media (max-width: 899px) {
+  /* Primary nav often hidden on small screens; drawer carries buttons */
+  .bar .nav {
+    display: none;
+  }
+}
