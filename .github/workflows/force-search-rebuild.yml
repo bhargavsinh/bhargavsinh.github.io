@@ -1,0 +1,68 @@
+name: Force search rebuild
+
+on:
+  push:
+    paths:
+      - '.github/workflows/force-search-rebuild.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re, json
+          pages = [
+            'index.html','about/index.html','projects/index.html','publications/index.html','research/index.html','contact/index.html',
+            'changelog.html','sitemap.html',
+            'Visitor/Visitindex.html','Visitor/about.html','Visitor/blog.html','Visitor/Mewad_history_blog.html','Visitor/vanshavali.html','Visitor/ananadviharbhavan.html','Visitor/contact.html',
+            'Visitor/policy-center.html','Visitor/privacy-policy.html','Visitor/termsofuse.html','Visitor/disclaimer.html','Visitor/grievance.html',
+            'Visitor/cookies-policy.html','Visitor/copyright-policy.html','Visitor/content-editorial-policy.html','Visitor/data-retention-policy.html','Visitor/third-party-policy.html','Visitor/accessibility-statement.html',
+            'HR-Recruiter/HRRindex.html','HR-Recruiter/resume.html','HR-Recruiter/projects.html','HR-Recruiter/ghostwriting.html','HR-Recruiter/pwriter.html',
+            'Book-Publications-Reader/BPindex.html','Book-Publications-Reader/satyanisodh.html','Book-Publications-Reader/astitva-garima.html','Book-Publications-Reader/mahabharat-rajdharma.html',
+            'Book-Publications-Reader/pushtimarg.html','Book-Publications-Reader/pushtimarg-ma-gruh-seva.html','Book-Publications-Reader/otherlinks.html','Book-Publications-Reader/bookreadingpolicy.html',
+          ]
+          portal_map = {}
+          for p in pages:
+              if p.startswith('Visitor'): portal_map[p]='Visitor'
+              elif p.startswith('HR'): portal_map[p]='HR'
+              elif p.startswith('Book'): portal_map[p]='Books'
+              else: portal_map[p]='Core'
+          out=[]
+          for f in pages:
+              html=Path(f).read_text(encoding='utf-8', errors='replace')
+              tm=re.search(r'<title>([^<]+)</title>', html)
+              dm=re.search(r'<meta name="description" content="([^"]*)"', html)
+              t=(tm.group(1) if tm else f).replace('&amp;','&').strip()
+              d=(dm.group(1) if dm else '').strip()[:220]
+              heads=re.findall(r'<h[12][^>]*>([\s\S]*?)</h[12]>', html)
+              heads=[' '.join(re.sub(r'<[^>]+>','',x).split()) for x in heads[:8]]
+              h=' · '.join([x for x in heads if x])[:500]
+              k=' '.join(re.findall(r'[A-Za-z0-9\u0A80-\u0AFF\u0900-\u097F]+', t.lower()))[:120]
+              out.append({'t':t,'u':f,'p':portal_map[f],'d':d,'h':h,'k':k})
+          Path('assets/search-index.json').write_text(json.dumps(out, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+          print(out[0]['t'])
+          assert out[0]['u']=='index.html'
+          assert 'Visiting' not in out[0]['t']
+          sw=Path('sw.js').read_text(encoding='utf-8')
+          sw=re.sub(r"VERSION = '[^']+'", "VERSION = '19.0.3'", sw, count=1)
+          Path('sw.js').write_text(sw, encoding='utf-8')
+          ch=Path('changelog.html').read_text(encoding='utf-8')
+          if 'V19.0.3' not in ch:
+              block='<div class="box"><h2>V19.0.3 — 2026-11-14</h2><h3>Sitemap, search &amp; audit</h3><ul><li>Rebuilt sitemap.xml</li><li>Rebuilt search-index.json</li><li>CHANGELOG.md added</li></ul></div>'
+              ch=ch.replace('<div class="stack"><div class="box">', '<div class="stack">'+block+'<div class="box">', 1)
+              Path('changelog.html').write_text(ch, encoding='utf-8')
+          print('ok', len(out))
+          PY
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/search-index.json sw.js changelog.html
+          git commit -m "V19.0.3: search-index rebuilt from titles" || exit 0
+          git push origin HEAD:main
