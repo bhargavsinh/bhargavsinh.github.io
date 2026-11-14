@@ -31,7 +31,6 @@
     '<circle cx="160" cy="175" r="3" fill="#D4AF70"/>' +
     '<path d="M40 30 L50 18 L60 30 M260 30 L270 18 L280 30" fill="none" stroke="#D4AF70" stroke-width="2"/>' +
     '</svg>' +
-    '<p class="dg-kicker">Darbar Gate</p>' +
     '<p class="dg-title">Welcome to Bhargavsinh Sisodiya\'s portfolio</p>' +
     '<p class="dg-sub">Preparing your visit — projects, publications and heritage.</p>' +
     '<div class="dg-bar" aria-hidden="true"><i></i></div>' +
