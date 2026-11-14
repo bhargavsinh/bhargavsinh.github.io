@@ -1,0 +1,116 @@
+name: Apply footer chart
+
+on:
+  push:
+    paths:
+      - '.github/workflows/footer-chart-apply.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          test -f assets/css/footer-chart.css
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          def abs_pref(p: Path):
+              if p.name in ('404.html', 'offline.html'):
+                  return '/', '/index.html', True
+              d = len(p.parts) - 1
+              pref = '' if d <= 0 else '../' * d
+              home = 'index.html' if d <= 0 else pref + 'index.html'
+              return pref, home, False
+
+          def footer_html(pref, home, absolute=False):
+              def u(*parts):
+                  path = '/'.join(parts)
+                  if absolute:
+                      return '/' + path
+                  return pref + path
+              return f'''<footer class="foot" data-v="19.0.5">
+  <div class="foot-in foot-chart">
+    <div class="foot-brand">
+      <a class="brand" href="{home}" aria-label="BHARGAVSINH SISODIYA — home"><img src="{pref}assets/images/brand/brand-mark-64.webp" srcset="{pref}assets/images/brand/brand-mark-64.webp 1x, {pref}assets/images/brand/brand-mark-128.webp 2x" alt="" width="34" height="34"><span>BHARGAV<b>SINH</b></span></a>
+      <p>Heritage in Memory. Knowledge in Creation.</p>
+    </div>
+    <div class="foot-groups">
+      <div class="foot-group">
+        <h4>Explore</h4>
+        <ul class="foot-btns">
+          <li><a href="{home}">Home</a></li>
+          <li><a href="{u('about/')}">About</a></li>
+          <li><a href="{u('projects/')}">Projects</a></li>
+          <li><a href="{u('publications/')}">Publications</a></li>
+          <li><a href="{u('research/')}">Research</a></li>
+          <li><a href="{u('contact/')}">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <h4>Portals</h4>
+        <ul class="foot-btns">
+          <li><a href="{u('Visitor/Visitindex.html')}">Visitor</a></li>
+          <li><a href="{u('HR-Recruiter/HRRindex.html')}">HR Recruiter</a></li>
+          <li><a href="{u('Book-Publications-Reader/BPindex.html')}">Books</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <h4>Legal</h4>
+        <ul class="foot-btns">
+          <li><a href="{u('Visitor/policy-center.html')}">Policy Center</a></li>
+          <li><a href="{u('Visitor/privacy-policy.html')}">Privacy</a></li>
+          <li><a href="{u('Visitor/termsofuse.html')}">Terms</a></li>
+          <li><a href="{u('Visitor/disclaimer.html')}">Disclaimer</a></li>
+          <li><a href="{u('Visitor/grievance.html')}">Grievance</a></li>
+          <li><a href="{u('Visitor/copyright-policy.html')}">Copyright</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <h4>Site</h4>
+        <ul class="foot-btns">
+          <li><a href="{u('sitemap.html')}">Sitemap</a></li>
+          <li><a href="{u('changelog.html')}">Changelog</a></li>
+          <li><a href="{u('Visitor/contact.html')}">Contact form</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot-base"><span>© <span class="js-year">2026</span> BHARGAVSINH SISODIYA</span><span>V19.0.5</span></div>
+</footer>'''
+
+          n = 0
+          for p in sorted(Path('.').rglob('*.html')):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              t = p.read_text(encoding='utf-8', errors='replace')
+              if '<footer' not in t.lower():
+                  print('no footer', p)
+                  continue
+              pref, home, absolute = abs_pref(p)
+              new_foot = footer_html(pref, home, absolute)
+              t2, count = re.subn(r'<footer\b[\s\S]*?</footer>', new_foot, t, count=1, flags=re.I)
+              if count != 1:
+                  print('fail replace', p, count)
+                  continue
+              if 'footer-chart.css' not in t2 and '</head>' in t2:
+                  t2 = t2.replace('</head>', f'  <link rel="stylesheet" href="{pref}assets/css/footer-chart.css?v=19.0.5">\n</head>', 1)
+              p.write_text(t2, encoding='utf-8')
+              n += 1
+          print('updated', n)
+          idx = Path('index.html').read_text(encoding='utf-8')
+          assert 'foot-chart' in idx
+          assert 'foot-btns' in idx
+          print('index ok')
+          PY
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Apply button-chart footers on all pages" || exit 0
+          git push origin HEAD:main
