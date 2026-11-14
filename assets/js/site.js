@@ -71,7 +71,7 @@
       return fetch(ROOT + 'assets/search-index.json').then(function (r) { return r.json(); }).then(function (j) { index = j; return j; }).catch(function () { index = []; return index; });
     }
     function norm(s) { return (s || '').toLowerCase().normalize('NFC'); }
-    function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+    function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&', '<': '<', '>': '>', '"': '"', "'": '&#39;' }[c]; }); }
     function render(q) {
       var terms = norm(q).split(/\s+/).filter(Boolean), out = [];
       (index || []).forEach(function (p) {
@@ -178,7 +178,7 @@
     var okBox = $('#success-message'), errBox = $('#error-message'), btn = $('#submit-button');
     if (okBox) okBox.classList.add('hidden'); if (errBox) errBox.classList.add('hidden');
     on(form, 'submit', function (e) {
-      if (!window.fetch || !window.FormData) return;           // graceful: native POST
+      if (!window.fetch || !window.FormData) return;
       var hp = form.querySelector('[name="_gotcha"]'); if (hp && hp.value) { e.preventDefault(); return; }
       var last = parseInt(sess('bs_form_ts') || '0', 10);
       if (Date.now() - last < 8000) { e.preventDefault(); if (errBox) { errBox.classList.remove('hidden'); errBox.textContent = errBox.textContent || 'Please wait a few seconds before submitting again.'; } return; }
@@ -252,7 +252,7 @@
     if (!doc.body.classList.contains('home')) return;
     $$('.portal').forEach(function (a) { on(a, 'click', function () { store('bs_last_portal', a.getAttribute('href') + '|' + a.getAttribute('data-name')); }); });
     var last = store('bs_last_portal'), slot = $('#resume-slot');
-    if (last && slot && last.indexOf('|') > 0) { var p = last.split('|'); slot.innerHTML = 'Welcome back — continue to <a href="' + p[0].replace(/"/g, '') + '"></a>'; slot.querySelector('a').textContent = p[1]; slot.hidden = false; }
+    if (last && slot && last.indexOf('|') > 0) { var p = last.split('|'); slot.innerHTML = 'Welcome back — continue to <a href="' + p[0].replace(/\"/g, '') + '"></a>'; slot.querySelector('a').textContent = p[1]; slot.hidden = false; }
     if (reduced || sess('bs_intro')) return;
     var el = doc.createElement('div'); el.className = 'intro'; el.setAttribute('aria-hidden', 'true');
     el.innerHTML = '<div class="intro-mark"><span>B</span><span>.</span><span>M</span><span>.</span><span>S</span><span>.</span></div><div class="intro-name">Bhargavsinh Sisodiya</div><button type="button" class="intro-skip">Skip</button>';
@@ -275,5 +275,15 @@
       var reloaded = false, had = !!navigator.serviceWorker.controller;
       navigator.serviceWorker.addEventListener('controllerchange', function () { if (reloaded || !had) return; reloaded = true; location.reload(); });
     });
+  });
+
+  // ---- Footer button chart (loads companion script once) ------------------
+  safe(function () {
+    if (doc.querySelector('script[data-footer-chart]')) return;
+    var s = doc.createElement('script');
+    s.src = ROOT + 'assets/js/footer-chart.js?v=19.0.5';
+    s.defer = true;
+    s.setAttribute('data-footer-chart', '1');
+    doc.body.appendChild(s);
   });
 })();
