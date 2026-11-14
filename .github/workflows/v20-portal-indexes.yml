@@ -1,0 +1,169 @@
+name: V20 portal index copy
+
+on:
+  push:
+    paths:
+      - '.github/workflows/v20-portal-indexes.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update three portal indexes only
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          def must_keep(t, needles):
+              for n in needles:
+                  assert n in t, 'missing ' + n
+
+          # -------- Visitor --------
+          p = Path('Visitor/Visitindex.html')
+          t = p.read_text(encoding='utf-8')
+          t = re.sub(r'<title>[^<]*</title>',
+                     '<title>Visitor Tower | Guest Wing — BHARGAVSINH SISODIYA</title>', t, count=1)
+          t = re.sub(r'<meta name="description" content="[^"]*">',
+                     '<meta name="description" content="Guest Wing of the digital kingdom — personal projects, Gujarati writing, Sisodiya genealogy and heritage resources by Bhargavsinh Sisodiya.">', t, count=1)
+          t = t.replace('Welcome to the Digital Universe',
+                        'Visitor Tower — Guest Wing', 1)
+          t = t.replace(
+              'Explore personal projects, Gujarati writing, Sisodiya genealogy, heritage resources, and public digital work by BHARGAVSINH SISODIYA.',
+              'You have entered the Guest Wing of this digital kingdom. Here the public face of personal projects, Gujarati writing, Sisodiya genealogy and heritage resources opens in quiet chambers — each door leads to an existing archive, not a rewritten history.',
+              1)
+          t = t.replace('>Explore</h2>', '>Chambers of the Guest Wing</h2>', 1)
+          t = t.replace(
+              'Personal introduction, Pushtimarg devotion, and heritage of the lineage from Shri Puranmalji.',
+              'Portrait chamber — personal introduction, Pushtimarg devotion, and the lineage remembered from Shri Puranmalji.',
+              1)
+          t = t.replace(
+              'Essays, research notes, and reflective writing on heritage, philosophy, and digital work.',
+              'Scriptorium — essays, research notes and reflective writing on heritage, philosophy and digital work.',
+              1)
+          t = t.replace(
+              'Digital archive of the Sisodiya lineage — genealogy of the Suryavanshi Mewar tradition.',
+              'Lineage hall — digital archive of the Sisodiya lineage within the Suryavanshi Mewar tradition.',
+              1)
+          t = t.replace(
+              'A historical reflection on the unbroken stream of Mewad history and Sisodiya legacy.',
+              'Heritage gallery — a historical reflection on the stream of Mewad history and Sisodiya legacy.',
+              1)
+          t = t.replace(
+              'Official Residence &amp; Heritage Sanctuary rooted in Sisodiya tradition and Pushtimargiya devotion.',
+              'Sanctuary threshold — Official Residence &amp; Heritage Sanctuary rooted in Sisodiya tradition and Pushtimargiya devotion.',
+              1)
+          t = t.replace('>Pushtimarg &amp; Research</h2>', '>Sanctuary &amp; Research Courts</h2>', 1)
+          t = t.replace(
+              'Literature and resources related to Pushtimarg and Shuddhadvaita Vedanta.',
+              'Library court — literature and resources related to Pushtimarg and Shuddhadvaita Vedanta.',
+              1)
+          t = t.replace(
+              'On the principle of household seva in Pushtimarg.',
+              'Seva chamber — on the principle of household seva in Pushtimarg.',
+              1)
+          t = t.replace(
+              'Questions, collaborations, or feedback — use the contact page.',
+              'Outer gate — questions, collaborations or feedback continue on the contact page.',
+              1)
+          t = re.sub(r'(<span>)V19\.[0-9.a-z-]+(</span>)', r'\1V20.0\2', t)
+          t = re.sub(r'(<span>)V18\.[0-9.]+(</span>)', r'\1V20.0\2', t)
+          must_keep(t, ['about.html', 'vanshavali.html', 'ananadviharbhavan.html', 'BHARGAVSINH'])
+          p.write_text(t, encoding='utf-8')
+          print('Visitor OK')
+
+          # -------- HR --------
+          p = Path('HR-Recruiter/HRRindex.html')
+          t = p.read_text(encoding='utf-8')
+          t = re.sub(r'<title>[^<]*</title>',
+                     '<title>HR Tower | Professional Wing — BHARGAVSINH SISODIYA</title>', t, count=1)
+          t = re.sub(r'<meta name="description" content="[^"]*">',
+                     '<meta name="description" content="Professional Wing of the digital kingdom — skills, projects, resume and writing work by Bhargavsinh Sisodiya for hiring managers and collaborators.">', t, count=1)
+          t = t.replace('>Professional Profile</h1>', '>HR Tower — Professional Wing</h1>', 1)
+          t = t.replace(
+              'Clear overview of skills, projects, and writing work — designed for hiring managers seeking a clear professional overview.',
+              'You have entered the Professional Wing. This tower presents a clear overview of skills, projects and writing work — arranged for hiring managers and collaborators who need a precise professional reading.',
+              1)
+          t = t.replace('>Professional Snapshot</h2>', '>Audience Chamber</h2>', 1)
+          t = t.replace(
+              'BHARGAVSINH SISODIYA is a BCA student and technology enthusiast with active interest in web development, digital products, and pro',
+              'BHARGAVSINH SISODIYA is a BCA student and technology enthusiast with active interest in web development, digital products, and pro',
+              1)  # keep factual intro; no credential invention
+          t = t.replace('>Key Links</h2>', '>Service Courts</h2>', 1)
+          t = t.replace(
+              'Full professional resume and experience overview.',
+              'Record hall — full professional resume and experience overview.',
+              1)
+          t = t.replace(
+              'Software and digital products under active development.',
+              'Workshop court — software and digital products under active development.',
+              1)
+          t = t.replace(
+              'Professional ghostwriting services and rate card.',
+              'Scriptorium desk — professional ghostwriting services and rate card.',
+              1)
+          t = re.sub(r'(<span>)V19\.[0-9.a-z-]+(</span>)', r'\1V20.0\2', t)
+          t = re.sub(r'(<span>)V18\.[0-9.]+(</span>)', r'\1V20.0\2', t)
+          must_keep(t, ['resume.html', 'projects.html', 'ghostwriting.html', 'BCA student'])
+          p.write_text(t, encoding='utf-8')
+          print('HR OK')
+
+          # -------- Books --------
+          p = Path('Book-Publications-Reader/BPindex.html')
+          t = p.read_text(encoding='utf-8')
+          t = re.sub(r'<title>[^<]*</title>',
+                     '<title>Library Tower | Royal Library Wing — BHARGAVSINH SISODIYA</title>', t, count=1)
+          t = re.sub(r'<meta name="description" content="[^"]*">',
+                     '<meta name="description" content="Royal Library Wing — published Gujarati works, research essays and reading resources by Bhargavsinh Sisodiya.">', t, count=1)
+          t = t.replace('Digital Library &amp; Literary Archive',
+                        'Library Tower — Royal Library Wing', 1)
+          t = t.replace(
+              'Published Gujarati works, research essays, and curated reading resources by BHARGAVSINH SISODIYA — available for discovery and onl',
+              'You have entered the Royal Library Wing. Published Gujarati works, research essays and curated reading resources by BHARGAVSINH SISODIYA stand here for discovery and onl',
+              1)
+          t = t.replace('>Books</h2>', '>Manuscript Hall</h2>', 1)
+          t = t.replace('>Pushtimarg &amp; Research</h2>', '>Devotional Stacks &amp; Research</h2>', 1)
+          t = t.replace(
+              'A published Gujarati work exploring the search for truth through philosophy, reflection, and lived experience.',
+              'Manuscript — a published Gujarati work exploring the search for truth through philosophy, reflection and lived experience.',
+              1)
+          t = t.replace(
+              'Fiction Legal Courtroom Drama — published Gujarati title.',
+              'Manuscript — Fiction Legal Courtroom Drama; published Gujarati title.',
+              1)
+          t = t.replace(
+              'Legal-Philosophical Discourse on rājadharma and democracy.',
+              'Manuscript — legal-philosophical discourse on rājadharma and democracy.',
+              1)
+          t = t.replace(
+              'Literature and resources related to Pushtimarg and Shuddhadvaita Vedanta.',
+              'Stack — literature and resources related to Pushtimarg and Shuddhadvaita Vedanta.',
+              1)
+          t = t.replace(
+              'On the principle of household seva in Pushtimarg.',
+              'Stack — on the principle of household seva in Pushtimarg.',
+              1)
+          t = t.replace(
+              'Full list of publications and links.',
+              'Catalogue desk — full list of publications and links.',
+              1)
+          t = re.sub(r'(<span>)V19\.[0-9.a-z-]+(</span>)', r'\1V20.0\2', t)
+          t = re.sub(r'(<span>)V18\.[0-9.]+(</span>)', r'\1V20.0\2', t)
+          must_keep(t, ['satyanisodh.html', 'સત્યની શોધ', 'BHARGAVSINH'])
+          p.write_text(t, encoding='utf-8')
+          print('Books OK')
+          print('ALL PORTAL INDEXES UPDATED')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Visitor/Visitindex.html HR-Recruiter/HRRindex.html Book-Publications-Reader/BPindex.html
+          git status --short
+          git commit -m "V20.0: immersive copy on Visitor, HR, Books portal indexes only" || exit 0
+          git push origin HEAD:main
