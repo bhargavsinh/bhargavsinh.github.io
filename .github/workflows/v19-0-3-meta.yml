@@ -1,0 +1,174 @@
+name: V19.0.3 sitemap search changelog
+
+on:
+  push:
+    paths:
+      - '.github/workflows/v19-0-3-meta.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rebuild sitemap + search-index; patch changelog.html; bump SW
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re, json, urllib.request
+
+          pages = [
+            ('/', 'Core', '1.0', 'weekly'),
+            ('about/', 'Core', '0.9', 'weekly'),
+            ('projects/', 'Core', '0.9', 'weekly'),
+            ('publications/', 'Core', '0.9', 'weekly'),
+            ('research/', 'Core', '0.9', 'weekly'),
+            ('contact/', 'Core', '0.9', 'weekly'),
+            ('changelog.html', 'Core', '0.5', 'monthly'),
+            ('sitemap.html', 'Core', '0.4', 'monthly'),
+            ('Visitor/Visitindex.html', 'Visitor', '0.9', 'weekly'),
+            ('Visitor/about.html', 'Visitor', '0.7', 'monthly'),
+            ('Visitor/blog.html', 'Visitor', '0.7', 'monthly'),
+            ('Visitor/Mewad_history_blog.html', 'Visitor', '0.7', 'monthly'),
+            ('Visitor/vanshavali.html', 'Visitor', '0.7', 'monthly'),
+            ('Visitor/ananadviharbhavan.html', 'Visitor', '0.7', 'monthly'),
+            ('Visitor/contact.html', 'Visitor', '0.7', 'monthly'),
+            ('Visitor/policy-center.html', 'Visitor', '0.4', 'yearly'),
+            ('Visitor/privacy-policy.html', 'Visitor', '0.3', 'yearly'),
+            ('Visitor/termsofuse.html', 'Visitor', '0.3', 'yearly'),
+            ('Visitor/disclaimer.html', 'Visitor', '0.3', 'yearly'),
+            ('Visitor/grievance.html', 'Visitor', '0.3', 'yearly'),
+            ('Visitor/cookies-policy.html', 'Visitor', '0.3', 'yearly'),
+            ('Visitor/copyright-policy.html', 'Visitor', '0.3', 'yearly'),
+            ('Visitor/content-editorial-policy.html', 'Visitor', '0.3', 'yearly'),
+            ('Visitor/data-retention-policy.html', 'Visitor', '0.3', 'yearly'),
+            ('Visitor/third-party-policy.html', 'Visitor', '0.3', 'yearly'),
+            ('Visitor/accessibility-statement.html', 'Visitor', '0.3', 'yearly'),
+            ('HR-Recruiter/HRRindex.html', 'HR', '0.9', 'weekly'),
+            ('HR-Recruiter/resume.html', 'HR', '0.8', 'monthly'),
+            ('HR-Recruiter/projects.html', 'HR', '0.7', 'monthly'),
+            ('HR-Recruiter/ghostwriting.html', 'HR', '0.7', 'monthly'),
+            ('HR-Recruiter/pwriter.html', 'HR', '0.6', 'monthly'),
+            ('Book-Publications-Reader/BPindex.html', 'Books', '0.9', 'weekly'),
+            ('Book-Publications-Reader/satyanisodh.html', 'Books', '0.7', 'monthly'),
+            ('Book-Publications-Reader/astitva-garima.html', 'Books', '0.7', 'monthly'),
+            ('Book-Publications-Reader/mahabharat-rajdharma.html', 'Books', '0.7', 'monthly'),
+            ('Book-Publications-Reader/pushtimarg.html', 'Books', '0.7', 'monthly'),
+            ('Book-Publications-Reader/pushtimarg-ma-gruh-seva.html', 'Books', '0.7', 'monthly'),
+            ('Book-Publications-Reader/otherlinks.html', 'Books', '0.5', 'monthly'),
+            ('Book-Publications-Reader/bookreadingpolicy.html', 'Books', '0.3', 'yearly'),
+          ]
+
+          def file_for(path):
+              if path in ('/', ''):
+                  return 'index.html'
+              if path.endswith('/'):
+                  return path + 'index.html'
+              return path
+
+          today = '2026-11-14'
+          search = []
+          sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', '']
+
+          for path, portal, pri, freq in pages:
+              f = file_for(path)
+              html = Path(f).read_text(encoding='utf-8', errors='replace')
+              title_m = re.search(r'<title>([^<]+)</title>', html)
+              desc_m = re.search(r'<meta name="description" content="([^"]*)"', html)
+              t = (title_m.group(1) if title_m else path).replace('&amp;', '&').strip()
+              d = (desc_m.group(1) if desc_m else '').strip()
+              heads = re.findall(r'<h[12][^>]*>([\s\S]*?)</h[12]>', html)
+              heads = [' '.join(re.sub(r'<[^>]+>', '', x).split()) for x in heads[:8]]
+              heads = [x for x in heads if x]
+              h = ' · '.join(heads)[:500]
+              u = f
+              k = ' '.join(re.findall(r'[A-Za-z0-9\u0A80-\u0AFF\u0900-\u097F]+', t.lower()))[:120]
+              search.append({'t': t, 'u': u, 'p': portal, 'd': d[:220], 'h': h, 'k': k})
+              loc = 'https://bhargavsinh.github.io/' + ('' if path == '/' else path)
+              sm += [
+                  '  <url>',
+                  f'    <loc>{loc}</loc>',
+                  f'    <lastmod>{today}</lastmod>',
+                  f'    <changefreq>{freq}</changefreq>',
+                  f'    <priority>{pri}</priority>',
+                  '  </url>',
+              ]
+
+          sm += ['', '</urlset>', '']
+          Path('sitemap.xml').write_text('\n'.join(sm), encoding='utf-8')
+          Path('assets/search-index.json').write_text(json.dumps(search, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print('sitemap', len(pages), 'search', len(search))
+
+          # changelog.html prepend V19.0.3 + V19.0.2 boxes
+          ch = Path('changelog.html')
+          ct = ch.read_text(encoding='utf-8')
+          block = '''<div class="box">
+<h2>V19.0.3 — 2026-11-14</h2>
+<h3>Sitemap, search &amp; audit</h3>
+<ul>
+<li>Rebuilt sitemap.xml (39 canonical URLs)</li>
+<li>Rebuilt client search index from live titles and descriptions</li>
+<li>Documented releases in CHANGELOG.md</li>
+<li>Post–V20-rollback audit: Kingdom V19 stack healthy</li>
+</ul>
+</div><div class="box">
+<h2>V19.0.2 — 2026-11-14</h2>
+<h3>Mobile hygiene</h3>
+<ul>
+<li>Horizontal overflow containment</li>
+<li>Footer version V19.0.2</li>
+<li>Form feedback hardening</li>
+</ul>
+</div><div class="box">
+<h2>V19.0 — Digital Kingdom</h2>
+<h3>Palace visual system</h3>
+<ul>
+<li>Rajputana fort homepage with three portal towers</li>
+<li>Site-wide palace chamber styling</li>
+<li>Portal URLs and deep content preserved</li>
+</ul>
+</div>'''
+          if 'V19.0.3' not in ct:
+              ct = ct.replace('<div class="stack"><div class="box">', '<div class="stack">' + block + '<div class="box">', 1)
+              ch.write_text(ct, encoding='utf-8')
+              print('changelog.html updated')
+          else:
+              print('changelog.html already has V19.0.3')
+
+          # footer version on index only badge optional
+          for htmlp in Path('.').rglob('*.html'):
+              if '.git' in htmlp.parts or '.github' in htmlp.parts:
+                  continue
+              x = htmlp.read_text(encoding='utf-8', errors='replace')
+              x2 = re.sub(r'(<span>)V19\.0\.2(</span>)', r'\1V19.0.3\2', x)
+              if x2 != x:
+                  htmlp.write_text(x2, encoding='utf-8')
+
+          sw = Path('sw.js').read_text(encoding='utf-8')
+          sw = re.sub(r"VERSION = '[^']+'", "VERSION = '19.0.3'", sw, count=1)
+          sw = sw.replace('Service worker — V19.0.2', 'Service worker — V19.0.3')
+          Path('sw.js').write_text(sw, encoding='utf-8')
+
+          # audit asserts
+          assert Path('assets/css/kingdom.css').exists()
+          assert 'PROTECT' in Path('assets/js/site.js').read_text(encoding='utf-8')
+          idx = Path('index.html').read_text(encoding='utf-8')
+          assert 'fort-complex' in idx or 'portals' in idx
+          assert 'v20-immersive' not in idx
+          print('audit ok')
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml assets/search-index.json CHANGELOG.md changelog.html sw.js
+          git add -u '*.html' 2>/dev/null || true
+          git add -A
+          git status --short | head -30
+          git commit -m "V19.0.3: sitemap, search-index, changelog refresh + audit" || exit 0
+          git push origin HEAD:main
