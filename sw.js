@@ -1,7 +1,7 @@
 /* Service worker — V19.0.2
    Navigation: network-first (4 s timeout) → cache → offline page.
    Same-origin assets + Google Fonts: stale-while-revalidate. Old caches are purged on activate. */
-const VERSION = '19.0.2';
+const VERSION = '20.0.0';
 const CACHE = 'bs-' + VERSION;
 const FONTS = 'bs-fonts';
 const OFFLINE = '/offline.html';
@@ -26,6 +26,8 @@ const PRECACHE = [
   "/assets/css/protect-l4.css?v=18.1.3",
   "/assets/js/site.js?v=18.1.0",
   "/assets/js/theme.js?v=18.1.0",
+  "/assets/css/v20-immersive.css?v=20.0.0",
+  "/assets/js/v20-immersive.js?v=20.0.0",
   "/assets/js/protect-l4.js?v=18.1.3",
   "/assets/search-index.json",
   "/assets/images/brand/brand-mark.webp",
