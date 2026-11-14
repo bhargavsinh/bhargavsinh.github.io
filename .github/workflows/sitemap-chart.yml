@@ -1,0 +1,151 @@
+name: Sitemap chart page
+
+on:
+  push:
+    paths:
+      - '.github/workflows/sitemap-chart.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild sitemap.html main as chart
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          main = r'''<main id="main" class="page sitemap-chart-page">
+<header class="hero"><p class="eyebrow">Site architecture</p><h1>Sitemap</h1>
+<p class="lead muted">Chart of every public page — Digital Kingdom structure.</p></header>
+
+<p class="sm-legend"><span><i></i> Hub / Tower</span><span><i class="g"></i> Page link</span></p>
+
+<div class="sm-chart" role="navigation" aria-label="Site chart">
+  <div class="sm-root"><a class="sm-node" href="index.html">Home · Digital Kingdom</a></div>
+  <div class="sm-v" aria-hidden="true"></div>
+  <div class="sm-hwrap" aria-hidden="true"><div class="sm-hline"></div></div>
+  <div class="sm-row">
+    <div class="sm-col">
+      <div class="sm-v" aria-hidden="true"></div>
+      <a class="sm-node" href="about/">Core Hub</a>
+      <div class="sm-branch">
+        <h2>Main navigation</h2>
+        <ul>
+          <li><a href="index.html"><strong>Home</strong> Portfolio gate</a></li>
+          <li><a href="about/"><strong>About</strong> Identity</a></li>
+          <li><a href="projects/"><strong>Projects</strong> Work &amp; tools</a></li>
+          <li><a href="publications/"><strong>Publications</strong> Library hub</a></li>
+          <li><a href="research/"><strong>Research</strong> Heritage</a></li>
+          <li><a href="contact/"><strong>Contact</strong> Gateway</a></li>
+          <li><a href="changelog.html"><strong>Changelog</strong> Releases</a></li>
+          <li><a href="sitemap.html"><strong>Sitemap</strong> This chart</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sm-col">
+      <div class="sm-v" aria-hidden="true"></div>
+      <a class="sm-node" href="Visitor/Visitindex.html">Visitor Tower</a>
+      <div class="sm-branch">
+        <h2>Guest Wing</h2>
+        <ul>
+          <li><a href="Visitor/Visitindex.html"><strong>Portal</strong> Visitor home</a></li>
+          <li><a href="Visitor/about.html"><strong>About</strong> Biography</a></li>
+          <li><a href="Visitor/blog.html"><strong>Blogs</strong> Articles</a></li>
+          <li><a href="Visitor/Mewad_history_blog.html"><strong>History</strong> Mewad stream</a></li>
+          <li><a href="Visitor/vanshavali.html"><strong>વંશાવલી</strong> Genealogy</a></li>
+          <li><a href="Visitor/ananadviharbhavan.html"><strong>Anand Vihar Bhavan</strong> Sanctuary</a></li>
+          <li><a href="Visitor/contact.html"><strong>Contact</strong> Form &amp; links</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sm-col">
+      <div class="sm-v" aria-hidden="true"></div>
+      <a class="sm-node" href="HR-Recruiter/HRRindex.html">HR Tower</a>
+      <div class="sm-branch">
+        <h2>Professional Wing</h2>
+        <ul>
+          <li><a href="HR-Recruiter/HRRindex.html"><strong>Portal</strong> Profile</a></li>
+          <li><a href="HR-Recruiter/resume.html"><strong>Resume</strong> Experience</a></li>
+          <li><a href="HR-Recruiter/projects.html"><strong>Projects</strong> Products</a></li>
+          <li><a href="HR-Recruiter/pwriter.html"><strong>pwriter</strong> Prompt tool</a></li>
+          <li><a href="HR-Recruiter/ghostwriting.html"><strong>Ghostwriting</strong> Services</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sm-col">
+      <div class="sm-v" aria-hidden="true"></div>
+      <a class="sm-node" href="Book-Publications-Reader/BPindex.html">Library Tower</a>
+      <div class="sm-branch">
+        <h2>Royal Library</h2>
+        <ul>
+          <li><a href="Book-Publications-Reader/BPindex.html"><strong>Portal</strong> Library home</a></li>
+          <li><a href="Book-Publications-Reader/satyanisodh.html"><strong>સત્યની શોધ</strong> Book</a></li>
+          <li><a href="Book-Publications-Reader/astitva-garima.html"><strong>અસ્તિત્વ</strong> Garima Pt.1</a></li>
+          <li><a href="Book-Publications-Reader/mahabharat-rajdharma.html"><strong>राजधर्म</strong> Discourse</a></li>
+          <li><a href="Book-Publications-Reader/pushtimarg.html"><strong>Pushtimarg</strong> Literature</a></li>
+          <li><a href="Book-Publications-Reader/pushtimarg-ma-gruh-seva.html"><strong>ગૃહ સેવા</strong> Article</a></li>
+          <li><a href="Book-Publications-Reader/otherlinks.html"><strong>Catalogue</strong> All links</a></li>
+          <li><a href="Book-Publications-Reader/bookreadingpolicy.html"><strong>Reading policy</strong> Legal</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="sm-flat" aria-label="Policies and legal">
+  <div class="box">
+    <h2>Policy Court</h2>
+    <ul>
+      <li><a href="Visitor/policy-center.html">Policy Center</a></li>
+      <li><a href="Visitor/privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="Visitor/termsofuse.html">Terms of Use</a></li>
+      <li><a href="Visitor/disclaimer.html">Disclaimer</a></li>
+      <li><a href="Visitor/grievance.html">Grievance</a></li>
+      <li><a href="Visitor/cookies-policy.html">Cookies Policy</a></li>
+      <li><a href="Visitor/copyright-policy.html">Copyright Policy</a></li>
+      <li><a href="Visitor/content-editorial-policy.html">Content &amp; Editorial</a></li>
+      <li><a href="Visitor/data-retention-policy.html">Data Retention</a></li>
+      <li><a href="Visitor/third-party-policy.html">Third-Party Policy</a></li>
+      <li><a href="Visitor/accessibility-statement.html">Accessibility</a></li>
+    </ul>
+  </div>
+  <div class="box">
+    <h2>Machine sitemap</h2>
+    <ul>
+      <li><a href="sitemap.xml">sitemap.xml</a> (for search engines)</li>
+      <li><a href="CHANGELOG.md">CHANGELOG.md</a></li>
+      <li><a href="robots.txt">robots.txt</a></li>
+    </ul>
+  </div>
+</section>
+</main>'''
+
+          p = Path('sitemap.html')
+          t = p.read_text(encoding='utf-8')
+          t, n = re.subn(r'<main[^>]*>[\s\S]*?</main>', main, t, count=1)
+          assert n == 1
+          if 'sitemap-chart.css' not in t:
+              t = t.replace('</head>', '  <link rel="stylesheet" href="assets/css/sitemap-chart.css?v=19.0.3">\n</head>', 1)
+          t = re.sub(r'<title>[^<]*</title>', '<title>Sitemap Chart | BHARGAVSINH SISODIYA</title>', t, count=1)
+          t = re.sub(
+              r'<meta name="description" content="[^"]*">',
+              '<meta name="description" content="Visual chart of every public page — core hub, three towers, and policy court.">',
+              t, count=1)
+          assert 'sm-chart' in t
+          assert Path('assets/css/sitemap-chart.css').exists()
+          p.write_text(t, encoding='utf-8')
+          print('sitemap chart ok')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.html assets/css/sitemap-chart.css
+          git commit -m "Rebuild sitemap.html as site architecture chart" || exit 0
+          git push origin HEAD:main

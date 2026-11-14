@@ -1,0 +1,69 @@
+/* Sitemap architecture chart */
+.sitemap-chart-page .sm-chart{display:flex;flex-direction:column;align-items:center;gap:0;margin:1.5rem 0 2.5rem}
+.sitemap-chart-page .sm-node{
+  display:inline-flex;align-items:center;justify-content:center;text-align:center;
+  min-width:min(100%,14rem);max-width:20rem;padding:.7rem 1rem;
+  border:1px solid color-mix(in srgb, var(--gold,#B08D57) 55%, var(--line,#ccc));
+  background:color-mix(in srgb, var(--surface,#fff) 92%, var(--sand,#C5A477));
+  color:inherit;text-decoration:none;font-weight:600;font-size:.92rem;
+  border-radius:.25rem;box-shadow:0 8px 24px -16px rgba(0,0,0,.35);
+  transition:border-color .2s, transform .2s;
+}
+.sitemap-chart-page a.sm-node:hover{border-color:var(--maroon,#581F2A);transform:translateY(-1px)}
+.sitemap-chart-page .sm-root .sm-node{
+  font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase;padding:.85rem 1.25rem;
+  background:linear-gradient(180deg, color-mix(in srgb, var(--sand,#C5A477) 35%, transparent), var(--surface,#fffaf3));
+  border-width:2px;border-color:var(--maroon,#581F2A)
+}
+.sitemap-chart-page .sm-v{width:2px;height:1.1rem;background:color-mix(in srgb, var(--gold,#B08D57) 70%, #888);margin:0 auto}
+.sitemap-chart-page .sm-hwrap{position:relative;width:100%;max-width:72rem;display:flex;justify-content:center}
+.sitemap-chart-page .sm-hline{
+  position:absolute;top:0;left:12.5%;right:12.5%;height:2px;
+  background:color-mix(in srgb, var(--gold,#B08D57) 70%, #888)
+}
+@media (max-width:799px){.sitemap-chart-page .sm-hline{left:0;right:0}}
+.sitemap-chart-page .sm-row{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem 1rem;
+  width:100%;max-width:72rem;margin-top:0
+}
+@media (max-width:899px){.sitemap-chart-page .sm-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.sitemap-chart-page .sm-row{grid-template-columns:1fr}}
+.sitemap-chart-page .sm-col{display:flex;flex-direction:column;align-items:center;min-width:0}
+.sitemap-chart-page .sm-branch{
+  width:100%;margin-top:.35rem;padding:.75rem .65rem .85rem;
+  border:1px solid var(--line,rgba(0,0,0,.12));
+  background:color-mix(in srgb, var(--surface,#fff) 88%, transparent);
+  border-radius:.3rem
+}
+.sitemap-chart-page .sm-branch h2{
+  margin:0 0 .55rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--maroon,#581F2A);text-align:center;font-weight:700
+}
+.sitemap-chart-page .sm-branch ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.35rem}
+.sitemap-chart-page .sm-branch a{
+  display:block;padding:.4rem .55rem;text-decoration:none;color:inherit;
+  border-left:3px solid color-mix(in srgb, var(--gold,#B08D57) 50%, transparent);
+  background:color-mix(in srgb, var(--sand,#C5A477) 8%, transparent);
+  font-size:.84rem;line-height:1.35;border-radius:0 .2rem .2rem 0
+}
+.sitemap-chart-page .sm-branch a:hover{
+  border-left-color:var(--maroon,#581F2A);
+  background:color-mix(in srgb, var(--sand,#C5A477) 18%, transparent)
+}
+.sitemap-chart-page .sm-branch a strong{
+  display:block;font-size:.78rem;letter-spacing:.04em;opacity:.75;font-weight:600;margin-bottom:.1rem
+}
+.sitemap-chart-page .sm-legend{
+  display:flex;flex-wrap:wrap;gap:.5rem .85rem;justify-content:center;margin:0 0 1.25rem;
+  font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#666)
+}
+.sitemap-chart-page .sm-legend span{display:inline-flex;align-items:center;gap:.35rem}
+.sitemap-chart-page .sm-legend i{width:.65rem;height:.65rem;border-radius:1px;background:var(--maroon,#581F2A);display:inline-block}
+.sitemap-chart-page .sm-legend i.g{background:var(--gold,#B08D57)}
+.sitemap-chart-page .sm-flat{
+  margin-top:2rem;display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr))
+}
+.sitemap-chart-page .sm-flat .box h2{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
+.sitemap-chart-page .sm-flat ul{list-style:none;padding:0;margin:.5rem 0 0;display:flex;flex-direction:column;gap:.3rem}
+.sitemap-chart-page .sm-flat a{text-decoration:none;color:inherit;font-size:.88rem;border-bottom:1px solid transparent}
+.sitemap-chart-page .sm-flat a:hover{border-bottom-color:var(--gold,#B08D57)}
