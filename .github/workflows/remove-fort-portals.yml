@@ -1,0 +1,84 @@
+name: Remove fort portal chrome
+
+on:
+  push:
+    paths:
+      - '.github/workflows/remove-fort-portals.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strip fort-complex from index portals
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+          p = Path('index.html')
+          t = p.read_text(encoding='utf-8')
+
+          # Capture portal list items text intact
+          m = re.search(
+              r'(<section class="band) kingdom-fort(" id="portals"[^>]*>[\s\S]*?</section>)',
+              t,
+          )
+          if not m:
+              m = re.search(r'(<section[^>]*id="portals"[^>]*>[\s\S]*?</section>)', t)
+              assert m, 'portals section missing'
+              sec = m.group(1)
+          else:
+              sec = m.group(1) + m.group(2)
+
+          # Extract the ul.portals block
+          ul = re.search(r'<ul class="portals[^"]*" role="list">[\s\S]*?</ul>', sec)
+          assert ul, 'portal list missing'
+          ul_html = ul.group(0)
+          # remove towers class only
+          ul_html = ul_html.replace('class="portals towers"', 'class="portals"')
+          ul_html = ul_html.replace("class='portals towers'", "class='portals'")
+
+          # Rebuild section without fort chrome
+          head = re.search(r'<div class="sec-head">[\s\S]*?</div>', sec)
+          head_html = head.group(0) if head else '<div class="sec-head"><div><p class="eyebrow">06</p><h2 id="port-h">Portals</h2></div></div>'
+
+          resume = re.search(r'<p class="resume-link"[^>]*>[\s\S]*?</p>', sec)
+          resume_html = resume.group(0) if resume else '<p class="resume-link" id="resume-slot" hidden></p>'
+
+          new_sec = (
+              '<section class="band" id="portals" aria-labelledby="port-h">\n'
+              f'  {head_html}\n'
+              f'  {ul_html}\n'
+              f'  {resume_html}\n'
+              '</section>'
+          )
+
+          t2, n = re.subn(
+              r'<section[^>]*id="portals"[^>]*>[\s\S]*?</section>',
+              new_sec,
+              t,
+              count=1,
+          )
+          assert n == 1
+          assert 'fort-complex' not in t2
+          assert 'fort-skyline' not in t2
+          assert 'portals towers' not in t2
+          assert 'Book-Publications-Reader/BPindex.html' in t2
+          assert 'HR-Recruiter/HRRindex.html' in t2
+          assert 'Visitor/Visitindex.html' in t2
+          # portal labels preserved
+          assert 'Book &amp; Publications Reader' in t2 or 'Book & Publications Reader' in t2
+          p.write_text(t2, encoding='utf-8')
+          print('fort removed')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "index: remove fort/castle look from portals section" || exit 0
+          git push origin HEAD:main
