@@ -1,31 +1,37 @@
-/* Transform site footers into a button chart. Paths resolve from data-root or depth. */
+/* Transform site footers into a button chart. */
 (function () {
   'use strict';
+
+  function ensureCss(pref) {
+    try {
+      if (document.querySelector('link[href*="footer-chart.css"]')) return;
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = pref + 'assets/css/footer-chart.css?v=19.0.5';
+      document.head.appendChild(l);
+    } catch (e) {}
+  }
+
   function rootPrefix() {
-    var html = document.documentElement;
-    var dr = html.getAttribute('data-root');
-    if (dr === '' || dr === '.') return '';
-    if (dr && dr.length) return dr.endsWith('/') ? dr : dr + '/';
-    // infer from path depth
-    var path = location.pathname.replace(/\\/index\\.html$/i, '/');
-    var parts = path.split('/').filter(Boolean);
-    // file pages: /Visitor/about.html → one level
-    if (!/\\/$/.test(path) && parts.length) {
-      // last segment is file
-      parts = parts.slice(0, -1);
+    var path = location.pathname || '/';
+    if (path.indexOf('/404') !== -1 || path.indexOf('/offline') !== -1) return '/';
+    // strip trailing file name
+    var segs = path.split('/').filter(Boolean);
+    if (segs.length && segs[segs.length - 1].indexOf('.') !== -1) {
+      segs.pop();
     }
-    if (!parts.length) return '';
-    return parts.map(function () { return '../'; }).join('');
+    if (!segs.length) return '';
+    return segs.map(function () { return '../'; }).join('');
   }
 
   function build(pref) {
-    function u(p) { return pref + p; }
-    var home = pref ? pref + 'index.html' : 'index.html';
-    // absolute-style pages
-    if (location.pathname.indexOf('/404') !== -1 || location.pathname.indexOf('/offline') !== -1) {
-      pref = '/';
+    var absolute = pref === '/';
+    function u(p) {
+      return absolute ? '/' + p : pref + p;
+    }
+    var home = absolute ? '/index.html' : (pref ? pref + 'index.html' : 'index.html');
+    if (!absolute && pref === '/') {
       home = '/index.html';
-      u = function (p) { return '/' + p; };
     }
     return (
       '<div class="foot-in foot-chart">' +
@@ -70,6 +76,7 @@
     var foot = document.querySelector('footer.foot');
     if (!foot || foot.getAttribute('data-chart') === '1') return;
     var pref = rootPrefix();
+    ensureCss(pref);
     foot.innerHTML = build(pref);
     foot.setAttribute('data-chart', '1');
     foot.setAttribute('data-v', '19.0.5');
