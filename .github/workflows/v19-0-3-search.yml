@@ -1,0 +1,112 @@
+name: V19.0.3 search rebuild
+
+on:
+  push:
+    paths:
+      - '.github/workflows/v19-0-3-search.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild search-index from HTML
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re, json
+
+          pages = [
+            ('index.html', 'Core'),
+            ('about/index.html', 'Core'),
+            ('projects/index.html', 'Core'),
+            ('publications/index.html', 'Core'),
+            ('research/index.html', 'Core'),
+            ('contact/index.html', 'Core'),
+            ('changelog.html', 'Core'),
+            ('sitemap.html', 'Core'),
+            ('Visitor/Visitindex.html', 'Visitor'),
+            ('Visitor/about.html', 'Visitor'),
+            ('Visitor/blog.html', 'Visitor'),
+            ('Visitor/Mewad_history_blog.html', 'Visitor'),
+            ('Visitor/vanshavali.html', 'Visitor'),
+            ('Visitor/ananadviharbhavan.html', 'Visitor'),
+            ('Visitor/contact.html', 'Visitor'),
+            ('Visitor/policy-center.html', 'Visitor'),
+            ('Visitor/privacy-policy.html', 'Visitor'),
+            ('Visitor/termsofuse.html', 'Visitor'),
+            ('Visitor/disclaimer.html', 'Visitor'),
+            ('Visitor/grievance.html', 'Visitor'),
+            ('Visitor/cookies-policy.html', 'Visitor'),
+            ('Visitor/copyright-policy.html', 'Visitor'),
+            ('Visitor/content-editorial-policy.html', 'Visitor'),
+            ('Visitor/data-retention-policy.html', 'Visitor'),
+            ('Visitor/third-party-policy.html', 'Visitor'),
+            ('Visitor/accessibility-statement.html', 'Visitor'),
+            ('HR-Recruiter/HRRindex.html', 'HR'),
+            ('HR-Recruiter/resume.html', 'HR'),
+            ('HR-Recruiter/projects.html', 'HR'),
+            ('HR-Recruiter/ghostwriting.html', 'HR'),
+            ('HR-Recruiter/pwriter.html', 'HR'),
+            ('Book-Publications-Reader/BPindex.html', 'Books'),
+            ('Book-Publications-Reader/satyanisodh.html', 'Books'),
+            ('Book-Publications-Reader/astitva-garima.html', 'Books'),
+            ('Book-Publications-Reader/mahabharat-rajdharma.html', 'Books'),
+            ('Book-Publications-Reader/pushtimarg.html', 'Books'),
+            ('Book-Publications-Reader/pushtimarg-ma-gruh-seva.html', 'Books'),
+            ('Book-Publications-Reader/otherlinks.html', 'Books'),
+            ('Book-Publications-Reader/bookreadingpolicy.html', 'Books'),
+          ]
+
+          search = []
+          for f, portal in pages:
+              html = Path(f).read_text(encoding='utf-8', errors='replace')
+              title_m = re.search(r'<title>([^<]+)</title>', html)
+              desc_m = re.search(r'<meta name="description" content="([^"]*)"', html)
+              t = (title_m.group(1) if title_m else f).replace('&amp;', '&').strip()
+              d = (desc_m.group(1) if desc_m else '').strip()[:220]
+              heads = re.findall(r'<h[12][^>]*>([\s\S]*?)</h[12]>', html)
+              heads = [' '.join(re.sub(r'<[^>]+>', '', x).split()) for x in heads[:8]]
+              h = ' · '.join([x for x in heads if x])[:500]
+              k = ' '.join(re.findall(r'[A-Za-z0-9\u0A80-\u0AFF\u0900-\u097F]+', t.lower()))[:120]
+              search.append({'t': t, 'u': f, 'p': portal, 'd': d, 'h': h, 'k': k})
+
+          Path('assets/search-index.json').write_text(json.dumps(search, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          assert search[0]['u'] == 'index.html'
+          assert 'Who' not in search[0]['t'] or 'Visiting' not in search[0]['t']
+          print('search', len(search), search[0]['t'][:50])
+
+          # changelog.html
+          ch = Path('changelog.html')
+          ct = ch.read_text(encoding='utf-8')
+          if 'V19.0.3' not in ct:
+              block = '''<div class="box">
+<h2>V19.0.3 — 2026-11-14</h2>
+<h3>Sitemap, search &amp; audit</h3>
+<ul>
+<li>Rebuilt sitemap.xml (39 canonical URLs, lastmod 2026-11-14)</li>
+<li>Rebuilt client search index from live page titles and descriptions</li>
+<li>Added CHANGELOG.md</li>
+<li>Confirmed V20 rollback; Kingdom V19 stack healthy</li>
+</ul>
+</div>'''
+              ct = ct.replace('<div class="stack"><div class="box">', '<div class="stack">' + block + '<div class="box">', 1)
+              ch.write_text(ct, encoding='utf-8')
+
+          sw = Path('sw.js').read_text(encoding='utf-8')
+          import re as _re
+          sw = _re.sub(r"VERSION = '[^']+'", "VERSION = '19.0.3'", sw, count=1)
+          Path('sw.js').write_text(sw, encoding='utf-8')
+          print('done')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/search-index.json changelog.html sw.js CHANGELOG.md sitemap.xml
+          git commit -m "V19.0.3: search-index rebuild + changelog page + SW 19.0.3" || exit 0
+          git push origin HEAD:main
