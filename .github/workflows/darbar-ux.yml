@@ -1,0 +1,74 @@
+name: Darbar Gate + UX wire
+
+on:
+  push:
+    paths:
+      - '.github/workflows/darbar-ux.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  wire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wire CSS/JS on all HTML
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+
+          def pref(p):
+              d = len(p.parts) - 1
+              return '' if d <= 0 else '../' * d
+
+          n = 0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              t = p.read_text(encoding='utf-8', errors='replace')
+              orig = t
+              pr = pref(p)
+              if 'darbar-gate.css' not in t and '</head>' in t:
+                  t = t.replace(
+                      '</head>',
+                      f'  <link rel="stylesheet" href="{pr}assets/css/darbar-gate.css?v=19.0.4">\n'
+                      f'  <link rel="stylesheet" href="{pr}assets/css/ux-friendly.css?v=19.0.4">\n</head>',
+                      1,
+                  )
+              if 'darbar-gate.js' not in t and '</body>' in t:
+                  # early as possible after open body is ideal; put before </body> with defer is ok
+                  t = t.replace(
+                      '</body>',
+                      f'  <script src="{pr}assets/js/darbar-gate.js?v=19.0.4"></script>\n</body>',
+                      1,
+                  )
+              if t != orig:
+                  p.write_text(t, encoding='utf-8')
+                  n += 1
+          print('wired', n)
+
+          sw = Path('sw.js').read_text(encoding='utf-8')
+          import re
+          sw = re.sub(r"VERSION = '[^']+'", "VERSION = '19.0.4'", sw, count=1)
+          for asset in [
+              '"/assets/css/darbar-gate.css?v=19.0.4",',
+              '"/assets/css/ux-friendly.css?v=19.0.4",',
+              '"/assets/js/darbar-gate.js?v=19.0.4",',
+          ]:
+              if asset not in sw and '"/assets/js/site.js' in sw:
+                  sw = sw.replace(
+                      '"/assets/js/site.js?v=18.1.0",',
+                      '"/assets/js/site.js?v=18.1.0",\n  ' + asset,
+                  )
+          Path('sw.js').write_text(sw, encoding='utf-8')
+          print('sw', '19.0.4' in Path('sw.js').read_text(encoding='utf-8'))
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Wire Darbar Gate loader + UX-friendly CSS site-wide" || exit 0
+          git push origin HEAD:main

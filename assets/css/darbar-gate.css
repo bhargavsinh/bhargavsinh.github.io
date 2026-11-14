@@ -1,0 +1,94 @@
+/* Darbar Gate — cinematic entry (1.2–1.8s). Separate from page content. */
+#darbar-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(88, 31, 42, 0.35), transparent 70%),
+    linear-gradient(180deg, #1a1410 0%, #080808 55%, #120e0c 100%);
+  color: #F5F0E6;
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+#darbar-gate.is-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#darbar-gate .dg-arch {
+  width: min(88vw, 20rem);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55));
+}
+#darbar-gate .dg-title {
+  font-family: Georgia, "Palatino Linotype", "Book Antiqua", serif;
+  font-size: clamp(0.95rem, 3.2vw, 1.15rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C6A15B;
+  text-align: center;
+  margin: 0;
+}
+#darbar-gate .dg-sub {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: rgba(245, 240, 230, 0.72);
+  text-align: center;
+  max-width: 22rem;
+  line-height: 1.45;
+}
+#darbar-gate .dg-bar {
+  width: min(12rem, 55vw);
+  height: 2px;
+  background: rgba(198, 161, 91, 0.2);
+  border-radius: 1px;
+  overflow: hidden;
+  margin-top: 0.35rem;
+}
+#darbar-gate .dg-bar > i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #581F2A, #C6A15B, #D4AF70);
+  animation: dg-load linear forwards;
+  animation-duration: var(--dg-ms, 1500ms);
+}
+#darbar-gate .dg-skip {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  border: 1px solid rgba(198, 161, 91, 0.45);
+  background: transparent;
+  color: #C6A15B;
+  font: 600 0.68rem/1 system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.85rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  min-height: 2.5rem;
+}
+#darbar-gate .dg-skip:hover,
+#darbar-gate .dg-skip:focus-visible {
+  background: rgba(198, 161, 91, 0.12);
+  outline: 2px solid #C6A15B;
+  outline-offset: 2px;
+}
+@keyframes dg-load {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+body.darbar-locked {
+  overflow: hidden !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #darbar-gate { display: none !important; }
+  body.darbar-locked { overflow: auto !important; }
+}

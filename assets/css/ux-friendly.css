@@ -1,0 +1,86 @@
+/* User-friendly polish — mobile + desktop */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Comfortable reading measure on long pages */
+main.page > p,
+main.page > ul,
+main.page > ol {
+  max-width: 42rem;
+}
+
+/* Larger tap targets on touch */
+@media (max-width: 899px) {
+  .nav a,
+  .subbar a,
+  .foot a,
+  .card-link,
+  .btn,
+  a.btn {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+  }
+  .ib, .menu-btn {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+  }
+  /* Sticky-friendly bottom tools */
+  .tools {
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    right: max(0.75rem, env(safe-area-inset-right));
+  }
+  /* Reduce horizontal risk */
+  .grid, .band, .hero, .fort-complex {
+    max-width: 100%;
+  }
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Desktop: clearer focus + hover affordance */
+@media (min-width: 900px) {
+  .card:hover,
+  .box:hover {
+    border-color: color-mix(in srgb, var(--gold, #B08D57) 40%, var(--line, #ccc));
+  }
+  a:focus-visible,
+  button:focus-visible,
+  .ib:focus-visible {
+    outline: 2px solid var(--gold, #C6A15B);
+    outline-offset: 3px;
+  }
+}
+
+/* Skip link always reachable */
+.skip:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100000;
+  padding: 0.65rem 1rem;
+  background: #080808;
+  color: #C6A15B;
+  border: 1px solid #C6A15B;
+}
+
+/* Search dialog comfort */
+.search-box input {
+  font-size: 1rem; /* avoid iOS zoom */
+  min-height: 2.75rem;
+}
+
+/* Portal towers readable on small screens */
+@media (max-width: 799px) {
+  a.portal b {
+    font-size: 1rem;
+  }
+  a.portal > span:not(.portal-img) {
+    font-size: 0.9rem;
+    padding-bottom: 1rem;
+  }
+}
