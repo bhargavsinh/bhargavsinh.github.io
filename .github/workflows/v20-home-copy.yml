@@ -1,0 +1,172 @@
+name: V20 homepage copy
+
+on:
+  push:
+    paths:
+      - '.github/workflows/v20-home-copy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rewrite index homepage copy only
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('index.html')
+          t = p.read_text(encoding='utf-8')
+
+          # --- Meta (homepage only) ---
+          t = re.sub(
+              r'<title>[^<]*</title>',
+              '<title>Bhargavsinh Sisodiya | Immersive Digital World — Heritage &amp; Technology</title>',
+              t, count=1)
+          t = re.sub(
+              r'<meta name="description" content="[^"]*">',
+              '<meta name="description" content="An immersive digital world where heritage meets technology — the official portfolio of Bhargavsinh Sisodiya: projects, Gujarati publications, research and Sisodiya heritage.">',
+              t, count=1)
+          t = re.sub(
+              r'<meta property="og:title" content="[^"]*">',
+              '<meta property="og:title" content="Bhargavsinh Sisodiya | Immersive Digital World — Heritage &amp; Technology">',
+              t, count=1)
+          t = re.sub(
+              r'<meta property="og:description" content="[^"]*">',
+              '<meta property="og:description" content="An immersive digital world where heritage meets technology — projects, publications, research and heritage by Bhargavsinh Sisodiya.">',
+              t, count=1)
+          t = re.sub(
+              r'<meta name="twitter:title" content="[^"]*">',
+              '<meta name="twitter:title" content="Bhargavsinh Sisodiya | Immersive Digital World — Heritage &amp; Technology">',
+              t, count=1)
+          t = re.sub(
+              r'<meta name="twitter:description" content="[^"]*">',
+              '<meta name="twitter:description" content="An immersive digital world where heritage meets technology — the official portfolio of Bhargavsinh Sisodiya.">',
+              t, count=1)
+
+          # --- Hero ---
+          t = t.replace(
+              '<p class="eyebrow">Digital Portfolio</p>',
+              '<p class="eyebrow">Scene 00 · The Arrival</p>',
+              1)
+          t = t.replace(
+              '<p class="tagline">Heritage in Memory. Knowledge in Creation.</p>',
+              '<p class="tagline">An Immersive Digital World — Where Heritage Meets Technology.</p>',
+              1)
+          t = t.replace(
+              '<p class="lead">Explore personal projects, Gujarati writing, Sisodiya genealogy, heritage resources, and public digital work by BHARGAVSINH SISODIYA.</p>',
+              '<p class="lead">Step through a cinematic continuum of identity, heritage, devotion, technology and literature. This hall gathers the public work of BHARGAVSINH SISODIYA — projects, Gujarati writing, Sisodiya genealogy and digital archives — without leaving the path of the original sources.</p>',
+              1)
+
+          # --- Introduction ---
+          t = t.replace(
+              '<p class="eyebrow">01</p><h2 id="intro-h">Introduction</h2>',
+              '<p class="eyebrow">01 · Identity Hall</p><h2 id="intro-h">Identity Hall</h2>',
+              1)
+          t = t.replace(
+              '<p class="big">BCA student with a strong interest in Technology, Digital Systems, Business Management, Law, Research, and Writing. Experienced in developing and maintaining web-based projects, digital repositories, PWAs, and structured information systems.</p>',
+              '<p class="big">BCA student exploring the meeting point of technology, digital systems, business management, law, research and writing. The work spans web projects, digital repositories, progressive web apps and structured information systems — built as a living record rather than a static résumé.</p>',
+              1)
+          t = t.replace(
+              '<p class="muted">BCA Student | Technology Enthusiast | Writer | Aspiring Technology &amp; Management Professional</p>',
+              '<p class="muted">BCA Student · Technology · Writing · Research · Aspiring Technology &amp; Management Professional</p>',
+              1)
+
+          # --- Projects ---
+          t = t.replace(
+              '<p class="eyebrow">02</p><h2 id="proj-h">Featured Projects</h2>',
+              '<p class="eyebrow">02 · Technology Chamber</p><h2 id="proj-h">Technology Chamber</h2>',
+              1)
+          t = t.replace(
+              '<h3>Personal Portfolio</h3><p>My main website presents my work, interests, published writing and digital projects.</p>',
+              '<h3>Personal Portfolio</h3><p>This site itself — a public hall for work, interests, published writing and ongoing digital projects.</p>',
+              1)
+          t = t.replace(
+              '<h3>SDSP</h3><p>A Seva-planning project concept focused on organization, personal records and privacy-aware devotional planning.</p>',
+              '<h3>SDSP</h3><p>Seva-planning concept oriented toward organisation, personal records and privacy-aware devotional planning.</p>',
+              1)
+          # BharBlock - only replace if exact old string exists
+          t = t.replace(
+              'A personal game-development experiment that forms part of my interest in interactive digital projects and learning throu',
+              'A personal game-development experiment within a wider interest in interactive digital systems and learning throu',
+              1)
+
+          # --- Publications ---
+          t = t.replace(
+              '<p class="eyebrow">03</p><h2 id="pub-h">Publications</h2>',
+              '<p class="eyebrow">03 · Publication Library</p><h2 id="pub-h">Publication Library</h2>',
+              1)
+
+          # --- Research ---
+          t = t.replace(
+              '<p class="eyebrow">04</p><h2 id="res-h">Research &amp; Heritage</h2>',
+              '<p class="eyebrow">04 · Heritage Gallery</p><h2 id="res-h">Heritage Gallery</h2>',
+              1)
+
+          # --- Institutional ---
+          t = t.replace(
+              '<p class="eyebrow">05</p><h2 id="inst-h">Institutional Presence</h2>',
+              '<p class="eyebrow">05 · Sanctuary Threshold</p><h2 id="inst-h">Sanctuary Threshold</h2>',
+              1)
+
+          # --- Portals ---
+          t = t.replace(
+              '<p class="eyebrow">06</p><h2 id="port-h">Portals</h2>',
+              '<p class="eyebrow">06 · Three Royal Towers</p><h2 id="port-h">Three Royal Towers</h2>',
+              1)
+          # Portal microcopy (destinations unchanged)
+          t = t.replace(
+              '<b>Book &amp; Publications Reader</b><span>Published Gujarati works, research essays and reading resources.</span>',
+              '<b>Book &amp; Publications Reader</b><span>Enter the library tower — published Gujarati works, research essays and reading resources.</span>',
+              1)
+          t = t.replace(
+              '<b>HR Recruiter</b><span>Skills, projects and writing work at a glance.</span>',
+              '<b>HR Recruiter</b><span>Enter the professional tower — skills, projects and writing at a glance.</span>',
+              1)
+          t = t.replace(
+              '<b>Visitor</b><span>Personal projects, Gujarati writing, genealogy and heritage.</span>',
+              '<b>Visitor</b><span>Enter the guest tower — personal projects, Gujarati writing, genealogy and heritage.</span>',
+              1)
+
+          # --- Contact ---
+          t = t.replace(
+              '<p class="eyebrow">07</p><h2 id="contact-h">Contact</h2>',
+              '<p class="eyebrow">07 · Final Gateway</p><h2 id="contact-h">Final Gateway</h2>',
+              1)
+          t = t.replace(
+              '<p>For professional enquiries, collaboration, writing projects or discussions related to my published work, please use the contact options published on my official website, where available.</p>',
+              '<p>At the closing gate of this digital world: professional enquiries, collaboration, writing projects or conversations about published work may continue through the channels below.</p>',
+              1)
+
+          # Footer version
+          t = re.sub(r'(<span>)V20\.0(</span>)', r'\1V20.0\2', t)
+          t = re.sub(r'(<span>)V19\.[0-9.a-z-]+(</span>)', r'\1V20.0\2', t)
+
+          # Integrity: links must remain
+          for href in [
+              'projects/', 'publications/', 'research/', 'contact/', 'about/',
+              'Book-Publications-Reader/BPindex.html',
+              'HR-Recruiter/HRRindex.html',
+              'Visitor/Visitindex.html',
+              'mailto:bhargavsinh.bca@gmail.com',
+          ]:
+              assert href in t, 'missing link ' + href
+
+          # Do not invent degree titles beyond BCA student framing
+          assert 'BCA student' in t or 'BCA Student' in t
+
+          p.write_text(t, encoding='utf-8')
+          print('homepage copy updated')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "V20.0: immersive homepage storytelling (index only; other pages untouched)" || exit 0
+          git push origin HEAD:main
