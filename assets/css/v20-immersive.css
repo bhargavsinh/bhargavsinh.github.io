@@ -1,0 +1,128 @@
+/* V20.0 — Cinematic immersive layer (content unchanged) */
+:root {
+  --v20-black: #080808;
+  --v20-gold: #C6A15B;
+  --v20-gold-2: #D4AF70;
+  --v20-ivory: #F5F0E6;
+  --v20-stone: #777777;
+}
+
+body.v20-immersive {
+  background: var(--v20-black) !important;
+}
+
+#v20-canvas-host {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+#v20-canvas-host canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+body.v20-immersive .bar,
+body.v20-immersive .progress {
+  z-index: 50;
+}
+body.v20-immersive main.page,
+body.v20-immersive .drawer,
+body.v20-immersive .foot,
+body.v20-immersive .tools,
+body.v20-immersive .search,
+body.v20-immersive .toast {
+  position: relative;
+  z-index: 2;
+}
+
+/* Readable HTML content over 3D */
+body.v20-immersive main.page {
+  background: linear-gradient(180deg, rgba(8, 8, 8, 0.55) 0%, rgba(8, 8, 8, 0.72) 40%, rgba(8, 8, 8, 0.88) 100%) !important;
+  border-left: 1px solid rgba(198, 161, 91, 0.25) !important;
+  border-right: 1px solid rgba(198, 161, 91, 0.25) !important;
+  color: var(--v20-ivory) !important;
+  box-shadow: none !important;
+}
+body.v20-immersive,
+body.v20-immersive h1,
+body.v20-immersive h2,
+body.v20-immersive h3 {
+  color: var(--v20-ivory) !important;
+}
+body.v20-immersive p,
+body.v20-immersive .muted,
+body.v20-immersive .lead {
+  color: rgba(245, 240, 230, 0.82) !important;
+}
+body.v20-immersive .bar {
+  background: rgba(8, 8, 8, 0.82) !important;
+  border-bottom-color: rgba(198, 161, 91, 0.35) !important;
+  backdrop-filter: blur(12px);
+}
+body.v20-immersive .brand,
+body.v20-immersive .nav a {
+  color: var(--v20-ivory) !important;
+}
+body.v20-immersive .brand b,
+body.v20-immersive .kicker,
+body.v20-immersive .eyebrow,
+body.v20-immersive .accent {
+  color: var(--v20-gold) !important;
+}
+body.v20-immersive .card,
+body.v20-immersive .box,
+body.v20-immersive .fort-complex {
+  background: rgba(12, 12, 12, 0.78) !important;
+  border-color: rgba(198, 161, 91, 0.28) !important;
+  color: var(--v20-ivory) !important;
+}
+body.v20-immersive .foot {
+  background: rgba(0, 0, 0, 0.9) !important;
+  border-top-color: rgba(198, 161, 91, 0.35) !important;
+}
+body.v20-immersive .btn {
+  background: var(--v20-gold) !important;
+  border-color: var(--v20-gold) !important;
+  color: #080808 !important;
+}
+body.v20-immersive .btn.ghost {
+  background: transparent !important;
+  color: var(--v20-gold) !important;
+}
+
+#v20-scene-label {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 5;
+  font: 600 0.65rem/1 var(--font-ui, system-ui, sans-serif);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--v20-gold);
+  opacity: 0.85;
+  pointer-events: none;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+}
+
+body.v20-fallback #v20-canvas-host,
+body.v20-fallback #v20-scene-label {
+  display: none !important;
+}
+body.v20-fallback.v20-immersive main.page {
+  background: #080808 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.v20-immersive #v20-canvas-host {
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 699px) {
+  #v20-scene-label { font-size: 0.58rem; left: 0.65rem; bottom: 0.65rem; }
+  body.v20-immersive main.page {
+    background: rgba(8, 8, 8, 0.82) !important;
+  }
+}

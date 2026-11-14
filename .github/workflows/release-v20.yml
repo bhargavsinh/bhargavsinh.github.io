@@ -1,0 +1,127 @@
+name: Release V20.0 Immersive
+
+on:
+  push:
+    paths:
+      - '.github/workflows/release-v20.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vendor Three.js + GSAP (self-hosted for CSP)
+        run: |
+          set -eux
+          mkdir -p assets/js/vendor
+          curl -fsSL "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" -o assets/js/vendor/three.min.js
+          curl -fsSL "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" -o assets/js/vendor/gsap.min.js
+          curl -fsSL "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" -o assets/js/vendor/ScrollTrigger.min.js
+          wc -c assets/js/vendor/*.js
+          test -s assets/js/vendor/three.min.js
+          test -s assets/js/v20-immersive.js
+          test -s assets/css/v20-immersive.css
+
+      - name: Wire homepage only (text-preserving)
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+          p = Path('index.html')
+          t = p.read_text(encoding='utf-8')
+          orig = t
+
+          # body class
+          if 'v20-immersive' not in t:
+              t = re.sub(r'<body class="([^"]*)"', r'<body class="\1 v20-immersive"', t, count=1)
+
+          # canvas host after body open
+          if 'v20-canvas-host' not in t:
+              t = re.sub(
+                  r'(<body[^>]*>)',
+                  r'\1\n<div id="v20-canvas-host" aria-hidden="true"></div>\n<div id="v20-scene-label" aria-hidden="true"></div>',
+                  t,
+                  count=1,
+              )
+
+          # CSS
+          if 'v20-immersive.css' not in t:
+              t = t.replace('</head>', '  <link rel="stylesheet" href="assets/css/v20-immersive.css?v=20.0.0">\n</head>', 1)
+
+          # Scripts before </body> — order: three, gsap, ScrollTrigger, v20
+          if 'v20-immersive.js' not in t:
+              scripts = '''  <script src="assets/js/vendor/three.min.js" defer></script>
+  <script src="assets/js/vendor/gsap.min.js" defer></script>
+  <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="assets/js/v20-immersive.js?v=20.0.0" defer></script>
+'''
+              t = t.replace('</body>', scripts + '</body>', 1)
+
+          # Footer version badge only
+          t = re.sub(r'(<span>)V19\.[0-9.a-z-]+(</span>)', r'\1V20.0\2', t)
+          t = re.sub(r'(<span>)V18\.[0-9.]+(</span>)', r'\1V20.0\2', t)
+
+          # Content integrity: key strings must remain
+          for needle in [
+              'Published Gujarati works, research essays and reading resources.',
+              'Skills, projects and writing work at a glance.',
+              'Personal projects, Gujarati writing, genealogy and heritage.',
+              'Bhargavsinh Sisodiya',
+          ]:
+              if needle not in t:
+                  raise SystemExit('TEXT LOSS: ' + needle)
+
+          # body text aside from injected hosts/version: allow only known additions
+          p.write_text(t, encoding='utf-8')
+          print('index wired', len(t))
+
+          # Cinematic CSS on other pages (no 3D scripts)
+          n = 0
+          for hp in Path('.').rglob('*.html'):
+              if hp.name == 'index.html':
+                  continue
+              if '.git' in hp.parts or '.github' in hp.parts:
+                  continue
+              x = hp.read_text(encoding='utf-8', errors='replace')
+              if 'v20-immersive.css' in x:
+                  continue
+              if '</head>' not in x:
+                  continue
+              depth = len(hp.parts) - 1
+              pref = '' if depth <= 0 else '../' * depth
+              x2 = x.replace('</head>', f'  <link rel="stylesheet" href="{pref}assets/css/v20-immersive.css?v=20.0.0">\n</head>', 1)
+              x2 = re.sub(r'(<span>)V19\.[0-9.a-z-]+(</span>)', r'\1V20.0\2', x2)
+              hp.write_text(x2, encoding='utf-8')
+              n += 1
+          print('other pages css', n)
+
+          # SW
+          sw = Path('sw.js').read_text(encoding='utf-8')
+          sw = re.sub(r"VERSION = '[^']+'", "VERSION = '20.0.0'", sw, count=1)
+          sw = sw.replace('Service worker — V19.0.2', 'Service worker — V20.0')
+          for asset in [
+              '"/assets/css/v20-immersive.css?v=20.0.0",',
+              '"/assets/js/v20-immersive.js?v=20.0.0",',
+          ]:
+              if asset.strip('",') not in sw:
+                  sw = sw.replace(
+                      '"/assets/css/v19-0-2-fixes.css?v=19.0.2",',
+                      '"/assets/css/v19-0-2-fixes.css?v=19.0.2",\n  ' + asset,
+                  )
+          Path('sw.js').write_text(sw, encoding='utf-8')
+          print('sw ok')
+          PY
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -30
+          git commit -m "Release V20.0 - Full Immersive 3D Portfolio" || exit 0
+          git push origin HEAD:main
