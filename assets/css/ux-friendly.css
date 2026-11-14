@@ -1,48 +1,80 @@
-/* User-friendly polish — mobile + desktop */
-html { scroll-behavior: smooth; }
+/* V19.0.5 — User-friendly polish: mobile, desktop, PWA standalone */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
 
-/* Comfortable reading measure on long pages */
+/* Safe areas (notches / home indicator) */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+.bar {
+  padding-top: env(safe-area-inset-top);
+}
+.foot-base {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+/* Reading comfort */
 main.page > p,
 main.page > ul,
 main.page > ol {
   max-width: 42rem;
 }
 
-/* Larger tap targets on touch */
+/* Touch targets */
 @media (max-width: 899px) {
   .nav a,
   .subbar a,
   .foot a,
   .card-link,
   .btn,
-  a.btn {
+  a.btn,
+  .clist a {
     min-height: 2.75rem;
     display: inline-flex;
     align-items: center;
   }
-  .ib, .menu-btn {
+  .ib,
+  .menu-btn {
     min-width: 2.75rem;
     min-height: 2.75rem;
   }
-  /* Sticky-friendly bottom tools */
   .tools {
     bottom: max(0.75rem, env(safe-area-inset-bottom));
     right: max(0.75rem, env(safe-area-inset-right));
+    gap: 0.4rem;
   }
-  /* Reduce horizontal risk */
-  .grid, .band, .hero, .fort-complex {
+  .grid,
+  .band,
+  .hero,
+  .fort-complex {
     max-width: 100%;
   }
-  body {
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
+  /* Prevent accidental overflow from long Gujarati/Hindi words */
+  h1, h2, h3, .lead, .card p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  /* Drawer full-height comfort */
+  .drawer-panel {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+    max-height: 100dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Cards stack cleanly */
+  .grid {
+    gap: 0.85rem !important;
   }
 }
 
-/* Desktop: clearer focus + hover affordance */
+/* Desktop clarity */
 @media (min-width: 900px) {
   .card:hover,
   .box:hover {
@@ -50,37 +82,74 @@ main.page > ol {
   }
   a:focus-visible,
   button:focus-visible,
-  .ib:focus-visible {
+  .ib:focus-visible,
+  .btn:focus-visible {
     outline: 2px solid var(--gold, #C6A15B);
     outline-offset: 3px;
   }
+  main.page {
+    padding-bottom: 4rem;
+  }
 }
 
-/* Skip link always reachable */
+/* Skip link */
 .skip:focus {
   position: fixed;
-  top: 0.5rem;
-  left: 0.5rem;
+  top: max(0.5rem, env(safe-area-inset-top));
+  left: max(0.5rem, env(safe-area-inset-left));
   z-index: 100000;
   padding: 0.65rem 1rem;
   background: #080808;
   color: #C6A15B;
   border: 1px solid #C6A15B;
+  text-decoration: none;
 }
 
-/* Search dialog comfort */
+/* Search: no iOS zoom; readable results */
 .search-box input {
-  font-size: 1rem; /* avoid iOS zoom */
+  font-size: 16px;
   min-height: 2.75rem;
 }
+.search-res a {
+  min-height: 2.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.55rem 0.75rem;
+}
 
-/* Portal towers readable on small screens */
+/* Portal list spacing when not fort-styled */
+ul.portals {
+  gap: 1rem;
+}
 @media (max-width: 799px) {
-  a.portal b {
-    font-size: 1rem;
-  }
+  a.portal b { font-size: 1rem; }
   a.portal > span:not(.portal-img) {
     font-size: 0.9rem;
     padding-bottom: 1rem;
   }
+}
+
+/* PWA standalone: slightly tighter chrome */
+@media (display-mode: standalone) {
+  .bar {
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--gold, #B08D57) 25%, transparent);
+  }
+  body {
+    min-height: 100dvh;
+  }
+}
+
+/* Forms */
+input, textarea, select, button {
+  touch-action: manipulation;
+}
+label {
+  cursor: pointer;
+}
+
+/* Reduce layout shift on images */
+img {
+  height: auto;
+  max-width: 100%;
 }

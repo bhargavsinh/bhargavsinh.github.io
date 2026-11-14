@@ -1,20 +1,18 @@
 {
   "id": "/",
-  "name": "BHARGAVSINH SISODIYA — Digital Universe",
-  "short_name": "BHARGAVSINH",
-  "description": "Three-portal portfolio: Books & Publications, HR Recruiter, and Visitor.",
-  "start_url": "/",
+  "name": "Bhargavsinh Sisodiya — Portfolio",
+  "short_name": "Bhargavsinh",
+  "description": "Official portfolio of Bhargavsinh Sisodiya — projects, Gujarati publications, research and heritage. Works offline for key pages.",
+  "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "browser"],
   "orientation": "any",
   "lang": "en",
+  "dir": "ltr",
   "background_color": "#080808",
   "theme_color": "#080808",
-  "categories": [
-    "portfolio",
-    "books",
-    "education"
-  ],
+  "categories": ["portfolio", "education", "books", "lifestyle"],
   "icons": [
     {
       "src": "assets/images/brand/brand-mark-192.png",
@@ -37,16 +35,26 @@
   ],
   "shortcuts": [
     {
-      "name": "Books & Publications",
-      "url": "Book-Publications-Reader/BPindex.html"
+      "name": "Visitor",
+      "short_name": "Visitor",
+      "description": "Projects, writing and heritage",
+      "url": "/Visitor/Visitindex.html",
+      "icons": [{ "src": "assets/images/portals/portal-visitor.webp", "sizes": "136x136" }]
     },
     {
       "name": "HR Recruiter",
-      "url": "HR-Recruiter/HRRindex.html"
+      "short_name": "HR",
+      "description": "Skills, resume and projects",
+      "url": "/HR-Recruiter/HRRindex.html",
+      "icons": [{ "src": "assets/images/portals/portal-hr.webp", "sizes": "136x136" }]
     },
     {
-      "name": "Visitor",
-      "url": "Visitor/Visitindex.html"
+      "name": "Books & Publications",
+      "short_name": "Books",
+      "description": "Published works and reading",
+      "url": "/Book-Publications-Reader/BPindex.html",
+      "icons": [{ "src": "assets/images/portals/portal-books.webp", "sizes": "136x136" }]
     }
-  ]
+  ],
+  "prefer_related_applications": false
 }

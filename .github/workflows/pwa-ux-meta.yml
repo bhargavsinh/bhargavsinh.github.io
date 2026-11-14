@@ -1,0 +1,69 @@
+name: PWA meta + ux css version
+
+on:
+  push:
+    paths:
+      - '.github/workflows/pwa-ux-meta.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  meta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Theme-color + apple PWA meta + ux css query
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          def pref(p):
+              d = len(p.parts) - 1
+              return '' if d <= 0 else '../' * d
+
+          n = 0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              t = p.read_text(encoding='utf-8', errors='replace')
+              orig = t
+              # theme-color aligned with PWA shell
+              t = re.sub(
+                  r'<meta name="theme-color" content="[^"]*">',
+                  '<meta name="theme-color" content="#080808">',
+                  t,
+                  count=1,
+              )
+              if 'apple-mobile-web-app-capable' not in t and '</head>' in t:
+                  meta = (
+                      '  <meta name="mobile-web-app-capable" content="yes">\n'
+                      '  <meta name="apple-mobile-web-app-capable" content="yes">\n'
+                      '  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">\n'
+                      '  <meta name="apple-mobile-web-app-title" content="Bhargavsinh">\n'
+                  )
+                  t = t.replace('</head>', meta + '</head>', 1)
+              # bump ux-friendly query
+              t = t.replace('ux-friendly.css?v=19.0.4', 'ux-friendly.css?v=19.0.5')
+              if 'ux-friendly.css' not in t and '</head>' in t:
+                  pr = pref(p)
+                  t = t.replace('</head>', f'  <link rel="stylesheet" href="{pr}assets/css/ux-friendly.css?v=19.0.5">\n</head>', 1)
+              if t != orig:
+                  p.write_text(t, encoding='utf-8')
+                  n += 1
+          print('updated', n)
+          # integrity: no fort left on index
+          idx = Path('index.html').read_text(encoding='utf-8')
+          assert 'fort-complex' not in idx
+          assert 'manifest.json' in idx
+          print('audit ok')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "V19.0.5: PWA meta tags + ux-friendly cache bump" || exit 0
+          git push origin HEAD:main

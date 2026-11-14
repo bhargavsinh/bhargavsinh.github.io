@@ -1,7 +1,7 @@
-/* Service worker — V19.0.2
+/* Service worker — V19.0.5
    Navigation: network-first (4 s timeout) → cache → offline page.
    Same-origin assets + Google Fonts: stale-while-revalidate. Old caches are purged on activate. */
-const VERSION = '19.0.4';
+const VERSION = '19.0.5';
 const CACHE = 'bs-' + VERSION;
 const FONTS = 'bs-fonts';
 const OFFLINE = '/offline.html';
@@ -24,15 +24,18 @@ const PRECACHE = [
   "/assets/css/kingdom.css?v=19.0.1",
   "/assets/css/v19-0-2-fixes.css?v=19.0.2",
   "/assets/css/protect-l4.css?v=18.1.3",
-  "/assets/js/site.js?v=18.1.0",
-  "/assets/js/darbar-gate.js?v=19.0.4",
-  "/assets/css/ux-friendly.css?v=19.0.4",
   "/assets/css/darbar-gate.css?v=19.0.4",
+  "/assets/css/ux-friendly.css?v=19.0.5",
+  "/assets/css/sitemap-chart.css?v=19.0.3",
+  "/assets/js/site.js?v=18.1.0",
   "/assets/js/theme.js?v=18.1.0",
   "/assets/js/protect-l4.js?v=18.1.3",
+  "/assets/js/darbar-gate.js?v=19.0.4",
   "/assets/search-index.json",
   "/assets/images/brand/brand-mark.webp",
   "/assets/images/brand/brand-mark-192.png",
+  "/assets/images/brand/brand-mark-512.png",
+  "/assets/images/brand/maskable-512.png",
   "/assets/images/portals/portal-books.webp",
   "/assets/images/portals/portal-hr.webp",
   "/assets/images/portals/portal-visitor.webp",
@@ -70,7 +73,9 @@ const PRECACHE = [
 ];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => Promise.all(PRECACHE.map((u) => c.add(u).catch(() => {})))).then(() => self.skipWaiting()));
+  e.waitUntil(
+    caches.open(CACHE).then((c) => Promise.all(PRECACHE.map((u) => c.add(u).catch(() => {})))).then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', (e) => {
@@ -79,35 +84,33 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-function swr(req, isFont) {
-  const bucket = isFont ? FONTS : CACHE;
-  return caches.open(bucket).then((cache) =>
-    cache.match(req).then((cached) => {
-      const fetched = fetch(req)
-        .then((res) => {
-          if (res && res.ok) {
-            const copy = res.clone();
-            cache.put(req, copy);
-          }
-          return res;
-        })
-        .catch(() => cached);
-      return cached || fetched;
-    })
-  );
+function isNav(req) {
+  return req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept') && req.headers.get('accept').includes('text/html'));
 }
 
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  const same = url.origin === self.location.origin;
-  const isFont =
-    url.hostname === 'fonts.googleapis.com' ||
-    url.hostname === 'fonts.gstatic.com' ||
-    (same && /\.(woff2?|ttf|otf)(\?|$)/i.test(url.pathname));
 
-  if (req.mode === 'navigate') {
+  // Google Fonts: SWR
+  if (url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com') {
+    e.respondWith(
+      caches.open(FONTS).then(async (cache) => {
+        const hit = await cache.match(req);
+        const net = fetch(req).then((res) => {
+          if (res && res.ok) cache.put(req, res.clone());
+          return res;
+        }).catch(() => hit);
+        return hit || net;
+      })
+    );
+    return;
+  }
+
+  if (url.origin !== self.location.origin) return;
+
+  if (isNav(req)) {
     e.respondWith(
       (async () => {
         const ctrl = new AbortController();
@@ -115,22 +118,32 @@ self.addEventListener('fetch', (e) => {
         try {
           const res = await fetch(req, { signal: ctrl.signal });
           clearTimeout(t);
-          if (res && res.ok) {
-            const cache = await caches.open(CACHE);
-            cache.put(req, res.clone());
-          }
+          const cache = await caches.open(CACHE);
+          cache.put(req, res.clone());
           return res;
         } catch (err) {
           clearTimeout(t);
           const cache = await caches.open(CACHE);
-          return (await cache.match(req)) || (await cache.match(OFFLINE)) || Response.error();
+          return (await cache.match(req)) || (await cache.match('/index.html')) || (await cache.match(OFFLINE)) || Response.error();
         }
       })()
     );
     return;
   }
 
-  if (same || isFont) {
-    e.respondWith(swr(req, isFont));
-  }
+  // Assets: stale-while-revalidate
+  e.respondWith(
+    caches.open(CACHE).then(async (cache) => {
+      const hit = await cache.match(req);
+      const net = fetch(req).then((res) => {
+        if (res && res.ok) cache.put(req, res.clone());
+        return res;
+      }).catch(() => hit);
+      return hit || net;
+    })
+  );
+});
+
+self.addEventListener('message', (e) => {
+  if (e.data && e.data.type === 'SKIP_WAITING') self.skipWaiting();
 });
