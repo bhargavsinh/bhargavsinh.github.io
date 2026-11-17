@@ -1,0 +1,156 @@
+name: Cleanup old header footer code
+
+on:
+  push:
+    paths:
+      - '.github/workflows/cleanup-chrome.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deep cleanup HTML
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          REDIRECT_RE = re.compile(r'<meta http-equiv="refresh" content="0; url=([^"]+)"', re.I)
+
+          def slim_redirect(path: Path, t: str) -> str:
+              m = REDIRECT_RE.search(t)
+              if not m:
+                  return t
+              target = m.group(1)
+              # Keep only minimal redirect document
+              return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Redirecting…</title>
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url={target}">
+<link rel="canonical" href="https://bhargavsinh.github.io/{target.lstrip('/')}">
+</head>
+<body>
+<p>Redirecting to <a href="{target}">{target}</a>…</p>
+</body>
+</html>
+'''
+
+          n_pages = 0
+          n_redir = 0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              if 'assets/partials' in str(p).replace('\\', '/'):
+                  continue  # keep partial source
+
+              t = p.read_text(encoding='utf-8', errors='replace')
+              orig = t
+
+              # Minimal redirects (root legacy stubs)
+              if REDIRECT_RE.search(t) and 'data-include' not in t:
+                  t2 = slim_redirect(p, t)
+                  if t2 != t:
+                      p.write_text(t2, encoding='utf-8')
+                      n_redir += 1
+                      print('redirect slim', p)
+                  continue
+
+              # Remove ANY remaining embedded bar header + drawer
+              t, _ = re.subn(
+                  r'(?:<div class="progress"[\s\S]*?</div>\s*)?(?:<a class="skip"[\s\S]*?</a>\s*)?<header class="bar"[\s\S]*?</header>(?:\s*<div class="drawer"[\s\S]*?</div>\s*</div>)?',
+                  '',
+                  t,
+                  count=1,
+              )
+              # Remove embedded footers if include slot exists OR always when partial shell is set
+              if 'data-include="footer"' in t or 'data-shell=' in t:
+                  t = re.sub(r'<footer class="foot"[\s\S]*?</footer>', '', t, count=1)
+
+              # Ensure include slots if shell set but slots missing
+              if 'data-shell=' in t:
+                  if 'data-include="header"' not in t:
+                      t = re.sub(r'(<body[^>]*>)', r'\1\n<div data-include="header"></div>', t, count=1)
+                  if 'data-include="footer"' not in t:
+                      t = re.sub(r'</main>', '</main>\n<div data-include="footer"></div>', t, count=1)
+                      if 'data-include="footer"' not in t:
+                          t = t.replace('</body>', '<div data-include="footer"></div>\n</body>', 1)
+
+              # Fix broken: <script ... defer> without </script>
+              t = re.sub(
+                  r'(<script\b[^>]*\sdefer)>(\s*)(?=<(?:script|link|/body))',
+                  r'\1></script>\2',
+                  t,
+              )
+              t = re.sub(r'(<script\b[^>]*\ssrc="[^"]+"[^>]*)\sdefer>\s*</script>', r'\1 defer></script>', t)
+              # Common broken pattern site.js
+              t = re.sub(
+                  r'<script src="([^"]*site\.js[^"]*)"\s*defer>\s*(?=<script)',
+                  r'<script src="\1" defer></script>\n',
+                  t,
+              )
+              t = t.replace('</script></script>', '</script>')
+
+              # Remove redundant footer-chart.js (footer partial already has chart markup)
+              t = re.sub(r'\s*<script[^>]*footer-chart\.js[^>]*></script>', '', t)
+              t = re.sub(r'\s*<script[^>]*footer-chart\.js[^>]*defer></script>', '', t)
+
+              # Remove redundant header-buttons.js if present (CSS injected by theme.js)
+              t = re.sub(r'\s*<script[^>]*header-buttons\.js[^>]*></script>', '', t)
+
+              # Ensure load-partials once for shell pages
+              if 'data-shell=' in t and 'load-partials.js' not in t:
+                  depth = len(p.parts) - 1
+                  pref = '' if depth <= 0 else '../' * depth
+                  t = t.replace('</body>', f'  <script src="{pref}assets/js/load-partials.js"></script>\n</body>', 1)
+
+              # Drop empty leftover multiple blank lines in body start
+              t = re.sub(r'(<body[^>]*>)\s{3,}', r'\1\n', t)
+
+              if t != orig:
+                  p.write_text(t, encoding='utf-8')
+                  n_pages += 1
+                  print('cleaned', p)
+
+          # theme.js: stop loading footer-chart.js (partials supply footer)
+          tj = Path('assets/js/theme.js')
+          if tj.exists():
+              ts = tj.read_text(encoding='utf-8')
+              ts2 = re.sub(
+                  r"// Footer button chart script[\s\S]*?catch \(e2\) \{\}\s*",
+                  '',
+                  ts,
+              )
+              if ts2 != ts:
+                  tj.write_text(ts2, encoding='utf-8')
+                  print('theme.js stripped footer-chart loader')
+
+          # Assert no content page has bar header except partials
+          left = []
+          for p in Path('.').rglob('*.html'):
+              if 'partials' in p.parts or '.git' in p.parts:
+                  continue
+              x = p.read_text(encoding='utf-8', errors='replace')
+              if '<header class="bar"' in x and 'data-include="header"' in x:
+                  left.append(str(p))
+              if '<header class="bar"' in x and 'http-equiv="refresh"' not in x and 'data-include' not in x:
+                  # full page still with old header and no partials
+                  left.append('OLD:' + str(p))
+          print('cleaned_pages', n_pages, 'redirects', n_redir)
+          print('left_issues', left[:20], 'count', len(left))
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short | head -50
+          git commit -m "Remove old header/footer code; fix scripts; slim redirects" || exit 0
+          git push origin HEAD:main
