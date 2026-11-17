@@ -1,6 +1,5 @@
-/* Header + drawer menu as buttons — linear row / stacked list, NOT a chart grid */
+/* Header + drawer menu as buttons */
 
-/* Desktop primary nav */
 .bar .nav {
   display: flex;
   flex-wrap: wrap;
@@ -30,10 +29,6 @@
   background: color-mix(in srgb, var(--sand, #C5A477) 16%, var(--surface, #fff));
   outline: none;
 }
-.bar .nav a:focus-visible {
-  outline: 2px solid var(--gold, #C6A15B);
-  outline-offset: 2px;
-}
 .bar .nav a[aria-current="page"] {
   border-color: color-mix(in srgb, var(--gold, #C6A15B) 70%, var(--line, #ccc));
   background: color-mix(in srgb, var(--maroon, #581F2A) 12%, var(--surface, #fff));
@@ -44,7 +39,6 @@
   background: color-mix(in srgb, var(--gold, #C6A15B) 12%, transparent);
 }
 
-/* Mobile drawer: full-width button stack (not multi-column chart) */
 .drawer-panel nav {
   display: flex;
   flex-direction: column;
@@ -64,27 +58,11 @@
   text-decoration: none;
   font-size: 0.92rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  transition: border-color .15s, background .15s;
 }
 .drawer-panel nav a:hover,
 .drawer-panel nav a:focus-visible {
   border-color: color-mix(in srgb, var(--gold, #B08D57) 55%, var(--line, #ccc));
   background: color-mix(in srgb, var(--sand, #C5A477) 16%, var(--surface, #fff));
-  outline: none;
-}
-.drawer-panel nav a:focus-visible {
-  outline: 2px solid var(--gold, #C6A15B);
-  outline-offset: 2px;
-}
-.drawer-panel nav a[aria-current="page"] {
-  border-color: color-mix(in srgb, var(--gold, #C6A15B) 70%, var(--line, #ccc));
-  background: color-mix(in srgb, var(--maroon, #581F2A) 12%, var(--surface, #fff));
-  color: var(--maroon, #581F2A);
-}
-:root[data-theme="dark"] .drawer-panel nav a[aria-current="page"] {
-  color: var(--gold, #C6A15B);
-  background: color-mix(in srgb, var(--gold, #C6A15B) 12%, transparent);
 }
 .drawer-panel h5 {
   margin: 0.85rem 0 0.4rem;
@@ -94,14 +72,28 @@
   color: var(--muted, #6b6358);
 }
 
-/* Keep bar tools as compact icon buttons */
 .bar-tools .ib {
   border-radius: 0.25rem;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 5;
+  position: relative;
 }
 
-@media (max-width: 899px) {
-  /* Primary nav often hidden on small screens; drawer carries buttons */
-  .bar .nav {
-    display: none;
+/* Hamburger: show on small/medium screens */
+@media (max-width: 61.99rem) {
+  .bar .nav { display: none !important; }
+  .menu-btn,
+  #menu-btn {
+    display: inline-grid !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
+}
+
+/* Desktop: hide hamburger, show nav */
+@media (min-width: 62rem) {
+  .bar .nav { display: flex !important; }
+  .menu-btn,
+  #menu-btn { display: none !important; }
 }
