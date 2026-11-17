@@ -1,7 +1,5 @@
-/* Service worker — V19.0.5
-   Navigation: network-first (4 s timeout) → cache → offline page.
-   Same-origin assets + Google Fonts: stale-while-revalidate. Old caches are purged on activate. */
-const VERSION = '19.0.5';
+/* Service worker — V19.0.7 */
+const VERSION = '19.0.7';
 const CACHE = 'bs-' + VERSION;
 const FONTS = 'bs-fonts';
 const OFFLINE = '/offline.html';
@@ -10,99 +8,59 @@ const PRECACHE = [
   "/index.html",
   "/offline.html",
   "/404.html",
-  "/sitemap.html",
-  "/changelog.html",
   "/manifest.json",
-  "/about/",
-  "/projects/",
-  "/publications/",
-  "/research/",
-  "/contact/",
-  "/assets/css/site.css?v=18.1.0",
-  "/assets/css/bento-editorial.css?v=18.2.0",
-  "/assets/css/swiss.css?v=19.0.0",
-  "/assets/css/kingdom.css?v=19.0.1",
-  "/assets/css/v19-0-2-fixes.css?v=19.0.2",
-  "/assets/css/protect-l4.css?v=18.1.3",
-  "/assets/css/darbar-gate.css?v=19.0.4",
-  "/assets/css/ux-friendly.css?v=19.0.5",
-  "/assets/css/sitemap-chart.css?v=19.0.3",
-  "/assets/js/site.js?v=18.1.0",
-  "/assets/js/theme.js?v=18.1.0",
+  "/assets/js/site.js?v=19.0.7",
+  "/assets/js/load-partials.js?v=19.0.7",
+  "/assets/js/theme.js?v=19.0.6",
   "/assets/js/protect-l4.js?v=18.1.3",
-  "/assets/js/darbar-gate.js?v=19.0.4",
-  "/assets/search-index.json",
-  "/assets/images/brand/brand-mark.webp",
-  "/assets/images/brand/brand-mark-192.png",
-  "/assets/images/brand/brand-mark-512.png",
-  "/assets/images/brand/maskable-512.png",
-  "/assets/images/portals/portal-books.webp",
-  "/assets/images/portals/portal-hr.webp",
-  "/assets/images/portals/portal-visitor.webp",
-  "/Visitor/Visitindex.html",
-  "/Visitor/about.html",
-  "/Visitor/blog.html",
-  "/Visitor/Mewad_history_blog.html",
-  "/Visitor/vanshavali.html",
-  "/Visitor/ananadviharbhavan.html",
-  "/Visitor/contact.html",
-  "/Visitor/policy-center.html",
-  "/Visitor/privacy-policy.html",
-  "/Visitor/termsofuse.html",
-  "/Visitor/disclaimer.html",
-  "/Visitor/grievance.html",
-  "/Visitor/cookies-policy.html",
-  "/Visitor/copyright-policy.html",
-  "/Visitor/content-editorial-policy.html",
-  "/Visitor/data-retention-policy.html",
-  "/Visitor/accessibility-statement.html",
-  "/Visitor/third-party-policy.html",
-  "/HR-Recruiter/HRRindex.html",
-  "/HR-Recruiter/resume.html",
-  "/HR-Recruiter/projects.html",
-  "/HR-Recruiter/pwriter.html",
-  "/HR-Recruiter/ghostwriting.html",
-  "/Book-Publications-Reader/BPindex.html",
-  "/Book-Publications-Reader/otherlinks.html",
-  "/Book-Publications-Reader/satyanisodh.html",
-  "/Book-Publications-Reader/astitva-garima.html",
-  "/Book-Publications-Reader/mahabharat-rajdharma.html",
-  "/Book-Publications-Reader/pushtimarg.html",
-  "/Book-Publications-Reader/pushtimarg-ma-gruh-seva.html",
-  "/Book-Publications-Reader/bookreadingpolicy.html"
+  "/assets/partials/header-home.html",
+  "/assets/partials/footer-home.html",
+  "/assets/partials/header-visitor.html",
+  "/assets/partials/footer-visitor.html",
+  "/assets/partials/header-hr.html",
+  "/assets/partials/footer-hr.html",
+  "/assets/partials/header-books.html",
+  "/assets/partials/footer-books.html",
+  "/assets/css/site.css?v=18.1.0",
+  "/assets/css/footer-chart.css?v=19.0.5",
+  "/assets/css/header-buttons.css?v=19.0.6"
 ];
 
-self.addEventListener('install', (e) => {
+self.addEventListener('install', function (e) {
   e.waitUntil(
-    caches.open(CACHE).then((c) => Promise.all(PRECACHE.map((u) => c.add(u).catch(() => {})))).then(() => self.skipWaiting())
+    caches.open(CACHE).then(function (c) {
+      return Promise.all(PRECACHE.map(function (u) { return c.add(u).catch(function () {}); }));
+    }).then(function () { return self.skipWaiting(); })
   );
 });
 
-self.addEventListener('activate', (e) => {
+self.addEventListener('activate', function (e) {
   e.waitUntil(
-    caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE && k !== FONTS).map((k) => caches.delete(k)))).then(() => self.clients.claim())
+    caches.keys().then(function (ks) {
+      return Promise.all(ks.filter(function (k) { return k !== CACHE && k !== FONTS; }).map(function (k) { return caches.delete(k); }));
+    }).then(function () { return self.clients.claim(); })
   );
 });
 
 function isNav(req) {
-  return req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept') && req.headers.get('accept').includes('text/html'));
+  return req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept') && req.headers.get('accept').indexOf('text/html') !== -1);
 }
 
-self.addEventListener('fetch', (e) => {
-  const req = e.request;
+self.addEventListener('fetch', function (e) {
+  var req = e.request;
   if (req.method !== 'GET') return;
-  const url = new URL(req.url);
+  var url = new URL(req.url);
 
-  // Google Fonts: SWR
   if (url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com') {
     e.respondWith(
-      caches.open(FONTS).then(async (cache) => {
-        const hit = await cache.match(req);
-        const net = fetch(req).then((res) => {
-          if (res && res.ok) cache.put(req, res.clone());
-          return res;
-        }).catch(() => hit);
-        return hit || net;
+      caches.open(FONTS).then(function (cache) {
+        return cache.match(req).then(function (hit) {
+          var net = fetch(req).then(function (res) {
+            if (res && res.ok) cache.put(req, res.clone());
+            return res;
+          }).catch(function () { return hit; });
+          return hit || net;
+        });
       })
     );
     return;
@@ -111,39 +69,37 @@ self.addEventListener('fetch', (e) => {
   if (url.origin !== self.location.origin) return;
 
   if (isNav(req)) {
-    e.respondWith(
-      (async () => {
-        const ctrl = new AbortController();
-        const t = setTimeout(() => ctrl.abort(), 4000);
-        try {
-          const res = await fetch(req, { signal: ctrl.signal });
-          clearTimeout(t);
-          const cache = await caches.open(CACHE);
-          cache.put(req, res.clone());
-          return res;
-        } catch (err) {
-          clearTimeout(t);
-          const cache = await caches.open(CACHE);
-          return (await cache.match(req)) || (await cache.match('/index.html')) || (await cache.match(OFFLINE)) || Response.error();
-        }
-      })()
-    );
+    e.respondWith((async function () {
+      var ctrl = new AbortController();
+      var t = setTimeout(function () { ctrl.abort(); }, 4000);
+      try {
+        var res = await fetch(req, { signal: ctrl.signal });
+        clearTimeout(t);
+        var cache = await caches.open(CACHE);
+        cache.put(req, res.clone());
+        return res;
+      } catch (err) {
+        clearTimeout(t);
+        var cache2 = await caches.open(CACHE);
+        return (await cache2.match(req)) || (await cache2.match('/index.html')) || (await cache2.match(OFFLINE)) || Response.error();
+      }
+    })());
     return;
   }
 
-  // Assets: stale-while-revalidate
   e.respondWith(
-    caches.open(CACHE).then(async (cache) => {
-      const hit = await cache.match(req);
-      const net = fetch(req).then((res) => {
-        if (res && res.ok) cache.put(req, res.clone());
-        return res;
-      }).catch(() => hit);
-      return hit || net;
+    caches.open(CACHE).then(function (cache) {
+      return cache.match(req).then(function (hit) {
+        var net = fetch(req).then(function (res) {
+          if (res && res.ok) cache.put(req, res.clone());
+          return res;
+        }).catch(function () { return hit; });
+        return hit || net;
+      });
     })
   );
 });
 
-self.addEventListener('message', (e) => {
+self.addEventListener('message', function (e) {
   if (e.data && e.data.type === 'SKIP_WAITING') self.skipWaiting();
 });
