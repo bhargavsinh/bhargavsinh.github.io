@@ -1,0 +1,33 @@
+/* BS Chrome V20 — shared header / drawer / tools */
+.bar-tools .ib,
+#menu-btn,
+#theme-btn {
+  cursor: pointer;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 20;
+}
+
+@media (max-width: 61.99rem) {
+  .bar .nav { display: none !important; }
+  .menu-btn,
+  #menu-btn {
+    display: inline-grid !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (min-width: 62rem) {
+  .bar .nav { display: flex !important; }
+  .menu-btn,
+  #menu-btn { display: none !important; }
+}
+
+.drawer {
+  z-index: 200 !important;
+}
+.drawer.open {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
