@@ -1,4 +1,4 @@
-/* Load header/footer HTML partials for home + portals. */
+/* Load header/footer partials, then bind mobile menu + tools. */
 (function () {
   'use strict';
 
@@ -34,6 +34,53 @@
     parent.removeChild(el);
   }
 
+  /** Mobile drawer — must run AFTER header partial is in the DOM */
+  function bindMobileMenu() {
+    var d = document.getElementById('drawer');
+    var open = document.getElementById('menu-btn');
+    var close = document.getElementById('drawer-close');
+    if (!d || !open) return;
+    if (open.getAttribute('data-menu-bound') === '1') return;
+    open.setAttribute('data-menu-bound', '1');
+
+    var last = null;
+    function show() {
+      last = document.activeElement;
+      d.classList.add('open');
+      d.setAttribute('aria-hidden', 'false');
+      open.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      if (close) setTimeout(function () { close.focus(); }, 50);
+    }
+    function hide() {
+      d.classList.remove('open');
+      d.setAttribute('aria-hidden', 'true');
+      open.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      if (last && last.focus) last.focus();
+    }
+
+    open.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (d.classList.contains('open')) hide();
+      else show();
+    });
+    if (close) close.addEventListener('click', function (e) { e.preventDefault(); hide(); });
+    d.addEventListener('click', function (e) { if (e.target === d) hide(); });
+    var links = d.querySelectorAll('a');
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener('click', hide);
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && d.classList.contains('open')) hide();
+    });
+  }
+
+  function bindSearchOpeners() {
+    // site.js owns search; re-dispatch so late-bound [data-search] work if needed
+    document.dispatchEvent(new CustomEvent('partials:loaded'));
+  }
+
   function load() {
     var root = rootFromPage();
     var shell = shellKey();
@@ -61,7 +108,8 @@
     return Promise.all(jobs).then(function () {
       var ys = document.querySelectorAll('.js-year');
       for (var i = 0; i < ys.length; i++) ys[i].textContent = String(new Date().getFullYear());
-      document.dispatchEvent(new CustomEvent('partials:loaded'));
+      bindMobileMenu();
+      bindSearchOpeners();
     });
   }
 
