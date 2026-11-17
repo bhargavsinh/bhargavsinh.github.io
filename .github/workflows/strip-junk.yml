@@ -1,0 +1,79 @@
+name: Strip footer-chart scripts and fix defer
+
+on:
+  push:
+    paths:
+      - '.github/workflows/strip-junk.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  strip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          def slim_redirect(t):
+              m = re.search(r'<meta http-equiv="refresh" content="0; url=([^"]+)"', t, re.I)
+              if not m:
+                  return None
+              target = m.group(1)
+              return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Redirecting…</title>
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url={target}">
+<link rel="canonical" href="https://bhargavsinh.github.io/{target.lstrip('/')}">
+</head>
+<body>
+<p>Redirecting to <a href="{target}">{target}</a>…</p>
+</body>
+</html>
+'''
+
+          n = 0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts or 'partials' in p.parts:
+                  continue
+              t = p.read_text(encoding='utf-8', errors='replace')
+              orig = t
+
+              if 'http-equiv="refresh"' in t and 'data-include' not in t:
+                  s = slim_redirect(t)
+                  if s:
+                      p.write_text(s, encoding='utf-8')
+                      n += 1
+                      print('redir', p)
+                      continue
+
+              t = re.sub(r'\s*<script[^>]*footer-chart\.js[^>]*>\s*</script>', '', t)
+              t = re.sub(r'(<script\b[^>]*\sdefer)\s*>(\s*)(?=<script)', r'\1></script>\2', t)
+              t = re.sub(r'(<script\s+src="[^"]*site\.js[^"]*"\s*defer)\s*>(\s*)(?=<script)', r'\1></script>\2', t)
+              t = t.replace('</script></script>', '</script>')
+
+              # strip residual bar/footer if slots present
+              if 'data-include="header"' in t:
+                  t = re.sub(r'<header class="bar"[\s\S]*?</header>', '', t)
+                  t = re.sub(r'<div class="drawer"[\s\S]*?</div>\s*</div>', '', t, count=1)
+              if 'data-include="footer"' in t:
+                  t = re.sub(r'<footer class="foot"[\s\S]*?</footer>', '', t)
+
+              if t != orig:
+                  p.write_text(t, encoding='utf-8')
+                  n += 1
+                  print('ok', p)
+          print('done', n)
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Strip junk scripts; slim redirects; no old chrome" || exit 0
+          git push origin HEAD:main

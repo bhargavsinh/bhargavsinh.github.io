@@ -1,5 +1,6 @@
 /* Runs in <head>, before paint: applies saved theme + font scale (no flash). */
 (function () {
+  'use strict';
   try {
     var t = localStorage.getItem('bs_theme');
     if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
@@ -25,7 +26,7 @@
     if (root === null || root === undefined) root = rootPrefix();
     else if (root && root.slice(-1) !== '/' && root !== '') root = root + '/';
 
-    // Header menu buttons CSS
+    // Header menu button styles
     try {
       if (!document.querySelector('link[href*="header-buttons.css"]')) {
         var hl = document.createElement('link');
@@ -34,16 +35,5 @@
         document.head.appendChild(hl);
       }
     } catch (eH) {}
-
-    // Footer button chart script
-    try {
-      if (!document.querySelector('script[data-footer-chart]')) {
-        var s = document.createElement('script');
-        s.src = root + 'assets/js/footer-chart.js?v=19.0.5';
-        s.defer = true;
-        s.setAttribute('data-footer-chart', '1');
-        (document.body || document.documentElement).appendChild(s);
-      }
-    } catch (e2) {}
   });
 })();
