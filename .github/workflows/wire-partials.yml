@@ -1,0 +1,89 @@
+name: Wire header footer partials
+
+on:
+  push:
+    paths:
+      - '.github/workflows/wire-partials.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  wire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace embedded header/footer with data-include slots
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          def shell_for(path: Path):
+              s = str(path).replace('\\', '/')
+              if s.startswith('Visitor/'):
+                  return 'visitor', '../assets/js/load-partials.js'
+              if s.startswith('HR-Recruiter/'):
+                  return 'hr', '../assets/js/load-partials.js'
+              if s.startswith('Book-Publications-Reader/'):
+                  return 'books', '../assets/js/load-partials.js'
+              if path.parts[0] in ('about', 'projects', 'publications', 'research', 'contact'):
+                  return 'home', '../assets/js/load-partials.js'
+              return 'home', 'assets/js/load-partials.js'
+
+          n = 0
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or '.github' in p.parts:
+                  continue
+              if p.name in ('google424fbe164e6bb481.html',):
+                  continue
+              t = p.read_text(encoding='utf-8', errors='replace')
+              if 'class="bar"' not in t and "class='bar'" not in t:
+                  continue
+              shell, src = shell_for(p)
+              if 'data-shell=' not in t:
+                  t = re.sub(r'(<body\b)([^>]*)(>)', r'\1\2 data-shell="' + shell + r'"\3', t, count=1)
+              else:
+                  t = re.sub(r'data-shell="[^"]*"', 'data-shell="' + shell + '"', t, count=1)
+
+              t2, c1 = re.subn(
+                  r'(?:<div class="progress"[\s\S]*?</div>\s*)?(?:<a class="skip"[\s\S]*?</a>\s*)?<header class="bar"[\s\S]*?</header>\s*<div class="drawer"[\s\S]*?</div>\s*</div>',
+                  '<div data-include="header"></div>',
+                  t,
+                  count=1,
+              )
+              if c1 != 1:
+                  t2, c1 = re.subn(
+                      r'<header class="bar"[\s\S]*?</header>\s*<div class="drawer"[\s\S]*?</div>\s*</div>',
+                      '<div data-include="header"></div>',
+                      t,
+                      count=1,
+                  )
+              if c1 != 1:
+                  print('header skip', p)
+                  continue
+              t = t2
+              t2, c2 = re.subn(r'<footer class="foot"[\s\S]*?</footer>', '<div data-include="footer"></div>', t, count=1)
+              if c2 != 1:
+                  print('footer skip', p)
+                  continue
+              t = t2
+              if 'load-partials.js' not in t:
+                  t = t.replace('</body>', f'  <script src="{src}"></script>\n</body>', 1)
+              if f'header-{shell}.html' not in t:
+                  t = t.replace('</head>', f'  <!-- Partials: assets/partials/header-{shell}.html + footer-{shell}.html -->\n</head>', 1)
+              p.write_text(t, encoding='utf-8')
+              n += 1
+              print('wired', p)
+          print('total', n)
+          assert Path('assets/partials/header-home.html').exists()
+          assert Path('assets/js/load-partials.js').exists()
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Wire all pages to separate header/footer partial files" || exit 0
+          git push origin HEAD:main
