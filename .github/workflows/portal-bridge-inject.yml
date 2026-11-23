@@ -1,0 +1,69 @@
+name: portal-bridge-inject
+on:
+  workflow_dispatch:
+jobs:
+  inject:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inject bridge section
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          bridge = '''
+          <section class="sec" id="portal-bridge">
+            <h2 class="sec-title">Portal Bridge</h2>
+            <p>Move freely between the three portals of this digital portfolio. The Portal Bridge page connects Visitor, HR Recruiter, and Books &amp; Publications.</p>
+            <div class="actions">
+              <a class="btn primary" href="../portals.html">Open Portal Bridge</a>
+              <a class="btn ghost" href="../Visitor/Visitindex.html">Visitor</a>
+              <a class="btn ghost" href="../HR-Recruiter/HRRindex.html">HR Recruiter</a>
+              <a class="btn ghost" href="../Book-Publications-Reader/BPindex.html">Books</a>
+            </div>
+          </section>
+          '''
+          for path in [
+            Path('Visitor/Visitindex.html'),
+            Path('HR-Recruiter/HRRindex.html'),
+            Path('Book-Publications-Reader/BPindex.html'),
+            Path('vanshavali.html'),
+            Path('resume.html'),
+            Path('archives.html'),
+            Path('contact.html'),
+          ]:
+            if not path.exists():
+              continue
+            html = path.read_text(encoding='utf-8')
+            changed = False
+            if path.name.endswith('index.html') or 'Visitindex' in path.name or 'HRRindex' in path.name or 'BPindex' in path.name:
+              if 'id="portal-bridge"' not in html and '</main>' in html:
+                html = html.replace('</main>', bridge + '</main>', 1)
+                changed = True
+            # main retro pages: portal switch + tools
+            if path.name in ('vanshavali.html','resume.html','archives.html','contact.html'):
+              if 'portal-switch' not in html and '<table class="layout"' in html:
+                switch = '''<div class="portal-switch" role="navigation" aria-label="Portal switcher"><span class="ps-label">Portals:</span> <a href="Visitor/Visitindex.html">Visitor</a> <a href="HR-Recruiter/HRRindex.html">HR Recruiter</a> <a href="Book-Publications-Reader/BPindex.html">Books</a> <a class="ps-bridge" href="portals.html">★ Bridge</a> <span class="ps-clock" id="ps-clock" aria-live="polite"></span></div>\n'''
+                html = html.replace('<table class="layout"', switch + '<table class="layout"', 1)
+                changed = True
+              if 'href="portals.html"' not in html and 'href="contact.html">Contact</a>' in html:
+                html = html.replace('<a class="btn" href="contact.html">Contact</a>', '<a class="btn" href="contact.html">Contact</a> <a class="btn" href="portals.html">Portals</a>', 1)
+                changed = True
+              if 'foot-tools' not in html and '<div class="footer">' in html:
+                html = html.replace('<div class="footer">', '<div class="footer"><div class="foot-tools"><button type="button" onclick="window.print()">Print page</button> <a href="#top">Back to top</a> <a href="portals.html">Portal Bridge</a></div>\n', 1)
+                changed = True
+            if 'retro-features.js' not in html:
+              html = html.replace('</body>', '<script src="' + ('../' if '/' in str(path) else '') + 'assets/js/retro-features.js?v=20.4.0"></script>\n</body>')
+              changed = True
+            if changed:
+              path.write_text(html, encoding='utf-8')
+              print('updated', path)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Add Portal Bridge to portals + improve main page chrome (no text removed)"
+          git push
