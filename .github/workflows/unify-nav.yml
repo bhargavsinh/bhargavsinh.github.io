@@ -1,0 +1,69 @@
+name: unify-nav
+on:
+  workflow_dispatch:
+jobs:
+  nav:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unify nav-bar on all HTML
+        run: |
+          python3 << 'PY'
+          import re
+          from pathlib import Path
+
+          def nav_html(depth, current=''):
+              root = '../' * depth
+              items = [
+                ('index.html', 'Home'),
+                ('vanshavali.html', 'Vanshavali'),
+                ('resume.html', 'Resume'),
+                ('archives.html', 'Archives'),
+                ('contact.html', 'Contact'),
+                ('portals.html', 'Portals'),
+              ]
+              parts = []
+              for href, label in items:
+                  cls = 'btn current' if current == href or current.endswith('/'+href) else 'btn'
+                  parts.append(f'<a class="{cls}" href="{root}{href}">{label}</a>')
+              inner = ' '.join(parts)
+              return f'<div class="nav-bar" role="navigation" aria-label="Main menu">\n    {inner}\n  </div>'
+
+          # Pattern: existing nav-bar block
+          nav_re = re.compile(r'<div class="nav-bar"[^>]*>.*?</div>', re.I | re.S)
+
+          changed = 0
+          for path in Path('.').rglob('*.html'):
+            sp = str(path).replace('\\', '/')
+            if '.github' in sp or 'partials' in sp:
+              continue
+            html = path.read_text(encoding='utf-8', errors='replace')
+            if 'nav-bar' not in html:
+              continue
+            depth = sp.count('/')
+            current = path.name
+            new_nav = nav_html(depth, current)
+            # mark current more carefully for portals.html etc
+            if path.name == 'portals.html':
+              new_nav = new_nav.replace('href="' + ('../'*depth) + 'portals.html">Portals</a>', 'href="' + ('../'*depth) + 'portals.html" class="btn current">Portals</a>').replace('class="btn" class="btn current"', 'class="btn current"')
+            html2, n = nav_re.subn(new_nav, html, count=1)
+            if n:
+              # fix double class if any
+              html2 = html2.replace('class="btn" class="btn current"', 'class="btn current"')
+              # ensure Portals current
+              if path.name == 'index.html':
+                html2 = re.sub(r'class="btn current" href="([^"]*index\.html)">Home</a>', r'class="btn current" href="\1">Home</a>', html2)
+              path.write_text(html2, encoding='utf-8')
+              changed += 1
+              print('nav', sp)
+          print('total', changed)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Unify Main menu nav-bar on all HTML pages"
+          git push
