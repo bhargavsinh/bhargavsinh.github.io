@@ -235,3 +235,41 @@ table.data th {
   color: #FFC300;
 }
 table.data tr:nth-child(even) { background: #FFF8DC; }
+
+/* Global overrides when retro is active on legacy pages */
+html[data-retro="1"] body.retro-body,
+body.retro-body {
+  background: #330000 !important;
+  color: #000 !important;
+  font-family: Verdana, Arial, Helvetica, sans-serif !important;
+  font-size: 12px !important;
+}
+body.retro-body main,
+body.retro-body .page,
+body.retro-body .band,
+body.retro-body .card,
+body.retro-body .portal,
+body.retro-body .foot,
+body.retro-body .bar {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+body.retro-body a { color: #0000EE !important; text-decoration: underline !important; }
+body.retro-body a:visited { color: #551A8B !important; }
+body.retro-body h1, body.retro-body h2, body.retro-body h3 {
+  font-family: "Times New Roman", Times, Georgia, serif !important;
+  color: #900C3E !important;
+}
+#retro-topbar { width: 900px; max-width: 100%; margin: 0 auto; border: 2px solid #000; background: #FFF8DC; }
+body.retro-body main.page,
+body.retro-body main {
+  width: 900px;
+  max-width: 100%;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border: 1px solid #999;
+  padding: 12px;
+  color: #000;
+}
+#retro-footer { width: 900px; max-width: 100%; margin: 0 auto 12px; }
