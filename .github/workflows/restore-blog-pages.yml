@@ -1,0 +1,76 @@
+name: restore-blog-pages
+on:
+  workflow_dispatch:
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 20
+      - name: Restore and improve
+        run: |
+          python3 << 'PY'
+          import re, subprocess
+          from pathlib import Path
+
+          def improve(path, shell, root_prefix='../'):
+              p = Path(path)
+              if not p.exists():
+                  print('missing', path); return
+              html = p.read_text(encoding='utf-8', errors='replace')
+              if html.strip() == 'PLACEHOLDER' or len(html) < 500:
+                  print('still bad', path); return
+              orig_main = re.search(r'<main[^>]*>([\s\S]*)</main>', html, re.I)
+              orig_main_s = orig_main.group(1) if orig_main else None
+              html = re.sub(r'<script(\s+[^>]*?)\s*>\s*>\s*</script>', r'<script\1></script>', html, flags=re.I)
+              if re.search(r'<body[^>]*data-protect', html, re.I) is None:
+                  html = re.sub(r'<body([^>]*)>', r'<body\1 data-protect>', html, count=1, flags=re.I)
+              if 'data-shell=' not in html and 'data-include' in html:
+                  html = re.sub(r'<body([^>]*)>', rf'<body\1 data-shell="{shell}">', html, count=1, flags=re.I)
+              html = html.replace('retro-2000s.css?v=20.3.0', 'retro-2000s.css?v=20.4.2')
+              if 'retro-2000s.css' not in html:
+                  html = re.sub(r'</head>', f'<link rel="stylesheet" href="{root_prefix}assets/css/retro-2000s.css?v=20.4.2">\n</head>', html, count=1, flags=re.I)
+              if 'protect-l4.css' not in html:
+                  html = re.sub(r'</head>', f'<link rel="stylesheet" href="{root_prefix}assets/css/protect-l4.css?v=18.1.3">\n</head>', html, count=1, flags=re.I)
+              def ensure_script(html, needle, src):
+                  if needle in html: return html
+                  return re.sub(r'</body>', f'<script src="{src}"></script>\n</body>', html, count=1, flags=re.I)
+              html = ensure_script(html, 'protect-l4.js', f'{root_prefix}assets/js/protect-l4.js?v=18.1.3')
+              html = ensure_script(html, 'retro-apply.js', f'{root_prefix}assets/js/retro-apply.js?v=20.3.0')
+              html = ensure_script(html, 'retro-features.js', f'{root_prefix}assets/js/retro-features.js?v=20.4.0')
+              if 'load-partials.js' not in html and 'data-include' in html:
+                  html = ensure_script(html, 'load-partials.js', f'{root_prefix}assets/js/load-partials.js')
+              html = re.sub(r'<button[^>]*onclick="window\.print\(\)"[^>]*>[^<]*</button>\s*', '', html, flags=re.I)
+              new_main = re.search(r'<main[^>]*>([\s\S]*)</main>', html, re.I)
+              if orig_main_s is not None and new_main and new_main.group(1) != orig_main_s:
+                  print('ABORT text change', path); return
+              p.write_text(html, encoding='utf-8')
+              print('updated', path, len(html))
+
+          blog = Path('Visitor/blog.html')
+          if blog.exists() and (blog.read_text().strip() == 'PLACEHOLDER' or len(blog.read_text()) < 500):
+              for rev in ['HEAD~1','HEAD~2','HEAD~3','HEAD~5','HEAD~8']:
+                  try:
+                      content = subprocess.check_output(['git','show',f'{rev}:Visitor/blog.html'], text=True, stderr=subprocess.DEVNULL)
+                      if len(content) > 1000 and 'PLACEHOLDER' not in content:
+                          blog.write_text(content, encoding='utf-8')
+                          print('restored blog from', rev, len(content))
+                          break
+                  except Exception as e:
+                      print('rev fail', rev, e)
+
+          improve('Visitor/blog.html', 'visitor')
+          improve('Visitor/Mewad_history_blog.html', 'visitor')
+          improve('Visitor/Visitindex.html', 'visitor')
+          improve('Book-Publications-Reader/pushtimarg-ma-gruh-seva.html', 'books')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Restore/improve blog-linked pages — chrome only, no text changes"
+          git push
