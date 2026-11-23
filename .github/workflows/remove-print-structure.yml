@@ -8,35 +8,31 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Remove print + structure polish
+      - name: Remove print buttons
         run: |
           python3 << 'PY'
-          import re
           from pathlib import Path
-          changed = 0
+          import re
+          n = 0
           for path in Path('.').rglob('*.html'):
-            sp = str(path)
-            if '.github' in sp:
+            if '.github' in str(path):
               continue
-            html = path.read_text(encoding='utf-8', errors='replace')
-            orig = html
-            html = re.sub(r'<button[^>]*onclick="window\.print\(\)"[^>]*>\s*Print[^<]*</button>\s*', '', html, flags=re.I)
-            html = re.sub(r'<a[^>]*href="javascript:window\.print\(\)"[^>]*>\s*Print[^<]*</a>\s*', '', html, flags=re.I)
-            if path.name in ('index.html','portals.html','vanshavali.html','resume.html','archives.html','contact.html'):
-              if 'skip-retro' not in html and 'class="page-wrap"' in html:
-                html = html.replace('<div class="page-wrap">', '<a class="skip-retro" href="#main-content">Skip to content</a>\n<div class="page-wrap">', 1)
-              if 'id="main-content"' not in html and 'td class="center"' in html:
-                html = html.replace('<td class="center">', '<td class="center" id="main-content">', 1)
-            if html != orig:
-              path.write_text(html, encoding='utf-8')
-              changed += 1
-              print('updated', sp)
-          print('total', changed)
+            t = path.read_text(encoding='utf-8', errors='replace')
+            o = t
+            t = t.replace('onclick="window.print()"', '')
+            t = re.sub(r'<button([^>]*)>\s*Print page\s*</button>', '', t, flags=re.I)
+            t = re.sub(r'<a[^>]*javascript:window\.print\(\)[^>]*>\s*Print[^<]*</a>', '', t, flags=re.I)
+            t = t.replace('javascript:window.print()', '#')
+            if t != o:
+              path.write_text(t, encoding='utf-8')
+              n += 1
+              print('fixed', path)
+          print('total', n)
           PY
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --staged --quiet || git commit -m "Remove page printing; structure skip/main anchors"
+          git diff --staged --quiet || git commit -m "Remove all page-print buttons sitewide"
           git push
