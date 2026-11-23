@@ -1,0 +1,47 @@
+name: blog-features
+on:
+  workflow_dispatch:
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ensure features + versions
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+          paths = [
+            'Visitor/blog.html',
+            'Visitor/Mewad_history_blog.html',
+            'Visitor/Visitindex.html',
+            'Book-Publications-Reader/pushtimarg-ma-gruh-seva.html',
+          ]
+          for sp in paths:
+            p = Path(sp)
+            if not p.exists():
+              continue
+            h = p.read_text(encoding='utf-8')
+            o = h
+            h = h.replace('retro-2000s.css?v=20.3.0', 'retro-2000s.css?v=20.4.2')
+            if 'retro-features.js' not in h:
+              h = h.replace('</body>', '<script src="../assets/js/retro-features.js?v=20.4.0"></script>\n</body>')
+            if 'retro-apply.js' not in h:
+              h = h.replace('</body>', '<script src="../assets/js/retro-apply.js?v=20.3.0"></script>\n</body>')
+            if re.search(r'<body[^>]*data-protect', h) is None:
+              h = re.sub(r'<body([^>]*)>', r'<body\1 data-protect>', h, count=1)
+            if h != o:
+              p.write_text(h, encoding='utf-8')
+              print('updated', sp)
+            else:
+              print('ok', sp)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Blog-linked pages: ensure retro-features + L4 chrome"
+          git push
