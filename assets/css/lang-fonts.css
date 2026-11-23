@@ -10,8 +10,7 @@
 
 @font-face {
   font-family: "Adishila";
-  src: url("../fonts/Adishila.woff") format("woff"),
-       url("../fonts/Adishila.ttf") format("truetype");
+  src: url("../fonts/Adishila.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -49,7 +48,7 @@ html, body {
   font-family: var(--font-english) !important;
 }
 
-/* Mixed content: browser picks glyph from each face */
+/* Mixed content: browser picks glyph from each face in the stack */
 main, article, .prose, .content, .center, .post, .blog-body, .page-wrap {
   font-family: "Lora", "Rasa", "Hind", "Adishila", "Times New Roman", serif;
 }
