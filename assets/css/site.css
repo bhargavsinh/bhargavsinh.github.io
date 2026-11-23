@@ -28,8 +28,8 @@
   --shadow: 0 18px 50px -26px rgba(0, 0, 0, .9);
   --r-sm: .5rem; --r-md: .75rem; --r-lg: 1.1rem; --r-xl: 1.5rem;
   /* Latin: system sans-serif · Gujarati: Rasa · Hindi: Noto Sans Devanagari · English headings: editorial serif */
-  --font-ui: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Devanagari", "Rasa", sans-serif;
-  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Times New Roman", "Noto Sans Devanagari", "Rasa", serif;
+  --font-ui: "Lora", "Times New Roman", Times, serif;
+  --font-display: "Lora", "Times New Roman", Times, serif;
   --font-body: var(--font-ui);
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
   --fs: 1;
