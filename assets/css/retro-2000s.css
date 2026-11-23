@@ -14,9 +14,11 @@ a:active { color: #FF0000; }
 
 .page-wrap {
   width: 900px;
+  max-width: 100%;
   margin: 12px auto;
   border: 2px solid #000000;
   background: #FFF8DC;
+  box-sizing: border-box;
 }
 
 .banner {
@@ -104,13 +106,16 @@ a:active { color: #FF0000; }
 }
 
 table.layout {
-  width: 900px;
+  width: 100%;
+  max-width: 900px;
   border-collapse: collapse;
   background: #FFF8DC;
+  table-layout: fixed;
 }
 table.layout td {
   vertical-align: top;
   border: 1px solid #999999;
+  word-wrap: break-word;
 }
 td.left {
   width: 180px;
@@ -118,7 +123,7 @@ td.left {
   padding: 8px;
 }
 td.center {
-  width: 520px;
+  width: auto;
   background: #FFFFFF;
   padding: 12px 14px;
 }
@@ -271,5 +276,33 @@ body.retro-body main {
   border: 1px solid #999;
   padding: 12px;
   color: #000;
+  box-sizing: border-box;
 }
 #retro-footer { width: 900px; max-width: 100%; margin: 0 auto 12px; }
+
+/* Mobile / narrow screens — keep 2000s look, stack columns */
+@media screen and (max-width: 920px) {
+  .page-wrap { width: 100%; margin: 0; border-left: 0; border-right: 0; }
+  .banner h1 { font-size: 22px; letter-spacing: 1px; }
+  table.layout,
+  table.layout tbody,
+  table.layout tr,
+  table.layout td {
+    display: block;
+    width: 100% !important;
+  }
+  td.left, td.right, td.center {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+  .nav-bar a.btn {
+    margin: 3px 2px;
+    padding: 8px 10px;
+  }
+  #retro-topbar, #retro-footer, body.retro-body main {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .blink-new { animation: none; }
+}

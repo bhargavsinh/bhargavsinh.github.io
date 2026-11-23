@@ -1,0 +1,82 @@
+name: audit-cleanup
+on:
+  workflow_dispatch:
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix HTML issues
+        run: |
+          python3 << 'PY'
+          import re
+          from pathlib import Path
+
+          def clean(html: str) -> str:
+              # Fix broken: <script ... defer>\n></script>  ->  <script ... defer></script>
+              html = re.sub(
+                  r'<script(\s+[^>]*?)\s*>\s*>\s*</script>',
+                  r'<script\1></script>',
+                  html,
+                  flags=re.I
+              )
+              # Fix: <script ... defer>\n</script> with empty body already ok; ensure no lone >
+              html = re.sub(r'(<script[^>]*defer)\s*>\s*>\s*</script>', r'\1></script>', html, flags=re.I)
+
+              # Remove duplicate consecutive identical link/script lines
+              lines = html.splitlines(keepends=True)
+              out = []
+              seen_block = set()
+              for line in lines:
+                  stripped = line.strip()
+                  if stripped.startswith('<link ') or (stripped.startswith('<script ') and 'src=' in stripped):
+                      if stripped in seen_block:
+                          continue
+                      seen_block.add(stripped)
+                      out.append(line)
+                  else:
+                      # reset duplicate window on non-asset lines occasionally
+                      if stripped.startswith('</head>') or stripped.startswith('<body'):
+                          seen_block = {x for x in seen_block if not x.startswith('<link')}
+                      out.append(line)
+              html = ''.join(out)
+
+              # Dedupe protect-l4.css / retro-2000s if repeated non-consecutively in head
+              def dedupe_tag(html, pattern):
+                  matches = list(re.finditer(pattern, html, flags=re.I))
+                  if len(matches) <= 1:
+                      return html
+                  # keep first, remove rest
+                  for m in reversed(matches[1:]):
+                      html = html[:m.start()] + html[m.end():]
+                  return html
+
+              html = dedupe_tag(html, r'<link[^>]+protect-l4\.css[^>]*>\s*')
+              html = dedupe_tag(html, r'<link[^>]+retro-2000s\.css[^>]*>\s*')
+              html = dedupe_tag(html, r'<script[^>]+protect-l4\.js[^>]*>\s*</script>\s*')
+              html = dedupe_tag(html, r'<script[^>]+retro-apply\.js[^>]*>\s*</script>\s*')
+
+              return html
+
+          changed = 0
+          for path in Path('.').rglob('*.html'):
+              sp = str(path)
+              if '.github' in sp or 'partials' in sp:
+                  continue
+              raw = path.read_text(encoding='utf-8', errors='replace')
+              new = clean(raw)
+              if new != raw:
+                  path.write_text(new, encoding='utf-8')
+                  changed += 1
+                  print('cleaned', sp)
+          print('total', changed)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Audit cleanup: fix broken script tags, dedupe CSS/JS includes"
+          git push
