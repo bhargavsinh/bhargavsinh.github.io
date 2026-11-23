@@ -64,7 +64,7 @@ a:active { color: #FF0000; }
 }
 .nav-bar a.btn {
   display: inline-block;
-  margin: 2px 4px;
+  margin: 2px 3px;
   padding: 4px 12px;
   background: #C0C0C0;
   border-top: 2px solid #FFFFFF;
@@ -241,7 +241,6 @@ table.data th {
 }
 table.data tr:nth-child(even) { background: #FFF8DC; }
 
-/* Global overrides when retro is active on legacy pages */
 html[data-retro="1"] body.retro-body,
 body.retro-body {
   background: #330000 !important;
@@ -280,7 +279,6 @@ body.retro-body main {
 }
 #retro-footer { width: 900px; max-width: 100%; margin: 0 auto 12px; }
 
-/* Mobile / narrow screens — keep 2000s look, stack columns */
 @media screen and (max-width: 920px) {
   .page-wrap { width: 100%; margin: 0; border-left: 0; border-right: 0; }
   .banner h1 { font-size: 22px; letter-spacing: 1px; }
@@ -305,4 +303,73 @@ body.retro-body main {
 }
 @media (prefers-reduced-motion: reduce) {
   .blink-new { animation: none; }
+}
+
+/* V20.4.0 — Portal switcher, clock, tools */
+.portal-switch {
+  background: #000080;
+  color: #FFFF00;
+  border-bottom: 2px solid #FFC300;
+  padding: 5px 8px;
+  font-size: 11px;
+  text-align: center;
+  font-family: Verdana, Arial, sans-serif;
+}
+.portal-switch a {
+  color: #FFFF00;
+  margin: 0 6px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.portal-switch a:hover { color: #FFC300; }
+.portal-switch a.ps-bridge,
+.portal-switch a.current {
+  color: #FFC300;
+  background: #900C3E;
+  padding: 2px 6px;
+  text-decoration: none;
+}
+.portal-switch .ps-label { color: #FFF8DC; margin-right: 4px; }
+.portal-switch .ps-clock {
+  display: inline-block;
+  margin-left: 10px;
+  color: #00FF00;
+  font-family: "Courier New", Courier, monospace;
+  background: #000;
+  padding: 1px 6px;
+  border: 1px inset #808080;
+}
+.foot-tools {
+  text-align: center;
+  padding: 6px;
+  background: #4a0618;
+  border-bottom: 1px solid #FFC300;
+}
+.foot-tools a,
+.foot-tools button {
+  display: inline-block;
+  margin: 2px 6px;
+  padding: 3px 10px;
+  background: #C0C0C0;
+  border-top: 2px solid #FFFFFF;
+  border-left: 2px solid #FFFFFF;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  color: #000;
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: Verdana, Arial, sans-serif;
+}
+.foot-tools button:active,
+.foot-tools a:active {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+}
+@media screen and (max-width: 920px) {
+  .portal-switch a { display: inline-block; margin: 3px; }
+  .ps-clock { display: block; margin: 6px auto 0; width: max-content; }
 }
