@@ -1,0 +1,59 @@
+/* Language fonts — V20.4.3
+   Gujarati → Rasa
+   Hindi    → Hind
+   Sanskrit → Adishila
+   English  → Lora
+   Default  → Times New Roman
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Rasa:wght@400;500;600;700&display=swap");
+
+@font-face {
+  font-family: "Adishila";
+  src: url("../fonts/Adishila.woff") format("woff"),
+       url("../fonts/Adishila.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0900-097F, U+1CD0-1CFF, U+A8E0-A8FF, U+A830-A83F;
+}
+
+:root {
+  --font-gujarati: "Rasa", "Noto Sans Gujarati", "Times New Roman", serif;
+  --font-hindi: "Hind", "Noto Sans Devanagari", "Times New Roman", sans-serif;
+  --font-sanskrit: "Adishila", "Noto Serif Devanagari", "Times New Roman", serif;
+  --font-english: "Lora", "Times New Roman", Times, serif;
+  --font-default: "Times New Roman", Times, serif;
+  --font-ui: "Lora", "Times New Roman", Times, serif;
+  --font-body: "Lora", "Times New Roman", Times, serif;
+  --font-display: "Lora", "Times New Roman", Times, serif;
+}
+
+html, body {
+  font-family: var(--font-english);
+}
+
+:lang(gu), [lang="gu"], [lang="gu-IN"], .lang-gu, .gujarati {
+  font-family: var(--font-gujarati) !important;
+}
+
+:lang(hi), [lang="hi"], [lang="hi-IN"], .lang-hi, .hindi {
+  font-family: var(--font-hindi) !important;
+}
+
+:lang(sa), [lang="sa"], [lang="sa-IN"], .lang-sa, .sanskrit {
+  font-family: var(--font-sanskrit) !important;
+}
+
+:lang(en), [lang="en"], .lang-en, .english {
+  font-family: var(--font-english) !important;
+}
+
+/* Mixed content: browser picks glyph from each face */
+main, article, .prose, .content, .center, .post, .blog-body, .page-wrap {
+  font-family: "Lora", "Rasa", "Hind", "Adishila", "Times New Roman", serif;
+}
+
+.banner h1, .nav-bar, .btn {
+  font-family: "Lora", "Times New Roman", Times, serif;
+}
