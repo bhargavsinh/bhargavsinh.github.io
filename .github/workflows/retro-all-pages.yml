@@ -25,19 +25,22 @@ jobs:
             depth = sp.count('/')
             root = '../' * depth
             orig = html
+            head_bits = []
             if 'retro-2000s.css' not in html:
-              html = re.sub(r'</head>', f'<link rel="stylesheet" href="{root}assets/css/retro-2000s.css?v=20.3.0">\n<link rel="stylesheet" href="{root}assets/css/protect-l4.css?v=18.1.3">\n</head>', html, count=1, flags=re.I)
-            elif 'protect-l4.css' not in html:
-              html = re.sub(r'</head>', f'<link rel="stylesheet" href="{root}assets/css/protect-l4.css?v=18.1.3">\n</head>', html, count=1, flags=re.I)
+              head_bits.append(f'<link rel="stylesheet" href="{root}assets/css/retro-2000s.css?v=20.3.0">')
+            if 'protect-l4.css' not in html:
+              head_bits.append(f'<link rel="stylesheet" href="{root}assets/css/protect-l4.css?v=18.1.3">')
+            if head_bits:
+              html = re.sub(r'</head>', '\n'.join(head_bits) + '\n</head>', html, count=1, flags=re.I)
             if re.search(r'<body[^>]*data-protect', html, re.I) is None:
               html = re.sub(r'<body([^>]*)>', r'<body\1 data-protect>', html, count=1, flags=re.I)
-            scripts = ''
+            scripts = []
             if 'protect-l4.js' not in html:
-              scripts += f'<script src="{root}assets/js/protect-l4.js?v=18.1.3"></script>\n'
+              scripts.append(f'<script src="{root}assets/js/protect-l4.js?v=18.1.3"></script>')
             if 'retro-apply.js' not in html:
-              scripts += f'<script src="{root}assets/js/retro-apply.js?v=20.3.0"></script>\n'
+              scripts.append(f'<script src="{root}assets/js/retro-apply.js?v=20.3.0"></script>')
             if scripts:
-              html = re.sub(r'</body>', scripts + '</body>', html, count=1, flags=re.I)
+              html = re.sub(r'</body>', '\n'.join(scripts) + '\n</body>', html, count=1, flags=re.I)
             if html != orig:
               path.write_text(html, encoding='utf-8')
               changed += 1
@@ -49,5 +52,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --staged --quiet || git commit -m "Apply Early 2000s + Level-4 security to all HTML pages"
+          git diff --staged --quiet || git commit -m "Ensure Early 2000s + Level-4 on all HTML pages"
           git push
