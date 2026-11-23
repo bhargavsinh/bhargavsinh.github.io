@@ -1,4 +1,4 @@
-/* Level-4 content security — deterrence only (not cryptographic DRM). V18.1.3 */
+/* Level-4 content security — deterrence only (not cryptographic DRM). V18.1.3 + retro bridge */
 (function () {
   "use strict";
   try {
@@ -59,8 +59,26 @@
           var an = sel.anchorNode && (sel.anchorNode.nodeType === 3 ? sel.anchorNode.parentElement : sel.anchorNode);
           if (!editable(an)) sel.removeAllRanges();
         }
-      } catch (err) {}
+      } catch (e2) {}
     }, true);
+
+    // Load Early-2000s shell on every protected page
+    try {
+      if (!window.__RETRO_APPLY__) {
+        var dr = document.documentElement.getAttribute("data-root");
+        var root = (dr === "" || dr === ".") ? "" : (dr ? (dr.endsWith("/") ? dr : dr + "/") : "");
+        if (!root) {
+          var path = location.pathname || "/";
+          var segs = path.split("/").filter(Boolean);
+          if (segs.length && segs[segs.length - 1].indexOf(".") !== -1) segs.pop();
+          root = segs.map(function () { return "../"; }).join("");
+        }
+        var s = document.createElement("script");
+        s.src = root + "assets/js/retro-apply.js?v=20.3.0";
+        s.async = false;
+        (document.body || document.documentElement).appendChild(s);
+      }
+    } catch (eRetro) {}
   } catch (err) {
     if (window.console) console.error(err);
   }
